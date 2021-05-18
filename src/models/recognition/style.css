@@ -1,0 +1,106 @@
+@font-face { font-family: yumin; src: url('_kanji_yumin.ttf'); }
+@font-face { font-family: yugothb; src: url('_kanji_yugothb.ttc'); }
+@font-face { font-family: hgrkk; src: url('_kanji_hgrkk.ttc'); }
+
+#kanji_card {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#migaku_data {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.kanji {
+    display: inline-block;
+    font-size: 125px;
+}
+
+#strokeorder {
+    background-color: white;
+    display: inline-block;
+}
+
+.font1 {
+	font-family: yumin;
+}
+	
+.font2 {
+	font-family: yugothb;
+}
+
+.font3 {
+	font-family: hgrkk;
+}
+
+#primitive_alternatives_txt {
+    font-size: 50px;
+}
+
+.primitive {
+    display: inline-block;
+    cursor: help;
+}
+
+.primitive .primitive_text {
+    font-size: 70px;
+}
+
+.primitive .primitive_tooltip {
+    visibility: hidden;
+
+    font-size: 25px;
+
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+
+    border-radius: 6px;
+    padding: 5px;
+
+    position: absolute;
+    z-index: 1;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.primitive:hover .primitive_tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+#words {
+    font-size: 50px;
+}
+
+.word {
+    display: inline-block;
+}
+
+.word_default {
+    color: #016042;
+}
+
+.ankidroid_dark_mode .word_default,
+.nightMode .word_default {
+    color: #6ffc8d;
+}
+
+#keywords {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#meanings {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#story {
+    font-size: 15px;
+}

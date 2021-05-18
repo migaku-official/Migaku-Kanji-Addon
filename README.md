@@ -1,0 +1,1 @@
+# Migaku Kanji Addon

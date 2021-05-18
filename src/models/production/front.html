@@ -1,0 +1,66 @@
+<div id="kanji_card">
+
+    <div id="words" class="font1 center"></div>
+
+    <p id="keywords"></p>
+    <p id="meanings"></p>
+
+</div>
+
+
+<div id="migaku_data">{{MigakuData}}</div>
+<script>
+    var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
+
+
+    var max_words = 4;
+    word_entries = [];
+
+    for (var i = 0; i < data.words.length; i++)
+    {
+        if (word_entries.length >= max_words)
+            break;
+
+        const we = data.words[i];
+        const w = we[0];
+        const r = we[1];
+        var w_no_character = w.split(data.character).join('＿')
+        word_entries.push('<div class="word"><ruby>' + w_no_character + '<rt>' + r + '</rt></ruby></div>');
+    }
+    for (var i = 0; i < data.words_default.length; i++)
+    {
+        if (word_entries.length >= max_words)
+            break;
+
+        const we = data.words_default[i];
+        const w = we[0];
+        const r = we[1];
+
+        if (data.words.some(
+            function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
+        ))
+            continue;
+
+        var w_no_character = w.split(data.character).join('＿')
+        word_entries.push('<div class="word word_default"><ruby>' + w_no_character + '<rt>' + r + '</rt></ruby></div>');
+    }
+    document.getElementById('words').innerHTML = word_entries.join('　');
+
+
+    var keywords = [];
+    if (data.usr_keyword)
+        keywords.push(data.usr_keyword);
+    if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
+        keywords.push(data.heisig_keyword5);
+    if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
+        keywords.push(data.heisig_keyword6);
+    document.getElementById('keywords').innerHTML = keywords.join(', ');
+
+    var meanings = [];
+    for (const m of data.meanings)
+    {
+        if (!keywords.includes(m))
+            meanings.push(m);
+    }
+    document.getElementById('meanings').innerHTML = meanings.join(', ');
+</script>

@@ -1,0 +1,50 @@
+<div id="kanji_card">
+
+    <div class="center">
+        <div class="kanji font1">{{Character}}</div>
+        <div class="kanji font2">{{Character}}</div>
+        <div class="kanji font3">{{Character}}</div>
+    </div>
+
+    <div id="words" class="font1 center"></div>
+
+</div>
+
+
+<div id="migaku_data">{{MigakuData}}</div>
+<script>
+    var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
+
+
+    var max_words = 4;
+    word_entries = [];
+
+    for (var i = 0; i < data.words.length; i++)
+    {
+        if (word_entries.length >= max_words)
+            break;
+
+        const we = data.words[i];
+        const w = we[0];
+        const r = we[1];
+        word_entries.push('<div class="word"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+    }
+    for (var i = 0; i < data.words_default.length; i++)
+    {
+        if (word_entries.length >= max_words)
+            break;
+
+        const we = data.words_default[i];
+        const w = we[0];
+        const r = we[1];
+
+        if (data.words.some(
+            function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
+        ))
+            continue;
+
+        word_entries.push('<div class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+    }
+    document.getElementById('words').innerHTML = word_entries.join('　');
+
+</script>
