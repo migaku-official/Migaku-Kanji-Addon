@@ -319,7 +319,7 @@ class KanjiDB:
             new_chars = self.new_characters(ct, kanji)
 
             if len(new_chars):
-                self.make_cards_from_characters(ct, new_chars)
+                self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
                 self.recalc_user_cards(ct)
 
                 if ct.auto_card_creation_msg:
@@ -386,7 +386,7 @@ class KanjiDB:
 
 
 
-    def make_cards_from_characters(self, card_type, new_characters):
+    def make_cards_from_characters(self, card_type, new_characters, checkpoint=None):
         from . import add_note_no_hook
 
         # Just to be sure...
@@ -400,6 +400,9 @@ class KanjiDB:
         deck = aqt.mw.col.decks.byName(deck_name)
         if deck is None:
             raise InvalidDeckError(card_type)
+
+        if checkpoint is not None:
+            aqt.mw.checkpoint(checkpoint)
 
         deck_id = deck['id']
         model = aqt.mw.col.models.byName(model_name)

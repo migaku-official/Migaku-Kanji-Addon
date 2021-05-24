@@ -73,60 +73,42 @@ class LookupWindow(QDialog):
         def read_web_file(name):
             return open(util.addon_path('web', name), 'r', encoding='UTF-8').read()
 
-        self.html_result = read_web_file('result.html')
-        self.html_noresult = read_web_file('noresult.html')
-        self.html_welcome = read_web_file('welcome.html')
-
         self.web = aqt.webview.AnkiWebView()
+
+        bundled_js = self.web.bundledScript('webview.js') + self.web.bundledScript('jquery.js')
+
+        html_head = \
+             '<head>' \
+            F'{aqt.mw.baseHTML()}' \
+            F'{bundled_js}' \
+             '<style>\n' \
+            F'@font-face {{ font-family: kanji_font1; src: url("{self.font_uri("yumin.ttf")}"); }}\n' \
+            F'@font-face {{ font-family: kanji_font2; src: url("{self.font_uri("yugothb.ttc")}"); }}\n' \
+            F'@font-face {{ font-family: kanji_font3; src: url("{self.font_uri("hgrkk.ttc")}"); }}\n' \
+             '\n</style>' \
+            F'<link rel="stylesheet" href="{self.web_uri("lookup_style.css")}">' \
+            F'<script src="{self.web_uri("dmak.js")}"></script>' \
+            F'<script>let kanjivg_uri="{self.kanjivg_uri}";</script>' \
+             '</head>'
+
+        html_body = read_web_file('lookup.html')
+
+        style_class = 'KanjiLookup--dark' if aqt.theme.theme_manager.night_mode else 'KanjiLookup--light'
+
         self.web.onBridgeCmd = self.on_bridge_cmd
+        self.web.setHtml('<!doctype html><html class="' + style_class + '">' + html_head + '<body class="' + style_class + '">' + html_body + '</body></html>')
         self.set_result_data(None) # Load welcome screen
         results_lyt.addWidget(self.web)
 
 
     def set_result_data(self, data):
 
-        # Link provide fonts, style.css, dmak.js and kanji result data (in a rather hacky way :) )
-        dynamic_html = \
-             '<style>\n' \
-            F'@font-face {{ font-family: kanji_font1; src: url("{self.font_uri("yumin.ttf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font2; src: url("{self.font_uri("yugothb.ttc")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font3; src: url("{self.font_uri("hgrkk.ttc")}"); }}\n' \
-             '\n</style>' \
-            F'<link rel="stylesheet" href="{self.web_uri("style.css")}">' \
-            F'<script src="{self.web_uri("dmak.js")}"></script>' \
-            F'<div id="migaku_data">{json.dumps(data)}</div>' \
-             '<script>' \
-                 'let data = JSON.parse(document.getElementById("migaku_data").innerHTML);' \
-                F'let kanjivg_uri = "{self.kanjivg_uri}/";' \
-             '</script>'
-
-
-        #'<script>' \
-        #     'let data = JSON.parse(document.getElementById("migaku_data").innerHTML);' \
-        #    F'let kanjivg_uri = "{self.kanjivg_uri}/";' \
-        # '</script>'
-
-        #            F'@font-face {{ font-family: kanji_font2; src: url("{self.web_uri("")}"yugothb.ttc'); }} ' \
-        #    F'@font-face {{ font-family: kanji_font3; src: url("{self.web_uri("")}"hgrkk.ttc'); }} ' \
-
-        if data is None:
-            self.web.stdHtml(dynamic_html + self.html_welcome)
-        elif not data['has_result']:
-            self.web.stdHtml(dynamic_html + self.html_noresult)
-        else:
-            self.web.stdHtml(dynamic_html + self.html_result)
-
-        return
-
         # Really cannot be bothered to escape the json
         data_json = json.dumps(data)
         data_json_b64_b = base64.b64encode(data_json.encode('utf-8'))
         data_json_b64 = str(data_json_b64_b, 'utf-8')
 
-        self.web.stdHtml(
-            open(util.addon_path('web', 'lookup.html'), 'r', encoding='UTF-8').read()
-        )
-        self.web.eval(F'set_result_data(\'{data_json_b64}\', \'{self.kanjivg_uri}\');')
+        self.web.eval(F'set_data(\'{data_json_b64}\');')
 
 
     def on_bridge_cmd(self, cmd):
@@ -144,7 +126,7 @@ class LookupWindow(QDialog):
             util.error_msg_on_error(
                 self,
                 aqt.mw.migaku_kanji_db.make_cards_from_characters,
-                card_type, character
+                card_type, character, 'Kanji Card Creation'
             )
             self.refresh()
         elif args[0] == 'open':
@@ -291,12 +273,15 @@ def attempt_webview_lookup(web_view):
     LookupWindow.open(text)
 
 
+
 # Add shortcuts for lookups
-key_sequence = QKeySequence('Ctrl+D')
+key_sequence = QKeySequence('Ctrl+Shift+K')
+
 
 # Main web view
 aqt.mw.kanji_lookup_shortcut = QShortcut(key_sequence, aqt.mw)
 aqt.mw.kanji_lookup_shortcut.activated.connect(lambda: attempt_webview_lookup(aqt.mw.web))
+
 
 # Editor
 def Editor_install_kanji_shortcut(self):
@@ -307,6 +292,7 @@ aqt.editor.Editor.setupWeb = anki.hooks.wrap(
     aqt.editor.Editor.setupWeb, Editor_install_kanji_shortcut
 )
 
+
 # Previewer
 def Previewer_install_kanji_shortcut(self):
     self.kanji_lookup_shortcut = QShortcut(key_sequence, self._web)
@@ -315,3 +301,44 @@ def Previewer_install_kanji_shortcut(self):
 aqt.previewer.Previewer.open = anki.hooks.wrap(
     aqt.previewer.Previewer.open, Previewer_install_kanji_shortcut
 )
+
+
+# Migaku dictionary
+def apply_migaku_dict_hooks():
+    aqt.gui_hooks.collection_did_load.remove(apply_migaku_dict_hooks)   # Only do this once
+
+    from inspect import getmodule
+
+    try:
+        dict_module_main = getmodule(aqt.mw.refreshMigakuDictConfig)
+    except AttributeError:
+        # No dict addon
+        return
+
+    dict_module = getmodule(aqt.mw.refreshMigakuDictConfig)
+    midict_module = getmodule(dict_module.DictInterface)
+
+    def dict_interface_hook(self):
+        self.hotkeyKanji = QShortcut(key_sequence, self)
+        self.hotkeyKanji.activated.connect(lambda: attempt_webview_lookup(self.dict._page))
+
+    def card_exporter_hook(self):
+
+        def card_exporter_search_kanji(self):
+            focused = self.scrollArea.focusWidget()
+            if type(focused).__name__ in ['MILineEdit', 'MITextEdit']:
+                text = focused.selectedText()
+                LookupWindow.open(text)
+
+        self.hotkeyKanji = QShortcut(key_sequence, self.scrollArea)
+        self.hotkeyKanji.activated.connect(lambda: card_exporter_search_kanji(self))
+
+    midict_module.DictInterface.setHotkeys = anki.hooks.wrap(
+        midict_module.DictInterface.setHotkeys, dict_interface_hook
+    )
+
+    midict_module.CardExporter.setHotkeys = anki.hooks.wrap(
+        midict_module.CardExporter.setHotkeys, card_exporter_hook
+    )
+
+aqt.gui_hooks.profile_did_open.append(apply_migaku_dict_hooks)

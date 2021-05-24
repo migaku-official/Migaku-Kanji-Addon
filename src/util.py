@@ -67,6 +67,8 @@ def open_browser(text):
     if browser:
         browser.form.searchEdit.lineEdit().setText(text)
         browser.onSearchActivated()
+        browser.raise_()
+        browser.activateWindow()
 
 
 def open_browser_cardids(card_ids):

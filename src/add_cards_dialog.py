@@ -94,7 +94,7 @@ class AddCardsDialog(QDialog):
         r = util.error_msg_on_error(
             self,
             aqt.mw.migaku_kanji_db.make_cards_from_characters,
-            ct, chars
+            ct, chars, 'Kanji Cards Addition'
         )
 
         aqt.mw.migaku_kanji_db.recalc_user_cards(ct)

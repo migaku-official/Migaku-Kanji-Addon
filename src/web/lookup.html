@@ -1,0 +1,267 @@
+<div id="welcome">
+  <div class="KanjiLookup-container KanjiLookup-container--noResult">
+    <h1 class="welcome">WELCOME!</h1>
+    <p class="welcome-text">
+      To look up Kanji, enter them into the box above and press Enter or press
+      the search button.
+    </p>
+    <p class="welcome-text">
+      You can also press <span class="key">CTRL</span> +
+      <span class="key">S</span> anywhere in Anki to search for the highlighted
+      characters.
+    </p>
+  </div>
+</div>
+
+<div id="noresult" style="display: none;">
+  <div class="KanjiLookup-container KanjiLookup-container--noResult">
+    <h1>No result found for character</h1>
+    <h1 class="kanji">仮</h1>
+  </div>
+</div>
+
+<div id="result" style="display: none;">
+  <div class="KanjiLookup-container">
+    <div class="KanjiLookup-details">
+      <div class="KanjiLookup-player">
+        <div class="KanjiLookup-player">
+          <div class="playerContainer">
+            <h3 class="playerTitle">Stroke order</h3>
+            <div id="strokeorder"></div>
+            <div class="playerControls">
+              <button id="strokeorder_p">
+                <span class="material-icons"> skip_previous </span>
+              </button>
+              <button id="strokeorder_s">
+                <span class="material-icons"> pause </span>
+              </button>
+              <button id="strokeorder_g">
+                <span class="material-icons"> play_arrow </span>
+              </button>
+              <button id="strokeorder_n">
+                <span class="material-icons"> skip_next </span>
+              </button>
+              <button id="strokeorder_r">
+                <span class="material-icons"> stop </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="KanjiLookup-description">
+        <h1>Font examples</h1>
+        <span class="fontExample" style="font-family: 'kanji_font1'">仮</span>
+        <span class="fontExample" style="font-family: 'kanji_font2'">仮</span>
+        <span class="fontExample" style="font-family: 'kanji_font3'">仮</span>
+        <div class="separator"></div>
+        <div class="tags">
+          <div class="tag">JLPT <span id="jlpt">-</span></div>
+          <div class="tag">Frequency <span id="frequency">-</span></div>
+          <div class="tag">Grade <span id="grade">-</span></div>
+          <div class="tag">Kanken <span id="kanken">-</span></div>
+          <div class="tag">RTK (1-5) <span id="heisig_id5">-</span></div>
+          <div class="tag">RTK (6+) <span id="heisig_id6">-</span></div>
+        </div>
+        <div class="keywords">
+          <h3>Keywords:</h3>
+          <span id="keywords">-</span>
+        </div>
+        <div class="keyowrds">
+          <h3>Meanings:</h3>
+          <span id="meanings">-</span>
+        </div>
+        <div class="readings">
+          <ul>
+            <li>
+              <h4>Onyomi:</h4>
+              <span id="onyomi"></span>
+            </li>
+            <li>
+              <h4>Kunyomi:</h4>
+              <span id="kunyomi"></span>
+            </li>
+            <li>
+              <h4>Nanori:</h4>
+              <span id="nanori"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="KanjiLookup-primitives">
+      <h2>Primitives</h2>
+      <span id="primitives"></span>
+    </div>
+    <div class="KanjiLookup-actions">
+      <button onclick="recognition_card_click();" id="recognition_card_btn" class="button">Create Recognition Card</button>
+      <button onclick="production_card_click();" id="production_card_btn" class="button">Create Production Card</button>
+    </div>
+    <div class="KanjiLookup-stories">
+      <h3>Stories</h3>
+      <span id="stories"></span>
+    </div>
+    <div class="KanjiLookup-actions">
+      <button onclick="set_custom_keyword();" class="button secondary">Set Custom Keyword</button>
+      <button onclick="set_custom_story();" class="button secondary">Set Custom Story</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let dmak = null;
+  let data = null;
+
+  function wrap_list(list, intro, outro)
+  {
+    if (list.length < 1)
+      return '-';
+    return intro + list.join(outro+intro) + outro;
+  }
+
+  function search(text)
+  {
+    pycmd('open-' + text);
+  }
+
+  function primitive_click()
+  {
+    search($(this).data('character'));
+  }
+
+  function recognition_card_click()
+  {
+    if (data.recognition_card_id !== null)
+      pycmd('show_card_id-' + data.recognition_card_id);
+    else
+      pycmd('create-recognition-' + data.character);
+  }
+
+  function production_card_click()
+  {
+    if (data.production_card_id !== null)
+      pycmd('show_card_id-' + data.production_card_id);
+    else
+      pycmd('create-production-' + data.character);
+  }
+
+  function set_custom_keyword()
+  {
+    pycmd('custom_keyword-' + data.character + '-' + (data.usr_keyword ? data.usr_keyword : ''));
+  }
+
+  function set_custom_story()
+  {
+    pycmd('custom_story-' + data.character + '-' + (data.usr_story ? data.usr_story : ''));
+  }
+
+  $('#strokeorder_p').click(function() { dmak.eraseLastStrokes(1); });
+  $('#strokeorder_s').click(function() { dmak.pause(); });
+  $('#strokeorder_g').click(function() { dmak.render(); });
+  $('#strokeorder_n').click(function() { dmak.renderNextStrokes(1); });
+  $('#strokeorder_r').click(function() { dmak.erase(); });
+
+  function set_data(data_b64_json)
+  {
+    var data_json = atob(data_b64_json);
+    data = JSON.parse(data_json);
+
+    $('#welcome').toggle(data === null);
+    $('#noresult').toggle(data !== null && !data.has_result);
+    $('#result').toggle(data !== null && data.has_result);
+
+    if (data !== null && !data.has_result)
+      $('.kanji').html(data.character);
+
+    else if (data !== null && data.has_result)
+    {
+      if (dmak !== null)
+        delete dmak;
+
+      $('#strokeorder').html('');
+      dmak = new Dmak(data.character, {'element': 'strokeorder', 'uri': kanjivg_uri, 'height': 220, 'width': 220, 'step': 0.015});
+
+      $('.fontExample').html(data.character);
+
+      $('#jlpt').html(data.jlpt === null ? '-' : 'N' + data.jlpt.toString());
+      $('#frequency').html(data.frequency < 999999 ? '-' : data.frequency_rank.toString());
+      $('#grade').html(data.grade === null ? '-' : data.grade.toString());
+      $('#kanken').html(data.kanken === null ? '-' : data.kanken.toString());
+      $('#heisig_id5').html(data.heisig_id5 === null ? '-' : data.heisig_id5.toString());
+      $('#heisig_id6').html(data.heisig_id6 === null ? '-' : data.heisig_id6.toString());
+
+      $('#onyomi').html(data.onyomi.length ? data.onyomi.join(', ') : '-');
+      $('#kunyomi').html(data.kunyomi.length ? data.kunyomi.join(', ') : '-');
+      $('#nanori').html(data.nanori.length ? data.nanori.join(', ') : '-');
+
+      var has_primitives = data.primitives.length > 0 && !(data.primitives.length == 1 && data.primitives[0] == data.character);
+      $('.KanjiLookup-primitives').toggle(has_primitives);
+      $('#primitives').empty();
+
+      if (has_primitives)
+      {
+        var primitives_pts = [];
+
+        for (const p_data of data.primitives_detail)
+        {
+          var keywords = [];
+          if (p_data.usr_keyword)
+            keywords.push(p_data.usr_keyword);
+          if (p_data.heisig_keyword5 && !keywords.includes(p_data.heisig_keyword5))
+            keywords.push(data.heisig_keyword5);
+          if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
+            keywords.push(p_data.heisig_keyword6);
+          var keywords_txt = keywords.length ? keywords.join(', ') : '-';
+
+          var meanings_txt = p_data.meanings.length ? p_data.meanings.join(', ') : '-';
+
+          var primitive_alternatives_txt = p_data.primitive_alternatives.length ? p_data.primitive_alternatives.join(', ') : '-';
+          
+          primitives_pts.push(
+            '<button class="primitive" data-character="' + p_data.character + '">' + p_data.character + '<div class="primitiveDetails">' +
+              '<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' + keywords_txt + '</div>' +
+              '<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' + meanings_txt + '</div>' +
+              '<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' + primitive_alternatives_txt + '</div>' +
+            '</div></button>'
+          );
+        }
+
+        $('#primitives').html(primitives_pts.join(''));
+
+        $('.primitive').click(primitive_click);
+      }
+
+      var keywords = [];
+      if (data.usr_keyword)
+        keywords.push(data.usr_keyword);
+      if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
+        keywords.push(data.heisig_keyword5);
+      if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
+        keywords.push(data.heisig_keyword6);
+      $('#keywords').html(keywords.length ? keywords.join(', ') : '-');
+
+      $('#meanings').html(data.meanings.length ? data.meanings.join(', ') : '-');
+
+      var stories = [];
+      if (data.usr_story)
+        stories.push(data.usr_story.split('\n').join('<br>'));
+      if (data.heisig_story)
+      {
+        var heisig_story = data.heisig_story;
+        if (data.heisig_comment)
+          heisig_story += + '<br><br>' + data.heisig_comment;
+          stories.push(heisig_story);
+      }
+      for (const ks of data.koohi_stories)
+        stories.push(ks);
+
+      $('#stories').html(
+        wrap_list(stories, '<p class="story">', '</p>')
+      );
+
+      $('#recognition_card_btn').html((data.recognition_card_id ? 'Show' : 'Create') + ' Recognition Card');
+      $('#production_card_btn').html((data.production_card_id ? 'Show' : 'Create') + ' Production Card');
+    }
+  }
+
+
+</script>

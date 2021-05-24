@@ -1,0 +1,384 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+#migaku_data {
+    display: none;
+}
+
+html {
+  font-family: "Rubik", sans-serif;
+  color: #363c4a;
+  font-size: 16px;
+}
+
+html .KanjiLookup--dark {
+  color: #fff;
+  background: #3a3f4c;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.KanjiLookup-container {
+  max-width: 900px;
+  margin: auto;
+  padding-top: 100px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #2880ff;
+  opacity: 0.3;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 400;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 1px;
+  width: 50px;
+  height: 1px;
+  background: #c4c4c4;
+}
+
+h3 {
+  display: inline;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+h4 {
+  display: inline;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fontExample {
+  font-size: 32px;
+}
+
+.tag {
+  background: #cbcbcb;
+  border-radius: 5px;
+  display: inline-block;
+  color: #fff;
+  padding: 8px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.tag span {
+  font-weight: 700;
+}
+
+li {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(50% - 4px);
+  background: #2880ff;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+
+.primitive {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  background: #e5f9ff;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.primitive:hover,
+.primitive:focus {
+  background: #c0e2ed;
+}
+
+.primitiveDetails {
+  position: absolute;
+  opacity: 0;
+  user-select: none;
+  bottom: calc(100% + 15px);
+  text-align: left;
+  width: auto;
+  white-space: nowrap;
+  background: #e5f9ff;
+  box-shadow: 0px 4px 16px rgba(0, 10, 25, 0.15);
+  padding: 20px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  transition: opacity 0.3s;
+}
+
+.primitive:hover .primitiveDetails,
+.primitive:focus .primitiveDetails {
+  opacity: 1;
+  user-select: auto;
+}
+
+.button {
+  display: inline-block;
+  background: #2880ff;
+  line-height: 44px;
+  height: 44px;
+  width: 215px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0px 4px 16px rgba(114, 171, 254, 0.7);
+  border: 1px solid #2880ff;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.button:hover,
+.button:focus {
+  background: #246dd7;
+  border: 1px solid #246dd7;
+}
+
+.button.secondary {
+  position: relative;
+  background: transparent;
+  color: #2880ff;
+  filter: drop-shadow(0px 4px 16px rgba(114, 171, 254, 0.7));
+  box-shadow: none;
+}
+
+.button.secondary::after {
+  content: "";
+  background: #246dd7;
+  height: 1px;
+  width: 0px;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  transition: 0.5s;
+}
+
+.button.secondary:hover {
+  color: #246dd7;
+  border: 1px solid #246dd7;
+}
+
+.button.secondary:hover::after {
+  width: 150px;
+}
+
+.story {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.separator {
+  width: 50px;
+  height: 1px;
+  background: #c4c4c4;
+  margin-bottom: 20px;
+}
+
+/* PLAYER */
+
+.KanjiLookup-player {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.playerContainer {
+  padding: 50px 20px;
+  display: grid;
+  grid-template-rows: 35px 1fr 25px;
+}
+
+.playerTitle {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  color: #2880ff;
+  opacity: 0.3;
+}
+
+.playerContainer {
+  background: #e5f9ff;
+  border-radius: 14px;
+  height: 360px;
+  width: 360px;
+}
+
+.playerControls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2880ff;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.playerControls button:hover {
+  opacity: 0.5;
+}
+
+/* POSITIONING */
+
+.KanjiLookup-details {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+}
+
+.keywords {
+  margin-bottom: 20px;
+}
+
+.KanjiLookup-actions {
+  margin: 40px 0;
+}
+
+/* No Result */
+
+.KanjiLookup-container--noResult {
+  text-align: center;
+}
+
+.KanjiLookup-container--noResult h1.kanji {
+  color: #363c4a;
+  opacity: 1;
+  margin-top: 50px;
+  font-size: 50px;
+}
+
+/* Welcome */
+
+h1.welcome {
+  font-size: 64px;
+  margin-bottom: 70px;
+  padding-top: 100px;
+}
+
+.welcome-text {
+  margin-bottom: 20px;
+}
+
+.key {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 4px;
+  border-radius: 5px;
+  background: #d8dae0;
+}
+
+/* DARK MODE */
+
+.KanjiLookup--dark .playerContainer {
+  background: #f2994a;
+}
+
+.KanjiLookup--dark .playerTitle {
+  color: #363c4a;
+}
+
+.KanjiLookup--dark .playerControls button {
+  color: #363c4a;
+  opacity: 1;
+}
+
+.KanjiLookup--dark .playerControls button:hover {
+  opacity: 0.7;
+}
+
+.KanjiLookup--dark h1 {
+  color: #f2994a;
+}
+
+.KanjiLookup--dark .button {
+  box-shadow: 0px 4px 16px rgba(243, 165, 68, 0.3);
+  border: 1px solid #f2994a;
+  background: #f2994a;
+}
+
+.KanjiLookup--dark .button:hover,
+.KanjiLookup--dark .button:focus {
+  background: #de9238;
+  border: 1px solid #de9238;
+}
+
+.KanjiLookup--dark .button.secondary {
+  color: #f2994a;
+  background: transparent;
+  filter: drop-shadow(0px 4px 16px rgba(243, 165, 68, 0.02));
+}
+
+.KanjiLookup--dark .button.secondary::after {
+  background: #de9238;
+}
+
+.KanjiLookup--dark .button.secondary:hover {
+  color: #de9238;
+  border: 1px solid #de9238;
+}
+
+.KanjiLookup--dark .tag {
+  background: #30343e;
+  color: #f2f2f2;
+}
+
+.KanjiLookup--dark li::before {
+  background: #f2994a;
+}
+
+.KanjiLookup--dark .primitive {
+  background: #30343e;
+}
+
+.KanjiLookup--dark .primitive:hover,
+.KanjiLookup--dark .primitive:focus {
+  background: #24272d;
+}
+
+.KanjiLookup--dark .primitiveDetails {
+  background: #30343e;
+}
+
+.KanjiLookup--dark .KanjiLookup-container--noResult h1.kanji {
+  color: #f2f2f2;
+}
+
+.KanjiLookup--dark .key {
+  background: #30343e;
+}

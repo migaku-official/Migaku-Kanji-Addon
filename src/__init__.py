@@ -3,6 +3,8 @@ from . import kanji
 from .lookup_window import LookupWindow
 from .settings_window import SettingsWindow
 from .add_cards_dialog import AddCardsDialog
+from .stats_window import StatsWindow
+from .create_cards_from_notes_dialog import CreateCardsFromNotesDialog
 
 
 import anki
@@ -29,10 +31,15 @@ def setup_menu():
     # submenu = QMenu('Kanji', aqt.mw)
     # aqt.mw.MigakuMenuActions.append(submenu)
 
-    add_kanji_action = QAction('Kanji Lookup', aqt.mw)
-    add_kanji_action.triggered.connect(on_loopup)
+    lookup_action = QAction('Kanji Lookup', aqt.mw)
+    lookup_action.triggered.connect(on_loopup)
     # submenu.addAction(add_kanji_action)
-    aqt.mw.MigakuMenuActions.append(add_kanji_action)
+    aqt.mw.MigakuMenuActions.append(lookup_action)
+
+    stats_action = QAction('Kanji Stats', aqt.mw)
+    stats_action.triggered.connect(on_stats)
+    # submenu.addAction(stats_action)
+    aqt.mw.MigakuMenuActions.append(stats_action)
 
     add_kanji_action = QAction('Add New Kanji Cards', aqt.mw)
     add_kanji_action.triggered.connect(on_add_cards)
@@ -65,6 +72,9 @@ def setup_menu():
 
 def on_loopup():
     LookupWindow.open()
+
+def on_stats():
+    StatsWindow.open()
 
 def on_add_cards():
     AddCardsDialog.show_modal(aqt.mw)
@@ -117,10 +127,19 @@ aqt.gui_hooks.profile_did_open.append(CardType.upsert_all_models)
 setup_menu()
 
 
+def setup_browser_menu(browser):
+    create_cards_action = QAction('Create Kanji Cards From Selection', browser)
+    create_cards_action.triggered.connect(
+        lambda: CreateCardsFromNotesDialog.show_modal(browser.selectedNotes(), browser)
+    )
+    browser.form.menuEdit.addSeparator()
+    browser.form.menuEdit.addAction(create_cards_action)
+
+aqt.gui_hooks.browser_menus_did_init.append(setup_browser_menu)
+
 
 def note_added(col, note, deck_id):
     aqt.mw.migaku_kanji_db.on_note_update(note.id, deck_id)
-
 
 add_note_no_hook = anki.collection.Collection.add_note
 anki.collection.Collection.add_note = anki.hooks.wrap(
