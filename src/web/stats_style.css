@@ -1,7 +1,21 @@
-html {
+html,
+body {
   font-family: "Rubik", sans-serif;
   color: #363c4a;
   font-size: 16px;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.nightMode {
+  color: #fff;
+  background: #3a3f4c;
+}
+
+body.nightMode {
+  background: #363c4a;
 }
 
 * {
@@ -30,25 +44,25 @@ html {
 }
 
 .kanji_category_header {
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
 }
 
 .kanji_category_stats {
-    font-size: 16px;
-    text-align: center;
+  font-size: 16px;
+  text-align: center;
 }
 
 .kanji_category_entries div {
-    font-size: 20px;
-    font-family: kanji_font;
-    display: inline-block;
-    text-align: center;
-    line-height: 1.5em;
-    width: 1.5em;
-    margin: 2px;
-    border-radius: 5px;
-    color: black;
-    cursor: pointer;
+  font-size: 20px;
+  font-family: kanji_font;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.5em;
+  width: 1.5em;
+  margin: 2px;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
 }

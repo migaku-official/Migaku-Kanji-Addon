@@ -5,6 +5,7 @@ from .settings_window import SettingsWindow
 from .add_cards_dialog import AddCardsDialog
 from .stats_window import StatsWindow
 from .create_cards_from_notes_dialog import CreateCardsFromNotesDialog
+from . import reviewer
 
 
 import anki

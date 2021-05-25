@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script>
 /* dmak + raphael */
 /* scroll down to end of file for the interesting stuff */
@@ -5,207 +7,295 @@
 </script>
 
 
-<div id="kanji_card">
-
-    <div id="words" class="font1 center"></div>
-
-    <p id="keywords"></p>
-    <p id="meanings"></p>
-
-    <hr>
-
-    <div class="center">
-        <div id="strokeorder"></div>
-        <div class="kanji font1">{{Character}}</div>
-        <div class="kanji font2">{{Character}}</div>
-        <div class="kanji font3">{{Character}}</div>
+<div class="KanjiLookup--dark">
+  <div class="KanjiLookup-container productionCard-front">
+    <h1 class="keyword" id="keywords_front"></h1>
+    <h1 class="keyword" id="meanings_front"></h1>
+    <div id="words_front"></div>
+    <div class="separator separator-full"></div>
+  </div>
+  <div class="KanjiLookup-container">
+    <div class="KanjiLookup-details">
+      <div class="KanjiLookup-player">
+        <div class="KanjiLookup-player">
+          <div class="playerContainer">
+            <h3 class="playerTitle">Stroke order</h3>
+            <div id="strokeorder"></div>
+            <div class="playerControls">
+              <button id="strokeorder_p">
+                <span class="material-icons"> skip_previous </span>
+              </button>
+              <button id="strokeorder_s">
+                <span class="material-icons"> pause </span>
+              </button>
+              <button id="strokeorder_g">
+                <span class="material-icons"> play_arrow </span>
+              </button>
+              <button id="strokeorder_n">
+                <span class="material-icons"> skip_next </span>
+              </button>
+              <button id="strokeorder_r">
+                <span class="material-icons"> stop </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="KanjiLookup-description">
+        <h1>Font examples</h1>
+        <span class="fontExample" style="font-family: 'kanji_font1'">仮</span>
+        <span class="fontExample" style="font-family: 'kanji_font2'">仮</span>
+        <span class="fontExample" style="font-family: 'kanji_font3'">仮</span>
+        <div class="separator"></div>
+        <div class="tags">
+          <div class="tag">JLPT <span id="jlpt">-</span></div>
+          <div class="tag">Frequency <span id="frequency">-</span></div>
+          <div class="tag">Grade <span id="grade">-</span></div>
+          <div class="tag">Kanken <span id="kanken">-</span></div>
+          <div class="tag">RTK (1-5) <span id="heisig_id5">-</span></div>
+          <div class="tag">RTK (6+) <span id="heisig_id6">-</span></div>
+        </div>
+        <div class="keywords">
+          <h3>Keywords:</h3>
+          <span id="keywords">-</span>
+        </div>
+        <div class="keywords">
+          <h3>Meanings:</h3>
+          <span id="meanings">-</span>
+        </div>
+        <div class="readings">
+          <ul>
+            <li>
+              <h4>Onyomi:</h4>
+              <span id="onyomi"></span>
+            </li>
+            <li>
+              <h4>Kunyomi:</h4>
+              <span id="kunyomi"></span>
+            </li>
+            <li>
+              <h4>Nanori:</h4>
+              <span id="nanori"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <div class="center">
-        <button id="strokeorder_p">❮</button>
-        <button id="strokeorder_s">⏸</button>
-        <button id="strokeorder_g">▶</button>
-        <button id="strokeorder_n">❯</button>
-        <button id="strokeorder_r">⏹</button>
+    <div class="KanjiLookup-primitives">
+      <h2>Primitives</h2>
+      <span id="primitives"></span>
     </div>
-
-    <div id="primitive_alternatives" class="center" style="margin-top: 15px;"></div>
-    <div id="primitives" class="center"></div>
-
-    <p id="story"></p>
-
-    <table>
-        <tr><td>Onyomi</td><td id="onyomi">None</td></tr>
-        <tr><td>Kunyomi</td><td id="kunyomi">None</td></tr>
-        <tr><td>Nanori</td><td id="nanori">None</td></tr>
-    </table>
-
-    <table style="margin-top:10px;">
-        <tr><td>Frequency Rank</td><td id="frequency_rank">-</td></tr>
-        <tr><td>Grade</td><td id="grade">-</td></tr>
-        <tr><td>JLPT</td><td id="jlpt">-</td></tr>
-        <tr><td>Kanken</td><td id="kanken">-</td></tr>
-        <tr><td>RTK (1-5)</td><td id="heisig_id5">-</td></tr>
-        <tr><td>RTK (6+)</td><td id="heisig_id6">-</td></tr>
-    </table>
-
+    <div class="KanjiLookup-words">
+      <h2>Words</h2>
+      <span id="words"></span>
+    </div>
+    <div class="KanjiLookup-stories">
+      <h3>Stories</h3>
+      <span id="stories"></span>
+    </div>
+    <div class="KanjiLookup-actions">
+      <button onclick="set_custom_keyword();" class="button secondary">Set Custom Keyword</button>
+      <button onclick="set_custom_story();" class="button secondary">Set Custom Story</button>
+    </div>
+    <div class="KanjiLookup-radicals">
+      <h2>Radicals</h2>
+      <span id="radicals"></span>
+    </div>
+  </div>
 </div>
 
 
 <div id="migaku_data">{{MigakuData}}</div>
 <script>
-    var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
-    
-    
-    var max_words = 4;
-    word_entries = [];
+  function wrap_list(list, intro, outro)
+  {
+    if (list.length < 1)
+      return '-';
+    return intro + list.join(outro+intro) + outro;
+  }
 
-    for (var i = 0; i < data.words.length; i++)
+  function search(text)
+  {
+    pycmd('open-' + text);
+  }
+
+  function show_word_notes(notes)
+  {
+    pycmd('show_word-' + notes.join(','));
+  }
+
+  function primitive_click()
+  {
+    search($(this).data('character'));
+  }
+
+  function word_click(elem)
+  {
+    var word_idx = $(this).data('word-idx');
+
+    if (word_idx === undefined)
+      return;
+
+    var idx = parseInt(word_idx);
+
+    const we = data.words[idx];
+    const nids = we[2];
+
+    show_word_notes(nids);
+  }
+
+  function set_custom_keyword()
+  {
+    pycmd('custom_keyword-' + data.character + '-' + (data.usr_keyword ? data.usr_keyword : ''));
+  }
+
+  function set_custom_story()
+  {
+    pycmd('custom_story-' + data.character + '-' + (data.usr_story ? data.usr_story : ''));
+  }
+
+  var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
+  var kanjivg_uri = 'kanji_';
+
+  var dmak = new Dmak(data.character, {'element': 'strokeorder', 'uri': kanjivg_uri, 'height': 220, 'width': 220, 'step': 0.015});
+
+  $('#strokeorder_p').click(function() { dmak.eraseLastStrokes(1); });
+  $('#strokeorder_s').click(function() { dmak.pause(); });
+  $('#strokeorder_g').click(function() { dmak.render(); });
+  $('#strokeorder_n').click(function() { dmak.renderNextStrokes(1); });
+  $('#strokeorder_r').click(function() { dmak.erase(); });
+
+  $('.fontExample').html(data.character);
+
+  $('#jlpt').html(data.jlpt === null ? '-' : 'N' + data.jlpt.toString());
+  $('#frequency').html(data.frequency < 999999 ? '-' : data.frequency_rank.toString());
+  $('#grade').html(data.grade === null ? '-' : data.grade.toString());
+  $('#kanken').html(data.kanken === null ? '-' : data.kanken.toString());
+  $('#heisig_id5').html(data.heisig_id5 === null ? '-' : data.heisig_id5.toString());
+  $('#heisig_id6').html(data.heisig_id6 === null ? '-' : data.heisig_id6.toString());
+
+  $('#onyomi').html(data.onyomi.length ? data.onyomi.join(', ') : '-');
+  $('#kunyomi').html(data.kunyomi.length ? data.kunyomi.join(', ') : '-');
+  $('#nanori').html(data.nanori.length ? data.nanori.join(', ') : '-');
+
+  var has_primitives = data.primitives.length > 0 && !(data.primitives.length == 1 && data.primitives[0] == data.character);
+  $('.KanjiLookup-primitives').toggle(has_primitives);
+  $('#primitives').empty();
+
+  if (has_primitives)
+  {
+    var primitives_pts = [];
+
+    for (const p_data of data.primitives_detail)
     {
-        if (word_entries.length >= max_words)
-            break;
+      var keywords = [];
+      if (p_data.usr_keyword)
+        keywords.push(p_data.usr_keyword);
+      if (p_data.heisig_keyword5 && !keywords.includes(p_data.heisig_keyword5))
+        keywords.push(p_data.heisig_keyword5);
+      if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
+        keywords.push(p_data.heisig_keyword6);
+      var keywords_txt = keywords.length ? keywords.join(', ') : '-';
 
-        const we = data.words[i];
-        const w = we[0];
-        const r = we[1];
-        word_entries.push('<div class="word"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
-    }
-    for (var i = 0; i < data.words_default.length; i++)
-    {
-        if (word_entries.length >= max_words)
-            break;
+      var meanings_txt = p_data.meanings.length ? p_data.meanings.join(', ') : '-';
 
-        const we = data.words_default[i];
-        const w = we[0];
-        const r = we[1];
-
-        if (data.words.some(
-            function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
-        ))
-            continue;
-
-        word_entries.push('<div class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
-    }
-    document.getElementById('words').innerHTML = word_entries.join('　');
-
-
-    var keywords = [];
-    if (data.usr_keyword)
-        keywords.push(data.usr_keyword);
-    if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
-        keywords.push(data.heisig_keyword5);
-    if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
-        keywords.push(data.heisig_keyword6);
-    document.getElementById('keywords').innerHTML = keywords.join(', ');
-
-    var meanings = [];
-    for (const m of data.meanings)
-    {
-        if (!keywords.includes(m))
-            meanings.push(m);
-    }
-    document.getElementById('meanings').innerHTML = meanings.join(', ');
-
-    if (data.primitive_alternatives.length)
-    {
-        primitive_alternatives_txt = 'Primitive Forms:<div id="primitive_alternatives_txt" class="font1">' + data.primitive_alternatives.join('　') + '</div>';
-        document.getElementById('primitive_alternatives').innerHTML = primitive_alternatives_txt;
+      var primitive_alternatives_txt = p_data.primitive_alternatives.length ? p_data.primitive_alternatives.join(', ') : '-';
+      
+      primitives_pts.push(
+        '<button class="primitive" data-character="' + p_data.character + '">' + p_data.character + '<div class="primitiveDetails">' +
+          '<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' + keywords_txt + '</div>' +
+          '<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' + meanings_txt + '</div>' +
+          '<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' + primitive_alternatives_txt + '</div>' +
+        '</div></button>'
+      );
     }
 
-    primitives_elem = document.getElementById('primitives');
-    if (data.primitives.length != 1 || data.primitives[0] != data.character)
-    {
-        for (const p_data of data.primitives_detail)
-        {
-            tooltip_parts = [];
+    $('#primitives').html(primitives_pts.join(''));
 
-            if (p_data.primitive_alternatives.length)
-                tooltip_parts.push('<div>' + p_data.primitive_alternatives.join('　') + '</div>');
+    $('.primitive').click(primitive_click);
+  }
 
-            var keywords = [];
-            if (p_data.usr_keyword)
-                keywords.push(p_data.usr_keyword);
-            if (p_data.heisig_keyword5 && !keywords.includes(p_data.heisig_keyword5))
-                keywords.push(p_data.heisig_keyword5);
-            if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
-                keywords.push(p_data.heisig_keyword6);
-            if (keywords.length)
-                tooltip_parts.push('<div>' + keywords.join(', ') + '</div>');
+  var max_words = 20;
+  var max_words_front = 4;
+  var word_pts = [];
+  var word_front_pts = [];
 
-            var meanings = [];
-            for (const m of p_data.meanings)
-            {
-                if (!keywords.includes(m))
-                    meanings.push(m);
-            }
-            if (meanings.length)
-                tooltip_parts.push('<div>' + meanings.join(', ') + '</div>');
-            
-            if (tooltip_parts.length > 0)
-                tooltip = tooltip_parts.join('')
-            else
-                tooltip = 'No Info Available';
 
-            primitives_elem.innerHTML +=
-                '<div class="primitive">' +
-                    '<span class="primitive_text font1">' + p_data.character + '</span>' +
-                    '<span class=\"primitive_tooltip\">' + tooltip + '</span>' +
-                '</div>';
-        }
-    }
+  for (var i = 0; i < data.words.length; i++)
+  {
+    if (word_pts.length >= max_words)
+        break;
 
-    var story_parts = [];
-    if (data.usr_story)
-        story_parts.push(data.usr_story);
-    if (data.heisig_story)
-        story_parts.push(data.heisig_story);
+    const we = data.words[i];
+    const w = we[0];
+    const r = we[1];
+
+    word_pts.push('<button class="word" data-word-idx="' + i + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+    if (word_front_pts.length < max_words_front)
+      word_front_pts.push('<div class="word_front"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+  }
+  for (var i = 0; i < data.words_default.length; i++)
+  {
+    if (word_pts.length >= max_words)
+        break;
+
+    const we = data.words_default[i];
+    const w = we[0];
+    const r = we[1];
+
+    if (data.words.some(
+      function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
+    ))
+      continue;
+
+    word_pts.push('<button class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+    if (word_front_pts.length < max_words_front)
+      word_front_pts.push('<div class="word_front"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+  }
+  $('.KanjiLookup-words').toggle(word_pts.length > 0);
+  $('#words').html(word_pts.join(''));
+  $('#words_front').html(word_front_pts.join(''));
+  $('.word').click(word_click);
+
+  $('.KanjiLookup-radicals').toggle(data.radicals.length > 0);
+  $('#radicals').html(
+    wrap_list(
+      data.radicals,
+      '<button class="radical">',
+      '</button>')
+  );
+
+  var keywords = [];
+  if (data.usr_keyword)
+    keywords.push(data.usr_keyword);
+  if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
+    keywords.push(data.heisig_keyword5);
+  if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
+    keywords.push(data.heisig_keyword6);
+  keywords_txt = keywords.length ? keywords.join(', ') : '-';
+  $('#keywords').html(keywords_txt);
+  if (keywords.length)
+    $('#keywords_front').html(keywords_txt);
+
+  var meanings_txt = data.meanings.length ? data.meanings.join(', ') : '-';
+  $('#meanings').html(meanings_txt);
+  if (data.meanings.length)
+    $('#meanings_front').html(meanings_txt);
+
+  var stories = [];
+  if (data.usr_story)
+    stories.push(data.usr_story.split('\n').join('<br>'));
+  if (data.heisig_story)
+  {
+    var heisig_story = data.heisig_story;
     if (data.heisig_comment)
-        story_parts.push(data.heisig_comment);
-    for (var i = 0; i < Math.min(4-story_parts.length, data.koohi_stories.length); i++)
-        story_parts.push(data.koohi_stories[i]);
-    var story = story_parts.join('<br><br>');
-    document.getElementById('story').innerHTML = story;
+      heisig_story += + '<br><br>' + data.heisig_comment;
+      stories.push(heisig_story);
+  }
+  for (const ks of data.koohi_stories)
+    stories.push(ks);
 
-    if (data.onyomi.length)
-        document.getElementById('onyomi').innerHTML = data.onyomi.join(', ');
-    if (data.kunyomi.length)
-        document.getElementById('kunyomi').innerHTML = data.kunyomi.join(', ');
-    if (data.nanori.length)
-        document.getElementById('nanori').innerHTML = data.nanori.join(', ');
-
-    if (data.frequency_rank !== null && data.frequency_rank < 999999)
-        document.getElementById('frequency_rank').innerHTML = data.frequency_rank.toString();
-    if (data.grade !== null)
-        document.getElementById('grade').innerHTML = data.grade.toString();
-    if (data.jlpt !== null)
-        document.getElementById('jlpt').innerHTML = data.jlpt.toString();
-    if (data.kanken !== null)
-        document.getElementById('kanken').innerHTML = data.kanken.toString();
-    if (data.heisig_id5 !== null)
-        document.getElementById('heisig_id5').innerHTML = data.heisig_id5.toString();
-    if (data.heisig_id6 !== null)
-        document.getElementById('heisig_id6').innerHTML = data.heisig_id6.toString();
-
-
-    var dmak = new Dmak('{{Character}}', {'element': 'strokeorder', 'uri': 'kanji_', 'height': 120, 'width': 120, 'step': 0.015});
-
-    document.getElementById('strokeorder_p').onclick = function () {
-        dmak.eraseLastStrokes(1);
-    };
-
-    document.getElementById('strokeorder_s').onclick = function () {
-        dmak.pause();
-    };
-
-    document.getElementById('strokeorder_g').onclick = function () {
-        dmak.render();
-    };
-
-    document.getElementById('strokeorder_n').onclick = function () {
-        dmak.renderNextStrokes(1);
-    };
-
-    document.getElementById('strokeorder_r').onclick = function () {
-        dmak.erase();
-    };
+  $('#stories').html(
+    wrap_list(stories, '<p class="story">', '</p>')
+  );
 </script>

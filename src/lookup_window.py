@@ -50,9 +50,8 @@ class LookupWindow(QDialog):
         search_btn.clicked.connect(self.on_search_submit)
         search_lyt.addWidget(search_btn)
 
-        # Todo: potentially move elsewhere
         self.keep_tab_on_search_box = QCheckBox('Keep tabs open')
-        self.keep_tab_on_search_box.setChecked(False)   # Todo: From config
+        self.keep_tab_on_search_box.setChecked(False)
         search_lyt.addWidget(self.keep_tab_on_search_box)
 
         results_lyt = QVBoxLayout()
@@ -75,7 +74,8 @@ class LookupWindow(QDialog):
 
         self.web = aqt.webview.AnkiWebView()
 
-        bundled_js = self.web.bundledScript('webview.js') + self.web.bundledScript('jquery.js')
+        # this mess isn't needed with updated styles fix eventually~~~ can also use bundled jquery then lol
+        bundled_js = self.web.bundledScript('webview.js')
 
         html_head = \
              '<head>' \
@@ -87,6 +87,7 @@ class LookupWindow(QDialog):
             F'@font-face {{ font-family: kanji_font3; src: url("{self.font_uri("hgrkk.ttc")}"); }}\n' \
              '\n</style>' \
             F'<link rel="stylesheet" href="{self.web_uri("lookup_style.css")}">' \
+            F'<script src="{self.web_uri("jquery.js")}"></script>' \
             F'<script src="{self.web_uri("dmak.js")}"></script>' \
             F'<script>let kanjivg_uri="{self.kanjivg_uri}";</script>' \
              '</head>'
@@ -99,6 +100,8 @@ class LookupWindow(QDialog):
         self.web.setHtml('<!doctype html><html class="' + style_class + '">' + html_head + '<body class="' + style_class + '">' + html_body + '</body></html>')
         self.set_result_data(None) # Load welcome screen
         results_lyt.addWidget(self.web)
+
+        self.resize(800, 625)
 
 
     def set_result_data(self, data):
@@ -115,6 +118,12 @@ class LookupWindow(QDialog):
         args = cmd.split('-')
         if len(args) < 1:
             return
+
+        def arg_from(i):
+            j = 0
+            for _ in range(i):
+                j = cmd.find('-', j) + 1
+            return cmd[j:]
 
         if args[0] == 'show_card_id':
             util.open_browser_cardids(int(args[1]))
@@ -134,7 +143,7 @@ class LookupWindow(QDialog):
             self.search(text, internal=True)
         elif args[0] == 'custom_keyword':
             character = args[1]
-            old_keyword = args[2]
+            old_keyword = arg_from(2)
             new_keyowrd, r = QInputDialog.getText(
                 self,
                 'Migaku Kanji - Set custom keyword',
@@ -146,7 +155,7 @@ class LookupWindow(QDialog):
                 self.refresh()
         elif args[0] == 'custom_story':
             character = args[1]
-            old_story = args[2]
+            old_story = arg_from(2)
             new_story, r = QInputDialog.getMultiLineText(
                 self,
                 'Migaku Kanji - Set custom story',

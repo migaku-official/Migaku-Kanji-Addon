@@ -6,8 +6,8 @@
       the search button.
     </p>
     <p class="welcome-text">
-      You can also press <span class="key">CTRL</span> +
-      <span class="key">S</span> anywhere in Anki to search for the highlighted
+      You can also press <span class="key">CTRL</span> + <span class="key">SHIFT</span> +
+      <span class="key">K</span> anywhere in Anki to search for the highlighted
       characters.
     </p>
   </div>
@@ -66,7 +66,7 @@
           <h3>Keywords:</h3>
           <span id="keywords">-</span>
         </div>
-        <div class="keyowrds">
+        <div class="keywords">
           <h3>Meanings:</h3>
           <span id="meanings">-</span>
         </div>
@@ -92,6 +92,10 @@
       <h2>Primitives</h2>
       <span id="primitives"></span>
     </div>
+    <div class="KanjiLookup-words">
+      <h2>Words</h2>
+      <span id="words"></span>
+    </div>
     <div class="KanjiLookup-actions">
       <button onclick="recognition_card_click();" id="recognition_card_btn" class="button">Create Recognition Card</button>
       <button onclick="production_card_click();" id="production_card_btn" class="button">Create Production Card</button>
@@ -103,6 +107,10 @@
     <div class="KanjiLookup-actions">
       <button onclick="set_custom_keyword();" class="button secondary">Set Custom Keyword</button>
       <button onclick="set_custom_story();" class="button secondary">Set Custom Story</button>
+    </div>
+    <div class="KanjiLookup-radicals">
+      <h2>Radicals</h2>
+      <span id="radicals"></span>
     </div>
   </div>
 </div>
@@ -123,9 +131,29 @@
     pycmd('open-' + text);
   }
 
+  function show_word_notes(notes)
+  {
+    pycmd('show_word-' + notes.join(','));
+  }
+
   function primitive_click()
   {
     search($(this).data('character'));
+  }
+
+  function word_click(elem)
+  {
+    var word_idx = $(this).data('word-idx');
+
+    if (word_idx === undefined)
+      return;
+
+    var idx = parseInt(word_idx);
+
+    const we = data.words[idx];
+    const nids = we[2];
+
+    show_word_notes(nids);
   }
 
   function recognition_card_click()
@@ -207,7 +235,7 @@
           if (p_data.usr_keyword)
             keywords.push(p_data.usr_keyword);
           if (p_data.heisig_keyword5 && !keywords.includes(p_data.heisig_keyword5))
-            keywords.push(data.heisig_keyword5);
+            keywords.push(p_data.heisig_keyword5);
           if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
             keywords.push(p_data.heisig_keyword6);
           var keywords_txt = keywords.length ? keywords.join(', ') : '-';
@@ -229,6 +257,48 @@
 
         $('.primitive').click(primitive_click);
       }
+
+      var max_words = 20;
+      word_pts = [];
+
+      for (var i = 0; i < data.words.length; i++)
+      {
+        if (word_pts.length >= max_words)
+            break;
+
+        const we = data.words[i];
+        const w = we[0];
+        const r = we[1];
+
+        word_pts.push('<button class="word" data-word-idx="' + i + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+      }
+      for (var i = 0; i < data.words_default.length; i++)
+      {
+        if (word_pts.length >= max_words)
+            break;
+
+        const we = data.words_default[i];
+        const w = we[0];
+        const r = we[1];
+
+        if (data.words.some(
+          function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
+        ))
+          continue;
+
+          word_pts.push('<button class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+      }
+      $('.KanjiLookup-words').toggle(word_pts.length > 0);
+      $('#words').html(word_pts.join(''));
+      $('.word').click(word_click);
+
+      $('.KanjiLookup-radicals').toggle(data.radicals.length > 0);
+      $('#radicals').html(
+        wrap_list(
+          data.radicals,
+          '<button class="radical">',
+          '</button>')
+      );
 
       var keywords = [];
       if (data.usr_keyword)
@@ -262,6 +332,5 @@
       $('#production_card_btn').html((data.production_card_id ? 'Show' : 'Create') + ' Production Card');
     }
   }
-
 
 </script>

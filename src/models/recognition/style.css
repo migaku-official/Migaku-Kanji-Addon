@@ -1,106 +1,606 @@
-@font-face { font-family: yumin; src: url('_kanji_yumin.ttf'); }
-@font-face { font-family: yugothb; src: url('_kanji_yugothb.ttc'); }
-@font-face { font-family: hgrkk; src: url('_kanji_hgrkk.ttc'); }
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-#kanji_card {
-    max-width: 600px;
-    margin: 0 auto;
-}
+@font-face { font-family: kanji_font1; src: url('_kanji_yumin.ttf'); }
+@font-face { font-family: kanji_font2; src: url('_kanji_yugothb.ttc'); }
+@font-face { font-family: kanji_font3; src: url('_kanji_hgrkk.ttc'); }
 
 #migaku_data {
     display: none;
 }
 
-.center {
-    text-align: center;
+.word_front {
+  display: inline-block;
+  font-size: 40px;
+  font-family: kanji_font1;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.kanji {
-    display: inline-block;
-    font-size: 125px;
+.font-1 {
+  font-family: "kanji_font1";
 }
 
-#strokeorder {
-    background-color: white;
-    display: inline-block;
+.font-2 {
+  font-family: "kanji_font2";
 }
 
-.font1 {
-	font-family: yumin;
-}
-	
-.font2 {
-	font-family: yugothb;
+.font-3 {
+  font-family: "kanji_font3";
 }
 
-.font3 {
-	font-family: hgrkk;
+html,
+body {
+  font-family: "Rubik", sans-serif;
+  color: #363c4a;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  min-height: 100vh;
 }
 
-#primitive_alternatives_txt {
-    font-size: 50px;
+.ankidroid_dark_mode,
+.nightMode {
+  color: #fff;
+  background: #3a3f4c;
 }
 
-.primitive {
-    display: inline-block;
-    cursor: help;
+body.ankidroid_dark_mode,
+body.nightMode {
+  background: #363c4a;
 }
 
-.primitive .primitive_text {
-    font-size: 70px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.primitive .primitive_tooltip {
-    visibility: hidden;
-
-    font-size: 25px;
-
-    background-color: #555;
-    color: #fff;
-    text-align: left;
-
-    border-radius: 6px;
-    padding: 5px;
-
-    position: absolute;
-    z-index: 1;
-
-    opacity: 0;
-    transition: opacity 0.3s;
+.KanjiLookup-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 100px 50px 0;
 }
 
-.primitive:hover .primitive_tooltip {
-    visibility: visible;
-    opacity: 1;
+.productionCard-front {
+  text-align: center;
 }
 
-#words {
-    font-size: 50px;
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #2880ff;
+  opacity: 0.3;
+}
+
+h1.keyword {
+  color: #3a3f4c;
+  opacity: 1;
+  font-weight: 500;
+}
+
+h1.keyword-kanji {
+  display: inline-block;
+  font-size: 50px;
+  margin: 0 10px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 400;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 1px;
+  width: 50px;
+  height: 1px;
+  background: #c4c4c4;
+}
+
+h3 {
+  display: inline;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+h4 {
+  display: inline;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fontExample {
+  font-size: 32px;
+}
+
+.tag {
+  background: #cbcbcb;
+  border-radius: 5px;
+  display: inline-block;
+  color: #fff;
+  padding: 8px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.tag span {
+  font-weight: 700;
+}
+
+li {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(50% - 4px);
+  background: #2880ff;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+
+.primitive,
+.radical {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  background: #e5f9ff;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 .word {
-    display: inline-block;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+  height: 50px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  background: #e5f9ff;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.word_default {
-    color: #016042;
+.word.word_default {
+  background: #cbcbcb;
 }
 
-.ankidroid_dark_mode .word_default,
-.nightMode .word_default {
-    color: #6ffc8d;
+.word {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+  height: 50px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  background: #e5f9ff;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-#keywords {
-    font-size: 22px;
-    font-weight: bold;
+.word.word_default {
+  background: #cbcbcb;
 }
 
-#meanings {
-    font-size: 22px;
-    font-weight: bold;
+.primitive:hover,
+.primitive:focus,
+.word:hover,
+.word:focus,
+.radical:hover,
+.radical:focus {
+  background: #c0e2ed;
 }
 
-#story {
-    font-size: 15px;
+.primitiveDetails {
+  pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  user-select: none;
+  bottom: calc(100% + 15px);
+  text-align: left;
+  width: auto;
+  white-space: nowrap;
+  background: #e5f9ff;
+  box-shadow: 0px 4px 16px rgba(0, 10, 25, 0.15);
+  padding: 20px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  transition: opacity 0.3s;
 }
+
+.primitive:hover .primitiveDetails,
+.primitive:focus .primitiveDetails {
+  opacity: 1;
+  user-select: auto;
+  pointer-events: default;
+}
+
+.exampleWord {
+  margin: 0 10px;
+}
+
+.button {
+  display: inline-block;
+  background: #2880ff;
+  line-height: 44px !important;
+  height: 44px !important;
+  width: 215px !important;
+  border-radius: 5px !important;
+  text-align: center;
+  box-shadow: 0px 4px 16px rgba(114, 171, 254, 0.7) !important;
+  border: 1px solid #2880ff !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  color: #fff !important;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 0 !important;
+}
+
+.button:hover,
+.button:focus {
+  background: #246dd7 !important;
+  border: 1px solid #246dd7 !important;
+}
+
+.button.secondary {
+  position: relative;
+  background: transparent !important;
+  color: #2880ff !important;
+  filter: drop-shadow(0px 4px 16px rgba(114, 171, 254, 0.7)) !important;
+  box-shadow: none !important;
+}
+
+.button.secondary::after {
+  content: "";
+  background: #246dd7;
+  height: 1px;
+  width: 0px;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  transition: 0.5s;
+}
+
+.button.secondary:hover {
+  color: #246dd7 !important;
+  border: 1px solid #246dd7 !important;
+}
+
+.button.secondary:hover::after {
+  width: 150px;
+}
+
+.story {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.separator {
+  width: 50px;
+  height: 1px;
+  background: #c4c4c4;
+  margin-bottom: 20px;
+}
+
+.separator.separator-full {
+  width: 100%;
+  height: 2px;
+  margin-top: 20px;
+}
+
+/* PLAYER */
+
+.KanjiLookup-player {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.playerContainer {
+  padding: 50px 20px;
+  display: grid;
+  grid-template-rows: 35px 1fr 25px;
+}
+
+.playerTitle {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  color: #2880ff;
+  opacity: 0.3;
+}
+
+.playerContainer {
+  background: #e5f9ff;
+  border-radius: 14px;
+  height: 360px;
+  width: 360px;
+}
+
+.playerControls button {
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  color: #2880ff !important;
+  opacity: 0.3 !important;
+  transition: opacity 0.3s;
+}
+
+.playerControls button:hover {
+  opacity: 0.5 !important;
+}
+
+/* POSITIONING */
+
+.KanjiLookup-details {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+}
+
+.keywords {
+  margin-bottom: 20px;
+}
+
+.KanjiLookup-actions {
+  margin: 40px 0;
+}
+
+/* No Result */
+
+.KanjiLookup-container--noResult {
+  text-align: center;
+}
+
+.KanjiLookup-container--noResult h1.kanji {
+  color: #363c4a;
+  opacity: 1;
+  margin-top: 50px;
+  font-size: 50px;
+}
+
+/* Welcome */
+
+h1.welcome {
+  font-size: 64px;
+  margin-bottom: 70px;
+  padding-top: 100px;
+}
+
+.welcome-text {
+  margin-bottom: 20px;
+}
+
+.key {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 4px;
+  border-radius: 5px;
+  background: #d8dae0;
+}
+
+/* DARK MODE */
+
+.ankidroid_dark_mode .playerContainer,
+.nightMode .playerContainer {
+  background: #f2994a;
+}
+
+.ankidroid_dark_mode .playerTitle,
+.nightMode .playerTitle {
+  color: #363c4a;
+}
+
+.ankidroid_dark_mode .playerControls button,
+.nightMode .playerControls button {
+  color: #363c4a !important;
+  opacity: 1 !important;
+}
+
+.ankidroid_dark_mode .playerControls button:hover,
+.nightMode .playerControls button:hover {
+  opacity: 0.7 !important;
+}
+
+.ankidroid_dark_mode h1,
+.nightMode h1 {
+  color: #f2994a;
+}
+
+.ankidroid_dark_mode h1.keyword,
+.nightMode h1.keyword {
+  color: #f2f2f2;
+}
+
+.ankidroid_dark_mode .button,
+.nightMode .button {
+  box-shadow: 0px 4px 16px rgba(243, 165, 68, 0.3) !important;
+  border: 1px solid #f2994a !important;
+  background: #f2994a !important;
+}
+
+.ankidroid_dark_mode .button.secondary,
+.nightMode .button.secondary {
+  box-shadow: none !important;
+  filter: drop-shadow(0px 4px 16px rgba(114, 171, 254, 0.7)) !important;
+}
+
+.ankidroid_dark_mode .button:hover,
+.nightMode .button:hover,
+.ankidroid_dark_mode .button:focus,
+.nightMode .button:focus {
+  background: #de9238 !important;
+  border: 1px solid #de9238 !important;
+}
+
+.ankidroid_dark_mode .button.secondary,
+.nightMode .button.secondary {
+  color: #f2994a !important;
+  background: transparent !important;
+  filter: drop-shadow(0px 4px 16px rgba(243, 165, 68, 0.02)) !important;
+}
+
+.ankidroid_dark_mode .button.secondary::after,
+.nightMode .button.secondary::after {
+  background: #de9238 !important;
+}
+
+.ankidroid_dark_mode .button.secondary:hover,
+.nightMode .button.secondary:hover {
+  color: #de9238 !important;
+  border: 1px solid #de9238 !important;
+}
+
+.ankidroid_dark_mode .tag,
+.nightMode .tag {
+  background: #30343e;
+  color: #f2f2f2;
+}
+
+.ankidroid_dark_mode li::before,
+.nightMode li::before {
+  background: #f2994a;
+}
+
+.ankidroid_dark_mode .primitive,
+.nightMode .primitive,
+.ankidroid_dark_mode .radical,
+.nightMode .radical {
+  background: #30343e;
+}
+
+.ankidroid_dark_mode .word,
+.nightMode .word {
+  background: #f2994a;
+}
+
+.ankidroid_dark_mode .word.word_default,
+.nightMode .word.word_default {
+  background: #30343e;
+  color: #f2f2f2;
+}
+
+.ankidroid_dark_mode .primitive:hover,
+.nightMode .primitive:hover,
+.ankidroid_dark_mode .primitive:focus,
+.nightMode .primitive:focus,
+.ankidroid_dark_mode .radical:hover,
+.nightMode .radical:hover,
+.ankidroid_dark_mode .radical:focus,
+.nightMode .radical:focus {
+  background: #24272d;
+}
+
+.ankidroid_dark_mode .word:hover,
+.nightMode .word:hover,
+.ankidroid_dark_mode .word:focus,
+.nightMode .word:focus {
+  background: #de9238;
+}
+
+.ankidroid_dark_mode .word.word_default:hover,
+.nightMode .word.word_default:hover,
+.ankidroid_dark_mode .word.word_default:focus,
+.nightMode .word.word_default:focus {
+  background: #24272d;
+}
+
+.ankidroid_dark_mode .primitiveDetails,
+.nightMode .primitiveDetails {
+  background: #30343e;
+}
+
+.ankidroid_dark_mode .KanjiLookup-container--noResult h1.kanji,
+.nightMode .KanjiLookup-container--noResult h1.kanji {
+  color: #f2f2f2;
+}
+
+.ankidroid_dark_mode .key,
+.nightMode .key {
+  background: #30343e;
+}
+
+/*  Mobile */
+
+@media (max-width: 1000px) {
+  .KanjiLookup-details {
+    grid-template-columns: 1fr;
+  }
+
+  .playerContainer {
+    margin: auto;
+  }
+}
+
+/* RESET */
+
+.playerControls button {
+  border: inherit !important;
+  box-shadow: inherit !important;
+  font-family: "Rubik";
+}
+
+button.primitive,
+button.radical,
+button.word {
+  border: inherit !important;
+  box-shadow: inherit !important;
+  font-family: "rubik";
+  border-radius: 5px !important;
+}
+
+/* .isWin button {
+  font-size: inherit;
+}
+
+.nightMode button {
+  color: inherit;
+  background: inherit;
+  box-shadow: inherit;
+  border: inherit;
+  border-radius: inherit;
+  padding: inherit;
+  padding-top: inherit;
+  padding-bottom: inherit;
+} */

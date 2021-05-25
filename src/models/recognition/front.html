@@ -1,50 +1,68 @@
-<div id="kanji_card">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="center">
-        <div class="kanji font1">{{Character}}</div>
-        <div class="kanji font2">{{Character}}</div>
-        <div class="kanji font3">{{Character}}</div>
-    </div>
 
-    <div id="words" class="font1 center"></div>
-
+<!-- Class KanjiLookup--dark only in dark mode -->
+<div class="KanjiLookup--dark">
+  <!-- <div> -->
+  <div class="KanjiLookup-container productionCard-front">
+    <h1 class="keyword keyword-kanji font-1"></h1>
+    <h1 class="keyword keyword-kanji font-2"></h1>
+    <h1 class="keyword keyword-kanji font-3"></h1>
+    <div id="words_front"></div>
+  </div>
 </div>
 
 
 <div id="migaku_data">{{MigakuData}}</div>
 <script>
-    var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
+  function wrap_list(list, intro, outro)
+  {
+    if (list.length < 1)
+      return '-';
+    return intro + list.join(outro+intro) + outro;
+  }
 
+  var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
 
-    var max_words = 4;
-    word_entries = [];
+  $('.keyword-kanji').html(data.character);
 
-    for (var i = 0; i < data.words.length; i++)
-    {
-        if (word_entries.length >= max_words)
-            break;
+  var max_words_front = 4;
+  var max_words = max_words_front;
+  var word_pts = [];
+  var word_front_pts = [];
 
-        const we = data.words[i];
-        const w = we[0];
-        const r = we[1];
-        word_entries.push('<div class="word"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
-    }
-    for (var i = 0; i < data.words_default.length; i++)
-    {
-        if (word_entries.length >= max_words)
-            break;
+  for (var i = 0; i < data.words.length; i++)
+  {
+    if (word_pts.length >= max_words)
+        break;
 
-        const we = data.words_default[i];
-        const w = we[0];
-        const r = we[1];
+    const we = data.words[i];
+    const w = we[0];
+    const r = we[1];
 
-        if (data.words.some(
-            function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
-        ))
-            continue;
+    word_pts.push('<button class="word" data-word-idx="' + i + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+    if (word_front_pts.length < max_words_front)
+      word_front_pts.push('<div class="word_front"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+  }
+  for (var i = 0; i < data.words_default.length; i++)
+  {
+    if (word_pts.length >= max_words)
+        break;
 
-        word_entries.push('<div class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
-    }
-    document.getElementById('words').innerHTML = word_entries.join('　');
+    const we = data.words_default[i];
+    const w = we[0];
+    const r = we[1];
 
+    if (data.words.some(
+      function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
+    ))
+      continue;
+
+    word_pts.push('<button class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+    if (word_front_pts.length < max_words_front)
+      word_front_pts.push('<div class="word_front"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+  }
+  $('.KanjiLookup-words').toggle(word_pts.length > 0);
+  $('#words').html(word_pts.join(''));
+  $('#words_front').html(word_front_pts.join(''));
 </script>
