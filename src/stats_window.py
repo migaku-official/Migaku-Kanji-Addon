@@ -1,5 +1,7 @@
 from collections import namedtuple, OrderedDict
 
+import anki
+
 import aqt
 from aqt.qt import *
 
@@ -131,13 +133,17 @@ class StatsWindow(QDialog):
             ivl_days = 0
 
             if card_id is not None:
-                card = aqt.mw.col.getCard(card_id)
-                if card.ivl is None:
+                try:
+                    card = aqt.mw.col.getCard(card_id)
+                    if card.ivl is None:
+                        ivl_days = 0
+                    if card.ivl < 0:
+                        ivl_days = (-card.ivl) / (24*60*60)
+                    else:
+                        ivl_days = card.ivl
+                except anki.errors.NotFoundError:
+                    card_id = Non
                     ivl_days = 0
-                if card.ivl < 0:
-                    ivl_days = (-card.ivl) / (24*60*60)
-                else:
-                    ivl_days = card.ivl
 
             entry = Entry(kanji, card_id, ivl_days)
             categories[lvl].append(entry)
@@ -169,11 +175,15 @@ class StatsWindow(QDialog):
             count += category_count
             good += category_good
 
+            category_percentage = 0
+            if category_count > 0:
+                category_percentage = category_good/category_count*100
+
             category_pts.append(F'<div class="kanji_category">')
             if level_decorator:
                 category_label = level_decorator(category)
                 category_pts.append(F'<div class="kanji_category_header">{category_label}</div>')
-                category_pts.append(F'<div class="kanji_category_stats">{category_good} / {category_count} - {(category_good/category_count*100):.2f}%</div>')
+                category_pts.append(F'<div class="kanji_category_stats">{category_good} / {category_count} - {category_percentage:.2f}%</div>')
             category_pts.append('<div class="kanji_category_entries">')
             category_pts.extend(entry_pts)
             category_pts.append('</div>')
@@ -181,9 +191,13 @@ class StatsWindow(QDialog):
 
         html_pts = []
 
+        percentage = 0
+        if count > 0:
+            percentage = good/count*100
+
         html_pts.append('<div class="header">')
         html_pts.append(F'<div class="header_text">{option_label}</div>')
-        html_pts.append(F'<div class="stats">{good} / {count} - {(good/count*100):.2f}%</div>')
+        html_pts.append(F'<div class="stats">{good} / {count} - {percentage:.2f}%</div>')
         html_pts.append('</div>')
 
         html_pts.append('<hr>')
