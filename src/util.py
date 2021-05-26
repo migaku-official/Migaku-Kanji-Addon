@@ -29,7 +29,7 @@ def make_icon(*file_parts):
     return QIcon(path)
 
 def default_icon():
-    return make_icon('migaku_200.png')
+    return make_icon('migaku.png')
 
 
 def unique_characters(string):
