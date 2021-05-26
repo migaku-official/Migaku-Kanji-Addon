@@ -193,6 +193,12 @@
     var data_json = atob(data_b64_json);
     data = JSON.parse(data_json);
 
+    if (dmak !== null)
+    {
+      dmak.cancel_prepare = true;
+      delete dmak;
+    }
+
     $('#welcome').toggle(data === null);
     $('#noresult').toggle(data !== null && !data.has_result);
     $('#result').toggle(data !== null && data.has_result);
@@ -202,9 +208,6 @@
 
     else if (data !== null && data.has_result)
     {
-      if (dmak !== null)
-        delete dmak;
-
       $('#strokeorder').html('');
       dmak = new Dmak(data.character, {'element': 'strokeorder', 'uri': kanjivg_uri, 'height': 220, 'width': 220, 'step': 0.015});
 
@@ -299,6 +302,7 @@
           '<button class="radical">',
           '</button>')
       );
+      $('.radical').click(radical_click);
 
       var keywords = [];
       if (data.usr_keyword)
