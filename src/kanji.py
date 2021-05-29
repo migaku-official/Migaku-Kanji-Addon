@@ -35,9 +35,10 @@ class KanjiDB:
         self.crs.execute('PRAGMA case_sensitive_like=OFF')
 
         assure_user_dir()
-        self.crs.execute(F'ATTACH DATABASE \'{user_db_path}\' AS usr;')
+        self.crs.execute(F'ATTACH DATABASE "{user_db_path}" AS usr;')
 
         for ct in CardType:
+            # Negative card id -> manually marked as known
             self.crs.execute(
                 F'CREATE TABLE IF NOT EXISTS usr.{ct.label}_card_ids('
                     'character TEXT NOT NULL PRIMARY KEY,'
@@ -162,7 +163,7 @@ class KanjiDB:
     def recalc_user_cards(self, card_type):
         table = F'usr.{card_type.label}_card_ids'
 
-        self.crs.execute(F'DELETE FROM {table}')
+        self.crs.execute(F'DELETE FROM {table} WHERE card_id >= 0')     # don't nuke words manually marked known!
 
         character_card_ids = {}
 
@@ -407,6 +408,21 @@ class KanjiDB:
         self.con.commit()
 
         self.refresh_notes_for_character(character)
+
+
+    def set_character_known(self, card_type, character, known=True):
+
+        if known == True:
+            self.crs.execute(
+                F'INSERT OR REPLACE INTO usr.{card_type.label}_card_ids (character,card_id) VALUES (?,?)',
+                (character, -1)
+            )
+        else:
+            self.crs.execute(
+                F'DELETE FROM usr.{card_type.label}_card_ids WHERE character == ?',
+                (character,)
+            )
+        self.con.commit()
 
 
     def refresh_notes_for_character(self, character):

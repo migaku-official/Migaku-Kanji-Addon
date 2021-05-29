@@ -18,9 +18,6 @@ class LearnAheadSelectorWidget(QWidget):
             [x.name for x in aqt.mw.col.decks.all_names_and_ids()]
         )
 
-        for ct in CardType:
-            self.deck_list.remove(ct.deck_name)
-
         lyt = QVBoxLayout(self)
         if no_margin:
             lyt.setContentsMargins(0, 0, 0, 0)

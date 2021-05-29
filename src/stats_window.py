@@ -286,17 +286,15 @@ class StatsWindow(QDialog):
             ivl_days = 0
 
             if card_id is not None:
-                try:
-                    card = aqt.mw.col.getCard(card_id)
-                    if card.ivl is None:
+                if card_id < 0: # marked known
+                    ivl_days = 1337
+                else:
+                    try:
+                        card = aqt.mw.col.getCard(card_id)
+                        ivl_days = card_ival(card)
+                    except anki.errors.NotFoundError:
+                        card_id = None
                         ivl_days = 0
-                    if card.ivl < 0:
-                        ivl_days = (-card.ivl) / (24*60*60)
-                    else:
-                        ivl_days = card.ivl
-                except anki.errors.NotFoundError:
-                    card_id = Non
-                    ivl_days = 0
 
             entry = Entry(kanji, card_id, ivl_days)
             categories[lvl].append(entry)

@@ -91,8 +91,8 @@
       <span id="words"></span>
     </div>
     <div class="KanjiLookup-actions">
-      <button onclick="recognition_card_click();" id="recognition_card_btn" class="button">Create Recognition Card</button>
-      <button onclick="production_card_click();" id="production_card_btn" class="button">Create Production Card</button>
+      <button onclick="recognition_card_click(event);" id="recognition_card_btn" class="button">Create Recognition Card</button>
+      <button onclick="production_card_click(event);" id="production_card_btn" class="button">Create Production Card</button>
     </div>
     <div class="KanjiLookup-stories">
       <h3>Stories</h3>
@@ -150,20 +150,41 @@
     show_word_notes(nids);
   }
 
-  function recognition_card_click()
+  function recognition_card_click(evt)
   {
     if (data.recognition_card_id !== null)
-      pycmd('show_card_id-' + data.recognition_card_id);
+    {
+      if (data.recognition_card_id < 0)
+        pycmd('mark-recognition-' + data.character + '-0');
+      else
+        pycmd('show_card_id-' + data.recognition_card_id);
+    }
     else
-      pycmd('create-recognition-' + data.character);
+    {
+      if (evt.shiftKey)
+        pycmd('mark-recognition-' + data.character + '-1');
+      else
+        pycmd('create-recognition-' + data.character);
+    }
   }
 
-  function production_card_click()
+  // Isn't copy paste code because you are lazy fun?
+  function production_card_click(evt)
   {
     if (data.production_card_id !== null)
-      pycmd('show_card_id-' + data.production_card_id);
+    {
+      if (data.production_card_id < 0)
+        pycmd('mark-production-' + data.character + '-0');
+      else
+        pycmd('show_card_id-' + data.production_card_id);
+    }
     else
-      pycmd('create-production-' + data.character);
+    {
+      if (evt.shiftKey)
+        pycmd('mark-production-' + data.character + '-1');
+      else
+        pycmd('create-production-' + data.character);
+    }
   }
 
   function set_custom_keyword()
@@ -334,8 +355,23 @@
         wrap_list(stories, '<p class="story">', '</p>')
       );
 
-      $('#recognition_card_btn').html((data.recognition_card_id ? 'Show' : 'Create') + ' Recognition Card');
-      $('#production_card_btn').html((data.production_card_id ? 'Show' : 'Create') + ' Production Card');
+      function setup_card_btn(id, data, name) {
+        txt = '';
+        title = null;
+        if (data === null)
+        {
+          txt = 'Create ' + name + ' Card';
+          title = 'Shift click to mark as known';
+        }
+        if (data > 0) txt = 'Show ' + name + ' Card';
+        if (data < 0) txt = 'Unmark ' + name + ' as known';
+
+        $(id).html(txt);
+        $(id).prop('title', title);
+      }
+
+      setup_card_btn('#recognition_card_btn', data.recognition_card_id, 'Recognition');
+      setup_card_btn('#production_card_btn', data.production_card_id, 'Production');
     }
   }
 

@@ -140,6 +140,12 @@ class LookupWindow(QDialog):
                 card_type, character, 'Kanji Card Creation'
             )
             self.refresh()
+        elif args[0] == 'mark': 
+            card_type = CardType[args[1]]
+            character = args[2]
+            known = args[3] == '1'
+            aqt.mw.migaku_kanji_db.set_character_known(card_type, character, known)
+            self.refresh()
         elif args[0] == 'open':
             text = args[1]
             self.search(text, internal=True)
