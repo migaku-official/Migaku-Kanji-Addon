@@ -103,7 +103,7 @@ class LookupWindow(QDialog):
         self.set_result_data(None) # Load welcome screen
         results_lyt.addWidget(self.web)
 
-        self.resize(800, 625)
+        self.resize(1075, 775)
 
 
     def set_result_data(self, data):

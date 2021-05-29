@@ -291,7 +291,7 @@ class StatsWindow(QDialog):
                     try:
                         card = aqt.mw.col.getCard(card_id)
                         ivl_days = card_ival(card)
-                    except anki.errors.NotFoundError:
+                    except Exception:   # cannot be more specifc as this is different in anki versions
                         card_id = None
                         ivl_days = 0
 

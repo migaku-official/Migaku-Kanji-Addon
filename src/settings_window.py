@@ -60,6 +60,8 @@ class CardTypeSettingsWidget(QWidget):
         self.learn_ahead_selector.save_to_config()
         self.note_type_selector.save_to_config()
 
+        aqt.mw.migaku_kanji_db.refresh_learn_ahead()
+
 
     def on_deck_click(self):
         r = aqt.studydeck.StudyDeck(

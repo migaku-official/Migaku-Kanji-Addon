@@ -96,8 +96,8 @@ class LearnAheadSelectorWidget(QWidget):
 
         num_box = QSpinBox()
         num_box.setMinimum(1)
-        num_box.setMaximum(100)
-        num_box.setValue(10)
+        num_box.setMaximum(150)
+        num_box.setValue(25)        # <- defalt learn ahead card count
 
         remove_btn = QPushButton('✖')
         remove_btn.setMaximumWidth(remove_btn.sizeHint().height())

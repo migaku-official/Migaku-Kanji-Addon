@@ -8,7 +8,7 @@ import anki
 import aqt
 
 from .util import addon_path, user_path, assure_user_dir, unique_characters
-from .errors import InvalidDeckError
+from .errors import InvalidStateError, InvalidDeckError
 from .card_type import CardType
 from . import config
 from . import text_parser
@@ -192,7 +192,7 @@ class KanjiDB:
                 character_card_ids[character] = card_id
 
         self.crs.executemany(
-            F'INSERT INTO {table} (character, card_id) values (?,?)',
+            F'INSERT OR REPLACE INTO {table} (character, card_id) values (?,?)',
             character_card_ids.items()
         )
 
@@ -299,7 +299,7 @@ class KanjiDB:
                     cid = r[0]
                     try:
                         card = aqt.mw.col.getCard(cid)
-                    except anki.errors.NotFoundError:
+                    except Exception:  # anki.errors.NotFoundError for newer versions
                         continue
                     if card:
                         note = card.note()
@@ -333,6 +333,30 @@ class KanjiDB:
             aqt.qt.QMessageBox.information(None, 'Migaku Kanji', msg)
 
 
+    def refresh_learn_ahead(self):
+        for ct in CardType:
+            for e in config.get('card_type_learn_ahead').get(ct.label, []):
+                deck_name = e['deck']
+                max_num = e['num']
+
+                deck = aqt.mw.col.decks.byName(deck_name)
+                if deck is None:
+                    continue
+                deck_id = deck['id']
+
+                new = self.new_learn_ahead_kanji(ct, deck_id, max_num)
+
+                if len(new) < 1:
+                    continue
+
+                try:
+                    self.make_cards_from_characters(ct, new, None)
+                except InvalidStateError:
+                    # Ignore this silently...
+                    pass
+
+
+    # checks learn ahead for a given deck
     def new_learn_ahead_kanji(self, card_type, deck_id, max_cards):
         nids = aqt.mw.col.db.all(F'SELECT c.nid FROM cards as c WHERE did={deck_id} AND type=0 ORDER BY c.due LIMIT {max_cards}')
 
