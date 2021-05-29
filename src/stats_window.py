@@ -7,6 +7,7 @@ from aqt.qt import *
 
 from . import util
 from . import config
+from . import text_parser
 
 from .card_type import CardType
 from .lookup_window import LookupWindow
@@ -69,14 +70,14 @@ class StatsWindow(QDialog):
 
     # Label, sort column, additional filter, order, level decorator function, only show ones with existing card
     options = [     
-        ('日本語能力試験 (JLPT)',                     'jlpt',           None,                         'DESC', lambda x: F'N{x}',      False),
-        ('日本漢字能力検定 (Kanken)',                 'kanken',         None,                         'DESC', lambda x: F'Level {x}', False),
+        ('日本語能力試験 (JLPT)',                      'jlpt',           None,                         'DESC', lambda x: F'N{x}',      False),
+        ('日本漢字能力検定 (Kanken)',                  'kanken',         None,                         'DESC', lambda x: F'Level {x}', False),
         ('学年 (School Year)',                       'grade',          'grade <= 8',                 'ASC',  format_grade,           False),
         ('常用 (Jōyō)',                              'frequency_rank', 'grade <= 8',                 'ASC',  None,                   False),
         ('人名用 (Jinmeiyō)',                        'frequency_rank', 'grade >= 9 AND grade <= 10', 'ASC',  None,                   False),
         ('Remembering the Kanji (1st-5th edition)', 'heisig_id5',     None,                         'ASC',  None,                   False),
         ('Remembering the Kanji (6th+ edition)',    'heisig_id6',     None,                         'ASC',  None,                   False),
-        ('All with Kanji Card in Collection',       'frequency_rank', None,                         'ASC',  None,                   True ),
+        ('All with Card in Collection',             'frequency_rank', None,                         'ASC',  None,                   True ),
     ]
 
     addon_web_uri = F'/_addons/{__name__.split(".")[0]}'    # uhhhhh
@@ -221,14 +222,12 @@ class StatsWindow(QDialog):
             
             if only_with_card:
                 # More horrific code here...
-                wks = ','.join(F'"{wk}"' for wk in self.word_kanji_ival)
+                wks = ','.join(F'"{wk}"' for wk in text_parser.filter_cjk(self.word_kanji_ival))
                 aqt.mw.migaku_kanji_db.crs.execute(
-                    'SELECT characters.character, frequency_rank, card_id ' \
-                        'FROM characters ' \
-                        F'WHERE characters.character IN ({wks}) ORDER BY frequency_rank ASC'
+                    'SELECT characters.character, frequency_rank ' \
+                        F'FROM characters WHERE characters.character IN ({wks}) ORDER BY frequency_rank ASC'
                 )
                 qr = aqt.mw.migaku_kanji_db.crs.fetchall()
-                qr.sort(key = lambda x: x[1])
 
             else:
                 where = F'{column} NOT NULL'
