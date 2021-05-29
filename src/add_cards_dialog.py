@@ -9,9 +9,12 @@ class AddCardsDialog(QDialog):
 
     # Label, column, order, condition
     options = [
-        ('Frequency',     'frequency_rank', 'ASC', '< 999999'),
-        ('RTK 1-5 Order', 'heisig_id5',     'ASC', 'NOT NULL'),
-        ('RTK 6+ Order',  'heisig_id6',     'ASC', 'NOT NULL'),
+        ('Frequency',     'frequency_rank', 'ASC',  '< 999999'),
+        ('RTK 1-5 Order', 'heisig_id5',     'ASC',  'NOT NULL'),
+        ('RTK 6+ Order',  'heisig_id6',     'ASC',  'NOT NULL'),
+        ('JLPT',          'jlpt',           'DESC', 'NOT NULL'),
+        ('Kanken',        'kanken',         'ASC',  'NOT NULL'),
+        ('School Year',   'grade',          'ASC',  'NOT NULL'),
     ]
 
     INITIAL_SIZE = (600, 350)
