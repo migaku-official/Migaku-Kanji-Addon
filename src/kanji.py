@@ -215,9 +215,9 @@ class KanjiDB:
             if entry_deck != 'All':
                 find_filter.append(F'"deck:{entry_deck}"')
 
-            entry_card_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
+            entry_note_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
 
-            for note_id in entry_card_ids:
+            for note_id in entry_note_ids:
                 note = aqt.mw.col.getNote(note_id)
                 field_value = note[entry_field]
                 words = text_parser.get_cjk_words(field_value, reading=True)
@@ -272,8 +272,6 @@ class KanjiDB:
             field_value = note[wr_field]
             words.update(text_parser.get_cjk_words(field_value, reading=True))
 
-        import time
-        t = time.time()
         self.crs.executemany(
             'INSERT INTO usr.words (note_id,word,reading) VALUES (?,?,?)',
             [(note_id, w, r) for (w,r) in words]
@@ -332,6 +330,41 @@ class KanjiDB:
             msg = '\n\n'.join(msg_parts)
 
             aqt.qt.QMessageBox.information(None, 'Migaku Kanji', msg)
+
+
+    def new_learn_ahead_kanji(self, card_type, deck_id, max_cards):
+        nids = aqt.mw.col.db.all(F'SELECT c.nid FROM cards as c WHERE did={deck_id} AND type=0 ORDER BY c.due LIMIT {max_cards}')
+
+        kanji_seen = set()
+        kanji = []              # to preserve order
+
+        for [nid] in nids:
+            note = aqt.mw.col.getNote(nid)
+
+            for wr in config.get('word_recognized', []):
+                wr_note = wr['note']
+                wr_deck_name = wr['deck']
+                wr_field = wr['field']
+
+                wr_model = aqt.mw.col.models.byName(wr_note)
+                if wr_model is None:
+                    continue
+                if note.mid != wr_model['id']:
+                    continue
+
+                if wr_deck_name != 'All':
+                    wr_deck = aqt.mw.col.decks.byName(wr_deck_name)
+                    if wr_deck is None:
+                        continue
+                    if deck_id != wr_deck['id']:
+                        continue
+
+                field_value = note[wr_field]
+                for k in text_parser.filter_cjk(field_value):
+                    if k not in kanji_seen:
+                        kanji.append(k)
+
+        return aqt.mw.migaku_kanji_db.new_characters(card_type, kanji)
 
 
 

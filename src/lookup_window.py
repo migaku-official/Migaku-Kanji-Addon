@@ -82,6 +82,7 @@ class LookupWindow(QDialog):
             F'{aqt.mw.baseHTML()}' \
             F'{bundled_js}' \
              '<style>\n' \
+            F'@font-face {{ font-family: Rubik; src: url("{self.font_uri("rubik.ttf")}"); }}\n' \
             F'@font-face {{ font-family: kanji_font1; src: url("{self.font_uri("yumin.ttf")}"); }}\n' \
             F'@font-face {{ font-family: kanji_font2; src: url("{self.font_uri("yugothb.ttc")}"); }}\n' \
             F'@font-face {{ font-family: kanji_font3; src: url("{self.font_uri("hgrkk.ttc")}"); }}\n' \

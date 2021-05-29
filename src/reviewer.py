@@ -6,7 +6,12 @@ import json
 
 from . import util
 from .lookup_window import LookupWindow
+from . import text_parser
+from . import config
+from .card_type import CardType
 
+
+# Handler for interactive card buttons
 
 def reviewer_bridge_hook(reviewer, cmd, _old):
 
@@ -60,7 +65,6 @@ def reviewer_bridge_hook(reviewer, cmd, _old):
             return
 
     _old(reviewer, cmd)
-    
 
 
 aqt.reviewer.Reviewer._linkHandler = anki.hooks.wrap(
@@ -68,3 +72,36 @@ aqt.reviewer.Reviewer._linkHandler = anki.hooks.wrap(
     reviewer_bridge_hook,
     'around'
 )
+
+
+# Handler for reviewing new cards
+
+def check_learn_ahead(did):
+
+    deck = aqt.mw.col.decks.get(did)
+
+    for ct in CardType:
+        ct_max = 0
+        for e in config.get('card_type_learn_ahead').get(ct.label, []):
+            if e['deck'] == deck['name']:
+                ct_max = max(ct_max, e['num'])
+                
+        new = aqt.mw.migaku_kanji_db.new_learn_ahead_kanji(ct, did, ct_max)
+        if len(new):
+            util.error_msg_on_error(
+                aqt.mw,
+                aqt.mw.migaku_kanji_db.make_cards_from_characters,
+                ct, new, None
+            )
+
+def reviewer_will_answer_hook(status, reviewer, card: anki.collection.Card):
+    proceed, ease = status
+
+    # Learning card?
+    if card.type == 0:
+        check_learn_ahead(card.did)
+
+    return status
+
+
+aqt.gui_hooks.reviewer_will_answer_card.append(reviewer_will_answer_hook)

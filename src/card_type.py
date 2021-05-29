@@ -149,7 +149,7 @@ class CardType(metaclass=CardTypeMeta):
         for ctd in cls:
             ctd.upsert_model()
 
-        fonts = ['yumin.ttf', 'yugothb.ttc', 'hgrkk.ttc']
+        fonts = ['rubik.ttf', 'yumin.ttf', 'yugothb.ttc', 'hgrkk.ttc']
 
         for font_name in fonts:
             font_name_col = '_kanji_' + font_name

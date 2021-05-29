@@ -1,12 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-@font-face { font-family: kanji_font1; src: url('_kanji_yumin.ttf'); }
-@font-face { font-family: kanji_font2; src: url('_kanji_yugothb.ttc'); }
-@font-face { font-family: kanji_font3; src: url('_kanji_hgrkk.ttc'); }
+@font-face {
+  font-family: Rubik;
+  src: url("_kanji_rubik.ttf");
+}
+@font-face {
+  font-family: kanji_font1;
+  src: url("_kanji_yumin.ttf");
+}
+@font-face {
+  font-family: kanji_font2;
+  src: url("_kanji_yugothb.ttc");
+}
+@font-face {
+  font-family: kanji_font3;
+  src: url("_kanji_hgrkk.ttc");
+}
 
 #migaku_data {
-    display: none;
+  display: none;
+}
+
+#words_front {
+  padding-top: 10px;
 }
 
 .word_front {
@@ -175,39 +191,12 @@ li::before {
   display: inline-block;
   font-weight: 700;
   font-size: 20px;
-  height: 50px;
   border-radius: 5px;
   text-align: center;
-  line-height: 50px;
   background: #e5f9ff;
   margin-right: 20px;
   margin-bottom: 20px;
-  padding-right: 20px;
-  padding-left: 20px;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.word.word_default {
-  background: #cbcbcb;
-}
-
-.word {
-  position: relative;
-  display: inline-block;
-  font-weight: 700;
-  font-size: 20px;
-  height: 50px;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 50px;
-  background: #e5f9ff;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 10px 20px;
   border: none;
   color: inherit;
   cursor: pointer;
@@ -568,6 +557,10 @@ h1.welcome {
     grid-template-columns: 1fr;
   }
 
+  .KanjiLookup-description {
+    margin-bottom: 40px;
+  }
+
   .playerContainer {
     margin: auto;
   }
@@ -589,18 +582,3 @@ button.word {
   font-family: "rubik";
   border-radius: 5px !important;
 }
-
-/* .isWin button {
-  font-size: inherit;
-}
-
-.nightMode button {
-  color: inherit;
-  background: inherit;
-  box-shadow: inherit;
-  border: inherit;
-  border-radius: inherit;
-  padding: inherit;
-  padding-top: inherit;
-  padding-bottom: inherit;
-} */

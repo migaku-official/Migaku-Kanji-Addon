@@ -48,12 +48,6 @@
         <span class="fontExample" style="font-family: 'kanji_font3'">仮</span>
         <div class="separator"></div>
         <div class="tags">
-          <div class="tag">JLPT <span id="jlpt">-</span></div>
-          <div class="tag">Frequency <span id="frequency">-</span></div>
-          <div class="tag">Grade <span id="grade">-</span></div>
-          <div class="tag">Kanken <span id="kanken">-</span></div>
-          <div class="tag">RTK (1-5) <span id="heisig_id5">-</span></div>
-          <div class="tag">RTK (6+) <span id="heisig_id6">-</span></div>
         </div>
         <div class="keywords">
           <h3>Keywords:</h3>
@@ -107,10 +101,10 @@
 
 <div id="migaku_data">{{MigakuData}}</div>
 <script>
-  function wrap_list(list, intro, outro)
+  function wrap_list(list, intro, outro, dash_on_empty=true)
   {
     if (list.length < 1)
-      return '-';
+      return dash_on_empty ? '-' : '';
     return intro + list.join(outro+intro) + outro;
   }
 
@@ -167,12 +161,21 @@
 
   $('.fontExample').html(data.character);
 
-  $('#jlpt').html(data.jlpt === null ? '-' : 'N' + data.jlpt.toString());
-  $('#frequency').html(data.frequency < 999999 ? '-' : data.frequency_rank.toString());
-  $('#grade').html(data.grade === null ? '-' : data.grade.toString());
-  $('#kanken').html(data.kanken === null ? '-' : data.kanken.toString());
-  $('#heisig_id5').html(data.heisig_id5 === null ? '-' : data.heisig_id5.toString());
-  $('#heisig_id6').html(data.heisig_id6 === null ? '-' : data.heisig_id6.toString());
+  tags = [];
+  if (data.frequency_rank < 999999) tags.push('Frequency #' + data.frequency_rank.toString())
+  if (data.jlpt !== null) tags.push('JLPT N' + data.jlpt.toString())
+  if (data.kanken !== null) tags.push('Kanken ' + data.kanken.toString())
+  if (data.grade !== null)
+  {
+    const num_conv = '０１２３４５６７８９';
+    if (data.grade <= 6) tags.push('小学校' + num_conv[data.grade] + '年');
+    if (data.grade == 8) tags.push('中学年');
+    if (data.grade <= 8) tags.push('常用');
+    if (data.grade >= 9 && data.grade <= 10) tags.push('人名用');
+  }
+  if (data.heisig_id5 !== null) tags.push('RTK (1-5) ' + data.heisig_id5.toString());
+  if (data.heisig_id6 !== null) tags.push('RTK (6+) ' + data.heisig_id6.toString());
+  $('.tags').html(wrap_list(tags, '<div class="tag">', '</div>', false));
 
   $('#onyomi').html(data.onyomi.length ? data.onyomi.join(', ') : '-');
   $('#kunyomi').html(data.kunyomi.length ? data.kunyomi.join(', ') : '-');

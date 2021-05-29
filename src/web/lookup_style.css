@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 #migaku_data {
@@ -157,39 +156,12 @@ li::before {
   display: inline-block;
   font-weight: 700;
   font-size: 20px;
-  height: 50px;
   border-radius: 5px;
   text-align: center;
-  line-height: 50px;
   background: #e5f9ff;
   margin-right: 20px;
   margin-bottom: 20px;
-  padding-right: 20px;
-  padding-left: 20px;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.word.word_default {
-  background: #cbcbcb;
-}
-
-.word {
-  position: relative;
-  display: inline-block;
-  font-weight: 700;
-  font-size: 20px;
-  height: 50px;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 50px;
-  background: #e5f9ff;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 10px 20px;
   border: none;
   color: inherit;
   cursor: pointer;
@@ -512,6 +484,10 @@ h1.welcome {
 @media (max-width: 1000px) {
   .KanjiLookup-details {
     grid-template-columns: 1fr;
+  }
+
+  .KanjiLookup-description {
+    margin-bottom: 40px;
   }
 
   .playerContainer {

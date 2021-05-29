@@ -6,6 +6,7 @@ from . import util
 from . import config
 from .card_type import CardType
 from .note_type_selector import CardTypeRecognizedSelectorWidget, WordRecognizedSelectorWidget
+from .learn_ahead_selector import LearnAheadSelectorWidget
 
 
 
@@ -32,7 +33,7 @@ class CardTypeSettingsWidget(QWidget):
         self.add_primitives_box.setChecked(self.card_type.add_primitives)
         lyt.addWidget(self.add_primitives_box)
 
-        self.auto_card_creation_box = QCheckBox('Automatically create kanji cards for unknown kanji in newly added cards (Cards must be setup in "words" tab)')
+        self.auto_card_creation_box = QCheckBox('Automatically create kanji cards for unknown kanji in newly added cards (cards/fields must be setup in "Recognized Fields" tab)')
         self.auto_card_creation_box.setChecked(self.card_type.auto_card_creation)
         lyt.addWidget(self.auto_card_creation_box)
 
@@ -44,6 +45,9 @@ class CardTypeSettingsWidget(QWidget):
         self.auto_card_refresh_box.setChecked(self.card_type.auto_card_refresh)
         lyt.addWidget(self.auto_card_refresh_box)
 
+        self.learn_ahead_selector = LearnAheadSelectorWidget(self.card_type, no_margin=True)
+        lyt.addWidget(self.learn_ahead_selector)
+
         self.note_type_selector = CardTypeRecognizedSelectorWidget(self.card_type, no_margin=True)
         lyt.addWidget(self.note_type_selector)
 
@@ -53,6 +57,7 @@ class CardTypeSettingsWidget(QWidget):
         self.card_type.auto_card_creation = self.auto_card_creation_box.isChecked()
         self.card_type.auto_card_creation_msg = self.auto_card_creation_msg_box.isChecked()
         self.card_type.auto_card_refresh = self.auto_card_refresh_box.isChecked()
+        self.learn_ahead_selector.save_to_config()
         self.note_type_selector.save_to_config()
 
 
@@ -90,7 +95,7 @@ class SettingsWindow(QDialog):
         self.card_type_widgets = []
 
         self.words_recognized = WordRecognizedSelectorWidget()
-        tabs.addTab(self.words_recognized, 'Recognized Words')
+        tabs.addTab(self.words_recognized, 'Registerd Fields')
 
         for ct in CardType:
             ct_widget = CardTypeSettingsWidget(ct)
@@ -103,6 +108,10 @@ class SettingsWindow(QDialog):
         for ct_widget in self.card_type_widgets:
             ct_widget.save_to_config()
         config.write()
+
+        for ct in CardType:
+            aqt.mw.migaku_kanji_db.recalc_user_cards(ct)
+
 
 
     @classmethod

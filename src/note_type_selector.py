@@ -63,7 +63,7 @@ class NoteTypeSelectorWidget(QWidget):
 
 
     def set_data(self, data):
-        self.table.clearContents()    
+        self.clear()
 
         for data_entry in data:
             self.add_line(data_entry)
@@ -87,7 +87,8 @@ class NoteTypeSelectorWidget(QWidget):
     def clear(self):
         self.note_boxes.clear()
         self.remove_btns.clear()
-        self.table.clear()
+        self.table.clearContents()
+        self.table.setRowCount(0)
 
 
     def add_line(self, data_entry=None):
@@ -178,7 +179,11 @@ class CardTypeRecognizedSelectorWidget(NoteTypeSelectorWidget):
 class WordRecognizedSelectorWidget(NoteTypeSelectorWidget):
 
     def __init__(self, parent=None):
-        info_text = 'With this setting you can select which cards will be scanned for words that will be added to your kanji cards.'
+        info_text = 'The Registed Fields are used for multiple purposes:<ul>' \
+                    '<li>These fields are used to extract example words shown in the lookup browser and on kanji cards</li>' \
+                    '<li>If you have learn ahead decks specified, only these fields are scanned</li>' \
+                    '<li>You can view stats for the kanji from the specified fields on the stats page</li>' \
+                    '</ul>'
 
         # Don't allow selecting kanji cards
         invalid_notes = [ct.model_name for ct in CardType]
