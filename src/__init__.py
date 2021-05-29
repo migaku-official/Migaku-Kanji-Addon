@@ -122,6 +122,8 @@ def on_recalc():
 def on_settings():
     SettingsWindow.show_modal(aqt.mw)
 
+aqt.mw.addonManager.setConfigAction(__name__, on_settings)
+
 
 aqt.mw.migaku_kanji_db = kanji.KanjiDB()
 aqt.gui_hooks.profile_did_open.append(CardType.upsert_all_models)
