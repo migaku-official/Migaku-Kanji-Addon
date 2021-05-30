@@ -112,6 +112,7 @@
 <script>
   let dmak = null;
   let data = null;
+  let last_character = null;
 
   function wrap_list(list, intro, outro, dash_on_empty=true)
   {
@@ -208,6 +209,13 @@
     var data_json = atob(data_b64_json);
     data = JSON.parse(data_json);
 
+    // Scroll up if new character was opened
+    var new_character = data.has_result ? data.character : null;
+    if (last_character === null || new_character != last_character)
+      window.scrollTo(0, 0);
+    last_character = new_character;
+
+    // Suspend existing dmak instance
     if (dmak !== null)
     {
       dmak.cancel_prepare = true;
