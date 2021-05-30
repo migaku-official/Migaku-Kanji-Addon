@@ -19,7 +19,8 @@
     return intro + list.join(outro+intro) + outro;
   }
 
-  var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
+  var data_json = atob(document.getElementById('migaku_data').innerHTML);
+  var data = JSON.parse(data_json);
 
   var max_words_front = 4;
   var max_words = max_words_front;

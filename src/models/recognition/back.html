@@ -150,7 +150,8 @@
     pycmd('custom_story-' + data.character + '-' + (data.usr_story ? data.usr_story : ''));
   }
 
-  var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
+  var data_json = atob(document.getElementById('migaku_data').innerHTML);
+  var data = JSON.parse(data_json);
   var kanjivg_uri = 'kanji_';
 
   var dmak = new Dmak(data.character, {'element': 'strokeorder', 'uri': kanjivg_uri, 'height': 220, 'width': 220, 'step': 0.015});

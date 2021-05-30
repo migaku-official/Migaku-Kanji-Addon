@@ -22,7 +22,8 @@
     return intro + list.join(outro+intro) + outro;
   }
 
-  var data = JSON.parse(document.getElementById('migaku_data').innerHTML);
+  var data_json = atob(document.getElementById('migaku_data').innerHTML);
+  var data = JSON.parse(data_json);
 
   $('.keyword-kanji').html(data.character);
 

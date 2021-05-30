@@ -1,6 +1,7 @@
 import os
 import shutil
 import json
+import base64
 import sqlite3
 from collections import defaultdict
 
@@ -497,7 +498,10 @@ class KanjiDB:
         c = note['Character']
         
         r = self.get_kanji_result_data(c, card_ids=False)
-        note['MigakuData'] = json.dumps(r, ensure_ascii=False)
+        data_json = json.dumps(r, ensure_ascii=True)
+        data_json_b64_b = base64.b64encode(data_json.encode('utf-8'))
+        data_json_b64 = str(data_json_b64_b, 'utf-8')
+        note['MigakuData'] = data_json_b64
 
         # Copy kanjivg svg to collection media if svg exists
         # Add svg path to card field so svg won't be deleted by Anki
