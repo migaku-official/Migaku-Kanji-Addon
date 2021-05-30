@@ -17,7 +17,7 @@ class AddCardsDialog(QDialog):
         ('School Year',   'grade',          'ASC',  'NOT NULL'),
     ]
 
-    INITIAL_SIZE = (600, 350)
+    INITIAL_SIZE = (600, 500)
 
     def __init__(self, parent=None):
         super(QDialog, self).__init__(parent)
@@ -33,10 +33,16 @@ class AddCardsDialog(QDialog):
                           'If you for example select 20 cards with "Frequency" selected, '\
                           'the first 20 unknown kanji with the highest frequency are added.\n\n'\
                           'In the beginning it is recommended that you add a few dozen cards based off the RTK order. '\
-                          'After that add kanji based off frequency or add Kanji as you encounter them. '\
-                          'In the settings you can toggle automatic kanji card creation for newly added cards.')
+                          'After that we recommend you to use the deck learn ahead feature if you are using a premade starter deck. '\
+                          'If not we recommend adding kanji based off frequency or add Kanji as you encounter them using automatic '\
+                          'kanji card creation for newly added cards.\n\n'\
+                          'All mentioned features can be enabled from the settings.')
         info_lbl.setWordWrap(True)
         lyt.addWidget(info_lbl, i, 0, 1, 2)
+
+        i += 1
+
+        lyt.addWidget(QLabel('<hr>'), i, 0, 1, 2)
 
         i += 1
         lyt.addWidget(QLabel('Type:'), i, 0)

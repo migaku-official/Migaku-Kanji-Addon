@@ -450,6 +450,14 @@ class KanjiDB:
         self.con.commit()
 
 
+    def mass_set_characters_known(self, card_type, characters):
+        self.crs.executemany(
+            F'INSERT OR IGNORE INTO usr.{card_type.label}_card_ids (character,card_id) VALUES (?,?)',
+            [(c, -1) for c in characters]
+        )
+        self.con.commit()
+
+
     def refresh_notes_for_character(self, character):
         ct_find_filter = [F'"note:{ct.model_name}"' for ct in CardType]
         note_ids = aqt.mw.col.find_notes(' OR '.join(ct_find_filter) + F' AND "Character:{character}"')

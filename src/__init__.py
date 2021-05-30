@@ -5,6 +5,7 @@ from .settings_window import SettingsWindow
 from .add_cards_dialog import AddCardsDialog
 from .stats_window import StatsWindow
 from .create_cards_from_notes_dialog import CreateCardsFromNotesDialog
+from .mark_known_dialog import MarkKnownDialog, MarkKnownFromNotesDialog
 from . import reviewer
 
 
@@ -47,6 +48,11 @@ def setup_menu():
     # submenu.addAction(add_kanji_action)
     aqt.mw.MigakuMenuActions.append(add_kanji_action)
 
+    mark_known_action = QAction('Mark Kanji Known', aqt.mw)
+    mark_known_action.triggered.connect(on_mark_known)
+    # submenu.addAction(mark_known_action)
+    aqt.mw.MigakuMenuActions.append(mark_known_action)
+
     recalc_action = QAction('Refresh Kanji Cards', aqt.mw)
     recalc_action.triggered.connect(on_recalc)
     # submenu.addAction(recalc_action)
@@ -79,6 +85,9 @@ def on_stats():
 
 def on_add_cards():
     AddCardsDialog.show_modal(aqt.mw)
+
+def on_mark_known():
+    MarkKnownDialog.show_modal(parent=aqt.mw)
 
 def on_recalc():
 
@@ -131,12 +140,19 @@ setup_menu()
 
 
 def setup_browser_menu(browser):
+    browser.form.menuEdit.addSeparator()
+
     create_cards_action = QAction('Create Kanji Cards From Selection', browser)
     create_cards_action.triggered.connect(
         lambda: CreateCardsFromNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
-    browser.form.menuEdit.addSeparator()
     browser.form.menuEdit.addAction(create_cards_action)
+
+    mark_known_action = QAction('Mark Kanji Known From Selection', browser)
+    mark_known_action.triggered.connect(
+        lambda: MarkKnownFromNotesDialog.show_modal(browser.selectedNotes(), browser)
+    )
+    browser.form.menuEdit.addAction(mark_known_action)
 
 aqt.gui_hooks.browser_menus_did_init.append(setup_browser_menu)
 

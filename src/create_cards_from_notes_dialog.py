@@ -22,6 +22,14 @@ class CreateCardsFromNotesDialog(QDialog):
         lyt = QVBoxLayout()
         self.setLayout(lyt)
 
+        info_lbl = QLabel('Select the card type for which you want to create kanji cards.\n\n' \
+                          'All selected fields will be scanned for kanji you do not yet have cards in your collection for and have not marked known.\n\n' \
+                          'You are able to confirm the cards that will be created after pressing OK.')
+        info_lbl.setWordWrap(True)
+        lyt.addWidget(info_lbl)
+
+        lyt.addWidget(QLabel('<hr>'))
+
         self.ct_selector = CardTypeRadioButtons()
         lyt.addWidget(self.ct_selector)
 
@@ -41,6 +49,8 @@ class CreateCardsFromNotesDialog(QDialog):
         btn_box.accepted.connect(self.create_cards)
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box)
+
+        self.resize(530, 530)
 
 
     def create_cards(self):
@@ -95,7 +105,7 @@ class CreateCardsFromNotesDialog(QDialog):
             aqt.qt.QMessageBox.information(
                 self,
                 'Migaku Kanji',
-                F'You already have kanji {card_type.label} cards for all kanji occuring in the selected notes with the selected fields!'
+                F'You already have kanji {card_type.label} cards or marked them known for all kanji occuring in the selected notes with the selected fields!'
             )
 
         config.get('cards_from_notes_last_checked').update(checked_fields_states)
