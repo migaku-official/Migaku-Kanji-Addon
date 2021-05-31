@@ -27,7 +27,8 @@ class ConvertNotesDialog(QDialog):
         self.setWindowIcon(util.default_icon())
         self.setWindowTitle('Migaku Kanji - Convert Notes')
 
-        info_lbl = QLabel('<TODO>')
+        info_lbl = QLabel('Using this you can convert existing kanji cards to Migaku kanji cards.\n\n' \
+                          'WARNING: If you convert notes for which a Migaku kanji card already exist, only the already existing Migaku card will remain!')
         info_lbl.setWordWrap(True)
         lyt.addWidget(info_lbl)
 
@@ -81,6 +82,7 @@ class ConvertNotesDialog(QDialog):
         lyt.addWidget(btn_box)
 
 
+    # TODO: May allow just doing this
     def import_usr_data(self):
 
         character_fld = self.character_box.currentText()
