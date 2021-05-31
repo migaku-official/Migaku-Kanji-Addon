@@ -96,7 +96,7 @@ class LookupWindow(QDialog):
 
         html_body = read_web_file('lookup.html')
 
-        style_class = 'KanjiLookup--dark' if aqt.theme.theme_manager.night_mode else 'KanjiLookup--light'
+        style_class = 'dark' if aqt.theme.theme_manager.night_mode else 'light'
 
         self.web.onBridgeCmd = self.on_bridge_cmd
         self.web.setHtml('<!doctype html><html class="' + style_class + '">' + html_head + '<body class="' + style_class + '">' + html_body + '</body></html>')

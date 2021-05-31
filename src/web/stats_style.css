@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html .dark {
+  color: #fff !important;
+  background: #3d3c40 !important;
+}
+
 body {
   font-family: "Rubik", sans-serif;
   font-size: 16px;
@@ -14,9 +19,13 @@ body {
   background: #fff;
 }
 
-html .dark {
-  color: #fff !important;
-  background: #3d3c40 !important;
+body.dark::-webkit-scrollbar-thumb {
+  background: #656565;
+  border-radius: 8px;
+}
+
+body.dark::-webkit-scrollbar {
+  background: #2f2f31;
 }
 
 h1 {

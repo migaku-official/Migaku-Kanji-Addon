@@ -27,9 +27,18 @@ body {
   min-height: 100vh;
 }
 
-html .KanjiLookup--dark {
+html .dark {
   color: #fff;
   background: #3a3f4c;
+}
+
+body.dark::-webkit-scrollbar-thumb {
+  background: #656565;
+  border-radius: 8px;
+}
+
+body.dark::-webkit-scrollbar {
+  background: #2f2f31;
 }
 
 * {
@@ -375,107 +384,107 @@ h1.welcome {
 
 /* DARK MODE */
 
-.KanjiLookup--dark .playerContainer {
+.dark .playerContainer {
   background: #f2994a;
 }
 
-.KanjiLookup--dark .playerTitle {
+.dark .playerTitle {
   color: #363c4a;
 }
 
-.KanjiLookup--dark .playerControls button {
+.dark .playerControls button {
   color: #363c4a;
   opacity: 1;
 }
 
-.KanjiLookup--dark .playerControls button:hover {
+.dark .playerControls button:hover {
   opacity: 0.7;
 }
 
-.KanjiLookup--dark h1 {
+.dark h1 {
   color: #f2994a;
 }
 
-.KanjiLookup--dark h1.keyword {
+.dark h1.keyword {
   color: #f2f2f2;
 }
 
-.KanjiLookup--dark .button {
+.dark .button {
   box-shadow: 0px 4px 16px rgba(243, 165, 68, 0.3);
   border: 1px solid #f2994a;
   background: #f2994a;
 }
 
-.KanjiLookup--dark .button:hover,
-.KanjiLookup--dark .button:focus {
+.dark .button:hover,
+.dark .button:focus {
   background: #de9238;
   border: 1px solid #de9238;
 }
 
-.KanjiLookup--dark .button.secondary {
+.dark .button.secondary {
   color: #f2994a;
   background: transparent;
   filter: drop-shadow(0px 4px 16px rgba(243, 165, 68, 0.02));
 }
 
-.KanjiLookup--dark .button.secondary::after {
+.dark .button.secondary::after {
   background: #de9238;
 }
 
-.KanjiLookup--dark .button.secondary:hover {
+.dark .button.secondary:hover {
   color: #de9238;
   border: 1px solid #de9238;
 }
 
-.KanjiLookup--dark .tag {
+.dark .tag {
   background: #30343e;
   color: #f2f2f2;
 }
 
-.KanjiLookup--dark li::before {
+.dark li::before {
   background: #f2994a;
 }
 
-.KanjiLookup--dark .primitive,
-.KanjiLookup--dark .radical {
+.dark .primitive,
+.dark .radical {
   background: #30343e;
 }
 
-.KanjiLookup--dark .word {
+.dark .word {
   background: #f2994a;
 }
 
-.KanjiLookup--dark .word.word_default {
+.dark .word.word_default {
   background: #30343e;
   color: #f2f2f2;
 }
 
-.KanjiLookup--dark .primitive:hover,
-.KanjiLookup--dark .primitive:focus,
-.KanjiLookup--dark .radical:hover,
-.KanjiLookup--dark .radical:focus {
+.dark .primitive:hover,
+.dark .primitive:focus,
+.dark .radical:hover,
+.dark .radical:focus {
   background: #24272d;
 }
 
-.KanjiLookup--dark .word:hover,
-.KanjiLookup--dark .word:focus {
+.dark .word:hover,
+.dark .word:focus {
   background: #de9238;
 }
 
-.KanjiLookup--dark .word.word_default:hover,
-.KanjiLookup--dark .word.word_default:focus {
+.dark .word.word_default:hover,
+.dark .word.word_default:focus {
   background: #24272d;
 }
 
-.KanjiLookup--dark .primitiveDetails {
+.dark .primitiveDetails {
   background: #30343e;
 }
 
-.KanjiLookup--dark .KanjiLookup-container--noResult h1.kanji {
+.dark .KanjiLookup-container--noResult h1.kanji {
   color: #f2f2f2;
 }
 
-.KanjiLookup--dark .key {
+.dark .key {
   background: #30343e;
 }
 
