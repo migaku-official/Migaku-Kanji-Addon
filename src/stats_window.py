@@ -146,7 +146,7 @@ class StatsWindow(QDialog):
 
             </head>
 
-            <body class="{style_class}">
+            <body class="{style_class} fullColor">
                 <div class="container {style_class}">
                     <div class="tooltip_toggle">
                     i
@@ -168,10 +168,21 @@ class StatsWindow(QDialog):
                                 <span class="kanji known">磨</span>
                                 <p>Known (card with intervall greater than 21 days)</p>
                             </div>
+
+                            <hr>
+
+                            <div id="color_toggle_row">
+                                <input type="checkbox" class="toggle" id="switch" checked />
+                                <label for="switch" class="toggle">Toggle</label>
+                                <span>Full color kanji</span>
+                            </div>
                         </div>
                     </div>
                     <span id="dynamic"></span>
                 </div>
+                <script>
+                    $('#switch').change(function(){{ $('body').toggleClass('fullColor', this.checked); }});
+                </script>
             </body>
         </html>
         '''
