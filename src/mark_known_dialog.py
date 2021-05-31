@@ -191,6 +191,10 @@ class MarkKnownFromNotesDialog(QDialog):
 
 
     @classmethod
-    def show_modal(cls, *args, **kwargs):
-        dlg = cls(*args, **kwargs)
+    def show_modal(cls, note_ids, parent=None):
+
+        if note_ids is None or len(note_ids) < 1:
+            return
+
+        dlg = cls(note_ids, parent)
         return dlg.exec_()

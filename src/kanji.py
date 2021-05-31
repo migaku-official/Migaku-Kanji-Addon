@@ -424,6 +424,15 @@ class KanjiDB:
         self.refresh_notes_for_character(character)
 
 
+    def mass_set_character_usr_keyowrd(self, character_keywords):
+
+        self.crs.executemany(
+            'INSERT OR REPLACE INTO usr.keywords (character,usr_keyword) VALUES (?,?)',
+            character_keywords.items()
+        )
+        self.con.commit()
+
+
     def set_character_usr_story(self, character, story):
 
         self.crs.execute(
@@ -433,6 +442,15 @@ class KanjiDB:
         self.con.commit()
 
         self.refresh_notes_for_character(character)
+
+
+    def mass_set_character_usr_story(self, character_stories):
+
+        self.crs.executemany(
+            'INSERT OR REPLACE INTO usr.stories (character,usr_story) VALUES (?,?)',
+            character_stories.items()
+        )
+        self.con.commit()
 
 
     def set_character_known(self, card_type, character, known=True):
@@ -466,6 +484,26 @@ class KanjiDB:
             note = aqt.mw.col.getNote(note_id)
             self.refresh_note(note, do_flush=True)
 
+
+    def make_card_unsafe(self, card_type, character):
+        from . import add_note_no_hook
+
+        deck_name = card_type.deck_name
+        model_name = card_type.model_name
+
+        deck = aqt.mw.col.decks.byName(deck_name)
+        if deck is None:
+            raise InvalidDeckError(card_type)
+        deck_id = deck['id']
+
+        model = aqt.mw.col.models.byName(model_name)
+
+        note = anki.notes.Note(aqt.mw.col, model)
+        note['Character'] = character
+        self.refresh_note(note)
+        add_note_no_hook(aqt.mw.col, note, deck_id)
+
+        return note
 
 
     def make_cards_from_characters(self, card_type, new_characters, checkpoint=None):

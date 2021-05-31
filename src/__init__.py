@@ -6,6 +6,7 @@ from .add_cards_dialog import AddCardsDialog
 from .stats_window import StatsWindow
 from .create_cards_from_notes_dialog import CreateCardsFromNotesDialog
 from .mark_known_dialog import MarkKnownDialog, MarkKnownFromNotesDialog
+from .convert_notes_dialog import ConvertNotesDialog
 from . import reviewer
 
 
@@ -153,6 +154,12 @@ def setup_browser_menu(browser):
         lambda: MarkKnownFromNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
     browser.form.menuEdit.addAction(mark_known_action)
+
+    convert_notes_action = QAction('Convert Selected Notes To Kanji Cards', browser)
+    convert_notes_action.triggered.connect(
+        lambda: ConvertNotesDialog.show_modal(browser.selectedNotes(), browser)
+    )
+    browser.form.menuEdit.addAction(convert_notes_action)
 
 aqt.gui_hooks.browser_menus_did_init.append(setup_browser_menu)
 
