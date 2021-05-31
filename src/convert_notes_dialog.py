@@ -203,8 +203,6 @@ class ConvertNotesDialog(QDialog):
                     # DB already messed up
                     continue
 
-                print(nid, card_id, 'to', note.id)
-
                 # Now the ugly part...
 
                 # 1) Nuke all cards from new note that were automatically created
