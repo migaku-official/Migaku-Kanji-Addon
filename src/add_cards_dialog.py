@@ -13,11 +13,9 @@ class AddCardsDialog(QDialog):
         ('RTK 1-5 Order', 'heisig_id5',     'ASC',  'NOT NULL'),
         ('RTK 6+ Order',  'heisig_id6',     'ASC',  'NOT NULL'),
         ('JLPT',          'jlpt',           'DESC', 'NOT NULL'),
-        ('Kanken',        'kanken',         'ASC',  'NOT NULL'),
+        ('Kanken',        'kanken',         'DESC', 'NOT NULL'),
         ('School Year',   'grade',          'ASC',  'NOT NULL'),
     ]
-
-    INITIAL_SIZE = (600, 500)
 
     def __init__(self, parent=None):
         super(QDialog, self).__init__(parent)
@@ -74,8 +72,6 @@ class AddCardsDialog(QDialog):
         btn_box.accepted.connect(self.add_cards)
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box, i, 0, 1, 2)
-
-        self.resize(*self.INITIAL_SIZE)
 
 
     def add_cards(self):
