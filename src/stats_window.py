@@ -369,7 +369,7 @@ class StatsWindow(QDialog):
         html_pts.extend(category_pts)
 
         self.web.eval('$("#dynamic").html(\'' + ''.join(html_pts) + '\');')
-        self.web.eval('$(".kanji").click(kanji_click);')
+        self.web.eval('$(".kanjis_category .kanji").click(kanji_click);')
 
 
     def on_bridge_cmd(self, cmd):
