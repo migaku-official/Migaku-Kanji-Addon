@@ -148,7 +148,9 @@
     pycmd('custom_story-' + data.character + '-' + (data.usr_story ? data.usr_story : ''));
   }
 
-  var data_json = atob(document.getElementById('migaku_data').innerHTML);
+  var data_b64 = document.getElementById('migaku_data').innerHTML;
+  data_b64 = data_b64.replace( /(<([^>]+)>)/ig, '');  // Needed because of Migaku Editor :|
+  var data_json = atob(data_b64);
   var data = JSON.parse(data_json);
   var kanjivg_uri = 'kanji_';
 
