@@ -7,7 +7,7 @@ from . import config
 from .card_type import CardType
 from .note_type_selector import CardTypeRecognizedSelectorWidget, WordRecognizedSelectorWidget
 from .learn_ahead_selector import LearnAheadSelectorWidget
-
+from .version import VERSION_STRING
 
 
 class CardTypeSettingsWidget(QWidget):
@@ -85,7 +85,7 @@ class SettingsWindow(QDialog):
         super(QDialog, self).__init__(parent)
 
         self.setWindowIcon(util.default_icon())
-        self.setWindowTitle('Migaku Kanji - Settings')
+        self.setWindowTitle('Migaku Kanji - Settings - ' + VERSION_STRING)
         self.setMinimumSize(920, 450)
 
         lyt = QVBoxLayout()
@@ -97,7 +97,7 @@ class SettingsWindow(QDialog):
         self.card_type_widgets = []
 
         self.words_recognized = WordRecognizedSelectorWidget()
-        tabs.addTab(self.words_recognized, 'Registerd Fields')
+        tabs.addTab(self.words_recognized, 'Registered Fields')
 
         for ct in CardType:
             ct_widget = CardTypeSettingsWidget(ct)

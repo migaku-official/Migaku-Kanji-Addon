@@ -179,9 +179,9 @@ class CardTypeRecognizedSelectorWidget(NoteTypeSelectorWidget):
 class WordRecognizedSelectorWidget(NoteTypeSelectorWidget):
 
     def __init__(self, parent=None):
-        info_text = 'The Registed Fields are used for multiple purposes:<ul>' \
+        info_text = 'The Registered Fields are used for multiple purposes:<ul>' \
                     '<li>These fields are used to extract example words shown in the lookup browser and on kanji cards</li>' \
-                    '<li>If you have learn ahead decks specified, only these fields are scanned</li>' \
+                    '<li>If you have learn-ahead decks specified, only these fields are scanned</li>' \
                     '<li>You can view stats for the kanji from the specified fields on the stats page</li>' \
                     '</ul>'
 
