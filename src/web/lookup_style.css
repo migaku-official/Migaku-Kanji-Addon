@@ -16,6 +16,10 @@
   font-family: "kanji_font3";
 }
 
+.font-4 {
+  font-family: "kanji_font4";
+}
+
 html,
 body {
   font-family: "Rubik", sans-serif;

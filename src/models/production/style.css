@@ -6,15 +6,19 @@
 }
 @font-face {
   font-family: kanji_font1;
-  src: url("_kanji_yumin.ttf");
+  src: url("_kanji_NotoSerifJP.otf");
 }
 @font-face {
   font-family: kanji_font2;
-  src: url("_kanji_yugothb.ttc");
+  src: url("_kanji_NotoSansJP.otf");
 }
 @font-face {
   font-family: kanji_font3;
-  src: url("_kanji_hgrkk.ttc");
+  src: url("_kanji_HachiMaruPop.ttf");
+}
+@font-face {
+  font-family: kanji_font4;
+  src: url("_kanji_ArmedLemon.ttf");
 }
 
 #migaku_data {
@@ -43,6 +47,10 @@
 
 .font-3 {
   font-family: "kanji_font3";
+}
+
+.font-4 {
+  font-family: "kanji_font4";
 }
 
 html,
