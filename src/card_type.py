@@ -149,7 +149,7 @@ class CardType(metaclass=CardTypeMeta):
         for ctd in cls:
             ctd.upsert_model()
 
-        fonts = ['NotoSerifJP.otf', 'NotoSansJP.otf', 'HachiMaruPop.ttf', 'ArmedLemon.ttf', 'Rubik.ttf']
+        fonts = ['SawarabiGothic.ttf', 'nagayama_kai08.otf', 'ArmedBanana.ttf', 'KouzanGyousho.otf', 'Rubik.ttf']
 
         for font_name in fonts:
             font_name_col = '_kanji_' + font_name

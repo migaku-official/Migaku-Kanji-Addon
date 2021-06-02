@@ -6,19 +6,19 @@
 }
 @font-face {
   font-family: kanji_font1;
-  src: url("_kanji_NotoSerifJP.otf");
+  src: url("_kanji_SawarabiGothic.ttf");
 }
 @font-face {
   font-family: kanji_font2;
-  src: url("_kanji_NotoSansJP.otf");
+  src: url("_kanji_nagayama_kai08.otf");
 }
 @font-face {
   font-family: kanji_font3;
-  src: url("_kanji_HachiMaruPop.ttf");
+  src: url("_kanji_ArmedBanana.ttf");
 }
 @font-face {
   font-family: kanji_font4;
-  src: url("_kanji_ArmedLemon.ttf");
+  src: url("_kanji_KouzanGyousho.otf");
 }
 
 #migaku_data {

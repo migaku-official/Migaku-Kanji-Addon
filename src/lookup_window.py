@@ -83,10 +83,10 @@ class LookupWindow(QDialog):
             F'{bundled_js}' \
              '<style>\n' \
             F'@font-face {{ font-family: Rubik; src: url("{self.font_uri("Rubik.ttf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font1; src: url("{self.font_uri("NotoSerifJP.otf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font2; src: url("{self.font_uri("NotoSansJP.otf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font3; src: url("{self.font_uri("HachiMaruPop.ttf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font4; src: url("{self.font_uri("ArmedLemon.ttf")}"); }}\n' \
+            F'@font-face {{ font-family: kanji_font1; src: url("{self.font_uri("SawarabiGothic.ttf")}"); }}\n' \
+            F'@font-face {{ font-family: kanji_font2; src: url("{self.font_uri("nagayama_kai08.otf")}"); }}\n' \
+            F'@font-face {{ font-family: kanji_font3; src: url("{self.font_uri("ArmedBanana.ttf")}"); }}\n' \
+            F'@font-face {{ font-family: kanji_font4; src: url("{self.font_uri("KouzanGyousho.otf")}"); }}\n' \
              '\n</style>' \
             F'<link rel="stylesheet" href="{self.web_uri("lookup_style.css")}">' \
             F'<script src="{self.web_uri("jquery.js")}"></script>' \
