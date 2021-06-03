@@ -53,9 +53,15 @@ def get_cjk_words(text, reading=False):
 
    r = []
    for entry in results:
-      if has_cjk(entry[7]):
+      dict_form = entry[7]
+      if has_cjk(dict_form):
          if reading:
-            r.append( (entry[7], to_hiragana(entry[8])) )
+            dict_form_reading, *_ = exporter.dictionary.initSearch(dict_form)
+            r.append( (dict_form, dict_form_reading) )
          else:
-            r.append(entry[7])
+            r.append(dict_form)
    return r
+
+
+def is_available():
+   return hasattr(aqt.mw, 'Exporter')

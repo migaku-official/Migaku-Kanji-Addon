@@ -203,6 +203,9 @@ class KanjiDB:
     # Recalc user all works associated with kanji from notes
     def recalc_user_words(self):
 
+        if not text_parser.is_available():
+            return
+
         recognized_types = config.get('word_recognized', [])
 
         note_id_words = set()
@@ -242,6 +245,10 @@ class KanjiDB:
 
 
     def on_note_update(self, note_id, deck_id):
+
+        # Could allow more features if Migaku JA isn't installed but too lazy rn
+        if not text_parser.is_available():
+            return
 
         # Remove existing word entries for note
         self.crs.execute(

@@ -4,6 +4,7 @@ from aqt.qt import *
 
 from . import util
 from . import config
+from . import text_parser
 from .card_type import CardType
 from .note_type_selector import CardTypeRecognizedSelectorWidget, WordRecognizedSelectorWidget
 from .learn_ahead_selector import LearnAheadSelectorWidget
@@ -90,6 +91,11 @@ class SettingsWindow(QDialog):
 
         lyt = QVBoxLayout()
         self.setLayout(lyt)
+
+        if not text_parser.is_available():
+            info_lbl = QLabel('<b>WARNING: The Migaku Japanese add-on is not installed or enabled. Multiple features will be unavailable.</b>')
+            info_lbl.setWordWrap(True)
+            lyt.addWidget(info_lbl)
 
         tabs = QTabWidget()
         lyt.addWidget(tabs)
