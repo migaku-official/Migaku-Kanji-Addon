@@ -626,7 +626,7 @@ class KanjiDB:
             ('jlpt', _, None),
             ('kanken', _, None),
             ('primitives', list, None),
-            ('primitive_meanings', json.loads, None),
+            ('primitive_keywords', json.loads, None),
             ('primitive_alternatives', list, None),
             ('heisig_id5', _, None),
             ('heisig_id6', _, None),

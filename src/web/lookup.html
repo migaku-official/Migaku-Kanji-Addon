@@ -274,6 +274,8 @@
             keywords.push(p_data.heisig_keyword5);
           if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
             keywords.push(p_data.heisig_keyword6);
+          for (const pk of data.primitive_keywords)
+            keywords.push('<span class="primitive_keyword">' + pk + '</span>');
           var keywords_txt = keywords.length ? keywords.join(', ') : '-';
 
           var meanings_txt = p_data.meanings.length ? p_data.meanings.join(', ') : '-';
@@ -343,6 +345,8 @@
         keywords.push(data.heisig_keyword5);
       if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
         keywords.push(data.heisig_keyword6);
+      for (const pk of data.primitive_keywords)
+        keywords.push('<span class="primitive_keyword">' + pk + '</span>');
       $('#keywords').html(keywords.length ? keywords.join(', ') : '-');
 
       $('#meanings').html(data.meanings.length ? data.meanings.join(', ') : '-');

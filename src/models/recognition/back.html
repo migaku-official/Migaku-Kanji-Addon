@@ -16,6 +16,7 @@
     <h1 class="keyword keyword-kanji font-4"></h1>
     <div id="words_front"></div>
     <div class="separator separator-full"></div>
+    <h1 class="keyword" id="keywords_front"></h1>
   </div>
   <div class="KanjiLookup-container">
     <div class="KanjiLookup-details">
@@ -206,6 +207,8 @@
         keywords.push(p_data.heisig_keyword5);
       if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
         keywords.push(p_data.heisig_keyword6);
+      for (const pk of p_data.primitive_keywords)
+        keywords.push('<span class="primitive_keyword">' + pk + '</span>');
       var keywords_txt = keywords.length ? keywords.join(', ') : '-';
 
       var meanings_txt = p_data.meanings.length ? p_data.meanings.join(', ') : '-';
@@ -283,10 +286,14 @@
     keywords.push(data.heisig_keyword5);
   if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
     keywords.push(data.heisig_keyword6);
+  for (const pk of data.primitive_keywords)
+    keywords.push('<span class="primitive_keyword">' + pk + '</span>');
   keywords_txt = keywords.length ? keywords.join(', ') : '-';
   $('#keywords').html(keywords_txt);
-  if (keywords.length)
-    $('#keywords_front').html(keywords_txt);
+  if (keywords.length < 1)
+    keywords = data.meanings;
+  keywords_front_txt = keywords.length ? keywords.join(', ') : '-';  
+  $('#keywords_front').html(keywords_front_txt);
 
   var meanings_txt = data.meanings.length ? data.meanings.join(', ') : '-';
   $('#meanings').html(meanings_txt);

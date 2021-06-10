@@ -110,6 +110,10 @@ h1.keyword-kanji {
   margin: 0 10px;
 }
 
+.primitive_keyword {
+  color: #2880ff;
+}
+
 h2 {
   font-size: 30px;
   font-weight: 400;
@@ -556,6 +560,11 @@ h1.welcome {
 .ankidroid_dark_mode .key,
 .nightMode .key {
   background: #30343e;
+}
+
+.ankidroid_dark_mode .primitive_keyword,
+.nightMode .primitive_keyword {
+  color: #f2994a;
 }
 
 /*  Mobile */
