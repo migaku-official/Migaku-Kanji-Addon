@@ -2,6 +2,7 @@ from collections import namedtuple
 
 import os
 import shutil
+import json
 
 import anki
 import aqt
@@ -57,6 +58,13 @@ class CardTypeData:
     def auto_card_refresh(self, value):
         config.get('auto_card_refresh')[self.label] = value
 
+    @property
+    def show_readings_front(self):
+        return config.get('card_show_readings_front').get(self.label, True)
+    @show_readings_front.setter
+    def show_readings_front(self, value):
+        config.get('card_show_readings_front')[self.label] = value
+
     def model_id(self):
         return aqt.mw.col.models.id_for_name(self.model_name)
 
@@ -98,9 +106,15 @@ class CardTypeData:
             template = aqt.mw.col.models.new_template(template_name)
             model['tmpls'].append(template)
 
+        # Compile settings
+        settings = {
+            'show_readings_front': self.show_readings_front
+        }
+        settings_html = F'<script>var settings = JSON.parse(\'{json.dumps(settings)}\');</script>'
+
         # Set template html
-        template['qfmt'] = model_file_data('front.html')
-        template['afmt'] = model_file_data('back.html')
+        template['qfmt'] = settings_html + '\n\n' + model_file_data('front.html')
+        template['afmt'] = settings_html + '\n\n' + model_file_data('back.html')
 
         aqt.mw.col.models.save(model)
 

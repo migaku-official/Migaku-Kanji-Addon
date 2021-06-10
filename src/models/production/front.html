@@ -81,4 +81,7 @@
     keywords = data.meanings;
   keywords_front_txt = keywords.length ? keywords.join(', ') : '-';  
   $('#keywords_front').html(keywords_front_txt);
+
+  if (!settings.show_readings_front)
+    $('rt').css({ visibility: 'hidden' });
 </script>

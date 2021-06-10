@@ -69,4 +69,7 @@
   $('.KanjiLookup-words').toggle(word_pts.length > 0);
   $('#words').html(word_pts.join(''));
   $('#words_front').html(word_front_pts.join(''));
+
+  if (!settings.show_readings_front)
+    $('rt').css({ visibility: 'hidden' });
 </script>

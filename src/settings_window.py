@@ -30,6 +30,10 @@ class CardTypeSettingsWidget(QWidget):
         deck_lyt.addWidget(self.deck_btn)
         deck_lyt.addStretch()
 
+        self.show_readings_front_box = QCheckBox('Show example word readings on the front of cards')
+        self.show_readings_front_box.setChecked(self.card_type.show_readings_front)
+        lyt.addWidget(self.show_readings_front_box)
+
         self.add_primitives_box = QCheckBox('Automatically create cards for unknown primitives')
         self.add_primitives_box.setChecked(self.card_type.add_primitives)
         lyt.addWidget(self.add_primitives_box)
@@ -54,6 +58,7 @@ class CardTypeSettingsWidget(QWidget):
 
     
     def save_to_config(self):
+        self.card_type.show_readings_front = self.show_readings_front_box.isChecked()
         self.card_type.add_primitives = self.add_primitives_box.isChecked()
         self.card_type.auto_card_creation = self.auto_card_creation_box.isChecked()
         self.card_type.auto_card_creation_msg = self.auto_card_creation_msg_box.isChecked()
@@ -119,6 +124,8 @@ class SettingsWindow(QDialog):
 
         for ct in CardType:
             aqt.mw.migaku_kanji_db.recalc_user_cards(ct)
+
+        CardType.upsert_all_models()
 
 
 

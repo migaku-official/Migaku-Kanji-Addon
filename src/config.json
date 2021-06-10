@@ -2,6 +2,7 @@
     "card_type_deck": {},
     "card_type_recognized": {},
     "card_type_learn_ahead": {},
+    "card_show_readings_front": {},
     "add_primitives": {},
     "auto_card_creation": {},
     "auto_card_creation_msg": {},
