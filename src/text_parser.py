@@ -56,9 +56,11 @@ def get_cjk_words(text, reading=False):
       dict_form = entry[7]
       if has_cjk(dict_form):
          if reading:
-            dict_form_reading, *_ = exporter.dictionary.initSearch(dict_form)
-            if dict_form_reading == '0':
-               dict_form_reading = ''
+            dict_form_reading = ''
+            dict_form_mecab_result = exporter.dictParser.getParsed(dict_form)
+            dict_form_result = exporter.wordData(dict_form_mecab_result)
+            if len(dict_form_result) == 1:
+               dict_form_reading = to_hiragana(dict_form_result[0][8])
             r.append( (dict_form, dict_form_reading) )
          else:
             r.append(dict_form)
