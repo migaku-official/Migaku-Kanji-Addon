@@ -178,16 +178,16 @@ li::before {
 .radical {
   position: relative;
   display: inline-block;
-  font-weight: 700;
-  font-size: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 5px !important;
   text-align: center;
-  line-height: 50px;
+  line-height: 50px !important;
   background: #e5f9ff;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: 20px !important;
+  margin-bottom: 20px !important;
   border: none;
   color: inherit;
   cursor: pointer;
@@ -197,14 +197,14 @@ li::before {
 .word {
   position: relative;
   display: inline-block;
-  font-weight: 700;
-  font-size: 20px;
-  border-radius: 5px;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  border-radius: 5px !important;
   text-align: center;
   background: #e5f9ff;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  padding: 10px 20px;
+  margin-right: 20px !important;
+  margin-bottom: 20px !important;
+  padding: 10px 20px !important;
   border: none;
   color: inherit;
   cursor: pointer;

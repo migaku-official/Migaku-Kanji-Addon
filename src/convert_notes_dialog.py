@@ -134,7 +134,9 @@ class ConvertNotesDialog(QDialog):
             if r != QMessageBox.Yes:
                 return
 
-        # get target deck ids
+        move_cards = self.move_cards_box.isChecked()
+
+        # get target deck ids if needed
         ct_deck_ids = {}
         for ct in CardType:
             box = self.card_type_boxes[ct]
@@ -145,8 +147,8 @@ class ConvertNotesDialog(QDialog):
             if deck is None:
                 util.error_msg(
                     self,
-                    F'No or invalid deck selected for {e.card_type.label} cards.\n\n'
-                    F'Please go to the settings and select the deck into which new {e.card_type.label} cards should be added.'
+                    F'No or invalid deck selected for {ct.label} cards.\n\n'
+                    F'Please go to the settings and select the deck into which new {ct.label} cards should be added.'
                 )
                 return
             ct_deck_ids[ct] = deck['id']
@@ -165,8 +167,6 @@ class ConvertNotesDialog(QDialog):
             char = char[0]
 
             char_nids[char] = nid
-
-        move_cards = self.move_cards_box.isChecked()
 
         aqt.mw.requireReset()
 

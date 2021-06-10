@@ -8,7 +8,7 @@ from . import config
 
 class NoteTypeSelectorWidget(QWidget):
 
-    def __init__(self, info_text=None, note_filter=lambda n: True, parent=None, no_margin=False):
+    def __init__(self, info_text=None, note_filter=lambda n: True, parent=None, no_margin=False, field_label='Field'):
         super(QWidget, self).__init__(parent)
 
         self.setFocusPolicy(Qt.NoFocus)
@@ -32,7 +32,7 @@ class NoteTypeSelectorWidget(QWidget):
 
         self.table = QTableWidget()
         self.table.setColumnCount(5)
-        self.table.setHorizontalHeaderLabels(['Deck', 'Note Type', 'Card Type', 'Field', ''])
+        self.table.setHorizontalHeaderLabels(['Deck', 'Note Type', 'Card Type', field_label, ''])
         self.table.verticalHeader().hide()
         lyt.addWidget(self.table)
 
@@ -161,7 +161,7 @@ class CardTypeRecognizedSelectorWidget(NoteTypeSelectorWidget):
                     'These cards will not be modified by this add-on.'
         note_filter = lambda n: not n.name.startswith('Migaku')
 
-        super().__init__(info_text, note_filter, parent, no_margin)
+        super().__init__(info_text, note_filter, parent, no_margin, field_label='Kanji Character Field')
         self.load_from_config()
 
 

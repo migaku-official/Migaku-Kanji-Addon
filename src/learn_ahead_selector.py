@@ -25,7 +25,7 @@ class LearnAheadSelectorWidget(QWidget):
         info_lbl = QLabel(
             F'Select for which decks kanji {self.card_type.label} cards should be created ahead. ' \
              'The value specifies for how many cards ahead kanji cards should be created. ' \
-             'Note that only cards/fields setup in the "Recognized Fields" tab are scanned.'
+             'Note that only cards/fields setup in the "Registered Fields" tab are scanned.'
         )
         info_lbl.setWordWrap(True)
         lyt.addWidget(info_lbl)

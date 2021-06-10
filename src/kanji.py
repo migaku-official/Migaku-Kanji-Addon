@@ -246,6 +246,12 @@ class KanjiDB:
 
     def on_note_update(self, note_id, deck_id):
 
+        try:
+            note = aqt.mw.col.getNote(note_id)
+        except Exception:
+            # Todo properly check if this is related to card import/export instead of this mess.
+            return
+
         # Could allow more features if Migaku JA isn't installed but too lazy rn
         if not text_parser.is_available():
             return
@@ -258,7 +264,6 @@ class KanjiDB:
 
         # Add words from note
         words = set()
-        note = aqt.mw.col.getNote(note_id)
 
         for wr in config.get('word_recognized', []):
             wr_note = wr['note']

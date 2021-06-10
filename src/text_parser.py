@@ -57,6 +57,8 @@ def get_cjk_words(text, reading=False):
       if has_cjk(dict_form):
          if reading:
             dict_form_reading, *_ = exporter.dictionary.initSearch(dict_form)
+            if dict_form_reading == '0':
+               dict_form_reading = ''
             r.append( (dict_form, dict_form_reading) )
          else:
             r.append(dict_form)

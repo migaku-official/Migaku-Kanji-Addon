@@ -155,7 +155,7 @@ def setup_browser_menu(browser):
     )
     browser.form.menuEdit.addAction(mark_known_action)
 
-    convert_notes_action = QAction('Convert Selected Notes To Kanji Cards', browser)
+    convert_notes_action = QAction('Convert Selected Notes To Migaku Kanji Cards', browser)
     convert_notes_action.triggered.connect(
         lambda: ConvertNotesDialog.show_modal(browser.selectedNotes(), browser)
     )

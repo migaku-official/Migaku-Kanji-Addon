@@ -34,7 +34,7 @@ class CardTypeSettingsWidget(QWidget):
         self.add_primitives_box.setChecked(self.card_type.add_primitives)
         lyt.addWidget(self.add_primitives_box)
 
-        self.auto_card_creation_box = QCheckBox('Automatically create kanji cards for unknown kanji in newly added cards (cards/fields must be setup in "Recognized Fields" tab)')
+        self.auto_card_creation_box = QCheckBox('Automatically create kanji cards for unknown kanji in newly added cards (cards/fields must be setup in "Registered Fields" tab)')
         self.auto_card_creation_box.setChecked(self.card_type.auto_card_creation)
         lyt.addWidget(self.auto_card_creation_box)
 
