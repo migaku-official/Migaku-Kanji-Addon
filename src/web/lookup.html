@@ -274,7 +274,7 @@
             keywords.push(p_data.heisig_keyword5);
           if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
             keywords.push(p_data.heisig_keyword6);
-          for (const pk of data.primitive_keywords)
+          for (const pk of p_data.primitive_keywords)
             keywords.push('<span class="primitive_keyword">' + pk + '</span>');
           var keywords_txt = keywords.length ? keywords.join(', ') : '-';
 
