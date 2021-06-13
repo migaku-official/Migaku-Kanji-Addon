@@ -65,6 +65,13 @@ class CardTypeData:
     def show_readings_front(self, value):
         config.get('card_show_readings_front')[self.label] = value
 
+    @property
+    def words_max(self):
+        return config.get('card_words_max').get(self.label, True)
+    @words_max.setter
+    def words_max(self, value):
+        config.get('card_words_max')[self.label] = value
+
     def model_id(self):
         return aqt.mw.col.models.id_for_name(self.model_name)
 
@@ -108,7 +115,8 @@ class CardTypeData:
 
         # Compile settings
         settings = {
-            'show_readings_front': self.show_readings_front
+            'show_readings_front': self.show_readings_front,
+            'words_max': self.words_max,
         }
         settings_html = F'<script>var settings = JSON.parse(\'{json.dumps(settings)}\');</script>'
 

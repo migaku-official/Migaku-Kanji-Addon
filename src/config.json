@@ -3,6 +3,7 @@
     "card_type_recognized": {},
     "card_type_learn_ahead": {},
     "card_show_readings_front": {},
+    "card_words_max": { "recognition": 4, "production": 4 },
     "add_primitives": {},
     "auto_card_creation": {},
     "auto_card_creation_msg": {},

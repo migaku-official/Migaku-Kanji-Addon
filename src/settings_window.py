@@ -34,6 +34,16 @@ class CardTypeSettingsWidget(QWidget):
         self.show_readings_front_box.setChecked(self.card_type.show_readings_front)
         lyt.addWidget(self.show_readings_front_box)
 
+        lyt_max_words = QHBoxLayout()
+        lyt.addLayout(lyt_max_words)
+        lyt_max_words.addWidget(QLabel('Maxium amount of example words on cards:'))
+        self.max_words_box = QSpinBox()
+        self.max_words_box.setMinimum(0)
+        self.max_words_box.setMaximum(10)
+        self.max_words_box.setValue(self.card_type.words_max)
+        lyt_max_words.addWidget(self.max_words_box)
+        lyt_max_words.addStretch()
+
         self.add_primitives_box = QCheckBox('Automatically create cards for unknown primitives')
         self.add_primitives_box.setChecked(self.card_type.add_primitives)
         lyt.addWidget(self.add_primitives_box)
@@ -59,6 +69,7 @@ class CardTypeSettingsWidget(QWidget):
     
     def save_to_config(self):
         self.card_type.show_readings_front = self.show_readings_front_box.isChecked()
+        self.card_type.words_max = self.max_words_box.value()
         self.card_type.add_primitives = self.add_primitives_box.isChecked()
         self.card_type.auto_card_creation = self.auto_card_creation_box.isChecked()
         self.card_type.auto_card_creation_msg = self.auto_card_creation_msg_box.isChecked()
