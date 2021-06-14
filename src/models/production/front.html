@@ -66,14 +66,17 @@
   var keywords = [];
   if (data.usr_keyword)
     keywords.push(data.usr_keyword);
-  if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
-    keywords.push(data.heisig_keyword5);
-  if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
-    keywords.push(data.heisig_keyword6);
-  for (const pk of data.primitive_keywords)
+  if (!settings.only_custom_keywords || keywords.length < 1)
   {
-    if (!keywords.includes(pk))
-      keywords.push('<span class="primitive_keyword">' + pk + '</span>');
+    if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
+      keywords.push(data.heisig_keyword5);
+    if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
+      keywords.push(data.heisig_keyword6);
+    for (const pk of data.primitive_keywords)
+    {
+      if (!keywords.includes(pk))
+        keywords.push('<span class="primitive_keyword">' + pk + '</span>');
+    }
   }
   keywords_txt = keywords.length ? keywords.join(', ') : '-';
   $('#keywords').html(keywords_txt);

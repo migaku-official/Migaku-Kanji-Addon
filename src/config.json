@@ -4,6 +4,8 @@
     "card_type_learn_ahead": {},
     "card_show_readings_front": {},
     "card_words_max": { "recognition": 4, "production": 4 },
+    "card_only_custom_keywords": {},
+    "card_only_custom_stories": {},
     "add_primitives": {},
     "auto_card_creation": {},
     "auto_card_creation_msg": {},

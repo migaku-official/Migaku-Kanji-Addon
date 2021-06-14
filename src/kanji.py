@@ -558,6 +558,7 @@ class KanjiDB:
         if len(c) < 1:
             return
         c = c[0]
+        note['Character'] = c
         
         r = self.get_kanji_result_data(c, card_ids=False)
         data_json = json.dumps(r, ensure_ascii=True)

@@ -44,6 +44,14 @@ class CardTypeSettingsWidget(QWidget):
         lyt_max_words.addWidget(self.max_words_box)
         lyt_max_words.addStretch()
 
+        self.only_custom_keywords_box = QCheckBox('If a custom keyword is set, hide predefined keywords')
+        self.only_custom_keywords_box.setChecked(self.card_type.only_custom_keywords)
+        lyt.addWidget(self.only_custom_keywords_box)
+
+        self.only_custom_stories_box = QCheckBox('If a custom story is set, hide predefined stories')
+        self.only_custom_stories_box.setChecked(self.card_type.only_custom_stories)
+        lyt.addWidget(self.only_custom_stories_box)
+
         self.add_primitives_box = QCheckBox('Automatically create cards for unknown primitives')
         self.add_primitives_box.setChecked(self.card_type.add_primitives)
         lyt.addWidget(self.add_primitives_box)
@@ -70,6 +78,8 @@ class CardTypeSettingsWidget(QWidget):
     def save_to_config(self):
         self.card_type.show_readings_front = self.show_readings_front_box.isChecked()
         self.card_type.words_max = self.max_words_box.value()
+        self.card_type.only_custom_keywords = self.only_custom_keywords_box.isChecked()
+        self.card_type.only_custom_stories = self.only_custom_stories_box.isChecked()
         self.card_type.add_primitives = self.add_primitives_box.isChecked()
         self.card_type.auto_card_creation = self.auto_card_creation_box.isChecked()
         self.card_type.auto_card_creation_msg = self.auto_card_creation_msg_box.isChecked()
