@@ -13,7 +13,7 @@ from .card_type import CardType
 
 # Handler for interactive card buttons
 
-def reviewer_bridge_hook(reviewer, cmd, _old):
+def reviewer_bridge_hook(reviewer: aqt.reviewer.Reviewer, cmd, _old):
 
     # mostly copy paste from lookup window
     # TODO: remove dupe
@@ -63,6 +63,24 @@ def reviewer_bridge_hook(reviewer, cmd, _old):
                 aqt.mw.migaku_kanji_db.set_character_usr_story(character, new_story)
                 aqt.mw.maybeReset()
             return
+        elif args[0] == 'delete_mark':
+            character = args[1]
+            card_type = CardType[args[2]]
+            ask = args[3] != 'false'
+
+            if ask:
+                r = QMessageBox.question(aqt.mw,
+                                         'Migaku Kanji',
+                                         F'Do you want to delete this card and marke the kanji {character} known for {card_type.label}?\n\n'
+                                          'You can press the shift key to bypass this confirmation.')
+                if r != QMessageBox.Yes:
+                    return
+
+            aqt.mw.requireReset()
+            aqt.mw.migaku_kanji_db.set_character_known(card_type, character)
+            reviewer.card.col.remNotes([reviewer.card.nid])
+            aqt.mw.migaku_kanji_db.recalc_user_cards(card_type)
+            aqt.mw.maybeReset()
 
     _old(reviewer, cmd)
 

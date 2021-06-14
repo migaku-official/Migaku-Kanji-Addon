@@ -100,6 +100,9 @@
       <h2>Radicals</h2>
       <span id="radicals"></span>
     </div>
+    <div class="KanjiLookup-actions">
+      <button onclick="delete_mark(event);" class="button secondary">Mark Known And Delete Card</button>
+    </div>
   </div>
 </div>
 
@@ -151,6 +154,11 @@
   function set_custom_story()
   {
     pycmd('custom_story-' + data.character + '-' + (data.usr_story ? data.usr_story : ''));
+  }
+
+  function delete_mark(evt)
+  {
+    pycmd('delete_mark-' + data.character + '-recognition-' + (evt.shiftKey ? 'false' : 'true'));
   }
 
   var data_b64 = document.getElementById('migaku_data').innerHTML;

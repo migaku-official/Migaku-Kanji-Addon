@@ -554,6 +554,10 @@ class KanjiDB:
 
     def refresh_note(self, note, do_flush=False):
         c = note['Character']
+        c = c.strip()
+        if len(c) < 1:
+            return
+        c = c[0]
         
         r = self.get_kanji_result_data(c, card_ids=False)
         data_json = json.dumps(r, ensure_ascii=True)
