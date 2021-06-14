@@ -8,6 +8,7 @@ from .create_cards_from_notes_dialog import CreateCardsFromNotesDialog
 from .mark_known_dialog import MarkKnownDialog, MarkKnownFromNotesDialog
 from .convert_notes_dialog import ConvertNotesDialog
 from . import reviewer
+from . import version
 
 
 import anki
@@ -135,8 +136,25 @@ def on_settings():
 aqt.mw.addonManager.setConfigAction(__name__, on_settings)
 
 
+def on_profile_open():
+    CardType.upsert_all_models()
+
+    util.assure_user_dir()
+    lrv_path = util.user_path('last_run_version')
+    try:
+        lrv = open(lrv_path, 'r').read()
+    except OSError:
+        lrv = ''
+
+    if lrv != version.VERSION_STRING:
+        on_recalc()
+
+    open(lrv_path, 'w').write(version.VERSION_STRING)
+
+
+
 aqt.mw.migaku_kanji_db = kanji.KanjiDB()
-aqt.gui_hooks.profile_did_open.append(CardType.upsert_all_models)
+aqt.gui_hooks.profile_did_open.append(on_profile_open)
 setup_menu()
 
 
