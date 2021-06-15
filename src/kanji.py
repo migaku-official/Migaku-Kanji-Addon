@@ -19,6 +19,14 @@ kanji_db_path = addon_path('kanji.db')
 user_db_path = user_path('user.db')
 
 
+def clean_character_field(f):
+    f = f.lstrip()
+    f = text_parser.html_regex.sub('', f)
+    if len(f):
+        return f[0]
+    return ''
+
+
 
 class KanjiDB:
 
@@ -189,7 +197,7 @@ class KanjiDB:
             for card_id in card_ids:
                 card = aqt.mw.col.getCard(card_id)
                 note = card.note()
-                character = note[entry_field]
+                character = clean_character_field(note[entry_field])
                 character_card_ids[character] = card_id
 
         self.crs.executemany(
@@ -553,8 +561,7 @@ class KanjiDB:
 
 
     def refresh_note(self, note, do_flush=False):
-        c = note['Character']
-        c = c.strip()
+        c = clean_character_field(note['Character'])
         if len(c) < 1:
             return
         c = c[0]
