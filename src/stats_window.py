@@ -82,6 +82,8 @@ class StatsWindow(QDialog):
 
     addon_web_uri = F'/_addons/{__name__.split(".")[0]}'    # uhhhhh
 
+    instance = None
+
     @classmethod
     def web_uri(cls, name):
         return cls.addon_web_uri + '/web/' + name
@@ -92,6 +94,8 @@ class StatsWindow(QDialog):
 
     def __init__(self, parent=None):
         super(QDialog, self).__init__(parent)
+
+        StatsWindow.instance = self
 
         self.word_kanji_ival = None
 
@@ -134,14 +138,43 @@ class StatsWindow(QDialog):
                 {aqt.mw.baseHTML()}
                 {bundled_js}
                 <style>
-                    @font-face {{ font-family: Rubik; src: url("{self.font_uri("rubik.ttf")}"); }}
+                    @font-face {{ font-family: Rubik; src: url("{self.font_uri("Rubik.ttf")}"); }}
                     @font-face {{ font-family: kanji_font1; src: url("{self.font_uri('yumin.ttf')}"); }}
                     @font-face {{ font-family: kanji_font2; src: url("{self.font_uri('yugothb.ttc')}"); }}
                     @font-face {{ font-family: kanji_font3; src: url("{self.font_uri('hgrkk.ttc')}"); }}
                 </style>
                 <link rel="stylesheet" href="{self.web_uri('stats_style.css')}">
                 <script src="{self.web_uri('jquery.js')}"></script>
-                <script>function kanji_click() {{ pycmd('show_kanji-' + $(this).text()); }}</script>
+                <script>
+                    let can_mark = false;
+
+                    function kanji_click(evt)
+                    {{
+                        if (evt.shiftKey)
+                        {{
+                            if (can_mark)
+                            {{
+                                if ($(this).hasClass('unknown'))
+                                {{
+                                    $(this).removeClass('unknown');
+                                    $(this).addClass('marked_known');
+                                    pycmd('mark-' + $(this).text() + '-1');
+                                }}
+                                    
+                                else if ($(this).hasClass('marked_known'))
+                                {{
+                                    $(this).removeClass('marked_known');
+                                    $(this).addClass('unknown');
+                                    pycmd('mark-' + $(this).text() + '-0');
+                                }}
+
+                                document.getSelection().removeAllRanges();
+                            }}
+                        }}
+                        else
+                            pycmd('show_kanji-' + $(this).text());
+                    }}
+                </script>
             <head>
 
             </head>
@@ -162,11 +195,11 @@ class StatsWindow(QDialog):
                             </div>
                             <div class="row">
                                 <span class="kanji learning">磨</span>
-                                <p>Learning (card with intervall less than 21 days)</p>
+                                <p>Learning (card with interval less than 21 days)</p>
                             </div>
                             <div class="row">
                                 <span class="kanji known">磨</span>
-                                <p>Known (card with intervall greater than 21 days)</p>
+                                <p>Known (card with interval greater than 21 days)</p>
                             </div>
 
                             <hr>
@@ -193,6 +226,26 @@ class StatsWindow(QDialog):
         self.options_box.currentIndexChanged.connect(self.refresh)
 
         self.refresh()
+    
+
+    def closeEvent(self, evt):
+        if StatsWindow.instance == self:
+            StatsWindow.instance = None
+        return QDialog.closeEvent(self, evt)
+
+
+    def keyPressEvent(self, evt):
+        if evt.key() == Qt.Key_F11:
+            self.toggle_fullscreen()
+            return
+        return QDialog.keyPressEvent(self, evt)
+
+
+    def toggle_fullscreen(self):
+        if self.isFullScreen():
+            self.showNormal()
+        else:
+            self.showFullScreen()
 
 
     def start_kanji_word_worker(self):
@@ -224,8 +277,9 @@ class StatsWindow(QDialog):
         order = option[3]
         level_decorator = option[4]
         only_with_card = option[5]
-        
-        if self.registered_btn.isChecked():
+        registered_cards = self.registered_btn.isChecked()
+
+        if registered_cards:
             if self.word_kanji_ival is None:
                 self.start_kanji_word_worker()
                 # automatically recalls refresh when done
@@ -286,27 +340,35 @@ class StatsWindow(QDialog):
         
 
         categories = OrderedDefaultListDict()
-        Entry = namedtuple('Entry', 'kanji card_id ival')
 
-        for (kanji, lvl, card_id) in r:
+        for (kanji, lvl, card_id_or_ival) in r:
 
             if level_decorator is None:
                 lvl = 0
 
             ivl_days = 0
+            card_id = None
+            marked_known = False
 
-            if card_id is not None:
-                if card_id < 0: # marked known
-                    ivl_days = 1337
-                else:
-                    try:
-                        card = aqt.mw.col.getCard(card_id)
-                        ivl_days = card_ival(card)
-                    except Exception:   # cannot be more specifc as this is different in anki versions
-                        card_id = None
-                        ivl_days = 0
+            if registered_cards:
+                card_id = 0 if card_id_or_ival else None
+                ivl_days = card_id_or_ival or 0
 
-            entry = Entry(kanji, card_id, ivl_days)
+            else:
+                card_id = card_id_or_ival
+
+                if card_id is not None:
+                    if card_id < 0: # marked known
+                        marked_known = True
+                    else:
+                        try:
+                            card = aqt.mw.col.getCard(card_id)
+                            ivl_days = card_ival(card)
+                        except Exception:   # cannot be more specifc as this is different in anki versions
+                            card_id = None
+                            ivl_days = 0
+
+            entry = (kanji, card_id, ivl_days, marked_known)
             categories[lvl].append(entry)
 
 
@@ -318,8 +380,11 @@ class StatsWindow(QDialog):
             category_good = 0
             entry_pts = []
 
-            for (kanji, card_id, ival) in entries:
-                if card_id is None:
+            for (kanji, card_id, ival, marked_known) in entries:
+                if marked_known:
+                    class_ = 'marked_known'
+                    category_good += 1
+                elif card_id is None:
                     class_ = 'unknown'
                 elif ival == 0:
                     class_ = 'unknown_with_card'
@@ -368,6 +433,8 @@ class StatsWindow(QDialog):
 
         html_pts.extend(category_pts)
 
+        can_mark = self.ct_selector.current_card_type is None
+        self.web.eval(F'can_mark = {"false" if can_mark else "true"};')
         self.web.eval('$("#dynamic").html(\'' + ''.join(html_pts) + '\');')
         self.web.eval('$(".kanjis_category .kanji").click(kanji_click);')
 
@@ -379,6 +446,14 @@ class StatsWindow(QDialog):
 
         if args[0] == 'show_kanji':
             LookupWindow.open(args[1])
+        elif args[0] == 'mark': 
+            card_type = self.ct_selector.current_card_type
+            if card_type is None:
+                return
+            character = args[1]
+            known = args[2] == '1'
+            aqt.mw.migaku_kanji_db.set_character_known(card_type, character, known)
+            # JS does the refreshing itself
         else:
             print('Unhandled bridge command:', args)
 
@@ -386,5 +461,9 @@ class StatsWindow(QDialog):
 
     @classmethod
     def open(cls):
-        window = StatsWindow(aqt.mw)
-        window.show()
+        if StatsWindow.instance:
+            StatsWindow.instance.raise_()
+            StatsWindow.instance.activateWindow()
+        else:
+            window = StatsWindow(aqt.mw)
+            window.show()

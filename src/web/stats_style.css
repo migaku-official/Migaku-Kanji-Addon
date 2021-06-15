@@ -181,7 +181,8 @@ label.toggle {
   border-color: #41d0b6;
 }
 
-.kanji.known {
+.kanji.known,
+.kanji.marked_known {
   border-color: #2cadf6;
 }
 
@@ -197,7 +198,8 @@ label.toggle {
   background: #41d0b6;
 }
 
-.fullColor .kanji.known {
+.fullColor .kanji.known,
+.fullColor .kanji.marked_known {
   background: #2cadf6;
 }
 
