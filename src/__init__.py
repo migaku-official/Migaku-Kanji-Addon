@@ -152,7 +152,6 @@ def on_profile_open():
     open(lrv_path, 'w').write(version.VERSION_STRING)
 
 
-
 aqt.mw.migaku_kanji_db = kanji.KanjiDB()
 aqt.gui_hooks.profile_did_open.append(on_profile_open)
 setup_menu()

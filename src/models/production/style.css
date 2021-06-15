@@ -143,8 +143,12 @@ h4 {
   font-weight: 700;
 }
 
+.fontExamplesHeader {
+  font-size: 16px;
+}
+
 .fontExample {
-  font-size: 32px;
+  font-size: 47px;
 }
 
 .tag {
