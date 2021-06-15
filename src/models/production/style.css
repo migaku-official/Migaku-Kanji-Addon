@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: Rubik;
-  src: url("_kanji_rubik.ttf");
+  src: url("_kanji_Rubik.ttf");
 }
 @font-face {
   font-family: kanji_font1;
@@ -163,6 +163,14 @@ h4 {
 
 .tag span {
   font-weight: 700;
+}
+
+.userData {
+  margin-bottom: 20px;
+}
+
+.userData:empty {
+  display:none;
 }
 
 li {

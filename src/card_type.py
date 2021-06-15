@@ -174,12 +174,12 @@ class CardType(metaclass=CardTypeMeta):
     
     Recognition = CardTypeData(
         model_name='Migaku Kanji Recognition',
-        fields=['Character', 'MigakuData', 'StrokeOrder'],
+        fields=['Character', 'UserData', 'MigakuData', 'StrokeOrder'],
     )
 
     Production = CardTypeData(
         model_name='Migaku Kanji Production',
-        fields=['Character', 'MigakuData', 'StrokeOrder'],
+        fields=['Character', 'UserData', 'MigakuData', 'StrokeOrder'],
     )
 
     @classmethod
