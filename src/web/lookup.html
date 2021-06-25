@@ -127,6 +127,11 @@
     pycmd('open-' + text);
   }
 
+  function search_dict(text)
+  {
+    pycmd('search_dict-' + text);
+  }
+
   function show_word_notes(notes)
   {
     pycmd('show_word-' + notes.join(','));
@@ -137,19 +142,26 @@
     search($(this).data('character'));
   }
 
-  function word_click(elem)
+  function word_click(evt)
   {
-    var word_idx = $(this).data('word-idx');
+    if (evt.shiftKey)
+    {
+      search_dict($(this).data('word-kanji'));
+    }
+    else
+    {
+      var word_idx = $(this).data('word-idx');
 
-    if (word_idx === undefined)
-      return;
+      if (word_idx === undefined)
+        return;
 
-    var idx = parseInt(word_idx);
+      var idx = parseInt(word_idx);
 
-    const we = data.words[idx];
-    const nids = we[2];
+      const we = data.words[idx];
+      const nids = we[2];
 
-    show_word_notes(nids);
+      show_word_notes(nids);
+    }
   }
 
   function recognition_card_click(evt)
@@ -308,7 +320,7 @@
         const w = we[0];
         const r = we[1];
 
-        word_pts.push('<button class="word" data-word-idx="' + i + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+        word_pts.push('<button class="word" data-word-kanji="' + w + '" data-word-idx="' + i + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>');
       }
       for (var i = 0; i < data.words_default.length; i++)
       {
@@ -324,7 +336,7 @@
         ))
           continue;
 
-          word_pts.push('<button class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
+        word_pts.push('<button class="word word_default" data-word-kanji="' + w + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>');
       }
       $('.KanjiLookup-words').toggle(word_pts.length > 0);
       $('#words').html(word_pts.join(''));

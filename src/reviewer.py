@@ -81,6 +81,9 @@ def reviewer_bridge_hook(reviewer: aqt.reviewer.Reviewer, cmd, _old):
             reviewer.card.col.remNotes([reviewer.card.nid])
             aqt.mw.migaku_kanji_db.recalc_user_cards(card_type)
             aqt.mw.maybeReset()
+        elif args[0] == 'search_dict':
+            word = args[1]
+            util.search_dict(word)
 
     _old(reviewer, cmd)
 

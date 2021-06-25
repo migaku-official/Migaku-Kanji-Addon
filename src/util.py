@@ -85,3 +85,10 @@ def open_browser_noteids(note_ids):
     except TypeError:
         search_str = str(note_ids)
     open_browser(F'"nid:{search_str}"')
+
+
+
+def search_dict(word):
+    if hasattr(aqt.mw, 'dictionaryInit'):
+        dict_plugin_main = sys.modules[aqt.mw.dictionaryInit.__module__]
+        dict_plugin_main.searchTermList([word])

@@ -174,6 +174,9 @@ class LookupWindow(QDialog):
             if r:
                 aqt.mw.migaku_kanji_db.set_character_usr_story(character, new_story)
                 self.refresh()
+        elif args[0] == 'search_dict':
+            word = args[1]
+            util.search_dict(word)
         else:
             print('Unhandled bridge command:', args)
 
