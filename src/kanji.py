@@ -3,7 +3,7 @@ import shutil
 import json
 import base64
 import sqlite3
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 
 import anki
 import aqt
@@ -13,6 +13,7 @@ from .errors import InvalidStateError, InvalidDeckError
 from .card_type import CardType
 from . import config
 from . import text_parser
+from .kanji_confirm_dialog import KanjiConfirmDialog
 
 
 kanji_db_path = addon_path('kanji.db')
@@ -349,7 +350,7 @@ class KanjiDB:
                                 self.refresh_note(note, do_flush=True)
 
         # Create new cards
-        added_cards_for_msg = {}
+        new_kanji_for_msg = OrderedDict()
 
         for ct in CardType:
             if not ct.auto_card_creation:
@@ -359,19 +360,14 @@ class KanjiDB:
             new_chars = self.new_characters(ct, kanji)
 
             if len(new_chars):
-                self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
-                self.recalc_user_cards(ct)
-
                 if ct.auto_card_creation_msg:
-                    added_cards_for_msg[ct] = new_chars
+                    new_kanji_for_msg[ct] = new_chars
+                else:
+                    self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
 
-        if len(added_cards_for_msg):
-            msg_parts = []
-            for ct in added_cards_for_msg:
-                msg_parts.append(F'Added kanji {ct.label} cards:\n{"".join(added_cards_for_msg[ct])}')
-            msg = '\n\n'.join(msg_parts)
-
-            aqt.qt.QMessageBox.information(None, 'Migaku Kanji', msg)
+        if len(new_kanji_for_msg):
+            dlg = KanjiConfirmDialog(new_kanji_for_msg, aqt.mw)
+            dlg.exec_()
 
 
     def refresh_learn_ahead(self):

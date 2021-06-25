@@ -62,7 +62,7 @@ class CardTypeSettingsWidget(QWidget):
         self.auto_card_creation_box.setChecked(self.card_type.auto_card_creation)
         lyt.addWidget(self.auto_card_creation_box)
 
-        self.auto_card_creation_msg_box = QCheckBox('Show a notification if kanji cards get added automatically')
+        self.auto_card_creation_msg_box = QCheckBox('Confirm kanji cards that get added automatically')
         self.auto_card_creation_msg_box.setChecked(self.card_type.auto_card_creation_msg)
         lyt.addWidget(self.auto_card_creation_msg_box)
 
