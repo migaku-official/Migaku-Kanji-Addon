@@ -74,6 +74,10 @@ class CardTypeSettingsWidget(QWidget):
         self.note_type_selector = CardTypeRecognizedSelectorWidget(self.card_type, no_margin=True)
         lyt.addWidget(self.note_type_selector)
 
+        reset_marked_knwon_btn = QPushButton('Reset Kanji Marked Knwon')
+        reset_marked_knwon_btn.clicked.connect(self.on_reset_marked_known)
+        lyt.addWidget(reset_marked_knwon_btn)
+
     
     def save_to_config(self):
         self.card_type.show_readings_front = self.show_readings_front_box.isChecked()
@@ -103,6 +107,18 @@ class CardTypeSettingsWidget(QWidget):
         if r.name:
             self.card_type.deck_name = r.name
             self.deck_btn.setText(self.card_type.deck_name or '<None>')
+
+
+    def on_reset_marked_known(self):
+        r = QMessageBox.question(self,
+                                'Migaku Kanji',
+                                F'Do you really want to reset kanji marked known for {self.card_type.label}?<br><br>'
+                                '<b>They will not be recoverable.</b>',
+                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if r != QMessageBox.Yes:
+            return
+        aqt.mw.migaku_kanji_db.reset_marked_known(self.card_type)
+        QMessageBox.information(self, 'Migaku Kanji', F'Kanji marked known for {self.card_type.label} were reset.')
 
 
 
@@ -135,6 +151,24 @@ class SettingsWindow(QDialog):
             ct_widget = CardTypeSettingsWidget(ct)
             self.card_type_widgets.append(ct_widget)
             tabs.addTab(ct_widget, ct.name)
+   
+        general_tab = QWidget()
+        tabs.addTab(general_tab, 'General')
+
+        general_lyt = QVBoxLayout()
+        general_tab.setLayout(general_lyt)
+
+        reset_custom_keywords_btn = QPushButton('Reset Custom Keywords')
+        reset_custom_keywords_btn.clicked.connect(self.on_reset_custom_keywords)
+        general_lyt.addWidget(reset_custom_keywords_btn)
+
+        reset_custom_stories_btn = QPushButton('Reset Custom Stories')
+        reset_custom_stories_btn.clicked.connect(self.on_reset_custom_stories)
+        general_lyt.addWidget(reset_custom_stories_btn)
+
+        reset_db_btn = QPushButton('Reset Database')
+        reset_db_btn.clicked.connect(self.on_reset_db)
+        general_lyt.addWidget(reset_db_btn)
 
 
     def closeEvent(self, event):
@@ -148,6 +182,43 @@ class SettingsWindow(QDialog):
 
         CardType.upsert_all_models()
 
+
+    def on_reset_db(self):
+        r = QMessageBox.question(self,
+                                'Migaku Kanji',
+                                'Do you really want to reset the Migaku Kanji Database?<br><br>'
+                                '<b>All kanji manually marked known, custom stories and keywords will be lost!</b><br><br>'
+                                'Kanji cards and their progress will remain.',
+                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if r != QMessageBox.Yes:
+            return
+        aqt.mw.migaku_kanji_db.reset()
+        QMessageBox.information(self, 'Migaku Kanji', 'The Migaku Kanji database was reset.')
+
+
+    def on_reset_custom_keywords(self):
+        r = QMessageBox.question(self,
+                                'Migaku Kanji',
+                                'Do you really want to reset all custom keywords?<br><br>'
+                                '<b>They will not be recoverable.</b>',
+                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if r != QMessageBox.Yes:
+            return
+        aqt.mw.migaku_kanji_db.reset_custom_keywods()
+        QMessageBox.information(self, 'Migaku Kanji', 'Custom keywords were reset.')
+
+
+    def on_reset_custom_stories(self):
+        r = QMessageBox.question(self,
+                                'Migaku Kanji',
+                                'Do you really want to reset all custom stories?<br><br>'
+                                '<b>They will not be recoverable.</b>',
+                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if r != QMessageBox.Yes:
+            return
+        aqt.mw.migaku_kanji_db.reset_custom_stories()
+        QMessageBox.information(self, 'Migaku Kanji', 'Custom stories were reset.')
+        
 
 
     @classmethod

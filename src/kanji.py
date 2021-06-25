@@ -86,6 +86,26 @@ class KanjiDB:
         self.con.close()
 
 
+    def reset(self):
+        for ct in CardType:
+            self.crs.execute(F'DELETE FROM usr.{ct.label}_card_ids')
+        self.crs.execute('DELETE FROM usr.words')
+        self.crs.execute('DELETE FROM usr.keywords')
+        self.crs.execute('DELETE FROM usr.stories')
+
+
+    def reset_marked_known(self, card_type):
+        self.crs.execute(F'DELETE FROM usr.{card_type.label}_card_ids WHERE card_id=-1')
+
+
+    def reset_custom_keywods(self):
+        self.crs.execute('DELETE FROM usr.keywords')
+
+
+    def reset_custom_stories(self):
+        self.crs.execute('DELETE FROM usr.stories')
+
+
     # Recursivly finds new characters given a specific character
     def _new_characters_find(self, card_type, character, out, max_characters=-1):
         # Check if max characters already reached
