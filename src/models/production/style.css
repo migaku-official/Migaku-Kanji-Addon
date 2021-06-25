@@ -1,26 +1,5 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-@font-face {
-  font-family: Rubik;
-  src: url("_kanji_Rubik.ttf");
-}
-@font-face {
-  font-family: kanji_font1;
-  src: url("_kanji_SawarabiGothic.ttf");
-}
-@font-face {
-  font-family: kanji_font2;
-  src: url("_kanji_nagayama_kai08.otf");
-}
-@font-face {
-  font-family: kanji_font3;
-  src: url("_kanji_ArmedBanana.ttf");
-}
-@font-face {
-  font-family: kanji_font4;
-  src: url("_kanji_KouzanGyousho.otf");
-}
-
 #migaku_data {
   display: none;
 }
@@ -608,6 +587,6 @@ button.radical,
 button.word {
   border: inherit !important;
   box-shadow: inherit !important;
-  font-family: "rubik";
+  font-family: "Rubik";
   border-radius: 5px !important;
 }

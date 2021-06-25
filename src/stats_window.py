@@ -8,7 +8,7 @@ from aqt.qt import *
 from . import util
 from . import config
 from . import text_parser
-
+from . import fonts
 from .card_type import CardType
 from .lookup_window import LookupWindow
 from .card_type_radio_buttons import CardTypeRadioButtons
@@ -80,17 +80,12 @@ class StatsWindow(QDialog):
         ('All with Card in Collection',             'frequency_rank', None,                         'ASC',  None,                   True ),
     ]
 
-    addon_web_uri = F'/_addons/{__name__.split(".")[0]}'    # uhhhhh
-
     instance = None
 
     @classmethod
     def web_uri(cls, name):
-        return cls.addon_web_uri + '/web/' + name
+        return util.addon_web_base + '/web/' + name
 
-    @classmethod
-    def font_uri(cls, name):
-        return cls.addon_web_uri + '/fonts/' + name
 
     def __init__(self, parent=None):
         super(QDialog, self).__init__(parent)
@@ -138,10 +133,7 @@ class StatsWindow(QDialog):
                 {aqt.mw.baseHTML()}
                 {bundled_js}
                 <style>
-                    @font-face {{ font-family: Rubik; src: url("{self.font_uri("Rubik.ttf")}"); }}
-                    @font-face {{ font-family: kanji_font1; src: url("{self.font_uri('yumin.ttf')}"); }}
-                    @font-face {{ font-family: kanji_font2; src: url("{self.font_uri('yugothb.ttc')}"); }}
-                    @font-face {{ font-family: kanji_font3; src: url("{self.font_uri('hgrkk.ttc')}"); }}
+                    {fonts.ui_css()}
                 </style>
                 <link rel="stylesheet" href="{self.web_uri('stats_style.css')}">
                 <script src="{self.web_uri('jquery.js')}"></script>

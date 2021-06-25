@@ -7,6 +7,7 @@ import aqt
 from aqt.qt import *
 
 from . import util
+from . import fonts
 from .card_type import CardType
 
 
@@ -15,16 +16,11 @@ class LookupWindow(QDialog):
 
     instance = None
 
-    addon_web_uri = F'/_addons/{__name__.split(".")[0]}'    # uhhhhh
-    kanjivg_uri = addon_web_uri + '/kanjivg/'
+    kanjivg_uri = util.addon_web_base + '/kanjivg/'
 
     @classmethod
     def web_uri(cls, name):
-        return cls.addon_web_uri + '/web/' + name
-
-    @classmethod
-    def font_uri(cls, name):
-        return cls.addon_web_uri + '/fonts/' + name
+        return util.addon_web_base + '/web/' + name
 
 
     def __init__(self, parent=None):
@@ -77,16 +73,14 @@ class LookupWindow(QDialog):
         # this mess isn't needed with updated styles fix eventually~~~ can also use bundled jquery then lol
         bundled_js = self.web.bundledScript('webview.js')
 
+        fonts_css = fonts.ui_css()
+
         html_head = \
              '<head>' \
             F'{aqt.mw.baseHTML()}' \
             F'{bundled_js}' \
              '<style>\n' \
-            F'@font-face {{ font-family: Rubik; src: url("{self.font_uri("Rubik.ttf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font1; src: url("{self.font_uri("SawarabiGothic.ttf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font2; src: url("{self.font_uri("nagayama_kai08.otf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font3; src: url("{self.font_uri("ArmedBanana.ttf")}"); }}\n' \
-            F'@font-face {{ font-family: kanji_font4; src: url("{self.font_uri("KouzanGyousho.otf")}"); }}\n' \
+            F'{fonts_css}\n' \
              '\n</style>' \
             F'<link rel="stylesheet" href="{self.web_uri("lookup_style.css")}">' \
             F'<script src="{self.web_uri("jquery.js")}"></script>' \
@@ -286,6 +280,13 @@ class LookupWindow(QDialog):
             search_text = search_text.strip()
             if search_text:
                 cls.instance.search(search_text)
+
+    @classmethod
+    def close_instance(cls):
+        if cls.instance is None:
+            return
+        cls.instance.close()
+        cls.instance = None
 
 
 

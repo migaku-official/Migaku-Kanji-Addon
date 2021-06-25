@@ -5,9 +5,11 @@ from aqt.qt import *
 from . import util
 from . import config
 from . import text_parser
+from . import fonts
 from .card_type import CardType
 from .note_type_selector import CardTypeRecognizedSelectorWidget, WordRecognizedSelectorWidget
 from .learn_ahead_selector import LearnAheadSelectorWidget
+from .lookup_window import LookupWindow
 from .version import VERSION_STRING
 
 
@@ -122,6 +124,66 @@ class CardTypeSettingsWidget(QWidget):
 
 
 
+class FontSelectWidget(QWidget):
+
+    def __init__(self, idx, parent=None):
+        super(QWidget, self).__init__(parent)
+
+        self.idx = idx
+
+        lyt = QVBoxLayout()
+        self.setLayout(lyt)
+
+        tlyt = QHBoxLayout()
+        lyt.addLayout(tlyt)
+
+        tlyt.addWidget(QLabel(F'Font {idx+1}:'))
+
+        self.name_lbl = QLabel()
+        tlyt.addWidget(self.name_lbl)
+
+        tlyt.addStretch()
+
+        set_btn = QPushButton('Set')
+        set_btn.clicked.connect(self.set_font)
+        tlyt.addWidget(set_btn)
+
+        reset_btn = QPushButton('Reset')
+        reset_btn.clicked.connect(self.reset_font)
+        tlyt.addWidget(reset_btn)
+
+        self.example_lbl = QLabel('日国会年大閣海本中欧')
+        self.pixel_size = self.example_lbl.font().pixelSize()
+        lyt.addWidget(self.example_lbl)
+
+        self.update()
+
+
+    def set_font(self):
+        path, _ = QFileDialog.getOpenFileName(self, 'Migaku Kanji - Select Font', filter='Fonts (*.ttf *.otf)')
+        if path and os.path.exists(path):
+            fonts.set_path(self.idx, path)
+            self.update()
+
+
+    def reset_font(self):
+        fonts.set_path(self.idx, None)
+        self.update()
+
+
+    def update(self):
+        path = fonts.get_path(self.idx)
+        name = os.path.splitext(os.path.basename(path))[0]
+        self.name_lbl.setText(name) # fallback
+
+        font_id = QFontDatabase.addApplicationFont(path)
+        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        font = QFont(font_family, 40)
+
+        self.name_lbl.setText(font_family)
+        self.example_lbl.setFont(font)
+
+
 class SettingsWindow(QDialog):
 
     def __init__(self, parent=None):
@@ -157,6 +219,13 @@ class SettingsWindow(QDialog):
 
         general_lyt = QVBoxLayout()
         general_tab.setLayout(general_lyt)
+
+        for i in range(fonts.font_num):
+            general_lyt.addWidget(
+                FontSelectWidget(i)
+            )
+
+        general_lyt.addStretch()
 
         reset_custom_keywords_btn = QPushButton('Reset Custom Keywords')
         reset_custom_keywords_btn.clicked.connect(self.on_reset_custom_keywords)
@@ -223,5 +292,6 @@ class SettingsWindow(QDialog):
 
     @classmethod
     def show_modal(cls, parent=None):
+        LookupWindow.close_instance()     # To make sure everything updates
         dlg = cls(parent=parent)
         return dlg.exec_()

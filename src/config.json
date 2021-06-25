@@ -16,5 +16,6 @@
         { "deck": "All", "note": "Migaku Japanese Audio Sentence", "card": 0, "field": "Sentence" },
         { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Sentence" }
     ],
-    "cards_from_notes_last_checked": {}
+    "cards_from_notes_last_checked": {},
+    "fonts": [null, null, null, null]
 }

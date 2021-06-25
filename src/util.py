@@ -2,6 +2,7 @@ import os
 from collections import OrderedDict
 
 import anki
+import aqt
 from aqt.qt import *
 
 from .errors import InvalidDeckError
@@ -9,7 +10,7 @@ from .errors import InvalidDeckError
 
 addon_dir = os.path.dirname(__file__)
 user_files_dir = os.path.join(addon_dir, 'user_files')
-
+addon_web_base = F'/_addons/{__name__.split(".")[0]}'    # uhhh
 
 def assure_user_dir():
     os.makedirs(user_files_dir, exist_ok=True)
@@ -19,6 +20,13 @@ def addon_path(*path_parts):
 
 def user_path(*path_parts):
     return os.path.join(user_files_dir, *path_parts)
+
+def col_media_path(*path_parts):
+    return os.path.join(aqt.mw.col.media.dir(), *path_parts)
+
+def addon_web_uri(*path_parts):
+    return addon_web_base + '/' + '/'.join(path_parts)
+
 
 def make_pixmap(*file_parts):
     path = addon_path('img', *file_parts)

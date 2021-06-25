@@ -9,6 +9,7 @@ import aqt
 
 from .util import addon_path
 from . import config
+from . import fonts
 
 
 
@@ -114,7 +115,9 @@ class CardTypeData:
                 aqt.mw.col.models.add_field(model, field)
 
         # Set CSS
-        model['css'] = model_file_data('style.css')
+        font_css = fonts.card_css()
+        static_css = model_file_data('style.css')
+        model['css'] = font_css + '\n\n' + static_css
 
         # Get or create standard template
         template_name = 'Standard'
@@ -186,15 +189,4 @@ class CardType(metaclass=CardTypeMeta):
     def upsert_all_models(cls):
         for ctd in cls:
             ctd.upsert_model()
-
-        fonts = ['SawarabiGothic.ttf', 'nagayama_kai08.otf', 'ArmedBanana.ttf', 'KouzanGyousho.otf', 'Rubik.ttf']
-
-        for font_name in fonts:
-            font_name_col = '_kanji_' + font_name
-
-            font_path = addon_path('fonts', font_name)
-            font_path_col = os.path.join(aqt.mw.col.media.dir(), font_name_col)
-
-            if os.path.exists(font_path):
-                if not os.path.exists(font_path_col):
-                    shutil.copy(font_path, font_path_col)
+        fonts.assure_col_media()
