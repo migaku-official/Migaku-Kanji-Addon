@@ -333,6 +333,20 @@ li::before {
   width: 360px;
 }
 
+@media (max-width: 460px) {
+  .playerContainer {
+    transform-origin: left;
+    transform: scale(.8);
+  }
+}
+
+@media (max-width:360px) {
+  .playerContainer {
+    transform-origin: left;
+    transform: scale(.6);
+  }
+}
+
 .playerControls button {
   background: none;
   border: none;

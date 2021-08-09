@@ -6,15 +6,21 @@
     "card_words_max": { "recognition": 4, "production": 4 },
     "card_only_custom_keywords": {},
     "card_only_custom_stories": {},
+    "card_hide_default_words": {},
+    "card_hide_keywords": {},
     "add_primitives": {},
     "auto_card_creation": {},
     "auto_card_creation_msg": {},
     "auto_card_refresh": {},
     "word_recognized": [
         { "deck": "All", "note": "Migaku Japanese Sentence", "card": 0, "field": "Sentence" },
+        { "deck": "All", "note": "Migaku Japanese Sentence", "card": 0, "field": "Target Word" },
         { "deck": "All", "note": "Migaku Japanese Vocabulary", "card": 0, "field": "Sentence" },
+        { "deck": "All", "note": "Migaku Japanese Vocabulary", "card": 0, "field": "Target Word" },
         { "deck": "All", "note": "Migaku Japanese Audio Sentence", "card": 0, "field": "Sentence" },
-        { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Sentence" }
+        { "deck": "All", "note": "Migaku Japanese Audio Sentence", "card": 0, "field": "Target Word" },
+        { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Sentence" },
+        { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Target Word" }
     ],
     "cards_from_notes_last_checked": {},
     "fonts": [null, null, null, null]

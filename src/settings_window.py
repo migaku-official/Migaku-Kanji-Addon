@@ -54,6 +54,15 @@ class CardTypeSettingsWidget(QWidget):
         self.only_custom_stories_box.setChecked(self.card_type.only_custom_stories)
         lyt.addWidget(self.only_custom_stories_box)
 
+        self.hide_default_words_box = QCheckBox('Only show words from your collection, hide default words')
+        self.hide_default_words_box.setChecked(self.card_type.hide_default_words)
+        lyt.addWidget(self.hide_default_words_box)
+
+        if self.card_type == CardType.Production:
+            self.hide_keywords_box = QCheckBox('Hide keywords (for advanced users, if you already know the example words and recognize the Kanji well)')
+            self.hide_keywords_box.setChecked(self.card_type.hide_keywords)
+            lyt.addWidget(self.hide_keywords_box)
+
         self.add_primitives_box = QCheckBox('Automatically create cards for unknown primitives')
         self.add_primitives_box.setChecked(self.card_type.add_primitives)
         lyt.addWidget(self.add_primitives_box)
@@ -86,6 +95,9 @@ class CardTypeSettingsWidget(QWidget):
         self.card_type.words_max = self.max_words_box.value()
         self.card_type.only_custom_keywords = self.only_custom_keywords_box.isChecked()
         self.card_type.only_custom_stories = self.only_custom_stories_box.isChecked()
+        self.card_type.hide_default_words = self.hide_default_words_box.isChecked()
+        if self.card_type == CardType.Production:
+            self.card_type.hide_keywords = self.hide_keywords_box.isChecked()
         self.card_type.add_primitives = self.add_primitives_box.isChecked()
         self.card_type.auto_card_creation = self.auto_card_creation_box.isChecked()
         self.card_type.auto_card_creation_msg = self.auto_card_creation_msg_box.isChecked()
@@ -186,6 +198,8 @@ class FontSelectWidget(QWidget):
 
 class SettingsWindow(QDialog):
 
+    KANJI_FORMS_URL = 'https://docs.google.com/spreadsheets/d/1aw0ihw0RpmejWLTUynrFYjmOfLdzcPVrDX7UM50lwBY/edit#gid=2109245908'
+
     def __init__(self, parent=None):
         super(QDialog, self).__init__(parent)
 
@@ -195,6 +209,11 @@ class SettingsWindow(QDialog):
 
         lyt = QVBoxLayout()
         self.setLayout(lyt)
+
+        if self.KANJI_FORMS_URL:
+            kanji_forms_lbl = QLabel(F'You can suggest changes to the Kanji dataset <a href="{self.KANJI_FORMS_URL}">here</a>.')
+            kanji_forms_lbl.setWordWrap(True)
+            lyt.addWidget(kanji_forms_lbl)
 
         if not text_parser.is_available():
             info_lbl = QLabel('<b>WARNING: The Migaku Japanese add-on is not installed or enabled. Multiple features will be unavailable.</b>')
@@ -206,8 +225,18 @@ class SettingsWindow(QDialog):
 
         self.card_type_widgets = []
 
-        self.words_recognized = WordRecognizedSelectorWidget()
-        tabs.addTab(self.words_recognized, 'Registered Fields')
+        registerd_fields_widget = QWidget()
+        registerd_fields_layout = QVBoxLayout()
+        registerd_fields_widget.setLayout(registerd_fields_layout)
+
+        self.words_recognized = WordRecognizedSelectorWidget(no_margin=True)
+        registerd_fields_layout.addWidget(self.words_recognized)
+
+        self.only_seen_words_box = QCheckBox('Only use words from already seen cards as example words (Beta)')
+        self.only_seen_words_box.setChecked(config.get('only_seen_words', False))
+        registerd_fields_layout.addWidget(self.only_seen_words_box)
+
+        tabs.addTab(registerd_fields_widget, 'Registered Fields')
 
         for ct in CardType:
             ct_widget = CardTypeSettingsWidget(ct)
@@ -242,6 +271,7 @@ class SettingsWindow(QDialog):
 
     def closeEvent(self, event):
         self.words_recognized.save_to_config()
+        config.set('only_seen_words', self.only_seen_words_box.isChecked())
         for ct_widget in self.card_type_widgets:
             ct_widget.save_to_config()
         config.write()

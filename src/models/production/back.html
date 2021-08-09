@@ -281,13 +281,16 @@
       continue;
 
     word_pts.push('<button class="word word_default" data-word-kanji="' + w + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>');
-    if (word_front_pts.length < max_words_front)
-      word_front_pts.push('<div class="word_front"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+    if (!settings.hide_default_words && word_front_pts.length < max_words_front)
+      word_front_pts.push('<div class="word_front word_front_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
   }
   $('.KanjiLookup-words').toggle(word_pts.length > 0);
   $('#words').html(word_pts.join(''));
   $('#words_front').html(word_front_pts.join(''));
   $('.word').click(word_click);
+
+  if (settings.hide_keywords && word_front_pts.length > 0)
+    document.getElementById('keywords_front').style.display = 'none';
 
   $('.KanjiLookup-radicals').toggle(data.radicals.length > 0);
   $('#radicals').html(

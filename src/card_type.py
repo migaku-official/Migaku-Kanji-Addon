@@ -87,6 +87,20 @@ class CardTypeData:
     def only_custom_stories(self, value):
         config.get('card_only_custom_stories')[self.label] = value
 
+    @property
+    def hide_default_words(self):
+        return config.get('card_hide_default_words').get(self.label, False)
+    @hide_default_words.setter
+    def hide_default_words(self, value):
+        config.get('card_hide_default_words')[self.label] = value
+
+    @property
+    def hide_keywords(self):
+        return config.get('card_hide_keywords').get(self.label, False)
+    @hide_keywords.setter
+    def hide_keywords(self, value):
+        config.get('card_hide_keywords')[self.label] = value
+
     def model_id(self):
         return aqt.mw.col.models.id_for_name(self.model_name)
 
@@ -136,6 +150,8 @@ class CardTypeData:
             'words_max': self.words_max,
             'only_custom_keywords': self.only_custom_keywords,
             'only_custom_stories': self.only_custom_stories,
+            'hide_default_words': self.hide_default_words,
+            'hide_keywords': self.hide_keywords,
         }
         settings_html = F'<script>var settings = JSON.parse(\'{json.dumps(settings)}\');</script>'
 

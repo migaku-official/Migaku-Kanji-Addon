@@ -178,7 +178,7 @@ class CardTypeRecognizedSelectorWidget(NoteTypeSelectorWidget):
 
 class WordRecognizedSelectorWidget(NoteTypeSelectorWidget):
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, no_margin=False):
         info_text = 'The Registered Fields are used for multiple purposes:<ul>' \
                     '<li>These fields are used to extract example words shown in the lookup browser and on kanji cards</li>' \
                     '<li>If you have learn-ahead decks specified, only these fields are scanned</li>' \
@@ -189,7 +189,7 @@ class WordRecognizedSelectorWidget(NoteTypeSelectorWidget):
         invalid_notes = [ct.model_name for ct in CardType]
         note_filter = lambda n: n.name not in invalid_notes
 
-        super().__init__(info_text, note_filter, parent)
+        super().__init__(info_text, note_filter, parent, no_margin)
         self.load_from_config()
 
 

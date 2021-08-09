@@ -16,6 +16,16 @@
   margin-right: 20px;
 }
 
+.word_front.word_front_default,
+.word_front.word_front_default {
+  color: #404653;
+}
+
+.ankidroid_dark_mode .word_front.word_front_default,
+.nightMode .word_front.word_front_default {
+  color: #aeb6cc;
+}
+
 .font-1 {
   font-family: "kanji_font1";
 }
@@ -63,7 +73,7 @@ body.nightMode {
 .KanjiLookup-container {
   max-width: 1000px;
   margin: auto;
-  padding: 100px 50px 0;
+  padding: 50px 25px 25px;
 }
 
 .productionCard-front {
@@ -349,6 +359,20 @@ li::before {
   border-radius: 14px;
   height: 360px;
   width: 360px;
+}
+
+@media (max-width: 460px) {
+  .playerContainer {
+    transform-origin: left;
+    transform: scale(.8);
+  }
+}
+
+@media (max-width:360px) {
+  .playerContainer {
+    transform-origin: left;
+    transform: scale(.6);
+  }
 }
 
 .playerControls button {

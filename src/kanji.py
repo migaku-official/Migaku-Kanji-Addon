@@ -248,6 +248,8 @@ class KanjiDB:
             find_filter = [F'"note:{entry_note}"', F'"card:{entry_card+1}"']
             if entry_deck != 'All':
                 find_filter.append(F'"deck:{entry_deck}"')
+            if config.get('only_seen_words'):
+                find_filter.append('(is:learn OR is:review)')
 
             entry_note_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
 
