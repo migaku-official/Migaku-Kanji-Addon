@@ -1,75 +1,128 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ======================
+START - Migaku markup
+- @version v0.6.1
+======================= -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Class KanjiLookup--dark only in dark mode -->
-<div class="KanjiLookup--dark">
-  <!-- <div> -->
-  <div class="KanjiLookup-container productionCard-front">
-    <h1 class="keyword keyword-kanji font-1"></h1>
-    <h1 class="keyword keyword-kanji font-2"></h1>
-    <h1 class="keyword keyword-kanji font-3"></h1>
-    <h1 class="keyword keyword-kanji font-4"></h1>
-    <div id="words_front"></div>
-  </div>
+<!-- START - Migaku header -->
+<div class="migaku-header">
+	<img class="migaku-header__logo" src="/_migaku-logo.svg" alt="Logo" />
+</div>
+<!-- END - Migaku header -->
+
+<div class="layout__container">
+	<div class="layout__above">
+		<!-- START - Character and examples -->
+		<div class="character-and-examples__container">
+			<ul class="character-and-examples__list">
+				<li class="font-1 keyword-kanji character-and-examples__character"></li>
+				<li class="font-2 keyword-kanji character-and-examples__character"></li>
+				<li class="font-3 keyword-kanji character-and-examples__character"></li>
+				<li class="font-4 keyword-kanji character-and-examples__character"></li>
+			</ul>
+
+			<div id="words_front" class="character-and-examples__list"></div>
+		</div>
+		<!-- END - Character and examples -->
+	</div>
+
+	<main class="layout__main">
+		<div class="layout__content"></div>
+
+		<aside class="layout__aside"></aside>
+	</main>
+
+	<div class="layout__below"></div>
+
+	<!-- START - Migaku data -->
+	<div id="migaku_data">{{MigakuData}}</div>
+	<!-- START - Migaku end -->
 </div>
 
-
-<div id="migaku_data">{{MigakuData}}</div>
+<!-- START - Addon script, Recognition, front -->
+<!-- NOTE: Unchanged -->
 <script>
-  function wrap_list(list, intro, outro)
-  {
-    if (list.length < 1)
-      return '-';
-    return intro + list.join(outro+intro) + outro;
-  }
+	function wrap_list(list, intro, outro) {
+		if (list.length < 1) return '-';
+		return intro + list.join(outro + intro) + outro;
+	}
 
-  var data_b64 = document.getElementById('migaku_data').innerHTML;
-  data_b64 = data_b64.replace( /(<([^>]+)>)/ig, '');  // Needed because of Migaku Editor :|
-  var data_json = atob(data_b64);
-  var data = JSON.parse(data_json);
+	var data_b64 = document.getElementById('migaku_data').innerHTML;
+	data_b64 = data_b64.replace(/(<([^>]+)>)/gi, ''); // Needed because of Migaku Editor :|
+	var data_json = atob(data_b64);
+	var data = JSON.parse(data_json);
 
-  $('.keyword-kanji').html(data.character);
+	$('.keyword-kanji').html(data.character);
 
-  var max_words_front = settings.words_max;
-  var max_words = max_words_front;
-  var word_pts = [];
-  var word_front_pts = [];
+	var max_words_front = settings.words_max;
+	var max_words = max_words_front;
+	var word_pts = [];
+	var word_front_pts = [];
 
-  for (var i = 0; i < data.words.length; i++)
-  {
-    if (word_pts.length >= max_words)
-        break;
+	for (var i = 0; i < data.words.length; i++) {
+		if (word_pts.length >= max_words) break;
 
-    const we = data.words[i];
-    const w = we[0];
-    const r = we[1];
+		const we = data.words[i];
+		const w = we[0];
+		const r = we[1];
 
-    word_pts.push('<button class="word" data-word-idx="' + i + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
-    if (word_front_pts.length < max_words_front)
-      word_front_pts.push('<div class="word_front"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
-  }
-  for (var i = 0; i < data.words_default.length; i++)
-  {
-    if (word_pts.length >= max_words)
-        break;
+		word_pts.push(
+			'<button class="word" data-word-idx="' +
+				i +
+				'"><ruby>' +
+				w +
+				'<rt>' +
+				r +
+				'</rt></ruby></button>',
+		);
+		if (word_front_pts.length < max_words_front)
+			word_front_pts.push(
+				'<div class="word_front"><ruby>' +
+					w +
+					'<rt>' +
+					r +
+					'</rt></ruby></div>',
+			);
+	}
+	for (var i = 0; i < data.words_default.length; i++) {
+		if (word_pts.length >= max_words) break;
 
-    const we = data.words_default[i];
-    const w = we[0];
-    const r = we[1];
+		const we = data.words_default[i];
+		const w = we[0];
+		const r = we[1];
 
-    if (data.words.some(
-      function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
-    ))
-      continue;
+		if (
+			data.words.some(function (existing_we) {
+				return w == existing_we[0] && r == existing_we[1];
+			})
+		)
+			continue;
 
-    word_pts.push('<button class="word word_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>')
-    if (!settings.hide_default_words && word_front_pts.length < max_words_front)
-      word_front_pts.push('<div class="word_front word_front_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
-  }
-  $('.KanjiLookup-words').toggle(word_pts.length > 0);
-  $('#words').html(word_pts.join(''));
-  $('#words_front').html(word_front_pts.join(''));
+		word_pts.push(
+			'<button class="word word_default"><ruby>' +
+				w +
+				'<rt>' +
+				r +
+				'</rt></ruby></button>',
+		);
+		if (!settings.hide_default_words && word_front_pts.length < max_words_front)
+			word_front_pts.push(
+				'<div class="word_front word_front_default"><ruby>' +
+					w +
+					'<rt>' +
+					r +
+					'</rt></ruby></div>',
+			);
+	}
+	$('.KanjiLookup-words').toggle(word_pts.length > 0);
+	$('#words').html(word_pts.join(''));
+	$('#words_front').html(word_front_pts.join(''));
 
-  if (!settings.show_readings_front)
-    $('rt').css({ visibility: 'hidden' });
+	if (!settings.show_readings_front) $('rt').css({ visibility: 'hidden' });
 </script>
+<!-- END - Addon script, Recognition, front -->
+
+<!-- ======================
+END - Migaku markup
+======================= -->
