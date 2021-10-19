@@ -8,6 +8,7 @@ from aqt.qt import *
 
 from . import util
 from . import fonts
+from . import config
 from .card_type import CardType
 
 
@@ -43,11 +44,13 @@ class LookupWindow(QDialog):
 
         search_btn = QPushButton('🔍')
         search_btn.setFixedWidth(search_btn.sizeHint().height())
+        search_btn.setFocusPolicy(Qt.NoFocus)
         search_btn.clicked.connect(self.on_search_submit)
         search_lyt.addWidget(search_btn)
 
         self.keep_tab_on_search_box = QCheckBox('Keep tabs open')
         self.keep_tab_on_search_box.setChecked(False)
+        self.keep_tab_on_search_box.setFocusPolicy(Qt.NoFocus)
         search_lyt.addWidget(self.keep_tab_on_search_box)
 
         results_lyt = QVBoxLayout()
@@ -91,10 +94,21 @@ class LookupWindow(QDialog):
 
         html_body = read_web_file('lookup.html')
 
+        settings = {
+            'stroke_order_autoplay': config.get('lookup_stroke_order_autoplay', False),
+            'stroke_order_show_numbers': config.get('lookup_stroke_order_show_numbers', False),
+            'hide_readings_hover': config.get('lookup_hide_readings_hover', False),
+        }
+        settings_html = F'''
+            <script>
+                var settings = JSON.parse('{json.dumps(settings)}');
+            </script>
+        '''
+
         style_class = 'dark' if aqt.theme.theme_manager.night_mode else 'light'
 
         self.web.onBridgeCmd = self.on_bridge_cmd
-        self.web.setHtml('<!doctype html><html class="' + style_class + '">' + html_head + '<body class="' + style_class + '">' + html_body + '</body></html>')
+        self.web.setHtml('<!doctype html><html class="' + style_class + '">' + html_head + '<body class="' + style_class + '">' + settings_html + html_body + '</body></html>')
         self.set_result_data(None) # Load welcome screen
         results_lyt.addWidget(self.web)
 
@@ -298,6 +312,7 @@ def attempt_webview_lookup(web_view):
 
 # Add shortcuts for lookups
 key_sequence = QKeySequence('Ctrl+Shift+K')
+key_sequence_txt = key_sequence.toString(QKeySequence.NativeText)
 
 
 # Main web view
@@ -364,3 +379,13 @@ def apply_migaku_dict_hooks():
     )
 
 aqt.gui_hooks.profile_did_open.append(apply_migaku_dict_hooks)
+
+
+# Add entry in context menus
+
+def on_webview_context_menu(webview, menu):
+    action = menu.addAction(F'Search Kanji ({key_sequence_txt})')
+    action.triggered.connect(lambda: attempt_webview_lookup(webview))
+
+aqt.gui_hooks.webview_will_show_context_menu.append(on_webview_context_menu)
+aqt.gui_hooks.editor_will_show_context_menu.append(on_webview_context_menu)

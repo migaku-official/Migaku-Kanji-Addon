@@ -33,26 +33,6 @@ START - Migaku kanji stylesheet
 	src: url('/_kanji_uifont_Rubik-bold.ttf');
 }
 
-@font-face {
-	font-family: kanji_font1;
-	src: url('/_kanji_font1__mplus-2c-light.ttf');
-}
-
-@font-face {
-	font-family: kanji_font2;
-	src: url('/_kanji_font2__hgrkk.ttf');
-}
-
-@font-face {
-	font-family: kanji_font3;
-	src: url('/_kanji_font3__dejima-mincho-r227.ttf');
-}
-
-@font-face {
-	font-family: kanji_font4;
-	src: url('/_kanji_font4__jkg-m_3.ttf');
-}
-
 .font-1 {
 	font-family: kanji_font1 !important;
 }
@@ -1348,6 +1328,7 @@ html:not(.mobile) .linked-words__examples button.word:not(.word_default) {
 
 html:not(.mobile)
 	.linked-words__examples
+	.hide_readings_hover
 	button.word:not(.word_default)
 	ruby::before {
 	content: '(hover)';
@@ -1359,7 +1340,11 @@ html:not(.mobile)
 	transform: translateX(-50%);
 }
 
-html:not(.mobile) .linked-words__examples button.word:not(.word_default) rt {
+html:not(.mobile)
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default)
+	rt {
 	min-height: 15px;
 	opacity: 0;
 }

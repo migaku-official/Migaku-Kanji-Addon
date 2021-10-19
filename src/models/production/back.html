@@ -7353,12 +7353,11 @@ Changes:
 		if (_$el.prop('disabled') === false) _$el.click();
 	}
 
-	// TODO correspond to prospect variable (with default `false`):
 	// "Default show stroke order numbers" in Kanji Settings window
-	// if (defaultShow) {
-	//	// Note default class arrangement is as per `defaultShow=false`
-	// 	toggleStrokeOrderNumberVisibility();
-	// }
+	if (settings.stroke_order_show_numbers) {
+		// Note default class arrangement is as per `defaultShow=false`
+		toggleStrokeOrderNumberVisibility();
+	}
 
 	// Control button binds
 	$playButton.click(function () {
@@ -7503,14 +7502,13 @@ Changes:
 			$slider.attr('max', total_strokes);
 			$slider.data('prev', total_strokes); // Cache starting value
 
-			// TODO correspond to prospect variable (with default `false`):
 			// "Autoplay stroke order from start" in Kanji Settings window
-			// if (autoplayInOrder) {
-			// 	dmak.render(total_strokes);
-			// } else {
-			// 	// Draw all strokes at once for quick rendering
-			dmak.render(total_strokes, true); // simultaneous = true
-			// }
+			if (settings.stroke_order_autoplay) {
+				dmak.render(total_strokes);
+			} else {
+				// Draw all strokes at once for quick rendering
+				dmak.render(total_strokes, true); // simultaneous = true
+			}
 
 			// Important for the lookup browser, lest notches accumulate
 			$notchContainer.empty();
@@ -7713,6 +7711,7 @@ Changes:
 	}
 	$('.KanjiLookup-words').toggle(word_pts.length > 0);
 	$('#words').html(word_pts.join(''));
+	$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 	$('#words_front').html(word_front_pts.join(''));
 	$('.word').click(word_click);
 

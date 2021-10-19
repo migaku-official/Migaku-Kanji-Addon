@@ -7,7 +7,7 @@ import json
 import anki
 import aqt
 
-from .util import addon_path
+from .util import addon_path, col_media_path
 from . import config
 from . import fonts
 
@@ -101,6 +101,27 @@ class CardTypeData:
     def hide_keywords(self, value):
         config.get('card_hide_keywords')[self.label] = value
 
+    @property
+    def stroke_order_autoplay(self):
+        return config.get('card_stroke_order_autoplay').get(self.label, False)
+    @stroke_order_autoplay.setter
+    def stroke_order_autoplay(self, value):
+        config.get('card_stroke_order_autoplay')[self.label] = value
+
+    @property
+    def stroke_order_show_numbers(self):
+        return config.get('card_stroke_order_show_numbers').get(self.label, False)
+    @stroke_order_show_numbers.setter
+    def stroke_order_show_numbers(self, value):
+        config.get('card_stroke_order_show_numbers')[self.label] = value
+
+    @property
+    def hide_readings_hover(self):
+        return config.get('card_hide_readings_hover').get(self.label, False)
+    @hide_readings_hover.setter
+    def hide_readings_hover(self, value):
+        config.get('card_hide_readings_hover')[self.label] = value
+
     def model_id(self):
         return aqt.mw.col.models.id_for_name(self.model_name)
 
@@ -152,8 +173,15 @@ class CardTypeData:
             'only_custom_stories': self.only_custom_stories,
             'hide_default_words': self.hide_default_words,
             'hide_keywords': self.hide_keywords,
+            'stroke_order_autoplay': self.stroke_order_autoplay,
+            'stroke_order_show_numbers': self.stroke_order_show_numbers,
+            'hide_readings_hover': self.hide_readings_hover,
         }
-        settings_html = F'<script>var settings = JSON.parse(\'{json.dumps(settings)}\');</script>'
+        settings_html = F'''
+            <script>
+                var settings = JSON.parse('{json.dumps(settings)}');
+            </script>
+        '''
 
         # Set template html
         template['qfmt'] = settings_html + '\n\n' + model_file_data('front.html')
@@ -202,7 +230,17 @@ class CardType(metaclass=CardTypeMeta):
     )
 
     @classmethod
+    def assure_global_col_media(cls):
+        fonts.assure_col_media()
+
+        for f in os.listdir(addon_path('collection')):
+            shutil.copy(
+                addon_path('collection', f),
+                col_media_path(f)
+            )
+
+    @classmethod
     def upsert_all_models(cls):
         for ctd in cls:
             ctd.upsert_model()
-        fonts.assure_col_media()
+        cls.assure_global_col_media()

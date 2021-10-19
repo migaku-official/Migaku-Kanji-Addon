@@ -38,7 +38,7 @@ class CardTypeSettingsWidget(QWidget):
 
         lyt_max_words = QHBoxLayout()
         lyt.addLayout(lyt_max_words)
-        lyt_max_words.addWidget(QLabel('Maxium amount of example words on cards:'))
+        lyt_max_words.addWidget(QLabel('Maximum amount of example words on cards:'))
         self.max_words_box = QSpinBox()
         self.max_words_box.setMinimum(0)
         self.max_words_box.setMaximum(10)
@@ -79,15 +79,27 @@ class CardTypeSettingsWidget(QWidget):
         self.auto_card_refresh_box.setChecked(self.card_type.auto_card_refresh)
         lyt.addWidget(self.auto_card_refresh_box)
 
+        self.stroke_order_autoplay_box = QCheckBox('Autoplay stroke order from start')
+        self.stroke_order_autoplay_box.setChecked(self.card_type.stroke_order_autoplay)
+        lyt.addWidget(self.stroke_order_autoplay_box)
+
+        self.stroke_order_show_numbers_box = QCheckBox('Default show stroke order numbers')
+        self.stroke_order_show_numbers_box.setChecked(self.card_type.stroke_order_show_numbers)
+        lyt.addWidget(self.stroke_order_show_numbers_box)
+
+        self.hide_readings_hover_box = QCheckBox('Hide readings of known words until hovered')
+        self.hide_readings_hover_box.setChecked(self.card_type.hide_readings_hover)
+        lyt.addWidget(self.hide_readings_hover_box)
+
         self.learn_ahead_selector = LearnAheadSelectorWidget(self.card_type, no_margin=True)
         lyt.addWidget(self.learn_ahead_selector)
 
         self.note_type_selector = CardTypeRecognizedSelectorWidget(self.card_type, no_margin=True)
         lyt.addWidget(self.note_type_selector)
 
-        reset_marked_knwon_btn = QPushButton('Reset Kanji Marked Knwon')
-        reset_marked_knwon_btn.clicked.connect(self.on_reset_marked_known)
-        lyt.addWidget(reset_marked_knwon_btn)
+        reset_marked_known_btn = QPushButton('Reset Kanji Marked Known')
+        reset_marked_known_btn.clicked.connect(self.on_reset_marked_known)
+        lyt.addWidget(reset_marked_known_btn)
 
     
     def save_to_config(self):
@@ -102,6 +114,9 @@ class CardTypeSettingsWidget(QWidget):
         self.card_type.auto_card_creation = self.auto_card_creation_box.isChecked()
         self.card_type.auto_card_creation_msg = self.auto_card_creation_msg_box.isChecked()
         self.card_type.auto_card_refresh = self.auto_card_refresh_box.isChecked()
+        self.card_type.stroke_order_autoplay = self.stroke_order_autoplay_box.isChecked()
+        self.card_type.stroke_order_show_numbers = self.stroke_order_show_numbers_box.isChecked()
+        self.card_type.hide_readings_hover = self.hide_readings_hover_box.isChecked()
         self.learn_ahead_selector.save_to_config()
         self.note_type_selector.save_to_config()
 
@@ -196,6 +211,7 @@ class FontSelectWidget(QWidget):
         self.example_lbl.setFont(font)
 
 
+
 class SettingsWindow(QDialog):
 
     KANJI_FORMS_URL = 'https://docs.google.com/spreadsheets/d/1aw0ihw0RpmejWLTUynrFYjmOfLdzcPVrDX7UM50lwBY/edit#gid=2109245908'
@@ -242,7 +258,27 @@ class SettingsWindow(QDialog):
             ct_widget = CardTypeSettingsWidget(ct)
             self.card_type_widgets.append(ct_widget)
             tabs.addTab(ct_widget, ct.name)
-   
+    
+        lookup_tab = QWidget()
+        tabs.addTab(lookup_tab, 'Lookup Window')
+
+        lookup_lyt = QVBoxLayout()
+        lookup_tab.setLayout(lookup_lyt)
+
+        self.lookup_stroke_order_autoplay_box = QCheckBox('Autoplay stroke order from start')
+        self.lookup_stroke_order_autoplay_box.setChecked(config.get('lookup_stroke_order_autoplay', False))
+        lookup_lyt.addWidget(self.lookup_stroke_order_autoplay_box)
+
+        self.lookup_stroke_order_show_numbers_box = QCheckBox('Default show stroke order numbers')
+        self.lookup_stroke_order_show_numbers_box.setChecked(config.get('lookup_stroke_order_show_numbers', False))
+        lookup_lyt.addWidget(self.lookup_stroke_order_show_numbers_box)
+
+        self.lookup_hide_readings_hover_box = QCheckBox('Hide readings of known words until hovered')
+        self.lookup_hide_readings_hover_box.setChecked(config.get('lookup_hide_readings_hover', False))
+        lookup_lyt.addWidget(self.lookup_hide_readings_hover_box)
+
+        lookup_lyt.addStretch()
+
         general_tab = QWidget()
         tabs.addTab(general_tab, 'General')
 
@@ -274,6 +310,9 @@ class SettingsWindow(QDialog):
         config.set('only_seen_words', self.only_seen_words_box.isChecked())
         for ct_widget in self.card_type_widgets:
             ct_widget.save_to_config()
+        config.set('lookup_stroke_order_autoplay', self.lookup_stroke_order_autoplay_box.isChecked())
+        config.set('lookup_stroke_order_show_numbers', self.lookup_stroke_order_show_numbers_box.isChecked())
+        config.set('lookup_hide_readings_hover', self.lookup_hide_readings_hover_box.isChecked())
         config.write()
 
         for ct in CardType:
