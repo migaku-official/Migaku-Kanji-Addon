@@ -114,7 +114,7 @@ class KanjiConfirmDialog(QDialog):
 
         info_lbl = QLabel(
             'If a Kanji is marked green, a card will be created. Blue ones will be marked known. Red ones will be ignored.\n\n'
-            'Click kanji to cylce through the states.\n'
+            'Click kanji to cycle through the states.\n'
         )
         info_lbl.setWordWrap(True)
         lyt.addWidget(info_lbl)

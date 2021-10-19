@@ -5,9 +5,6 @@ from . import config
 from . import util
 
 
-ui_font = 'Rubik.ttf'
-ui_family = 'Rubik'
-
 defaults = ['SawarabiGothic.ttf', 'nagayama_kai08.otf', 'ArmedBanana.ttf', 'KouzanGyousho.otf']
 font_num = len(defaults)
 
@@ -85,7 +82,6 @@ def set_path(idx, path):
 
 def card_css():
     ret = []
-    ret.append(F'@font-face {{ font-family: Rubik; src: url("_kanji_uifont_Rubik.ttf"); }}')
     for idx in range(font_num):
         col_name = get_col_name(idx)
         ret.append(F'@font-face {{ font-family: kanji_font{idx+1}; src: url("{col_name}"); }}')
@@ -94,8 +90,6 @@ def card_css():
 
 def ui_css():
     ret = []
-    ui_uri = util.addon_web_uri('fonts', 'Rubik.ttf')
-    ret.append(F'@font-face {{ font-family: Rubik; src: url("{ui_uri}"); }}')
     for idx in range(font_num):
         uri = get_addon_uri(idx)
         ret.append(F'@font-face {{ font-family: kanji_font{idx+1}; src: url("{uri}"); }}')
@@ -103,9 +97,5 @@ def ui_css():
 
 
 def assure_col_media():
-    shutil.copy(
-        util.addon_path('fonts', 'Rubik.ttf'),
-        util.col_media_path('_kanji_uifont_Rubik.ttf')
-    )
     for idx in range(font_num):
         shutil.copy(get_path(idx), get_col_path(idx))
