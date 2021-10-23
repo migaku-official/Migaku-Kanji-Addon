@@ -1,6 +1,6 @@
 # Development
 
-Please ensure you have read the adjecent contribution guidelines ([CONTRIBUTING.md](CONTRIBUTING.md)) before continuing.
+Please ensure you have read the adjacent contribution guidelines ([CONTRIBUTING.md](CONTRIBUTING.md)) before continuing.
 
 ## Repo structure
 
