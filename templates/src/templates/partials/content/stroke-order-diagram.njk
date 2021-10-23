@@ -9,15 +9,15 @@
 			class="stroke-order-diagram__settings-button stroke-order-diagram__toggle-strokeorder-numbers"
 			title="Toggle stroke order numbers"
 		>
-				<img src="/_kanji_icon_numbers_on_black.svg" class="-numbers-on" alt=""/>
-				<img src="/_kanji_icon_numbers_off_black.svg" class="-numbers-off" alt=""/>
+				<img src="{% if is_demo %}/{% endif %}_kanji_icon_numbers_on_black.svg" class="-numbers-on" alt=""/>
+				<img src="{% if is_demo %}/{% endif %}_kanji_icon_numbers_off_black.svg" class="-numbers-off" alt=""/>
 		</button>
 		<button
 			role="tooltip"
 			type="button"
 			class="stroke-order-diagram__settings-button stroke-order-diagram__settings-tooltip kanji-addon__hover-tooltip-btn"
 		>
-			<img src="/_kanji_icon_cog_black.svg" alt="Settings"/>
+			<img src="{% if is_demo %}/{% endif %}_kanji_icon_cog_black.svg" alt="Settings"/>
 			<div class="kanji-addon__hover-tooltip -below">
 				Options for autoplay and stroke number default on/off are in the Kanji Setting menu window.
 				<br/><br/>
@@ -48,7 +48,7 @@
 					data-disable-while-playing
 					data-disable-while-drawing
 				>
-					<img src="/_kanji_icon_skip_start_black.svg" alt="Start skip" />
+					<img src="{% if is_demo %}/{% endif %}_kanji_icon_skip_start_black.svg" alt="Start skip" />
 				</button>
 				<button
 					id="strokeorder_prev"
@@ -56,7 +56,7 @@
 					data-disable-while-playing
 					data-disable-while-drawing
 				>
-					<img src="/_kanji_icon_previous_black.svg" alt="Previous" />
+					<img src="{% if is_demo %}/{% endif %}_kanji_icon_previous_black.svg" alt="Previous" />
 				</button>
 				<div class="stroke-order-diagram__play-pause-container">
 					<button
@@ -66,7 +66,7 @@
 						data-disable-while-erasing
 						data-disable-while-drawing
 					>
-						<img src="/_kanji_icon_pause_black.svg" alt="Pause" />
+						<img src="{% if is_demo %}/{% endif %}_kanji_icon_pause_black.svg" alt="Pause" />
 					</button>
 					<button
 						id="strokeorder_play"
@@ -75,7 +75,7 @@
 						data-disable-while-drawing
 						data-disable-while-erasing
 					>
-						<img src="/_kanji_icon_play_black.svg" alt="Play" />
+						<img src="{% if is_demo %}/{% endif %}_kanji_icon_play_black.svg" alt="Play" />
 					</button>
 					<button
 						id="strokeorder_replay"
@@ -85,7 +85,7 @@
 						data-disable-while-drawing
 						data-disable-while-erasing
 					>
-						<img src="/_kanji_icon_replay_black.svg" alt="Replay" />
+						<img src="{% if is_demo %}/{% endif %}_kanji_icon_replay_black.svg" alt="Replay" />
 					</button>
 				</div>
 				<button
@@ -94,7 +94,7 @@
 					data-disable-while-playing
 					data-disable-while-erasing
 				>
-					<img src="/_kanji_icon_next_black.svg" alt="Next" />
+					<img src="{% if is_demo %}/{% endif %}_kanji_icon_next_black.svg" alt="Next" />
 				</button>
 				<button
 					id="strokeorder_end"
@@ -102,7 +102,7 @@
 					data-disable-while-playing
 					data-disable-while-erasing
 				>
-					<img src="/_kanji_icon_skip_end_black.svg" alt="End skip" />
+					<img src="{% if is_demo %}/{% endif %}_kanji_icon_skip_end_black.svg" alt="End skip" />
 				</button>
 			</div>
 
