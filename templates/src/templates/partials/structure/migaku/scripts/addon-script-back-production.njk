@@ -69,7 +69,17 @@
   data_b64 = data_b64.replace( /(<([^>]+)>)/ig, '');  // Needed because of Migaku Editor :|
   var data_json = atob(data_b64);
   var data = JSON.parse(data_json);
-  var kanjivg_uri = 'kanji_';
+
+	{% if is_demo %}
+	// ---------------------------------
+	// IGNORE - DEMO USE ONLY
+	// - '/assets/' prefix only necessary for local development, doesn't work in Anki!!
+	// - therefore, don't include this change in Anki deployment...!
+	var kanjivg_uri = '/assets/kanji_'; // 'kanji_';
+	// ---------------------------------
+	{% else %}
+	var kanjivg_uri = 'kanji_';
+	{% endif %}
 
 	{% include "partials/structure/migaku/scripts/_variables-and-functions.njk" %}
   {% include "partials/structure/migaku/scripts/_stroke-order-diagram.njk" %}
