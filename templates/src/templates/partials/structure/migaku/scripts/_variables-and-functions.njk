@@ -1,0 +1,98 @@
+// ==================================================================
+// CHANGES - START - variables and control binds
+
+var strokeElementId = 'strokeorder',
+		toggleStrokeNumberClass = '-show-stroke-numbers',
+		hidePlayPauseClass = "-hide",
+		$strokePlayerContainer = $('.stroke-order-diagram__player'),
+		$strokeSvgContainer = $('#' + strokeElementId),
+		$toggleStrokeNumber = $('#toggle_strokeorder_numbers'),
+		$notchContainer = $('.stroke-order-diagram__slider-notches'),
+		$slider = $('#strokeorder_slider'),
+		$playButton = $('#strokeorder_play'),
+		$pauseButton = $('#strokeorder_pause'),
+		$replayButton = $('#strokeorder_replay'),
+		$skipStartButton = $('#strokeorder_start'),
+		$skipEndButton = $('#strokeorder_end'),
+		$prevButton = $('#strokeorder_prev'),
+		$nextButton = $('#strokeorder_next');
+
+function disableControls(selector) {
+		var _$els = $(selector);
+
+		_$els.each(function(idx, _el) {
+				$(_el).prop('disabled', true);
+		});
+}
+
+function enableControls(selector) {
+		var _$els = $(selector);
+
+		_$els.each(function(idx, _el) {
+				$(_el).prop('disabled', false);
+		});
+}
+
+function toggleControls(timeoutArray, selector) {
+		var _$els = $(selector),
+				isIdle = timeoutArray.length === 0;
+
+		if (isIdle) {
+				enableControls(selector);
+		} else {
+				disableControls(selector);
+		}
+}
+
+function toggleStrokeOrderNumberVisibility() {
+		$strokePlayerContainer.toggleClass(toggleStrokeNumberClass);
+}
+
+function clickIfNotDisabled(_$el) {
+	if (_$el.prop('disabled') === false) _$el.click();
+}
+
+// TODO correspond to prospect variable (with default `false`):
+// "Default show stroke order numbers" in Kanji Settings window
+// if (defaultShow) {
+//	// Note default class arrangement is as per `defaultShow=false`
+// 	toggleStrokeOrderNumberVisibility();
+// }
+
+// Control button binds
+$playButton.click(function() { dmak.render(); });
+$pauseButton.click(function() {
+	$(this).prop('disabled', true);
+	dmak.pause();
+});
+$replayButton.click(function() { dmak.replay(); });
+$prevButton.click(function() { dmak.eraseLastStrokes(1); });
+$nextButton.click(function() { dmak.renderNextStrokes(1); });
+$skipStartButton.click(function() { dmak.erase(); });
+$skipEndButton.click(function() { dmak.render(dmak.strokes.length, true); });
+
+// Keyboard/hotkey binds for stroke diagram navigation
+$(document).on('keyup', function(e) {
+		// Left arrow key
+	if (e.which === 37) {
+		if (e.ctrlKey) {
+			clickIfNotDisabled($skipStartButton);
+		} else {
+			clickIfNotDisabled($prevButton);
+		}
+
+		// Right arrow key
+	} else if (e.which === 39) {
+		if (e.ctrlKey) {
+			clickIfNotDisabled($skipEndButton);
+		} else {
+			clickIfNotDisabled($nextButton);
+		}
+	}
+});
+
+// Toggle stroke order number visibility
+$toggleStrokeNumber.on('click', toggleStrokeOrderNumberVisibility);
+
+// CHANGES - END - variables and control binds
+// ==================================================================

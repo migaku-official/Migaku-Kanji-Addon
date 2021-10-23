@@ -1,0 +1,15 @@
+<!-- START - User data -->
+<div class="userData userData__container">
+	{% if not is_demo %}{{ '{{#UserData}}' }}{% endif %}
+
+	{% if (is_demo and user_data) or not is_demo %}
+		{% include "partials/structure/full-separator.njk" %}
+	{% endif %}
+
+	{% if is_demo %}
+		{{ user_data | safe }}
+	{% else  %}
+		{{ '{{UserData}}{{/UserData}}' }}
+	{% endif %}
+</div>
+<!-- END - User data -->

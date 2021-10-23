@@ -1,0 +1,19 @@
+<!-- START - Keyword and meaning -->
+<div class="keyword-and-meaning__container">
+	{% if is_recognition or is_lookup %}
+		{% if is_recognition %}
+			<h2 id="keywords_front" class="keyword-and-meaning__keyword">
+		{% elif is_lookup %}
+			<h2 id="keywords" class="keyword-and-meaning__keyword">
+		{% endif %}
+			{{ keyword }}
+			{% if has_primitive_keyword %}, <span class="primitive_keyword">{{ primitive_keyword }}</span>{% endif %}
+		</h2>
+	{% endif  %}
+
+	<div class="meanings__container">
+		<h3 class="meanings__title">Meanings:</h3>
+		<span id="meanings">{{ meanings }}</span>
+	</div>
+</div>
+<!-- END - Keyword and meaning -->

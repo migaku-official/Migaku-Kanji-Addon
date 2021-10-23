@@ -1,0 +1,74 @@
+<!-- ======================
+START - Migaku markup
+- @version v0.6.1
+======================= -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+{# Don't bother including the welcome/results containers for the demo. #}
+{% if not is_demo %}
+<div id="welcome">
+  <div class="KanjiLookup-container KanjiLookup-container--noResult">
+    <h1 class="welcome">WELCOME!</h1>
+    <p class="welcome-text">
+      To look up Kanji, enter them into the box above and press Enter or press
+      the search button.
+    </p>
+    <p class="welcome-text">
+      You can also press <span class="key">CTRL</span> + <span class="key">SHIFT</span> +
+      <span class="key">K</span> anywhere in Anki to search for the highlighted
+      characters.
+    </p>
+  </div>
+</div>
+
+<div id="noresult" style="display: none;">
+  <div class="KanjiLookup-container KanjiLookup-container--noResult">
+    <h1>No result found for character</h1>
+    <h1 class="kanji">仮</h1>
+  </div>
+</div>
+
+<div id="result" style="display: none;">
+{% endif %}
+
+	{% include "partials/structure/migaku-header.njk" %}
+
+	<div class="layout__container">
+		<div class="layout__above">
+			{% block above %}{% endblock %}
+		</div>
+
+		<main class="layout__main">
+			<div class="layout__content">
+				{% block main %}{% endblock %}
+			</div>
+
+			<aside class="layout__aside">
+				{% block sidebar %}{% endblock %}
+			</aside>
+		</main>
+
+		<div class="layout__below">
+			{% block below %}{% endblock %}
+		</div>
+
+		{% include "partials/structure/migaku/migaku-data.njk" %}
+	</div>
+
+{% if not is_demo %}
+</div>
+{% endif %}
+
+{# Since we can't invoke the `set_data` function, for demo purposes we
+borrow the recognition script so the stroke diagram still draws. #}
+{% if is_demo %}
+	{% include 'partials/structure/migaku/migaku-dependencies.njk' %}
+	{% include 'partials/structure/migaku/scripts/addon-script-back-recognition.njk' %}
+{% else %}
+	{% include 'partials/structure/migaku/scripts/addon-script-lookup.njk' %}
+{% endif %}
+
+<!-- ======================
+END - Migaku markup
+======================= -->

@@ -1,0 +1,134 @@
+/* ==============================================
+START - Inputs */
+
+/* stylelint-disable no-descending-specificity */
+
+// Styling Cross-Browser Compatible Range Inputs with Sass
+// Github: https://github.com/darlanrod/input-range-sass
+// Author: Darlan Rod https://github.com/darlanrod
+// Version 1.5.2
+// MIT License
+
+// Ref: https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+
+$track-color: $brand-black !default;
+$thumb-color: $brand-black !default;
+
+$thumb-radius: 12px !default;
+$thumb-height: 20px !default;
+$thumb-width: 20px !default;
+$thumb-border-width: 0 !default;
+$thumb-border-color: #eceff1 !default;
+
+$track-width: 100% !default;
+$track-height: 2px !default;
+$track-border-width: 0 !default;
+$track-border-color: #cfd8dc !default;
+
+$track-radius: 5px !default;
+$contrast: 5% !default;
+
+$ie-bottom-track-color: darken($track-color, $contrast) !default;
+
+@mixin track {
+	height: $track-height;
+	transition: all 0.2s ease;
+	width: $track-width;
+}
+
+@mixin thumb {
+	background: $thumb-color;
+	border: $thumb-border-width solid $thumb-border-color;
+	border-radius: $thumb-radius;
+	box-sizing: border-box;
+	height: $thumb-height;
+	width: $thumb-width;
+}
+
+[type='range'] {
+	-webkit-appearance: none;
+	background: transparent;
+	cursor: pointer;
+	height: 100%;
+	margin: math.div($thumb-height, 2) 0;
+	width: $track-width;
+
+	&:focus {
+		outline: none;
+	}
+
+	&::-moz-focus-outer {
+		border: 0;
+	}
+
+	&::-webkit-slider-runnable-track {
+		@include track;
+
+		background: $track-color;
+		border: $track-border-width solid $track-border-color;
+		border-radius: $track-radius;
+	}
+
+	&::-webkit-slider-thumb {
+		@include thumb;
+
+		-webkit-appearance: none;
+		margin-top: (
+			math.div((-$track-border-width * 2 + $track-height), 2) -
+				math.div($thumb-height, 2)
+		);
+	}
+
+	&::-moz-range-track {
+		@include track;
+
+		background: $track-color;
+		border: $track-border-width solid $track-border-color;
+		border-radius: $track-radius;
+	}
+
+	&::-moz-range-thumb {
+		@include thumb;
+	}
+
+	&::-ms-track {
+		@include track;
+
+		background: transparent;
+		border-color: transparent;
+		border-width: (math.div($thumb-height, 2)) 0;
+		color: transparent;
+	}
+
+	&::-ms-fill-lower {
+		background: $ie-bottom-track-color;
+		border: $track-border-width solid $track-border-color;
+		border-radius: ($track-radius * 2);
+	}
+
+	&::-ms-fill-upper {
+		background: $track-color;
+		border: $track-border-width solid $track-border-color;
+		border-radius: ($track-radius * 2);
+	}
+
+	&::-ms-thumb {
+		@include thumb;
+
+		margin-top: math.div($track-height, 4);
+	}
+
+	&:disabled {
+		&::-webkit-slider-thumb,
+		&::-moz-range-thumb,
+		&::-ms-thumb,
+		&::-webkit-slider-runnable-track,
+		&::-ms-fill-lower,
+		&::-ms-fill-upper {
+			cursor: not-allowed;
+		}
+	}
+}
+
+/* END - Inputs
+============================================== */

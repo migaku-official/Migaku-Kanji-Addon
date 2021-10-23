@@ -1,0 +1,129 @@
+/* ==============================================
+START - Layout */
+/* stylelint-disable no-duplicate-selectors */
+
+// --------------------------------------
+// Sensible global box-sizing defaults
+// Ref: https://css-tricks.com/box-sizing
+
+html {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+// --------------------------------------
+// Scrollbar
+
+html {
+	// This is necessary due to the version of webkit rendering
+	// the cards in Anki. The scrollbar on back templates offsets
+	// the card content to the left, and since the front template
+	// doesnt have any vertical scroll, the front/back content is
+	// slightly off. By setting an explicit scrollbar on both front
+	// and back templates, they line up properly.
+	overflow-y: scroll;
+}
+
+// --------------------------------------
+// Background color
+
+body {
+	background: $body-background-light;
+	margin: 0;
+	min-height: 100vh;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+
+	@include dark-mode(true) {
+		background: $body-background-dark;
+	}
+}
+
+// --------------------------------------
+// Layout flow
+
+.layout {
+	&__container {
+		display: flex;
+		flex-direction: column;
+		margin: 0 auto;
+		max-width: 1000px;
+		padding: 50px 20px;
+		text-align: center;
+
+		@include bp.get(s) {
+			padding-bottom: 50px;
+			text-align: left;
+		}
+	}
+
+	&__above {
+		@include bp.get(s) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+
+		@include bp.get(s) {
+			flex-direction: row-reverse;
+		}
+	}
+
+	&__aside {
+		@include bp.get(s) {
+			max-width: 220px;
+			width: 100%;
+		}
+
+		@include bp.get(m) {
+			max-width: 300px;
+		}
+
+		@include bp.get(l) {
+			max-width: 350px;
+		}
+	}
+
+	&__content {
+		@include bp.get(s) {
+			flex-grow: 1;
+			padding-left: 20px;
+		}
+	}
+
+	&__below {
+		@include bp.get(s) {
+			margin-top: 20px;
+		}
+	}
+}
+
+// --------------------------------------
+// Separators
+
+.separator {
+	@include separator;
+
+	border: none;
+
+	&.-full {
+		@include full-separator;
+	}
+}
+
+/* END - Layout
+============================================== */

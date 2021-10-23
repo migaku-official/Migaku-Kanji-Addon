@@ -1,0 +1,51 @@
+/* ==============================================
+START - Tooltip */
+/* stylelint-disable no-descending-specificity */
+
+// TODO consolidate .primitiveDetails
+
+.primitiveDetails,
+.kanji-addon__hover-tooltip {
+	background: $brand-blue-primary;
+	border-radius: 5px;
+	bottom: calc(100% + 10px);
+	box-shadow: 0 4px 16px $brand-grey-dark;
+	color: $text-on-dark;
+	font-size: 16px;
+	left: 0;
+	line-height: 22px;
+	opacity: 0;
+	padding: 10px !important;
+	pointer-events: none;
+	position: absolute;
+	text-align: left;
+	transition: opacity $transition-duration;
+	user-select: none;
+	width: 200px;
+	z-index: 1;
+
+	@include dark-mode {
+		background: $brand-grey-darker;
+	}
+
+	&.-below {
+		bottom: unset;
+		left: unset;
+		right: 0;
+		top: calc(100% + 10px);
+	}
+}
+
+button.primitive,
+.kanji-addon__hover-tooltip-btn {
+	&:hover,
+	&:focus {
+		.primitiveDetails,
+		.kanji-addon__hover-tooltip {
+			opacity: 1;
+		}
+	}
+}
+
+/* END - Tooltip
+============================================== */

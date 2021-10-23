@@ -1,0 +1,9 @@
+{% extends "partials/layout/layout-demo-data.njk" %}
+{% set has_primitive_keyword = true %}
+
+{% block theme %}nightMode{% endblock %}
+{% block title %}Back w/ Primitive Keyword (Dark) | Migaku Kanji{% endblock %}
+
+{% block content %}
+	{% include "back-recognition.njk" %}
+{% endblock %}

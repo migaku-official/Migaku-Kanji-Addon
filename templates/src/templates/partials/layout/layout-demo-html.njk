@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" class="{% block device %}{% endblock %}">
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="/styles.css" />
+		{% include 'partials/structure/anki/anki-dependencies.njk' %}
+	</head>
+
+	<body class="{% block theme %}{% endblock %}">
+		{% include 'partials/structure/migaku/migaku-kanji-settings.njk' %}
+		{% block content %}{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,146 @@
+/* ==============================================
+START - Mixins */
+
+// --------------------------------------------
+// Functions
+
+@function if-important($important) {
+	@return #{if($important, '!important', '')};
+}
+
+// --------------------------------------------
+// Dark mode
+
+@mixin dark-mode($isBody: false) {
+	@if $isBody {
+		&.ankidroid_dark_mode, // AnkiDroid cards
+		&.nightMode, // Desktop Anki cards
+		// Lookup window
+		&.dark {
+			@content;
+		}
+	} @else {
+		.ankidroid_dark_mode &, // AnkiDroid cards
+		.nightMode &, // Desktop Anki cards
+		// Lookup window
+		.dark & {
+			@content;
+		}
+	}
+}
+
+@mixin mobile-device {
+	.mobile & {
+		@content;
+	}
+}
+
+// --------------------------------------------
+// Utility
+
+@mixin pseudo {
+	content: '';
+	position: absolute;
+}
+
+@mixin list-reset {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+@mixin button-reset($important: false) {
+	appearance: none if-important($important);
+	background: none if-important($important);
+	border: 0 if-important($important);
+	border-radius: 0 if-important($important);
+	box-shadow: none if-important($important);
+	cursor: pointer if-important($important);
+	padding: 0 if-important($important);
+}
+
+// --------------------------------------------
+// Sizing
+
+@mixin square($size) {
+	height: $size;
+	width: $size;
+}
+
+@mixin circle($size) {
+	@include square($size);
+
+	border-radius: 50%;
+}
+
+// --------------------------------------------
+// Structure
+
+@mixin separator {
+	background: $brand-grey;
+	height: 1px;
+	margin-bottom: 20px;
+	width: 50px;
+}
+
+@mixin full-separator {
+	height: 2px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+// --------------------------------------------
+// Accessibility
+
+@mixin visually-hidden {
+	border-width: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+@mixin undo-visually-hidden {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	padding: 0;
+	position: static;
+	white-space: normal;
+	width: auto;
+}
+
+.visually-hidden,
+.vh {
+	@include visually-hidden;
+}
+
+// --------------------------------------------
+// Alignment
+
+@mixin align-vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin align-horizontal-center {
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+@mixin align-center {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* END - Mixins
+============================================== */

@@ -1,0 +1,92 @@
+/* ==============================================
+START - Primitives and radicals */
+
+.primitives-and-radicals {
+	&__container {
+		display: flex;
+	}
+
+	&__block {
+		width: 100%;
+
+		@include bp.get(s) {
+			width: auto;
+		}
+	}
+
+	&__mobile {
+		display: none;
+		font-size: $mobile-msg-font-size;
+		opacity: $mobile-msg-opacity;
+
+		// Display message
+		@include mobile-device {
+			display: block;
+		}
+	}
+
+	&__title {
+		margin-top: 0;
+		margin-top: 20px;
+
+		@include bp.get(s) {
+			padding-right: 40px;
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		@include bp.get(s) {
+			justify-content: flex-start;
+		}
+	}
+}
+
+.primitiveDetails {
+	// NOTE: tooltip styles are in `tooltip.scss`
+
+	h3 {
+		margin: 0;
+	}
+
+	&-keywords,
+	&-meanings {
+		margin-bottom: 10px;
+	}
+}
+
+button.primitive,
+button.radical {
+	@include square(40px);
+
+	font-size: 20px !important;
+	margin: 0 10px 10px 0 !important;
+	padding: 0 !important;
+	position: relative;
+
+	@include bp.get(s) {
+		@include square(50px);
+
+		font-size: 26px !important;
+	}
+}
+
+button.primitive {
+	@include button-primary;
+
+	padding: 0 !important;
+
+	// NOTE: this triggers the tooltip, in `tooltip.scss`
+}
+
+button.radical {
+	@include button-tertiary;
+
+	cursor: not-allowed;
+}
+
+/* END - Primitives and radicals
+============================================== */

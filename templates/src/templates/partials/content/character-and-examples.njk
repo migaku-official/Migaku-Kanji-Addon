@@ -1,0 +1,22 @@
+<!-- START - Character and examples -->
+<div class="character-and-examples__container">
+	{% if is_production %}
+		<h1 id="keywords_front" class="character-and-examples__keyword">{{ keyword }}</h1>
+	{% else %}
+		<ul class="character-and-examples__list">
+			<li class="font-1 keyword-kanji character-and-examples__character">{{ character }}</li>
+			<li class="font-2 keyword-kanji character-and-examples__character">{{ character }}</li>
+			<li class="font-3 keyword-kanji character-and-examples__character">{{ character }}</li>
+			<li class="font-4 keyword-kanji character-and-examples__character">{{ character }}</li>
+		</ul>
+	{% endif %}
+
+	<div id="words_front" class="character-and-examples__list">
+		{% if is_recognition or (is_production and is_back) %}
+			{{ words_front | safe }}
+		{% else %}
+			{{ words_front_production | safe }}
+		{% endif %}
+	</div>
+</div>
+<!-- END - Character and examples -->

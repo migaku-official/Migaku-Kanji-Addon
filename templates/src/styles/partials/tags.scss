@@ -1,0 +1,29 @@
+/* ==============================================
+START - Tags */
+
+.tags {
+	&__container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-top: 20px;
+
+		.tag {
+			align-items: center;
+			background: $brand-grey;
+			border-radius: 5px;
+			display: inline-flex;
+			font-size: 14px;
+			margin: 0 8px 8px 0;
+			padding: 6px 8px;
+			text-align: center;
+
+			@include dark-mode {
+				background: $brand-grey-darker;
+			}
+		}
+	}
+}
+
+/* END - Tags
+============================================== */

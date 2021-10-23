@@ -1,0 +1,78 @@
+/* ==============================================
+START - Linked words */
+
+.linked-words {
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		@include bp.get(s) {
+			justify-content: flex-start;
+		}
+	}
+
+	&__examples {
+		.word {
+			@include button-primary;
+
+			font-size: 24px !important;
+			margin: 0 10px 10px 0;
+			padding: 5px 10px !important;
+
+			@include bp.get(s) {
+				font-size: 26px !important;
+				padding: 8px 15px 5px !important;
+			}
+		}
+
+		.word.word_default {
+			@include button-tertiary;
+		}
+	}
+
+	&__mobile {
+		display: none;
+		font-size: $mobile-msg-font-size;
+		opacity: $mobile-msg-opacity;
+
+		// Display message
+		@include mobile-device {
+			display: block;
+		}
+	}
+}
+
+// Hide furigana on linked words; show on hover
+
+html:not(.mobile) .linked-words__examples button.word:not(.word_default) {
+	position: relative;
+
+	ruby::before {
+		content: '(hover)';
+		font-size: 10px;
+		left: 50%;
+		opacity: 0.5;
+		position: absolute;
+		top: 7px;
+		transform: translateX(-50%);
+	}
+
+	rt {
+		min-height: 15px;
+		opacity: 0;
+	}
+
+	&:hover rt,
+	&:focus rt {
+		opacity: 1;
+	}
+
+	&:hover ruby::before,
+	&:focus ruby::before {
+		opacity: 0;
+	}
+}
+
+/* END - Linked words
+============================================== */
