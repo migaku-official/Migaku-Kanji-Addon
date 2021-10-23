@@ -43,6 +43,15 @@ START - Character and examples */
 .word_front {
 	font-size: 28px;
 	margin: 0 10px 10px;
+
+	ruby {
+		display: flex;
+		flex-direction: column-reverse;
+
+		rt {
+			min-height: 15px;
+		}
+	}
 }
 
 .word_front_default {

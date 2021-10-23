@@ -41,6 +41,11 @@ START - Fonts */
 	src: url('/_kanji_font4__jkg-m_3.ttf');
 }
 
+@font-face {
+	font-family: kanji_charfont;
+	src: url('/_kanji_uifont_NotoSansJP-Regular.otf');
+}
+
 // --------------------------------------
 // Class-based font setting
 
@@ -58,6 +63,10 @@ START - Fonts */
 
 .font-4 {
 	font-family: kanji_font4 !important;
+}
+
+.kanji-char-font {
+	font-family: kanji_charfont !important;
 }
 
 /* END - Fonts

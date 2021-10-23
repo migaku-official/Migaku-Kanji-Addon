@@ -77,6 +77,7 @@ button.radical {
 button.primitive {
 	@include button-primary;
 
+	font-family: inherit;
 	padding: 0 !important;
 
 	// NOTE: this triggers the tooltip, in `tooltip.scss`
@@ -85,6 +86,7 @@ button.primitive {
 button.radical {
 	@include button-tertiary;
 
+	font-family: inherit;
 	cursor: not-allowed;
 }
 
