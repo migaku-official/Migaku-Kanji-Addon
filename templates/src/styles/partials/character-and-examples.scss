@@ -42,11 +42,13 @@ START - Character and examples */
 
 .word_front {
 	font-size: 28px;
+	font-weight: 300;
 	margin: 0 10px 10px;
 
 	ruby {
 		display: flex;
 		flex-direction: column-reverse;
+		height: 100%;
 
 		rt {
 			min-height: 15px;
