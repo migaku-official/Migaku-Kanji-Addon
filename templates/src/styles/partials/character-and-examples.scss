@@ -6,8 +6,11 @@ START - Character and examples */
 		align-items: center;
 		display: flex;
 		flex-direction: column;
-		margin-bottom: 25px;
 		text-align: center;
+
+		@include bp.get(s) {
+			margin-bottom: 25px;
+		}
 	}
 
 	// --------------------------------------
@@ -17,8 +20,8 @@ START - Character and examples */
 		@include list-reset;
 
 		display: flex;
-		flex-wrap: wrap;
 		justify-content: center;
+		margin-bottom: 10px;
 	}
 
 	&__character {
