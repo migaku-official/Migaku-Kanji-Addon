@@ -28,13 +28,16 @@ START - Linked words */
 				line-height: 1.3;
 
 				rt {
+					align-items: center;
+					display: flex;
+					justify-content: center;
 					min-height: 15px;
 				}
 			}
 
 			@include bp.get(s) {
 				font-size: 26px !important;
-				padding: 8px 15px !important;
+				padding: 5px 15px 8px !important;
 			}
 		}
 
@@ -58,35 +61,34 @@ START - Linked words */
 
 // Hide furigana on linked words; show on hover
 
-html:not(.mobile)
-	.linked-words__examples
-	.hide_readings_hover
-	button.word:not(.word_default) {
+.linked-words__examples .hide_readings_hover button.word:not(.word_default) {
 	position: relative;
-
-	ruby::before {
-		content: '(hover)';
-		font-family: Rubik, sans-serif;
-		font-size: 10px;
-		left: 50%;
-		opacity: 0.5;
-		position: absolute;
-		top: 8px;
-		transform: translateX(-50%);
-	}
-
-	rt {
-		opacity: 0;
-	}
 
 	&:hover rt,
 	&:focus rt {
-		opacity: 1;
+		color: inherit;
+
+		&::before {
+			opacity: 0;
+		}
 	}
 
-	&:hover ruby::before,
-	&:focus ruby::before {
-		opacity: 0;
+	rt {
+		color: transparent;
+		position: relative;
+
+		&::before {
+			content: '(hover)';
+			color: $text-on-dark;
+			font-family: Rubik, sans-serif;
+			font-size: 10px;
+			opacity: 0.5;
+			position: absolute;
+
+			@include dark-mode {
+				color: $text-on-light;
+			}
+		}
 	}
 }
 
