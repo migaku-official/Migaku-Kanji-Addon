@@ -36,19 +36,19 @@ START - Fonts */
 // Class-based font setting
 
 .font-1 {
-	font-family: kanji_font1 !important;
+	font-family: kanji_font1, kanji_charfont, sans-serif !important;
 }
 
 .font-2 {
-	font-family: kanji_font2 !important;
+	font-family: kanji_font2, kanji_charfont, sans-serif !important;
 }
 
 .font-3 {
-	font-family: kanji_font3 !important;
+	font-family: kanji_font3, kanji_charfont, sans-serif !important;
 }
 
 .font-4 {
-	font-family: kanji_font4 !important;
+	font-family: kanji_font4, kanji_charfont, sans-serif !important;
 }
 
 .kanji-char-font {

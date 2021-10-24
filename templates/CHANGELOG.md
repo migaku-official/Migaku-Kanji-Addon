@@ -3,6 +3,7 @@
 - [FEATURE]: Added dedicated font for kanji characters.
 - [FIX]: Asset imports now work in AnkiDroid.
 - [FIX]: Example words without furigana now line up with example words that do have furigana.
+- [STYLE]: Fallback fonts for front-of-card characters.
 
 ## 0.6.1
 
