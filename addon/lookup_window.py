@@ -234,7 +234,7 @@ class LookupWindow(QDialog):
 
         if tab_i >= 0:
             character = self.tab_bar.tabText(tab_i)
-            result_data = aqt.mw.migaku_kanji_db.get_kanji_result_data(character)
+            result_data = aqt.mw.migaku_kanji_db.get_kanji_result_data(character, user_data=True)
 
         self.set_result_data(result_data)
 
