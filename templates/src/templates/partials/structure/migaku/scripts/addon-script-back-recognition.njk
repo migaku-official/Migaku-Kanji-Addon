@@ -1,45 +1,34 @@
 <!-- START - Addon script, Recognition, back -->
 <!-- NOTE: Includes changes around DMAK -->
 <script>
-	function wrap_list(list, intro, outro, dash_on_empty=true)
-	{
-		if (list.length < 1)
-			return dash_on_empty ? '-' : '';
-		return intro + list.join(outro+intro) + outro;
+	function wrap_list(list, intro, outro, dash_on_empty = true) {
+		if (list.length < 1) return dash_on_empty ? '-' : '';
+		return intro + list.join(outro + intro) + outro;
 	}
 
-	function search(text)
-	{
+	function search(text) {
 		pycmd('open-' + text);
 	}
 
-	function search_dict(text)
-	{
+	function search_dict(text) {
 		pycmd('search_dict-' + text);
 	}
 
-	function show_word_notes(notes)
-	{
+	function show_word_notes(notes) {
 		pycmd('show_word-' + notes.join(','));
 	}
 
-	function primitive_click()
-	{
+	function primitive_click() {
 		search($(this).data('character'));
 	}
 
-	function word_click(evt)
-	{
-		if (evt.shiftKey)
-		{
+	function word_click(evt) {
+		if (evt.shiftKey) {
 			search_dict($(this).data('word-kanji'));
-		}
-		else
-		{
+		} else {
 			var word_idx = $(this).data('word-idx');
 
-			if (word_idx === undefined)
-				return;
+			if (word_idx === undefined) return;
 
 			var idx = parseInt(word_idx);
 
@@ -50,26 +39,37 @@
 		}
 	}
 
-	function set_custom_keyword()
-	{
-		pycmd('custom_keyword-' + data.character + '-' + (data.usr_keyword ? data.usr_keyword : ''));
+	function set_custom_keyword() {
+		pycmd(
+			'custom_keyword-' +
+				data.character +
+				'-' +
+				(data.usr_keyword ? data.usr_keyword : ''),
+		);
 	}
 
-	function set_custom_story()
-	{
-		pycmd('custom_story-' + data.character + '-' + (data.usr_story ? data.usr_story : ''));
+	function set_custom_story() {
+		pycmd(
+			'custom_story-' +
+				data.character +
+				'-' +
+				(data.usr_story ? data.usr_story : ''),
+		);
 	}
 
-	function delete_mark(evt)
-	{
-		pycmd('delete_mark-' + data.character + '-recognition-' + (evt.shiftKey ? 'false' : 'true'));
+	function delete_mark(evt) {
+		pycmd(
+			'delete_mark-' +
+				data.character +
+				'-recognition-' +
+				(evt.shiftKey ? 'false' : 'true'),
+		);
 	}
 
 	var data_b64 = document.getElementById('migaku_data').innerHTML;
-	data_b64 = data_b64.replace( /(<([^>]+)>)/ig, '');  // Needed because of Migaku Editor :|
+	data_b64 = data_b64.replace(/(<([^>]+)>)/gi, ''); // Needed because of Migaku Editor :|
 	var data_json = atob(data_b64);
 	var data = JSON.parse(data_json);
-
 	{% if is_demo %}
 	// ---------------------------------
 	// IGNORE - DEMO USE ONLY
@@ -84,50 +84,43 @@
 	{% include "partials/structure/migaku/scripts/_variables-and-functions.njk" %}
 	{% include "partials/structure/migaku/scripts/_stroke-order-diagram.njk" %}
 
-	// var dmak = new Dmak(data.character, {'element': 'strokeorder', 'uri': kanjivg_uri, 'height': 220, 'width': 220, 'step': 0.015});
-
-	// $('#strokeorder_p').click(function() { dmak.eraseLastStrokes(1); });
-	// $('#strokeorder_s').click(function() { dmak.pause(); });
-	// $('#strokeorder_g').click(function() { dmak.render(); });
-	// $('#strokeorder_n').click(function() { dmak.renderNextStrokes(1); });
-	// $('#strokeorder_r').click(function() { dmak.erase(); });
-
 	$('.keyword-kanji').html(data.character);
 	$('.fontExample').html(data.character);
 
 	tags = [];
-	if (data.frequency_rank < 999999) tags.push('Frequency #' + data.frequency_rank.toString())
-	if (data.jlpt !== null) tags.push('JLPT N' + data.jlpt.toString())
-	if (data.kanken !== null) tags.push('Kanken ' + data.kanken.toString())
-	if (data.grade !== null)
-	{
+	if (data.frequency_rank < 999999)
+		tags.push('Frequency #' + data.frequency_rank.toString());
+	if (data.jlpt !== null) tags.push('JLPT N' + data.jlpt.toString());
+	if (data.kanken !== null) tags.push('Kanken ' + data.kanken.toString());
+	if (data.grade !== null) {
 		const num_conv = '０１２３４５６７８９';
 		if (data.grade <= 6) tags.push('小学校' + num_conv[data.grade] + '年');
 		if (data.grade == 8) tags.push('中学年');
 		if (data.grade <= 8) tags.push('常用');
 		if (data.grade >= 9 && data.grade <= 10) tags.push('人名用');
 	}
-	if (data.heisig_id5 !== null) tags.push('RTK (1-5) ' + data.heisig_id5.toString());
-	if (data.heisig_id6 !== null) tags.push('RTK (6+) ' + data.heisig_id6.toString());
+	if (data.heisig_id5 !== null)
+		tags.push('RTK (1-5) ' + data.heisig_id5.toString());
+	if (data.heisig_id6 !== null)
+		tags.push('RTK (6+) ' + data.heisig_id6.toString());
 	$('.tags').html(wrap_list(tags, '<div class="tag">', '</div>', false));
 
 	$('#onyomi').html(data.onyomi.length ? data.onyomi.join(', ') : '-');
 	$('#kunyomi').html(data.kunyomi.length ? data.kunyomi.join(', ') : '-');
 	$('#nanori').html(data.nanori.length ? data.nanori.join(', ') : '-');
 
-	var has_primitives = data.primitives.length > 0 && !(data.primitives.length == 1 && data.primitives[0] == data.character);
+	var has_primitives =
+		data.primitives.length > 0 &&
+		!(data.primitives.length == 1 && data.primitives[0] == data.character);
 	$('.KanjiLookup-primitives').toggle(has_primitives);
 	$('#primitives').empty();
 
-	if (has_primitives)
-	{
+	if (has_primitives) {
 		var primitives_pts = [];
 
-		for (const p_data of data.primitives_detail)
-		{
+		for (const p_data of data.primitives_detail) {
 			var keywords = [];
-			if (p_data.usr_keyword)
-				keywords.push(p_data.usr_keyword);
+			if (p_data.usr_keyword) keywords.push(p_data.usr_keyword);
 			if (p_data.heisig_keyword5 && !keywords.includes(p_data.heisig_keyword5))
 				keywords.push(p_data.heisig_keyword5);
 			if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
@@ -136,16 +129,30 @@
 				keywords.push('<span class="primitive_keyword">' + pk + '</span>');
 			var keywords_txt = keywords.length ? keywords.join(', ') : '-';
 
-			var meanings_txt = p_data.meanings.length ? p_data.meanings.join(', ') : '-';
+			var meanings_txt = p_data.meanings.length
+				? p_data.meanings.join(', ')
+				: '-';
 
-			var primitive_alternatives_txt = p_data.primitive_alternatives.length ? p_data.primitive_alternatives.join(', ') : '-';
+			var primitive_alternatives_txt = p_data.primitive_alternatives.length
+				? p_data.primitive_alternatives.join(', ')
+				: '-';
 
 			primitives_pts.push(
-				'<button class="primitive" data-character="' + p_data.character + '">' + p_data.character + '<div class="primitiveDetails">' +
-					'<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' + keywords_txt + '</div>' +
-					'<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' + meanings_txt + '</div>' +
-					'<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' + primitive_alternatives_txt + '</div>' +
-				'</div></button>'
+				'<button class="primitive" data-character="' +
+					p_data.character +
+					'">' +
+					p_data.character +
+					'<div class="primitiveDetails">' +
+					'<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' +
+					keywords_txt +
+					'</div>' +
+					'<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' +
+					meanings_txt +
+					'</div>' +
+					'<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' +
+					primitive_alternatives_txt +
+					'</div>' +
+					'</div></button>',
 			);
 		}
 
@@ -159,55 +166,79 @@
 	var word_pts = [];
 	var word_front_pts = [];
 
-	for (var i = 0; i < data.words.length; i++)
-	{
-		if (word_pts.length >= max_words)
-				break;
+	for (var i = 0; i < data.words.length; i++) {
+		if (word_pts.length >= max_words) break;
 
 		const we = data.words[i];
 		const w = we[0];
 		const r = we[1];
 
-		word_pts.push('<button class="word" data-word-kanji="' + w + '" data-word-idx="' + i + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>');
+		word_pts.push(
+			'<button class="word" data-word-kanji="' +
+				w +
+				'" data-word-idx="' +
+				i +
+				'"><ruby>' +
+				w +
+				'<rt>' +
+				r +
+				'</rt></ruby></button>',
+		);
 		if (word_front_pts.length < max_words_front)
-			word_front_pts.push('<div class="word_front"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+			word_front_pts.push(
+				'<div class="word_front"><ruby>' +
+					w +
+					'<rt>' +
+					r +
+					'</rt></ruby></div>',
+			);
 	}
-	for (var i = 0; i < data.words_default.length; i++)
-	{
-		if (word_pts.length >= max_words)
-				break;
+	for (var i = 0; i < data.words_default.length; i++) {
+		if (word_pts.length >= max_words) break;
 
 		const we = data.words_default[i];
 		const w = we[0];
 		const r = we[1];
 
-		if (data.words.some(
-			function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
-		))
+		if (
+			data.words.some(function (existing_we) {
+				return w == existing_we[0] && r == existing_we[1];
+			})
+		)
 			continue;
 
-		word_pts.push('<button class="word word_default" data-word-kanji="' + w + '"><ruby>' + w + '<rt>' + r + '</rt></ruby></button>');
+		word_pts.push(
+			'<button class="word word_default" data-word-kanji="' +
+				w +
+				'"><ruby>' +
+				w +
+				'<rt>' +
+				r +
+				'</rt></ruby></button>',
+		);
 		if (!settings.hide_default_words && word_front_pts.length < max_words_front)
-			word_front_pts.push('<div class="word_front word_front_default"><ruby>' + w + '<rt>' + r + '</rt></ruby></div>');
+			word_front_pts.push(
+				'<div class="word_front word_front_default"><ruby>' +
+					w +
+					'<rt>' +
+					r +
+					'</rt></ruby></div>',
+			);
 	}
 	$('.KanjiLookup-words').toggle(word_pts.length > 0);
 	$('#words').html(word_pts.join(''));
+	$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 	$('.word').click(word_click);
 	$('#words_front').html(word_front_pts.join(''));
 
 	$('.KanjiLookup-radicals').toggle(data.radicals.length > 0);
 	$('#radicals').html(
-		wrap_list(
-			data.radicals,
-			'<button class="radical">',
-			'</button>')
+		wrap_list(data.radicals, '<button class="radical">', '</button>'),
 	);
 
 	var keywords = [];
-	if (data.usr_keyword)
-		keywords.push(data.usr_keyword);
-	if (!settings.only_custom_keywords || keywords.length < 1)
-	{
+	if (data.usr_keyword) keywords.push(data.usr_keyword);
+	if (!settings.only_custom_keywords || keywords.length < 1) {
 		if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
 			keywords.push(data.heisig_keyword5);
 		if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
@@ -217,34 +248,25 @@
 	}
 	keywords_txt = keywords.length ? keywords.join(', ') : '-';
 	$('#keywords').html(keywords_txt);
-	if (keywords.length < 1)
-		keywords = data.meanings;
+	if (keywords.length < 1) keywords = data.meanings;
 	keywords_front_txt = keywords.length ? keywords.join(', ') : '-';
 	$('#keywords_front').html(keywords_front_txt);
 
 	var meanings_txt = data.meanings.length ? data.meanings.join(', ') : '-';
 	$('#meanings').html(meanings_txt);
-	if (data.meanings.length)
-		$('#meanings_front').html(meanings_txt);
+	if (data.meanings.length) $('#meanings_front').html(meanings_txt);
 
 	var stories = [];
-	if (data.usr_story)
-		stories.push(data.usr_story.split('\n').join('<br>'));
-	if (!settings.only_custom_stories || stories.length < 1)
-	{
-		if (data.heisig_story)
-		{
+	if (data.usr_story) stories.push(data.usr_story.split('\n').join('<br>'));
+	if (!settings.only_custom_stories || stories.length < 1) {
+		if (data.heisig_story) {
 			var heisig_story = data.heisig_story;
-			if (data.heisig_comment)
-				heisig_story += '<br><br>' + data.heisig_comment;
+			if (data.heisig_comment) heisig_story += '<br><br>' + data.heisig_comment;
 			stories.push(heisig_story);
 		}
-		for (const ks of data.koohi_stories)
-			stories.push(ks);
+		for (const ks of data.koohi_stories) stories.push(ks);
 	}
 
-	$('#stories').html(
-		wrap_list(stories, '<p class="story">', '</p>')
-	);
+	$('#stories').html(wrap_list(stories, '<p class="story">', '</p>'));
 </script>
 <!-- END - Addon script, Recognition, back -->

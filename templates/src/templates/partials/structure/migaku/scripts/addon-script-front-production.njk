@@ -51,6 +51,7 @@
   }
   $('.KanjiLookup-words').toggle(word_pts.length > 0);
   $('#words').html(word_pts.join(''));
+	$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
   $('#words_front').html(word_front_pts.join('').split(data.character).join('＿'));
 
   if (settings.hide_keywords && word_front_pts.length > 0)

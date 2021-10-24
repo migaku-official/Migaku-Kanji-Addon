@@ -13,6 +13,7 @@
 				Set Custom Story
 			</button>
 		</div>
+		{% if not is_lookup %}
 		<div class="actions__mark-known">
 			<button
 				onclick="delete_mark(event);"
@@ -21,6 +22,7 @@
 				Mark Known And Delete Card
 			</button>
 		</div>
+		{% endif %}
 	</div>
 	<div class="actions__mobile">
 		Actions only work on desktop.

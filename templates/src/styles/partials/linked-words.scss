@@ -58,7 +58,10 @@ START - Linked words */
 
 // Hide furigana on linked words; show on hover
 
-html:not(.mobile) .linked-words__examples button.word:not(.word_default) {
+html:not(.mobile)
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default) {
 	position: relative;
 
 	ruby::before {
