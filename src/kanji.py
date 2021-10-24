@@ -636,7 +636,7 @@ class KanjiDB:
                 callback(F'Refreshing kanji cards... ({i+1}/{num_notes})')
 
 
-    def get_kanji_result_data(self, character, card_ids=True, detail_primitives=True, words=True):
+    def get_kanji_result_data(self, character, card_ids=True, detail_primitives=True, detail_primitive_of=True, words=True):
 
         ret = {
             'character': character,
@@ -656,6 +656,7 @@ class KanjiDB:
             ('jlpt', _, None),
             ('kanken', _, None),
             ('primitives', list, None),
+            ('primitive_of', list, None),
             ('primitive_keywords', json.loads, None),
             ('primitive_alternatives', list, None),
             ('heisig_id5', _, None),
@@ -718,5 +719,15 @@ class KanjiDB:
                     )
 
                 ret['primitives_detail'] = primitives_detail
+
+            if detail_primitive_of:
+                primitive_of_detail = []
+
+                for pc in ret['primitive_of']:
+                    primitive_of_detail.append(
+                        self.get_kanji_result_data(pc, card_ids=False, detail_primitives=False, detail_primitive_of=False, words=False)
+                    )
+
+                ret['primitive_of_detail'] = primitive_of_detail
 
         return ret
