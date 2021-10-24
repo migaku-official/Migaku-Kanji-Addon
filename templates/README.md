@@ -4,7 +4,7 @@ Please ensure you have already read both the contribution guidelines ([CONTRIBUT
 
 ## Getting started
 
-First you ought to ensure your node environment is suitable. We recommend you use `nvm` (Node Version Manager)[https://github.com/nvm-sh/nvm#installing-and-updating] to manage and install node versions.
+First you ought to ensure your node environment is suitable. We recommend you use `nvm` [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) to manage and install node versions.
 
 So, first run `nvm use` to auto-install and use a known-compatible version of node as per the directory `.nvmrc`.
 

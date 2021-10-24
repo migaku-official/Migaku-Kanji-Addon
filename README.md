@@ -22,11 +22,11 @@ Customisable Anki addon for learning kanji within the context of the vocab in yo
 
 ## Contributing
 
-Contributions of all kinds are welcome - please read the contribution guidelines [CONTRIBUTING.md](.github/CONTRIBUTING.md) before submitting any issues or pull requests.
+Contributions of all kinds are welcome - please read the contribution guidelines ([CONTRIBUTING.md](.github/CONTRIBUTING.md)) before submitting any issues or pull requests.
 
 ## Development
 
-Before diving into the code, make sure you read the development documentation ([DEVELOPMENT.md](DEVELOPMENT.md)) to learn how this repository is structured.
+Before diving into the code, make sure you read the development documentation ([DEVELOPMENT.md](.github/DEVELOPMENT.md)) to learn how this repository is structured.
 
 ## License
 
