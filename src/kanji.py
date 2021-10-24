@@ -636,7 +636,7 @@ class KanjiDB:
                 callback(F'Refreshing kanji cards... ({i+1}/{num_notes})')
 
 
-    def get_kanji_result_data(self, character, card_ids=True, detail_primitives=True, detail_primitive_of=True, words=True):
+    def get_kanji_result_data(self, character, card_ids=True, detail_primitives=True, detail_primitive_of=True, words=True, user_data=False):
 
         ret = {
             'character': character,
@@ -729,5 +729,18 @@ class KanjiDB:
                     )
 
                 ret['primitive_of_detail'] = primitive_of_detail
+
+            if user_data:
+                ret['user_data'] = {}
+                for ct in CardType:
+                    ct_card_id = ret[F'{ct.label}_card_id']
+                    ct_user_data = ''
+                    if ct_card_id:
+                        try:
+                            ct_card = aqt.mw.col.getCard(ct_card_id)
+                            ct_user_data = ct_card.note()['UserData']
+                        except:
+                            pass
+                    ret['user_data'][ct.label] = ct_user_data
 
         return ret
