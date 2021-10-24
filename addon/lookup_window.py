@@ -85,7 +85,7 @@ class LookupWindow(QDialog):
              '<style>\n' \
             F'{fonts_css}\n' \
              '\n</style>' \
-            F'<link rel="stylesheet" href="{self.web_uri("lookup_style.css")}">' \
+            F'<link rel="stylesheet" href="{self.web_uri("styles.css")}">' \
             F'<script src="{self.web_uri("jquery.js")}"></script>' \
             F'<script src="{self.web_uri("raphael.js")}"></script>' \
             F'<script src="{self.web_uri("dmak.js")}"></script>' \

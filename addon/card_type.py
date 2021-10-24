@@ -131,8 +131,8 @@ class CardTypeData:
 
     # Updates the associated model (aka note type)
     def upsert_model(self):
-        def model_file_data(name):
-            path = addon_path('models', self.label, name)
+        def web_file_data(name):
+            path = addon_path('web', name)
             return open(path, 'r', encoding='UTF-8').read()
 
         # Get or create model
@@ -151,7 +151,7 @@ class CardTypeData:
 
         # Set CSS
         font_css = fonts.card_css()
-        static_css = model_file_data('style.css')
+        static_css = web_file_data('styles.css')
         model['css'] = font_css + '\n\n' + static_css
 
         # Get or create standard template
@@ -184,8 +184,8 @@ class CardTypeData:
         '''
 
         # Set template html
-        template['qfmt'] = settings_html + '\n\n' + model_file_data('front.html')
-        template['afmt'] = settings_html + '\n\n' + model_file_data('back.html')
+        template['qfmt'] = settings_html + '\n\n' + web_file_data(F'front-{self.label}.html')
+        template['afmt'] = settings_html + '\n\n' + web_file_data(F'back-{self.label}.html')
 
         aqt.mw.col.models.save(model)
 
