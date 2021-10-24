@@ -1,0 +1,48 @@
+/* ==============================================
+START - Variables */
+
+// --------------------------------------
+// Base colors
+
+$brand-blue-primary: #2880ff;
+$brand-orange-primary: #f2994a;
+
+$brand-black: #000;
+$brand-white: #fff;
+
+$brand-grey: #cbcbcb;
+$brand-grey-dark: #363c4a;
+$brand-grey-darker: #24272d;
+
+// --------------------------------------
+// Layout colors
+
+$body-background-light: $brand-white;
+$body-background-dark: $brand-grey-dark;
+$text-on-dark: $brand-white;
+$text-on-light: $brand-grey-dark;
+
+// --------------------------------------
+// Stroke order diagram colors
+
+$diagram-background-light: #e5f9ff;
+$diagram-border-light: #c0e2ed;
+$diagram-background-dark: $brand-orange-primary;
+$diagram-border-dark: transparent;
+
+// Same for both light and dark modes
+$diagram-title: $brand-grey-dark;
+
+// --------------------------------------
+// Animations
+
+$transition-duration: 300ms;
+
+// --------------------------------------
+// Mobile
+
+$mobile-msg-opacity: 0.5;
+$mobile-msg-font-size: 14px;
+
+/* END - Variables
+============================================== */

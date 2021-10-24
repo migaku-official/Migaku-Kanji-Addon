@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" class="{% block device %}{% endblock %}">
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<style>
+			@font-face {
+				font-family: kanji_font1;
+				src: url('/assets/_kanji_font1__mplus-2c-light.ttf');
+			}
+
+			@font-face {
+				font-family: kanji_font2;
+				src: url('/assets/_kanji_font2__hgrkk.ttf');
+			}
+
+			@font-face {
+				font-family: kanji_font3;
+				src: url('/assets/_kanji_font3__dejima-mincho-r227.ttf');
+			}
+
+			@font-face {
+				font-family: kanji_font4;
+				src: url('/assets/_kanji_font4__jkg-m_3.ttf');
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="/styles.css" />
+		{% include 'partials/structure/anki/anki-dependencies.njk' %}
+	</head>
+
+	<body class="{% block theme %}{% endblock %}">
+		{% include 'partials/structure/migaku/migaku-kanji-settings.njk' %}
+		{% block content %}{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!-- ======================
+START - Migaku markup
+- @version v0.7.0
+======================= -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+{% include "partials/structure/migaku-header.njk" %}
+
+<div class="layout__container">
+	<div class="layout__above">
+		{% block above %}{% endblock %}
+	</div>
+
+	<main class="layout__main">
+		<div class="layout__content">
+			{% block main %}{% endblock %}
+		</div>
+
+		<aside class="layout__aside">
+			{% block sidebar %}{% endblock %}
+		</aside>
+	</main>
+
+	<div class="layout__below">
+		{% block below %}{% endblock %}
+	</div>
+
+	{% include "partials/structure/migaku/migaku-data.njk" %}
+</div>
+
+{% if not is_lookup and not is_front %}
+	{% include 'partials/structure/migaku/migaku-dependencies.njk' %}
+{% endif %}
+
+{% if is_back and is_recognition %}
+	{% include 'partials/structure/migaku/scripts/addon-script-back-recognition.njk' %}
+{% elif is_back and is_production %}
+	{% include 'partials/structure/migaku/scripts/addon-script-back-production.njk' %}
+{% elif is_front and is_recognition %}
+	{% include 'partials/structure/migaku/scripts/addon-script-front-recognition.njk' %}
+{% elif is_front and is_production %}
+	{% include 'partials/structure/migaku/scripts/addon-script-front-production.njk' %}
+{% endif %}
+
+<!-- ======================
+END - Migaku markup
+======================= -->

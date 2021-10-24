@@ -1,0 +1,75 @@
+/* ==============================================
+START - Actions */
+
+.actions {
+	&__container {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+
+		@include bp.get(xs) {
+			align-items: flex-start;
+		}
+
+		// Faded-look to communicate inoperation
+		@include mobile-device {
+			opacity: $mobile-msg-opacity;
+		}
+	}
+
+	&__buttons {
+		width: 100%;
+
+		// Action buttons dont work on mobile
+		@include mobile-device {
+			display: none;
+		}
+
+		.button {
+			@include bp.get(xs) {
+				margin-right: 20px;
+			}
+		}
+	}
+
+	&__mobile {
+		display: none;
+		font-size: $mobile-msg-font-size;
+
+		// Display message
+		@include mobile-device {
+			display: block;
+		}
+	}
+
+	&__set-custom,
+	&__mark-known {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		@include bp.get(xs) {
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		@include bp.get(s) {
+			justify-content: flex-start;
+		}
+	}
+
+	&__set-custom .button:not(:first-of-type) {
+		margin-top: 20px;
+
+		@include bp.get(xs) {
+			margin-top: 0;
+		}
+	}
+
+	&__mark-known {
+		margin-top: 20px;
+	}
+}
+
+/* END - Actions
+============================================== */

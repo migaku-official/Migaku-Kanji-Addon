@@ -1,0 +1,108 @@
+/* ==============================================
+START - Lookup */
+
+// --------------------------------------
+// "Welcome" and "No Results" pages
+
+.KanjiLookup-container {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+
+	@include bp.get(s) {
+		padding-top: 50px;
+	}
+
+	@include bp.get(l) {
+		padding-top: 100px;
+	}
+
+	h1 {
+		margin-top: 20px;
+
+		&.welcome {
+			font-size: 64px;
+		}
+
+		&.kanji {
+			color: $text-on-light;
+			font-size: 50px;
+			margin-top: 20px;
+			opacity: 1;
+
+			@include dark-mode {
+				color: $text-on-dark;
+			}
+		}
+	}
+
+	.key {
+		background: #d8dae0;
+		border-radius: 5px;
+		color: $text-on-light;
+		display: inline-block;
+		margin: 0 4px;
+		padding: 5px 10px;
+	}
+}
+
+// --------------------------------------
+
+.lookup-actions {
+	&__container {
+		// Faded-look to communicate inoperation
+		@include mobile-device {
+			opacity: $mobile-msg-opacity;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		flex-direction: column;
+
+		@include bp.get(xs) {
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		@include bp.get(s) {
+			justify-content: flex-start;
+		}
+
+		// Action buttons dont work on mobile
+		@include mobile-device {
+			display: none;
+		}
+
+		.button {
+			margin-bottom: 20px;
+
+			@include bp.get(xs) {
+				margin: 0 10px;
+			}
+
+			@include bp.get(s) {
+				&:first-of-type {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	&__mobile {
+		display: none;
+		font-size: $mobile-msg-font-size;
+
+		// Display message
+		@include mobile-device {
+			display: block;
+		}
+	}
+}
+
+/* END - Lookup
+============================================== */

@@ -1,0 +1,102 @@
+/* ==============================================
+START - Typography */
+
+body {
+	color: $text-on-light;
+	font-family: 'Rubik', kanji_charfont, sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+
+	@include dark-mode(true) {
+		color: $text-on-dark;
+	}
+}
+
+%heading-common {
+	font-weight: 700;
+	margin-bottom: 10px;
+	position: relative;
+
+	&.-has-separator {
+		@include bp.get(s) {
+			margin-bottom: 30px;
+
+			&::after {
+				@include pseudo;
+				@include separator;
+
+				bottom: -30px;
+				left: 50%;
+				transform: translateX(-50%);
+
+				@include bp.get(s) {
+					left: 0;
+					transform: unset;
+				}
+			}
+		}
+	}
+}
+
+// --------------------------------------------
+// Responsive heading sizes
+
+$responsive-headings: (
+	'h1': (
+		'mobile': 25px,
+		'tablet': 30px,
+		'desktop': 40px,
+	),
+	'h2': (
+		'mobile': 16px,
+		'tablet': 20px,
+		'desktop': 25px,
+	),
+	'h3': (
+		'mobile': 12px,
+		'tablet': 15px,
+		'desktop': 15px,
+	),
+);
+
+@mixin responsive-font-size($sizes) {
+	$mobile: map.get($sizes, 'mobile');
+	$tablet: map.get($sizes, 'tablet');
+	$desktop: map.get($sizes, 'desktop');
+
+	font-size: $mobile;
+
+	@include bp.get(s) {
+		font-size: $tablet;
+	}
+
+	@include bp.get(l) {
+		font-size: $desktop;
+	}
+}
+
+@mixin heading-size($heading) {
+	$sizes: map.get($responsive-headings, #{$heading});
+
+	@extend %heading-common;
+	@include responsive-font-size($sizes);
+}
+
+@each $heading, $_ in $responsive-headings {
+	#{$heading} {
+		@include heading-size(#{$heading});
+	}
+}
+
+// --------------------------------------------
+
+h1 {
+	color: $brand-blue-primary;
+
+	@include dark-mode {
+		color: $brand-orange-primary;
+	}
+}
+
+/* END - Typography
+============================================== */

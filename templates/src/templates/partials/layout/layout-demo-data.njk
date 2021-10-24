@@ -1,0 +1,172 @@
+{% extends "partials/layout/layout-demo-html.njk" %}
+{% set is_demo = true %}
+
+{# ------------------------------
+Variables #}
+
+{% set character = '約' %}
+
+{% set words_front %}
+	<div class="word_front">
+		<ruby>約束<rt>やくそく</rt></ruby>
+	</div>
+	<div class="word_front">
+		<ruby>婚約<rt>こんやく</rt></ruby>
+	</div>
+	<div class="word_front word_front_default">
+		<ruby>予約<rt>よやく</rt></ruby>
+	</div>
+{% endset %}
+{% set words_front_production %}
+	<div class="word_front">
+		<ruby>＿束<rt style="visibility: hidden;">やくそく</rt></ruby>
+	</div>
+	<div class="word_front">
+		<ruby>婚＿<rt style="visibility: hidden;">こんやく</rt></ruby>
+	</div>
+	<div class="word_front">
+		<ruby>予＿<rt style="visibility: hidden;">よやく</rt></ruby>
+	</div>
+{% endset %}
+
+{% set keyword = 'promise' %}
+{% set primitive_keyword = 'pinky promise' %}
+{% set meanings = 'promise, approximately, shrink' %}
+
+{% set linked_words %}
+	<button
+		class="word"
+		data-word-kanji="約束"
+		data-word-idx="0"
+	>
+		<ruby>約束<rt>やくそく</rt></ruby>
+	</button>
+	<button
+		class="word"
+		data-word-kanji="婚約"
+		data-word-idx="1"
+	>
+		<ruby>婚約<rt>こんやく</rt></ruby>
+	</button>
+	<button
+		class="word"
+		data-word-kanji="予約"
+		data-word-idx="2"
+	>
+		<ruby>予約<rt>よやく</rt></ruby>
+	</button>
+	<button class="word word_default" data-word-kanji="契約">
+		<ruby>契約<rt>けいやく</rt></ruby>
+	</button>
+	<button class="word word_default" data-word-kanji="約">
+		<ruby>約<rt>やく</rt></ruby>
+	</button>
+	<button class="word word_default" data-word-kanji="節約">
+		<ruby>節約<rt>せつやく</rt></ruby>
+	</button>
+{% endset %}
+
+{% set primitives %}
+	<button class="primitive" data-character="糸">
+		糸
+		<div class="primitiveDetails">
+			<div class="primitiveDetails-keywords">
+				<h3>Keywords:</h3>
+				thread,
+				<span class="primitive_keyword">Spider-Man</span>
+			</div>
+			<div class="primitiveDetails-meanings">
+				<h3>Meanings:</h3>
+				thread
+			</div>
+			<div class="primitiveDetails-alternatives">
+				<h3>Alternatives:</h3>
+				-
+			</div>
+		</div>
+	</button>
+	<button class="primitive" data-character="勺">
+		勺
+		<div class="primitiveDetails">
+			<div class="primitiveDetails-keywords">
+				<h3>Keywords:</h3>
+				ladle
+			</div>
+			<div class="primitiveDetails-meanings">
+				<h3>Meanings:</h3>
+				ladle, one tenth of a go, dip
+			</div>
+			<div class="primitiveDetails-alternatives">
+				<h3>Alternatives:</h3>
+				-
+			</div>
+		</div>
+	</button>
+{% endset %}
+
+{% set radicals %}
+	<button class="radical">糸</button>
+	<button class="radical">幺</button>
+	<button class="radical">小</button>
+	<button class="radical">丶</button>
+	<button class="radical">勹</button>
+{% endset %}
+
+{% set tags %}
+	<div class="tag">Frequency #246</div>
+	<div class="tag">JLPT N3</div>
+	<div class="tag">Kanken 7</div>
+	<div class="tag">小学校４年</div>
+	<div class="tag">常用</div>
+	<div class="tag">RTK (1-5) 1362</div>
+	<div class="tag">RTK (6+) 1462</div>
+{% endset %}
+
+{% set readings_onyomi = 'ヤク' %}
+{% set readings_kunyomi = 'つづ.まる, つづ.める, つづま.やか' %}
+{% set readings_nanori = '-' %}
+
+{% set stories %}
+	<p class="story">
+		Consider for a moment the etymology of the word "<b>promise</b>"
+		in order to notice its roots in the activity of putting one
+		thing (e.g., one's word of honor) in place of another (e.g., the
+		fulfillment of a task). For as it turns out, this character also
+		means "to abridge, economize, and abbreviate" - all activities
+		that involve putting one thing in place of another. With that in
+		mind, we may now work with the elements: <i>thread</i> . . .
+		<i>ladle</i>.
+	</p>
+	<p class="story">
+		1) [eatyoda] 27-10-2008(150): Anytime Spiderman breaks a
+		promise, Aunt Mae hits him one over with her ladle.
+	</p>
+	<p class="story">
+		2) [laner36] 2-10-2007(125): Spiderman promised to get Aunt
+		Mae's ladle back. He started to do a blood oath by spilling
+		drops of blood but Aunt Mae stopped him and bound up the wound.
+		'It's only a ladle Peter'.
+	</p>
+	<p class="story">
+		3) [raulir] 13-12-2006(35): Thread + bound + drop of blood.
+		Blood oath is a promise, where a drop of blood turns into a
+		binding thread.
+	</p>
+	<p class="story">
+		4) [mattimus] 19-4-2010(24): Spiderman broke his promise to be
+		home in time for dinner. When he came in late, Aunt Mae beat him
+		viciously with a ladle. She just kept hitting, and hitting, and
+		hitting until he lost consciousness, and even then she still
+		kept ladling his pulpy carcass for like fifteen more minutes.
+		Don't break promises to Aunt Mae.
+	</p>
+	<p class="story">
+		5) [Rakushun] 30-8-2007(17): Spiderman and Spiderwoman share a
+		drop of blood (the blood handshake thing, like in Natural Born
+		Killers) to bind their promise that they'll always fight crime.
+		Ladle was too hard. Spiderman PROMISES to get MJs cooking ladle
+		back.
+	</p>
+{% endset %}
+
+{% set migaku_data = 'eyJjaGFyYWN0ZXIiOiAiXHU3ZDA0IiwgImhhc19yZXN1bHQiOiB0cnVlLCAic3Ryb2tlX2NvdW50IjogOSwgIm9ueW9taSI6IFsiXHUzMGU0XHUzMGFmIl0sICJrdW55b21pIjogWyJcdTMwNjRcdTMwNjUuXHUzMDdlXHUzMDhiIiwgIlx1MzA2NFx1MzA2NS5cdTMwODFcdTMwOGIiLCAiXHUzMDY0XHUzMDY1XHUzMDdlLlx1MzA4NFx1MzA0YiJdLCAibmFub3JpIjogW10sICJtZWFuaW5ncyI6IFsicHJvbWlzZSIsICJhcHByb3hpbWF0ZWx5IiwgInNocmluayJdLCAiZnJlcXVlbmN5X3JhbmsiOiAyNDYsICJncmFkZSI6IDQsICJqbHB0IjogMywgImthbmtlbiI6IDcsICJwcmltaXRpdmVzIjogWyJcdTdjZjgiLCAiXHU1MmZhIl0sICJwcmltaXRpdmVfa2V5d29yZHMiOiBbXSwgInByaW1pdGl2ZV9hbHRlcm5hdGl2ZXMiOiBbXSwgImhlaXNpZ19pZDUiOiAxMzYyLCAiaGVpc2lnX2lkNiI6IDE0NjIsICJoZWlzaWdfa2V5d29yZDUiOiAicHJvbWlzZSIsICJoZWlzaWdfa2V5d29yZDYiOiAicHJvbWlzZSIsICJoZWlzaWdfc3RvcnkiOiAiQ29uc2lkZXIgZm9yIGEgbW9tZW50IHRoZSBldHltb2xvZ3kgb2YgdGhlIHdvcmQgXCI8Yj5wcm9taXNlPC9iPlwiIGluIG9yZGVyIHRvIG5vdGljZSBpdHMgcm9vdHMgaW4gdGhlIGFjdGl2aXR5IG9mIHB1dHRpbmcgb25lIHRoaW5nIChlLmcuLCBvbmUncyB3b3JkIG9mIGhvbm9yKSBpbiBwbGFjZSBvZiBhbm90aGVyIChlLmcuLCB0aGUgZnVsZmlsbG1lbnQgb2YgYSB0YXNrKS4gRm9yIGFzIGl0IHR1cm5zIG91dCwgdGhpcyBjaGFyYWN0ZXIgYWxzbyBtZWFucyBcInRvIGFicmlkZ2UsIGVjb25vbWl6ZSwgYW5kIGFiYnJldmlhdGVcIiAtIGFsbCBhY3Rpdml0aWVzIHRoYXQgaW52b2x2ZSBwdXR0aW5nIG9uZSB0aGluZyBpbiBwbGFjZSBvZiBhbm90aGVyLiBXaXRoIHRoYXQgaW4gbWluZCwgd2UgbWF5IG5vdyB3b3JrIHdpdGggdGhlIGVsZW1lbnRzOiA8aT50aHJlYWQ8L2k+IC4gLiAuIDxpPmxhZGxlPC9pPi4iLCAiaGVpc2lnX2NvbW1lbnQiOiBudWxsLCAicmFkaWNhbHMiOiBbIlx1N2NmOCIsICJcdTVlN2EiLCAiXHU1YzBmIiwgIlx1NGUzNiIsICJcdTUyZjkiXSwgIndvcmRzX2RlZmF1bHQiOiBbWyJcdTdkMDRcdTY3NWYiLCAiXHUzMDg0XHUzMDRmXHUzMDVkXHUzMDRmIl0sIFsiXHU1OTUxXHU3ZDA0IiwgIlx1MzA1MVx1MzA0NFx1MzA4NFx1MzA0ZiJdLCBbIlx1N2QwNCIsICJcdTMwODRcdTMwNGYiXSwgWyJcdTVhNWFcdTdkMDQiLCAiXHUzMDUzXHUzMDkzXHUzMDg0XHUzMDRmIl0sIFsiXHU0ZTg4XHU3ZDA0IiwgIlx1MzA4OFx1MzA4NFx1MzA0ZiJdLCBbIlx1N2JjMFx1N2QwNCIsICJcdTMwNWJcdTMwNjRcdTMwODRcdTMwNGYiXV0sICJrb29oaV9zdG9yaWVzIjogWyIxKSBbZWF0eW9kYV0gMjctMTAtMjAwOCgxNTApOiBBbnl0aW1lIFNwaWRlcm1hbiBicmVha3MgYSBwcm9taXNlLCBBdW50IE1hZSBoaXRzIGhpbSBvbmUgb3ZlciB3aXRoIGhlciBsYWRsZS4iLCAiMikgW2xhbmVyMzZdIDItMTAtMjAwNygxMjUpOiBTcGlkZXJtYW4gcHJvbWlzZWQgdG8gZ2V0IEF1bnQgTWFlJ3MgbGFkbGUgYmFjay4gSGUgc3RhcnRlZCB0byBkbyBhIGJsb29kIG9hdGggYnkgc3BpbGxpbmcgZHJvcHMgb2YgYmxvb2QgYnV0IEF1bnQgTWFlIHN0b3BwZWQgaGltIGFuZCBib3VuZCB1cCB0aGUgd291bmQuICdJdCdzIG9ubHkgYSBsYWRsZSBQZXRlcicuIiwgIjMpIFtyYXVsaXJdIDEzLTEyLTIwMDYoMzUpOiBUaHJlYWQgKyBib3VuZCArIGRyb3Agb2YgYmxvb2QuIEJsb29kIG9hdGggaXMgYSBwcm9taXNlLCB3aGVyZSBhIGRyb3Agb2YgYmxvb2QgdHVybnMgaW50byBhIGJpbmRpbmcgdGhyZWFkLiIsICI0KSBbbWF0dGltdXNdIDE5LTQtMjAxMCgyNCk6IFNwaWRlcm1hbiBicm9rZSBoaXMgcHJvbWlzZSB0byBiZSBob21lIGluIHRpbWUgZm9yIGRpbm5lci4gV2hlbiBoZSBjYW1lIGluIGxhdGUsIEF1bnQgTWFlIGJlYXQgaGltIHZpY2lvdXNseSB3aXRoIGEgbGFkbGUuIFNoZSBqdXN0IGtlcHQgaGl0dGluZywgYW5kIGhpdHRpbmcsIGFuZCBoaXR0aW5nIHVudGlsIGhlIGxvc3QgY29uc2Npb3VzbmVzcywgYW5kIGV2ZW4gdGhlbiBzaGUgc3RpbGwga2VwdCBsYWRsaW5nIGhpcyBwdWxweSBjYXJjYXNzIGZvciBsaWtlIGZpZnRlZW4gbW9yZSBtaW51dGVzLiBEb24ndCBicmVhayBwcm9taXNlcyB0byBBdW50IE1hZS4iLCAiNSkgW1Jha3VzaHVuXSAzMC04LTIwMDcoMTcpOiBTcGlkZXJtYW4gYW5kIFNwaWRlcndvbWFuIHNoYXJlIGEgZHJvcCBvZiBibG9vZCAodGhlIGJsb29kIGhhbmRzaGFrZSB0aGluZywgbGlrZSBpbiBOYXR1cmFsIEJvcm4gS2lsbGVycykgdG8gYmluZCB0aGVpciBwcm9taXNlIHRoYXQgdGhleSdsbCBhbHdheXMgZmlnaHQgY3JpbWUuIExhZGxlIHdhcyB0b28gaGFyZC4gU3BpZGVybWFuIFBST01JU0VTIHRvIGdldCBNSnMgY29va2luZyBsYWRsZSBiYWNrLiJdLCAidXNyX2tleXdvcmQiOiBudWxsLCAidXNyX3N0b3J5IjogbnVsbCwgIndvcmRzIjogW1siXHU3ZDA0XHU2NzVmIiwgIlx1MzA4NFx1MzA0Zlx1MzA1ZFx1MzA0ZiIsIFsxNTg4NDE2MjgzMjM3LCAxNjA0OTkwMTQ0Nzg1LCAxNTkyOTE3NDM1NzA1LCAxNTkyOTE3NDM1NzA0LCAxNjE0NDIyODk5ODY3LCAxNTg4NDE2NDIwNDMzXV0sIFsiXHU1YTVhXHU3ZDA0IiwgIlx1MzA1M1x1MzA5M1x1MzA4NFx1MzA0ZiIsIFsxNTkyNzQyNzEzNjA1LCAxNjI4MDc3MDcwMjczLCAxNTkyODMxNDQwNzI3LCAxNTkyNzQyNzEzNjAwLCAxNTM5MDUwMDM2NDc1XV0sIFsiXHU0ZTg4XHU3ZDA0IiwgIlx1MzA4OFx1MzA4NFx1MzA0ZiIsIFsxNjI1Mjc4NDM1NjI3LCAxNTg4MjM0ODI0MzQzLCAxNTkxOTMwMjMzOTQ5LCAxNTg4MzM5Nzk4MTQ2XV1dLCAicHJpbWl0aXZlc19kZXRhaWwiOiBbeyJjaGFyYWN0ZXIiOiAiXHU3Y2Y4IiwgImhhc19yZXN1bHQiOiB0cnVlLCAic3Ryb2tlX2NvdW50IjogNiwgIm9ueW9taSI6IFsiXHUzMGI3Il0sICJrdW55b21pIjogWyJcdTMwNDRcdTMwNjgiXSwgIm5hbm9yaSI6IFtdLCAibWVhbmluZ3MiOiBbInRocmVhZCJdLCAiZnJlcXVlbmN5X3JhbmsiOiAxNTAwLCAiZ3JhZGUiOiAxLCAiamxwdCI6IDIsICJrYW5rZW4iOiAxMCwgInByaW1pdGl2ZXMiOiBbIlx1N2NmOCJdLCAicHJpbWl0aXZlX2tleXdvcmRzIjogWyJTcGlkZXItTWFuIl0sICJwcmltaXRpdmVfYWx0ZXJuYXRpdmVzIjogW10sICJoZWlzaWdfaWQ1IjogMTMzMywgImhlaXNpZ19pZDYiOiAxNDMxLCAiaGVpc2lnX2tleXdvcmQ1IjogInRocmVhZCIsICJoZWlzaWdfa2V5d29yZDYiOiAidGhyZWFkIiwgImhlaXNpZ19zdG9yeSI6ICJSZW1lbWJlciB3aGVuIHlvdXIgZ3Jhbm55IHVzZWQgdG8gYXNrIHlvdSB0byBiZW5kIHlvdXIgYXJtcyBhdCB0aGUgPGk+ZWxib3dzPC9pPiBhbmQgaG9sZCB0aGVtIG91dCBzbyB0aGF0IHNoZSBjb3VsZCB1c2UgdGhlbSBsaWtlIGEgcmFjayB0byBob2xkIGEgc2tlaW4gb2Ygc3RyaW5nIG9yIHlhcm4gKGhlcmUgPGI+dGhyZWFkPC9iPikgd2hpbGUgc2hlIHJvbGxlZCBpdCB1cCBpbnRvIGEgPGk+bGl0dGxlPC9pPiBiYWxsPyBOb3cgY2FuIHlvdSBzZWUgdGhlIHR3byA8aT5lbGJvd3M8L2k+ICh3aXRoIHRoZSBzZWNvbmQgc3Ryb2tlIGRvdWJsaW5nIHVwKSBhdCB0aGUgdG9wLCBhbmQgdGhlIGNoYXJhY3RlciBmb3IgPGk+bGl0dGxlPC9pPiBiZWxvdz8iLCAiaGVpc2lnX2NvbW1lbnQiOiBudWxsLCAicmFkaWNhbHMiOiBbIlx1N2NmOCIsICJcdTVlN2EiLCAiXHU1YzBmIl0sICJ3b3Jkc19kZWZhdWx0IjogW1siXHU3Y2Y4IiwgIlx1MzA0NFx1MzA2OCJdLCBbIlx1N2NmOFx1NTNlMyIsICJcdTMwNDRcdTMwNjhcdTMwNTBcdTMwNjEiXSwgWyJcdTZiZGJcdTdjZjgiLCAiXHUzMDUxXHUzMDQ0XHUzMDY4Il0sIFsiXHU5MWUzXHUzMDhhXHU3Y2Y4IiwgIlx1MzA2NFx1MzA4YVx1MzA0NFx1MzA2OCJdLCBbIlx1N2NmOFx1MzA0Zlx1MzA1YSIsICJcdTMwNDRcdTMwNjhcdTMwNGZcdTMwNWEiXSwgWyJcdTYyOWNcdTdjZjgiLCAiXHUzMDcwXHUzMDYzXHUzMDU3Il1dLCAia29vaGlfc3RvcmllcyI6IFsiMSkgW2xlcnJpc10gMy03LTIwMDcoMTk1KTogSSBhbHNvIHdlbnQgd2l0aCBTcGlkZXJtYW4uIEhvd2V2ZXIsIGluIHRoZSBjYXNlcyB3aGVyZSB0aGlzIHByaW1pdGl2ZSBhcHBlYXJzIHVuZGVyIG90aGVyIHByaW1pdGl2ZXMsIGFzIG9wcG9zZWQgdG8gb24gdGhlIGxlZnQgKEkgdGhpbmsgdGhlcmUgYXJlIH41IHRpbWVzIGluIHRoaXMgY2hhcHRlcikgSSd2ZSBvcHRlZCB0byB1c2UgYSBzaW1pbGFyIGNoYXJhY3RlcjogVmVub20uIFRoaXMgaGVscHMga2VlcCB0aGUgcG9zaXRpb25pbmcgY2xlYXIsIGVzcGVjaWFsbHkgb24gc3VjaCBjaGFyYWN0ZXJzIGFzIGRhaW50eSAoIzEzNjMgXHU3ZDMwKSBhbmQgYWNjdW11bGF0ZSAoIzEzNjQgXHU3ZDJmKS4iLCAiMikgW1BpaXRhYV0gMTctNy0yMDA2KDgxKTogWW91J2xsIGJlIHNlZWluZyB0aGlzIG9uZSBhIGxvdC4gU2VyaW91c2x5LiIsICIzKSBbam9obnplcF0gMjgtNy0yMDA3KDU2KTogT24gbGVmdCB3aXRoIG5vdGhpbmcgb24gdG9wIG9mIGl0IFx1MjAxMyZndDsgU1BJREVSTUFOLiBldmVyeXdoZXJlIGVsc2VcdTIwMjYuU1BJREVSUElHLiIsICI0KSBbYWtyb2RoYV0gMTQtNi0yMDA3KDIwKTogSSdsbCBzdGljayB3aXRoIFNwaWRlcm1hbi4gSGUncyBhIHZlcnkgbWVtb3JhYmxlIGNoYXJhY3RlciwgYW5kIGRvbid0IGZvcmdldCB0aGF0IGhlIGNhbiBzaG9vdCBzdHJpbmdzIGZyb20gYm90aCBhcm1zLiBXaGF0IGhhcHBlbnMgdG8gdGhlIHJlbGF0aXZlIHByaW1pdGl2ZSB3aGVuIFNwaWRlcm1hbiBjb21lcyBhbG9uZz8gSWYgeW91IGNhbiBjbGVhcmx5IHBpY3R1cmUgaGlzIHRocmVhZHMgd2luZGluZywgcHVsbGluZywgeWFua2luZywgc3RpY2tpbmcgdG8sIGZpbGxpbmcsIHR5aW5nLCBhbmQgc3RyYW5nbGluZyBvYmplY3RzLCB0aGVuIHlvdSdsbCBuZXZlciBjb25mdXNlIHRoaXMgcHJpbWl0aXZlIHdpdGggYW5vdGhlciBvbmUuIiwgIjUpIFthcGhhc2lhY10gMTMtMTAtMjAwOSgxNik6IEhhdGUgdG8gYmUgcGVkYW50aWMsIGJ1dCBpdCdzIHNwZWx0IFNwaWRlci1tYW4sIG5vdCBTcGlkZXJtYW4uIFN0YW4gTGVlIGFkZGVkIHRoZSBoeXBoZW4gdG8gZGlmZmVyZW50aWF0ZSBoaW0gZnJvbSBTdXBlcm1hbi4uIl0sICJ1c3Jfa2V5d29yZCI6IG51bGwsICJ1c3Jfc3RvcnkiOiBudWxsfSwgeyJjaGFyYWN0ZXIiOiAiXHU1MmZhIiwgImhhc19yZXN1bHQiOiB0cnVlLCAic3Ryb2tlX2NvdW50IjogMywgIm9ueW9taSI6IFsiXHUzMGI3XHUzMGUzXHUzMGFmIl0sICJrdW55b21pIjogW10sICJuYW5vcmkiOiBbXSwgIm1lYW5pbmdzIjogWyJsYWRsZSIsICJvbmUgdGVudGggb2YgYSBnbyIsICJkaXAiXSwgImZyZXF1ZW5jeV9yYW5rIjogOTk5OTk5LCAiZ3JhZGUiOiA5LCAiamxwdCI6IDEsICJrYW5rZW4iOiBudWxsLCAicHJpbWl0aXZlcyI6IFsiXHU1MmY5IiwgIlx1NGUzNiJdLCAicHJpbWl0aXZlX2tleXdvcmRzIjogW10sICJwcmltaXRpdmVfYWx0ZXJuYXRpdmVzIjogW10sICJoZWlzaWdfaWQ1IjogNjgsICJoZWlzaWdfaWQ2IjogNzIsICJoZWlzaWdfa2V5d29yZDUiOiAibGFkbGUiLCAiaGVpc2lnX2tleXdvcmQ2IjogImxhZGxlIiwgImhlaXNpZ19zdG9yeSI6ICJJZiB5b3Ugd2FudCB0byA8aT5iaW5kIHVwIGRyb3BzPC9pPiBvZiBhbnl0aGluZyAtIHdhdGVyLCBzb3VwLCBsZW1vbmFkZSAtIHlvdSB1c2Ugc29tZXRoaW5nIHRvIHNjb29wIHRoZXNlIDxpPmRyb3BzPC9pPiB1cCwgd2hpY2ggaXMgd2hhdCB3ZSBjYWxsIGEgPGI+bGFkbGU8L2I+LiBTZWUgdGhlIGxhc3QgPGk+ZHJvcDwvaT4gbGVmdCBpbnNpZGUgdGhlIDxiPmxhZGxlPC9iPj8iLCAiaGVpc2lnX2NvbW1lbnQiOiBudWxsLCAicmFkaWNhbHMiOiBbIlx1NGUzNiIsICJcdTUyZjkiXSwgIndvcmRzX2RlZmF1bHQiOiBbXSwgImtvb2hpX3N0b3JpZXMiOiBbIjEpIFtDaHJpc3RpbmVfVGhhbV0gMjItNy0yMDA3KDE0Nyk6IEEgbGFkbGUgYmluZHMgZHJvcHMgdG9nZXRoZXIuIiwgIjIpIFtic3BlYWtzXSAyMS0zLTIwMDcoNTQpOiBGb3JnZXQgYWJvdXQgdGhlIHByaW1hdGl2ZSAnYm91bmQgdXAnLiBJbWFnaW5lIGluc3RlYWQgdGhlIHNoYXBlIG9mIGEgbGFkbGUgYW5kIGhvbGRpbmcgaXQgdXBzaWRlIGRvd24gdG8gZHJpbmsgdGhlIGxhc3QgRFJPUCAob2Ygd2F0ZXIpLiIsICIzKSBbUm9iYXRzdV0gMTUtMS0yMDA5KDI4KTogVGhlIGxhc3QgZHJvcCBzdGF5cyBib3VuZCB0byB0aGUgTEFETEUuIiwgIjQpIFtCb2tlYWppXSAxMC0xMC0yMDA4KDExKTogSSdtIGJvdW5kIGFuZCBkZXRlcm1pbmVkIHRvIGdldCB0aGF0IGxhc3QgZHJvcCB3aXRoIHRoaXMgbGFkbGUhIiwgIjUpIFtkaWh1dGVub3NhXSAyOC04LTIwMDcoNyk6IEEgbGFkbGUgaG9sZGluZyBhIHRpbnkgZmFydC4iXSwgInVzcl9rZXl3b3JkIjogbnVsbCwgInVzcl9zdG9yeSI6IG51bGx9XX0=' %}

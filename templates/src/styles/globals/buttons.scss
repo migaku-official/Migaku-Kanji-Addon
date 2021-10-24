@@ -1,0 +1,118 @@
+/* ==============================================
+START - Buttons */
+
+%button-base {
+	@include button-reset;
+
+	border: none !important;
+	border-radius: 5px !important;
+	color: $brand-white;
+	display: inline-block;
+	font-size: 12px;
+	text-align: center;
+	transition: $transition-duration;
+}
+
+// Solid color
+@mixin button-primary {
+	@extend %button-base;
+
+	background: $brand-blue-primary;
+	padding: 20px 10px !important;
+
+	&:hover,
+	&:focus {
+		background: darken($brand-blue-primary, 20%);
+	}
+
+	&:active {
+		background: darken($brand-blue-primary, 30%);
+	}
+
+	@include dark-mode {
+		background: $brand-orange-primary;
+		color: $text-on-light;
+
+		&:hover,
+		&:focus {
+			background: darken($brand-orange-primary, 10%);
+		}
+
+		&:active {
+			background: darken($brand-orange-primary, 20%);
+		}
+	}
+}
+
+// Colored outline
+@mixin button-secondary {
+	@extend %button-base;
+
+	background: transparent;
+	border: 1px solid $brand-blue-primary !important;
+	box-shadow: none;
+	color: $brand-blue-primary;
+
+	&:hover,
+	&:focus {
+		background: rgba($brand-blue-primary, 0.2);
+	}
+
+	&:active {
+		background: rgba($brand-blue-primary, 0.5);
+	}
+
+	@include dark-mode {
+		border-color: $brand-orange-primary !important;
+		color: $brand-orange-primary;
+
+		&:hover,
+		&:focus {
+			background: rgba($brand-orange-primary, 0.2);
+		}
+
+		&:active {
+			background: rgba($brand-orange-primary, 0.5);
+		}
+	}
+}
+
+// Grey
+@mixin button-tertiary {
+	@extend %button-base;
+
+	background: $brand-grey;
+	color: $text-on-light;
+
+	&:hover,
+	&:focus {
+		background: darken($brand-grey, 10%);
+	}
+
+	&:active {
+		background: darken($brand-grey, 20%);
+	}
+}
+
+// --------------------------------------
+// Class-based
+
+.button {
+	@include button-primary;
+
+	&.-secondary {
+		@include button-secondary;
+	}
+
+	&.-wide {
+		font-weight: 700;
+
+		@include bp.get(xs) {
+			max-width: 220px;
+			width: 100%;
+		}
+	}
+}
+
+/* END - Buttons
+============================================== */

@@ -1,0 +1,348 @@
+/* ==============================================
+START - Stroke order diagram */
+
+/* stylelint-disable no-descending-specificity */
+
+.stroke-order-diagram {
+	&__container {
+		margin-top: 20px;
+		width: 100%;
+
+		@include bp.get(s) {
+			margin-top: 0;
+
+			.separator {
+				display: none;
+			}
+		}
+	}
+
+	&__player {
+		align-items: center;
+		background: $diagram-background-light;
+		border: 2px solid $diagram-border-light;
+		border-radius: 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin: 0 auto;
+		min-height: 300px;
+		padding: 10px 0;
+		position: relative;
+		transform-origin: left;
+		width: 280px;
+
+		@include dark-mode {
+			background: $diagram-background-dark;
+			border-color: $diagram-border-dark;
+		}
+
+		@include bp.get(s) {
+			min-height: 230px;
+			width: 200px;
+		}
+
+		@include bp.get(m) {
+			min-height: 300px;
+			padding-bottom: 10px;
+			width: 250px;
+		}
+
+		@include bp.get(l) {
+			max-width: 280px;
+			min-height: 330px;
+			width: 100%;
+		}
+	}
+
+	&__settings-button {
+		@include button-reset(true);
+		@include square(30px);
+
+		position: relative;
+		z-index: 2;
+
+		&:hover,
+		&:focus-visible {
+			img {
+				opacity: 0.6;
+			}
+		}
+
+		&:active {
+			opacity: 0.4;
+		}
+
+		img {
+			@include align-center;
+			@include square(20px);
+
+			opacity: 0.4;
+		}
+	}
+
+	&__toggle-strokeorder-numbers {
+		left: 5px;
+		position: absolute;
+		top: 3px;
+
+		img {
+			@include square(25px);
+
+			display: none;
+
+			.-show-stroke-numbers & {
+				&.-numbers-on {
+					display: block;
+				}
+
+				&.-numbers-off {
+					display: none;
+				}
+			}
+
+			&.-numbers-off {
+				display: block;
+				height: 19px;
+				width: 21px;
+			}
+		}
+	}
+
+	&__settings-tooltip {
+		position: absolute;
+		right: 3px;
+		top: 3px;
+
+		.kanji-addon__hover-tooltip {
+			font-size: 15px;
+			line-height: 18px;
+		}
+	}
+
+	&__inner-title {
+		color: $diagram-title;
+		font-size: 14px;
+		font-weight: 400;
+		margin: 0;
+		opacity: 0.6;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__character {
+		display: flex;
+		flex-grow: 1;
+		justify-content: center;
+		position: relative;
+		width: 100%;
+	}
+
+	&__canvas {
+		background-color: $diagram-background-light;
+		position: relative;
+		z-index: 1;
+
+		@include dark-mode {
+			background-color: $diagram-background-dark;
+		}
+
+		svg {
+			height: auto;
+			overflow: visible !important;
+			width: 100%;
+
+			@include bp.get(s) {
+				padding: 0 20px;
+			}
+
+			text {
+				fill: $brand-black;
+				font-size: 10px !important;
+				font-weight: bold;
+				opacity: 0;
+				text-shadow: 1px 1px $diagram-background-light;
+
+				.-show-stroke-numbers & {
+					opacity: 1;
+				}
+
+				@include dark-mode {
+					fill: $brand-white;
+					text-shadow: 1px 1px $brand-black;
+				}
+			}
+		}
+	}
+
+	&__axes {
+		@include align-center;
+		@include square(100%);
+
+		@include bp.get(s) {
+			@include square(80%);
+		}
+
+		opacity: 0.2;
+		pointer-events: none;
+
+		&::before,
+		&::after {
+			@include pseudo;
+			@include align-center;
+
+			border-color: $brand-blue-primary;
+			border-top: 2px dashed;
+			height: 1px;
+			width: 90%;
+
+			@include dark-mode {
+				border-color: $brand-grey-dark;
+			}
+		}
+
+		&::after {
+			// Vertical axis
+			transform: translateX(-50%) rotate(90deg);
+			width: 85%;
+		}
+	}
+
+	&__no-data {
+		@include align-center;
+
+		color: $text-on-light;
+		opacity: 0.5;
+		padding: 10px;
+	}
+
+	&__controls {
+		display: flex;
+		flex-direction: column;
+		padding: 0 20px;
+		width: 100%;
+		z-index: 1;
+	}
+
+	&__play-pause-container {
+		position: relative;
+
+		button {
+			@include align-center;
+			@include square(100%);
+
+			&.-hide {
+				// Toggled via JS
+				display: none;
+			}
+		}
+	}
+
+	&__play-pause-container,
+	&__buttons button {
+		height: 40px;
+		width: 100%;
+
+		@include bp.get(s, s) {
+			height: 30px;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 5px;
+
+		button {
+			@include button-reset;
+
+			align-items: center;
+			background: none !important;
+			box-shadow: none;
+			color: $brand-blue-primary;
+			display: inline-flex;
+			justify-content: center;
+			opacity: 0.4;
+
+			&:hover,
+			&:focus-visible {
+				opacity: 0.6;
+			}
+
+			&:active {
+				opacity: 0.4;
+			}
+
+			&:disabled {
+				cursor: not-allowed;
+				opacity: 0.1;
+			}
+
+			@include dark-mode {
+				color: $brand-grey-dark;
+			}
+
+			img {
+				@include square(25px);
+
+				@include bp.get(s) {
+					@include square(20px);
+				}
+
+				@include bp.get(m) {
+					@include square(25px);
+				}
+
+				@include bp.get(l) {
+					@include square(30px);
+				}
+			}
+		}
+	}
+
+	&__slider {
+		height: 20px;
+		opacity: 0.4;
+		position: relative;
+
+		input[type='range'] {
+			@include align-vertical-center;
+
+			height: 30px;
+			left: 0;
+			margin: 0;
+			z-index: 1;
+
+			&[disabled] {
+				cursor: not-allowed;
+				opacity: 0.3;
+
+				+ div {
+					// Notches
+					display: none;
+				}
+			}
+		}
+	}
+
+	&__slider-notches {
+		@include align-vertical-center;
+
+		display: flex;
+		justify-content: space-between;
+		left: 0;
+		padding: 0 10px;
+		pointer-events: none;
+		position: absolute;
+		width: 100%;
+
+		.slider-notch {
+			background-color: $brand-black;
+			height: 6px;
+			width: 1px;
+		}
+	}
+}
+
+/* END - Stroke order diagram
+============================================== */

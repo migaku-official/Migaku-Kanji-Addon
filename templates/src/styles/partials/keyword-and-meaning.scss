@@ -1,0 +1,77 @@
+/* ==============================================
+START - Keyword and meaning */
+
+.keyword-and-meaning {
+	&__container {
+		text-align: center;
+
+		@include bp.get(s) {
+			margin: 0 0 20px;
+			text-align: left;
+		}
+	}
+
+	&__keyword {
+		@include heading-size('h1');
+
+		color: $brand-blue-primary;
+		margin: 0 0 10px;
+
+		@include dark-mode {
+			color: $brand-orange-primary;
+		}
+
+		.primitive_keyword {
+			background-color: rgba($brand-blue-primary, 0.2);
+			border-radius: 8px;
+			display: inline-block;
+			padding: 7px 5px 5px;
+			position: relative;
+
+			@include dark-mode {
+				background-color: rgba($brand-orange-primary, 0.2);
+			}
+
+			&::before {
+				// "Primitive" badge
+				@include pseudo;
+
+				background-color: $brand-blue-primary;
+				border-radius: 8px;
+				color: $text-on-dark;
+				content: 'Primitive';
+				font-size: 10px;
+				padding: 2px 5px;
+				right: -10px;
+				top: -5px;
+
+				@include dark-mode {
+					background-color: $brand-orange-primary;
+					color: $text-on-light;
+				}
+			}
+		}
+	}
+}
+
+.meanings {
+	&__container {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+
+		@include bp.get(s) {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__title {
+		@include heading-size('h3');
+
+		margin: 0 10px 0 0;
+	}
+}
+
+/* END - Keyword and meaning
+============================================== */

@@ -1,0 +1,148 @@
+// ==================================================================
+// CHANGES - START - stroke order diagram
+
+dmak = new Dmak(
+	data.character, {
+		'element': strokeElementId,
+		'uri': kanjivg_uri,
+		'height': 220,
+		'width': 220,
+		'step': 0.015,
+
+		// Always false - "autoplay" default/variable is set below
+		'autoplay': false,
+
+		// Always on - toggled via CSS (and default set below)
+		'stroke': { order: { visible: true }},
+
+		// Grid is manually drawn in CSS instead
+		'grid': { show: false },
+
+		'startedErasing': function(strokeNum) {
+			// Keep slider value up to date
+			$slider.val(dmak.pointer);
+			$slider.data('prev', dmak.pointer);
+
+			disableControls('[data-disable-while-erasing]');
+
+			if (strokeNum === 0) {
+				$prevButton.prop('disabled', true);
+				$skipStartButton.prop('disabled', true);
+			}
+		},
+		'finishedErasing': function(strokeNum) {
+			enableControls('[data-disable-while-erasing]');
+
+			if (strokeNum === dmak.strokes.length) {
+				$playButton.addClass(hidePlayPauseClass);
+				$replayButton.removeClass(hidePlayPauseClass);
+			} else {
+				$playButton.removeClass(hidePlayPauseClass);
+				$replayButton.addClass(hidePlayPauseClass);
+			}
+		},
+		'startedDrawing': function(strokeNum) {
+			// Keep slider value up to date
+			$slider.val(strokeNum);
+			$slider.data('prev', strokeNum);
+
+			$replayButton.addClass(hidePlayPauseClass);
+
+			if (dmak.state.isRenderingSequential) {
+				$playButton.addClass(hidePlayPauseClass);
+				$pauseButton.removeClass(hidePlayPauseClass);
+				$pauseButton.prop('disabled', false);
+
+				disableControls('[data-disable-while-playing]');
+			} else {
+				$playButton.removeClass(hidePlayPauseClass);
+				$pauseButton.addClass(hidePlayPauseClass);
+
+				disableControls('[data-disable-while-drawing]');
+			}
+
+			if (strokeNum === dmak.strokes.length) {
+				$nextButton.prop('disabled', true);
+				$skipEndButton.prop('disabled', true);
+			}
+		},
+		'finishedDrawing': function() {
+			if (dmak.state.wasRenderingSequential) {
+				toggleControls(dmak.timeouts.play, '[data-disable-while-playing]');
+
+				$nextButton.prop('disabled', true);
+				$skipEndButton.prop('disabled', true);
+			} else if (!dmak.state.isRendering) {
+				toggleControls(dmak.timeouts.drawing, '[data-disable-while-drawing]');
+			}
+
+			$pauseButton.addClass(hidePlayPauseClass);
+
+			if (dmak.pointer === dmak.strokes.length) {
+				$playButton.addClass(hidePlayPauseClass);
+				$replayButton.removeClass(hidePlayPauseClass);
+			} else {
+				$playButton.removeClass(hidePlayPauseClass);
+				$replayButton.addClass(hidePlayPauseClass);
+			}
+		},
+		'loaded': function() {
+			var total_strokes = dmak.strokes.length;
+
+			$slider.attr('max', total_strokes);
+			$slider.data('prev', total_strokes); // Cache starting value
+
+			// TODO correspond to prospect variable (with default `false`):
+			// "Autoplay stroke order from start" in Kanji Settings window
+			// if (autoplayInOrder) {
+			// 	dmak.render(total_strokes);
+			// } else {
+			// 	// Draw all strokes at once for quick rendering
+				dmak.render(total_strokes, true); // simultaneous = true
+			// }
+
+			// Important for the lookup browser, lest notches accumulate
+			$notchContainer.empty();
+
+			// +1 to include notch at the "0" stroke mark
+			for (var i = 0; i < total_strokes + 1; i++) {
+				$notchContainer.append(
+					$('<span class="slider-notch"></span>')
+				);
+			}
+
+			$slider.on('change', function (event) {
+				// Forced typecasting necessary to retain consistent performance
+				// in Anki - likely a relic of the Anki JS/browser version !! dont change !!
+				var stroke_num = parseInt($slider.val().toString()),
+						prev_stroke_num = parseInt($slider.data('prev').toString()),
+						shouldErase = $(this).val() < $slider.data('prev'),
+						shouldDraw = $(this).val() > $slider.data('prev'),
+						didAct = false;
+
+				// Erase/draw as appropriate, to the selected stroke
+				if (shouldErase || shouldDraw) {
+					didAct = true;
+
+					if (shouldErase) {
+						dmak.erase(stroke_num);
+					} else if (shouldDraw) {
+						dmak.render(stroke_num, true);
+					}
+				}
+
+				if (didAct) {
+					// Save the currently selected stroke for next comparison
+					$slider.data('prev', stroke_num);
+				} else {
+					// Proactively prevent any visual side-effects if somehow
+					// the slider value change doesn't trigger dmak draw/erase
+					$slider.val(prev_stroke_num);
+				}
+			});
+		}
+	}
+);
+
+// CHANGES - END - stroke order diagram
+// ==================================================================

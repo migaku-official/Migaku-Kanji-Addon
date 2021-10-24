@@ -1,0 +1,57 @@
+/* ==============================================
+START - Readings */
+
+.readings {
+	&__container {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		padding: 0 20px;
+		width: 100%;
+
+		@include bp.get(l) {
+			padding: 0 40px;
+		}
+	}
+
+	&__list {
+		@include list-reset;
+
+		display: flex;
+		justify-content: space-between;
+		padding: 0 20px;
+		width: 100%;
+
+		@include bp.get(s) {
+			flex-direction: column;
+			justify-content: unset;
+			max-width: 200px;
+			padding: 0;
+		}
+
+		@include bp.get(l) {
+			max-width: none;
+		}
+
+		li {
+			display: inline-flex;
+			flex-direction: column;
+			margin: 10px 5px 0;
+
+			> *:first-child {
+				margin: 5px 0;
+			}
+
+			@include bp.get(s) {
+				flex-direction: row;
+
+				> *:first-child {
+					margin: 0 10px 0 0;
+				}
+			}
+		}
+	}
+}
+
+/* END - Readings
+============================================== */

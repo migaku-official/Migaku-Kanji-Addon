@@ -1,0 +1,12 @@
+{% extends "partials/layout/layout-demo-data.njk" %}
+
+{% block theme %}nightMode{% endblock %}
+{% block title %}Back w/ User Data (Dark) | Migaku Kanji{% endblock %}
+
+{% set user_data %}
+	{% include "demo/partials/demo-user-data.njk" %}
+{% endset %}
+
+{% block content %}
+	{% include "back-recognition.njk" %}
+{% endblock %}

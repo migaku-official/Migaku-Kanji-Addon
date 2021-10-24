@@ -1,0 +1,64 @@
+{
+	"name": "migaku-kanji-addon-styles",
+	"version": "0.7.0",
+	"description": "Prospective replacement styles for the Migaku Kanji addon.",
+	"license": "MIT",
+	"author": "Saxon Cameron (@saxoncameron)",
+	"files": [
+		"dist/front.html",
+		"dist/back.html",
+		"dist/lookup.html",
+		"dist/styles.scss",
+		"dist/collection.media.zip"
+	],
+	"scripts": {
+		"start": "run-s text:logo build serve",
+		"serve": "gulp serve",
+		"lint": "stylelint ./src/**/*.scss",
+		"postlint": "run-s text:pass",
+		"build": "gulp",
+		"postbuild": "run-s text:build",
+		"postversion": "node scripts/inject-version-number.js && run-s build",
+		"text:logo": "node scripts/text/migaku-logo.js",
+		"text:pass": "node scripts/text/no-issues.js",
+		"text:build": "node scripts/text/build-complete.js",
+		"text:watch": "node scripts/text/watching.js"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{scss}": [
+			"run-s lint",
+			"git add"
+		]
+	},
+	"devDependencies": {
+		"@deloitte-digital-au/ddbreakpoints": "^2.0.4",
+		"browser-sync": "^2.27.5",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^8.0.0",
+		"gulp-nunjucks-render": "^2.2.3",
+		"gulp-plumber": "^1.2.1",
+		"gulp-prettier": "^4.0.0",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^5.0.0",
+		"gulp-strip-css-comments": "^2.0.0",
+		"gulp-stylelint": "^13.0.0",
+		"gulp-zip": "^5.1.0",
+		"husky": "^7.0.1",
+		"lint-staged": "^11.1.2",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.3.2",
+		"rimraf": "^3.0.2",
+		"sass": "^1.38.0",
+		"stylelint": "^13.13.1",
+		"stylelint-config-prettier": "^8.0.2",
+		"stylelint-config-standard": "^22.0.0",
+		"stylelint-order": "^4.1.0",
+		"stylelint-prettier": "^1.2.0",
+		"stylelint-scss": "^3.20.1"
+	}
+}

@@ -1,0 +1,59 @@
+/* ==============================================
+START - Fonts */
+
+// --------------------------------------
+// Fonts
+
+@font-face {
+	font-family: Rubik;
+	src: url('/_kanji_uifont_Rubik-regular.ttf');
+}
+
+@font-face {
+	font-family: Rubik;
+	font-weight: 300;
+	src: url('/_kanji_uifont_Rubik-light.ttf');
+}
+
+@font-face {
+	font-family: Rubik;
+	font-weight: 700;
+	src: url('/_kanji_uifont_Rubik-bold.ttf');
+}
+
+@font-face {
+	font-family: kanji_charfont;
+	src: url('/_kanji_uifont_NotoSansJP-Regular.otf');
+}
+
+@font-face {
+	font-family: kanji_charfont;
+	font-weight: 300;
+	src: url('/_kanji_uifont_NotoSansJP-Light.otf');
+}
+
+// --------------------------------------
+// Class-based font setting
+
+.font-1 {
+	font-family: kanji_font1, kanji_charfont, sans-serif !important;
+}
+
+.font-2 {
+	font-family: kanji_font2, kanji_charfont, sans-serif !important;
+}
+
+.font-3 {
+	font-family: kanji_font3, kanji_charfont, sans-serif !important;
+}
+
+.font-4 {
+	font-family: kanji_font4, kanji_charfont, sans-serif !important;
+}
+
+.kanji-char-font {
+	font-family: kanji_charfont !important;
+}
+
+/* END - Fonts
+============================================== */

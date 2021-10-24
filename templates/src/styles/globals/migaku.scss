@@ -1,0 +1,27 @@
+/* ==============================================
+START - Migaku */
+
+#migaku_data {
+	display: none;
+}
+
+.migaku-header {
+	align-items: center;
+	background: $brand-blue-primary;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: center;
+	padding: 10px 0;
+	text-align: center;
+
+	&__logo {
+		height: 30px;
+	}
+
+	@include dark-mode {
+		background: $brand-orange-primary;
+	}
+}
+
+/* END - Migaku
+============================================== */

@@ -1,0 +1,25 @@
+
+# https://editorconfig.org
+#
+# The file specifically is modelled on the React repo:
+# https://github.com/facebook/react/blob/master/.editorconfig
+#
+# The only change being `indent_style` to tab to match other `nib` projects.
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = tab
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true
+
+[*.md]
+max_line_length = 0
+trim_trailing_whitespace = false
+
+[COMMIT_EDITMSG]
+max_line_length = 0

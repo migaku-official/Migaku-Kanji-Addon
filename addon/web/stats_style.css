@@ -1,0 +1,269 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html .dark {
+  color: #fff !important;
+  background: #3d3c40 !important;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  color: #363c4a;
+  background: #fff;
+}
+
+body.dark::-webkit-scrollbar-thumb {
+  background: #656565;
+  border-radius: 8px;
+}
+
+body.dark::-webkit-scrollbar {
+  background: #2f2f31;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.kanjis_category .header {
+  padding-top: 50px;
+}
+
+#color_toggle_row {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* lazy */
+label.toggle {
+  margin-right: 23px;
+}
+
+.container {
+  padding: 50px;
+  position: relative;
+  font-family: "Rubik", sans-serif;
+}
+
+.tooltip_toggle {
+  position: fixed;
+  text-align: center;
+  top: 20px;
+  right: 20px;
+  background: #3d3c40;
+  color: #f2f2f2;
+  height: 15px;
+  line-height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tooltip_background {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip_content {
+  pointer-events: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border-radius: 5px;
+  padding: 20px;
+  background: #fff;
+  color: #444444;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: auto;
+}
+
+.tooltip_content .kanji {
+  cursor: auto;
+}
+
+.tooltip_content .kanji:hover {
+  opacity: 1;
+}
+
+.row {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.row p {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.tooltip_toggle:hover .tooltip_background,
+.tooltip_toggle:hover .tooltip_content {
+  opacity: 1;
+}
+
+.tooltip_toggle:hover .tooltip_content {
+  pointer-events: all;
+}
+
+.kanjis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 35px);
+  grid-gap: 7px;
+}
+
+.kanji {
+  display: inline-block;
+  text-align: center;
+  height: 35px;
+  line-height: 35px;
+  width: 35px;
+  border-radius: 5px;
+  background: #eeeeee;
+  font-size: 16px;
+  color: #444444;
+  border-bottom: 5px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.kanji:hover {
+  opacity: 0.75;
+}
+
+.kanji.unknown {
+  border-color: #f9371c;
+}
+
+.kanji.unknown_with_card {
+  border-color: #e27420;
+}
+
+.kanji.learning {
+  border-color: #41d0b6;
+}
+
+.kanji.known,
+.kanji.marked_known {
+  border-color: #2cadf6;
+}
+
+.fullColor .kanji.unknown {
+  background: #f9371c;
+}
+
+.fullColor .kanji.unknown_with_card {
+  background: #e27420;
+}
+
+.fullColor .kanji.learning {
+  background: #41d0b6;
+}
+
+.fullColor .kanji.known,
+.fullColor .kanji.marked_known {
+  background: #2cadf6;
+}
+
+.fullColor .kanji {
+  color: #ffffff;
+}
+
+/* Dark */
+
+.dark .tooltip_toggle {
+  background: #f2f2f2;
+  color: #444444;
+}
+
+.dark .tooltip_content {
+  background: #3d3c40;
+  color: #f2f2f2;
+}
+
+.dark .kanji {
+  background: #555459;
+  color: #f2f2f2;
+}
+
+/* Toogle input */
+
+input[type="checkbox"].toggle {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label.toggle {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 35px;
+  height: 20px;
+  background: #555459;
+  display: inline-block;
+  border-radius: 20px;
+  position: relative;
+}
+
+label.toggle:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+input.toggle:checked + label.toggle {
+  background: #2cadf6;
+}
+
+input.toggle:checked + label.toggle:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label.toggle:active:after {
+  width: 26px;
+}

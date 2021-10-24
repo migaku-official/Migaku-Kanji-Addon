@@ -1,0 +1,12 @@
+{
+  "name": "migaku-kanji-addon",
+  "version": "0.2.0",
+  "description": "Customisable Anki addon for learning kanji within the context of the vocab in your Anki collection.",
+  "keywords": [
+    "Migaku",
+    "Anki",
+    "Kanji"
+  ],
+  "author": "Migaku Ltd",
+  "license": "AGPL-3.0-or-later"
+}
