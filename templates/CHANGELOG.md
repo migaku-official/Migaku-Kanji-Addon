@@ -1,3 +1,8 @@
+## 0.7.0
+
+- [FEATURE]: Added dedicated font for kanji characters.
+- [FIX]: Asset imports now work in AnkiDroid.
+
 ## 0.6.1
 
 - [FIX]: Production back template now respects the option "hide keyword for advanced users" toggle.
