@@ -26,6 +26,12 @@ START - Fonts */
 	src: url('/_kanji_uifont_NotoSansJP-Regular.otf');
 }
 
+@font-face {
+	font-family: kanji_charfont;
+	font-weight: 300;
+	src: url('/_kanji_uifont_NotoSansJP-Light.otf');
+}
+
 // --------------------------------------
 // Class-based font setting
 
