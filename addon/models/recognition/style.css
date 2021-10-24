@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.6.1
+- @version v0.7.0
 ============================================== */
 
 .visually-hidden,
@@ -33,6 +33,17 @@ START - Migaku kanji stylesheet
 	src: url('/_kanji_uifont_Rubik-bold.ttf');
 }
 
+@font-face {
+	font-family: kanji_charfont;
+	src: url('/_kanji_uifont_NotoSansJP-Regular.otf');
+}
+
+@font-face {
+	font-family: kanji_charfont;
+	font-weight: 300;
+	src: url('/_kanji_uifont_NotoSansJP-Light.otf');
+}
+
 .font-1 {
 	font-family: kanji_font1 !important;
 }
@@ -49,9 +60,13 @@ START - Migaku kanji stylesheet
 	font-family: kanji_font4 !important;
 }
 
+.kanji-char-font {
+	font-family: kanji_charfont !important;
+}
+
 body {
 	color: #363c4a;
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Rubik', kanji_charfont, sans-serif;
 	font-size: 16px;
 	font-weight: 300;
 }
@@ -595,7 +610,18 @@ body.dark {
 
 .word_front {
 	font-size: 28px;
+	font-weight: 300;
 	margin: 0 10px 10px;
+}
+
+.word_front ruby {
+	display: flex;
+	flex-direction: column-reverse;
+	height: 100%;
+}
+
+.word_front ruby rt {
+	min-height: 15px;
 }
 
 .word_front_default {
@@ -1254,6 +1280,7 @@ body.dark {
 
 .linked-words__examples .word {
 	background: #2880ff;
+	font-family: inherit;
 	font-size: 24px !important;
 	margin: 0 10px 10px 0;
 	padding: 20px 10px !important;
@@ -1291,10 +1318,23 @@ body.dark {
 	background: #c8650e;
 }
 
+.linked-words__examples .word ruby {
+	display: flex;
+	flex-direction: column-reverse;
+	line-height: 1.3;
+}
+
+.linked-words__examples .word ruby rt {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: 15px;
+}
+
 @media only screen and (min-width: 36.25em) {
 	.linked-words__examples .word {
 		font-size: 26px !important;
-		padding: 8px 15px 5px !important;
+		padding: 5px 15px 8px !important;
 	}
 }
 
@@ -1322,53 +1362,65 @@ body.dark {
 	display: block;
 }
 
-html:not(.mobile) .linked-words__examples button.word:not(.word_default) {
+.linked-words__examples .hide_readings_hover button.word:not(.word_default) {
 	position: relative;
 }
 
-html:not(.mobile)
-	.linked-words__examples
+.linked-words__examples
 	.hide_readings_hover
-	button.word:not(.word_default)
-	ruby::before {
-	content: '(hover)';
-	font-size: 10px;
-	left: 50%;
-	opacity: 0.5;
-	position: absolute;
-	top: 7px;
-	transform: translateX(-50%);
-}
-
-html:not(.mobile)
-	.linked-words__examples
-	.hide_readings_hover
-	button.word:not(.word_default)
-	rt {
-	min-height: 15px;
-	opacity: 0;
-}
-
-html:not(.mobile)
-	.linked-words__examples
 	button.word:not(.word_default):hover
 	rt,
-html:not(.mobile)
-	.linked-words__examples
+.linked-words__examples
+	.hide_readings_hover
 	button.word:not(.word_default):focus
 	rt {
-	opacity: 1;
+	color: inherit;
 }
 
-html:not(.mobile)
-	.linked-words__examples
+.linked-words__examples
+	.hide_readings_hover
 	button.word:not(.word_default):hover
-	ruby::before,
-html:not(.mobile)
-	.linked-words__examples
+	rt::before,
+.linked-words__examples
+	.hide_readings_hover
 	button.word:not(.word_default):focus
-	ruby::before {
+	rt::before {
 	opacity: 0;
+}
+
+.linked-words__examples .hide_readings_hover button.word:not(.word_default) rt {
+	color: transparent;
+	position: relative;
+}
+
+.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default)
+	rt::before {
+	color: #fff;
+	content: '(hover)';
+	font-family: Rubik, sans-serif;
+	font-size: 10px;
+	opacity: 0.5;
+	position: absolute;
+}
+
+.ankidroid_dark_mode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default)
+	rt::before,
+.nightMode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default)
+	rt::before,
+.dark
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default)
+	rt::before {
+	color: #363c4a;
 }
 
 .primitives-and-radicals__container {
@@ -1448,6 +1500,7 @@ button.radical {
 
 button.primitive {
 	background: #2880ff;
+	font-family: inherit;
 	padding: 20px 10px !important;
 	padding: 0 !important;
 }
@@ -1487,6 +1540,7 @@ button.radical {
 	background: #cbcbcb;
 	color: #363c4a;
 	cursor: not-allowed;
+	font-family: inherit;
 }
 
 button.radical:hover,

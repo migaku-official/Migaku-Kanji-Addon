@@ -1,13 +1,13 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.6.1
+- @version v0.7.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- START - Migaku header -->
 <div class="migaku-header">
-	<img class="migaku-header__logo" src="/_migaku-logo.svg" alt="Logo" />
+	<img class="migaku-header__logo" src="_migaku-logo.svg" alt="Logo" />
 </div>
 <!-- END - Migaku header -->
 
@@ -22,7 +22,10 @@ START - Migaku markup
 				<li class="font-4 keyword-kanji character-and-examples__character"></li>
 			</ul>
 
-			<div id="words_front" class="character-and-examples__list"></div>
+			<div
+				id="words_front"
+				class="character-and-examples__list kanji-char-font"
+			></div>
 		</div>
 		<!-- END - Character and examples -->
 
@@ -56,7 +59,7 @@ START - Migaku markup
 			<div class="linked-words__container">
 				<h2 class="-has-separator">Appears in</h2>
 				<div class="linked-words__examples">
-					<div id="words" class="linked-words__list"></div>
+					<div id="words" class="linked-words__list kanji-char-font"></div>
 				</div>
 				<div class="linked-words__mobile">
 					Linked words are only clickable on desktop.
@@ -71,13 +74,19 @@ START - Migaku markup
 						<h2 class="primitives-and-radicals__title -has-separator">
 							Primitives
 						</h2>
-						<div id="primitives" class="primitives-and-radicals__list"></div>
+						<div
+							id="primitives"
+							class="primitives-and-radicals__list kanji-char-font"
+						></div>
 					</div>
 					<div class="primitives-and-radicals__block">
 						<h2 class="primitives-and-radicals__title -has-separator">
 							Radicals
 						</h2>
-						<div id="radicals" class="primitives-and-radicals__list"></div>
+						<div
+							id="radicals"
+							class="primitives-and-radicals__list kanji-char-font"
+						></div>
 					</div>
 				</div>
 				<div class="primitives-and-radicals__mobile">
@@ -106,12 +115,12 @@ START - Migaku markup
 						title="Toggle stroke order numbers"
 					>
 						<img
-							src="/_kanji_icon_numbers_on_black.svg"
+							src="_kanji_icon_numbers_on_black.svg"
 							class="-numbers-on"
 							alt=""
 						/>
 						<img
-							src="/_kanji_icon_numbers_off_black.svg"
+							src="_kanji_icon_numbers_off_black.svg"
 							class="-numbers-off"
 							alt=""
 						/>
@@ -125,7 +134,7 @@ START - Migaku markup
 							kanji-addon__hover-tooltip-btn
 						"
 					>
-						<img src="/_kanji_icon_cog_black.svg" alt="Settings" />
+						<img src="_kanji_icon_cog_black.svg" alt="Settings" />
 						<div class="kanji-addon__hover-tooltip -below">
 							Options for autoplay and stroke number default on/off are in the
 							Kanji Setting menu window.
@@ -161,7 +170,7 @@ START - Migaku markup
 								data-disable-while-playing
 								data-disable-while-drawing
 							>
-								<img src="/_kanji_icon_skip_start_black.svg" alt="Start skip" />
+								<img src="_kanji_icon_skip_start_black.svg" alt="Start skip" />
 							</button>
 							<button
 								id="strokeorder_prev"
@@ -169,7 +178,7 @@ START - Migaku markup
 								data-disable-while-playing
 								data-disable-while-drawing
 							>
-								<img src="/_kanji_icon_previous_black.svg" alt="Previous" />
+								<img src="_kanji_icon_previous_black.svg" alt="Previous" />
 							</button>
 							<div class="stroke-order-diagram__play-pause-container">
 								<button
@@ -179,7 +188,7 @@ START - Migaku markup
 									data-disable-while-erasing
 									data-disable-while-drawing
 								>
-									<img src="/_kanji_icon_pause_black.svg" alt="Pause" />
+									<img src="_kanji_icon_pause_black.svg" alt="Pause" />
 								</button>
 								<button
 									id="strokeorder_play"
@@ -188,7 +197,7 @@ START - Migaku markup
 									data-disable-while-drawing
 									data-disable-while-erasing
 								>
-									<img src="/_kanji_icon_play_black.svg" alt="Play" />
+									<img src="_kanji_icon_play_black.svg" alt="Play" />
 								</button>
 								<button
 									id="strokeorder_replay"
@@ -198,7 +207,7 @@ START - Migaku markup
 									data-disable-while-drawing
 									data-disable-while-erasing
 								>
-									<img src="/_kanji_icon_replay_black.svg" alt="Replay" />
+									<img src="_kanji_icon_replay_black.svg" alt="Replay" />
 								</button>
 							</div>
 							<button
@@ -207,7 +216,7 @@ START - Migaku markup
 								data-disable-while-playing
 								data-disable-while-erasing
 							>
-								<img src="/_kanji_icon_next_black.svg" alt="Next" />
+								<img src="_kanji_icon_next_black.svg" alt="Next" />
 							</button>
 							<button
 								id="strokeorder_end"
@@ -215,7 +224,7 @@ START - Migaku markup
 								data-disable-while-playing
 								data-disable-while-erasing
 							>
-								<img src="/_kanji_icon_skip_end_black.svg" alt="End skip" />
+								<img src="_kanji_icon_skip_end_black.svg" alt="End skip" />
 							</button>
 						</div>
 
@@ -247,15 +256,15 @@ START - Migaku markup
 				<ul class="readings__list">
 					<li>
 						<strong>Onyomi:</strong>
-						<span id="onyomi"></span>
+						<span id="onyomi" class="kanji-char-font"></span>
 					</li>
 					<li>
 						<strong>Kunyomi:</strong>
-						<span id="kunyomi"></span>
+						<span id="kunyomi" class="kanji-char-font"></span>
 					</li>
 					<li>
 						<strong>Nanori:</strong>
-						<span id="nanori"></span>
+						<span id="nanori" class="kanji-char-font"></span>
 					</li>
 				</ul>
 			</div>
@@ -285,6 +294,7 @@ START - Migaku markup
 						Set Custom Story
 					</button>
 				</div>
+
 				<div class="actions__mark-known">
 					<button onclick="delete_mark(event);" class="button -secondary -wide">
 						Mark Known And Delete Card
@@ -310,7 +320,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.6.1
+- @version v0.7.0
 
 Changes:
 - dmak.state object and variables
@@ -7349,11 +7359,12 @@ Changes:
 		if (_$el.prop('disabled') === false) _$el.click();
 	}
 
+	// TODO correspond to prospect variable (with default `false`):
 	// "Default show stroke order numbers" in Kanji Settings window
-	if (settings.stroke_order_show_numbers) {
-		// Note default class arrangement is as per `defaultShow=false`
-		toggleStrokeOrderNumberVisibility();
-	}
+	// if (defaultShow) {
+	//	// Note default class arrangement is as per `defaultShow=false`
+	// 	toggleStrokeOrderNumberVisibility();
+	// }
 
 	// Control button binds
 	$playButton.click(function () {
@@ -7497,14 +7508,15 @@ Changes:
 
 			$slider.attr('max', total_strokes);
 			$slider.data('prev', total_strokes); // Cache starting value
-			
+
+			// TODO correspond to prospect variable (with default `false`):
 			// "Autoplay stroke order from start" in Kanji Settings window
-			if (settings.stroke_order_autoplay) {
-				dmak.render(total_strokes);
-			} else {
-				// Draw all strokes at once for quick rendering
-				dmak.render(total_strokes, true); // simultaneous = true
-			}
+			// if (autoplayInOrder) {
+			// 	dmak.render(total_strokes);
+			// } else {
+			// 	// Draw all strokes at once for quick rendering
+			dmak.render(total_strokes, true); // simultaneous = true
+			// }
 
 			// Important for the lookup browser, lest notches accumulate
 			$notchContainer.empty();
@@ -7548,14 +7560,6 @@ Changes:
 
 	// CHANGES - END - stroke order diagram
 	// ==================================================================
-
-	// var dmak = new Dmak(data.character, {'element': 'strokeorder', 'uri': kanjivg_uri, 'height': 220, 'width': 220, 'step': 0.015});
-
-	// $('#strokeorder_p').click(function() { dmak.eraseLastStrokes(1); });
-	// $('#strokeorder_s').click(function() { dmak.pause(); });
-	// $('#strokeorder_g').click(function() { dmak.render(); });
-	// $('#strokeorder_n').click(function() { dmak.renderNextStrokes(1); });
-	// $('#strokeorder_r').click(function() { dmak.erase(); });
 
 	$('.keyword-kanji').html(data.character);
 	$('.fontExample').html(data.character);
