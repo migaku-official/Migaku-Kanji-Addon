@@ -84,7 +84,7 @@
 		);
 	}
 
-  {% include "partials/structure/migaku/scripts/_variables-and-functions.njk" %}
+  {% include "partials/structure/migaku/scripts/_script-fragment-stroke-order-vars-functions.njk" %}
 
   function set_data(data_b64_json) {
 		var data_json = atob(data_b64_json);
@@ -111,7 +111,7 @@
 		else if (data !== null && data.has_result) {
 			$('#strokeorder').html('');
 
-      {% include "partials/structure/migaku/scripts/_stroke-order-diagram.njk" %}
+      {% include "partials/structure/migaku/scripts/_script-fragment-new-dmak.njk" %}
 
       $('.fontExample').html(data.character);
 

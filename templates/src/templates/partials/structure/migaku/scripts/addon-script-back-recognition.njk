@@ -81,8 +81,8 @@
 	var kanjivg_uri = 'kanji_';
 	{% endif %}
 
-	{% include "partials/structure/migaku/scripts/_variables-and-functions.njk" %}
-	{% include "partials/structure/migaku/scripts/_stroke-order-diagram.njk" %}
+	{% include "partials/structure/migaku/scripts/_script-fragment-stroke-order-vars-functions.njk" %}
+	{% include "partials/structure/migaku/scripts/_script-fragment-new-dmak.njk" %}
 
 	$('.keyword-kanji').html(data.character);
 	$('.fontExample').html(data.character);
