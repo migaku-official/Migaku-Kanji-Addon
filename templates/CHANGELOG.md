@@ -4,6 +4,8 @@
 - [FIX]: Asset imports now work in AnkiDroid.
 - [FIX]: Example words without furigana now line up with example words that do have furigana.
 - [STYLE]: Fallback fonts for front-of-card characters.
+- [FIX]: Front characters no longer wrap to multiple lines.
+- [STYLE]: Tweaks to responsive layout padding.
 
 ## 0.6.1
 
