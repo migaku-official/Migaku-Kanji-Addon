@@ -2,6 +2,7 @@
 
 - [FEATURE]: Added dedicated font for kanji characters.
 - [FIX]: Asset imports now work in AnkiDroid.
+- [FIX]: Example words without furigana now line up with example words that do have furigana.
 
 ## 0.6.1
 
