@@ -87,8 +87,6 @@ class LookupWindow(QDialog):
              '\n</style>' \
             F'<link rel="stylesheet" href="{self.web_uri("styles.css")}">' \
             F'<script src="{self.web_uri("jquery.js")}"></script>' \
-            F'<script src="{self.web_uri("raphael.js")}"></script>' \
-            F'<script src="{self.web_uri("dmak.js")}"></script>' \
             F'<script>let kanjivg_uri="{self.kanjivg_uri}";</script>' \
              '</head>'
 

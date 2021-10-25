@@ -60,10 +60,11 @@ START - Migaku markup
 </div>
 {% endif %}
 
+{% include 'partials/structure/migaku/migaku-dependencies.njk' %}
+
 {# Since we can't invoke the `set_data` function, for demo purposes we
 borrow the recognition script so the stroke diagram still draws. #}
 {% if is_demo %}
-	{% include 'partials/structure/migaku/migaku-dependencies.njk' %}
 	{% include 'partials/structure/migaku/scripts/addon-script-back-recognition.njk' %}
 {% else %}
 	{% include 'partials/structure/migaku/scripts/addon-script-lookup.njk' %}
