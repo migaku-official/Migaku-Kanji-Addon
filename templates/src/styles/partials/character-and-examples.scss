@@ -33,6 +33,10 @@ START - Character and examples */
 		padding: 0 10px;
 	}
 
+	&__example-words {
+		flex-wrap: wrap;
+	}
+
 	// --------------------------------------
 	// Production
 
