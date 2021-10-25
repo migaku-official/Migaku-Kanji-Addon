@@ -1,6 +1,7 @@
 ## 0.7.2 (unreleased)
 
 - [FIX]: "(hover)" text was (mistakenly) active on mobile.
+- [FIX]: Furigana alignment and centering (especially on mobile) now displays more consistently.
 
 ## 0.7.1
 
