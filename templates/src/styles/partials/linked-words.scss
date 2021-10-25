@@ -77,6 +77,11 @@ START - Linked words */
 		color: transparent;
 		position: relative;
 
+		// Disable on mobile
+		@include mobile-device {
+			color: inherit !important;
+		}
+
 		&::before {
 			content: '(hover)';
 			color: $text-on-dark;
@@ -87,6 +92,11 @@ START - Linked words */
 
 			@include dark-mode {
 				color: $text-on-light;
+			}
+
+			// Disable on mobile
+			@include mobile-device {
+				display: none;
 			}
 		}
 	}

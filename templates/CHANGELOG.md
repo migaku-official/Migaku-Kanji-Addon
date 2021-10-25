@@ -1,3 +1,7 @@
+## 0.7.2 (unreleased)
+
+- [FIX]: "(hover)" text was (mistakenly) active on mobile.
+
 ## 0.7.1
 
 - [FIX]: Example words without furigana now line up with example words that do have furigana.
