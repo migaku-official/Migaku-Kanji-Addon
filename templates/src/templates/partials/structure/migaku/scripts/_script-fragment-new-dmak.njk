@@ -17,6 +17,10 @@ dmak = new Dmak(
 
 		// Grid is manually drawn in CSS instead
 		'grid': { show: false },
+		
+		// Preload SVG data from card fields
+		// TODO BEFORE MERGE: Conditional to not include this in the lookup browser
+		{% raw %}'preload_svgs': { '{{Character}}': `{{StrokeOrder}}` },{% endraw %}
 
 		'startedErasing': function(strokeNum) {
 			// Keep slider value up to date

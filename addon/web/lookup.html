@@ -369,6 +369,7 @@ CHANGES - START - DMAK extended for Migaku
 Changes:
 - dmak.state object and variables
 - numerous callbacks added
+- option to preload svg data
 ================================================================== */
 
 	/*
@@ -387,6 +388,8 @@ Changes:
 			this.text = text;
 			// Fix #18 clone `default` to support several instance in parallel
 			this.options = assign(clone(Dmak.default), options);
+			this.options.preload_svgs =
+				options.preload_svgs || Dmak.default.preload_svgs;
 			this.strokes = [];
 			this.papers = [];
 			this.pointer = 0;
@@ -406,7 +409,10 @@ Changes:
 			};
 
 			if (!this.options.skipLoad) {
-				var loader = new DmakLoader(this.options.uri),
+				var loader = new DmakLoader(
+						this.options.uri,
+						this.options.preload_svgs,
+					),
 					self = this;
 
 				loader.load(text, function (data) {
@@ -468,6 +474,7 @@ Changes:
 					'stroke-dasharray': '--',
 				},
 			},
+			preload_svgs: {},
 
 			// callbacks
 			loaded: function () {},
@@ -985,8 +992,9 @@ Changes:
 		'use strict';
 
 		// Create a safe reference to the DrawMeAKanji object for use below.
-		var DmakLoader = function (uri) {
+		var DmakLoader = function (uri, preload_svgs = {}) {
 			this.uri = uri;
+			this.preload_svgs = preload_svgs;
 		};
 
 		/**
@@ -1013,7 +1021,7 @@ Changes:
 				};
 
 			for (i = 0; i < nbChar; i++) {
-				loadSvg(this.uri, i, text.charCodeAt(i).toString(16), callbacks);
+				this.loadSvg(i, text[i], callbacks);
 			}
 		};
 
@@ -1022,9 +1030,21 @@ Changes:
 		 * @thanks to the incredible work made by KanjiVG
 		 * @see: http://kanjivg.tagaini.net
 		 */
-		function loadSvg(uri, index, charCode, callbacks) {
-			var xhr = new XMLHttpRequest(),
-				code = ('00000' + charCode).slice(-5);
+		DmakLoader.prototype.loadSvg = function (index, char, callbacks) {
+			var charCode = char.charCodeAt(0).toString(16),
+				code = ('00000' + charCode).slice(-5),
+				preload_svg_data = this.preload_svgs[char];
+
+			if (preload_svg_data) {
+				// ugly word around so that the loaded callback can use the constructed Dmak object
+				// TODO BEFORE MERGE!
+				setTimeout(function () {
+					callbacks.done(index, parseResponse(preload_svg_data, code));
+				}, 10);
+				return;
+			}
+
+			var xhr = new XMLHttpRequest();
 
 			// Skip space character
 			if (code === '00020' || code === '03000') {
@@ -1035,7 +1055,7 @@ Changes:
 				return;
 			}
 
-			xhr.open('GET', uri + code + '.svg', true);
+			xhr.open('GET', this.uri + code + '.svg', true);
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
@@ -1046,7 +1066,7 @@ Changes:
 				}
 			};
 			xhr.send();
-		}
+		};
 
 		/**
 		 * Simple parser to extract paths and texts data.
@@ -7514,6 +7534,10 @@ Changes:
 
 				// Grid is manually drawn in CSS instead
 				grid: { show: false },
+
+				// Preload SVG data from card fields
+				// TODO BEFORE MERGE: Conditional to not include this in the lookup browser
+				preload_svgs: { '{{Character}}': `{{StrokeOrder}}` },
 
 				startedErasing: function (strokeNum) {
 					// Keep slider value up to date
