@@ -80,11 +80,13 @@ class LookupWindow(QDialog):
 
         html_head = \
              '<head>' \
-            F'{aqt.mw.baseHTML()}' \
-            F'{bundled_js}' \
-             '<style>\n' \
-            F'{fonts_css}\n' \
-             '\n</style>' \
+                F'{aqt.mw.baseHTML()}' \
+                F'{bundled_js}' \
+             '<style>' \
+                F'{fonts_css}\n' \
+                 '.dark::-webkit-scrollbar { background: #2f2f31; }\n' \
+                 '.dark::-webkit-scrollbar-thumb { background: #656565; border-radius: 8px; }\n' \
+             '</style>' \
             F'<link rel="stylesheet" href="{self.web_uri("styles.css")}">' \
             F'<script src="{self.web_uri("jquery.js")}"></script>' \
             F'<script>let kanjivg_uri="{self.kanjivg_uri}";</script>' \
