@@ -135,7 +135,7 @@ class StatsWindow(QDialog):
                 <style>
                     {fonts.ui_css()}
                 </style>
-                <link rel="stylesheet" href="{self.web_uri('stats_style.css')}">
+                <link rel="stylesheet" href="{self.web_uri('stats_styles.css')}">
                 <script src="{self.web_uri('jquery.js')}"></script>
                 <script>
                     let can_mark = false;
