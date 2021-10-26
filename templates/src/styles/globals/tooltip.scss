@@ -84,6 +84,14 @@ button.primitive,
 				filter: invert(1);
 			}
 		}
+
+		.separator {
+			display: none;
+
+			@include bp.get(s) {
+				display: block;
+			}
+		}
 	}
 
 	&__title {
