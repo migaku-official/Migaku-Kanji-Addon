@@ -1,0 +1,70 @@
+{% extends "partials/layout/layout-card-structure.njk" %}
+
+{# ------------------------------
+Above #}
+
+{# character-and-examples.njk #}
+{# (no content here) #}
+
+{# ------------------------------
+Sidebar #}
+
+{# stroke-order-diagram.njk #}
+{% set txt__stroke_order_outer_title = "Character" %}
+{% set txt__stroke_order_inner_title = "Stroke order" %}
+{% set txt__stroke_order_inner_title = "Stroke order" %}
+{% set txt__stroke_order_settings_tooltip %}
+	Options for autoplay and stroke number default on/off are in the Kanji Setting menu window.
+	<br/><br/>
+	Tip: use arrow keys to navigate stroke order, plus ctrl for start/end.
+{% endset %}
+{% set txt__stroke_order_no_data = "(no data)" %}
+
+{# tags.njk #}
+{% set txt__tags_title = "Tags" %}
+
+{# readings.njk #}
+{% set txt__readings_title = "Readings" %}
+{% set txt__readings_onyomi = "Onyomi:" %}
+{% set txt__readings_kunyomi = "Kunyomi:" %}
+{% set txt__readings_nanori = "Nanori:" %}
+
+{# ------------------------------
+Main #}
+
+{# font-examples.njk #}
+{% set txt__font_examples_title = "Font examples" %}
+
+{# keyword-and-meaning.njk #}
+{% set txt__meanings = "Meanings:" %}
+
+{# linked-words.njk #}
+{% set txt__vocab_title = "Vocab" %}
+{% set txt__vocab_mobile_info = "Vocab buttons are only clickable on desktop." %}
+
+{# ------------------------------
+Below #}
+
+{# stories.njk #}
+{% set txt__stories_title = "Stories" %}
+
+{# actions.njk #}
+{% set txt__actions_title = "Actions" %}
+{% set txt__actions_set_keyword = "Set Custom Keyword" %}
+{% set txt__actions_set_story = "Set Custom Story" %}
+{% set txt__actions_mark_delete = "Mark Known And Delete Card" %}
+{% set txt__actions_mobile_info %}
+	Actions only work on desktop.
+	<br/>
+	You are able to set a custom keyword, custom story, and mark-known/delete existing kanji cards.
+{% endset %}
+
+{# lookup-actions.njk #}
+{% set txt__lookup_actions_title = "Cards" %}
+{% set txt__lookup_actions_recognition = "Show Recognition Card" %}
+{% set txt__lookup_actions_production = "Create Production Card" %}
+{% set txt__lookup_actions_mobile_info %}
+	Actions only work on desktop.
+	<br/>
+	You are able to mark a kanji as known, and create or show the associated recognition and production cards.
+{% endset %}

@@ -1,6 +1,6 @@
 <!-- START - Actions lookup -->
 <div class="lookup-actions__container">
-	<h2 class="-has-separator">Cards</h2>
+	<h2 class="-has-separator">{{ txt__lookup_actions_title }}</h2>
 	<div class="lookup-actions__buttons">
       <button
 				onclick="recognition_card_click(event);"
@@ -8,7 +8,7 @@
 				class="button -wide"
 				title="null"
 			>
-				Show Recognition Card
+				{{ txt__lookup_actions_recognition }}
 			</button>
       <button
 				onclick="production_card_click(event);"
@@ -16,13 +16,11 @@
 				class="button -wide"
 				title="Shift click to mark as known"
 			>
-				Create Production Card
+				{{ txt__lookup_actions_production }}
 			</button>
 	</div>
 	<div class="lookup-actions__mobile">
-		Actions only work on desktop.
-		<br/>
-		You are able to mark a kanji as known, and create or show the associated recognition and production cards.
+		{{ txt__lookup_actions_mobile_info | safe }}
 	</div>
 </div>
 <!-- END - Actions lookup -->
