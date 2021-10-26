@@ -1,3 +1,7 @@
+## 0.8.4
+
+- [FIX]: Included missing title tooltip script binds in lookup template.
+
 ## 0.8.3
 
 - [FIX]: Aside container now has a responsive `min-width`, which unbreaks some especially squishy/narrow layouts.
