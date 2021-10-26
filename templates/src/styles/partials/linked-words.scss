@@ -33,17 +33,6 @@ START - Linked words */
 			@include button-tertiary;
 		}
 	}
-
-	&__mobile {
-		display: none;
-		font-size: $mobile-msg-font-size;
-		opacity: $mobile-msg-opacity;
-
-		// Display message
-		@include mobile-device {
-			display: block;
-		}
-	}
 }
 
 // Hide furigana on linked words; show on hover

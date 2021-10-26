@@ -21,17 +21,6 @@ START - Primitives and radicals */
 		}
 	}
 
-	&__mobile {
-		display: none;
-		font-size: $mobile-msg-font-size;
-		opacity: $mobile-msg-opacity;
-
-		// Display message
-		@include mobile-device {
-			display: block;
-		}
-	}
-
 	&__title {
 		margin-top: 0;
 		margin-top: 20px;

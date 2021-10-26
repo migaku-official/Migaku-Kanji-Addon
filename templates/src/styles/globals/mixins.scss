@@ -35,6 +35,30 @@ START - Mixins */
 	}
 }
 
+@mixin faded-info-msg {
+	font-size: $mobile-msg-font-size;
+	opacity: $mobile-msg-opacity;
+}
+
+@mixin mobile-info-msg {
+	@include faded-info-msg;
+
+	display: none;
+
+	// Display message
+	@include mobile-device {
+		display: block;
+	}
+}
+
+.faded-info-msg {
+	@include faded-info-msg;
+}
+
+.mobile-info-msg {
+	@include mobile-info-msg;
+}
+
 // --------------------------------------------
 // Utility
 

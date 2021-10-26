@@ -32,16 +32,6 @@ START - Actions */
 		}
 	}
 
-	&__mobile {
-		display: none;
-		font-size: $mobile-msg-font-size;
-
-		// Display message
-		@include mobile-device {
-			display: block;
-		}
-	}
-
 	&__set-custom,
 	&__mark-known {
 		display: flex;
