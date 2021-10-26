@@ -1,3 +1,7 @@
+## 0.8.0
+
+- [FEATURE]: Added tooltips and explanatory messaging to main card sub-sections.
+
 ## 0.7.2
 
 - [FIX]: "(hover)" text was (mistakenly) active on mobile.
