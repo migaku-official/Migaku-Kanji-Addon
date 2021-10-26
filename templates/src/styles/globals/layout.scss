@@ -86,15 +86,18 @@ body {
 	&__aside {
 		@include bp.get(s) {
 			max-width: 220px;
+			min-width: 190px;
 			width: 100%;
 		}
 
 		@include bp.get(m) {
 			max-width: 300px;
+			min-width: 250px;
 		}
 
 		@include bp.get(l) {
 			max-width: 350px;
+			min-width: 280px;
 		}
 	}
 
