@@ -1,4 +1,8 @@
-## 0.8.2 (unreleased)
+## 0.8.3
+
+- [FIX]: Aside container now has a responsive `min-width`, which unbreaks some especially squishy/narrow layouts.
+
+## 0.8.2
 
 - [FIX]: Lookup templates didn't have access to the new content variables.
 - [FIX]: Tooltip button style resets for Anki.
