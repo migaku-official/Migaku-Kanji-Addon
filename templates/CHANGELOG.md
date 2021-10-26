@@ -1,3 +1,7 @@
+## 0.8.1
+
+- [FIX]: Tooltip toggles no longer rely on their own (broken) individual inline scripts, and are now orchestrated by a single script.
+
 ## 0.8.0
 
 - [FEATURE]: Added tooltips and explanatory messaging to main card sub-sections.
