@@ -1,31 +1,46 @@
+{% from "partials/structure/title-tooltip.njk" import titleTooltip with context %}
+
 <!-- START - Primitives and radicals -->
 <div class="primitives-and-radicals__wrapper">
 	<div class="primitives-and-radicals__container">
 		<div class="primitives-and-radicals__components">
 			<div class="primitives-and-radicals__block">
-				<h2 class="primitives-and-radicals__title -has-separator">Primitives</h2>
+				{{ titleTooltip(
+						id='primtives--title',
+						title=txt__primitives_title,
+						tooltip=txt__primitives_tooltip,
+						h2class='primitives-and-radicals__title'
+				) }}
 				<div id="primitives" class="primitives-and-radicals__list kanji-char-font">
 					{{ primitives | safe }}
 				</div>
 			</div>
 			<div class="primitives-and-radicals__block">
-				<h2 class="primitives-and-radicals__title -has-separator">Radicals</h2>
+				{{ titleTooltip(
+						id='radicals--title',
+						title=txt__radicals_title,
+						tooltip=txt__radicals_tooltip,
+						h2class='primitives-and-radicals__title'
+				) }}
 				<div id="radicals" class="primitives-and-radicals__list kanji-char-font">
 					{{ radicals | safe }}
 				</div>
 			</div>
 		</div>
 		<div class="primitives-and-radicals__block">
-			<h2 class="primitives-and-radicals__title -has-separator">Used in</h2>
+			{{ titleTooltip(
+						id='primitives-of--title',
+						title=txt__primitives_of_title,
+						tooltip=txt__primitives_of_tooltip,
+						h2class='primitives-and-radicals__title'
+				) }}
 			<div id="primitive_of" class="primitives-and-radicals__list kanji-char-font">
 				{{ primitive_of | safe }}
 			</div>
 		</div>
 	</div>
-	<div class="primitives-and-radicals__mobile">
-		Primitive buttons are only clickable on desktop.
-		<br/>
-		Primitive tooltip info can still be viewed, by tapping.
+	<div class="mobile-info-msg">
+		{{ txt__primitives_radicals_mobile_info | safe }}
 	</div>
 </div>
 <!-- END - Primitives and radicals -->

@@ -79,7 +79,7 @@ START - Mixins */
 @mixin separator {
 	background: $brand-grey;
 	height: 1px;
-	margin-bottom: 20px;
+	margin: 0 0 20px;
 	width: 50px;
 }
 

@@ -48,5 +48,53 @@ button.primitive,
 	}
 }
 
+// --------------------------------------
+// Title tooltip
+
+.title-tooltip {
+	&__container {
+		button {
+			@include button-reset;
+
+			color: $text-on-light;
+			font-size: 10px;
+			left: -8px;
+			margin-left: 5px;
+			opacity: 0.5;
+			padding: 0 5px;
+			position: relative;
+			top: 2px;
+			width: 30px;
+			z-index: 1;
+
+			@include dark-mode {
+				color: $text-on-dark;
+			}
+
+			&:hover,
+			&:focus {
+				opacity: 0.8;
+			}
+		}
+
+		img {
+			@include align-center;
+			@include square(16px);
+
+			@include dark-mode {
+				filter: invert(1);
+			}
+		}
+	}
+
+	&__title {
+		display: inline-flex;
+	}
+
+	&__text {
+		margin-bottom: 10px;
+	}
+}
+
 /* END - Tooltip
 ============================================== */

@@ -1,6 +1,13 @@
+{% from "partials/structure/title-tooltip.njk" import titleTooltip with context %}
+
 <!-- START - Linked words -->
 <div class="linked-words__container">
-	<h2 class="-has-separator">{{ txt__vocab_title }}</h2>
+	{{ titleTooltip(
+			id='linked-words--title',
+			title=txt__vocab_title,
+			tooltip=txt__vocab_tooltip,
+			h2class='primitives-and-radicals__title'
+	) }}
 	<div class="linked-words__examples">
 		<div id="words" class="linked-words__list kanji-char-font">{{ linked_words | safe }}</div>
 	</div>
