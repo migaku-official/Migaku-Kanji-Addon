@@ -2,8 +2,15 @@
 START - Primitives and radicals */
 
 .primitives-and-radicals {
-	&__container {
+	&__container,
+	&__components {
 		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+
+	&__components {
+		flex-wrap: nowrap;
 	}
 
 	&__block {
