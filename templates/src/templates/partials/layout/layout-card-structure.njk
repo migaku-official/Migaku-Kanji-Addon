@@ -33,7 +33,9 @@ START - Migaku markup
 	{% include 'partials/structure/migaku/migaku-dependencies.njk' %}
 {% endif %}
 
-{% include 'partials/structure/title-tooltip-script.njk' %}
+{% if is_back %}
+	{% include 'partials/structure/title-tooltip-script.njk' %}
+{% endif %}
 
 {% if is_back and is_recognition %}
 	{% include 'partials/structure/migaku/scripts/addon-script-back-recognition.njk' %}
