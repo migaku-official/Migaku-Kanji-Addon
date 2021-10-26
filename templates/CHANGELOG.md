@@ -1,3 +1,10 @@
+## 0.8.2 (unreleased)
+
+- [FIX]: Lookup templates didn't have access to the new content variables.
+- [FIX]: Tooltip button style resets for Anki.
+- [CHORE]: Toggle script only on the backs of cards now.
+- [STYLE]: Stroke diagram now has a responsive width system that's more conducive to being squished a little.
+
 ## 0.8.1
 
 - [FIX]: Tooltip toggles no longer rely on their own (broken) individual inline scripts, and are now orchestrated by a single script.
