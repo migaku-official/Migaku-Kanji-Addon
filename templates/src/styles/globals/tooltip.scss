@@ -54,7 +54,7 @@ button.primitive,
 .title-tooltip {
 	&__container {
 		button {
-			@include button-reset;
+			@include button-reset(true);
 
 			color: $text-on-light;
 			font-size: 10px;
