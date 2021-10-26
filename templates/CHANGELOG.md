@@ -1,7 +1,8 @@
-## 0.7.2 (unreleased)
+## 0.7.2
 
 - [FIX]: "(hover)" text was (mistakenly) active on mobile.
-- [FIX]: Furigana alignment and centering (especially on mobile) now displays more consistently.
+- [FIX]: Furigana alignment and centering (especially on mobile) now displays more consistently.fo
+- [FIX]: Front of card example words can again wrap to multiple lines.
 
 ## 0.7.1
 
