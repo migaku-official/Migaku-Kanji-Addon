@@ -62,17 +62,25 @@ button.primitive,
 			margin-left: 5px;
 			opacity: 0.5;
 			position: relative;
-			top: 2px;
+			top: 0;
 			width: 30px;
 			z-index: 1;
-
-			@include dark-mode {
-				color: $text-on-dark;
-			}
 
 			&:hover,
 			&:focus {
 				opacity: 0.8;
+			}
+
+			@include bp.get(s) {
+				top: 1px;
+			}
+
+			@include bp.get(l) {
+				top: 2px;
+			}
+
+			@include dark-mode {
+				color: $text-on-dark;
 			}
 		}
 
@@ -96,6 +104,11 @@ button.primitive,
 
 	&__title {
 		display: inline-flex;
+		margin-left: 22px; // Offset tooltip when centered
+
+		@include bp.get(s) {
+			margin-left: 0;
+		}
 	}
 
 	&__text {

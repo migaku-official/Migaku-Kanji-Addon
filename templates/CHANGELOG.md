@@ -1,3 +1,8 @@
+## 0.8.5 (unreleased)
+
+- [STYLE]: Hid title tooltip separators on mobile.
+- [STYLE]: Title tooltip on mobile now have center alignment offsets to account for the tooltip button.
+
 ## 0.8.4
 
 - [FIX]: Included missing title tooltip script binds in lookup template.
