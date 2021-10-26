@@ -1,0 +1,14 @@
+{# note corresponding markup macro in `title-tooltip-macro.njk` #}
+<script>
+	function toggleShow(targetId) {
+		var tooltipContainer = document.getElementById(targetId);
+
+		if (tooltipContainer.style.display === 'none'){
+			tooltipContainer.style.display = 'block';
+			tooltipContainer.setAttribute('aria-expanded', 'true');
+		} else {
+			tooltipContainer.style.display = 'none';
+			tooltipContainer.setAttribute('aria-expanded', 'false');
+		}
+	}
+</script>

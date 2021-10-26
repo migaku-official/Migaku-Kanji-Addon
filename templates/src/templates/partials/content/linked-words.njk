@@ -1,9 +1,9 @@
-{% from "partials/structure/title-tooltip.njk" import titleTooltip with context %}
+{% from "partials/structure/title-tooltip-macro.njk" import titleTooltip with context %}
 
 <!-- START - Linked words -->
 <div class="linked-words__container">
 	{{ titleTooltip(
-			id='linked-words--title',
+			id='linked_words__title',
 			title=txt__vocab_title,
 			tooltip=txt__vocab_tooltip
 	) }}

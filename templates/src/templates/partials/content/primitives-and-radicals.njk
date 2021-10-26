@@ -1,4 +1,4 @@
-{% from "partials/structure/title-tooltip.njk" import titleTooltip with context %}
+{% from "partials/structure/title-tooltip-macro.njk" import titleTooltip with context %}
 
 <!-- START - Primitives and radicals -->
 <div class="primitives-and-radicals__wrapper">
@@ -6,7 +6,7 @@
 		<div class="primitives-and-radicals__components">
 			<div class="primitives-and-radicals__block">
 				{{ titleTooltip(
-						id='primtives--title',
+						id='primtives__title',
 						title=txt__primitives_title,
 						tooltip=txt__primitives_tooltip,
 						h2class='primitives-and-radicals__title'
@@ -17,7 +17,7 @@
 			</div>
 			<div class="primitives-and-radicals__block">
 				{{ titleTooltip(
-						id='radicals--title',
+						id='radicals__title',
 						title=txt__radicals_title,
 						tooltip=txt__radicals_tooltip,
 						h2class='primitives-and-radicals__title'
@@ -32,7 +32,7 @@
 		</div>
 		<div class="primitives-and-radicals__block">
 			{{ titleTooltip(
-						id='primitives-of--title',
+						id='primitives_of__title',
 						title=txt__primitives_of_title,
 						tooltip=txt__primitives_of_tooltip,
 						h2class='primitives-and-radicals__title'
