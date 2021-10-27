@@ -21,6 +21,10 @@ START - Primitives and radicals */
 	&__block {
 		width: 100%;
 
+		@include bp.get(m) {
+			min-width: 200px;
+		}
+
 		@include bp.get(s) {
 			width: auto;
 		}
