@@ -3,6 +3,7 @@
 - [STYLE]: Hid title tooltip separators on mobile.
 - [STYLE]: Title tooltip on mobile now have center alignment offsets to account for the tooltip button.
 - [CHORE]: Tooltip content revisions.
+- [STYLE]: Tightening of responsive layout styles.
 
 ## 0.8.4
 
