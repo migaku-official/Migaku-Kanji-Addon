@@ -25,7 +25,7 @@ START - Stroke order diagram */
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		margin: 0 auto;
+		margin: 20px auto 0;
 		max-width: 280px;
 		min-height: 300px;
 		padding: 10px 0;
@@ -39,8 +39,9 @@ START - Stroke order diagram */
 		}
 
 		@include bp.get(s) {
-			min-height: 230px;
+			margin-top: 0;
 			max-width: 200px;
+			min-height: 230px;
 		}
 
 		@include bp.get(m) {

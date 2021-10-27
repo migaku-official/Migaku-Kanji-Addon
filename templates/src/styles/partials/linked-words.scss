@@ -3,7 +3,9 @@ START - Linked words */
 
 .linked-words {
 	&__title {
-		margin-top: 0;
+		@include bp.get(s) {
+			margin-top: 0;
+		}
 	}
 
 	&__list {

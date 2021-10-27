@@ -63,7 +63,6 @@ body {
 		text-align: center;
 
 		@include bp.get(s) {
-			padding: 50px 20px;
 			text-align: left;
 		}
 	}

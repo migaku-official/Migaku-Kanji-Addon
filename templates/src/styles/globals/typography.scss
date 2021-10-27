@@ -19,13 +19,13 @@ body {
 
 	&.-has-separator {
 		@include bp.get(s) {
-			margin-bottom: 30px;
+			margin-bottom: 16px;
 
 			&::after {
 				@include pseudo;
 				@include separator;
 
-				bottom: -30px;
+				bottom: -16px;
 				left: 50%;
 				transform: translateX(-50%);
 

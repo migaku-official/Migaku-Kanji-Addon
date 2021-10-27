@@ -103,8 +103,12 @@ START - Mixins */
 @mixin separator {
 	background: $brand-grey;
 	height: 1px;
-	margin: 0 0 20px;
+	margin: 0 0 5px;
 	width: 50px;
+
+	@include bp.get(xs) {
+		margin-bottom: 10px;
+	}
 }
 
 @mixin full-separator {

@@ -107,6 +107,7 @@ button.primitive,
 		margin-left: 22px; // Offset tooltip when centered
 
 		@include bp.get(s) {
+			margin-bottom: 5px;
 			margin-left: 0;
 		}
 	}
