@@ -109,10 +109,14 @@ START - Mixins */
 	@include bp.get(xs) {
 		margin-bottom: 10px;
 	}
+
+	@include bp.get(l) {
+		margin-bottom: 15px;
+	}
 }
 
 @mixin full-separator {
-	height: 2px;
+	height: 1px;
 	margin-top: 20px;
 	width: 100%;
 }

@@ -6,6 +6,10 @@ START - Linked words */
 		@include bp.get(s) {
 			margin-top: 0;
 		}
+
+		@include bp.get(l) {
+			margin-top: 10px;
+		}
 	}
 
 	&__list {

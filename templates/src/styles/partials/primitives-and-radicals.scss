@@ -6,7 +6,12 @@ START - Primitives and radicals */
 	&__components {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		width: 100%;
+
+		@include bp.get(s) {
+			justify-content: flex-start;
+		}
 	}
 
 	&__components {
@@ -26,8 +31,11 @@ START - Primitives and radicals */
 		margin-top: 15px;
 
 		@include bp.get(s) {
-			margin-top: 10px;
 			padding-right: 40px;
+		}
+
+		@include bp.get(l) {
+			margin-top: 20px;
 		}
 	}
 

@@ -5,6 +5,22 @@ START - Stories */
 	&__container {
 		text-align: left;
 	}
+
+	&__title {
+		@include bp.get(xs, xs) {
+			margin-top: 15px;
+		}
+	}
+
+	&__content p {
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 /* END - Stories

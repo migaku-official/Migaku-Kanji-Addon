@@ -6,6 +6,7 @@ START - Actions */
 		align-items: center;
 		display: flex;
 		flex-direction: column;
+		margin-top: 10px;
 
 		@include bp.get(xs) {
 			align-items: flex-start;
@@ -14,6 +15,13 @@ START - Actions */
 		// Faded-look to communicate inoperation
 		@include mobile-device {
 			opacity: $mobile-msg-opacity;
+		}
+	}
+
+	&__title {
+		@include bp.get(xs, xs) {
+			text-align: center;
+			width: 100%;
 		}
 	}
 

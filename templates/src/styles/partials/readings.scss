@@ -9,6 +9,14 @@ START - Readings */
 		padding: 0 20px;
 		width: 100%;
 
+		@include bp.get(s) {
+			padding: 0 10px;
+		}
+
+		@include bp.get(m) {
+			padding: 0 20px;
+		}
+
 		@include bp.get(l) {
 			padding: 0 40px;
 		}
@@ -19,13 +27,14 @@ START - Readings */
 
 		display: flex;
 		justify-content: space-between;
+		margin-top: -15px; // Offset <li/> margin-top on mobile
 		padding: 0 20px;
 		width: 100%;
 
 		@include bp.get(s) {
 			flex-direction: column;
 			justify-content: unset;
-			max-width: 200px;
+			margin-top: -5px;
 			padding: 0;
 		}
 
@@ -36,7 +45,8 @@ START - Readings */
 		li {
 			display: inline-flex;
 			flex-direction: column;
-			margin: 10px 5px 0;
+			flex-wrap: wrap;
+			margin: 15px 5px 0;
 
 			> *:first-child {
 				margin: 5px 0;

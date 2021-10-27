@@ -113,8 +113,14 @@ button.primitive,
 	}
 
 	&__text {
-		margin-bottom: 10px;
+		@include faded-info-msg;
+
+		margin: -10px 0 10px;
 		padding-right: 10px;
+
+		@include bp.get(s) {
+			margin-top: 0;
+		}
 	}
 }
 

@@ -33,6 +33,10 @@ body {
 					left: 0;
 					transform: unset;
 				}
+
+				@include bp.get(l) {
+					bottom: -20px;
+				}
 			}
 		}
 	}

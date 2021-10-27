@@ -59,7 +59,7 @@ body {
 		flex-direction: column;
 		margin: 0 auto;
 		max-width: 1000px;
-		padding: 20px 20px 50px;
+		padding: 20px 20px 40px;
 		text-align: center;
 
 		@include bp.get(s) {
