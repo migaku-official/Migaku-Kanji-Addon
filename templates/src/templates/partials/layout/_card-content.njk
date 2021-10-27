@@ -39,7 +39,7 @@ Main #}
 {% set txt__meanings = "Meanings:" %}
 
 {# linked-words.njk #}
-{% set txt__vocab_title = "Appears in" %}
+{% set txt__vocab_title = "Vocab" %}
 {% set txt__vocab_tooltip %}
 	Colored buttons are vocab from cards you've learned. Faded buttons are new cards that you haven't learned (yet). Gray buttons are examples sorted by frequency.
 {% endset %}
@@ -58,6 +58,18 @@ Main #}
 	Largest parts we can break this kanji down into. Primitives are often kanji in their own right, but some only exist to help with mnemonic stories.
 {% endset %}
 
+{# ---  primitives of #}
+{% set txt__primitives_of_title = "Primitives of" %}
+{% set txt__primitives_of_tooltip %}
+	This kanji appears as a primitive in these other, more complex kanji.
+{% endset %}
+
+{% set txt__primitives_radicals_mobile_info %}
+	Primitive buttons are only clickable on desktop.
+	<br/>
+	Primitive tooltip info can still be viewed by tapping.
+{% endset %}
+
 {# --- radicals #}
 {% set txt__radicals_title = "Radicals" %}
 {% set txt__radicals_tooltip %}
@@ -65,17 +77,6 @@ Main #}
 {% endset %}
 {% set txt__radicals_tip %}
 	Radicals aren't clickable (yet).
-{% endset %}
-
-{# ---  primitives of #}
-{% set txt__primitives_of_title = "Used in" %}
-{% set txt__primitives_of_tooltip %}
-	This kanji appears as a primitive in these other, more complex kanji.
-{% endset %}
-{% set txt__primitives_radicals_mobile_info %}
-	Primitive buttons are only clickable on desktop.
-	<br/>
-	Primitive tooltip info can still be viewed, by tapping.
 {% endset %}
 
 {# ------------------------------
