@@ -1,0 +1,28 @@
+{# note behaviour in corresponding `title-tooltip-script.njk` #}
+{% macro titleTooltip(id, title, tooltip, h2class='') %}
+	<div class="title-tooltip__container">
+		<h2 class="{{h2class}}{% if h2class != '' %} {% endif %}title-tooltip__title">
+			{{title}}
+			<button
+				type="button"
+				title="What's this?"
+				aria-controls="tooltip-id--{{id}}"
+				onclick="toggleShow('tooltip-id--{{id}}')"
+			>
+				<img src="{% if is_demo %}/{% endif %}_kanji_icon_help_black.svg" alt=""/>
+			</button>
+		</h2>
+
+		<div
+			id="tooltip-id--{{id}}"
+			class="title-tooltip__text"
+			style="display: none"
+			aria-expanded="false"
+		>
+			{{tooltip}}
+		</div>
+
+		<hr class="separator"/>
+	</div>
+{% endmacro %}
+

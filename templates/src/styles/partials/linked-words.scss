@@ -2,6 +2,16 @@
 START - Linked words */
 
 .linked-words {
+	&__title {
+		@include bp.get(s) {
+			margin-top: 0;
+		}
+
+		@include bp.get(l) {
+			margin-top: 10px;
+		}
+	}
+
 	&__list {
 		display: flex;
 		flex-wrap: wrap;
@@ -22,19 +32,6 @@ START - Linked words */
 			margin: 0 10px 10px 0;
 			padding: 5px 10px !important;
 
-			ruby {
-				display: flex;
-				flex-direction: column-reverse;
-				line-height: 1.3;
-
-				rt {
-					align-items: center;
-					display: flex;
-					justify-content: center;
-					min-height: 15px;
-				}
-			}
-
 			@include bp.get(s) {
 				font-size: 26px !important;
 				padding: 5px 15px 8px !important;
@@ -44,17 +41,6 @@ START - Linked words */
 		// Example word (button)
 		.word.word_default {
 			@include button-tertiary;
-		}
-	}
-
-	&__mobile {
-		display: none;
-		font-size: $mobile-msg-font-size;
-		opacity: $mobile-msg-opacity;
-
-		// Display message
-		@include mobile-device {
-			display: block;
 		}
 	}
 }
@@ -77,6 +63,11 @@ START - Linked words */
 		color: transparent;
 		position: relative;
 
+		// Disable on mobile
+		@include mobile-device {
+			color: inherit !important;
+		}
+
 		&::before {
 			content: '(hover)';
 			color: $text-on-dark;
@@ -87,6 +78,11 @@ START - Linked words */
 
 			@include dark-mode {
 				color: $text-on-light;
+			}
+
+			// Disable on mobile
+			@include mobile-device {
+				display: none;
 			}
 		}
 	}

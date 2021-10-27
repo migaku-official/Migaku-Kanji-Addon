@@ -2,35 +2,44 @@
 START - Primitives and radicals */
 
 .primitives-and-radicals {
-	&__container {
+	&__container,
+	&__components {
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		width: 100%;
+
+		@include bp.get(s) {
+			justify-content: flex-start;
+		}
+	}
+
+	&__components {
+		flex-wrap: nowrap;
 	}
 
 	&__block {
 		width: 100%;
+
+		@include bp.get(m) {
+			min-width: 200px;
+		}
 
 		@include bp.get(s) {
 			width: auto;
 		}
 	}
 
-	&__mobile {
-		display: none;
-		font-size: $mobile-msg-font-size;
-		opacity: $mobile-msg-opacity;
-
-		// Display message
-		@include mobile-device {
-			display: block;
-		}
-	}
-
 	&__title {
 		margin-top: 0;
-		margin-top: 20px;
+		margin-top: 15px;
 
 		@include bp.get(s) {
 			padding-right: 40px;
+		}
+
+		@include bp.get(l) {
+			margin-top: 20px;
 		}
 	}
 

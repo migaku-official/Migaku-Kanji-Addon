@@ -6,7 +6,11 @@ START - Tags */
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		margin-top: 20px;
+		margin-top: 15px;
+
+		@include bp.get(l) {
+			margin-top: 20px;
+		}
 
 		.tag {
 			align-items: center;

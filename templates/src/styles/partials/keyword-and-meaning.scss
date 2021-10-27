@@ -6,7 +6,7 @@ START - Keyword and meaning */
 		text-align: center;
 
 		@include bp.get(s) {
-			margin: 0 0 20px;
+			margin: 0 0 15px;
 			text-align: left;
 		}
 	}
@@ -15,7 +15,12 @@ START - Keyword and meaning */
 		@include heading-size('h1');
 
 		color: $brand-blue-primary;
-		margin: 0 0 10px;
+		line-height: 1;
+		margin: 15px 0 10px;
+
+		@include bp.get(s) {
+			margin-top: 0;
+		}
 
 		@include dark-mode {
 			color: $brand-orange-primary;

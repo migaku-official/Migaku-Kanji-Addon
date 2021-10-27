@@ -25,12 +25,13 @@ START - Stroke order diagram */
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		margin: 0 auto;
+		margin: 20px auto 0;
+		max-width: 280px;
 		min-height: 300px;
 		padding: 10px 0;
 		position: relative;
 		transform-origin: left;
-		width: 280px;
+		width: 100%;
 
 		@include dark-mode {
 			background: $diagram-background-dark;
@@ -38,20 +39,20 @@ START - Stroke order diagram */
 		}
 
 		@include bp.get(s) {
+			margin-top: 0;
+			max-width: 200px;
 			min-height: 230px;
-			width: 200px;
 		}
 
 		@include bp.get(m) {
 			min-height: 300px;
 			padding-bottom: 10px;
-			width: 250px;
+			max-width: 250px;
 		}
 
 		@include bp.get(l) {
 			max-width: 280px;
 			min-height: 330px;
-			width: 100%;
 		}
 	}
 

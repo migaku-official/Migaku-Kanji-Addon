@@ -1,11 +1,58 @@
-## 0.7.0
+## 0.8.7
 
-- [FEATURE]: Added dedicated font for kanji characters.
-- [FIX]: Asset imports now work in AnkiDroid.
+- [STYLE]: Min-width on primitives/radicals container, for the medium breakpoint which can squish severely when tooltips are toggled.
+
+## 0.8.6
+
+- [STYLE]: Another iteration of responsive layout style tweaks, tightening and loosening at the various breakpoints.
+
+## 0.8.5
+
+- [STYLE]: Hid title tooltip separators on mobile.
+- [STYLE]: Title tooltip on mobile now have center alignment offsets to account for the tooltip button.
+- [CHORE]: Tooltip content revisions.
+- [STYLE]: Tightening of responsive layout styles.
+
+## 0.8.4
+
+- [FIX]: Included missing title tooltip script binds in lookup template.
+
+## 0.8.3
+
+- [FIX]: Aside container now has a responsive `min-width`, which unbreaks some especially squishy/narrow layouts.
+
+## 0.8.2
+
+- [FIX]: Lookup templates didn't have access to the new content variables.
+- [FIX]: Tooltip button style resets for Anki.
+- [CHORE]: Toggle script only on the backs of cards now.
+- [STYLE]: Stroke diagram now has a responsive width system that's more conducive to being squished a little.
+
+## 0.8.1
+
+- [FIX]: Tooltip toggles no longer rely on their own (broken) individual inline scripts, and are now orchestrated by a single script.
+
+## 0.8.0
+
+- [FEATURE]: Added tooltips and explanatory messaging to main card sub-sections.
+
+## 0.7.2
+
+- [FIX]: "(hover)" text was (mistakenly) active on mobile.
+- [FIX]: Furigana alignment and centering (especially on mobile) now displays more consistently.
+- [FIX]: Front of card example words can again wrap to multiple lines.
+
+## 0.7.1
+
 - [FIX]: Example words without furigana now line up with example words that do have furigana.
 - [STYLE]: Fallback fonts for front-of-card characters.
 - [FIX]: Front characters no longer wrap to multiple lines.
 - [STYLE]: Tweaks to responsive layout padding.
+
+## 0.7.0
+
+- [FEATURE]: Added dedicated font for kanji characters.
+- [FIX]: Asset imports now work in AnkiDroid.
 
 ## 0.6.1
 

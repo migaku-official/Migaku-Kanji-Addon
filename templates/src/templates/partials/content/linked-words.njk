@@ -1,11 +1,21 @@
+{% from "partials/structure/title-tooltip-macro.njk" import titleTooltip with context %}
+
 <!-- START - Linked words -->
 <div class="linked-words__container">
-	<h2 class="-has-separator">Appears in</h2>
+	{{ titleTooltip(
+			id='linked_words__title',
+			title=txt__vocab_title,
+			tooltip=txt__vocab_tooltip,
+			h2class='linked-words__title'
+	) }}
 	<div class="linked-words__examples">
 		<div id="words" class="linked-words__list kanji-char-font">{{ linked_words | safe }}</div>
 	</div>
-	<div class="linked-words__mobile">
-		Linked words are only clickable on desktop.
+	<div class="faded-info-msg">
+		{{ txt__vocab_tip }}
+	</div>
+	<div class="mobile-info-msg">
+		{{ txt__vocab_mobile_info }}
 	</div>
 </div>
 <!-- END - Linked words -->
