@@ -1,3 +1,7 @@
+## 0.8.7
+
+- [STYLE]: Min-width on primitives/radicals container, for the medium breakpoint which can squish severely when tooltips are toggled.
+
 ## 0.8.6
 
 - [STYLE]: Another iteration of responsive layout style tweaks, tightening and loosening at the various breakpoints.
