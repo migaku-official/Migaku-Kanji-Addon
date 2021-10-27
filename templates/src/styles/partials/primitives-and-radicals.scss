@@ -19,6 +19,7 @@ START - Primitives and radicals */
 	}
 
 	&__block {
+		padding-right: 10px;
 		width: 100%;
 
 		@include bp.get(m) {
