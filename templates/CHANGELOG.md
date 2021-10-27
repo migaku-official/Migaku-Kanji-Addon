@@ -1,3 +1,7 @@
+## 0.8.6
+
+- [STYLE]: Another iteration of responsive layout style tweaks, tightening and loosening at the various breakpoints.
+
 ## 0.8.5
 
 - [STYLE]: Hid title tooltip separators on mobile.
