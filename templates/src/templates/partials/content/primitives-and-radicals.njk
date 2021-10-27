@@ -17,33 +17,33 @@
 			</div>
 			<div class="primitives-and-radicals__block">
 				{{ titleTooltip(
-						id='radicals__title',
-						title=txt__radicals_title,
-						tooltip=txt__radicals_tooltip,
-						h2class='primitives-and-radicals__title'
-				) }}
-				<div id="radicals" class="primitives-and-radicals__list kanji-char-font">
-					{{ radicals | safe }}
-				</div>
-				<div class="faded-info-msg">
-					{{ txt__radicals_tip }}
+							id='primitives_of__title',
+							title=txt__primitives_of_title,
+							tooltip=txt__primitives_of_tooltip,
+							h2class='primitives-and-radicals__title'
+					) }}
+				<div id="primitive_of" class="primitives-and-radicals__list kanji-char-font">
+					{{ primitive_of | safe }}
 				</div>
 			</div>
+		</div>
+		<div class="mobile-info-msg">
+			{{ txt__primitives_radicals_mobile_info | safe }}
 		</div>
 		<div class="primitives-and-radicals__block">
 			{{ titleTooltip(
-						id='primitives_of__title',
-						title=txt__primitives_of_title,
-						tooltip=txt__primitives_of_tooltip,
-						h2class='primitives-and-radicals__title'
-				) }}
-			<div id="primitive_of" class="primitives-and-radicals__list kanji-char-font">
-				{{ primitive_of | safe }}
+					id='radicals__title',
+					title=txt__radicals_title,
+					tooltip=txt__radicals_tooltip,
+					h2class='primitives-and-radicals__title'
+			) }}
+			<div id="radicals" class="primitives-and-radicals__list kanji-char-font">
+				{{ radicals | safe }}
+			</div>
+			<div class="faded-info-msg">
+				{{ txt__radicals_tip }}
 			</div>
 		</div>
-	</div>
-	<div class="mobile-info-msg">
-		{{ txt__primitives_radicals_mobile_info | safe }}
 	</div>
 </div>
 <!-- END - Primitives and radicals -->
