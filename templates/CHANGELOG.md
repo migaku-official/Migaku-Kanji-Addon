@@ -1,4 +1,4 @@
-## 0.8.5 (unreleased)
+## 0.8.5
 
 - [STYLE]: Hid title tooltip separators on mobile.
 - [STYLE]: Title tooltip on mobile now have center alignment offsets to account for the tooltip button.
