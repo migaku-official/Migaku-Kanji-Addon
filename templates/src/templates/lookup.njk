@@ -1,4 +1,6 @@
-{% extends "partials/layout/layout-lookup-content.njk" %}
+{% set cardLayoutStructure = "partials/layout/layout-lookup.njk" %}
+{% extends "partials/layout/_card-content.njk" %}
+
 {% set is_lookup = true %}
 
 {% block sidebar %}
