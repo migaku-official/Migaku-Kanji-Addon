@@ -8,11 +8,11 @@ const STYLE_DIR = path.resolve(ROOT_DIR, 'src/styles');
 const STYLE_FILE = path.resolve(STYLE_DIR, 'styles.scss');
 const CARD_HTML = path.resolve(
 	TEMPLATES_DIR,
-	'partials/layout/layout-card-structure.njk',
+	'partials/layout/layout-card.njk',
 );
 const LOOKUP_HTML = path.resolve(
 	TEMPLATES_DIR,
-	'partials/layout/layout-lookup-structure.njk',
+	'partials/layout/layout-lookup.njk',
 );
 const DMAK_JS = path.resolve(
 	TEMPLATES_DIR,
