@@ -1,3 +1,9 @@
+## 0.9.4
+
+- [FIX]: Stroke diagram border partially occluded on Windows.
+- [STYLE]: Thinned the stroke diagram border in light mode.
+- [STYLE]: Increased contrast of faded info messages in light mode (mobile info, tooltips).
+
 ## 0.9.3
 
 - [STYLE]: Base kanji font applied to tags, padding adjusted accordingly.
