@@ -3,6 +3,18 @@ START - User data */
 
 .userData {
 	&__container {
+		@include bp.get(s, m) {
+			margin-bottom: 10px;
+		}
+
+		.separator {
+			margin-bottom: 10px;
+
+			@include bp.get(l) {
+				margin-bottom: 20px;
+			}
+		}
+
 		img {
 			max-width: 100%;
 		}
