@@ -37,7 +37,11 @@ START - Mixins */
 
 @mixin faded-info-msg {
 	font-size: $mobile-msg-font-size;
-	opacity: $mobile-msg-opacity;
+	opacity: $mobile-msg-opacity-light;
+
+	@include dark-mode {
+		opacity: $mobile-msg-opacity-dark;
+	}
 }
 
 @mixin mobile-info-msg {

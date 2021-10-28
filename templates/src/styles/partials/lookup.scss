@@ -51,12 +51,13 @@ START - Lookup */
 }
 
 // --------------------------------------
+// Lookup actions
 
 .lookup-actions {
-	&__container {
+	&__title {
 		// Faded-look to communicate inoperation
 		@include mobile-device {
-			opacity: $mobile-msg-opacity;
+			@include faded-info-msg;
 		}
 	}
 

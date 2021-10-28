@@ -11,17 +11,17 @@ START - Actions */
 		@include bp.get(xs) {
 			align-items: flex-start;
 		}
-
-		// Faded-look to communicate inoperation
-		@include mobile-device {
-			opacity: $mobile-msg-opacity;
-		}
 	}
 
 	&__title {
 		@include bp.get(xs, xs) {
 			text-align: center;
 			width: 100%;
+		}
+
+		// Faded-look to communicate inoperation
+		@include mobile-device {
+			@include faded-info-msg;
 		}
 	}
 
