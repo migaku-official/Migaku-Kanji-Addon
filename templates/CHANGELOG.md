@@ -1,3 +1,8 @@
+## 0.9.3
+
+- [STYLE]: Base kanji font applied to tags, padding adjusted accordingly.
+- [CHORE]: Fixed content typo.
+
 ## 0.9.2
 
 - [REFACTOR]: "Hide furigana on linked words" setting now enabled on mobile, changed message from "(hover)" to "(tap)" for mobile devices.
