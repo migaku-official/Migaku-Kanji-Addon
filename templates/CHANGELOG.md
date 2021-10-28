@@ -1,3 +1,7 @@
+## 0.9.6
+
+- [STYLE]: Right-padding on primitives of container removed, since it's unnecessary.
+
 ## 0.9.5
 
 - [CHORE]: Title/tooltip content tweak.
