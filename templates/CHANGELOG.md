@@ -1,3 +1,7 @@
+## 0.9.5
+
+- [CHORE]: Title/tooltip content tweak.
+
 ## 0.9.4
 
 - [FIX]: Stroke diagram border partially occluded on Windows.
