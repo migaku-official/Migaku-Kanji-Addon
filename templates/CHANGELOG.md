@@ -1,3 +1,10 @@
+## 0.9.0
+
+- [REFACTOR]: Switched radicals/primitives-of containers around.
+- [STYLE]: Another iteration of layout style tweaks.
+- [CHORE]: Content revisions.
+- [STYLE]: User data vertical padding tweaks.
+
 ## 0.8.7
 
 - [STYLE]: Min-width on primitives/radicals container, for the medium breakpoint which can squish severely when tooltips are toggled.
