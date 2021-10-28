@@ -65,29 +65,10 @@ START - Primitives and radicals */
 	}
 }
 
-button.primitive,
-button.radical {
-	@include square(40px);
-
-	font-size: 24px !important;
-	margin: 0 10px 10px 0 !important;
-	padding: 0 !important;
-	position: relative;
-
-	@include bp.get(s) {
-		@include square(50px);
-
-		font-size: 28px !important;
-	}
-}
-
 button.primitive {
 	@include button-primary;
 
 	font-family: inherit;
-	padding: 0 !important;
-
-	// NOTE: this triggers the tooltip, in `tooltip.scss`
 }
 
 button.radical {
@@ -95,6 +76,22 @@ button.radical {
 
 	font-family: inherit;
 	cursor: not-allowed;
+}
+
+button.primitive,
+button.radical {
+	@include square(40px);
+
+	font-size: 24px !important;
+	margin: 0 10px 10px 0 !important;
+	padding: 0 0 3px !important;
+	position: relative;
+
+	@include bp.get(s) {
+		@include square(50px);
+
+		font-size: 28px !important;
+	}
 }
 
 /* END - Primitives and radicals
