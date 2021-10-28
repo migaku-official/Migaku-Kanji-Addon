@@ -1,3 +1,7 @@
+## 0.9.1
+
+- [STYLE]: Primitive/radical buttons have been artificially centered, necessary due to a quirk in the font-family line-height.
+
 ## 0.9.0
 
 - [REFACTOR]: Switched radicals/primitives-of containers around.
