@@ -1,3 +1,7 @@
+## 0.9.2
+
+- [REFACTOR]: "Hide furigana on linked words" setting now enabled on mobile, changed message from "(hover)" to "(tap)" for mobile devices.
+
 ## 0.9.1
 
 - [STYLE]: Primitive/radical buttons have been artificially centered, necessary due to a quirk in the font-family line-height.
