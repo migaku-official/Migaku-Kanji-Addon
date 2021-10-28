@@ -34,10 +34,7 @@ START - Primitives and radicals */
 	&__title {
 		margin-top: 0;
 		margin-top: 15px;
-
-		@include bp.get(s) {
-			padding-right: 40px;
-		}
+		white-space: nowrap;
 
 		@include bp.get(l) {
 			margin-top: 20px;
@@ -72,7 +69,7 @@ button.primitive,
 button.radical {
 	@include square(40px);
 
-	font-size: 20px !important;
+	font-size: 24px !important;
 	margin: 0 10px 10px 0 !important;
 	padding: 0 !important;
 	position: relative;
@@ -80,7 +77,7 @@ button.radical {
 	@include bp.get(s) {
 		@include square(50px);
 
-		font-size: 26px !important;
+		font-size: 28px !important;
 	}
 }
 
