@@ -1,3 +1,7 @@
+## 0.9.9
+
+- [FIX]: Clicking example words now opens the dictionary on click (shift modifier not necessary, but still works too).
+
 ## 0.9.8
 
 - [CHORE]: Added '(no results)' span to each of the card sub-sections if there are no results.
