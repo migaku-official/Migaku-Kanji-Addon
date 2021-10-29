@@ -57,6 +57,10 @@ START - Mixins */
 
 .faded-info-msg {
 	@include faded-info-msg;
+
+	&.-spaced {
+		margin-bottom: 20px;
+	}
 }
 
 .mobile-info-msg {
