@@ -1,8 +1,10 @@
 <!-- START - Addon script, Production, back -->
 <!-- NOTE: Includes changes around DMAK -->
 <script>
-  function wrap_list(list, intro, outro, dash_on_empty = true) {
-		if (list.length < 1) return dash_on_empty ? '-' : '';
+  var noResultsSpan = '<span class="faded-info-msg -spaced">(no results)</span>';
+
+	function wrap_list(list, intro, outro, no_results_span = true) {
+		if (list.length < 1) return no_results_span ? noResultsSpan : '';
 		return intro + list.join(outro + intro) + outro;
 	}
 
@@ -102,13 +104,13 @@
 			tags.push('RTK (1-5) ' + data.heisig_id5.toString());
 		if (data.heisig_id6 !== null)
 			tags.push('RTK (6+) ' + data.heisig_id6.toString());
+
 		$('.tags').html(wrap_list(tags, '<div class="tag">', '</div>', false));
 
 		$('#onyomi').html(data.onyomi.length ? data.onyomi.join(', ') : '-');
 		$('#kunyomi').html(data.kunyomi.length ? data.kunyomi.join(', ') : '-');
 		$('#nanori').html(data.nanori.length ? data.nanori.join(', ') : '-');
 
-		$('#primitives').empty();
 		var primitives_pts = [];
 		for (const p_data of data.primitives_detail) {
 			var keywords = [];
@@ -153,9 +155,11 @@
 					'</div></button>',
 			);
 		}
-		$('#primitives').html(primitives_pts.join(''));
 
-		$('#primitive_of').empty();
+		var hasPrimitives = primitives_pts.length > 0;
+		$('#primitives').empty();
+		$('#primitives').html(hasPrimitives ? primitives_pts.join('') : noResultsSpan);
+
 		var primitive_of_pts = [];
 		for (const p_data of data.primitive_of_detail) {
 			var keywords = [];
@@ -200,7 +204,10 @@
 					'</div></button>',
 			);
 		}
-		$('#primitive_of').html(primitive_of_pts.join(''));
+
+		var hasPrimitivesOf = primitive_of_pts.length > 0;
+		$('#primitives_of').empty();
+		$('#primitive_of').html(hasPrimitivesOf ? primitive_of_pts.join('') : noResultsSpan);
 
 		$('.primitive').click(primitive_click);
 
@@ -268,8 +275,11 @@
 						'</rt></ruby></div>',
 				);
 		}
-		$('.KanjiLookup-words').toggle(word_pts.length > 0);
-		$('#words').html(word_pts.join(''));
+
+		var hasLinkedWords = word_pts.length > 0;
+		$('#words').empty();
+		$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
+
 		$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 		$('#words_front').html(word_front_pts.join(''));
 		$('.word').click(word_click);
@@ -277,7 +287,7 @@
 		if (settings.hide_keywords && word_front_pts.length > 0)
 			document.getElementById('keywords_front').style.display = 'none';
 
-		$('.KanjiLookup-radicals').toggle(data.radicals.length > 0);
+		$('#radicals').empty();
 		$('#radicals').html(
 			wrap_list(data.radicals, '<button class="radical">', '</button>'),
 		);
