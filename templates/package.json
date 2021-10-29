@@ -18,7 +18,7 @@
 		"postlint": "run-s text:pass",
 		"build": "gulp",
 		"postbuild": "run-s text:build",
-		"postversion": "node scripts/inject-version-number.js && run-s build",
+		"postversion": "node scripts/inject-version-number.js && rimraf ./dist",
 		"text:logo": "node scripts/text/migaku-logo.js",
 		"text:pass": "node scripts/text/no-issues.js",
 		"text:build": "node scripts/text/build-complete.js",
