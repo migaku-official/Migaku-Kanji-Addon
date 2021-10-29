@@ -1,3 +1,7 @@
+## 0.9.8
+
+- [CHORE]: Added '(no results)' span to each of the card sub-sections if there are no results.
+
 ## 0.9.7
 
 - [FIX]: Stroke diagram hotkeys prevent duplicate bindings and are therefor no longer buggy.
