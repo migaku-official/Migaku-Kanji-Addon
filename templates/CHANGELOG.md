@@ -1,3 +1,7 @@
+## 0.9.7
+
+- [FIX]: Stroke diagram hotkeys prevent duplicate bindings and are therefor no longer buggy.
+
 ## 0.9.6
 
 - [STYLE]: Right-padding on primitives of container removed, since it's unnecessary.
