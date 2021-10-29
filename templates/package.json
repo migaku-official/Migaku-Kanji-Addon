@@ -18,6 +18,7 @@
 		"postlint": "run-s text:pass",
 		"build": "gulp",
 		"postbuild": "run-s text:build",
+		"deploy": "node scripts/deploy-dist.js && run-s text:pass",
 		"postversion": "node scripts/inject-version-number.js && run-s build",
 		"text:logo": "node scripts/text/migaku-logo.js",
 		"text:pass": "node scripts/text/no-issues.js",
@@ -38,6 +39,7 @@
 	"devDependencies": {
 		"@deloitte-digital-au/ddbreakpoints": "^2.0.4",
 		"browser-sync": "^2.27.5",
+		"dotenv-flow": "^3.2.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-nunjucks-render": "^2.2.3",
