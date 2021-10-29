@@ -36,6 +36,8 @@ If you are adding more features or covering more use-cases/edge-cases, consider 
 
 The build directory (`./dist`) is kept up to date if you're watching changes with `yarn start`. Otherwise, to compile the templates, simply run `yarn build`.
 
+There's also a convenient `yarn build-deploy` command which will build before you deploy.
+
 To deploy these changes, run `yarn deploy`. This will updated the contents of the root folder `addons` which forms the source code for the Anki addon folder itself.
 
 If you're developing locally, you can also deploy directly to the Migaku Kanji addon folder in your own Anki. This requires some small configuration first.
