@@ -18,7 +18,7 @@
 		"postlint": "run-s text:pass",
 		"build": "gulp",
 		"postbuild": "run-s text:build",
-		"deploy": "node scripts/deploy-dist.js && run-s text:pass",
+		"deploy": "node scripts/deploy/deploy-dist.js && run-s text:pass",
 		"postversion": "node scripts/inject-version-number.js && run-s build",
 		"text:logo": "node scripts/text/migaku-logo.js",
 		"text:pass": "node scripts/text/no-issues.js",
