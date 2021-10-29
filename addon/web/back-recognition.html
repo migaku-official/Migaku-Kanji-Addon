@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.7.0
+- @version v0.9.8
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +24,10 @@ START - Migaku markup
 
 			<div
 				id="words_front"
-				class="character-and-examples__list kanji-char-font"
+				class="
+					character-and-examples__list character-and-examples__example-words
+					kanji-char-font
+				"
 			></div>
 		</div>
 		<!-- END - Character and examples -->
@@ -51,18 +54,48 @@ START - Migaku markup
 
 				<hr class="separator -full" />
 
-				{{UserData}}{{/UserData}}
+				{{UserData}} {{/UserData}}
 			</div>
 			<!-- END - User data -->
 
 			<!-- START - Linked words -->
 			<div class="linked-words__container">
-				<h2 class="-has-separator">Appears in</h2>
-				<div class="linked-words__examples">
-					<div id="words" class="linked-words__list kanji-char-font"></div>
+				<div class="title-tooltip__container">
+					<h2 class="linked-words__title title-tooltip__title">
+						Vocab
+						<button
+							type="button"
+							title="What's this?"
+							aria-controls="tooltip-id--linked_words__title"
+							onclick="toggleShow('tooltip-id--linked_words__title')"
+						>
+							<img src="_kanji_icon_help_black.svg" alt="" />
+						</button>
+					</h2>
+
+					<div
+						id="tooltip-id--linked_words__title"
+						class="title-tooltip__text"
+						style="display: none"
+						aria-expanded="false"
+					>
+						Colored buttons are vocab from cards you&#39;ve learned. Faded
+						buttons are new cards that you haven&#39;t learned (yet). Gray
+						buttons are examples sorted by frequency.
+					</div>
+
+					<hr class="separator" />
 				</div>
-				<div class="linked-words__mobile">
-					Linked words are only clickable on desktop.
+
+				<div class="linked-words__examples">
+					<div
+						id="words"
+						class="linked-words__list kanji-char-font hide_readings_hover"
+					></div>
+				</div>
+				<div class="faded-info-msg">Shift + click for dictionary lookup.</div>
+				<div class="mobile-info-msg">
+					Vocab buttons are only clickable on desktop.
 				</div>
 			</div>
 			<!-- END - Linked words -->
@@ -70,38 +103,113 @@ START - Migaku markup
 			<!-- START - Primitives and radicals -->
 			<div class="primitives-and-radicals__wrapper">
 				<div class="primitives-and-radicals__container">
-					<div class="primitives-and-radicals__block">
-						<h2 class="primitives-and-radicals__title -has-separator">
-							Primitives
-						</h2>
-						<div
-							id="primitives"
-							class="primitives-and-radicals__list kanji-char-font"
-						></div>
+					<div class="primitives-and-radicals__components">
+						<div class="primitives-and-radicals__block">
+							<div class="title-tooltip__container">
+								<h2 class="primitives-and-radicals__title title-tooltip__title">
+									Primitives
+									<button
+										type="button"
+										title="What's this?"
+										aria-controls="tooltip-id--primtives__title"
+										onclick="toggleShow('tooltip-id--primtives__title')"
+									>
+										<img src="_kanji_icon_help_black.svg" alt="" />
+									</button>
+								</h2>
+
+								<div
+									id="tooltip-id--primtives__title"
+									class="title-tooltip__text"
+									style="display: none"
+									aria-expanded="false"
+								>
+									The largest parts we can break this kanji down into.
+									Primitives are often kanji in their own right, but some only
+									exist to help with mnemonic stories.
+								</div>
+
+								<hr class="separator" />
+							</div>
+
+							<div
+								id="primitives"
+								class="primitives-and-radicals__list kanji-char-font"
+							></div>
+						</div>
+						<div class="primitives-and-radicals__block">
+							<div class="title-tooltip__container">
+								<h2 class="primitives-and-radicals__title title-tooltip__title">
+									Primitive in
+									<button
+										type="button"
+										title="What's this?"
+										aria-controls="tooltip-id--primitives_of__title"
+										onclick="toggleShow('tooltip-id--primitives_of__title')"
+									>
+										<img src="_kanji_icon_help_black.svg" alt="" />
+									</button>
+								</h2>
+
+								<div
+									id="tooltip-id--primitives_of__title"
+									class="title-tooltip__text"
+									style="display: none"
+									aria-expanded="false"
+								>
+									This kanji appears as a primitive within these other, more
+									complex kanji.
+								</div>
+
+								<hr class="separator" />
+							</div>
+
+							<div
+								id="primitive_of"
+								class="primitives-and-radicals__list kanji-char-font"
+							></div>
+						</div>
+					</div>
+					<div class="mobile-info-msg">
+						Primitive buttons are only clickable on desktop.
+						<br />
+						Primitive tooltip info can still be viewed by tapping.
 					</div>
 					<div class="primitives-and-radicals__block">
-						<h2 class="primitives-and-radicals__title -has-separator">
-							Primitive Of
-						</h2>
-						<div
-							id="primitive_of"
-							class="primitives-and-radicals__list kanji-char-font"
-						></div>
-					</div>
-					<div class="primitives-and-radicals__block">
-						<h2 class="primitives-and-radicals__title -has-separator">
-							Radicals
-						</h2>
+						<div class="title-tooltip__container">
+							<h2 class="primitives-and-radicals__title title-tooltip__title">
+								Radicals
+								<button
+									type="button"
+									title="What's this?"
+									aria-controls="tooltip-id--radicals__title"
+									onclick="toggleShow('tooltip-id--radicals__title')"
+								>
+									<img src="_kanji_icon_help_black.svg" alt="" />
+								</button>
+							</h2>
+
+							<div
+								id="tooltip-id--radicals__title"
+								class="title-tooltip__text"
+								style="display: none"
+								aria-expanded="false"
+							>
+								Radicals are used to organize kanji in dictionaries. They&#39;re
+								generally the smallest parts a kanji can be broken down into.
+							</div>
+
+							<hr class="separator" />
+						</div>
+
 						<div
 							id="radicals"
 							class="primitives-and-radicals__list kanji-char-font"
 						></div>
+						<div class="faded-info-msg">
+							Radicals aren&#39;t clickable (yet).
+						</div>
 					</div>
-				</div>
-				<div class="primitives-and-radicals__mobile">
-					Primitives and radicals are only clickable on desktop.
-					<br />
-					Only primitive tooltips are visible on mobile.
 				</div>
 			</div>
 			<!-- END - Primitives and radicals -->
@@ -153,9 +261,9 @@ START - Migaku markup
 						</div>
 					</button>
 
-					<span aria-hidden="true" class="stroke-order-diagram__inner-title"
-						>Stroke order</span
-					>
+					<span aria-hidden="true" class="stroke-order-diagram__inner-title">
+						Stroke order
+					</span>
 
 					<div class="stroke-order-diagram__character">
 						<div class="stroke-order-diagram__canvas">
@@ -166,9 +274,9 @@ START - Migaku markup
 							<div class="stroke-order-diagram__axes"></div>
 						</div>
 
-						<span class="stroke-order-diagram__no-data" aria-hidden="true"
-							>(no data)</span
-						>
+						<span class="stroke-order-diagram__no-data" aria-hidden="true">
+							(no data)
+						</span>
 					</div>
 
 					<div class="stroke-order-diagram__controls">
@@ -256,7 +364,9 @@ START - Migaku markup
 			<!-- END - Stroke order diagram -->
 
 			<!-- START - Tags -->
-			<div class="tags tags__container"></div>
+			<div class="tags tags__container kanji-char-font">
+				<h2 class="vh">Tags</h2>
+			</div>
 			<!-- END - Tags -->
 
 			<!-- START - Readings -->
@@ -293,7 +403,7 @@ START - Migaku markup
 
 		<!-- START - Actions -->
 		<div class="actions__container">
-			<h2 class="-has-separator">Actions</h2>
+			<h2 class="actions__title -has-separator">Actions</h2>
 			<div class="actions__buttons">
 				<div class="actions__set-custom">
 					<button onclick="set_custom_keyword();" class="button -wide">
@@ -310,7 +420,7 @@ START - Migaku markup
 					</button>
 				</div>
 			</div>
-			<div class="actions__mobile">
+			<div class="mobile-info-msg">
 				Actions only work on desktop.
 				<br />
 				You are able to set a custom keyword, custom story, and
@@ -329,7 +439,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.7.0
+- @version v0.9.8
 
 Changes:
 - dmak.state object and variables
@@ -7239,11 +7349,28 @@ Changes:
 
 <!-- END - Migaku dependencies -->
 
+<script>
+	function toggleShow(targetId) {
+		var tooltipContainer = document.getElementById(targetId);
+
+		if (tooltipContainer.style.display === 'none') {
+			tooltipContainer.style.display = 'block';
+			tooltipContainer.setAttribute('aria-expanded', 'true');
+		} else {
+			tooltipContainer.style.display = 'none';
+			tooltipContainer.setAttribute('aria-expanded', 'false');
+		}
+	}
+</script>
+
 <!-- START - Addon script, Recognition, back -->
 <!-- NOTE: Includes changes around DMAK -->
 <script>
-	function wrap_list(list, intro, outro, dash_on_empty = true) {
-		if (list.length < 1) return dash_on_empty ? '-' : '';
+	var noResultsSpan =
+		'<span class="faded-info-msg -spaced">(no results)</span>';
+
+	function wrap_list(list, intro, outro, no_results_span = true) {
+		if (list.length < 1) return no_results_span ? noResultsSpan : '';
 		return intro + list.join(outro + intro) + outro;
 	}
 
@@ -7400,24 +7527,26 @@ Changes:
 	});
 
 	// Keyboard/hotkey binds for stroke diagram navigation
-	$(document).on('keyup', function (e) {
-		// Left arrow key
-		if (e.which === 37) {
-			if (e.ctrlKey) {
-				clickIfNotDisabled($skipStartButton);
-			} else {
-				clickIfNotDisabled($prevButton);
-			}
+	$(document)
+		.off('keyup.stroke-hotkey-controls') // Prevent duplicate binds
+		.on('keyup.stroke-hotkey-controls', function (e) {
+			// Left arrow key
+			if (e.which === 37) {
+				if (e.ctrlKey) {
+					clickIfNotDisabled($skipStartButton);
+				} else {
+					clickIfNotDisabled($prevButton);
+				}
 
-			// Right arrow key
-		} else if (e.which === 39) {
-			if (e.ctrlKey) {
-				clickIfNotDisabled($skipEndButton);
-			} else {
-				clickIfNotDisabled($nextButton);
+				// Right arrow key
+			} else if (e.which === 39) {
+				if (e.ctrlKey) {
+					clickIfNotDisabled($skipEndButton);
+				} else {
+					clickIfNotDisabled($nextButton);
+				}
 			}
-		}
-	});
+		});
 
 	// Toggle stroke order number visibility
 	$toggleStrokeNumber.on('click', toggleStrokeOrderNumberVisibility);
@@ -7589,13 +7718,13 @@ Changes:
 		tags.push('RTK (1-5) ' + data.heisig_id5.toString());
 	if (data.heisig_id6 !== null)
 		tags.push('RTK (6+) ' + data.heisig_id6.toString());
+
 	$('.tags').html(wrap_list(tags, '<div class="tag">', '</div>', false));
 
 	$('#onyomi').html(data.onyomi.length ? data.onyomi.join(', ') : '-');
 	$('#kunyomi').html(data.kunyomi.length ? data.kunyomi.join(', ') : '-');
 	$('#nanori').html(data.nanori.length ? data.nanori.join(', ') : '-');
 
-	$('#primitives').empty();
 	var primitives_pts = [];
 	for (const p_data of data.primitives_detail) {
 		var keywords = [];
@@ -7634,9 +7763,13 @@ Changes:
 				'</div></button>',
 		);
 	}
-	$('#primitives').html(primitives_pts.join(''));
 
-	$('#primitive_of').empty();
+	var hasPrimitives = primitives_pts.length > 0;
+	$('#primitives').empty();
+	$('#primitives').html(
+		hasPrimitives ? primitives_pts.join('') : noResultsSpan,
+	);
+
 	var primitive_of_pts = [];
 	for (const p_data of data.primitive_of_detail) {
 		var keywords = [];
@@ -7675,7 +7808,12 @@ Changes:
 				'</div></button>',
 		);
 	}
-	$('#primitive_of').html(primitive_of_pts.join(''));
+
+	var hasPrimitivesOf = primitive_of_pts.length > 0;
+	$('#primitives_of').empty();
+	$('#primitive_of').html(
+		hasPrimitivesOf ? primitive_of_pts.join('') : noResultsSpan,
+	);
 
 	$('.primitive').click(primitive_click);
 
@@ -7743,13 +7881,16 @@ Changes:
 					'</rt></ruby></div>',
 			);
 	}
-	$('.KanjiLookup-words').toggle(word_pts.length > 0);
-	$('#words').html(word_pts.join(''));
+
+	var hasLinkedWords = word_pts.length > 0;
+	$('#words').empty();
+	$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
+
 	$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 	$('.word').click(word_click);
 	$('#words_front').html(word_front_pts.join(''));
 
-	$('.KanjiLookup-radicals').toggle(data.radicals.length > 0);
+	$('#radicals').empty();
 	$('#radicals').html(
 		wrap_list(data.radicals, '<button class="radical">', '</button>'),
 	);

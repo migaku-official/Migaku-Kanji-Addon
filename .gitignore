@@ -3,6 +3,8 @@
 # ===============================================================
 # START - custom .gitignore additions
 
+.env.development
+
 tmp/
 kanjivg/
 
