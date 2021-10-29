@@ -72,24 +72,26 @@ $skipStartButton.click(function() { dmak.erase(); });
 $skipEndButton.click(function() { dmak.render(dmak.strokes.length, true); });
 
 // Keyboard/hotkey binds for stroke diagram navigation
-$(document).on('keyup', function(e) {
-		// Left arrow key
-	if (e.which === 37) {
-		if (e.ctrlKey) {
-			clickIfNotDisabled($skipStartButton);
-		} else {
-			clickIfNotDisabled($prevButton);
-		}
+$(document)
+	.off('keyup.stroke-hotkey-controls') // Prevent duplicate binds
+	.on('keyup.stroke-hotkey-controls', function(e) {
+			// Left arrow key
+		if (e.which === 37) {
+			if (e.ctrlKey) {
+				clickIfNotDisabled($skipStartButton);
+			} else {
+				clickIfNotDisabled($prevButton);
+			}
 
-		// Right arrow key
-	} else if (e.which === 39) {
-		if (e.ctrlKey) {
-			clickIfNotDisabled($skipEndButton);
-		} else {
-			clickIfNotDisabled($nextButton);
+			// Right arrow key
+		} else if (e.which === 39) {
+			if (e.ctrlKey) {
+				clickIfNotDisabled($skipEndButton);
+			} else {
+				clickIfNotDisabled($nextButton);
+			}
 		}
-	}
-});
+	});
 
 // Toggle stroke order number visibility
 $toggleStrokeNumber.on('click', toggleStrokeOrderNumberVisibility);
