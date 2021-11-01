@@ -37,6 +37,18 @@ START - Linked words */
 			}
 		}
 
+		.word.word_new {
+			@include button-secondary;
+
+			rt {
+				color: inherit !important;
+
+				&::before {
+					content: none !important;
+				}
+			}
+		}
+
 		// Example word (button)
 		.word.word_default {
 			@include button-tertiary;
