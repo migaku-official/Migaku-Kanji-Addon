@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.9.8
+- @version v0.9.10
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -444,7 +444,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.9.8
+- @version v0.9.10
 
 Changes:
 - dmak.state object and variables
@@ -7396,9 +7396,13 @@ Changes:
 	}
 
 	function word_click(evt) {
-		if (evt.shiftKey) {
+		var isDictExample = $(this).hasClass('word_default');
+
+		// - Shift + click dict lookup
+		// - or, dict example click
+		if (evt.shiftKey || isDictExample) {
 			search_dict($(this).data('word-kanji'));
-		} else {
+		} else if (!isDictExample) {
 			var word_idx = $(this).data('word-idx');
 
 			if (word_idx === undefined) return;

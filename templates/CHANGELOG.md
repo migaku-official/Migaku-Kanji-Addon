@@ -1,9 +1,12 @@
-## 0.9.9
+## 0.9.10
 
-- [FIX]: Clicking example words now opens the dictionary on click (shift modifier not necessary, but still works too).
 - [STYLE]: Readings use space more effectively on mobile.
 - [CHORE]: Content tweaks.
 - [STYLE]: Primitive-of tooltips now are left-positioned to avoid being cut-off on smaller screens.
+
+## 0.9.9
+
+- [FIX]: Clicking example words now opens the dictionary on click (shift modifier not necessary, but still works too).
 
 ## 0.9.8
 
