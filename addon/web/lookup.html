@@ -62,6 +62,12 @@ START - Migaku markup
 				</div>
 				<!-- END - Keyword and meaning -->
 
+				<!-- START - User data -->
+				<div class="userData userData__container">
+					<hr class="separator -full" />
+				</div>
+				<!-- END - User data -->
+
 				<!-- START - Linked words -->
 				<div class="linked-words__container">
 					<div class="title-tooltip__container">
@@ -8043,6 +8049,20 @@ Changes:
 				data.production_card_id,
 				'Production',
 			);
+
+			$('.userDataEntry').remove();
+			for (key in data.user_data) {
+				var user_data_raw = data.user_data[key].trim();
+
+				if (user_data_raw.length) {
+					var user_data_elem = document.createElement('div');
+					user_data_elem.innerHTML = user_data_raw;
+					user_data_elem.classList.add('userDataEntry');
+
+					$('.userData').append(user_data_elem);
+				}
+			}
+			$('.userData').toggle($('.userDataEntry').length > 0);
 		}
 	}
 </script>

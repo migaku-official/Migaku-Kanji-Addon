@@ -1,6 +1,6 @@
 <!-- START - User data -->
 <div class="userData userData__container">
-	{% if not is_demo %}
+	{% if not is_demo and not is_lookup %}
 		{% raw %}
 			{{#UserData}}
 		{% endraw %}
@@ -12,7 +12,7 @@
 
 	{% if is_demo %}
 		{{ user_data | safe }}
-	{% else %}
+	{% elif not is_lookup %}
 		{% raw %}
 				{{UserData}}
 			{{/UserData}}
