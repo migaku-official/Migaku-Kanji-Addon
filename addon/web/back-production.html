@@ -85,8 +85,8 @@ START - Migaku markup
 						aria-expanded="false"
 					>
 						Colored buttons are vocab from cards you&#39;ve learned. Faded
-						buttons are new cards that you haven&#39;t learned (yet). Gray
-						buttons are examples sorted by frequency.
+						buttons are new cards that you haven&#39;t learned (yet). Grey
+						buttons are dictionary examples sorted by frequency.
 					</div>
 
 					<hr class="separator" />
@@ -130,7 +130,7 @@ START - Migaku markup
 									aria-expanded="false"
 								>
 									The largest parts we can break this kanji down into.
-									Primitives are often kanji in their own right, but some only
+									Primitives are usually kanji in their own right, but some only
 									exist to help with mnemonic stories.
 								</div>
 
@@ -171,7 +171,11 @@ START - Migaku markup
 
 							<div
 								id="primitive_of"
-								class="primitives-and-radicals__list kanji-char-font"
+								class="
+									primitives-and-radicals__list
+									kanji-char-font
+									-tooltip-pos__above-left
+								"
 							></div>
 						</div>
 					</div>
@@ -254,10 +258,11 @@ START - Migaku markup
 							stroke-order-diagram__settings-button
 							stroke-order-diagram__settings-tooltip
 							kanji-addon__hover-tooltip-btn
+							-tooltip-pos__below-left
 						"
 					>
 						<img src="_kanji_icon_cog_black.svg" alt="Settings" />
-						<div class="kanji-addon__hover-tooltip -below">
+						<div class="kanji-addon__hover-tooltip">
 							Options for autoplay and stroke number default on/off are in the
 							Kanji Setting menu window.
 							<br /><br />

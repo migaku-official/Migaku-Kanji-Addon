@@ -6,7 +6,6 @@ START - Readings */
 		align-items: center;
 		display: flex;
 		flex-direction: column;
-		padding: 0 20px;
 		width: 100%;
 
 		@include bp.get(s) {
@@ -26,9 +25,8 @@ START - Readings */
 		@include list-reset;
 
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		margin-top: -15px; // Offset <li/> margin-top on mobile
-		padding: 0 20px;
 		width: 100%;
 
 		@include bp.get(s) {

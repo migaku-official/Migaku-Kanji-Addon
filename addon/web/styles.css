@@ -401,8 +401,20 @@ button.primitive,
 	background: #24272d;
 }
 
-.primitiveDetails.-below,
-.kanji-addon__hover-tooltip.-below {
+.-tooltip-pos__above-left .primitiveDetails,
+.-tooltip-pos__above-left .kanji-addon__hover-tooltip {
+	left: unset;
+	right: 0;
+}
+
+.-tooltip-pos__below-right .primitiveDetails,
+.-tooltip-pos__below-right .kanji-addon__hover-tooltip {
+	bottom: unset;
+	top: calc(100% + 10px);
+}
+
+.-tooltip-pos__below-left .primitiveDetails,
+.-tooltip-pos__below-left .kanji-addon__hover-tooltip {
 	bottom: unset;
 	left: unset;
 	right: 0;
@@ -1259,7 +1271,6 @@ body.dark {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	padding: 0 20px;
 	width: 100%;
 }
 
@@ -1283,12 +1294,11 @@ body.dark {
 
 .readings__list {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	list-style: none;
 	margin: 0;
 	margin-top: -15px;
 	padding: 0;
-	padding: 0 20px;
 	width: 100%;
 }
 
