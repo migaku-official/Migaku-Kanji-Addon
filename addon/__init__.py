@@ -76,7 +76,7 @@ def setup_menu():
             aqt.mw.MigakuMainMenu.addMenu(act)
 
     if add_menu:
-        aqt.mw.form.menubar.insertMenu(mw.form.menuHelp.menuAction(), mw.MigakuMainMenu)  
+        aqt.mw.form.menubar.insertMenu(aqt.mw.form.menuHelp.menuAction(), aqt.mw.MigakuMainMenu)  
 
 
 def on_loopup():
