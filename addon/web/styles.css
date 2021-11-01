@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.9.10
+- @version v0.10.0
 ============================================== */
 
 .faded-info-msg {
@@ -262,6 +262,7 @@ ruby rt {
 button.radical,
 button.primitive,
 .linked-words__examples .word.word_default,
+.linked-words__examples .word.word_new,
 .linked-words__examples .word,
 .button.-secondary,
 .button {
@@ -1561,6 +1562,52 @@ body.dark {
 	.linked-words__examples .word {
 		font-size: 26px !important;
 	}
+}
+
+.linked-words__examples .word.word_new {
+	background: transparent;
+	border: 1px solid #2880ff !important;
+	box-shadow: none;
+	color: #2880ff;
+}
+
+.linked-words__examples .word.word_new:hover,
+.linked-words__examples .word.word_new:focus {
+	background: rgba(40, 128, 255, 0.2);
+}
+
+.linked-words__examples .word.word_new:active {
+	background: rgba(40, 128, 255, 0.5);
+}
+
+.ankidroid_dark_mode .linked-words__examples .word.word_new,
+.nightMode .linked-words__examples .word.word_new,
+.dark .linked-words__examples .word.word_new {
+	border-color: #f2994a !important;
+	color: #f2994a;
+}
+
+.ankidroid_dark_mode .linked-words__examples .word.word_new:hover,
+.ankidroid_dark_mode .linked-words__examples .word.word_new:focus,
+.nightMode .linked-words__examples .word.word_new:hover,
+.nightMode .linked-words__examples .word.word_new:focus,
+.dark .linked-words__examples .word.word_new:hover,
+.dark .linked-words__examples .word.word_new:focus {
+	background: rgba(242, 153, 74, 0.2);
+}
+
+.ankidroid_dark_mode .linked-words__examples .word.word_new:active,
+.nightMode .linked-words__examples .word.word_new:active,
+.dark .linked-words__examples .word.word_new:active {
+	background: rgba(242, 153, 74, 0.5);
+}
+
+.linked-words__examples .word.word_new rt {
+	color: inherit !important;
+}
+
+.linked-words__examples .word.word_new rt::before {
+	content: none !important;
 }
 
 .linked-words__examples .word.word_default {

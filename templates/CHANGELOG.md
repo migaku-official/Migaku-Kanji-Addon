@@ -1,3 +1,7 @@
+## 0.10.0
+
+- [STYLE]: Added new linked word derivative for new cards.
+
 ## 0.9.10
 
 - [STYLE]: Readings use space more effectively on mobile.
