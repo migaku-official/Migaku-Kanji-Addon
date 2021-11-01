@@ -7,6 +7,7 @@ from . import util
 
 defaults = ['SawarabiGothic.ttf', 'nagayama_kai08.otf', 'ArmedBanana.ttf', 'KouzanGyousho.otf']
 font_num = len(defaults)
+config_default = [None] * font_num
 
 
 def get_col_name(idx):
@@ -19,14 +20,14 @@ def get_col_path(idx):
 
 
 def get_addon_uri(idx):
-    user_name = config.get('fonts')[idx]
+    user_name = config.get('fonts', config_default)[idx]
     if user_name is None:
         return util.addon_web_uri('fonts', defaults[idx])
     return util.addon_web_uri('user_files', 'fonts', user_name)
 
 
 def get_path(idx):
-    user_name = config.get('fonts')[idx]
+    user_name = config.get('fonts', config_default)[idx]
     if user_name is None:
         return util.addon_path('fonts', defaults[idx])
     return util.user_path('fonts', user_name)
@@ -39,7 +40,7 @@ def get_name(idx):
 
 
 def set_path(idx, path):
-    font_cfg = config.get('fonts')
+    font_cfg = config.get('fonts', config_default)
 
     # Remove from collection media
     old_font_path_col = get_col_path(idx)

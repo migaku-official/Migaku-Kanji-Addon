@@ -12,9 +12,48 @@ from . import config
 from . import fonts
 
 
+class CardTypeDataMeta(type):
 
-class CardTypeData:
+    def __new__(mcls, clsname, clsbases, clsdict):
+        cls = super().__new__(mcls, clsname, clsbases, clsdict)
+
+        for property_name, property_default in clsdict.get('config_properties', {}).items():
+
+            def make_property(property_name, property_default):
+                config_propery_name = 'card_type_' + property_name
+
+                def get_property(cls_instance):
+                    return config.get(config_propery_name, {}).get(cls_instance.label, property_default)
+
+                def set_property(cls_instance, value):
+                    config.get(config_propery_name, {})[cls_instance.label] = value
+
+                return property(get_property, set_property)
+
+            setattr(cls, property_name, make_property(property_name, property_default))
+
+        return cls
+
+
+class CardTypeData(metaclass=CardTypeDataMeta):
     
+    config_properties = {
+        'deck_name': None,
+        'add_primitives': True,
+        'auto_card_creation': False,
+        'auto_card_creation_msg': True,
+        'auto_card_refresh': False,
+        'show_readings_front': True,
+        'words_max': 4,
+        'only_custom_keywords': False,
+        'only_custom_stories': False,
+        'hide_default_words': False,
+        'hide_keywords': False,
+        'stroke_order_autoplay': False,
+        'stroke_order_show_numbers': False,
+        'hide_readings_hover': False,
+    }
+
     def __init__(self, model_name, fields):
         self.name = None        # Set automatically
         self.label = None       # Set automatically
@@ -23,104 +62,6 @@ class CardTypeData:
 
     def __repr__(self):
         return self.name
-
-    @property
-    def deck_name(self):
-        return config.get('card_type_deck').get(self.label)
-    @deck_name.setter
-    def deck_name(self, value):
-        config.get('card_type_deck')[self.label] = value
-
-    @property
-    def add_primitives(self):
-        return config.get('add_primitives').get(self.label, True)
-    @add_primitives.setter
-    def add_primitives(self, value):
-        config.get('add_primitives')[self.label] = value
-
-    @property
-    def auto_card_creation(self):
-        return config.get('auto_card_creation').get(self.label, False)
-    @auto_card_creation.setter
-    def auto_card_creation(self, value):
-        config.get('auto_card_creation')[self.label] = value
-
-    @property
-    def auto_card_creation_msg(self):
-        return config.get('auto_card_creation_msg').get(self.label, True)
-    @auto_card_creation_msg.setter
-    def auto_card_creation_msg(self, value):
-        config.get('auto_card_creation_msg')[self.label] = value
-
-    @property
-    def auto_card_refresh(self):
-        return config.get('auto_card_refresh').get(self.label, False)
-    @auto_card_refresh.setter
-    def auto_card_refresh(self, value):
-        config.get('auto_card_refresh')[self.label] = value
-
-    @property
-    def show_readings_front(self):
-        return config.get('card_show_readings_front').get(self.label, True)
-    @show_readings_front.setter
-    def show_readings_front(self, value):
-        config.get('card_show_readings_front')[self.label] = value
-
-    @property
-    def words_max(self):
-        return config.get('card_words_max').get(self.label, True)
-    @words_max.setter
-    def words_max(self, value):
-        config.get('card_words_max')[self.label] = value
-
-    @property
-    def only_custom_keywords(self):
-        return config.get('card_only_custom_keywords').get(self.label, False)
-    @only_custom_keywords.setter
-    def only_custom_keywords(self, value):
-        config.get('card_only_custom_keywords')[self.label] = value
-
-    @property
-    def only_custom_stories(self):
-        return config.get('card_only_custom_stories').get(self.label, False)
-    @only_custom_stories.setter
-    def only_custom_stories(self, value):
-        config.get('card_only_custom_stories')[self.label] = value
-
-    @property
-    def hide_default_words(self):
-        return config.get('card_hide_default_words').get(self.label, False)
-    @hide_default_words.setter
-    def hide_default_words(self, value):
-        config.get('card_hide_default_words')[self.label] = value
-
-    @property
-    def hide_keywords(self):
-        return config.get('card_hide_keywords').get(self.label, False)
-    @hide_keywords.setter
-    def hide_keywords(self, value):
-        config.get('card_hide_keywords')[self.label] = value
-
-    @property
-    def stroke_order_autoplay(self):
-        return config.get('card_stroke_order_autoplay').get(self.label, False)
-    @stroke_order_autoplay.setter
-    def stroke_order_autoplay(self, value):
-        config.get('card_stroke_order_autoplay')[self.label] = value
-
-    @property
-    def stroke_order_show_numbers(self):
-        return config.get('card_stroke_order_show_numbers').get(self.label, False)
-    @stroke_order_show_numbers.setter
-    def stroke_order_show_numbers(self, value):
-        config.get('card_stroke_order_show_numbers')[self.label] = value
-
-    @property
-    def hide_readings_hover(self):
-        return config.get('card_hide_readings_hover').get(self.label, False)
-    @hide_readings_hover.setter
-    def hide_readings_hover(self, value):
-        config.get('card_hide_readings_hover')[self.label] = value
 
     def model_id(self):
         return aqt.mw.col.models.id_for_name(self.model_name)

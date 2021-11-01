@@ -122,10 +122,10 @@ class LearnAheadSelectorWidget(QWidget):
 
 
     def load_from_config(self):
-        data = config.get('card_type_learn_ahead').get(self.card_type.label, [])
+        data = config.get('card_type_learn_ahead', {}).get(self.card_type.label, [])
         self.set_data(data)
 
 
     def save_to_config(self):
         data = self.get_data()
-        config.get('card_type_learn_ahead')[self.card_type.label] = data
+        config.get('card_type_learn_ahead', {})[self.card_type.label] = data

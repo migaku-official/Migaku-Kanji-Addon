@@ -1,20 +1,4 @@
 {
-    "card_type_deck": {},
-    "card_type_recognized": {},
-    "card_type_learn_ahead": {},
-    "card_show_readings_front": {},
-    "card_words_max": { "recognition": 4, "production": 4 },
-    "card_only_custom_keywords": {},
-    "card_only_custom_stories": {},
-    "card_hide_default_words": {},
-    "card_hide_keywords": {},
-    "card_stroke_order_autoplay": {},
-    "card_stroke_order_show_numbers": {},
-    "card_hide_readings_hover": {},
-    "add_primitives": {},
-    "auto_card_creation": {},
-    "auto_card_creation_msg": {},
-    "auto_card_refresh": {},
     "word_recognized": [
         { "deck": "All", "note": "Migaku Japanese Sentence", "card": 0, "field": "Sentence" },
         { "deck": "All", "note": "Migaku Japanese Sentence", "card": 0, "field": "Target Word" },
@@ -24,7 +8,5 @@
         { "deck": "All", "note": "Migaku Japanese Audio Sentence", "card": 0, "field": "Target Word" },
         { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Sentence" },
         { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Target Word" }
-    ],
-    "cards_from_notes_last_checked": {},
-    "fonts": [null, null, null, null]
+    ]
 }
