@@ -225,16 +225,11 @@ class SettingsWindow(QDialog):
         super(QDialog, self).__init__(parent)
 
         self.setWindowIcon(util.default_icon())
-        self.setWindowTitle('Migaku Kanji - Settings - ' + VERSION_STRING)
+        self.setWindowTitle('Migaku Kanji - Settings')
         self.setMinimumSize(920, 450)
 
         lyt = QVBoxLayout()
         self.setLayout(lyt)
-
-        if self.KANJI_FORMS_URL:
-            kanji_forms_lbl = QLabel(F'You can suggest changes to the Kanji dataset <a href="{self.KANJI_FORMS_URL}">here</a>.')
-            kanji_forms_lbl.setWordWrap(True)
-            lyt.addWidget(kanji_forms_lbl)
 
         if not text_parser.is_available():
             info_lbl = QLabel('<b>WARNING: The Migaku Japanese add-on is not installed or enabled. Multiple features will be unavailable.</b>')
@@ -312,6 +307,27 @@ class SettingsWindow(QDialog):
         reset_db_btn = QPushButton('Reset Database')
         reset_db_btn.clicked.connect(self.on_reset_db)
         general_lyt.addWidget(reset_db_btn)
+
+        about_tab = QWidget()
+        tabs.addTab(about_tab, 'About')
+
+        about_lyt = QVBoxLayout()
+        about_tab.setLayout(about_lyt)
+
+        about_lbl = QLabel(
+           F'<h3>Migaku Kanji - {VERSION_STRING}</h3>'
+           F'<p>You can suggest changes to the Kanji dataset <a href="{self.KANJI_FORMS_URL}">here</a>.</p>'
+            '<p><a href="http://kanjivg.tagaini.net/">KanjiVG</a> is copyright © 2009-2018 Ulrich Apel and released under the <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0</a> license.</p>'
+            '<p><a href="https://dmitrybaranovskiy.github.io/raphael/">Raphaël</a> is copyright © 2008-2013 Dmitry Baranovskiy, Sencha Labs and released under the <a href="http://dmitrybaranovskiy.github.io/raphael/license.html">MIT</a> license.</p>'
+            '<p><a href="https://mbilbille.github.io/dmak/">Draw Me A Kanji (dmak.js)</a> was created by Matthieu Bilbille and released under the <a href="https://github.com/mbilbille/dmak/blob/master/LICENSE">MIT</a> license.</p>'
+            '<p><a href="https://github.com/RicBent/Migaku-Kanji-Addon/">Migaku Kanji</a> is copyright © 2021 Migaku Ltd. and released under the <a href="https://github.com/RicBent/Migaku-Kanji-Addon/blob/main/LICENCE">GNU General Public License v3.0</a>.</p>'
+        )
+        about_lbl.setWordWrap(True)
+        about_lbl.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        about_lbl.linkActivated.connect(aqt.utils.openLink)
+
+        about_lyt.addWidget(about_lbl)
+        about_lyt.addStretch()
 
 
     def closeEvent(self, event):
