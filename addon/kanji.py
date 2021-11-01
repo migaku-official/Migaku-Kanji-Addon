@@ -591,18 +591,12 @@ class KanjiDB:
         data_json_b64 = str(data_json_b64_b, 'utf-8')
         note['MigakuData'] = data_json_b64
 
-        # Copy kanjivg svg to collection media if svg exists
-        # Add svg path to card field so svg won't be deleted by Anki
         svg_name = '%05x.svg' % ord(c)
-        svg_name_col = 'kanji_%05x.svg' % ord(c)
-
         svg_path = addon_path('kanjivg', svg_name)
-        svg_path_col = os.path.join(aqt.mw.col.media.dir(), svg_name_col)
 
         if os.path.exists(svg_path):
-            note['StrokeOrder'] = F'<img src="{svg_name_col}">'
-            if not os.path.exists(svg_path_col):
-                shutil.copy(svg_path, svg_path_col)
+            svg_data = open(svg_path, 'r', encoding='utf-8').read()
+            note['StrokeOrder'] = svg_data
         else:
             note['StrokeOrder'] = ''
 

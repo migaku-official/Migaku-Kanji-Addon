@@ -52,12 +52,11 @@ function clickIfNotDisabled(_$el) {
 	if (_$el.prop('disabled') === false) _$el.click();
 }
 
-// TODO correspond to prospect variable (with default `false`):
 // "Default show stroke order numbers" in Kanji Settings window
-// if (defaultShow) {
-//	// Note default class arrangement is as per `defaultShow=false`
-// 	toggleStrokeOrderNumberVisibility();
-// }
+if (settings.stroke_order_show_numbers) {
+	// Note default class arrangement is as per `defaultShow=false`
+	toggleStrokeOrderNumberVisibility();
+}
 
 // Control button binds
 $playButton.click(function() { dmak.render(); });

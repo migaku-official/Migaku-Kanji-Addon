@@ -484,8 +484,9 @@ CHANGES - START - DMAK extended for Migaku
 - @version v0.10.0
 
 Changes:
-- dmak.state object and variables
+- state object and variables
 - numerous callbacks added
+- option to preload svg data
 ================================================================== */
 
 	/*
@@ -504,6 +505,8 @@ Changes:
 			this.text = text;
 			// Fix #18 clone `default` to support several instance in parallel
 			this.options = assign(clone(Dmak.default), options);
+			this.options.preload_svgs =
+				options.preload_svgs || Dmak.default.preload_svgs;
 			this.strokes = [];
 			this.papers = [];
 			this.pointer = 0;
@@ -523,14 +526,17 @@ Changes:
 			};
 
 			if (!this.options.skipLoad) {
-				var loader = new DmakLoader(this.options.uri),
+				var loader = new DmakLoader(
+						this.options.uri,
+						this.options.preload_svgs,
+					),
 					self = this;
 
 				loader.load(text, function (data) {
 					self.prepare(data);
 
 					// Execute custom callback "loaded" here
-					self.options.loaded(self.strokes);
+					self.options.loaded(self, self.strokes);
 
 					if (self.options.autoplay) {
 						self.render();
@@ -585,6 +591,7 @@ Changes:
 					'stroke-dasharray': '--',
 				},
 			},
+			preload_svgs: {},
 
 			// callbacks
 			loaded: function () {},
@@ -610,15 +617,17 @@ Changes:
 			 * Clean all strokes on papers.
 			 */
 			erase: function (end, callbackOverride) {
-				var finishedErasingCallback = this.options.finishedErasing;
+				var self = this;
+
+				var finishedErasingCallback = self.options.finishedErasing;
 
 				// Cannot have two rendering process for the same draw. Keep it cool.
-				if (this.timeouts.play.length) {
+				if (self.timeouts.play.length) {
 					return false;
 				}
 
 				// Don't go behind the beginning.
-				if (this.pointer <= 0) {
+				if (self.pointer <= 0) {
 					return false;
 				}
 
@@ -626,37 +635,38 @@ Changes:
 					end = 0;
 				}
 
-				dmak.state.isErasing = true;
+				console.log('SELF erase', self, self.state);
+				self.state.isErasing = true;
 
-				var longestEraseDuration = this.strokes[this.pointer - 1].duration;
+				var longestEraseDuration = self.strokes[self.pointer - 1].duration;
 
 				do {
-					this.pointer--;
+					self.pointer--;
 
-					var strokeNum = this.pointer;
-					var stroke = this.strokes[strokeNum];
+					var strokeNum = self.pointer;
+					var stroke = self.strokes[strokeNum];
 					var strokeDuration = stroke.duration;
 
-					eraseStroke(stroke, this.timeouts.erasing, this.options);
+					eraseStroke(stroke, self.timeouts.erasing, self.options);
 
 					if (strokeDuration > longestEraseDuration) {
 						longestEraseDuration = strokeDuration;
 					}
 
 					// Execute custom callback "startedErasing"
-					this.options.startedErasing(strokeNum);
-				} while (this.pointer > end);
+					self.options.startedErasing(self, strokeNum);
+				} while (self.pointer > end);
 
 				// Execute custom callback "finishedErasing"
 				// (setTimeout according to the longest stroke duration)
 				setTimeout(function () {
-					dmak.state.isErasing = false;
+					self.state.isErasing = false;
 
 					// Callback overrides facilitates codesharing with the `replay` funciton
 					if (callbackOverride) {
 						callbackOverride(end);
 					} else {
-						finishedErasingCallback(end);
+						finishedErasingCallback(self, end);
 					}
 				}, longestEraseDuration);
 			},
@@ -664,110 +674,108 @@ Changes:
 			/**
 			 * All the magic happens here.
 			 */
-			render: function (end, simultaneous, that) {
-				// Normalise `this` for when `render` is invoked from within other functions
-				// (e.g. in the `replay` function)
-				that = that || this;
+			render: function (end, simultaneous) {
+				self = this;
 
-				var startedDrawingCallback = that.options.startedDrawing,
-					finishedDrawingCallback = that.options.finishedDrawing;
+				var startedDrawingCallback = self.options.startedDrawing,
+					finishedDrawingCallback = self.options.finishedDrawing;
 
 				// Cannot have two rendering process for
 				// the same draw. Keep it cool.
-				if (that.timeouts.play.length) {
+				if (self.timeouts.play.length) {
 					return false;
 				}
 
 				if (typeof end === 'undefined') {
-					end = that.strokes.length;
-				} else if (end > that.strokes.length) {
+					end = self.strokes.length;
+				} else if (end > self.strokes.length) {
 					return false;
 				}
 
-				dmak.state.isRendering = true;
-				dmak.state.wasRenderingSimultaneous = false;
-				dmak.state.wasRenderingSequential = false;
+				self.state.isRendering = true;
+				self.state.wasRenderingSimultaneous = false;
+				self.state.wasRenderingSequential = false;
 
-				if (end - that.pointer > 2) {
+				if (end - self.pointer > 2) {
 					if (simultaneous) {
-						dmak.state.isRenderingSimultaneous = true;
+						self.state.isRenderingSimultaneous = true;
 					} else {
-						dmak.state.isRenderingSequential = true;
+						self.state.isRenderingSequential = true;
 					}
 				}
 
-				var cb = function (context) {
-						var strokeNum = context.pointer,
-							stroke = context.strokes[strokeNum],
+				var cb = function () {
+						var strokeNum = self.pointer,
+							stroke = self.strokes[strokeNum],
 							strokeDuration = stroke && stroke.duration;
 
 						if (!stroke) return;
 
-						dmak.state.renderCount += 1;
+						self.state.renderCount += 1;
 
 						// Execute custom callback "startedDrawing"
-						startedDrawingCallback(strokeNum + 1);
+						startedDrawingCallback(self, strokeNum + 1);
 
 						drawStroke(
-							context.papers[context.strokes[strokeNum].char],
-							context.strokes[strokeNum],
-							context.timeouts.drawing,
-							context.options,
+							self.papers[self.strokes[strokeNum].char],
+							self.strokes[strokeNum],
+							self.timeouts.drawing,
+							self.options,
 						);
 
 						var isLastStroke = strokeNum + 1 === end;
 
 						setTimeout(function () {
-							var pauseButtonHasBeenHit = dmak.timeouts.play.length === 0;
+							var pauseButtonHasBeenHit = self.timeouts.play.length === 0;
 
-							dmak.state.renderCount -= 1;
-							dmak.state.isRendering = dmak.state.renderCount !== 0;
+							self.state.renderCount -= 1;
+							self.state.isRendering = self.state.renderCount !== 0;
 
 							// Execute custom callback "finishedDrawing"
 							// Check when a stroke finishes, whether it was the last one,
 							// or whether the pause button was hit and drawing aborted
 							if (isLastStroke || pauseButtonHasBeenHit) {
-								if (dmak.state.isRenderingSequential) {
-									dmak.state.wasRenderingSequential = true;
-									dmak.state.isRenderingSequential = false;
+								if (self.state.isRenderingSequential) {
+									self.state.wasRenderingSequential = true;
+									self.state.isRenderingSequential = false;
 								}
 
-								finishedDrawingCallback(strokeNum + 1);
+								finishedDrawingCallback(self, strokeNum + 1);
 							}
 						}, strokeDuration);
 
-						context.pointer++;
-						context.timeouts.play.shift();
+						self.pointer++;
+						self.timeouts.play.shift();
 					},
 					delay = 0,
 					i;
 
 				// Before drawing clear any remaining erasing timeouts
-				for (i = 0; i < that.timeouts.erasing.length; i++) {
-					window.clearTimeout(that.timeouts.erasing[i]);
-					that.timeouts.erasing = [];
+				for (i = 0; i < self.timeouts.erasing.length; i++) {
+					window.clearTimeout(self.timeouts.erasing[i]);
+					self.timeouts.erasing = [];
 				}
 
 				// Draw strokes simultaneously
 				if (simultaneous) {
-					var initialStroke = that.strokes[0],
+					var initialStroke = self.strokes[0],
 						// Initial value only; overridden in loop below
 						longestStrokeDuration = initialStroke && initialStroke.duration;
 
 					do {
-						var strokeNum = that.pointer,
-							stroke = that.strokes[strokeNum],
+						var strokeNum = self.pointer,
+							stroke = self.strokes[strokeNum],
 							strokeDuration = stroke && stroke.duration;
 
 						if (!stroke) continue;
 
-						dmak.state.renderCount += 1;
+						self.state.renderCount += 1;
 
 						drawStroke(
-							that.papers[stroke.char],
+							self.papers[stroke.char],
 							stroke,
-							that.timeouts.drawing,
-							that.options,
+							self.timeouts.drawing,
+							self.options,
 						);
 
 						// Execute custom callback "finishedDrawing" after final stroke duration
@@ -775,44 +783,44 @@ Changes:
 							longestStrokeDuration = strokeDuration;
 						}
 
-						if (that.pointer + 1 < end) {
+						if (self.pointer + 1 < end) {
 							setTimeout(function () {
-								dmak.state.renderCount -= 1;
-								dmak.state.isRendering = dmak.state.renderCount !== 0;
+								self.state.renderCount -= 1;
+								self.state.isRendering = self.state.renderCount !== 0;
 							}, strokeDuration);
 						}
 
-						that.pointer++;
-					} while (that.pointer < end);
+						self.pointer++;
+					} while (self.pointer < end);
 
 					// Execute custom callback "startedDrawing"
 					// This is fired after the do-while loop so that the
-					// dmak.timeouts.play array is fully populated
-					startedDrawingCallback(end);
+					// self.timeouts.play array is fully populated
+					startedDrawingCallback(self, end);
 
 					// Execute custom callback "finishedDrawing"
 					// (setTimeout according to the longest stroke duration)
 					setTimeout(function () {
-						dmak.state.renderCount = 0;
-						dmak.state.isRendering = false;
+						self.state.renderCount = 0;
+						self.state.isRendering = false;
 
-						if (dmak.state.isRenderingSimultaneous) {
-							dmak.state.wasRenderingSimultaneous = true;
-							dmak.state.isRenderingSimultaneous = false;
+						if (self.state.isRenderingSimultaneous) {
+							self.state.wasRenderingSimultaneous = true;
+							self.state.isRenderingSimultaneous = false;
 						}
 
-						finishedDrawingCallback(strokeNum);
+						finishedDrawingCallback(self, strokeNum);
 					}, longestStrokeDuration);
 
 					// Else draw strokes one at a time
 				} else {
-					for (i = that.pointer; i < end; i++) {
-						if (!that.options.stroke.animated.drawing || delay <= 0) {
-							cb(this);
+					for (i = self.pointer; i < end; i++) {
+						if (!self.options.stroke.animated.drawing || delay <= 0) {
+							cb();
 						} else {
-							that.timeouts.play.push(setTimeout(cb, delay, this));
+							self.timeouts.play.push(setTimeout(cb, delay));
 						}
-						delay += that.strokes[i].duration;
+						delay += self.strokes[i].duration;
 					}
 				}
 			},
@@ -834,9 +842,9 @@ Changes:
 			 * Fully erase, then autoplay render.
 			 */
 			replay: function () {
-				var that = this;
+				var self = this;
 				this.erase(0, function () {
-					that.render(that.strokes.length, false, that);
+					self.render(self.strokes.length, false);
 				});
 			},
 
@@ -1102,8 +1110,9 @@ Changes:
 		'use strict';
 
 		// Create a safe reference to the DrawMeAKanji object for use below.
-		var DmakLoader = function (uri) {
+		var DmakLoader = function (uri, preload_svgs = {}) {
 			this.uri = uri;
+			this.preload_svgs = preload_svgs;
 		};
 
 		/**
@@ -1130,7 +1139,7 @@ Changes:
 				};
 
 			for (i = 0; i < nbChar; i++) {
-				loadSvg(this.uri, i, text.charCodeAt(i).toString(16), callbacks);
+				this.loadSvg(i, text[i], callbacks);
 			}
 		};
 
@@ -1139,9 +1148,17 @@ Changes:
 		 * @thanks to the incredible work made by KanjiVG
 		 * @see: http://kanjivg.tagaini.net
 		 */
-		function loadSvg(uri, index, charCode, callbacks) {
-			var xhr = new XMLHttpRequest(),
-				code = ('00000' + charCode).slice(-5);
+		DmakLoader.prototype.loadSvg = function (index, char, callbacks) {
+			var charCode = char.charCodeAt(0).toString(16),
+				code = ('00000' + charCode).slice(-5),
+				preload_svg_data = this.preload_svgs[char];
+
+			if (preload_svg_data) {
+				callbacks.done(index, parseResponse(preload_svg_data, code));
+				return;
+			}
+
+			var xhr = new XMLHttpRequest();
 
 			// Skip space character
 			if (code === '00020' || code === '03000') {
@@ -1152,7 +1169,7 @@ Changes:
 				return;
 			}
 
-			xhr.open('GET', uri + code + '.svg', true);
+			xhr.open('GET', this.uri + code + '.svg', true);
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
@@ -1163,7 +1180,7 @@ Changes:
 				}
 			};
 			xhr.send();
-		}
+		};
 
 		/**
 		 * Simple parser to extract paths and texts data.
@@ -7552,12 +7569,11 @@ Changes:
 		if (_$el.prop('disabled') === false) _$el.click();
 	}
 
-	// TODO correspond to prospect variable (with default `false`):
 	// "Default show stroke order numbers" in Kanji Settings window
-	// if (defaultShow) {
-	//	// Note default class arrangement is as per `defaultShow=false`
-	// 	toggleStrokeOrderNumberVisibility();
-	// }
+	if (settings.stroke_order_show_numbers) {
+		// Note default class arrangement is as per `defaultShow=false`
+		toggleStrokeOrderNumberVisibility();
+	}
 
 	// Control button binds
 	$playButton.click(function () {
@@ -7655,10 +7671,10 @@ Changes:
 				// Grid is manually drawn in CSS instead
 				grid: { show: false },
 
-				startedErasing: function (strokeNum) {
+				startedErasing: function (self, strokeNum) {
 					// Keep slider value up to date
-					$slider.val(dmak.pointer);
-					$slider.data('prev', dmak.pointer);
+					$slider.val(self.pointer);
+					$slider.data('prev', self.pointer);
 
 					disableControls('[data-disable-while-erasing]');
 
@@ -7667,10 +7683,10 @@ Changes:
 						$skipStartButton.prop('disabled', true);
 					}
 				},
-				finishedErasing: function (strokeNum) {
+				finishedErasing: function (self, strokeNum) {
 					enableControls('[data-disable-while-erasing]');
 
-					if (strokeNum === dmak.strokes.length) {
+					if (strokeNum === self.strokes.length) {
 						$playButton.addClass(hidePlayPauseClass);
 						$replayButton.removeClass(hidePlayPauseClass);
 					} else {
@@ -7678,14 +7694,14 @@ Changes:
 						$replayButton.addClass(hidePlayPauseClass);
 					}
 				},
-				startedDrawing: function (strokeNum) {
+				startedDrawing: function (self, strokeNum) {
 					// Keep slider value up to date
 					$slider.val(strokeNum);
 					$slider.data('prev', strokeNum);
 
 					$replayButton.addClass(hidePlayPauseClass);
 
-					if (dmak.state.isRenderingSequential) {
+					if (self.state.isRenderingSequential) {
 						$playButton.addClass(hidePlayPauseClass);
 						$pauseButton.removeClass(hidePlayPauseClass);
 						$pauseButton.prop('disabled', false);
@@ -7698,27 +7714,27 @@ Changes:
 						disableControls('[data-disable-while-drawing]');
 					}
 
-					if (strokeNum === dmak.strokes.length) {
+					if (strokeNum === self.strokes.length) {
 						$nextButton.prop('disabled', true);
 						$skipEndButton.prop('disabled', true);
 					}
 				},
-				finishedDrawing: function () {
-					if (dmak.state.wasRenderingSequential) {
-						toggleControls(dmak.timeouts.play, '[data-disable-while-playing]');
+				finishedDrawing: function (self) {
+					if (self.state.wasRenderingSequential) {
+						toggleControls(self.timeouts.play, '[data-disable-while-playing]');
 
 						$nextButton.prop('disabled', true);
 						$skipEndButton.prop('disabled', true);
-					} else if (!dmak.state.isRendering) {
+					} else if (!self.state.isRendering) {
 						toggleControls(
-							dmak.timeouts.drawing,
+							self.timeouts.drawing,
 							'[data-disable-while-drawing]',
 						);
 					}
 
 					$pauseButton.addClass(hidePlayPauseClass);
 
-					if (dmak.pointer === dmak.strokes.length) {
+					if (self.pointer === self.strokes.length) {
 						$playButton.addClass(hidePlayPauseClass);
 						$replayButton.removeClass(hidePlayPauseClass);
 					} else {
@@ -7726,20 +7742,19 @@ Changes:
 						$replayButton.addClass(hidePlayPauseClass);
 					}
 				},
-				loaded: function () {
-					var total_strokes = dmak.strokes.length;
+				loaded: function (self) {
+					var total_strokes = self.strokes.length;
 
 					$slider.attr('max', total_strokes);
 					$slider.data('prev', total_strokes); // Cache starting value
 
-					// TODO correspond to prospect variable (with default `false`):
 					// "Autoplay stroke order from start" in Kanji Settings window
-					// if (autoplayInOrder) {
-					// 	dmak.render(total_strokes);
-					// } else {
-					// 	// Draw all strokes at once for quick rendering
-					dmak.render(total_strokes, true); // simultaneous = true
-					// }
+					if (settings.stroke_order_autoplay) {
+						self.render(total_strokes);
+					} else {
+						// Draw all strokes at once for quick rendering
+						self.render(total_strokes, true); // simultaneous = true
+					}
 
 					// Important for the lookup browser, lest notches accumulate
 					$notchContainer.empty();
@@ -7763,9 +7778,9 @@ Changes:
 							didAct = true;
 
 							if (shouldErase) {
-								dmak.erase(stroke_num);
+								self.erase(stroke_num);
 							} else if (shouldDraw) {
-								dmak.render(stroke_num, true);
+								self.render(stroke_num, true);
 							}
 						}
 
