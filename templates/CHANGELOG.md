@@ -1,6 +1,7 @@
 ## (Unreleased)
 
 - [STYLE]: Readings use space more effectively on mobile.
+- [CHORE]: Content tweaks.
 - [STYLE]: Primitive-of tooltips now are left-positioned to avoid being cut-off on smaller screens.
 
 ## 0.9.8
