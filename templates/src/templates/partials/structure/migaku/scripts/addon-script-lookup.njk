@@ -1,7 +1,11 @@
 <!-- START - Addon script, Lookup -->
 <!-- NOTE: Includes changes around DMAK -->
 <script>
-  let dmak = null;
+	if (!settings.show_header) {
+		$('.migaku-header').hide();
+	}
+
+    let dmak = null;
 	let data = null;
 	let last_character = null;
 

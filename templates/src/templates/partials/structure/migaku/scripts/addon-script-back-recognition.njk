@@ -1,6 +1,10 @@
 <!-- START - Addon script, Recognition, back -->
 <!-- NOTE: Includes changes around DMAK -->
 <script>
+	if (!settings.show_header) {
+		$('.migaku-header').hide();
+	}
+
 	var noResultsSpan = '<span class="faded-info-msg -spaced">(no results)</span>';
 
 	function wrap_list(list, intro, outro, no_results_span = true) {

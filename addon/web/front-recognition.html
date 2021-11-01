@@ -49,6 +49,10 @@ START - Migaku markup
 <!-- START - Addon script, Recognition, front -->
 <!-- NOTE: Unchanged -->
 <script>
+	if (!settings.show_header) {
+		$('.migaku-header').hide();
+	}
+
 	function wrap_list(list, intro, outro) {
 		if (list.length < 1) return '-';
 		return intro + list.join(outro + intro) + outro;

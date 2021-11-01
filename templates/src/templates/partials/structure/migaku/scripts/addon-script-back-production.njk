@@ -1,7 +1,11 @@
 <!-- START - Addon script, Production, back -->
 <!-- NOTE: Includes changes around DMAK -->
 <script>
-  var noResultsSpan = '<span class="faded-info-msg -spaced">(no results)</span>';
+	if (!settings.show_header) {
+		$('.migaku-header').hide();
+	}
+
+  	var noResultsSpan = '<span class="faded-info-msg -spaced">(no results)</span>';
 
 	function wrap_list(list, intro, outro, no_results_span = true) {
 		if (list.length < 1) return no_results_span ? noResultsSpan : '';

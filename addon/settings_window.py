@@ -91,6 +91,10 @@ class CardTypeSettingsWidget(QWidget):
         self.hide_readings_hover_box.setChecked(self.card_type.hide_readings_hover)
         lyt.addWidget(self.hide_readings_hover_box)
 
+        self.show_header_box = QCheckBox('Show Migaku header')
+        self.show_header_box.setChecked(self.card_type.show_header)
+        lyt.addWidget(self.show_header_box)
+
         self.learn_ahead_selector = LearnAheadSelectorWidget(self.card_type, no_margin=True)
         lyt.addWidget(self.learn_ahead_selector)
 
@@ -117,6 +121,7 @@ class CardTypeSettingsWidget(QWidget):
         self.card_type.stroke_order_autoplay = self.stroke_order_autoplay_box.isChecked()
         self.card_type.stroke_order_show_numbers = self.stroke_order_show_numbers_box.isChecked()
         self.card_type.hide_readings_hover = self.hide_readings_hover_box.isChecked()
+        self.card_type.show_header = self.show_header_box.isChecked()
         self.learn_ahead_selector.save_to_config()
         self.note_type_selector.save_to_config()
 
@@ -277,6 +282,10 @@ class SettingsWindow(QDialog):
         self.lookup_hide_readings_hover_box.setChecked(config.get('lookup_hide_readings_hover', False))
         lookup_lyt.addWidget(self.lookup_hide_readings_hover_box)
 
+        self.lookup_show_header_box = QCheckBox('Show Migaku header')
+        self.lookup_show_header_box.setChecked(config.get('lookup_show_header', True))
+        lookup_lyt.addWidget(self.lookup_show_header_box)
+
         lookup_lyt.addStretch()
 
         general_tab = QWidget()
@@ -313,6 +322,7 @@ class SettingsWindow(QDialog):
         config.set('lookup_stroke_order_autoplay', self.lookup_stroke_order_autoplay_box.isChecked())
         config.set('lookup_stroke_order_show_numbers', self.lookup_stroke_order_show_numbers_box.isChecked())
         config.set('lookup_hide_readings_hover', self.lookup_hide_readings_hover_box.isChecked())
+        config.set('lookup_show_header', self.lookup_show_header_box.isChecked())
         config.write()
 
         for ct in CardType:
