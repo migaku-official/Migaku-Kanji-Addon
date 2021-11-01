@@ -709,7 +709,7 @@ class KanjiDB:
 
                 for pc in ret['primitives']:
                     primitives_detail.append(
-                        self.get_kanji_result_data(pc, card_ids=False, detail_primitives=False, words=False)
+                        self.get_kanji_result_data(pc, card_ids=False, detail_primitives=False, detail_primitive_of=False, words=False)
                     )
 
                 ret['primitives_detail'] = primitives_detail
