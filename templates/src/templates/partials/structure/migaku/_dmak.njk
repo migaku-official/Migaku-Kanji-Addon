@@ -4,7 +4,7 @@ CHANGES - START - DMAK extended for Migaku
 - @version v0.7.0
 
 Changes:
-- dmak.state object and variables
+- state object and variables
 - numerous callbacks added
 - option to preload svg data
 ================================================================== */
@@ -53,7 +53,7 @@ Changes:
 					self.prepare(data);
 
 					// Execute custom callback "loaded" here
-					self.options.loaded(self.strokes);
+					self.options.loaded(self, self.strokes);
 
 					if (self.options.autoplay) {
 						self.render();
@@ -135,15 +135,17 @@ Changes:
 			* Clean all strokes on papers.
 			*/
 			erase: function (end, callbackOverride) {
-				var finishedErasingCallback = this.options.finishedErasing;
+				var self = this;
+
+				var finishedErasingCallback = self.options.finishedErasing;
 
 				// Cannot have two rendering process for the same draw. Keep it cool.
-				if (this.timeouts.play.length) {
+				if (self.timeouts.play.length) {
 					return false;
 				}
 
 				// Don't go behind the beginning.
-				if (this.pointer <= 0) {
+				if (self.pointer <= 0) {
 					return false;
 				}
 
@@ -151,37 +153,37 @@ Changes:
 					end = 0;
 				}
 
-				dmak.state.isErasing = true;
+				self.state.isErasing = true;
 
-				var longestEraseDuration = this.strokes[this.pointer - 1].duration;
+				var longestEraseDuration = self.strokes[self.pointer - 1].duration;
 
 				do {
-					this.pointer--;
+					self.pointer--;
 
-					var strokeNum = this.pointer;
-					var stroke = this.strokes[strokeNum];
+					var strokeNum = self.pointer;
+					var stroke = self.strokes[strokeNum];
 					var strokeDuration = stroke.duration;
 
-					eraseStroke(stroke, this.timeouts.erasing, this.options);
+					eraseStroke(stroke, self.timeouts.erasing, self.options);
 
 					if (strokeDuration > longestEraseDuration) {
 						longestEraseDuration = strokeDuration;
 					}
 
 					// Execute custom callback "startedErasing"
-					this.options.startedErasing(strokeNum);
-				} while (this.pointer > end);
+					self.options.startedErasing(self, strokeNum);
+				} while (self.pointer > end);
 
 				// Execute custom callback "finishedErasing"
 				// (setTimeout according to the longest stroke duration)
 				setTimeout(function() {
-					dmak.state.isErasing = false;
+					self.state.isErasing = false;
 
 					// Callback overrides facilitates codesharing with the `replay` funciton
 					if (callbackOverride) {
 						callbackOverride(end);
 					} else {
-						finishedErasingCallback(end);
+						finishedErasingCallback(self, end);
 					}
 				}, longestEraseDuration);
 			},
@@ -189,111 +191,109 @@ Changes:
 			/**
 			* All the magic happens here.
 			*/
-			render: function (end, simultaneous, that) {
-				// Normalise `this` for when `render` is invoked from within other functions
-				// (e.g. in the `replay` function)
-				that = that || this;
+			render: function (end, simultaneous) {
+				self = this;
 
-				var startedDrawingCallback = that.options.startedDrawing,
-						finishedDrawingCallback = that.options.finishedDrawing;
+				var startedDrawingCallback = self.options.startedDrawing,
+					finishedDrawingCallback = self.options.finishedDrawing;
 
 				// Cannot have two rendering process for
 				// the same draw. Keep it cool.
-				if (that.timeouts.play.length) {
+				if (self.timeouts.play.length) {
 					return false;
 				}
 
 				if (typeof end === "undefined") {
-					end = that.strokes.length;
-				} else if (end > that.strokes.length) {
+					end = self.strokes.length;
+				} else if (end > self.strokes.length) {
 					return false;
 				}
 
-				dmak.state.isRendering = true;
-				dmak.state.wasRenderingSimultaneous = false;
-				dmak.state.wasRenderingSequential = false;
+				self.state.isRendering = true;
+				self.state.wasRenderingSimultaneous = false;
+				self.state.wasRenderingSequential = false;
 
-				if (end - that.pointer > 2) {
+				if (end - self.pointer > 2) {
 					if (simultaneous) {
-						dmak.state.isRenderingSimultaneous = true;
+						self.state.isRenderingSimultaneous = true;
 					} else {
-						dmak.state.isRenderingSequential = true;
+						self.state.isRenderingSequential = true;
 					}
 				}
 
-				var cb = function (context) {
-						var strokeNum = context.pointer,
-								stroke = context.strokes[strokeNum],
+				var cb = function () {
+						var strokeNum = self.pointer,
+								stroke = self.strokes[strokeNum],
 								strokeDuration = stroke && stroke.duration;
 
 						if (!stroke) return;
 
-						dmak.state.renderCount += 1;
+						self.state.renderCount += 1;
 
 						// Execute custom callback "startedDrawing"
-						startedDrawingCallback(strokeNum + 1);
+						startedDrawingCallback(self, strokeNum + 1);
 
 						drawStroke(
-							context.papers[context.strokes[strokeNum].char],
-							context.strokes[strokeNum],
-							context.timeouts.drawing,
-							context.options
+							self.papers[self.strokes[strokeNum].char],
+							self.strokes[strokeNum],
+							self.timeouts.drawing,
+							self.options
 						);
 
 						var isLastStroke = strokeNum + 1 === end;
 
 						setTimeout(function() {
-							var pauseButtonHasBeenHit = dmak.timeouts.play.length === 0
+							var pauseButtonHasBeenHit = self.timeouts.play.length === 0
 
-							dmak.state.renderCount -= 1;
-							dmak.state.isRendering = dmak.state.renderCount !== 0;
+							self.state.renderCount -= 1;
+							self.state.isRendering = self.state.renderCount !== 0;
 
 							// Execute custom callback "finishedDrawing"
 							// Check when a stroke finishes, whether it was the last one,
 							// or whether the pause button was hit and drawing aborted
 							if (isLastStroke || pauseButtonHasBeenHit) {
 
-								if (dmak.state.isRenderingSequential) {
-									dmak.state.wasRenderingSequential = true;
-									dmak.state.isRenderingSequential = false;
+								if (self.state.isRenderingSequential) {
+									self.state.wasRenderingSequential = true;
+									self.state.isRenderingSequential = false;
 								}
 
-								finishedDrawingCallback(strokeNum + 1);
+								finishedDrawingCallback(self, strokeNum + 1);
 							}
 						}, strokeDuration);
 
-						context.pointer++;
-						context.timeouts.play.shift();
+						self.pointer++;
+						self.timeouts.play.shift();
 					},
 					delay = 0,
 					i;
 
 				// Before drawing clear any remaining erasing timeouts
-				for (i = 0; i < that.timeouts.erasing.length; i++) {
-					window.clearTimeout(that.timeouts.erasing[i]);
-					that.timeouts.erasing = [];
+				for (i = 0; i < self.timeouts.erasing.length; i++) {
+					window.clearTimeout(self.timeouts.erasing[i]);
+					self.timeouts.erasing = [];
 				}
 
 				// Draw strokes simultaneously
 				if (simultaneous) {
-					var initialStroke = that.strokes[0],
+					var initialStroke = self.strokes[0],
 							// Initial value only; overridden in loop below
 							longestStrokeDuration = initialStroke && initialStroke.duration;
 
 					do {
-						var strokeNum = that.pointer,
-								stroke = that.strokes[strokeNum],
+						var strokeNum = self.pointer,
+								stroke = self.strokes[strokeNum],
 								strokeDuration = stroke && stroke.duration;
 
 						if (!stroke) continue;
 
-						dmak.state.renderCount += 1;
+						self.state.renderCount += 1;
 
 						drawStroke(
-							that.papers[stroke.char],
+							self.papers[stroke.char],
 							stroke,
-							that.timeouts.drawing,
-							that.options
+							self.timeouts.drawing,
+							self.options
 						);
 
 						// Execute custom callback "finishedDrawing" after final stroke duration
@@ -301,44 +301,44 @@ Changes:
 							longestStrokeDuration = strokeDuration;
 						}
 
-						if (that.pointer + 1 < end) {
+						if (self.pointer + 1 < end) {
 							setTimeout(function() {
-								dmak.state.renderCount -= 1;
-								dmak.state.isRendering = dmak.state.renderCount !== 0;
+								self.state.renderCount -= 1;
+								self.state.isRendering = self.state.renderCount !== 0;
 							}, strokeDuration);
 						}
 
-						that.pointer++;
-					} while (that.pointer < end);
+						self.pointer++;
+					} while (self.pointer < end);
 
 					// Execute custom callback "startedDrawing"
 					// This is fired after the do-while loop so that the
-					// dmak.timeouts.play array is fully populated
-					startedDrawingCallback(end);
+					// self.timeouts.play array is fully populated
+					startedDrawingCallback(self, end);
 
 					// Execute custom callback "finishedDrawing"
 					// (setTimeout according to the longest stroke duration)
 					setTimeout(function() {
-						dmak.state.renderCount = 0;
-						dmak.state.isRendering = false;
+						self.state.renderCount = 0;
+						self.state.isRendering = false;
 
-						if (dmak.state.isRenderingSimultaneous) {
-							dmak.state.wasRenderingSimultaneous = true;
-							dmak.state.isRenderingSimultaneous = false;
+						if (self.state.isRenderingSimultaneous) {
+							self.state.wasRenderingSimultaneous = true;
+							self.state.isRenderingSimultaneous = false;
 						}
 
-						finishedDrawingCallback(strokeNum);
+						finishedDrawingCallback(self, strokeNum);
 					}, longestStrokeDuration);
 
 				// Else draw strokes one at a time
 				} else {
-					for (i = that.pointer; i < end; i++) {
-						if (!that.options.stroke.animated.drawing || delay <= 0) {
-							cb(this);
+					for (i = self.pointer; i < end; i++) {
+						if (!self.options.stroke.animated.drawing || delay <= 0) {
+							cb();
 						} else {
-							that.timeouts.play.push(setTimeout(cb, delay, this));
+							self.timeouts.play.push(setTimeout(cb, delay));
 						}
-						delay += that.strokes[i].duration;
+						delay += self.strokes[i].duration;
 					}
 				}
 
@@ -361,9 +361,9 @@ Changes:
 			* Fully erase, then autoplay render.
 			*/
 			replay: function() {
-				var that = this;
+				var self = this;
 				this.erase(0, function() {
-					that.render(that.strokes.length, false, that);
+					self.render(self.strokes.length, false);
 				});
 			},
 
@@ -637,11 +637,7 @@ Changes:
 				preload_svg_data = this.preload_svgs[char];
 
 			if (preload_svg_data) {
-				// ugly word around so that the loaded callback can use the constructed Dmak object
-				// TODO BEFORE MERGE!
-				setTimeout(function () {
-					callbacks.done(index, parseResponse(preload_svg_data, code));
-				}, 10);
+				callbacks.done(index, parseResponse(preload_svg_data, code));
 				return;
 			}
 

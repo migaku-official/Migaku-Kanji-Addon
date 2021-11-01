@@ -18,14 +18,15 @@ dmak = new Dmak(
 		// Grid is manually drawn in CSS instead
 		'grid': { show: false },
 		
+		{% if not is_lookup and not is_demo %}
 		// Preload SVG data from card fields
-		// TODO BEFORE MERGE: Conditional to not include this in the lookup browser
 		{% raw %}'preload_svgs': { '{{Character}}': `{{StrokeOrder}}` },{% endraw %}
+		{% endif %}
 
-		'startedErasing': function(strokeNum) {
+		'startedErasing': function(self, strokeNum) {
 			// Keep slider value up to date
-			$slider.val(dmak.pointer);
-			$slider.data('prev', dmak.pointer);
+			$slider.val(self.pointer);
+			$slider.data('prev', self.pointer);
 
 			disableControls('[data-disable-while-erasing]');
 
@@ -34,10 +35,10 @@ dmak = new Dmak(
 				$skipStartButton.prop('disabled', true);
 			}
 		},
-		'finishedErasing': function(strokeNum) {
+		'finishedErasing': function(self, strokeNum) {
 			enableControls('[data-disable-while-erasing]');
 
-			if (strokeNum === dmak.strokes.length) {
+			if (strokeNum === self.strokes.length) {
 				$playButton.addClass(hidePlayPauseClass);
 				$replayButton.removeClass(hidePlayPauseClass);
 			} else {
@@ -45,14 +46,14 @@ dmak = new Dmak(
 				$replayButton.addClass(hidePlayPauseClass);
 			}
 		},
-		'startedDrawing': function(strokeNum) {
+		'startedDrawing': function(self, strokeNum) {
 			// Keep slider value up to date
 			$slider.val(strokeNum);
 			$slider.data('prev', strokeNum);
 
 			$replayButton.addClass(hidePlayPauseClass);
 
-			if (dmak.state.isRenderingSequential) {
+			if (self.state.isRenderingSequential) {
 				$playButton.addClass(hidePlayPauseClass);
 				$pauseButton.removeClass(hidePlayPauseClass);
 				$pauseButton.prop('disabled', false);
@@ -65,24 +66,24 @@ dmak = new Dmak(
 				disableControls('[data-disable-while-drawing]');
 			}
 
-			if (strokeNum === dmak.strokes.length) {
+			if (strokeNum === self.strokes.length) {
 				$nextButton.prop('disabled', true);
 				$skipEndButton.prop('disabled', true);
 			}
 		},
-		'finishedDrawing': function() {
-			if (dmak.state.wasRenderingSequential) {
-				toggleControls(dmak.timeouts.play, '[data-disable-while-playing]');
+		'finishedDrawing': function(self) {
+			if (self.state.wasRenderingSequential) {
+				toggleControls(self.timeouts.play, '[data-disable-while-playing]');
 
 				$nextButton.prop('disabled', true);
 				$skipEndButton.prop('disabled', true);
-			} else if (!dmak.state.isRendering) {
-				toggleControls(dmak.timeouts.drawing, '[data-disable-while-drawing]');
+			} else if (!self.state.isRendering) {
+				toggleControls(self.timeouts.drawing, '[data-disable-while-drawing]');
 			}
 
 			$pauseButton.addClass(hidePlayPauseClass);
 
-			if (dmak.pointer === dmak.strokes.length) {
+			if (self.pointer === self.strokes.length) {
 				$playButton.addClass(hidePlayPauseClass);
 				$replayButton.removeClass(hidePlayPauseClass);
 			} else {
@@ -90,20 +91,19 @@ dmak = new Dmak(
 				$replayButton.addClass(hidePlayPauseClass);
 			}
 		},
-		'loaded': function() {
-			var total_strokes = dmak.strokes.length;
+		'loaded': function(self) {
+			var total_strokes = self.strokes.length;
 
 			$slider.attr('max', total_strokes);
 			$slider.data('prev', total_strokes); // Cache starting value
 
-			// TODO correspond to prospect variable (with default `false`):
 			// "Autoplay stroke order from start" in Kanji Settings window
-			// if (autoplayInOrder) {
-			// 	dmak.render(total_strokes);
-			// } else {
-			// 	// Draw all strokes at once for quick rendering
-				dmak.render(total_strokes, true); // simultaneous = true
-			// }
+			if (settings.stroke_order_autoplay) {
+				self.render(total_strokes);
+			} else {
+				// Draw all strokes at once for quick rendering
+				self.render(total_strokes, true); // simultaneous = true
+			}
 
 			// Important for the lookup browser, lest notches accumulate
 			$notchContainer.empty();
@@ -129,9 +129,9 @@ dmak = new Dmak(
 					didAct = true;
 
 					if (shouldErase) {
-						dmak.erase(stroke_num);
+						self.erase(stroke_num);
 					} else if (shouldDraw) {
-						dmak.render(stroke_num, true);
+						self.render(stroke_num, true);
 					}
 				}
 
