@@ -100,3 +100,6 @@ def search_dict(word):
     if hasattr(aqt.mw, 'dictionaryInit'):
         dict_plugin_main = sys.modules[aqt.mw.dictionaryInit.__module__]
         dict_plugin_main.searchTermList([word])
+    else:
+        url = 'https://jisho.org/search/' + word
+        aqt.utils.openLink(url)
