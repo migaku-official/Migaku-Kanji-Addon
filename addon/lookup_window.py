@@ -13,6 +13,10 @@ from .card_type import CardType
 
 
 
+key_sequence = QKeySequence('Ctrl+Shift+K')
+key_sequence_txt = key_sequence.toString(QKeySequence.NativeText)
+
+
 class LookupWindow(QDialog):
 
     instance = None
@@ -92,7 +96,7 @@ class LookupWindow(QDialog):
             F'<script>let kanjivg_uri="{self.kanjivg_uri}";</script>' \
              '</head>'
 
-        html_body = read_web_file('lookup.html')
+        body_html = read_web_file('lookup.html')
 
         settings = {
             'stroke_order_autoplay': config.get('lookup_stroke_order_autoplay', False),
@@ -106,10 +110,19 @@ class LookupWindow(QDialog):
             </script>
         '''
 
+        keys = key_sequence_txt.split('+')
+        keys_html = ' + '.join(F'<span class="key">{key.upper()}</span>' for key in keys)
+
+        set_keys_html = F'''
+            <script>
+                $('.key-sequence').html('{keys_html}');
+            </script>
+        '''
+
         style_class = 'dark' if aqt.theme.theme_manager.night_mode else 'light'
 
         self.web.onBridgeCmd = self.on_bridge_cmd
-        self.web.setHtml('<!doctype html><html class="' + style_class + '">' + html_head + '<body class="' + style_class + '">' + settings_html + html_body + '</body></html>')
+        self.web.setHtml('<!doctype html><html class="' + style_class + '">' + html_head + '<body class="' + style_class + '">' + settings_html + body_html + set_keys_html + '</body></html>')
         self.set_result_data(None) # Load welcome screen
         results_lyt.addWidget(self.web)
 
@@ -312,9 +325,6 @@ def attempt_webview_lookup(web_view):
 
 
 # Add shortcuts for lookups
-key_sequence = QKeySequence('Ctrl+Shift+K')
-key_sequence_txt = key_sequence.toString(QKeySequence.NativeText)
-
 
 # Main web view
 aqt.mw.kanji_lookup_shortcut = QShortcut(key_sequence, aqt.mw)
