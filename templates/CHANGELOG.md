@@ -1,6 +1,8 @@
 ## (Unreleased)
 
+- [STYLE]: Readings use space more effectively on mobile.
 - [STYLE]: Primitive-of tooltips now are left-positioned to avoid being cut-off on smaller screens.
+
 ## 0.9.8
 
 - [CHORE]: Added '(no results)' span to each of the card sub-sections if there are no results.
