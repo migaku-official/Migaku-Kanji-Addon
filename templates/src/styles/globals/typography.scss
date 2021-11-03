@@ -102,5 +102,14 @@ h1 {
 	}
 }
 
+// --------------------------------------------
+// Furigana display
+
+ruby rt {
+	// Necessary for equal-heights and alignment for
+	// any adjacent kanji that doesn't have furigana
+	height: 20px;
+}
+
 /* END - Typography
 ============================================== */
