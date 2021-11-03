@@ -7600,11 +7600,9 @@ Changes:
 				const result = ['<ruby>'];
 				for (const segment of segments) {
 					result.push(segment.text);
-					if (segment.reading.length > 0) {
-						result.push('<rt>');
-						result.push(segment.reading);
-						result.push('</rt>');
-					}
+					result.push('<rt>');
+					result.push(segment.reading);
+					result.push('</rt>');
 				}
 				result.push('</ruby>');
 
