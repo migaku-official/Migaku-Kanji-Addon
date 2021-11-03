@@ -1,3 +1,7 @@
+## 0.11.0
+
+- [STYLE]: Furigana is now displayed above kanji only, instead of full kana.
+
 ## 0.10.1
 
 - [FIX]: Open tooltips in the lookup browser are now closed on subsequent lookups.

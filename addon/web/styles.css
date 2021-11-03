@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.10.1
+- @version v0.11.0
 ============================================== */
 
 .faded-info-msg {
@@ -241,6 +241,10 @@ h1 {
 .nightMode h1,
 .dark h1 {
 	color: #f2994a;
+}
+
+ruby rt {
+	height: 20px;
 }
 
 button.radical,
