@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.10.0
+- @version v0.10.1
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -444,7 +444,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.10.0
+- @version v0.10.1
 
 Changes:
 - state object and variables
@@ -7371,15 +7371,40 @@ Changes:
 <!-- END - Migaku dependencies -->
 
 <script>
-	function toggleShow(targetId) {
+	function toggleShow(targetId, state) {
 		var tooltipContainer = document.getElementById(targetId);
 
-		if (tooltipContainer.style.display === 'none') {
+		function open() {
 			tooltipContainer.style.display = 'block';
 			tooltipContainer.setAttribute('aria-expanded', 'true');
-		} else {
+		}
+
+		function close() {
 			tooltipContainer.style.display = 'none';
 			tooltipContainer.setAttribute('aria-expanded', 'false');
+		}
+
+		if (typeof state === 'boolean') {
+			if (state) {
+				open();
+			} else {
+				close();
+			}
+		} else {
+			if (tooltipContainer.style.display === 'none') {
+				open();
+			} else {
+				close();
+			}
+		}
+	}
+
+	function toggleShowAll(state) {
+		var allTooltips = document.querySelectorAll('.title-tooltip__text');
+
+		for (var i = 0; i < allTooltips.length; i += 1) {
+			var id = allTooltips[i].getAttribute('id');
+			toggleShow(id, state);
 		}
 	}
 </script>
