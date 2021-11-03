@@ -1,4 +1,8 @@
 <!-- START - Migaku dependencies -->
-{% include 'partials/structure/migaku/_dmak.njk' %}
-{% include 'partials/structure/migaku/_raphael.njk' %}
+{% if is_lookup or not is_front %}
+    {% include 'partials/structure/migaku/_dmak.njk' %}
+    {% include 'partials/structure/migaku/_raphael.njk' %}
+{% endif %}
+
+{% include 'partials/structure/migaku/_japanese_util.njk' %}
 <!-- END - Migaku dependencies -->
