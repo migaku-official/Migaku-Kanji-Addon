@@ -13,6 +13,7 @@ const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 const plumber = require('gulp-plumber');
 const zip = require('gulp-zip');
+const beep = require('beepbeep');
 
 // ---------------------------------------
 // Constants
@@ -122,6 +123,12 @@ gulp.task(TASKS.BUILD.DEMO_ASSETS, () =>
 // ---------------------------------------
 // Serve
 
+const reload = (done) => {
+	browserSync.reload();
+	beep();
+	done();
+};
+
 gulp.task(TASKS.SERVE, () => {
 	browserSync.init({
 		server: {
@@ -135,13 +142,11 @@ gulp.task(TASKS.SERVE, () => {
 		},
 	});
 
-	gulp.watch(TEMPLATES_GLOB, gulp.series(TASKS.BUILD.TEMPLATES));
+	gulp.watch(TEMPLATES_GLOB, gulp.series([TASKS.BUILD.TEMPLATES, reload]));
 	gulp.watch(
 		[ASSETS_GLOB, STYLES_GLOB],
-		gulp.series([TASKS.BUILD.STYLES, TASKS.BUILD.DEMO_ASSETS]),
+		gulp.series([TASKS.BUILD.STYLES, TASKS.BUILD.DEMO_ASSETS, reload]),
 	);
-
-	gulp.watch([TEMPLATES_GLOB, ASSETS_GLOB]).on('change', browserSync.reload);
 });
 
 // ---------------------------------------
