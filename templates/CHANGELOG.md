@@ -1,3 +1,7 @@
+## (Unreleased)
+
+- [FEATURE]: Added "Suggest Change" action button.
+
 ## 0.11.0
 
 - [STYLE]: Furigana is now displayed above kanji only, instead of full kana.

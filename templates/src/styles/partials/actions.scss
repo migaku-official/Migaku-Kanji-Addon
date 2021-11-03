@@ -48,8 +48,8 @@ START - Actions */
 		}
 	}
 
-	&__set-custom,
-	&__mark-known {
+	&__primary,
+	&__secondary {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
