@@ -315,11 +315,17 @@ class SettingsWindow(QDialog):
         about_tab.setLayout(about_lyt)
 
         about_lbl = QLabel(
-           F'<h3>Migaku Kanji - {VERSION_STRING}</h3>'
+           F'<h2>Migaku Kanji - {VERSION_STRING}</h2>'
            F'<p>You can suggest changes to the Kanji dataset <a href="{self.KANJI_FORMS_URL}">here</a>.</p>'
+            
+            '<h3>Third-Party Libraries</h3>'
+            '<p>Migaku Kanji uses several third-party libraries to function. Below are links to homepages and licenses of these:</p>'
             '<p><a href="http://kanjivg.tagaini.net/">KanjiVG</a> is copyright © 2009-2018 Ulrich Apel and released under the <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0</a> license.</p>'
             '<p><a href="https://dmitrybaranovskiy.github.io/raphael/">Raphaël</a> is copyright © 2008-2013 Dmitry Baranovskiy, Sencha Labs and released under the <a href="http://dmitrybaranovskiy.github.io/raphael/license.html">MIT</a> license.</p>'
             '<p><a href="https://mbilbille.github.io/dmak/">Draw Me A Kanji (dmak.js)</a> was created by Matthieu Bilbille and released under the <a href="https://github.com/mbilbille/dmak/blob/master/LICENSE">MIT</a> license.</p>'
+            '<p><a href="https://foosoft.net/projects/yomichan/">Yomichan</a> is copyright © 2016-2021 Yomichan Authors and released under the <a href="https://github.com/FooSoft/yomichan/blob/master/LICENSE">GNU General Public License</a>.</p>'
+            
+            '<h3>License</h3>'
             '<p><a href="https://github.com/RicBent/Migaku-Kanji-Addon/">Migaku Kanji</a> is copyright © 2021 Migaku Ltd. and released under the <a href="https://github.com/RicBent/Migaku-Kanji-Addon/blob/main/LICENCE">GNU General Public License v3.0</a>.</p>'
         )
         about_lbl.setWordWrap(True)

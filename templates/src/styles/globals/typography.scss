@@ -105,20 +105,10 @@ h1 {
 // --------------------------------------------
 // Furigana display
 
-ruby {
-	display: flex;
-	flex-direction: column-reverse;
-	height: 100%;
-	line-height: 1.3;
-
-	rt {
-		align-items: center;
-		display: flex;
-		justify-content: center;
-		min-height: 15px;
-		text-align: center;
-		width: 100%;
-	}
+ruby rt {
+	// Necessary for equal-heights and alignment for
+	// any adjacent kanji that doesn't have furigana
+	height: 20px;
 }
 
 /* END - Typography

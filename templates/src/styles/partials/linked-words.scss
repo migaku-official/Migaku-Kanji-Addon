@@ -75,12 +75,14 @@ START - Linked words */
 		position: relative;
 
 		&::before {
+			@include align-center;
+
 			content: '(hover)';
 			color: $text-on-dark;
 			font-family: Rubik, sans-serif;
 			font-size: 10px;
 			opacity: 0.5;
-			position: absolute;
+			top: 15px;
 
 			@include dark-mode {
 				color: $text-on-light;

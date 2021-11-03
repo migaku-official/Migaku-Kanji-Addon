@@ -267,11 +267,9 @@
 						w +
 						'" data-word-idx="' +
 						i +
-						'"><ruby>' +
-						w +
-						'<rt>' +
-						r +
-						'</rt></ruby></button>',
+						'">' +
+						JapaneseUtil.distributeFuriganaHTML(w, r) +
+						'</button>',
 				);
 			}
 			for (var i = 0; i < data.words_default.length; i++) {
@@ -291,11 +289,9 @@
 				word_pts.push(
 					'<button class="word word_default" data-word-kanji="' +
 						w +
-						'"><ruby>' +
-						w +
-						'<rt>' +
-						r +
-						'</rt></ruby></button>',
+						'">' +
+						JapaneseUtil.distributeFuriganaHTML(w, r) +
+						'</button>',
 				);
 			}
 

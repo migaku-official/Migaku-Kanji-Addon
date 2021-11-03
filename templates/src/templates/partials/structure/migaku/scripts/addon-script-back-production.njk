@@ -237,19 +237,15 @@
 					w +
 					'" data-word-idx="' +
 					i +
-					'"><ruby>' +
-					w +
-					'<rt>' +
-					r +
-					'</rt></ruby></button>',
+					'">' +
+					JapaneseUtil.distributeFuriganaHTML(w, r) +
+					'</button>',
 			);
 			if (word_front_pts.length < max_words_front)
 				word_front_pts.push(
-					'<div class="word_front"><ruby>' +
-						w +
-						'<rt>' +
-						r +
-						'</rt></ruby></div>',
+					'<div class="word_front">' +
+						JapaneseUtil.distributeFuriganaHTML(w, r) +
+						'</div>',
 				);
 		}
 		for (var i = 0; i < data.words_default.length; i++) {
@@ -269,19 +265,15 @@
 			word_pts.push(
 				'<button class="word word_default" data-word-kanji="' +
 					w +
-					'"><ruby>' +
-					w +
-					'<rt>' +
-					r +
-					'</rt></ruby></button>',
+					'">' +
+					JapaneseUtil.distributeFuriganaHTML(w, r) +
+					'</button>',
 			);
 			if (!settings.hide_default_words && word_front_pts.length < max_words_front)
 				word_front_pts.push(
-					'<div class="word_front word_front_default"><ruby>' +
-						w +
-						'<rt>' +
-						r +
-						'</rt></ruby></div>',
+					'<div class="word_front word_front_default">' +
+						JapaneseUtil.distributeFuriganaHTML(w, r) +
+						'</div>',
 				);
 		}
 

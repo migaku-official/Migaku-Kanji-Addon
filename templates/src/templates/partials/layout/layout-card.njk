@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.10.1
+- @version v0.11.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@ START - Migaku markup
 	{% include "partials/structure/migaku/migaku-data.njk" %}
 </div>
 
-{% if not is_lookup and not is_front %}
+{% if not is_lookup %}
 	{% include 'partials/structure/migaku/migaku-dependencies.njk' %}
 {% endif %}
 
