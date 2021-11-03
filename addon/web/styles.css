@@ -243,22 +243,6 @@ h1 {
 	color: #f2994a;
 }
 
-ruby {
-	display: flex;
-	flex-direction: column-reverse;
-	height: 100%;
-	line-height: 1.3;
-}
-
-ruby rt {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	min-height: 15px;
-	text-align: center;
-	width: 100%;
-}
-
 button.radical,
 button.primitive,
 .linked-words__examples .word.word_default,
@@ -1663,8 +1647,12 @@ body.dark {
 	content: '(hover)';
 	font-family: Rubik, sans-serif;
 	font-size: 10px;
+	left: 50%;
 	opacity: 0.5;
 	position: absolute;
+	top: 50%;
+	top: 15px;
+	transform: translate(-50%, -50%);
 }
 
 .ankidroid_dark_mode
