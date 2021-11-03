@@ -1,3 +1,7 @@
+## 0.10.1
+
+- [FIX]: Open tooltips in the lookup browser are now closed on subsequent lookups.
+
 ## 0.10.0
 
 - [STYLE]: Added new linked word derivative for new cards.
