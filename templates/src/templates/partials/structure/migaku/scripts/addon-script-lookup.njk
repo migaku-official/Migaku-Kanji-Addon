@@ -122,6 +122,9 @@
 		else if (data !== null && data.has_result) {
 			$('#strokeorder').html('');
 
+			// Hide any open tooltips
+			toggleShowAll(false);
+
       {% include "partials/structure/migaku/scripts/_script-fragment-new-dmak.njk" %}
 
       $('.fontExample').html(data.character);
