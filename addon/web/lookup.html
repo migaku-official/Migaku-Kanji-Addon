@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.11.0
+- @version v0.12.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -233,9 +233,9 @@ START - Migaku markup
 				<!-- END - Primitives and radicals -->
 
 				<!-- START - Actions lookup -->
-				<div class="lookup-actions__container">
-					<h2 class="lookup-actions__title -has-separator">Cards</h2>
-					<div class="lookup-actions__buttons">
+				<div class="actions-lookup__container">
+					<h2 class="actions-lookup__title -has-separator">Cards</h2>
+					<div class="actions-lookup__buttons">
 						<button
 							onclick="recognition_card_click(event);"
 							id="recognition_card_btn"
@@ -303,7 +303,7 @@ START - Migaku markup
 							<img src="_kanji_icon_cog_black.svg" alt="Settings" />
 							<div class="kanji-addon__hover-tooltip">
 								Options for autoplay and stroke number default on/off are in the
-								Kanji Setting menu window.
+								Kanji Settings menu window.
 								<br /><br />
 								Tip: use arrow keys to navigate stroke order, plus ctrl for
 								start/end.
@@ -454,10 +454,10 @@ START - Migaku markup
 			<!-- END - Stories -->
 
 			<!-- START - Actions -->
-			<div class="actions__container">
-				<h2 class="actions__title -has-separator">Actions</h2>
-				<div class="actions__buttons">
-					<div class="actions__set-custom">
+			<div class="actions-back__container">
+				<h2 class="actions-back__title -has-separator">Actions</h2>
+				<div class="actions-back__buttons">
+					<div class="actions-back__set-custom">
 						<button onclick="set_custom_keyword();" class="button -wide">
 							Set Custom Keyword
 						</button>
@@ -487,7 +487,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.11.0
+- @version v0.12.0
 
 Changes:
 - state object and variables
@@ -7749,7 +7749,6 @@ Changes:
 </script>
 
 <!-- START - Addon script, Lookup -->
-<!-- NOTE: Includes changes around DMAK -->
 <script>
 	if (!settings.show_header) {
 		$('.migaku-header').hide();

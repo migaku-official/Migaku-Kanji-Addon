@@ -1,3 +1,7 @@
+## 0.12.0
+
+- [FEATURE]: Added front-of-card actions (mark known/delete).
+
 ## 0.11.0
 
 - [STYLE]: Furigana is now displayed above kanji only, instead of full kana.
