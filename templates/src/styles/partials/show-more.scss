@@ -9,7 +9,7 @@
 		// to activate "show more" behaviour
 		&.-inactive {
 			margin-bottom: 0;
-			max-height: unset;
+			max-height: unset !important;
 
 			&::after,
 			> button {
