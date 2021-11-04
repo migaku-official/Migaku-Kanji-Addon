@@ -99,7 +99,10 @@ START - Buttons */
 
 .button {
 	@include button-primary;
+}
 
+.button,
+.button-container {
 	&.-secondary {
 		@include button-secondary;
 	}
