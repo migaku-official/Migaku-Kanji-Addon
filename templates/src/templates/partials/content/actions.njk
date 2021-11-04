@@ -21,12 +21,17 @@
 				{{ txt__actions_suggest_change }}
 			</button>
 			{% if not is_lookup %}
-				<button
-					onclick="delete_mark(event);"
-					class="button -secondary -wide"
-				>
-					{{ txt__actions_mark_delete }}
-				</button>
+				<div class="actions__mark-known-delete button-container -wide">
+					<button
+						onclick="delete_mark(event);"
+						class="button -secondary -wide"
+					>
+						{{ txt__actions_mark_delete }}
+					</button>
+					<span class="faded-info-msg">
+						{{ txt__actions_mark_delete_info }}
+					</span>
+				</div>
 			{% endif %}
 		</div>
 	</div>
