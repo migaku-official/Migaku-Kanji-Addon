@@ -35,11 +35,11 @@ START - Buttons */
 
 		&:hover,
 		&:focus {
-			background: darken($brand-orange-primary, 10%);
+			background: lighten($brand-orange-primary, 10%);
 		}
 
 		&:active {
-			background: darken($brand-orange-primary, 20%);
+			background: darken($brand-orange-primary, 5%);
 		}
 	}
 }
