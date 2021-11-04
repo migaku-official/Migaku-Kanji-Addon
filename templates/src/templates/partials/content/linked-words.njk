@@ -10,7 +10,7 @@
 			h2class='linked-words__title'
 	) }}
 	<div class="linked-words__examples">
-		{% call mcr__showMore('linked_words') %}
+		{% call mcr__showMore(id='linked_words', maxHeight='120px') %}
 			<div id="words" class="linked-words__list kanji-char-font hide_readings_hover">
 				{{ linked_words | safe }}
 			</div>

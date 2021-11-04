@@ -1,8 +1,9 @@
 {# note behaviour in corresponding `show-more-script.njk` #}
-{% macro mcr__showMore(id) %}
+{% macro mcr__showMore(id, maxHeight) %}
 	<div
 		id="show-more--{{id}}"
-		class="show-more__container -inactive"
+		class="show-more__container"
+		{% if maxHeight %} style="max-height: {{ maxHeight }}"{% endif %}
 		aria-expanded="false"
 	>
 		<div class="show-more__content">
