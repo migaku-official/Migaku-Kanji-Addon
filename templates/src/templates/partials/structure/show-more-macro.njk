@@ -2,7 +2,7 @@
 {% macro mcr__showMore(id, maxHeight) %}
 	<div
 		id="show-more--{{id}}"
-		class="show-more__container"
+		class="show-more__container -inactive"
 		{% if maxHeight %} style="max-height: {{ maxHeight }}"{% endif %}
 		aria-expanded="false"
 	>
