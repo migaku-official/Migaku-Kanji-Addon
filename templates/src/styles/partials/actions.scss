@@ -75,7 +75,10 @@ START - Actions */
 	&__container {
 		@include align-horizontal-center;
 
+		align-items: center;
 		bottom: 20px;
+		display: flex;
+		flex-direction: column;
 		width: 100%;
 	}
 
