@@ -36,11 +36,20 @@ START - Mixins */
 }
 
 @mixin faded-info-msg {
-	font-size: $mobile-msg-font-size;
-	opacity: $mobile-msg-opacity-light;
+	font-size: $faded-msg-font-size;
+	font-weight: $faded-msg-font-weight;
+	opacity: $faded-msg-opacity-light;
 
 	@include dark-mode {
-		opacity: $mobile-msg-opacity-dark;
+		opacity: $faded-msg-opacity-dark;
+	}
+}
+
+.faded-info-msg {
+	@include faded-info-msg;
+
+	&.-spaced {
+		margin-bottom: 20px;
 	}
 }
 
@@ -52,14 +61,6 @@ START - Mixins */
 	// Display message
 	@include mobile-device {
 		display: block;
-	}
-}
-
-.faded-info-msg {
-	@include faded-info-msg;
-
-	&.-spaced {
-		margin-bottom: 20px;
 	}
 }
 
