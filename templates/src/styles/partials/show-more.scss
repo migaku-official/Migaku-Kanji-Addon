@@ -3,7 +3,6 @@
 		margin-bottom: 10px;
 		max-height: 160px;
 		overflow: hidden;
-		position: relative;
 
 		// Starting class that ought to be removed
 		// to activate "show more" behaviour
@@ -11,11 +10,14 @@
 			margin-bottom: 0;
 			max-height: unset;
 
-			&::after,
-			> button {
+			.show-more__controls {
 				display: none;
 			}
 		}
+	}
+
+	&__controls {
+		position: relative;
 
 		// Gradient
 		&::after {

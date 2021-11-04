@@ -9,13 +9,15 @@
 		<div class="show-more__content">
 			{{ caller() }}
 		</div>
-		<button
-			type="button"
-			class="show-more__button"
-			aria-controls="show-more--{{id}}"
-			onclick="toggleShowMore('show-more--{{id}}')"
-		>
-			{{ txt__show_more }}
-		</button>
+		<div class="show-more__controls">
+			<button
+				type="button"
+				class="show-more__button"
+				aria-controls="show-more--{{id}}"
+				onclick="toggleShowMore('show-more--{{id}}')"
+			>
+				{{ txt__show_more }}
+			</button>
+		</div>
 	</div>
 {% endmacro %}

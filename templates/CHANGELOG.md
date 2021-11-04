@@ -1,3 +1,7 @@
+## (Unreleased)
+
+- [FEATURE]: Added "show more" containers to linked words and primitives of, activated when results are > 10.
+
 ## 0.11.0
 
 - [STYLE]: Furigana is now displayed above kanji only, instead of full kana.

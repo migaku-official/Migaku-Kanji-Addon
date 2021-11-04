@@ -30,7 +30,9 @@ START - Tooltip */
 	}
 
 	// Position variations (appended to parent container)
+
 	// (Note that "above right" is the default positioning)
+	// .-tooltip-pos__above-right &
 
 	.-tooltip-pos__above-left & {
 		left: unset;
@@ -50,6 +52,7 @@ START - Tooltip */
 	}
 }
 
+// Show tooltip on hover
 button.primitive,
 .kanji-addon__hover-tooltip-btn {
 	&:hover,
@@ -61,8 +64,33 @@ button.primitive,
 	}
 }
 
+// ! HACK
+// Necessary to make hover-tooltips compatible
+// with "show more" overflow hidden container
+// Ref: https://stackoverflow.com/a/39149079
+#primitive_of {
+	button {
+		position: unset !important;
+	}
+
+	.primitiveDetails {
+		bottom: 53px;
+		left: unset;
+		position: relative;
+		pointer-events: none;
+		right: calc(100% - 50px);
+		top: unset;
+		transform: translateY(-100%);
+
+		&__wrapper {
+			position: absolute;
+			pointer-events: none;
+		}
+	}
+}
+
 // --------------------------------------
-// Title tooltip
+// Title tooltip (inline)
 
 .title-tooltip {
 	&__container {
