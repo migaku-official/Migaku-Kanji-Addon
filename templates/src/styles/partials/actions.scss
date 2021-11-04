@@ -69,6 +69,22 @@ START - Actions */
 }
 
 // --------------------------------------
+// Front actions
+
+.actions-front {
+	&__container {
+		@include align-horizontal-center;
+
+		bottom: 20px;
+		width: 100%;
+	}
+
+	&__buttons {
+		margin-bottom: 10px;
+	}
+}
+
+// --------------------------------------
 // Lookup actions
 
 .actions-lookup {
