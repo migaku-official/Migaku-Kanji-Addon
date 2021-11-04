@@ -1,0 +1,70 @@
+.show-more {
+	&__container {
+		margin-bottom: 10px;
+		max-height: 130px;
+		overflow: hidden;
+		position: relative;
+
+		// Starting class that ought to be removed
+		// to activate "show more" behaviour
+		&.-inactive {
+			margin-bottom: 0;
+			max-height: unset;
+
+			&::after,
+			> button {
+				display: none;
+			}
+		}
+
+		// Gradient
+		&::after {
+			@include pseudo;
+
+			background: linear-gradient(
+				to top,
+				$body-background-light 20% 60%,
+				transparent
+			);
+			bottom: 0;
+			left: 0;
+			height: 60px;
+			width: 100%;
+
+			@include dark-mode {
+				background: linear-gradient(
+					to top,
+					$body-background-dark 20% 60%,
+					transparent
+				);
+			}
+		}
+	}
+
+	&__button {
+		@include align-horizontal-center;
+		@include button-reset;
+		@include faded-info-msg;
+
+		background-color: $body-background-light;
+		bottom: 10px;
+		border-radius: 8px;
+		padding: 5px;
+		position: absolute;
+		z-index: 1;
+
+		@include dark-mode {
+			background-color: $body-background-dark;
+		}
+
+		@include bp.get(s) {
+			left: unset;
+			right: 0;
+		}
+
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+}

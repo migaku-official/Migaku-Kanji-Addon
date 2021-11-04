@@ -1,15 +1,20 @@
-{% from "partials/structure/title-tooltip-macro.njk" import titleTooltip with context %}
+{% from "partials/structure/title-tooltip-macro.njk" import mcr__titleTooltip with context %}
+{% from "partials/structure/show-more-macro.njk" import mcr__showMore with context %}
 
 <!-- START - Linked words -->
 <div class="linked-words__container">
-	{{ titleTooltip(
+	{{ mcr__titleTooltip(
 			id='linked_words__title',
 			title=txt__vocab_title,
 			tooltip=txt__vocab_tooltip,
 			h2class='linked-words__title'
 	) }}
 	<div class="linked-words__examples">
-		<div id="words" class="linked-words__list kanji-char-font hide_readings_hover">{{ linked_words | safe }}</div>
+		{% call mcr__showMore('linked_words') %}
+			<div id="words" class="linked-words__list kanji-char-font hide_readings_hover">
+				{{ linked_words | safe }}
+			</div>
+		{% endcall %}
 	</div>
 	<div class="faded-info-msg">
 		{{ txt__vocab_tip }}

@@ -1,0 +1,39 @@
+{# note corresponding markup macro in `show-more-macro.njk` #}
+<script>
+	function toggleShowMore(targetId, state) {
+		var showMoreContainer = document.getElementById(targetId);
+
+		function open() {
+			showMoreContainer.classList.remove('-inactive');
+			showMoreContainer.setAttribute('aria-expanded', 'false');
+		}
+
+		function close() {
+			showMoreContainer.classList.add('-inactive');
+			showMoreContainer.setAttribute('aria-expanded', 'true');
+		}
+
+		if (typeof state === 'boolean') {
+			if (state) {
+				open();
+			} else {
+				close();
+			}
+		} else {
+			if (showMoreContainer.getAttribute('aria-expanded') === 'false') {
+				open();
+			} else {
+				close();
+			}
+		}
+	}
+
+	function toggleAllShowMore(state) {
+		var allShowMore = document.querySelectorAll('.show-more__container');
+
+		for (var i = 0; i < allShowMore.length; i += 1) {
+			var id = allShowMore[i].getAttribute('id');
+			toggleShowMore(id, state);
+		}
+	}
+</script>

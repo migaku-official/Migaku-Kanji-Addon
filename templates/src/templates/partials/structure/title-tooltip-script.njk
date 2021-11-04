@@ -1,6 +1,6 @@
 {# note corresponding markup macro in `title-tooltip-macro.njk` #}
 <script>
-	function toggleShow(targetId, state) {
+	function toggleShowTooltip(targetId, state) {
 		var tooltipContainer = document.getElementById(targetId);
 
 		function open() {
@@ -20,7 +20,7 @@
 				close();
 			}
 		} else {
-			if (tooltipContainer.style.display === 'none') {
+			if (tooltipContainer.getAttribute('aria-expanded') === 'false') {
 				open();
 			} else {
 				close();
@@ -28,12 +28,12 @@
 		}
 	}
 
-	function toggleShowAll(state) {
+	function toggleShowAllTooltips(state) {
 		var allTooltips = document.querySelectorAll('.title-tooltip__text');
 
 		for (var i = 0; i < allTooltips.length; i += 1) {
 			var id = allTooltips[i].getAttribute('id');
-			toggleShow(id, state);
+			toggleShowTooltip(id, state);
 		}
 	}
 </script>

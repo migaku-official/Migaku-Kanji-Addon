@@ -1,0 +1,20 @@
+{# note behaviour in corresponding `show-more-script.njk` #}
+{% macro mcr__showMore(id) %}
+	<div
+		id="show-more--{{id}}"
+		class="show-more__container -inactive"
+		aria-expanded="false"
+	>
+		<div class="show-more__content">
+			{{ caller() }}
+		</div>
+		<button
+			type="button"
+			class="show-more__button"
+			aria-controls="show-more--{{id}}"
+			onclick="toggleShowMore('show-more--{{id}}')"
+		>
+			{{ txt__show_more }}
+		</button>
+	</div>
+{% endmacro %}

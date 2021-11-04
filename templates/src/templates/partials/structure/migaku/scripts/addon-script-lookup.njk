@@ -121,8 +121,9 @@
 		else if (data !== null && data.has_result) {
 			$('#strokeorder').html('');
 
-			// Hide any open tooltips
-			toggleShowAll(false);
+			// Hide any open tooltips or show more containers
+			toggleShowAllTooltips(false);
+			toggleAllShowMore(false);
 
       {% include "partials/structure/migaku/scripts/_script-fragment-new-dmak.njk" %}
 
@@ -245,6 +246,12 @@
 				);
 			}
 
+			// If there are too many primitives to show, enable
+			// the "show more" interface to partially obscure them
+			if (primitive_of_pts.length > 10) {
+				$('#show-more--primitive_of').removeClass('-inactive');
+			}
+
 			var hasPrimitivesOf = primitive_of_pts.length > 0;
 			$('#primitives_of').empty();
 			$('#primitive_of').html(hasPrimitivesOf ? primitive_of_pts.join('') : noResultsSpan);
@@ -292,6 +299,12 @@
 						JapaneseUtil.distributeFuriganaHTML(w, r) +
 						'</button>',
 				);
+			}
+
+			// If there are too many linked words to show, enable
+			// the "show more" interface to partially obscure them
+			if (word_pts.length > 10) {
+				$('#show-more--linked_words').removeClass('-inactive');
 			}
 
 			var hasLinkedWords = word_pts.length > 0;
