@@ -1,7 +1,7 @@
 .show-more {
 	&__container {
 		margin-bottom: 10px;
-		max-height: 130px;
+		max-height: 150px;
 		overflow: hidden;
 		position: relative;
 
@@ -23,7 +23,7 @@
 
 			background: linear-gradient(
 				to top,
-				$body-background-light 20% 60%,
+				$body-background-light 30%,
 				transparent
 			);
 			bottom: 0;
@@ -34,7 +34,7 @@
 			@include dark-mode {
 				background: linear-gradient(
 					to top,
-					$body-background-dark 20% 60%,
+					$body-background-dark 30%,
 					transparent
 				);
 			}
@@ -47,24 +47,26 @@
 		@include faded-info-msg;
 
 		background-color: $body-background-light;
-		bottom: 10px;
+		bottom: 0;
+		border: 1px solid $brand-grey;
 		border-radius: 8px;
-		padding: 5px;
+		cursor: pointer;
+		padding: 5px 7px;
 		position: absolute;
 		z-index: 1;
 
 		@include dark-mode {
 			background-color: $body-background-dark;
-		}
-
-		@include bp.get(s) {
-			left: unset;
-			right: 0;
+			border-color: $brand-grey;
 		}
 
 		&:hover,
 		&:focus {
-			text-decoration: underline;
+			background-color: darken($body-background-light, 10%);
+
+			@include dark-mode {
+				background-color: lighten($body-background-dark, 10%);
+			}
 		}
 	}
 }
