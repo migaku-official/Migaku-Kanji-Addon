@@ -36,6 +36,7 @@ START - Mixins */
 }
 
 @mixin faded-info-msg {
+	color: inherit;
 	font-size: $faded-msg-font-size;
 	font-weight: $faded-msg-font-weight;
 	opacity: $faded-msg-opacity-light;
