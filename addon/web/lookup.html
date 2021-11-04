@@ -76,7 +76,7 @@ START - Migaku markup
 								type="button"
 								title="What's this?"
 								aria-controls="tooltip-id--linked_words__title"
-								onclick="toggleShow('tooltip-id--linked_words__title')"
+								onclick="toggleShowTooltip('tooltip-id--linked_words__title')"
 							>
 								<img src="_kanji_icon_help_black.svg" alt="" />
 							</button>
@@ -98,9 +98,26 @@ START - Migaku markup
 
 					<div class="linked-words__examples">
 						<div
-							id="words"
-							class="linked-words__list kanji-char-font hide_readings_hover"
-						></div>
+							id="show-more--linked_words"
+							class="show-more__container -inactive"
+							style="max-height: 120px"
+							aria-expanded="false"
+						>
+							<div class="show-more__content">
+								<div
+									id="words"
+									class="linked-words__list kanji-char-font hide_readings_hover"
+								></div>
+							</div>
+							<button
+								type="button"
+								class="show-more__button"
+								aria-controls="show-more--linked_words"
+								onclick="toggleShowMore('show-more--linked_words')"
+							>
+								Show more
+							</button>
+						</div>
 					</div>
 					<div class="faded-info-msg">Shift + click for dictionary lookup.</div>
 					<div class="mobile-info-msg">
@@ -123,7 +140,7 @@ START - Migaku markup
 											type="button"
 											title="What's this?"
 											aria-controls="tooltip-id--primtives__title"
-											onclick="toggleShow('tooltip-id--primtives__title')"
+											onclick="toggleShowTooltip('tooltip-id--primtives__title')"
 										>
 											<img src="_kanji_icon_help_black.svg" alt="" />
 										</button>
@@ -158,7 +175,7 @@ START - Migaku markup
 											type="button"
 											title="What's this?"
 											aria-controls="tooltip-id--primitives_of__title"
-											onclick="toggleShow('tooltip-id--primitives_of__title')"
+											onclick="toggleShowTooltip('tooltip-id--primitives_of__title')"
 										>
 											<img src="_kanji_icon_help_black.svg" alt="" />
 										</button>
@@ -178,13 +195,29 @@ START - Migaku markup
 								</div>
 
 								<div
-									id="primitive_of"
-									class="
-										primitives-and-radicals__list
-										kanji-char-font
-										-tooltip-pos__above-left
-									"
-								></div>
+									id="show-more--primitive_of"
+									class="show-more__container -inactive"
+									aria-expanded="false"
+								>
+									<div class="show-more__content">
+										<div
+											id="primitive_of"
+											class="
+												primitives-and-radicals__list
+												kanji-char-font
+												-tooltip-pos__above-left
+											"
+										></div>
+									</div>
+									<button
+										type="button"
+										class="show-more__button"
+										aria-controls="show-more--primitive_of"
+										onclick="toggleShowMore('show-more--primitive_of')"
+									>
+										Show more
+									</button>
+								</div>
 							</div>
 						</div>
 						<div class="mobile-info-msg">
@@ -200,7 +233,7 @@ START - Migaku markup
 										type="button"
 										title="What's this?"
 										aria-controls="tooltip-id--radicals__title"
-										onclick="toggleShow('tooltip-id--radicals__title')"
+										onclick="toggleShowTooltip('tooltip-id--radicals__title')"
 									>
 										<img src="_kanji_icon_help_black.svg" alt="" />
 									</button>
@@ -303,7 +336,7 @@ START - Migaku markup
 							<img src="_kanji_icon_cog_black.svg" alt="Settings" />
 							<div class="kanji-addon__hover-tooltip">
 								Options for autoplay and stroke number default on/off are in the
-								Kanji Setting menu window.
+								Kanji Settings menu window.
 								<br /><br />
 								Tip: use arrow keys to navigate stroke order, plus ctrl for
 								start/end.
@@ -7710,7 +7743,7 @@ Changes:
 <!-- END - Migaku dependencies -->
 
 <script>
-	function toggleShow(targetId, state) {
+	function toggleShowTooltip(targetId, state) {
 		var tooltipContainer = document.getElementById(targetId);
 
 		function open() {
@@ -7730,7 +7763,7 @@ Changes:
 				close();
 			}
 		} else {
-			if (tooltipContainer.style.display === 'none') {
+			if (tooltipContainer.getAttribute('aria-expanded') === 'false') {
 				open();
 			} else {
 				close();
@@ -7738,18 +7771,56 @@ Changes:
 		}
 	}
 
-	function toggleShowAll(state) {
+	function toggleShowAllTooltips(state) {
 		var allTooltips = document.querySelectorAll('.title-tooltip__text');
 
 		for (var i = 0; i < allTooltips.length; i += 1) {
 			var id = allTooltips[i].getAttribute('id');
-			toggleShow(id, state);
+			toggleShowTooltip(id, state);
+		}
+	}
+</script>
+
+<script>
+	function toggleShowMore(targetId, state) {
+		var showMoreContainer = document.getElementById(targetId);
+
+		function open() {
+			showMoreContainer.classList.remove('-inactive');
+			showMoreContainer.setAttribute('aria-expanded', 'false');
+		}
+
+		function close() {
+			showMoreContainer.classList.add('-inactive');
+			showMoreContainer.setAttribute('aria-expanded', 'true');
+		}
+
+		if (typeof state === 'boolean') {
+			if (state) {
+				open();
+			} else {
+				close();
+			}
+		} else {
+			if (showMoreContainer.getAttribute('aria-expanded') === 'false') {
+				open();
+			} else {
+				close();
+			}
+		}
+	}
+
+	function toggleAllShowMore(state) {
+		var allShowMore = document.querySelectorAll('.show-more__container');
+
+		for (var i = 0; i < allShowMore.length; i += 1) {
+			var id = allShowMore[i].getAttribute('id');
+			toggleShowMore(id, state);
 		}
 	}
 </script>
 
 <!-- START - Addon script, Lookup -->
-<!-- NOTE: Includes changes around DMAK -->
 <script>
 	if (!settings.show_header) {
 		$('.migaku-header').hide();
@@ -7982,8 +8053,9 @@ Changes:
 		else if (data !== null && data.has_result) {
 			$('#strokeorder').html('');
 
-			// Hide any open tooltips
-			toggleShowAll(false);
+			// Hide any open tooltips or show more containers
+			toggleShowAllTooltips(false);
+			toggleAllShowMore(false);
 
 			// ==================================================================
 			// CHANGES - START - stroke order diagram
@@ -8253,6 +8325,12 @@ Changes:
 				);
 			}
 
+			// If there are too many primitives to show, enable
+			// the "show more" interface to partially obscure them
+			if (primitive_of_pts.length > 10) {
+				$('#show-more--primitive_of').removeClass('-inactive');
+			}
+
 			var hasPrimitivesOf = primitive_of_pts.length > 0;
 			$('#primitives_of').empty();
 			$('#primitive_of').html(
@@ -8302,6 +8380,12 @@ Changes:
 						JapaneseUtil.distributeFuriganaHTML(w, r) +
 						'</button>',
 				);
+			}
+
+			// If there are too many linked words to show, enable
+			// the "show more" interface to partially obscure them
+			if (word_pts.length > 10) {
+				$('#show-more--linked_words').removeClass('-inactive');
 			}
 
 			var hasLinkedWords = word_pts.length > 0;
