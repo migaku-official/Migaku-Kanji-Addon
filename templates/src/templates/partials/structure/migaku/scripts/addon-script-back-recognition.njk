@@ -277,6 +277,18 @@
 			);
 	}
 
+	{# //TODO - need to be injected
+	if (word_pts.length > 10) {
+		const remainingWords = word_pts.splice(10, word_pts.length);
+		const _$showMoreBtn = document.createElement('button');
+
+		_$showMoreBtn.innerHTML = `Show<br/>more<br/>(${remainingWords.length})`;
+		_$showMoreBtn.addEventListener('click', function() {
+			_$showMoreBtn.remove();
+			$('#words').append(remainingWords.join(''));
+		});
+	} #}
+
 	var hasLinkedWords = word_pts.length > 0;
 	$('#words').empty();
 	$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);

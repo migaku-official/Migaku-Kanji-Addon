@@ -23,13 +23,17 @@ START - Linked words */
 	}
 
 	&__examples {
+		// Margin spacing shared with "show more" button
+		button {
+			margin: 0 10px 10px 0;
+		}
+
 		// Clickable linked word (button)
 		.word {
 			@include button-primary;
 
 			font-size: 24px !important;
 			font-family: inherit;
-			margin: 0 10px 10px 0;
 			padding: 5px 10px !important;
 
 			@include bp.get(s) {
