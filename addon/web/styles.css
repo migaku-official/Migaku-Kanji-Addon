@@ -1310,7 +1310,7 @@ body.dark {
 	display: inline-flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	margin: 15px 5px 0;
+	margin: 15px 10px 0;
 }
 
 .readings__list li > *:first-child {
@@ -2024,24 +2024,24 @@ button.radical {
 	}
 }
 
-.actions__set-custom,
-.actions__mark-known {
+.actions__primary,
+.actions__secondary {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
 
 @media (min-width: 30em) {
-	.actions__set-custom,
-	.actions__mark-known {
+	.actions__primary,
+	.actions__secondary {
 		flex-direction: row;
 		justify-content: center;
 	}
 }
 
 @media only screen and (min-width: 36.25em) {
-	.actions__set-custom,
-	.actions__mark-known {
+	.actions__primary,
+	.actions__secondary {
 		justify-content: flex-start;
 	}
 }
