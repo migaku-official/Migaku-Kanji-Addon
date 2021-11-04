@@ -72,7 +72,7 @@ def reviewer_bridge_hook(reviewer: aqt.reviewer.Reviewer, cmd, _old):
                 r = QMessageBox.question(aqt.mw,
                                          'Migaku Kanji',
                                          F'Do you want to delete this card and mark the kanji {character} known for {card_type.label}?\n\n'
-                                          'You can press the shift key to bypass this confirmation.')
+                                          'You can press the shift key to bypass this confirmation in future.')
                 if r != QMessageBox.Yes:
                     return
 
