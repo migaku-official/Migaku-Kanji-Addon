@@ -1,7 +1,10 @@
 /* ==============================================
 START - Actions */
 
-.actions {
+// --------------------------------------
+// Back actions
+
+.actions-back {
 	&__container {
 		align-items: center;
 		display: flex;
@@ -61,6 +64,79 @@ START - Actions */
 
 		@include bp.get(s) {
 			justify-content: flex-start;
+		}
+	}
+}
+
+// --------------------------------------
+// Front actions
+
+.actions-front {
+	&__container {
+		@include align-horizontal-center;
+
+		align-items: center;
+		bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		padding: 0 10px;
+		text-align: center;
+		width: 100%;
+	}
+
+	&__mark-known {
+		margin-bottom: 10px;
+	}
+
+	&__buttons {
+		// Action buttons dont work on mobile
+		@include mobile-device {
+			display: none;
+		}
+	}
+}
+
+// --------------------------------------
+// Lookup actions
+
+.actions-lookup {
+	&__title {
+		// Faded-look to communicate inoperation
+		@include mobile-device {
+			@include faded-info-msg;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		flex-direction: column;
+
+		@include bp.get(xs) {
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		@include bp.get(s) {
+			justify-content: flex-start;
+		}
+
+		// Action buttons dont work on mobile
+		@include mobile-device {
+			display: none;
+		}
+
+		.button {
+			margin-bottom: 20px;
+
+			@include bp.get(xs) {
+				margin: 0 10px;
+			}
+
+			@include bp.get(s) {
+				&:first-of-type {
+					margin-left: 0;
+				}
+			}
 		}
 	}
 }

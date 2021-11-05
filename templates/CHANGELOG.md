@@ -1,3 +1,15 @@
+## 0.12.2
+
+- [FIX]: Added `delete_mark` functions to front templates for recognition/production, so front delete action works.
+
+## 0.12.1
+
+- [FIX]: Actually hide front-of-card actions on mobile.
+
+## 0.12.0
+
+- [FEATURE]: Added front-of-card actions (mark known/delete).
+
 ## 0.11.0
 
 - [STYLE]: Furigana is now displayed above kanji only, instead of full kana.

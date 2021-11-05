@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.11.0
+- @version v0.12.2
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +39,26 @@ START - Migaku markup
 		<aside class="layout__aside"></aside>
 	</main>
 
-	<div class="layout__below"></div>
+	<div class="layout__below">
+		<!-- START - Actions -->
+		<div class="actions-front__container">
+			<h2 class="actions-front__title -has-separator vh">Actions</h2>
+			<div class="actions-front__buttons">
+				<div class="actions-front__mark-known">
+					<button onclick="delete_mark(event);" class="button -secondary -wide">
+						Mark Known And Delete Card
+					</button>
+				</div>
+				<div class="faded-info-msg">Shift + click for instant action.</div>
+			</div>
+			<div class="mobile-info-msg">
+				Front of card actions only work on desktop.
+				<br />
+				You are able to mark-known/delete existing kanji cards.
+			</div>
+		</div>
+		<!-- END - Actions -->
+	</div>
 
 	<!-- START - Migaku data -->
 	<div id="migaku_data">{{MigakuData}}</div>
@@ -356,6 +375,15 @@ START - Migaku markup
 	function wrap_list(list, intro, outro) {
 		if (list.length < 1) return '-';
 		return intro + list.join(outro + intro) + outro;
+	}
+
+	function delete_mark(evt) {
+		pycmd(
+			'delete_mark-' +
+				data.character +
+				'-recognition-' +
+				(evt.shiftKey ? 'false' : 'true'),
+		);
 	}
 
 	var data_b64 = document.getElementById('migaku_data').innerHTML;
