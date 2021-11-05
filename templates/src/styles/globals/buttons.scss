@@ -117,5 +117,15 @@ START - Buttons */
 	}
 }
 
+.button-container .button {
+	&:first-child {
+		margin-left: 0;
+	}
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
 /* END - Buttons
 ============================================== */

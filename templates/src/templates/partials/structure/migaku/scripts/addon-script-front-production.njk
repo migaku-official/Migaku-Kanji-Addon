@@ -12,6 +12,15 @@
     return intro + list.join(outro+intro) + outro;
   }
 
+	function delete_mark(evt) {
+		pycmd(
+			'delete_mark-' +
+				data.character +
+				'-production-' +
+				(evt.shiftKey ? 'false' : 'true'),
+		);
+	}
+
   var data_b64 = document.getElementById('migaku_data').innerHTML;
   data_b64 = data_b64.replace( /(<([^>]+)>)/ig, '');  // Needed because of Migaku Editor :|
   var data_json = atob(data_b64);

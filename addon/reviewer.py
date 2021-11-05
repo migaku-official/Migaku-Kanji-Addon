@@ -9,6 +9,7 @@ from .lookup_window import LookupWindow
 from . import text_parser
 from . import config
 from .card_type import CardType
+from .version import KANJI_FORMS_URL
 
 
 # Handler for interactive card buttons
@@ -71,8 +72,8 @@ def reviewer_bridge_hook(reviewer: aqt.reviewer.Reviewer, cmd, _old):
             if ask:
                 r = QMessageBox.question(aqt.mw,
                                          'Migaku Kanji',
-                                         F'Do you want to delete this card and mark the kanji {character} known for {card_type.label}?\n\n'
-                                          'You can press the shift key to bypass this confirmation.')
+                                        F'Do you want to delete this card and mark the kanji {character} known for {card_type.label}?\n\n'
+                                         'You can press the shift key to bypass this confirmation in future.')
                 if r != QMessageBox.Yes:
                     return
 
@@ -85,6 +86,23 @@ def reviewer_bridge_hook(reviewer: aqt.reviewer.Reviewer, cmd, _old):
         elif args[0] == 'search_dict':
             word = args[1]
             util.search_dict(word)
+            return
+        elif args[0] == 'suggest_change':
+            character = args[1]
+
+            key_sequence = QKeySequence(Qt.CTRL + Qt.Key_F).toString(QKeySequence.NativeText)
+
+            r = QMessageBox.question(aqt.mw,
+                                     'Migaku Kanji',
+                                    F'Do you want to suggest a change to the data for {character}?\n\n'
+                                    F'On the sheet that will open, search for the data you want to change using {key_sequence}. '
+                                     'Right click the cell you want to suggest a change for, then select "Comment" and enter the data you suggest and optionally the reason on why the data should be changed. '
+                                     'Finally confirm your comment.\n\n'
+                                    F'Your clipboard will also be set to {character}.\n\n'
+                                     'Thank you!')
+            if r == QMessageBox.Yes:
+                aqt.mw.app.clipboard().setText(character)
+                aqt.utils.openLink(KANJI_FORMS_URL)
             return
 
     _old(reviewer, cmd)

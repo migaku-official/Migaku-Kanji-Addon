@@ -10,7 +10,7 @@ from .card_type import CardType
 from .note_type_selector import CardTypeRecognizedSelectorWidget, WordRecognizedSelectorWidget
 from .learn_ahead_selector import LearnAheadSelectorWidget
 from .lookup_window import LookupWindow
-from .version import VERSION_STRING
+from .version import VERSION_STRING, KANJI_FORMS_URL
 
 
 class CardTypeSettingsWidget(QWidget):
@@ -219,8 +219,6 @@ class FontSelectWidget(QWidget):
 
 class SettingsWindow(QDialog):
 
-    KANJI_FORMS_URL = 'https://docs.google.com/spreadsheets/d/1aw0ihw0RpmejWLTUynrFYjmOfLdzcPVrDX7UM50lwBY/edit#gid=2109245908'
-
     def __init__(self, parent=None):
         super(QDialog, self).__init__(parent)
 
@@ -316,7 +314,7 @@ class SettingsWindow(QDialog):
 
         about_lbl = QLabel(
            F'<h2>Migaku Kanji - {VERSION_STRING}</h2>'
-           F'<p>You can suggest changes to the Kanji dataset <a href="{self.KANJI_FORMS_URL}">here</a>.</p>'
+           F'<p>You can suggest changes to the Kanji dataset <a href="{KANJI_FORMS_URL}">here</a>.</p>'
             
             '<h3>Third-Party Libraries</h3>'
             '<p>Migaku Kanji uses several third-party libraries to function. Below are links to homepages and licenses of these:</p>'

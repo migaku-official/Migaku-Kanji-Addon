@@ -303,6 +303,12 @@
 			}
 
 			var hasLinkedWords = word_pts.length > 0;
+			// Only show contained info messages if there are results returned
+			var _$containedLinkedWordsInfoMsgs = $('#words').parents('.results-container').find('.faded-info-msg')
+			_$containedLinkedWordsInfoMsgs.each(function(idx, msg) {
+				$(msg).toggle(hasLinkedWords);
+			});
+
 			$('#words').empty();
 			$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
 
@@ -321,6 +327,13 @@
 
 			$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 			$('.word').click(word_click);
+
+			var hasRadicals = data.radicals.length > 0;
+			// Only show contained info messages if there are results returned
+			var _$containedRadicalInfoMsgs = $('#radicals').parents('.results-container').find('.faded-info-msg')
+			_$containedRadicalInfoMsgs.each(function(idx, msg) {
+				$(msg).toggle(hasRadicals);
+			});
 
 			$('#radicals').empty();
 			$('#radicals').html(

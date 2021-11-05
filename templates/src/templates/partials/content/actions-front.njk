@@ -1,0 +1,23 @@
+<!-- START - Actions -->
+<div class="actions-front__container">
+	<h2 class="actions-front__title -has-separator vh">
+		{{ txt__actions_front_title }}
+	</h2>
+	<div class="actions-front__buttons">
+		<div class="actions-front__mark-known-delete">
+			<button
+				onclick="delete_mark(event);"
+				class="button -secondary -wide"
+			>
+				{{ txt__actions_front_mark_delete }}
+			</button>
+		</div>
+		<div class="faded-info-msg">
+			{{ txt__actions_front_mark_delete_info }}
+		</div>
+	</div>
+	<div class="mobile-info-msg">
+		{{ txt__actions_front_mobile_info | safe }}
+	</div>
+</div>
+<!-- END - Actions -->

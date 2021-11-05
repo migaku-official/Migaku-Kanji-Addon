@@ -10,6 +10,7 @@ from . import util
 from . import fonts
 from . import config
 from .card_type import CardType
+from .version import KANJI_FORMS_URL
 
 
 
@@ -199,6 +200,23 @@ class LookupWindow(QDialog):
         elif args[0] == 'search_dict':
             word = args[1]
             util.search_dict(word)
+        elif args[0] == 'suggest_change':
+            character = args[1]
+
+            key_sequence = QKeySequence(Qt.CTRL + Qt.Key_F).toString(QKeySequence.NativeText)
+
+            r = QMessageBox.question(aqt.mw,
+                                     'Migaku Kanji',
+                                    F'Do you want to suggest a change to the data for {character}?\n\n'
+                                    F'On the sheet that will open, search for the data you want to change using {key_sequence}. '
+                                     'Right click the cell you want to suggest a change for, then select "Comment" and enter the data you suggest and optionally the reason on why the data should be changed. '
+                                     'Finally confirm your comment.\n\n'
+                                    F'Your clipboard will also be set to {character}.\n\n'
+                                     'Thank you!')
+            if r == QMessageBox.Yes:
+                aqt.mw.app.clipboard().setText(character)
+                aqt.utils.openLink(KANJI_FORMS_URL)
+            return
         else:
             print('Unhandled bridge command:', args)
 

@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.11.0
+- @version v0.12.4
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -68,7 +68,7 @@ START - Migaku markup
 				<!-- END - User data -->
 
 				<!-- START - Linked words -->
-				<div class="linked-words__container">
+				<div class="linked-words__container results-container">
 					<div class="title-tooltip__container">
 						<h2 class="linked-words__title title-tooltip__title">
 							Vocab
@@ -192,7 +192,7 @@ START - Migaku markup
 							<br />
 							Primitive tooltip info can still be viewed by tapping.
 						</div>
-						<div class="primitives-and-radicals__block">
+						<div class="primitives-and-radicals__block results-container">
 							<div class="title-tooltip__container">
 								<h2 class="primitives-and-radicals__title title-tooltip__title">
 									Radicals
@@ -233,9 +233,9 @@ START - Migaku markup
 				<!-- END - Primitives and radicals -->
 
 				<!-- START - Actions lookup -->
-				<div class="lookup-actions__container">
-					<h2 class="lookup-actions__title -has-separator">Cards</h2>
-					<div class="lookup-actions__buttons">
+				<div class="actions-lookup__container">
+					<h2 class="actions-lookup__title -has-separator">Cards</h2>
+					<div class="actions-lookup__buttons">
 						<button
 							onclick="recognition_card_click(event);"
 							id="recognition_card_btn"
@@ -454,15 +454,23 @@ START - Migaku markup
 			<!-- END - Stories -->
 
 			<!-- START - Actions -->
-			<div class="actions__container">
-				<h2 class="actions__title -has-separator">Actions</h2>
-				<div class="actions__buttons">
-					<div class="actions__set-custom">
+			<div class="actions-back__container">
+				<h2 class="actions-back__title -has-separator">Actions</h2>
+				<div class="actions-back__buttons">
+					<div class="actions-back__primary">
 						<button onclick="set_custom_keyword();" class="button -wide">
 							Set Custom Keyword
 						</button>
 						<button onclick="set_custom_story();" class="button -wide">
 							Set Custom Story
+						</button>
+					</div>
+					<div class="actions-back__secondary">
+						<button
+							onclick="pycmd('suggest_change-' + data.character)"
+							class="button -secondary -wide"
+						>
+							Suggest Change
 						</button>
 					</div>
 				</div>
@@ -487,7 +495,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.11.0
+- @version v0.12.4
 
 Changes:
 - state object and variables
@@ -8110,9 +8118,9 @@ Changes:
 							didAct = true;
 
 							if (shouldErase) {
-								self.erase(stroke_num);
+								dmak.erase(stroke_num);
 							} else if (shouldDraw) {
-								self.render(stroke_num, true);
+								dmak.render(stroke_num, true);
 							}
 						}
 
@@ -8318,6 +8326,14 @@ Changes:
 			}
 
 			var hasLinkedWords = word_pts.length > 0;
+			// Only show contained info messages if there are results returned
+			var _$containedLinkedWordsInfoMsgs = $('#words')
+				.parents('.results-container')
+				.find('.faded-info-msg');
+			_$containedLinkedWordsInfoMsgs.each(function (idx, msg) {
+				$(msg).toggle(hasLinkedWords);
+			});
+
 			$('#words').empty();
 			$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
 
@@ -8341,6 +8357,15 @@ Changes:
 				settings.hide_readings_hover,
 			);
 			$('.word').click(word_click);
+
+			var hasRadicals = data.radicals.length > 0;
+			// Only show contained info messages if there are results returned
+			var _$containedRadicalInfoMsgs = $('#radicals')
+				.parents('.results-container')
+				.find('.faded-info-msg');
+			_$containedRadicalInfoMsgs.each(function (idx, msg) {
+				$(msg).toggle(hasRadicals);
+			});
 
 			$('#radicals').empty();
 			$('#radicals').html(

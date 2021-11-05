@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.11.0
+- @version v0.12.4
 ============================================== */
 
 .faded-info-msg {
@@ -379,6 +379,14 @@ button.primitive,
 	}
 }
 
+.button-container .button:first-child {
+	margin-left: 0;
+}
+
+.button-container .button:last-child {
+	margin-right: 0;
+}
+
 .primitiveDetails,
 .kanji-addon__hover-tooltip {
 	background: #2880ff;
@@ -712,22 +720,21 @@ body.dark {
 @media only screen and (min-width: 36.25em) {
 	.layout__aside {
 		max-width: 220px;
-		min-width: 190px;
-		width: 100%;
+		min-width: 220px;
 	}
 }
 
 @media only screen and (min-width: 48em) {
 	.layout__aside {
 		max-width: 300px;
-		min-width: 250px;
+		min-width: 300px;
 	}
 }
 
 @media only screen and (min-width: 64em) {
 	.layout__aside {
 		max-width: 350px;
-		min-width: 280px;
+		min-width: 350px;
 	}
 }
 
@@ -1947,56 +1954,6 @@ button.radical {
 	padding: 5px 10px;
 }
 
-.mobile .lookup-actions__title {
-	color: #71757f;
-	font-size: 14px;
-	font-weight: 300;
-}
-
-.ankidroid_dark_mode .mobile .lookup-actions__title,
-.nightMode .mobile .lookup-actions__title,
-.dark .mobile .lookup-actions__title {
-	color: #afb5c3;
-}
-
-.lookup-actions__buttons {
-	display: flex;
-	flex-direction: column;
-}
-
-@media (min-width: 30em) {
-	.lookup-actions__buttons {
-		flex-direction: row;
-		justify-content: center;
-	}
-}
-
-@media only screen and (min-width: 36.25em) {
-	.lookup-actions__buttons {
-		justify-content: flex-start;
-	}
-}
-
-.mobile .lookup-actions__buttons {
-	display: none;
-}
-
-.lookup-actions__buttons .button {
-	margin-bottom: 20px;
-}
-
-@media (min-width: 30em) {
-	.lookup-actions__buttons .button {
-		margin: 0 10px;
-	}
-}
-
-@media only screen and (min-width: 36.25em) {
-	.lookup-actions__buttons .button:first-of-type {
-		margin-left: 0;
-	}
-}
-
 .stories__container {
 	text-align: left;
 }
@@ -2015,7 +1972,7 @@ button.radical {
 	margin-bottom: 0;
 }
 
-.actions__container {
+.actions-back__container {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -2023,16 +1980,99 @@ button.radical {
 }
 
 @media (min-width: 30em) {
-	.actions__container {
+	.actions-back__container {
 		align-items: flex-start;
 	}
 }
 
-@media only screen and (min-width: 30em) and (max-width: 36.1875em) {
-	.actions__title {
-		text-align: center;
-		width: 100%;
+.mobile .actions-back__title {
+	color: #71757f;
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.ankidroid_dark_mode .mobile .actions-back__title,
+.nightMode .mobile .actions-back__title,
+.dark .mobile .actions-back__title {
+	color: #afb5c3;
+}
+
+.actions-back__buttons {
+	width: 100%;
+}
+
+.mobile .actions-back__buttons {
+	display: none;
+}
+
+.actions-back__buttons .button,
+.actions-back__buttons .button-container {
+	margin: 0 0 10px;
+	width: 100%;
+}
+
+@media (min-width: 30em) {
+	.actions-back__buttons .button,
+	.actions-back__buttons .button-container {
+		margin: 0 5px 10px;
 	}
+}
+
+.actions-back__primary,
+.actions-back__secondary {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.actions-back__primary > .button:first-child,
+.actions-back__primary > .button-container:first-child,
+.actions-back__secondary > .button:first-child,
+.actions-back__secondary > .button-container:first-child {
+	margin-left: 0;
+}
+
+@media (min-width: 30em) {
+	.actions-back__primary,
+	.actions-back__secondary {
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+}
+
+.actions-back__mark-known-delete {
+	display: flex;
+	flex-direction: column;
+}
+
+.actions-back__mark-known-delete .button {
+	margin: 0 0 5px;
+}
+
+.actions-back__mark-known-delete .faded-info-msg {
+	text-align: center;
+}
+
+.actions-front__container {
+	align-items: center;
+	bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	left: 50%;
+	padding: 0 10px;
+	position: absolute;
+	text-align: center;
+	transform: translateX(-50%);
+	width: 100%;
+}
+
+.actions-front__mark-known-delete {
+	margin-bottom: 10px;
+}
+
+.mobile .actions-front__buttons {
+	display: none;
 }
 
 .mobile .actions__title {
@@ -2051,45 +2091,47 @@ button.radical {
 	width: 100%;
 }
 
-.mobile .actions__buttons {
-	display: none;
+.ankidroid_dark_mode .mobile .actions-lookup__title,
+.nightMode .mobile .actions-lookup__title,
+.dark .mobile .actions-lookup__title {
+	color: #afb5c3;
 }
 
-.actions__buttons .button {
-	margin: 0 0 10px;
-}
-
-@media (min-width: 30em) {
-	.actions__buttons .button {
-		margin: 0 5px 10px;
-	}
-}
-
-@media only screen and (min-width: 36.25em) {
-	.actions__buttons .button:first-of-type {
-		margin-left: 0;
-	}
-}
-
-.actions__set-custom,
-.actions__mark-known {
+.actions-lookup__buttons {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 }
 
 @media (min-width: 30em) {
-	.actions__set-custom,
-	.actions__mark-known {
+	.actions-lookup__buttons {
 		flex-direction: row;
 		justify-content: center;
 	}
 }
 
 @media only screen and (min-width: 36.25em) {
-	.actions__set-custom,
-	.actions__mark-known {
+	.actions-lookup__buttons {
 		justify-content: flex-start;
+	}
+}
+
+.mobile .actions-lookup__buttons {
+	display: none;
+}
+
+.actions-lookup__buttons .button {
+	margin-bottom: 20px;
+}
+
+@media (min-width: 30em) {
+	.actions-lookup__buttons .button {
+		margin: 0 10px;
+	}
+}
+
+@media only screen and (min-width: 36.25em) {
+	.actions-lookup__buttons .button:first-of-type {
+		margin-left: 0;
 	}
 }
 
