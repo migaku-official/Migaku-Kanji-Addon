@@ -272,9 +272,9 @@ class KanjiDB:
                 if entry_deck != 'All':
                     find_filter.append(F'"deck:{entry_deck}"')
                 if check_new:
-                    find_filter.append('(is:new)')
+                    find_filter.append('(is:new AND -is:suspended)')
                 else:
-                    find_filter.append('(is:learn OR is:review)')
+                    find_filter.append('((is:learn OR is:review) AND -is:suspended)')
 
                 entry_note_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
 
