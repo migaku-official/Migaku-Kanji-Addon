@@ -17,11 +17,6 @@ START - Actions */
 	}
 
 	&__title {
-		@include bp.get(xs, xs) {
-			text-align: center;
-			width: 100%;
-		}
-
 		// Faded-look to communicate inoperation
 		@include mobile-device {
 			@include faded-info-msg;
@@ -61,10 +56,6 @@ START - Actions */
 
 		@include bp.get(xs) {
 			flex-direction: row;
-			justify-content: center;
-		}
-
-		@include bp.get(s) {
 			justify-content: flex-start;
 		}
 	}
@@ -78,7 +69,6 @@ START - Actions */
 		}
 
 		.faded-info-msg {
-			// font-weight: $faded-msg-font-weight;
 			text-align: center;
 		}
 	}
