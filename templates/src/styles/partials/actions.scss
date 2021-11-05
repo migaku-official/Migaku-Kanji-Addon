@@ -79,11 +79,19 @@ START - Actions */
 		bottom: 20px;
 		display: flex;
 		flex-direction: column;
+		text-align: center;
 		width: 100%;
 	}
 
-	&__buttons {
+	&__mark-known {
 		margin-bottom: 10px;
+	}
+
+	&__buttons {
+		// Action buttons dont work on mobile
+		@include mobile-device {
+			display: none;
+		}
 	}
 }
 
