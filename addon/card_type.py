@@ -47,7 +47,7 @@ class CardTypeData(metaclass=CardTypeDataMeta):
         'words_max': 4,
         'only_custom_keywords': False,
         'only_custom_stories': False,
-        'hide_default_words': False,
+        'hide_default_words': True,
         'hide_keywords': False,
         'stroke_order_autoplay': False,
         'stroke_order_show_numbers': False,

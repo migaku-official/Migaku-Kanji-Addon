@@ -5,8 +5,48 @@ from aqt.qt import *
 
 from . import util
 from .lookup_window import LookupWindow
-from .version import KANJI_FORMS_URL
+from .kanji_forms_url import KANJI_FORMS_URL
 from .card_type import CardType
+
+
+
+class CustomKeywordsDialog(QDialog):
+
+    def __init__(self, character, parent=None):
+        super().__init__(parent)
+
+        self.character = character
+
+        old_keyword, old_primitive_keyword = aqt.mw.migaku_kanji_db.get_character_usr_keyowrd(character)
+        
+        self.setWindowTitle('Migaku Kanji - Set custom keyword')
+        lyt = QVBoxLayout()
+        self.setLayout(lyt)
+
+        lyt.addWidget(QLabel(F'Set custom keyword for {character}:'))
+        self.keyword_edit = QLineEdit(old_keyword)
+        lyt.addWidget(self.keyword_edit)
+
+        lyt.addWidget(QLabel(F'Set custom primitive keyword for {character}:'))
+        self.primitive_keyword_edit = QLineEdit(old_primitive_keyword)
+        lyt.addWidget(self.primitive_keyword_edit)
+
+        btns = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        btns.accepted.connect(self.accept)
+        btns.rejected.connect(self.reject)
+        lyt.addWidget(btns)
+
+        self.resize(475, self.sizeHint().height())
+
+    
+    def accept(self):
+        aqt.mw.migaku_kanji_db.set_character_usr_keyowrd(
+            self.character,
+            self.keyword_edit.text(),
+            self.primitive_keyword_edit.text()
+        )
+        super().accept()
+
 
 
 def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, reviewer: Optional[aqt.reviewer.Reviewer] = None):
@@ -59,18 +99,11 @@ def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, revi
 
     elif args[0] == 'custom_keyword':
         character = args[1]
-        old_keyword = arg_from(2)
-        new_keyowrd, r = QInputDialog.getText(
-            parent,
-            'Migaku Kanji - Set custom keyword',
-            F'Set custom keyword for {character}:',
-            text=old_keyword
-        )
-        if r:
-            if not lookup_window:
-                aqt.mw.requireReset()
-            aqt.mw.migaku_kanji_db.set_character_usr_keyowrd(character, new_keyowrd)
-            if not lookup_window:
+        if reviewer:
+            aqt.mw.requireReset()
+        r = CustomKeywordsDialog(character, parent).exec()
+        if r == QDialog.Accepted:
+            if reviewer:
                 aqt.mw.maybeReset()
             else:
                 lookup_window.refresh()

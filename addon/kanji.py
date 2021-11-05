@@ -65,17 +65,11 @@ class KanjiDB:
             ')'
         )
 
-        try:
-            self.crs.execute(
-                'ALTER TABLE usr.words ADD COLUMN is_new INTEGER DEFAULT 0'
-            )
-        except sqlite3.OperationalError:
-            pass
-
         self.crs.execute(
             'CREATE TABLE IF NOT EXISTS usr.keywords('
                 'character TEXT NOT NULL PRIMARY KEY,'
-                'usr_keyword TEXT NOT NULL'
+                'usr_keyword TEXT DEFAULT "",'
+                'usr_primitive_keyword TEXT DEFAULT ""'
             ')'
         )
 
@@ -87,6 +81,24 @@ class KanjiDB:
         )
 
         self.con.commit()
+
+        # Updates
+
+        try:
+            self.crs.execute(
+                'ALTER TABLE usr.words ADD COLUMN is_new INTEGER DEFAULT 0'
+            )
+            self.con.commit()
+        except sqlite3.OperationalError:
+            pass
+
+        try:
+            self.crs.execute(
+                'ALTER TABLE usr.keywords ADD COLUMN usr_primitive_keyword TEXT DEFAULT ""'
+            )
+            self.con.commit()
+        except sqlite3.OperationalError:
+            pass
 
 
     # Close db
@@ -260,9 +272,9 @@ class KanjiDB:
                 if entry_deck != 'All':
                     find_filter.append(F'"deck:{entry_deck}"')
                 if check_new:
-                    find_filter.append('(is:new)')
+                    find_filter.append('(is:new AND -is:suspended)')
                 else:
-                    find_filter.append('(is:learn OR is:review)')
+                    find_filter.append('((is:learn OR is:review) AND -is:suspended)')
 
                 entry_note_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
 
@@ -482,17 +494,28 @@ class KanjiDB:
         return word_list
 
 
-    def set_character_usr_keyowrd(self, character, keyowrd):
+    def set_character_usr_keyowrd(self, character, keyword, primitive_keyword):
 
         self.crs.execute(
-            'INSERT OR REPLACE INTO usr.keywords (character,usr_keyword) VALUES (?,?)',
-            (character, keyowrd)
+            'INSERT OR REPLACE INTO usr.keywords (character,usr_keyword,usr_primitive_keyword) VALUES (?,?,?)',
+            (character, keyword, primitive_keyword)
         )
         self.con.commit()
 
         self.refresh_notes_for_character(character)
 
+    
+    def get_character_usr_keyowrd(self, character):
 
+        self.crs.execute('SELECT usr_keyword, usr_primitive_keyword FROM usr.keywords WHERE character=?', (character,))
+        r = self.crs.fetchone()
+        if r:
+            return (r[0], r[1])
+        else:
+            return ('', '')
+
+
+    # TODO: Also allow setting primitive keywords
     def mass_set_character_usr_keyowrd(self, character_keywords):
 
         self.crs.executemany(
@@ -694,6 +717,7 @@ class KanjiDB:
             ('words_default', json.loads, None),
             ('koohi_stories', json.loads, None),
             ('usr_keyword', _, 'usr.keywords.usr_keyword'),
+            ('usr_primitive_keyword', _, 'usr.keywords.usr_primitive_keyword'),
             ('usr_story', _, 'usr.stories.usr_story'),
         ]
 

@@ -37,8 +37,16 @@
     const we = data.words[i];
     const w = we[0];
     const r = we[1];
+    const n = we[3];
 
-    word_front_pts.push('<div class="word_front">' + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
+    let front_classes = ['word_front'];
+    if (n) {
+      if (settings.hide_default_words)
+        continue;
+      front_classes.push('word_front_default');
+    }
+
+    word_front_pts.push(`<div class="${front_classes.join(' ')}">` + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
   }
   for (var i = 0; i < data.words_default.length; i++)
   {
@@ -70,6 +78,8 @@
       keywords.push(data.heisig_keyword5);
     if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
       keywords.push(data.heisig_keyword6);
+    if (data.usr_primitive_keyword)
+			keywords.push('<span class="primitive_keyword">' + data.usr_primitive_keyword + '</span>');
     for (const pk of data.primitive_keywords)
     {
       if (!keywords.includes(pk))
