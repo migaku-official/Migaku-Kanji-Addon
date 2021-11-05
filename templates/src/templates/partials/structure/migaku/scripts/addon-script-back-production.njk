@@ -277,6 +277,12 @@
 		}
 
 		var hasLinkedWords = word_pts.length > 0;
+		// Only show contained info messages if there are results returned
+		var _$containedLinkedWordsInfoMsgs = $('#words').parents('.results-container').find('.faded-info-msg')
+		_$containedLinkedWordsInfoMsgs.each(function(idx, msg) {
+			$(msg).toggle(hasLinkedWords);
+		});
+
 		$('#words').empty();
 		$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
 
@@ -286,6 +292,13 @@
 
 		if (settings.hide_keywords && word_front_pts.length > 0)
 			document.getElementById('keywords_front').style.display = 'none';
+
+		var hasRadicals = data.radicals.length > 0;
+		// Only show contained info messages if there are results returned
+		var _$containedRadicalInfoMsgs = $('#radicals').parents('.results-container').find('.faded-info-msg')
+		_$containedRadicalInfoMsgs.each(function(idx, msg) {
+			$(msg).toggle(hasRadicals);
+		});
 
 		$('#radicals').empty();
 		$('#radicals').html(
