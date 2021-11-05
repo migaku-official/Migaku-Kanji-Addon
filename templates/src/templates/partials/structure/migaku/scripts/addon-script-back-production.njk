@@ -219,14 +219,24 @@
 
 		$('.primitive').click(primitive_click);
 
-		var max_words = 20;
+		const primitive_of_max = 10;
+		if (primitive_of_pts.length > primitive_of_max) {
+			$(`#primitive_of .primitive:nth-child(n+${primitive_of_max+1})`).hide();
+
+			const _$showMoreBtn = document.createElement('button');
+			_$showMoreBtn.innerHTML = `more<br/>(${primitive_of_pts.length-primitive_of_max})`;
+			_$showMoreBtn.addEventListener('click', function() {
+				_$showMoreBtn.remove();
+				$(`#primitive_of .primitive:nth-child(n+${primitive_of_max+1})`).show();
+			});
+			$('#primitive_of').append(_$showMoreBtn);
+		}
+
 		var max_words_front = settings.words_max;
 		var word_pts = [];
 		var word_front_pts = [];
 
 		for (var i = 0; i < data.words.length; i++) {
-			if (word_pts.length >= max_words) break;
-
 			const we = data.words[i];
 			const w = we[0];
 			const r = we[1];
@@ -248,8 +258,6 @@
 				);
 		}
 		for (var i = 0; i < data.words_default.length; i++) {
-			if (word_pts.length >= max_words) break;
-
 			const we = data.words_default[i];
 			const w = we[0];
 			const r = we[1];
@@ -279,6 +287,19 @@
 		var hasLinkedWords = word_pts.length > 0;
 		$('#words').empty();
 		$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
+
+		const words_max = 10;
+		if (word_pts.length > words_max) {
+			$(`#words .word:nth-child(n+${words_max+1})`).hide();
+
+			const _$showMoreBtn = document.createElement('button');
+			_$showMoreBtn.innerHTML = `Show<br/>more<br/>(${word_pts.length-words_max})`;
+			_$showMoreBtn.addEventListener('click', function() {
+				_$showMoreBtn.remove();
+				$(`#words .word:nth-child(n+${words_max+1})`).show();
+			});
+			$('#words').append(_$showMoreBtn);
+		}
 
 		$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 		$('#words_front').html(word_front_pts.join(''));
