@@ -395,9 +395,16 @@ START - Migaku markup
 		const we = data.words[i];
 		const w = we[0];
 		const r = we[1];
+		const n = we[3];
+
+		let front_classes = ['word_front'];
+		if (n) {
+			if (settings.hide_default_words) continue;
+			front_classes.push('word_front_default');
+		}
 
 		word_front_pts.push(
-			'<div class="word_front">' +
+			`<div class="${front_classes.join(' ')}">` +
 				JapaneseUtil.distributeFuriganaHTML(w, r) +
 				'</div>',
 		);

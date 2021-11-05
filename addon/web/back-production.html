@@ -8224,8 +8224,10 @@ Changes:
 		const n = we[3];
 
 		let classes = ['word'];
+		let front_classes = ['word_front'];
 		if (n) {
 			classes.push('word_new');
+			front_classes.push('word_front_default');
 		}
 
 		word_pts.push(
@@ -8237,9 +8239,9 @@ Changes:
 				JapaneseUtil.distributeFuriganaHTML(w, r) +
 				'</button>',
 		);
-		if (word_front_pts.length < max_words_front)
+		if (!settings.hide_default_words && word_front_pts.length < max_words_front)
 			word_front_pts.push(
-				'<div class="word_front">' +
+				`<div class="${front_classes.join(' ')}">` +
 					JapaneseUtil.distributeFuriganaHTML(w, r) +
 					'</div>',
 			);
