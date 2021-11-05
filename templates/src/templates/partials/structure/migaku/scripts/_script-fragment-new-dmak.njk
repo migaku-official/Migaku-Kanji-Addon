@@ -17,7 +17,7 @@ dmak = new Dmak(
 
 		// Grid is manually drawn in CSS instead
 		'grid': { show: false },
-		
+
 		{% if not is_lookup and not is_demo %}
 		// Preload SVG data from card fields
 		{% raw %}'preload_svgs': { '{{Character}}': `{{StrokeOrder}}` },{% endraw %}
@@ -129,9 +129,9 @@ dmak = new Dmak(
 					didAct = true;
 
 					if (shouldErase) {
-						self.erase(stroke_num);
+						dmak.erase(stroke_num);
 					} else if (shouldDraw) {
-						self.render(stroke_num, true);
+						dmak.render(stroke_num, true);
 					}
 				}
 
