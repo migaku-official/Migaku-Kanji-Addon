@@ -246,10 +246,6 @@ class SettingsWindow(QDialog):
         self.words_recognized = WordRecognizedSelectorWidget(no_margin=True)
         registerd_fields_layout.addWidget(self.words_recognized)
 
-        self.only_seen_words_box = QCheckBox('Only use words from already seen cards as example words (Beta)')
-        self.only_seen_words_box.setChecked(config.get('only_seen_words', False))
-        registerd_fields_layout.addWidget(self.only_seen_words_box)
-
         tabs.addTab(registerd_fields_widget, 'Registered Fields')
 
         for ct in CardType:
@@ -336,7 +332,6 @@ class SettingsWindow(QDialog):
 
     def closeEvent(self, event):
         self.words_recognized.save_to_config()
-        config.set('only_seen_words', self.only_seen_words_box.isChecked())
         for ct_widget in self.card_type_widgets:
             ct_widget.save_to_config()
         config.set('lookup_stroke_order_autoplay', self.lookup_stroke_order_autoplay_box.isChecked())

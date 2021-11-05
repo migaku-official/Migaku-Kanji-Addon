@@ -393,34 +393,25 @@ START - Migaku markup
 
 	$('.keyword-kanji').html(data.character);
 
-	var max_words_front = settings.words_max;
-	var max_words = max_words_front;
-	var word_pts = [];
+	var max_words = settings.words_max;
 	var word_front_pts = [];
 
 	for (var i = 0; i < data.words.length; i++) {
-		if (word_pts.length >= max_words) break;
+		if (word_front_pts.length >= max_words) break;
 
 		const we = data.words[i];
 		const w = we[0];
 		const r = we[1];
 
-		word_pts.push(
-			'<button class="word" data-word-idx="' +
-				i +
-				'">' +
+		word_front_pts.push(
+			'<div class="word_front">' +
 				JapaneseUtil.distributeFuriganaHTML(w, r) +
-				'</button>',
+				'</div>',
 		);
-		if (word_front_pts.length < max_words_front)
-			word_front_pts.push(
-				'<div class="word_front">' +
-					JapaneseUtil.distributeFuriganaHTML(w, r) +
-					'</div>',
-			);
 	}
 	for (var i = 0; i < data.words_default.length; i++) {
-		if (word_pts.length >= max_words) break;
+		if (word_front_pts.length >= max_words || settings.hide_default_words)
+			break;
 
 		const we = data.words_default[i];
 		const w = we[0];
@@ -433,21 +424,12 @@ START - Migaku markup
 		)
 			continue;
 
-		word_pts.push(
-			'<button class="word word_default">' +
+		word_front_pts.push(
+			'<div class="word_front word_front_default">' +
 				JapaneseUtil.distributeFuriganaHTML(w, r) +
-				'</button>',
+				'</div>',
 		);
-		if (!settings.hide_default_words && word_front_pts.length < max_words_front)
-			word_front_pts.push(
-				'<div class="word_front word_front_default">' +
-					JapaneseUtil.distributeFuriganaHTML(w, r) +
-					'</div>',
-			);
 	}
-	$('.KanjiLookup-words').toggle(word_pts.length > 0);
-	$('#words').html(word_pts.join(''));
-	$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 	$('#words_front').html(word_front_pts.join(''));
 
 	if (!settings.show_readings_front) $('rt').css({ visibility: 'hidden' });

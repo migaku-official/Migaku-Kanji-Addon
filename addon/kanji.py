@@ -60,9 +60,17 @@ class KanjiDB:
             'CREATE TABLE IF NOT EXISTS usr.words('
                 'note_id INTEGER NOT NULL,'
                 'word TEXT NOT NULL,'
-                'reading TEXT DEFAULT ""'
+                'reading TEXT DEFAULT "",'
+                'is_new INTEGER DEFAULT 0'
             ')'
         )
+
+        try:
+            self.crs.execute(
+                'ALTER TABLE usr.words ADD COLUMN is_new INTEGER DEFAULT 0'
+            )
+        except sqlite3.OperationalError:
+            pass
 
         self.crs.execute(
             'CREATE TABLE IF NOT EXISTS usr.keywords('
@@ -239,48 +247,63 @@ class KanjiDB:
 
         note_id_words = set()
 
-        for entry in recognized_types:
-            entry_note = entry['note']
-            entry_card = entry['card']
-            entry_deck = entry['deck']
-            entry_field = entry['field']
+        note_ids_not_new = set()
 
-            find_filter = [F'"note:{entry_note}"', F'"card:{entry_card+1}"']
-            if entry_deck != 'All':
-                find_filter.append(F'"deck:{entry_deck}"')
-            if config.get('only_seen_words'):
-                find_filter.append('(is:learn OR is:review)')
+        for check_new in [False, True]:
+            for entry in recognized_types:
+                entry_note = entry['note']
+                entry_card = entry['card']
+                entry_deck = entry['deck']
+                entry_field = entry['field']
 
-            entry_note_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
+                find_filter = [F'"note:{entry_note}"', F'"card:{entry_card+1}"']
+                if entry_deck != 'All':
+                    find_filter.append(F'"deck:{entry_deck}"')
+                if check_new:
+                    find_filter.append('(is:new)')
+                else:
+                    find_filter.append('(is:learn OR is:review)')
 
-            for note_id in entry_note_ids:
-                note = aqt.mw.col.getNote(note_id)
-                field_value = note[entry_field]
-                words = text_parser.get_cjk_words(field_value, reading=True)
+                entry_note_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
 
-                for word in words:
-                    note_id_words.add(
-                        (note_id, *word)
-                    )
+                for note_id in entry_note_ids:
+                    if not check_new:
+                        note_ids_not_new.add(note_id)
+
+                    note = aqt.mw.col.getNote(note_id)
+                    field_value = note[entry_field]
+                    words = text_parser.get_cjk_words(field_value, reading=True)
+
+                    for word in words:
+                        note_id_words.add(
+                            (note_id, *word)
+                        )
 
         self.crs.execute('DELETE FROM usr.words')
 
+        insert_note_id_words = set()
+        for (note_id,word,reading) in note_id_words:
+            is_new = note_id not in note_ids_not_new
+            insert_note_id_words.add(
+                (note_id, word, reading, is_new)
+            )
+
         # Insert new mapping
         self.crs.executemany(
-            'INSERT INTO usr.words (note_id,word,reading) VALUES (?,?,?)',
-            note_id_words
+            'INSERT INTO usr.words (note_id,word,reading,is_new) VALUES (?,?,?,?)',
+            insert_note_id_words
         )
 
         self.con.commit()
 
 
 
-    def on_note_update(self, note_id, deck_id):
+    def on_note_update(self, note_id, deck_id, is_new=False):
 
         try:
             note = aqt.mw.col.getNote(note_id)
         except Exception:
-            # Todo properly check if this is related to card import/export instead of this mess.
+            # TODO: properly check if this is related to card import/export instead of this mess.
             return
 
         # Could allow more features if Migaku JA isn't installed but too lazy rn
@@ -318,8 +341,8 @@ class KanjiDB:
             words.update(text_parser.get_cjk_words(field_value, reading=True))
 
         self.crs.executemany(
-            'INSERT INTO usr.words (note_id,word,reading) VALUES (?,?,?)',
-            [(note_id, w, r) for (w,r) in words]
+            'INSERT INTO usr.words (note_id,word,reading,is_new) VALUES (?,?,?,?)',
+            [(note_id, w, r, is_new) for (w,r) in words]
         )
 
         # Get unique kanji
@@ -352,24 +375,25 @@ class KanjiDB:
                                 self.refresh_note(note, do_flush=True)
 
         # Create new cards
-        new_kanji_for_msg = OrderedDict()
+        if not is_new:
+            new_kanji_for_msg = OrderedDict()
 
-        for ct in CardType:
-            if not ct.auto_card_creation:
-                continue
+            for ct in CardType:
+                if not ct.auto_card_creation:
+                    continue
 
-            self.recalc_user_cards(ct)
-            new_chars = self.new_characters(ct, kanji)
+                self.recalc_user_cards(ct)
+                new_chars = self.new_characters(ct, kanji)
 
-            if len(new_chars):
-                if ct.auto_card_creation_msg:
-                    new_kanji_for_msg[ct] = new_chars
-                else:
-                    self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
+                if len(new_chars):
+                    if ct.auto_card_creation_msg:
+                        new_kanji_for_msg[ct] = new_chars
+                    else:
+                        self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
 
-        if len(new_kanji_for_msg):
-            dlg = KanjiConfirmDialog(new_kanji_for_msg, aqt.mw)
-            dlg.exec_()
+            if len(new_kanji_for_msg):
+                dlg = KanjiConfirmDialog(new_kanji_for_msg, aqt.mw)
+                dlg.exec_()
 
 
     def refresh_learn_ahead(self):
@@ -432,21 +456,28 @@ class KanjiDB:
 
 
 
-    # returns a list of tuples: (word, reading, note id list)
-    # sorted by amount of note ids, sorted by amount of note ids
+    # Returns a list of tuples: (word, reading, note id list, is_new)
+    # Seen ones first, then sorted by amount of note ids.
     def get_character_words(self, character):
         character_wildcard = F'%{character}%'
-        self.crs.execute('SELECT note_id, word, reading FROM usr.words WHERE word LIKE (?)', (character_wildcard,))
+        self.crs.execute('SELECT note_id, word, reading, is_new FROM usr.words WHERE word LIKE (?)', (character_wildcard,))
 
         r = self.crs.fetchall()
         
         words_dict = defaultdict(list)
+        words_not_new = set()
 
-        for note_id, word, reading in r:
+        for note_id, word, reading, is_new in r:
             words_dict[(word, reading)].append(note_id)
+            if not is_new:
+                words_not_new.add((word, reading))
 
-        word_list = [(word, reading, note_ids) for (word, reading), note_ids in words_dict.items()]
-        word_list.sort(key=lambda wn: len(wn[2]), reverse=True)
+        word_list = []
+        for (word, reading), note_ids in words_dict.items():
+            is_new = (word, reading) not in words_not_new
+            word_list.append((word, reading, note_ids, is_new))
+
+        word_list.sort(key=lambda entry: (not entry[3], len(entry[2])), reverse=True)
 
         return word_list
 
