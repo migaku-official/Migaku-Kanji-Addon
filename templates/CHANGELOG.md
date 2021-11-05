@@ -1,3 +1,7 @@
+## 0.12.3
+
+- [FIX]: Stroke order slider now working in lookup browser after subsequent lookups.
+
 ## 0.12.2
 
 - [FIX]: Added `delete_mark` functions to front templates for recognition/production, so front delete action works.
