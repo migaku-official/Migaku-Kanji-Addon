@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.3
+- @version v0.12.4
 ============================================== */
 
 .faded-info-msg {
@@ -719,22 +719,21 @@ body.dark {
 @media only screen and (min-width: 36.25em) {
 	.layout__aside {
 		max-width: 220px;
-		min-width: 190px;
-		width: 100%;
+		min-width: 220px;
 	}
 }
 
 @media only screen and (min-width: 48em) {
 	.layout__aside {
 		max-width: 300px;
-		min-width: 250px;
+		min-width: 300px;
 	}
 }
 
 @media only screen and (min-width: 64em) {
 	.layout__aside {
 		max-width: 350px;
-		min-width: 280px;
+		min-width: 350px;
 	}
 }
 

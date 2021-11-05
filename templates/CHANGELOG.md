@@ -1,3 +1,8 @@
+## 0.12.4
+
+- [STYLE]: Layout aside has a fixed width now instead of min/max size range.
+- [CHORE]: Radicals/linked words that return "(no results)" now also hide their contained info messages to reduce irrelevant visual clutter.
+
 ## 0.12.3
 
 - [FIX]: Stroke order slider now working in lookup browser after subsequent lookups.

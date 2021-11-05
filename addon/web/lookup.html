@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.12.3
+- @version v0.12.4
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -68,7 +68,7 @@ START - Migaku markup
 				<!-- END - User data -->
 
 				<!-- START - Linked words -->
-				<div class="linked-words__container">
+				<div class="linked-words__container results-container">
 					<div class="title-tooltip__container">
 						<h2 class="linked-words__title title-tooltip__title">
 							Vocab
@@ -192,7 +192,7 @@ START - Migaku markup
 							<br />
 							Primitive tooltip info can still be viewed by tapping.
 						</div>
-						<div class="primitives-and-radicals__block">
+						<div class="primitives-and-radicals__block results-container">
 							<div class="title-tooltip__container">
 								<h2 class="primitives-and-radicals__title title-tooltip__title">
 									Radicals
@@ -495,7 +495,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.12.3
+- @version v0.12.4
 
 Changes:
 - state object and variables
@@ -8312,6 +8312,14 @@ Changes:
 			}
 
 			var hasLinkedWords = word_pts.length > 0;
+			// Only show contained info messages if there are results returned
+			var _$containedLinkedWordsInfoMsgs = $('#words')
+				.parents('.results-container')
+				.find('.faded-info-msg');
+			_$containedLinkedWordsInfoMsgs.each(function (idx, msg) {
+				$(msg).toggle(hasLinkedWords);
+			});
+
 			$('#words').empty();
 			$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
 
@@ -8320,6 +8328,15 @@ Changes:
 				settings.hide_readings_hover,
 			);
 			$('.word').click(word_click);
+
+			var hasRadicals = data.radicals.length > 0;
+			// Only show contained info messages if there are results returned
+			var _$containedRadicalInfoMsgs = $('#radicals')
+				.parents('.results-container')
+				.find('.faded-info-msg');
+			_$containedRadicalInfoMsgs.each(function (idx, msg) {
+				$(msg).toggle(hasRadicals);
+			});
 
 			$('#radicals').empty();
 			$('#radicals').html(
