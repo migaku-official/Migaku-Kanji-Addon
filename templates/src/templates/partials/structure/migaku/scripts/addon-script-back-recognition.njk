@@ -220,7 +220,7 @@
 
 	$('.primitive').click(primitive_click);
 
-	const primitive_of_max = 10;
+	var primitive_of_max = 10;
 	if (primitive_of_pts.length > primitive_of_max) {
 		$(`#primitive_of .primitive:nth-child(n+${primitive_of_max+1})`).hide();
 
@@ -241,9 +241,15 @@
 		const we = data.words[i];
 		const w = we[0];
 		const r = we[1];
+		const n = we[3];
+
+		let classes = ['word'];
+		if (n) {
+			classes.push('word_new');
+		}
 
 		word_pts.push(
-			'<button class="word" data-word-kanji="' +
+			`<button class="${classes.join(' ')}" data-word-kanji="` +
 				w +
 				'" data-word-idx="' +
 				i +
@@ -295,7 +301,7 @@
 	$('#words').empty();
 	$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
 
-	const words_max = 10;
+	var words_max = 10;
 	if (word_pts.length > words_max) {
 		$(`#words .word:nth-child(n+${words_max+1})`).hide();
 
