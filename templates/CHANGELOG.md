@@ -1,3 +1,7 @@
+## 0.12.1
+
+- [FIX]: Actually hide front-of-card actions on mobile.
+
 ## 0.12.0
 
 - [FEATURE]: Added front-of-card actions (mark known/delete).
