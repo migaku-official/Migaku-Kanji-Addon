@@ -8187,6 +8187,7 @@ Changes:
 		$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).hide();
 
 		const _$showMoreBtn = document.createElement('button');
+		_$showMoreBtn.classList.add('show-more__button');
 		_$showMoreBtn.innerHTML = `more<br/>(${
 			primitive_of_pts.length - primitive_of_max
 		})`;
@@ -8272,6 +8273,7 @@ Changes:
 		$(`#words .word:nth-child(n+${words_max + 1})`).hide();
 
 		const _$showMoreBtn = document.createElement('button');
+		_$showMoreBtn.classList.add('show-more__button');
 		_$showMoreBtn.innerHTML = `Show<br/>more<br/>(${
 			word_pts.length - words_max
 		})`;
