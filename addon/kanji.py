@@ -197,7 +197,7 @@ class KanjiDB:
 
         character_card_ids = {}
 
-        recognized_types = config.get('card_type_recognized').get(card_type.label, []).copy()
+        recognized_types = config.get('card_type_recognized', {}).get(card_type.label, []).copy()
 
         recognized_types.append(
             { 'deck': 'All', 'note': card_type.model_name, 'card': 0, 'field': 'Character' }

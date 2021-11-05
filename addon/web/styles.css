@@ -2075,20 +2075,10 @@ button.radical {
 	display: none;
 }
 
-.mobile .actions__title {
+.mobile .actions-lookup__title {
 	color: #71757f;
 	font-size: 14px;
 	font-weight: 300;
-}
-
-.ankidroid_dark_mode .mobile .actions__title,
-.nightMode .mobile .actions__title,
-.dark .mobile .actions__title {
-	color: #afb5c3;
-}
-
-.actions__buttons {
-	width: 100%;
 }
 
 .ankidroid_dark_mode .mobile .actions-lookup__title,
