@@ -7777,12 +7777,7 @@ Changes:
 	}
 
 	function set_custom_keyword() {
-		pycmd(
-			'custom_keyword-' +
-				data.character +
-				'-' +
-				(data.usr_keyword ? data.usr_keyword : ''),
-		);
+		pycmd('custom_keyword-' + data.character);
 	}
 
 	function set_custom_story() {
@@ -8102,8 +8097,16 @@ Changes:
 			keywords.push(p_data.heisig_keyword5);
 		if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
 			keywords.push(p_data.heisig_keyword6);
-		for (const pk of p_data.primitive_keywords)
-			keywords.push('<span class="primitive_keyword">' + pk + '</span>');
+		if (p_data.usr_primitive_keyword)
+			keywords.push(
+				'<span class="primitive_keyword">' +
+					p_data.usr_primitive_keyword +
+					'</span>',
+			);
+		for (const pk of p_data.primitive_keywords) {
+			const kw = '<span class="primitive_keyword">' + pk + '</span>';
+			if (!keywords.includes(kw)) keywords.push(kw);
+		}
 		var keywords_txt = keywords.length ? keywords.join(', ') : '-';
 
 		var meanings_txt = p_data.meanings.length
@@ -8147,8 +8150,16 @@ Changes:
 			keywords.push(p_data.heisig_keyword5);
 		if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
 			keywords.push(p_data.heisig_keyword6);
-		for (const pk of p_data.primitive_keywords)
-			keywords.push('<span class="primitive_keyword">' + pk + '</span>');
+		if (p_data.usr_primitive_keyword)
+			keywords.push(
+				'<span class="primitive_keyword">' +
+					p_data.usr_primitive_keyword +
+					'</span>',
+			);
+		for (const pk of p_data.primitive_keywords) {
+			const kw = '<span class="primitive_keyword">' + pk + '</span>';
+			if (!keywords.includes(kw)) keywords.push(kw);
+		}
 		var keywords_txt = keywords.length ? keywords.join(', ') : '-';
 
 		var meanings_txt = p_data.meanings.length
@@ -8316,9 +8327,15 @@ Changes:
 			keywords.push(data.heisig_keyword5);
 		if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
 			keywords.push(data.heisig_keyword6);
+		if (data.usr_primitive_keyword)
+			keywords.push(
+				'<span class="primitive_keyword">' +
+					data.usr_primitive_keyword +
+					'</span>',
+			);
 		for (const pk of data.primitive_keywords) {
-			if (!keywords.includes(pk))
-				keywords.push('<span class="primitive_keyword">' + pk + '</span>');
+			const kw = '<span class="primitive_keyword">' + pk + '</span>';
+			if (!keywords.includes(kw)) keywords.push(kw);
 		}
 	}
 	keywords_txt = keywords.length ? keywords.join(', ') : '-';
