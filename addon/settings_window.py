@@ -54,7 +54,7 @@ class CardTypeSettingsWidget(QWidget):
         self.only_custom_stories_box.setChecked(self.card_type.only_custom_stories)
         lyt.addWidget(self.only_custom_stories_box)
 
-        self.hide_default_words_box = QCheckBox('Only show words from your collection, hide default words')
+        self.hide_default_words_box = QCheckBox('Only show seen words from your collection, hide unseen and default words')
         self.hide_default_words_box.setChecked(self.card_type.hide_default_words)
         lyt.addWidget(self.hide_default_words_box)
 
