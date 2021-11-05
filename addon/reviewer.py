@@ -141,6 +141,7 @@ def reviewer_will_answer_hook(status, reviewer, card: anki.collection.Card):
     # Learning card?
     if card.type == 0:
         check_learn_ahead(card.did)
+        aqt.mw.migaku_kanji_db.on_note_update(card.nid, card.did, is_new=False)
 
     return status
 

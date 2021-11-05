@@ -303,7 +303,7 @@ class KanjiDB:
         try:
             note = aqt.mw.col.getNote(note_id)
         except Exception:
-            # Todo properly check if this is related to card import/export instead of this mess.
+            # TODO: properly check if this is related to card import/export instead of this mess.
             return
 
         # Could allow more features if Migaku JA isn't installed but too lazy rn
@@ -375,24 +375,25 @@ class KanjiDB:
                                 self.refresh_note(note, do_flush=True)
 
         # Create new cards
-        new_kanji_for_msg = OrderedDict()
+        if not is_new:
+            new_kanji_for_msg = OrderedDict()
 
-        for ct in CardType:
-            if not ct.auto_card_creation:
-                continue
+            for ct in CardType:
+                if not ct.auto_card_creation:
+                    continue
 
-            self.recalc_user_cards(ct)
-            new_chars = self.new_characters(ct, kanji)
+                self.recalc_user_cards(ct)
+                new_chars = self.new_characters(ct, kanji)
 
-            if len(new_chars):
-                if ct.auto_card_creation_msg:
-                    new_kanji_for_msg[ct] = new_chars
-                else:
-                    self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
+                if len(new_chars):
+                    if ct.auto_card_creation_msg:
+                        new_kanji_for_msg[ct] = new_chars
+                    else:
+                        self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
 
-        if len(new_kanji_for_msg):
-            dlg = KanjiConfirmDialog(new_kanji_for_msg, aqt.mw)
-            dlg.exec_()
+            if len(new_kanji_for_msg):
+                dlg = KanjiConfirmDialog(new_kanji_for_msg, aqt.mw)
+                dlg.exec_()
 
 
     def refresh_learn_ahead(self):
