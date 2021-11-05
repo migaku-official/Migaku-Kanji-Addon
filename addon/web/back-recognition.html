@@ -7772,12 +7772,7 @@ Changes:
 	}
 
 	function set_custom_keyword() {
-		pycmd(
-			'custom_keyword-' +
-				data.character +
-				'-' +
-				(data.usr_keyword ? data.usr_keyword : ''),
-		);
+		pycmd('custom_keyword-' + data.character);
 	}
 
 	function set_custom_story() {
