@@ -53,6 +53,10 @@ START - Primitives and radicals */
 		@include bp.get(s) {
 			justify-content: flex-start;
 		}
+
+		button {
+			margin: 0 10px 10px 0 !important;
+		}
 	}
 }
 
@@ -87,7 +91,6 @@ button.radical {
 	@include square(40px);
 
 	font-size: 24px !important;
-	margin: 0 10px 10px 0 !important;
 	padding: 0 0 3px !important;
 	position: relative;
 

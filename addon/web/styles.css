@@ -254,6 +254,7 @@ button.primitive,
 .linked-words__examples .word.word_default,
 .linked-words__examples .word.word_new,
 .linked-words__examples .word,
+.show-more__button,
 .button.-secondary,
 .button-container.-secondary,
 .button {
@@ -1511,6 +1512,22 @@ body.dark {
 	}
 }
 
+.show-more__button {
+	background: #cbcbcb;
+	color: #363c4a;
+	padding: 5px 10px;
+	text-align: center;
+}
+
+.show-more__button:hover,
+.show-more__button:focus {
+	background: #b2b2b2;
+}
+
+.show-more__button:active {
+	background: #989898;
+}
+
 @media only screen and (min-width: 36.25em) {
 	.linked-words__title {
 		margin-top: 0;
@@ -1535,11 +1552,14 @@ body.dark {
 	}
 }
 
+.linked-words__examples button {
+	margin: 0 10px 10px 0;
+}
+
 .linked-words__examples .word {
 	background: #2880ff;
 	font-family: inherit;
 	font-size: 24px !important;
-	margin: 0 10px 10px 0;
 	padding: 20px 10px !important;
 	padding: 5px 10px !important;
 }
@@ -1778,6 +1798,10 @@ body.dark {
 	}
 }
 
+.primitives-and-radicals__list button {
+	margin: 0 10px 10px 0 !important;
+}
+
 .primitiveDetails h3 {
 	margin: 0;
 }
@@ -1844,7 +1868,6 @@ button.primitive,
 button.radical {
 	font-size: 24px !important;
 	height: 40px;
-	margin: 0 10px 10px 0 !important;
 	padding: 0 0 3px !important;
 	position: relative;
 	width: 40px;
@@ -2052,10 +2075,20 @@ button.radical {
 	display: none;
 }
 
-.mobile .actions-lookup__title {
+.mobile .actions__title {
 	color: #71757f;
 	font-size: 14px;
 	font-weight: 300;
+}
+
+.ankidroid_dark_mode .mobile .actions__title,
+.nightMode .mobile .actions__title,
+.dark .mobile .actions__title {
+	color: #afb5c3;
+}
+
+.actions__buttons {
+	width: 100%;
 }
 
 .ankidroid_dark_mode .mobile .actions-lookup__title,
