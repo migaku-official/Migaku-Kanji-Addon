@@ -415,7 +415,7 @@ START - Migaku markup
 		<div class="actions-back__container">
 			<h2 class="actions-back__title -has-separator">Actions</h2>
 			<div class="actions-back__buttons">
-				<div class="actions-back__set-custom">
+				<div class="actions-back__primary">
 					<button onclick="set_custom_keyword();" class="button -wide">
 						Set Custom Keyword
 					</button>
@@ -423,10 +423,24 @@ START - Migaku markup
 						Set Custom Story
 					</button>
 				</div>
+				<div class="actions-back__secondary">
+					<div class="actions-back__mark-known-delete button-container -wide">
+						<button
+							onclick="delete_mark(event);"
+							class="button -secondary -wide"
+						>
+							Mark Known And Delete Card
+						</button>
+						<span class="faded-info-msg">
+							Shift + click for instant action.
+						</span>
+					</div>
 
-				<div class="actions-back__mark-known">
-					<button onclick="delete_mark(event);" class="button -secondary -wide">
-						Mark Known And Delete Card
+					<button
+						onclick="pycmd('suggest_change-' + data.character)"
+						class="button -secondary -wide"
+					>
+						Suggest Change
 					</button>
 				</div>
 			</div>

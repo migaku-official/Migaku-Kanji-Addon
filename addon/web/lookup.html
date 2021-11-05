@@ -457,12 +457,20 @@ START - Migaku markup
 			<div class="actions-back__container">
 				<h2 class="actions-back__title -has-separator">Actions</h2>
 				<div class="actions-back__buttons">
-					<div class="actions-back__set-custom">
+					<div class="actions-back__primary">
 						<button onclick="set_custom_keyword();" class="button -wide">
 							Set Custom Keyword
 						</button>
 						<button onclick="set_custom_story();" class="button -wide">
 							Set Custom Story
+						</button>
+					</div>
+					<div class="actions-back__secondary">
+						<button
+							onclick="pycmd('suggest_change-' + data.character)"
+							class="button -secondary -wide"
+						>
+							Suggest Change
 						</button>
 					</div>
 				</div>
