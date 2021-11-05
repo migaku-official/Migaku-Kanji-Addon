@@ -54,7 +54,8 @@ START - Actions */
 		flex-direction: column;
 		width: 100%;
 
-		> .button:first-child {
+		> .button:first-child,
+		> .button-container:first-child {
 			margin-left: 0;
 		}
 
@@ -77,7 +78,7 @@ START - Actions */
 		}
 
 		.faded-info-msg {
-			font-weight: $faded-msg-font-weight;
+			// font-weight: $faded-msg-font-weight;
 			text-align: center;
 		}
 	}
