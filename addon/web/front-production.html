@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.12.1
+- @version v0.12.2
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -370,6 +370,15 @@ START - Migaku markup
 	function wrap_list(list, intro, outro) {
 		if (list.length < 1) return '-';
 		return intro + list.join(outro + intro) + outro;
+	}
+
+	function delete_mark(evt) {
+		pycmd(
+			'delete_mark-' +
+				data.character +
+				'-production-' +
+				(evt.shiftKey ? 'false' : 'true'),
+		);
 	}
 
 	var data_b64 = document.getElementById('migaku_data').innerHTML;

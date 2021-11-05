@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.1
+- @version v0.12.2
 ============================================== */
 
 .faded-info-msg {
@@ -2026,6 +2026,7 @@ button.radical {
 	display: flex;
 	flex-direction: column;
 	left: 50%;
+	padding: 0 10px;
 	position: absolute;
 	text-align: center;
 	transform: translateX(-50%);

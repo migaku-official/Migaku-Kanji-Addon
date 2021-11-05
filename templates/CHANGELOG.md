@@ -1,3 +1,7 @@
+## 0.12.2
+
+- [FIX]: Added `delete_mark` functions to front templates for recognition/production, so front delete action works.
+
 ## 0.12.1
 
 - [FIX]: Actually hide front-of-card actions on mobile.
