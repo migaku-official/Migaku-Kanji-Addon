@@ -9,9 +9,6 @@ from aqt.qt import *
 from . import util
 from . import fonts
 from . import config
-from .card_type import CardType
-from .version import KANJI_FORMS_URL
-
 
 
 key_sequence = QKeySequence('Ctrl+Shift+K')
@@ -141,84 +138,10 @@ class LookupWindow(QDialog):
 
 
     def on_bridge_cmd(self, cmd):
-        args = cmd.split('-')
-        if len(args) < 1:
-            return
+        from .bridge_actions import handle_bridge_action
 
-        def arg_from(i):
-            j = 0
-            for _ in range(i):
-                j = cmd.find('-', j) + 1
-            return cmd[j:]
-
-        if args[0] == 'show_card_id':
-            util.open_browser_cardids(int(args[1]))
-        elif args[0] == 'show_word':
-            util.open_browser_noteids([int(x) for x in args[1].split(',')])
-        elif args[0] == 'create': 
-            card_type = CardType[args[1]]
-            character = args[2]
-            util.error_msg_on_error(
-                self,
-                aqt.mw.migaku_kanji_db.make_cards_from_characters,
-                card_type, character, 'Kanji Card Creation'
-            )
-            self.refresh()
-        elif args[0] == 'mark': 
-            card_type = CardType[args[1]]
-            character = args[2]
-            known = args[3] == '1'
-            aqt.mw.migaku_kanji_db.set_character_known(card_type, character, known)
-            self.refresh()
-        elif args[0] == 'open':
-            text = args[1]
-            self.search(text, internal=True)
-        elif args[0] == 'custom_keyword':
-            character = args[1]
-            old_keyword = arg_from(2)
-            new_keyowrd, r = QInputDialog.getText(
-                self,
-                'Migaku Kanji - Set custom keyword',
-                F'Set custom keyword for {character}:',
-                text=old_keyword
-            )
-            if r:
-                aqt.mw.migaku_kanji_db.set_character_usr_keyowrd(character, new_keyowrd)
-                self.refresh()
-        elif args[0] == 'custom_story':
-            character = args[1]
-            old_story = arg_from(2)
-            new_story, r = QInputDialog.getMultiLineText(
-                self,
-                'Migaku Kanji - Set custom story',
-                F'Set custom story for {character}:',
-                text=old_story
-            )
-            if r:
-                aqt.mw.migaku_kanji_db.set_character_usr_story(character, new_story)
-                self.refresh()
-        elif args[0] == 'search_dict':
-            word = args[1]
-            util.search_dict(word)
-        elif args[0] == 'suggest_change':
-            character = args[1]
-
-            key_sequence = QKeySequence(Qt.CTRL + Qt.Key_F).toString(QKeySequence.NativeText)
-
-            r = QMessageBox.question(aqt.mw,
-                                     'Migaku Kanji',
-                                    F'Do you want to suggest a change to the data for {character}?\n\n'
-                                    F'On the sheet that will open, search for the data you want to change using {key_sequence}. '
-                                     'Right click the cell you want to suggest a change for, then select "Comment" and enter the data you suggest and optionally the reason on why the data should be changed. '
-                                     'Finally confirm your comment.\n\n'
-                                    F'Your clipboard will also be set to {character}.\n\n'
-                                     'Thank you!')
-            if r == QMessageBox.Yes:
-                aqt.mw.app.clipboard().setText(character)
-                aqt.utils.openLink(KANJI_FORMS_URL)
-            return
-        else:
-            print('Unhandled bridge command:', args)
+        if not handle_bridge_action(cmd, lookup_window=self):
+            print('Unhandled bridge command:', cmd)
 
 
     def on_search_submit(self):
