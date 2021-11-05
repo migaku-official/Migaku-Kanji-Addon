@@ -10,7 +10,8 @@ from .card_type import CardType
 from .note_type_selector import CardTypeRecognizedSelectorWidget, WordRecognizedSelectorWidget
 from .learn_ahead_selector import LearnAheadSelectorWidget
 from .lookup_window import LookupWindow
-from .version import VERSION_STRING, KANJI_FORMS_URL
+from .version import VERSION_STRING
+from .kanji_forms_url import KANJI_FORMS_URL
 
 
 class CardTypeSettingsWidget(QWidget):

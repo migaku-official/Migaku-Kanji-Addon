@@ -5,7 +5,7 @@ from aqt.qt import *
 
 from . import util
 from .lookup_window import LookupWindow
-from .version import KANJI_FORMS_URL
+from .kanji_forms_url import KANJI_FORMS_URL
 from .card_type import CardType
 
 
