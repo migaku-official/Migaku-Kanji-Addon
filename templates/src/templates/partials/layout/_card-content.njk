@@ -14,7 +14,7 @@ Sidebar #}
 {% set txt__stroke_order_inner_title = "Stroke order" %}
 {% set txt__stroke_order_inner_title = "Stroke order" %}
 {% set txt__stroke_order_settings_tooltip %}
-	Options for autoplay and stroke number default on/off are in the Kanji Setting menu window.
+	Options for autoplay and stroke number default on/off are in the Kanji Settings menu window.
 	<br/><br/>
 	Tip: use arrow keys to navigate stroke order, plus ctrl for start/end.
 {% endset %}
@@ -86,23 +86,33 @@ Below #}
 {% set txt__stories_title = "Stories" %}
 
 {# actions.njk #}
-{% set txt__actions_title = "Actions" %}
-{% set txt__actions_set_keyword = "Set Custom Keyword" %}
-{% set txt__actions_set_story = "Set Custom Story" %}
-{% set txt__actions_mark_delete = "Mark Known And Delete Card" %}
-{% set txt__actions_suggest_change = "Suggest Change" %}
-{% set txt__actions_mark_delete_info = "Shift + click for instant action." %}
-{% set txt__actions_mobile_info %}
+{% set txt__actions_back_title = "Actions" %}
+{% set txt__actions_back_set_keyword = "Set Custom Keyword" %}
+{% set txt__actions_back_set_story = "Set Custom Story" %}
+{% set txt__actions_back_mark_delete = "Mark Known And Delete Card" %}
+{% set txt__actions_back_suggest_change = "Suggest Change" %}
+{% set txt__actions_back_mark_delete_info = "Shift + click for instant action." %}
+{% set txt__actions_back_mobile_info %}
 	Actions only work on desktop.
 	<br/>
 	You are able to set a custom keyword, custom story, and mark-known/delete existing kanji cards.
 {% endset %}
 
-{# lookup-actions.njk #}
-{% set txt__lookup_actions_title = "Cards" %}
-{% set txt__lookup_actions_recognition = "Show Recognition Card" %}
-{% set txt__lookup_actions_production = "Create Production Card" %}
-{% set txt__lookup_actions_mobile_info %}
+{# actions-front.njk #}
+{% set txt__actions_front_title = "Actions" %}
+{% set txt__actions_front_mark_delete = "Mark Known And Delete Card" %}
+{% set txt__actions_front_mark_delete_info = "Shift + click for instant action." %}
+{% set txt__actions_front_mobile_info %}
+	Front of card actions only work on desktop.
+	<br/>
+	You are able to mark-known/delete existing kanji cards.
+{% endset %}
+
+{# actions-lookup.njk #}
+{% set txt__actions_lookup_title = "Cards" %}
+{% set txt__actions_lookup_recognition = "Show Recognition Card" %}
+{% set txt__actions_lookup_production = "Create Production Card" %}
+{% set txt__actions_lookup_mobile_info %}
 	Actions only work on desktop.
 	<br/>
 	You are able to mark a kanji as known, and create or show the associated recognition and production cards.

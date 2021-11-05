@@ -36,12 +36,12 @@ START - Mixins */
 }
 
 @mixin faded-info-msg {
+	color: $faded-msg-color-light;
 	font-size: $faded-msg-font-size;
 	font-weight: $faded-msg-font-weight;
-	opacity: $faded-msg-opacity-light;
 
 	@include dark-mode {
-		opacity: $faded-msg-opacity-dark;
+		color: $faded-msg-color-dark;
 	}
 }
 
