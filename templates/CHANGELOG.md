@@ -1,6 +1,7 @@
 ## 0.12.3
 
 - [FIX]: Stroke order slider now working in lookup browser after subsequent lookups.
+- [FEATURE]: Added "Suggest Change" action button.
 
 ## 0.12.2
 

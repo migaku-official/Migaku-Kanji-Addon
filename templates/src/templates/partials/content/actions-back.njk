@@ -4,7 +4,7 @@
 		{{ txt__actions_back_title }}
 	</h2>
 	<div class="actions-back__buttons">
-		<div class="actions-back__set-custom">
+		<div class="actions-back__primary">
 			<button
 				onclick="set_custom_keyword();"
 				class="button -wide"
@@ -15,16 +15,27 @@
 				{{ txt__actions_back_set_story }}
 			</button>
 		</div>
-		{% if not is_lookup %}
-		<div class="actions-back__mark-known">
+		<div class="actions-back__secondary">
+			{% if not is_lookup %}
+				<div class="actions-back__mark-known-delete button-container -wide">
+					<button
+						onclick="delete_mark(event);"
+						class="button -secondary -wide"
+					>
+						{{ txt__actions_back_mark_delete }}
+					</button>
+					<span class="faded-info-msg">
+						{{ txt__actions_back_mark_delete_info }}
+					</span>
+				</div>
+			{% endif %}
 			<button
-				onclick="delete_mark(event);"
+				onclick="pycmd('suggest_change-' + data.character)"
 				class="button -secondary -wide"
 			>
-				{{ txt__actions_back_mark_delete }}
+				{{ txt__actions_back_suggest_change }}
 			</button>
 		</div>
-		{% endif %}
 	</div>
 	<div class="mobile-info-msg">
 		{{ txt__actions_back_mobile_info | safe }}

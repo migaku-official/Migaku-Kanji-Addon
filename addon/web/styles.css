@@ -378,6 +378,14 @@ button.primitive,
 	}
 }
 
+.button-container .button:first-child {
+	margin-left: 0;
+}
+
+.button-container .button:last-child {
+	margin-right: 0;
+}
+
 .primitiveDetails,
 .kanji-addon__hover-tooltip {
 	background: #2880ff;
@@ -1955,13 +1963,6 @@ button.radical {
 	}
 }
 
-@media only screen and (min-width: 30em) and (max-width: 36.1875em) {
-	.actions-back__title {
-		text-align: center;
-		width: 100%;
-	}
-}
-
 .mobile .actions-back__title {
 	color: #71757f;
 	font-size: 14px;
@@ -1982,42 +1983,53 @@ button.radical {
 	display: none;
 }
 
-.actions-back__buttons .button {
+.actions-back__buttons .button,
+.actions-back__buttons .button-container {
 	margin: 0 0 10px;
+	width: 100%;
 }
 
 @media (min-width: 30em) {
-	.actions-back__buttons .button {
+	.actions-back__buttons .button,
+	.actions-back__buttons .button-container {
 		margin: 0 5px 10px;
 	}
 }
 
-@media only screen and (min-width: 36.25em) {
-	.actions-back__buttons .button:first-of-type {
-		margin-left: 0;
-	}
-}
-
-.actions-back__set-custom,
-.actions-back__mark-known {
+.actions-back__primary,
+.actions-back__secondary {
+	align-items: flex-start;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
 
+.actions-back__primary > .button:first-child,
+.actions-back__primary > .button-container:first-child,
+.actions-back__secondary > .button:first-child,
+.actions-back__secondary > .button-container:first-child {
+	margin-left: 0;
+}
+
 @media (min-width: 30em) {
-	.actions-back__set-custom,
-	.actions-back__mark-known {
+	.actions-back__primary,
+	.actions-back__secondary {
 		flex-direction: row;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 }
 
-@media only screen and (min-width: 36.25em) {
-	.actions-back__set-custom,
-	.actions-back__mark-known {
-		justify-content: flex-start;
-	}
+.actions-back__mark-known-delete {
+	display: flex;
+	flex-direction: column;
+}
+
+.actions-back__mark-known-delete .button {
+	margin: 0 0 5px;
+}
+
+.actions-back__mark-known-delete .faded-info-msg {
+	text-align: center;
 }
 
 .actions-front__container {
@@ -2033,7 +2045,7 @@ button.radical {
 	width: 100%;
 }
 
-.actions-front__mark-known {
+.actions-front__mark-known-delete {
 	margin-bottom: 10px;
 }
 
