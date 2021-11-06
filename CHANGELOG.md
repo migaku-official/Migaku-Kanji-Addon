@@ -1,6 +1,8 @@
 ## 1.0.0-alpha.3 (unreleased)
 
-- Fixed "show more" button styles on backs of cards
+- Fixed "show more" button styles on backs of cards.
+- Front of card actions are now more subdued.
+- Added another info message to front of card actions
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 

@@ -4,6 +4,11 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
+## 0.12.8
+
+- [STYLE]: Front of card actions are now more subdued.
+- [CHORE]: Added another info message to front of card actions.
+
 ## 0.12.7
 
 - [FIX]: "Show more" buttons on backs of card now properly set tertiary styles - Anki's default button styles were interfering before.
