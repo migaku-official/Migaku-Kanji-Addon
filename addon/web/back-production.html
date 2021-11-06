@@ -8239,7 +8239,10 @@ Changes:
 				JapaneseUtil.distributeFuriganaHTML(w, r) +
 				'</button>',
 		);
-		if (!settings.hide_default_words && word_front_pts.length < max_words_front)
+		if (
+			!(n && settings.hide_default_words) &&
+			word_front_pts.length < max_words_front
+		)
 			word_front_pts.push(
 				`<div class="${front_classes.join(' ')}">` +
 					JapaneseUtil.distributeFuriganaHTML(w, r) +
