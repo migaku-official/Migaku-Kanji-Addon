@@ -135,7 +135,7 @@ START - Actions */
 			margin-bottom: 20px;
 
 			@include bp.get(xs) {
-				margin: 0 10px;
+				margin: 0 5px;
 			}
 
 			@include bp.get(s) {
