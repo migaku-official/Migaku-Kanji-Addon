@@ -1,8 +1,12 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.9
+- @version v0.12.10
 ============================================== */
 
+.mobile .actions-lookup__title,
+.mobile .actions-back__title,
+.title-tooltip__text,
+.mobile-only-info-msg,
 .faded-info-msg {
 	color: #71757f;
 	font-size: 14px;
@@ -23,20 +27,17 @@ START - Migaku kanji stylesheet
 	display: none;
 }
 
-.mobile-info-msg {
-	color: #71757f;
+.mobile-only-info-msg {
 	display: none;
-	font-size: 14px;
-	font-weight: 300;
 }
 
-.ankidroid_dark_mode .mobile-info-msg,
-.nightMode .mobile-info-msg,
-.dark .mobile-info-msg {
+.ankidroid_dark_mode .mobile-only-info-msg,
+.nightMode .mobile-only-info-msg,
+.dark .mobile-only-info-msg {
 	color: #afb5c3;
 }
 
-.mobile .mobile-info-msg {
+.mobile .mobile-only-info-msg {
 	display: block;
 }
 
@@ -387,6 +388,28 @@ button.show-more__button,
 	color: #afb5c3;
 }
 
+.button.-secondary.-subdued:hover,
+.button.-secondary.-subdued:focus,
+.button-container.-secondary.-subdued:hover,
+.button-container.-secondary.-subdued:focus {
+	background: rgba(113, 117, 127, 0.15);
+}
+
+.ankidroid_dark_mode .button.-secondary.-subdued:hover,
+.nightMode .button.-secondary.-subdued:hover,
+.dark .button.-secondary.-subdued:hover,
+.ankidroid_dark_mode .button.-secondary.-subdued:focus,
+.nightMode .button.-secondary.-subdued:focus,
+.dark .button.-secondary.-subdued:focus,
+.ankidroid_dark_mode .button-container.-secondary.-subdued:hover,
+.nightMode .button-container.-secondary.-subdued:hover,
+.dark .button-container.-secondary.-subdued:hover,
+.ankidroid_dark_mode .button-container.-secondary.-subdued:focus,
+.nightMode .button-container.-secondary.-subdued:focus,
+.dark .button-container.-secondary.-subdued:focus {
+	background: rgba(175, 181, 195, 0.15);
+}
+
 .button.-wide,
 .button-container.-wide {
 	font-weight: 700;
@@ -554,9 +577,6 @@ button.primitive:focus .kanji-addon__hover-tooltip,
 }
 
 .title-tooltip__text {
-	color: #71757f;
-	font-size: 14px;
-	font-weight: 300;
 	margin: -10px 0 10px;
 	padding-right: 10px;
 }
@@ -1673,6 +1693,20 @@ button.show-more__button:active {
 	color: #afb5c3;
 }
 
+.linked-words__examples .word.word_new.-subdued:hover,
+.linked-words__examples .word.word_new.-subdued:focus {
+	background: rgba(113, 117, 127, 0.15);
+}
+
+.ankidroid_dark_mode .linked-words__examples .word.word_new.-subdued:hover,
+.nightMode .linked-words__examples .word.word_new.-subdued:hover,
+.dark .linked-words__examples .word.word_new.-subdued:hover,
+.ankidroid_dark_mode .linked-words__examples .word.word_new.-subdued:focus,
+.nightMode .linked-words__examples .word.word_new.-subdued:focus,
+.dark .linked-words__examples .word.word_new.-subdued:focus {
+	background: rgba(175, 181, 195, 0.15);
+}
+
 .linked-words__examples .word.word_new rt {
 	color: inherit !important;
 }
@@ -2019,16 +2053,14 @@ button.radical {
 	}
 }
 
-.mobile .actions-back__title {
-	color: #71757f;
-	font-size: 14px;
-	font-weight: 300;
+.mobile .ankidroid_dark_mode .actions-back__title,
+.mobile .nightMode .actions-back__title,
+.mobile .dark .actions-back__title {
+	color: #afb5c3;
 }
 
-.ankidroid_dark_mode .mobile .actions-back__title,
-.nightMode .mobile .actions-back__title,
-.dark .mobile .actions-back__title {
-	color: #afb5c3;
+.mobile .actions-back__title {
+	font-weight: bold;
 }
 
 .actions-back__buttons {
@@ -2109,16 +2141,14 @@ button.radical {
 	display: none;
 }
 
-.mobile .actions-lookup__title {
-	color: #71757f;
-	font-size: 14px;
-	font-weight: 300;
+.mobile .ankidroid_dark_mode .actions-lookup__title,
+.mobile .nightMode .actions-lookup__title,
+.mobile .dark .actions-lookup__title {
+	color: #afb5c3;
 }
 
-.ankidroid_dark_mode .mobile .actions-lookup__title,
-.nightMode .mobile .actions-lookup__title,
-.dark .mobile .actions-lookup__title {
-	color: #afb5c3;
+.mobile .actions-lookup__title {
+	font-weight: bold;
 }
 
 .actions-lookup__buttons {
