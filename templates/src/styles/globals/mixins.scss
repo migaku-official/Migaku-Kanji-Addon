@@ -35,10 +35,25 @@ START - Mixins */
 	}
 }
 
-@mixin faded-info-msg {
+// Very specific use-case. Since @mobile-device
+// and @dark-mode mixins cannot be stacked.
+@mixin mobile-dark-mode {
+	.mobile .ankidroid_dark_mode &, // AnkiDroid cards
+	.mobile .nightMode &, // Desktop Anki cards
+	// Lookup window
+	.mobile .dark & {
+		@content;
+	}
+}
+
+%faded-info-base {
 	color: $faded-msg-color-light;
 	font-size: $faded-msg-font-size;
 	font-weight: $faded-msg-font-weight;
+}
+
+@mixin faded-info-msg {
+	@extend %faded-info-base;
 
 	@include dark-mode {
 		color: $faded-msg-color-dark;
@@ -59,7 +74,20 @@ START - Mixins */
 	}
 }
 
+// Info message style on mobile only
+// (For dimming titles on mobile)
 @mixin mobile-info-msg {
+	@include mobile-device {
+		@extend %faded-info-base;
+	}
+
+	@include mobile-dark-mode {
+		color: $faded-msg-color-dark;
+	}
+}
+
+// Message only show on mobile
+@mixin mobile-only-info-msg {
 	@include faded-info-msg;
 
 	display: none;
@@ -70,8 +98,8 @@ START - Mixins */
 	}
 }
 
-.mobile-info-msg {
-	@include mobile-info-msg;
+.mobile-only-info-msg {
+	@include mobile-only-info-msg;
 }
 
 // --------------------------------------------

@@ -18,8 +18,9 @@ START - Actions */
 
 	&__title {
 		// Faded-look to communicate inoperation
+		@include mobile-info-msg;
 		@include mobile-device {
-			@include faded-info-msg;
+			font-weight: bold;
 		}
 	}
 
@@ -108,8 +109,9 @@ START - Actions */
 .actions-lookup {
 	&__title {
 		// Faded-look to communicate inoperation
+		@include mobile-info-msg;
 		@include mobile-device {
-			@include faded-info-msg;
+			font-weight: bold;
 		}
 	}
 
