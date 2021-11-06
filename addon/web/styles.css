@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.4
+- @version v0.12.5
 ============================================== */
 
 .faded-info-msg {
@@ -2115,7 +2115,7 @@ button.radical {
 
 @media (min-width: 30em) {
 	.actions-lookup__buttons .button {
-		margin: 0 10px;
+		margin: 0 5px;
 	}
 }
 

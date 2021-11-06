@@ -1,3 +1,7 @@
+## 0.12.5
+
+- [STYLE]: Consistent button margins in lookup actions, compared to back of card actions.
+
 ## 0.12.4
 
 - [STYLE]: Layout aside has a fixed width now instead of min/max size range.
