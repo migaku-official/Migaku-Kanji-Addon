@@ -3,16 +3,15 @@
 	{% if is_recognition or is_lookup %}
 		{% if is_recognition %}
 			<h2 id="keywords_front" class="keyword-and-meaning__keyword">
-		{% elif is_lookup %}
-			<h2 id="keywords" class="keyword-and-meaning__keyword">
+			{% elif is_lookup %}
+				<h2 id="keywords" class="keyword-and-meaning__keyword">
+				{% endif %}
+			</h2>
 		{% endif %}
-			{{ keyword }}
-		</h2>
-	{% endif  %}
 
-	<div class="meanings__container">
-		<h3 class="meanings__title">{{ txt__meanings }}</h3>
-		<span id="meanings">{{ meanings }}</span>
+		<div class="meanings__container">
+			<h3 class="meanings__title">{{ txt__meanings }}</h3>
+			<span id="meanings"></span>
+		</div>
 	</div>
-</div>
-<!-- END - Keyword and meaning -->
+	<!-- END - Keyword and meaning -->
