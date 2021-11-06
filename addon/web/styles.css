@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.8
+- @version v0.12.9
 ============================================== */
 
 .faded-info-msg {
@@ -374,7 +374,7 @@ button.show-more__button,
 .button-container.-secondary.-subdued {
 	border-color: #71757f !important;
 	color: #71757f;
-	opacity: 0.7;
+	font-weight: 300;
 }
 
 .ankidroid_dark_mode .button.-secondary.-subdued,
@@ -1663,7 +1663,7 @@ button.show-more__button:active {
 .linked-words__examples .word.word_new.-subdued {
 	border-color: #71757f !important;
 	color: #71757f;
-	opacity: 0.7;
+	font-weight: 300;
 }
 
 .ankidroid_dark_mode .linked-words__examples .word.word_new.-subdued,
