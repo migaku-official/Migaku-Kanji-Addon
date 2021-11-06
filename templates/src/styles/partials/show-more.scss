@@ -1,4 +1,6 @@
-.show-more {
+// Tag/class specificity required
+// to override default Anki button styles
+button.show-more {
 	&__button {
 		@include button-tertiary;
 
