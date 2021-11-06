@@ -75,6 +75,17 @@ START - Buttons */
 			background: rgba($brand-orange-primary, 0.5);
 		}
 	}
+
+	&.-subdued {
+		border-color: $faded-msg-color-light !important;
+		color: $faded-msg-color-light;
+		opacity: 0.7;
+
+		@include dark-mode {
+			border-color: $faded-msg-color-dark !important;
+			color: $faded-msg-color-dark;
+		}
+	}
 }
 
 // Grey
