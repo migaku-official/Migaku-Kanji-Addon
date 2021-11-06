@@ -79,7 +79,7 @@ START - Buttons */
 	&.-subdued {
 		border-color: $faded-msg-color-light !important;
 		color: $faded-msg-color-light;
-		opacity: 0.7;
+		font-weight: 300;
 
 		@include dark-mode {
 			border-color: $faded-msg-color-dark !important;
