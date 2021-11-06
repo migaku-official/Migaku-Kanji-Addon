@@ -1,3 +1,7 @@
+## 0.12.6
+
+- [CHORE]: Don't show shift-click info messages on mobile.
+
 ## 0.12.5
 
 - [STYLE]: Consistent button margins in lookup actions, compared to back of card actions.
