@@ -1,3 +1,8 @@
+# Templates Changelog
+
+This changelog pertains specifically to the front-end templates of the Migaku Kanji addon; the HTML, CSS, and JS.
+
+The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 ## 0.12.6
 
 - [CHORE]: Don't show shift-click info messages on mobile.
