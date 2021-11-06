@@ -69,7 +69,7 @@ START - Mixins */
 
 	&.-hide-on-mobile {
 		@include mobile-device {
-			display: none;
+			display: none !important;
 		}
 	}
 }
