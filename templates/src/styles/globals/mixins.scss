@@ -51,6 +51,12 @@ START - Mixins */
 	&.-spaced {
 		margin-bottom: 20px;
 	}
+
+	&.-hide-on-mobile {
+		@include mobile-device {
+			display: none;
+		}
+	}
 }
 
 @mixin mobile-info-msg {
