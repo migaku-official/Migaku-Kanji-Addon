@@ -3,7 +3,9 @@
 	{% if is_demo %}
 		{{ migaku_data }}
 	{% else %}
-		{{ '{{MigakuData}}' }}
+		{% raw %}
+			{{MigakuData}}
+		{% endraw %}
 	{% endif %}
 </div>
 <!-- START - Migaku end -->
