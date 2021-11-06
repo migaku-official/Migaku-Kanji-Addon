@@ -85,6 +85,15 @@ START - Buttons */
 			border-color: $faded-msg-color-dark !important;
 			color: $faded-msg-color-dark;
 		}
+
+		&:hover,
+		&:focus {
+			background: rgba($faded-msg-color-light, 0.15);
+
+			@include dark-mode {
+				background: rgba($faded-msg-color-dark, 0.15);
+			}
+		}
 	}
 }
 
