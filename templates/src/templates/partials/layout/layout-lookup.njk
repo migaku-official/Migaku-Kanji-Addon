@@ -3,34 +3,34 @@ START - Migaku markup
 - @version v0.12.11
 ======================= -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 {# Don't bother including the welcome/results containers for the demo. #}
 {% if not is_demo %}
-<div id="welcome">
-  <div class="KanjiLookup-container KanjiLookup-container--noResult">
-    <h1 class="welcome">WELCOME!</h1>
-    <p class="welcome-text">
+	<div id="welcome">
+		<div class="KanjiLookup-container KanjiLookup-container--noResult">
+			<h1 class="welcome">WELCOME!</h1>
+			<p class="welcome-text">
       To look up Kanji, enter them into the box above and press Enter or press
       the search button.
     </p>
-    <p class="welcome-text">
+			<p class="welcome-text">
       You can also press <span class="key-sequence"></span> anywhere in Anki
 	  to search for the highlighted
       characters.
     </p>
-  </div>
-</div>
+		</div>
+	</div>
 
-<div id="noresult" style="display: none;">
-  <div class="KanjiLookup-container KanjiLookup-container--noResult">
-    <h1>No result found for character</h1>
-    <h1 class="kanji">仮</h1>
-  </div>
-</div>
+	<div id="noresult" style="display: none;">
+		<div class="KanjiLookup-container KanjiLookup-container--noResult">
+			<h1>No result found for character</h1>
+			<h1 class="kanji">仮</h1>
+		</div>
+	</div>
 
-<div id="result" style="display: none;">
-{% endif %}
+	<div id="result" style="display: none;">
+	{% endif %}
 
 	{% include "partials/structure/migaku-header.njk" %}
 
@@ -56,8 +56,8 @@ START - Migaku markup
 		{% include "partials/structure/migaku/migaku-data.njk" %}
 	</div>
 
-{% if not is_demo %}
-</div>
+	{% if not is_demo %}
+	</div>
 {% endif %}
 
 {% include 'partials/structure/migaku/migaku-dependencies.njk' %}

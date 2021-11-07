@@ -1,99 +1,101 @@
 <!-- START - Addon script, Production, front -->
 <!-- NOTE: Unchanged -->
 <script>
-  if (!settings.show_header) {
+	if (!settings.show_header) {
 		$('.migaku-header').hide();
 	}
 
-  function wrap_list(list, intro, outro)
-  {
-    if (list.length < 1)
-      return '-';
-    return intro + list.join(outro+intro) + outro;
-  }
-
-	function delete_mark(evt) {
-		pycmd(
-			'delete_mark-' +
-				data.character +
-				'-production-' +
-				(evt.shiftKey ? 'false' : 'true'),
-		);
+	function wrap_list(list, intro, outro) {
+		if (list.length < 1)
+			return '-';
+		return intro + list.join(outro + intro) + outro;
 	}
 
-  var data_b64 = document.getElementById('migaku_data').innerHTML;
-  data_b64 = data_b64.replace( /(<([^>]+)>)/ig, '');  // Needed because of Migaku Editor :|
-  var data_json = atob(data_b64);
-  var data = JSON.parse(data_json);
+	function delete_mark(evt) {
+		pycmd('delete_mark-' + data.character + '-production-' + (
+			evt.shiftKey
+			? 'false'
+			: 'true'),);
+	}
 
-  var max_words = settings.words_max;
-  var word_front_pts = [];
+	var data_b64 = document
+		.getElementById('migaku_data')
+		.innerHTML;
+	data_b64 = data_b64.replace(/(<([^>]+)>)/ig, ''); // Needed because of Migaku Editor :|
+	var data_json = atob(data_b64);
+	var data = JSON.parse(data_json);
 
-  for (var i = 0; i < data.words.length; i++)
-  {
-    if (word_front_pts.length >= max_words)
-        break;
+	var max_words = settings.words_max;
+	var word_front_pts = [];
 
-    const we = data.words[i];
-    const w = we[0];
-    const r = we[1];
-    const n = we[3];
+	for (var i = 0; i < data.words.length; i++) {
+		if (word_front_pts.length >= max_words)
+			break;
 
-    let front_classes = ['word_front'];
-    if (n) {
-      if (settings.hide_default_words)
-        continue;
-      front_classes.push('word_front_default');
-    }
+		const we = data.words[i];
+		const w = we[0];
+		const r = we[1];
+		const n = we[3];
 
-    word_front_pts.push(`<div class="${front_classes.join(' ')}">` + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
-  }
-  for (var i = 0; i < data.words_default.length; i++)
-  {
-    if (word_front_pts.length >= max_words || settings.hide_default_words)
-        break;
+		let front_classes = ['word_front'];
+		if (n) {
+			if (settings.hide_default_words)
+				continue;
+			front_classes.push('word_front_default');
+		}
 
-    const we = data.words_default[i];
-    const w = we[0];
-    const r = we[1];
+		word_front_pts.push(`<div class="${front_classes.join(' ')}">` + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
+	}
+	for (var i = 0; i < data.words_default.length; i++) {
+		if (word_front_pts.length >= max_words || settings.hide_default_words)
+			break;
 
-    if (data.words.some(
-      function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
-    ))
-      continue;
+		const we = data.words_default[i];
+		const w = we[0];
+		const r = we[1];
 
-    word_front_pts.push('<div class="word_front word_front_default">' + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
-  }
-  $('#words_front').html(word_front_pts.join('').split(data.character).join('＿'));
+		if (data.words.some(function (existing_we) {
+			return (w == existing_we[0] && r == existing_we[1]);
+		}))
+			continue;
 
-  if (settings.hide_keywords && word_front_pts.length > 0)
-    document.getElementById('keywords_front').style.display = 'none';
+		word_front_pts.push('<div class="word_front word_front_default">' + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
+	}
+	$('#words_front').html(word_front_pts.join('').split(data.character).join('＿'));
 
-  var keywords = [];
-  if (data.usr_keyword)
-    keywords.push(data.usr_keyword);
-  if (!settings.only_custom_keywords || keywords.length < 1)
-  {
-    if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
-      keywords.push(data.heisig_keyword5);
-    if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
-      keywords.push(data.heisig_keyword6);
-    if (data.usr_primitive_keyword)
+	if (settings.hide_keywords && word_front_pts.length > 0)
+		document
+			.getElementById('keywords_front')
+			.style
+			.display = 'none';
+
+	var keywords = [];
+	if (data.usr_keyword)
+		keywords.push(data.usr_keyword);
+	if (!settings.only_custom_keywords || keywords.length < 1) {
+		if (data.heisig_keyword5 && !keywords.includes(data.heisig_keyword5))
+			keywords.push(data.heisig_keyword5);
+		if (data.heisig_keyword6 && !keywords.includes(data.heisig_keyword6))
+			keywords.push(data.heisig_keyword6);
+		if (data.usr_primitive_keyword)
 			keywords.push('<span class="primitive_keyword">' + data.usr_primitive_keyword + '</span>');
-    for (const pk of data.primitive_keywords)
-    {
-      if (!keywords.includes(pk))
-        keywords.push('<span class="primitive_keyword">' + pk + '</span>');
-    }
-  }
-  keywords_txt = keywords.length ? keywords.join(', ') : '-';
-  $('#keywords').html(keywords_txt);
-  if (keywords.length < 1)
-    keywords = data.meanings;
-  keywords_front_txt = keywords.length ? keywords.join(', ') : '-';
-  $('#keywords_front').html(keywords_front_txt);
+		for (const pk of data.primitive_keywords) {
+			if (!keywords.includes(pk))
+				keywords.push('<span class="primitive_keyword">' + pk + '</span>');
+			}
+		}
+	keywords_txt = keywords.length
+		? keywords.join(', ')
+		: '-';
+	$('#keywords').html(keywords_txt);
+	if (keywords.length < 1)
+		keywords = data.meanings;
+	keywords_front_txt = keywords.length
+		? keywords.join(', ')
+		: '-';
+	$('#keywords_front').html(keywords_front_txt);
 
-  if (!settings.show_readings_front)
-    $('rt').css({ visibility: 'hidden' });
+	if (!settings.show_readings_front)
+		$('rt').css({visibility: 'hidden'});
 </script>
 <!-- END - Addon script, Production, front -->

@@ -2,18 +2,18 @@
 <div class="userData userData__container">
 	{% if not is_demo and not is_lookup %}
 		{% raw %}
-			{{#UserData}}
-		{% endraw %}
-	{% endif %}
+			{{#UserData}}{% endraw %}
+		{% endif %}
 
-	{% if (is_demo and user_data) or not is_demo %}
-		{% include "partials/structure/full-separator.njk" %}
-	{% endif %}
+		{% if (is_demo and user_data)
+			or not is_demo %}
+			{% include "partials/structure/full-separator.njk" %}
+		{% endif %}
 
-	{% if is_demo %}
-		{{ user_data | safe }}
-	{% elif not is_lookup %}
-		{% raw %}
+		{% if is_demo %}
+			{{ user_data | safe }}
+		{% elif not is_lookup %}
+			{% raw %}
 				{{UserData}}
 			{{/UserData}}
 		{% endraw %}

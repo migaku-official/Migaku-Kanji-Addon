@@ -21,7 +21,7 @@ dmak = new Dmak(
 		{% if not is_lookup and not is_demo %}
 		// Preload SVG data from card fields
 		{% raw %}'preload_svgs': { '{{Character}}': `{{StrokeOrder}}` },{% endraw %}
-		{% endif %}
+{% endif %}
 
 		'startedErasing': function(self, strokeNum) {
 			// Keep slider value up to date

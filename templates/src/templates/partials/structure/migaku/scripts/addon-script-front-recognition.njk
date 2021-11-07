@@ -1,74 +1,71 @@
 <!-- START - Addon script, Recognition, front -->
 <!-- NOTE: Unchanged -->
 <script>
-  if (!settings.show_header) {
+	if (!settings.show_header) {
 		$('.migaku-header').hide();
 	}
 
-  function wrap_list(list, intro, outro)
-  {
-    if (list.length < 1)
-      return '-';
-    return intro + list.join(outro+intro) + outro;
-  }
-
-	function delete_mark(evt) {
-		pycmd(
-			'delete_mark-' +
-				data.character +
-				'-recognition-' +
-				(evt.shiftKey ? 'false' : 'true'),
-		);
+	function wrap_list(list, intro, outro) {
+		if (list.length < 1)
+			return '-';
+		return intro + list.join(outro + intro) + outro;
 	}
 
-  var data_b64 = document.getElementById('migaku_data').innerHTML;
-  data_b64 = data_b64.replace( /(<([^>]+)>)/ig, '');  // Needed because of Migaku Editor :|
-  var data_json = atob(data_b64);
-  var data = JSON.parse(data_json);
+	function delete_mark(evt) {
+		pycmd('delete_mark-' + data.character + '-recognition-' + (
+			evt.shiftKey
+			? 'false'
+			: 'true'),);
+	}
 
-  $('.keyword-kanji').html(data.character);
+	var data_b64 = document
+		.getElementById('migaku_data')
+		.innerHTML;
+	data_b64 = data_b64.replace(/(<([^>]+)>)/ig, ''); // Needed because of Migaku Editor :|
+	var data_json = atob(data_b64);
+	var data = JSON.parse(data_json);
 
-  var max_words = settings.words_max;
-  var word_front_pts = [];
+	$('.keyword-kanji').html(data.character);
 
-  for (var i = 0; i < data.words.length; i++)
-  {
-    if (word_front_pts.length >= max_words)
-        break;
+	var max_words = settings.words_max;
+	var word_front_pts = [];
 
-    const we = data.words[i];
-    const w = we[0];
-    const r = we[1];
-    const n = we[3];
+	for (var i = 0; i < data.words.length; i++) {
+		if (word_front_pts.length >= max_words)
+			break;
 
-    let front_classes = ['word_front'];
-    if (n) {
-      if (settings.hide_default_words)
-        continue;
-      front_classes.push('word_front_default');
-    }
+		const we = data.words[i];
+		const w = we[0];
+		const r = we[1];
+		const n = we[3];
 
-    word_front_pts.push(`<div class="${front_classes.join(' ')}">` + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
-  }
-  for (var i = 0; i < data.words_default.length; i++)
-  {
-    if (word_front_pts.length >= max_words || settings.hide_default_words)
-        break;
+		let front_classes = ['word_front'];
+		if (n) {
+			if (settings.hide_default_words)
+				continue;
+			front_classes.push('word_front_default');
+		}
 
-    const we = data.words_default[i];
-    const w = we[0];
-    const r = we[1];
+		word_front_pts.push(`<div class="${front_classes.join(' ')}">` + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
+	}
+	for (var i = 0; i < data.words_default.length; i++) {
+		if (word_front_pts.length >= max_words || settings.hide_default_words)
+			break;
 
-    if (data.words.some(
-      function(existing_we) { return (w == existing_we[0] && r == existing_we[1]); }
-    ))
-      continue;
+		const we = data.words_default[i];
+		const w = we[0];
+		const r = we[1];
 
-    word_front_pts.push('<div class="word_front word_front_default">' + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
-  }
-  $('#words_front').html(word_front_pts.join(''));
+		if (data.words.some(function (existing_we) {
+			return (w == existing_we[0] && r == existing_we[1]);
+		}))
+			continue;
 
-  if (!settings.show_readings_front)
-    $('rt').css({ visibility: 'hidden' });
+		word_front_pts.push('<div class="word_front word_front_default">' + JapaneseUtil.distributeFuriganaHTML(w, r) + '</div>');
+	}
+	$('#words_front').html(word_front_pts.join(''));
+
+	if (!settings.show_readings_front)
+		$('rt').css({visibility: 'hidden'});
 </script>
 <!-- END - Addon script, Recognition, front -->
