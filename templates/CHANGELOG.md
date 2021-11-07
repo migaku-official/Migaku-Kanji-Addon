@@ -4,6 +4,10 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
+## 0.12.11
+
+- [FIX]: `-hide-on-mobile` info messages now utilise `!important` to overcome script display overrides.
+
 ## 0.12.10
 
 - [FIX]: Subdued button hover styles are no longer colored.

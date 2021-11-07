@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.10
+- @version v0.12.11
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -24,7 +24,7 @@ START - Migaku kanji stylesheet
 }
 
 .mobile .faded-info-msg.-hide-on-mobile {
-	display: none;
+	display: none !important;
 }
 
 .mobile-only-info-msg {
