@@ -3,6 +3,8 @@
 - [FIX]: "Show more" button styles on backs of cards no longer have Anki's default button styles interfering.
 - [STYLE]: Front of card actions are now more subdued.
 - [CHORE]: Added another info message to front of card actions.
+- [FIX]: Addon compatibility with opening multiple windows (`util.open_browser(query)`).
+- [FIX]: Newly added cards no longer appear in linked vocab.
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 
