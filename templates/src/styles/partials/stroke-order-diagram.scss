@@ -45,9 +45,9 @@ START - Stroke order diagram */
 		}
 
 		@include bp.get(m) {
+			max-width: 250px;
 			min-height: 300px;
 			padding-bottom: 10px;
-			max-width: 250px;
 		}
 
 		@include bp.get(l) {

@@ -1,27 +1,28 @@
 // --------------------------------------
 // Plugins (these need to be top-level)
 
-@use "sass:map";
-@use "sass:math";
-@use "@deloitte-digital-au/ddbreakpoints/lib/dd.breakpoints" as bp with (
-    $dev-mode: (
-        enabled: false, // never commit 'true'!
-        selector: "body::after", // must be pseudo element
-        position: top left,
-        on-dark: false
-    ),
+@use 'sass:map';
+@use 'sass:math';
+@use '@deloitte-digital-au/ddbreakpoints/lib/dd.breakpoints' as bp with
+	(
+		$dev-mode: (
+			enabled: false,
+			selector: 'body::after',
+			position: top left,
+			on-dark: false,
+		),
 		$breakpoints: (
-        xxs: 359,
-        xs: 480,
-        s: 580, // modified from 640px
-        m: 768,
-        l: 1024,
-        xl: 1244,
-        xxl: 1410,
-        xxxl: 1570,
-        fhd: 1900,
-    )
-);
+			xxs: 359,
+			xs: 480,
+			s: 580,
+			m: 768,
+			l: 1024,
+			xl: 1244,
+			xxl: 1410,
+			xxxl: 1570,
+			fhd: 1900,
+		)
+	);
 
 /*! ==============================================
 START - Migaku kanji stylesheet

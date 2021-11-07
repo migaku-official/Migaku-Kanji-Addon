@@ -19,6 +19,7 @@ START - Actions */
 	&__title {
 		// Faded-look to communicate inoperation
 		@include mobile-info-msg;
+
 		@include mobile-device {
 			font-weight: bold;
 		}
@@ -110,6 +111,7 @@ START - Actions */
 	&__title {
 		// Faded-look to communicate inoperation
 		@include mobile-info-msg;
+
 		@include mobile-device {
 			font-weight: bold;
 		}

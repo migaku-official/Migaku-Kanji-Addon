@@ -82,8 +82,8 @@ button.primitive {
 button.radical {
 	@include button-tertiary;
 
-	font-family: inherit;
 	cursor: not-allowed;
+	font-family: inherit;
 }
 
 button.primitive,

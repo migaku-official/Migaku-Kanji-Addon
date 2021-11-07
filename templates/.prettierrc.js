@@ -11,7 +11,6 @@ module.exports = {
 	singleQuote: true,
 	quoteProps: 'consistent',
 	jsxSingleQuote: false,
-	jsxBracketSameLine: false,
 
 	// Trailing commas for improved diff
 	trailingComma: 'all',

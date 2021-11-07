@@ -24,16 +24,18 @@ START - Linked words */
 
 	&__examples {
 		// Margin spacing shared with "show more" button
+
 		button {
 			margin: 0 10px 10px 0;
 		}
 
 		// Clickable linked word (button)
+
 		.word {
 			@include button-primary;
 
-			font-size: 24px !important;
 			font-family: inherit;
+			font-size: 24px !important;
 			padding: 5px 10px !important;
 
 			@include bp.get(s) {
@@ -54,6 +56,7 @@ START - Linked words */
 		}
 
 		// Example word (button)
+
 		.word.word_default {
 			@include button-tertiary;
 		}
@@ -81,8 +84,8 @@ START - Linked words */
 		&::before {
 			@include align-center;
 
-			content: '(hover)';
 			color: $text-on-dark;
+			content: '(hover)';
 			font-family: Rubik, sans-serif;
 			font-size: 10px;
 			opacity: 0.5;

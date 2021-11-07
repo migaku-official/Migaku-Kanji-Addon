@@ -19,6 +19,9 @@ module.exports = {
 			},
 		],
 
+		// Too many false positives to be useful
+		'no-descending-specificity': null,
+
 		// Kanji fonts will be reliably present
 		// (fallback generic fonts unnecessary and wouldn't work anyway)
 		'font-family-no-missing-generic-family-keyword': null,
