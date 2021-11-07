@@ -55,3 +55,11 @@ def reviewer_will_answer_hook(status, reviewer, card: anki.collection.Card):
 
 
 aqt.gui_hooks.reviewer_will_answer_card.append(reviewer_will_answer_hook)
+
+
+
+def learn_ahead_refresh_on_review_start(state, old_state):
+    if state == 'review':
+        aqt.mw.migaku_kanji_db.refresh_learn_ahead()
+
+aqt.gui_hooks.state_will_change.append(learn_ahead_refresh_on_review_start)
