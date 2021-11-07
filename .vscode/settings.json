@@ -1,0 +1,7 @@
+{
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "stylelint.validate": ["scss"],
+    "stylelint.configFile": "templates/.stylelintrc.js"
+}
