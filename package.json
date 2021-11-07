@@ -1,6 +1,6 @@
 {
   "name": "migaku-kanji-addon",
-  "version": "0.2.0",
+  "version": "1.0.0-alpha.2",
   "description": "Customisable Anki addon for learning kanji within the context of the vocab in your Anki collection.",
   "keywords": [
     "Migaku",
