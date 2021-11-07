@@ -68,15 +68,11 @@ def error_msg_on_error(parent, func, *args, **kwargs):
 
 
 def open_browser(text):
-    browser = aqt.DialogManager._dialogs['Browser'][1]
-    if not browser:
-        aqt.mw.onBrowse()
-        browser = aqt.DialogManager._dialogs['Browser'][1]
-    if browser:
-        browser.form.searchEdit.lineEdit().setText(text)
-        browser.onSearchActivated()
-        browser.raise_()
-        browser.activateWindow()
+    browser = aqt.dialogs.open('Browser', aqt.mw)
+    browser.form.searchEdit.lineEdit().setText(text)
+    browser.onSearchActivated()
+    # For newer Anki versions:
+    #   aqt.dialogs.open('Browser', aqt.mw, search=(text,))
 
 
 def open_browser_cardids(card_ids):
