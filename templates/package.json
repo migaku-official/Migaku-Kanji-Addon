@@ -14,7 +14,7 @@
 	"scripts": {
 		"start": "run-s text:logo build serve",
 		"serve": "gulp serve",
-		"lint": "stylelint ./src/**/*.scss",
+		"lint": "stylelint **/*.scss",
 		"postlint": "run-s text:pass",
 		"build": "gulp",
 		"deploy": "node scripts/deploy/deploy-dist.js && run-s text:pass",
