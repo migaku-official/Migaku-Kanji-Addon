@@ -14,6 +14,13 @@
 		return intro + list.join(outro + intro) + outro;
 	}
 
+	function is_mobile_device() {
+		return document
+			.querySelector('html')
+			.classList
+			.contains('mobile');
+	}
+
 	function search(text) {
 		pycmd('open-' + text);
 	}
@@ -271,6 +278,7 @@
 		}
 
 	var hasLinkedWords = word_pts.length > 0;
+
 	// Only show contained info messages if there are results returned
 	var _$containedLinkedWordsInfoMsgs = $('#words')
 		.parents('.results-container')
@@ -279,12 +287,15 @@
 		$(msg).toggle(hasLinkedWords);
 	});
 
+	// Inject linked words into the DOM
 	$('#words').empty();
 	$('#words').html(
 		hasLinkedWords
 		? word_pts.join('')
 		: noResultsSpan);
+	$('#words_front').html(word_front_pts.join(''));
 
+	// Truncate results with "show more" button (if applicable)
 	var words_max = 10;
 	if (word_pts.length > words_max) {
 		$(`#words .word:nth-child(n+${words_max + 1})`).hide();
@@ -301,9 +312,20 @@
 		$('#words').append(_$showMoreBtn);
 	}
 
+	// Optionally apply hover-only furigana styles
 	$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
-	$('.word').click(word_click);
-	$('#words_front').html(word_front_pts.join(''));
+
+	// Bind click event: card browser on desktop, jisho.org on mobile
+	if (is_mobile_device()) {
+		// Search jisho.org in a new window/tab
+		$('.word').click(function (e) {
+			const wordKanji = $(this).attr('data-word-kanji');
+			window.open(`https://jisho.org/search/${encodeURI(wordKanji)}`, '_blank');
+		});
+	} else {
+		// Open Anki card browser
+		$('.word').click(word_click);
+	}
 
 	var hasRadicals = data.radicals.length > 0;
 	// Only show contained info messages if there are results returned
