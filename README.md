@@ -14,9 +14,9 @@
     <a title="License: GNU AGPLv3" href="https://github.com/migaku-official/Migaku-Japanese-Addon/blob/master/LICENSE"><img  src="https://img.shields.io/badge/license-GNU AGPLv3-green.svg"></a>
 </p>
 
-# Migaku Kanji Addon
+# Migaku Kanji Anki Addon
 
-Customisable Anki addon for learning kanji within the context of the vocab in your Anki collection. Includes kanji metadata (mnemonic stories, component part primitives/radicals), a kanji lookup browser for quick references, and note types for both production (writing) and recognition. And more.
+Learn kanji within the context of the vocab in your Anki collection. Includes kanji metadata (mnemonic stories, component part primitives/radicals), a kanji lookup browser for quick references, and note types for both production (writing) and recognition. And more.
 
 <p>
 <img src=".github/_recognition-back-dark.png" alt="Recognition note type (back, dark mode)" width="250px"/>

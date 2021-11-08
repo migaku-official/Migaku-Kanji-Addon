@@ -1,12 +1,20 @@
 {
   "name": "migaku-kanji-addon",
   "version": "1.0.0-alpha.2",
-  "description": "Customisable Anki addon for learning kanji within the context of the vocab in your Anki collection.",
+  "description": "Learn kanji within the context of the vocab in your Anki collection. Comes with a powerful lookup browser.",
   "keywords": [
     "Migaku",
     "Anki",
     "Kanji"
   ],
-  "author": "Migaku Ltd",
-  "license": "AGPL-3.0-or-later"
+  "homepage": "https://github.com/migaku-official/Migaku-Kanji-Addon#readme",
+  "bugs": {
+    "url": "https://github.com/migaku-official/Migaku-Kanji-Addon/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/migaku-official/Migaku-Kanji-Addon"
+  },
+  "license": "AGPL-3.0-or-later",
+  "author": "Migaku Ltd"
 }
