@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.12.11
+- @version v0.13.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,7 +97,8 @@ START - Migaku markup
 					Shift + click for dictionary lookup.
 				</div>
 				<div class="mobile-only-info-msg">
-					Vocab buttons are only clickable on desktop.
+					Vocab buttons only work on desktop. On mobile, we link to jisho.org as
+					a compromise.
 				</div>
 			</div>
 			<!-- END - Linked words -->
@@ -461,7 +462,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.12.11
+- @version v0.13.0
 
 Changes:
 - state object and variables
@@ -476,8 +477,7 @@ Changes:
 	 *
 	 *  Made by Matthieu Bilbille
 	 *  Under MIT License
-	 */
-	(function () {
+	 */ (function () {
 		'use strict';
 
 		// Create a safe reference to the DrawMeAKanji object for use below.
@@ -1084,7 +1084,6 @@ Changes:
 
 		window.Dmak = Dmak;
 	})();
-
 	(function () {
 		'use strict';
 
@@ -1227,20 +1226,30 @@ Changes:
 			var e = {};
 			function r(i) {
 				if (e[i]) return e[i].exports;
-				var n = (e[i] = { i: i, l: !1, exports: {} });
+				var n = (e[i] = {
+					i: i,
+					l: !1,
+					exports: {},
+				});
 				return t[i].call(n.exports, n, n.exports, r), (n.l = !0), n.exports;
 			}
 			return (
 				(r.m = t),
 				(r.c = e),
 				(r.d = function (t, e, i) {
-					r.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: i });
+					r.o(t, e) ||
+						Object.defineProperty(t, e, {
+							enumerable: !0,
+							get: i,
+						});
 				}),
 				(r.r = function (t) {
 					'undefined' != typeof Symbol &&
 						Symbol.toStringTag &&
 						Object.defineProperty(t, Symbol.toStringTag, { value: 'Module' }),
-						Object.defineProperty(t, '__esModule', { value: !0 });
+						Object.defineProperty(t, '__esModule', {
+							value: !0,
+						});
 				}),
 				(r.t = function (t, e) {
 					if ((1 & e && (t = r(t)), 8 & e)) return t;
@@ -1248,7 +1257,10 @@ Changes:
 					var i = Object.create(null);
 					if (
 						(r.r(i),
-						Object.defineProperty(i, 'default', { enumerable: !0, value: t }),
+						Object.defineProperty(i, 'default', {
+							enumerable: !0,
+							value: t,
+						}),
 						2 & e && 'string' != typeof t)
 					)
 						for (var n in t)
@@ -1317,7 +1329,10 @@ Changes:
 								},
 								s = /\{(\d+)\}/g,
 								o = 'hasOwnProperty',
-								l = { doc: document, win: window },
+								l = {
+									doc: document,
+									win: window,
+								},
 								h = {
 									was: Object.prototype[o].call(l.win, 'Raphael'),
 									is: l.win.Raphael,
@@ -1357,7 +1372,11 @@ Changes:
 								E =
 									((e._ISURL = /^url\(['"]?(.+?)['"]?\)$/i),
 									/^\s*((#[a-f\d]{6})|(#[a-f\d]{3})|rgba?\(\s*([\d\.]+%?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+%?(?:\s*,\s*[\d\.]+%?)?)\s*\)|hsba?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?)%?\s*\)|hsla?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?)%?\s*\))\s*$/i),
-								N = { 'NaN': 1, 'Infinity': 1, '-Infinity': 1 },
+								N = {
+									'NaN': 1,
+									'Infinity': 1,
+									'-Infinity': 1,
+								},
 								L = /^(?:cubic-)?bezier\(([^,]+),([^,]+),([^,]+),([^\)]+)\)/,
 								P = _.round,
 								z = parseFloat,
@@ -1428,7 +1447,10 @@ Changes:
 								}),
 								D =
 									/[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*/,
-								q = { hs: 1, rg: 1 },
+								q = {
+									hs: 1,
+									rg: 1,
+								},
 								O = /,?([achlmqrstvxz]),?/gi,
 								V =
 									/([achlmrqstvz])[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029,]*((-?\d*\.?\d*(?:e[\-+]?\d+)?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*)+)/gi,
@@ -1732,14 +1754,9 @@ Changes:
 												  (t.l = r.l),
 												  (r = e.rgb2hsb(t)),
 												  (t.v = r.b))
-												: ((t = { hex: 'none' }).r =
-														t.g =
-														t.b =
-														t.h =
-														t.s =
-														t.v =
-														t.l =
-															-1)),
+												: ((t = {
+														hex: 'none',
+												  }).r = t.g = t.b = t.h = t.s = t.v = t.l = -1)),
 									(t.toString = st),
 									t
 								);
@@ -1861,22 +1878,50 @@ Changes:
 							function ct(t, e) {
 								for (var r = [], i = 0, n = t.length; n - 2 * !e > i; i += 2) {
 									var a = [
-										{ x: +t[i - 2], y: +t[i - 1] },
-										{ x: +t[i], y: +t[i + 1] },
-										{ x: +t[i + 2], y: +t[i + 3] },
-										{ x: +t[i + 4], y: +t[i + 5] },
+										{
+											x: +t[i - 2],
+											y: +t[i - 1],
+										},
+										{
+											x: +t[i],
+											y: +t[i + 1],
+										},
+										{
+											x: +t[i + 2],
+											y: +t[i + 3],
+										},
+										{
+											x: +t[i + 4],
+											y: +t[i + 5],
+										},
 									];
 									e
 										? i
 											? n - 4 == i
-												? (a[3] = { x: +t[0], y: +t[1] })
+												? (a[3] = {
+														x: +t[0],
+														y: +t[1],
+												  })
 												: n - 2 == i &&
-												  ((a[2] = { x: +t[0], y: +t[1] }),
-												  (a[3] = { x: +t[2], y: +t[3] }))
-											: (a[0] = { x: +t[n - 2], y: +t[n - 1] })
+												  ((a[2] = {
+														x: +t[0],
+														y: +t[1],
+												  }),
+												  (a[3] = {
+														x: +t[2],
+														y: +t[3],
+												  }))
+											: (a[0] = {
+													x: +t[n - 2],
+													y: +t[n - 1],
+											  })
 										: n - 4 == i
 										? (a[3] = a[2])
-										: i || (a[0] = { x: +t[i], y: +t[i + 1] }),
+										: i ||
+										  (a[0] = {
+												x: +t[i],
+												y: +t[i + 1],
+										  }),
 										r.push([
 											'C',
 											(-a[0].x + 6 * a[1].x + a[2].x) / 6,
@@ -1901,6 +1946,7 @@ Changes:
 									};
 								if ('none' == t)
 									return { r: -1, g: -1, b: -1, hex: 'none', toString: ut };
+
 								!q[o](t.toLowerCase().substring(0, 2)) &&
 									'#' != t.charAt() &&
 									(t = it(t));
@@ -1958,7 +2004,12 @@ Changes:
 													(a = z(l[3])),
 											  l[3] && '%' == l[3].slice(-1) && (a /= 100),
 											  e.hsl2rgb(r, i, n, a))
-											: (((h = { r: r, g: i, b: n, toString: ut }).hex =
+											: (((h = {
+													r: r,
+													g: i,
+													b: n,
+													toString: ut,
+											  }).hex =
 													'#' +
 													(16777216 | n | (i << 8) | (r << 16))
 														.toString(16)
@@ -2004,7 +2055,11 @@ Changes:
 											((e.h = 0),
 											(e.s -= 0.2),
 											e.s <= 0 &&
-												(this.getColor.start = { h: 0, s: 1, b: e.b })),
+												(this.getColor.start = {
+													h: 0,
+													s: 1,
+													b: e.b,
+												})),
 										r.hex
 									);
 								}),
@@ -2093,7 +2148,11 @@ Changes:
 							var ft = function (t) {
 								var e = (ft.ps = ft.ps || {});
 								return (
-									e[t] ? (e[t].sleep = 100) : (e[t] = { sleep: 100 }),
+									e[t]
+										? (e[t].sleep = 100)
+										: (e[t] = {
+												sleep: 100,
+										  }),
 									setTimeout(function () {
 										for (var r in e)
 											e[o](r) &&
@@ -2194,11 +2253,19 @@ Changes:
 									d++
 								) {
 									var g = e.findDotsAtSegment.apply(e, t.concat(d / l));
-									u.push({ x: g.x, y: g.y, t: d / l });
+									u.push({
+										x: g.x,
+										y: g.y,
+										t: d / l,
+									});
 								}
 								for (d = 0; d < h + 1; d++)
 									(g = e.findDotsAtSegment.apply(e, r.concat(d / h))),
-										c.push({ x: g.x, y: g.y, t: d / h });
+										c.push({
+											x: g.x,
+											y: g.y,
+											t: d / h,
+										});
 								for (d = 0; d < l; d++)
 									for (var x = 0; x < h; x++) {
 										var v = u[d],
@@ -2305,10 +2372,22 @@ Changes:
 									{
 										x: d,
 										y: g,
-										m: { x: x, y: v },
-										n: { x: y, y: m },
-										start: { x: b, y: w },
-										end: { x: k, y: B },
+										m: {
+											x: x,
+											y: v,
+										},
+										n: {
+											x: y,
+											y: m,
+										},
+										start: {
+											x: b,
+											y: w,
+										},
+										end: {
+											x: k,
+											y: B,
+										},
 										alpha: T,
 									}
 								);
@@ -2381,7 +2460,14 @@ Changes:
 									var e = ft(t);
 									if (e.bbox) return tt(e.bbox);
 									if (!t)
-										return { x: 0, y: 0, width: 0, height: 0, x2: 0, y2: 0 };
+										return {
+											x: 0,
+											y: 0,
+											width: 0,
+											height: 0,
+											x2: 0,
+											y2: 0,
+										};
 									for (
 										var r,
 											i = 0,
@@ -2721,8 +2807,14 @@ Changes:
 											x.push(l.x),
 											g.push(l.y)),
 										{
-											min: { x: k[c](0, x), y: k[c](0, g) },
-											max: { x: w[c](0, x), y: w[c](0, g) },
+											min: {
+												x: k[c](0, x),
+												y: k[c](0, g),
+											},
+											max: {
+												x: w[c](0, x),
+												y: w[c](0, g),
+											},
 										}
 									);
 								}),
@@ -2936,7 +3028,9 @@ Changes:
 									(e.toMatrix = function (t, e) {
 										var r = yt(t),
 											i = {
-												_: { transform: d },
+												_: {
+													transform: d,
+												},
 												getBBox: function () {
 													return r;
 												},
@@ -3112,8 +3206,18 @@ Changes:
 													width: a.style.pixelWidth || a.offsetWidth,
 													height: a.style.pixelHeight || a.offsetHeight,
 											  }
-											: { container: a, width: r, height: i }
-										: { container: 1, x: t, y: r, width: i, height: n };
+											: {
+													container: a,
+													width: r,
+													height: i,
+											  }
+										: {
+												container: 1,
+												x: t,
+												y: r,
+												width: i,
+												height: n,
+										  };
 							}),
 								(e.pathToRelative = bt),
 								(e._engine = {}),
@@ -3333,7 +3437,10 @@ Changes:
 											r =
 												l.doc.documentElement.scrollLeft ||
 												l.doc.body.scrollLeft;
-										return { x: t.clientX + r, y: t.clientY + e };
+										return {
+											x: t.clientX + r,
+											y: t.clientY + e,
+										};
 									},
 									Dt = l.doc.addEventListener
 										? function (t, e, r, i) {
@@ -3582,6 +3689,7 @@ Changes:
 											(this.unmousedown(Gt[r].start),
 											Gt.splice(r, 1),
 											t.unbind('raphael.drag.*.' + this.id));
+
 									!Gt.length && e.unmousemove(Ot).unmouseup(Vt), (qt = []);
 								}),
 								(i.circle = function (t, r, i) {
@@ -3793,16 +3901,14 @@ Changes:
 									a = this.matrix ? Q(a, this.matrix) : a;
 									for (var s = 1; s < r + 1; s++)
 										n.push(
-											i
-												.path(a)
-												.attr({
-													'stroke': e.color,
-													'fill': e.fill ? e.color : 'none',
-													'stroke-linejoin': 'round',
-													'stroke-linecap': 'round',
-													'stroke-width': +((e.width / r) * s).toFixed(3),
-													'opacity': +(e.opacity / r).toFixed(3),
-												}),
+											i.path(a).attr({
+												'stroke': e.color,
+												'fill': e.fill ? e.color : 'none',
+												'stroke-linejoin': 'round',
+												'stroke-linecap': 'round',
+												'stroke-width': +((e.width / r) * s).toFixed(3),
+												'opacity': +(e.opacity / r).toFixed(3),
+											}),
 										);
 									return n.insertBefore(this).translate(e.offsetx, e.offsety);
 								});
@@ -3943,7 +4049,12 @@ Changes:
 														l[4],
 														l[5],
 														1,
-												  )).alpha && (u = { x: u.x, y: u.y, alpha: u.alpha }),
+												  )).alpha &&
+												(u = {
+													x: u.x,
+													y: u.y,
+													alpha: u.alpha,
+												}),
 											u
 										);
 									};
@@ -4329,7 +4440,9 @@ Changes:
 														else {
 															var D = i.matrix || new Pt(),
 																q = {
-																	_: { transform: F.transform },
+																	_: {
+																		transform: F.transform,
+																	},
 																	getBBox: function () {
 																		return i.getBBox(1);
 																	},
@@ -4447,6 +4560,7 @@ Changes:
 								}),
 								(e.animation = function (t, r, i, n) {
 									if (t instanceof ne) return t;
+
 									(!e.is(i, 'function') && i) ||
 										((n = n || i || null), (i = null)),
 										(t = Object(t)),
@@ -4463,7 +4577,12 @@ Changes:
 										return (
 											i && (l.easing = i),
 											n && (l.callback = n),
-											new ne({ 100: l }, r)
+											new ne(
+												{
+													100: l,
+												},
+												r,
+											)
 										);
 									if (n) {
 										var h = 0;
@@ -4697,7 +4816,11 @@ Changes:
 								(e.registerFont = function (t) {
 									if (!t.face) return t;
 									this.fonts = this.fonts || {};
-									var e = { w: t.w, face: {}, glyphs: {} },
+									var e = {
+											w: t.w,
+											face: {},
+											glyphs: {},
+										},
 										r = t.face['font-family'];
 									for (var i in t.face) t.face[o](i) && (e.face[i] = t.face[i]);
 									if (
@@ -4747,9 +4870,12 @@ Changes:
 										(i = i || 'normal'),
 										(r =
 											+r ||
-											{ normal: 400, bold: 700, lighter: 300, bolder: 800 }[
-												r
-											] ||
+											{
+												normal: 400,
+												bold: 700,
+												lighter: 300,
+												bolder: 800,
+											}[r] ||
 											400),
 										e.fonts)
 									) {
@@ -4921,7 +5047,9 @@ Changes:
 					(h = function (t, e) {
 						return t - e;
 					}),
-					(u = { n: {} }),
+					(u = {
+						n: {},
+					}),
 					(c = function () {
 						for (var t = 0, e = this.length; t < e; t++)
 							if (void 0 !== this[t]) return this[t];
@@ -5015,7 +5143,9 @@ Changes:
 								)
 									n =
 										((n = n.n).hasOwnProperty(i[a]) && n[i[a]]) ||
-										(n[i[a]] = { n: {} });
+										(n[i[a]] = {
+											n: {},
+										});
 								for (n.f = n.f || [], a = 0, s = n.f.length; a < s; a++)
 									if (n.f[a] == e) {
 										r = !0;
@@ -5096,7 +5226,10 @@ Changes:
 											a = a.n;
 										}
 								}
-							} else x._events = u = { n: {} };
+							} else
+								x._events = u = {
+									n: {},
+								};
 						}),
 					(x.once = function (t, e) {
 						var r = function () {
@@ -5213,7 +5346,10 @@ Changes:
 													x(
 														m,
 														'radial' == h
-															? { fx: f, fy: p }
+															? {
+																	fx: f,
+																	fy: p,
+															  }
 															: {
 																	x1: _[0],
 																	y1: _[1],
@@ -5240,7 +5376,11 @@ Changes:
 											}
 										}
 										return (
-											x(d, { 'fill': y(u), 'opacity': 1, 'fill-opacity': 1 }),
+											x(d, {
+												'fill': y(u),
+												'opacity': 1,
+												'fill-opacity': 1,
+											}),
 											(v.fill = c),
 											(v.opacity = 1),
 											(v.fillOpacity = 1),
@@ -5322,9 +5462,15 @@ Changes:
 													  (C += 2),
 													  (l = 1),
 													  (h = a ? 4 : 1),
-													  (u = { fill: 'none', stroke: m.stroke }))
+													  (u = {
+															fill: 'none',
+															stroke: m.stroke,
+													  }))
 													: ((h = l = k / 2),
-													  (u = { fill: m.stroke, stroke: 'none' })),
+													  (u = {
+															fill: m.stroke,
+															stroke: 'none',
+													  })),
 												i._.arrows
 													? a
 														? (i._.arrows.endPath && g[i._.arrows.endPath]--,
@@ -5405,7 +5551,9 @@ Changes:
 															t.getTotalLength(m.path) -
 															(i._.arrows.enddx * b || 0))),
 													i._.arrows[v + 'Path'] &&
-														x(y, { d: t.getSubpath(m.path, s, o) }),
+														x(y, {
+															d: t.getSubpath(m.path, s, o),
+														}),
 													delete i._.arrows[v + 'Path'],
 													delete i._.arrows[v + 'Marker'],
 													delete i._.arrows[v + 'dx'],
@@ -5435,7 +5583,11 @@ Changes:
 											for (
 												var n = t.attrs['stroke-width'] || '1',
 													a =
-														{ round: n, square: n, butt: 0 }[
+														{
+															round: n,
+															square: n,
+															butt: 0,
+														}[
 															t.attrs['stroke-linecap'] || i['stroke-linecap']
 														] || 0,
 													s = [],
@@ -5514,7 +5666,9 @@ Changes:
 																}),
 																T.appendChild(A),
 																i.paper.defs.appendChild(T),
-																x(l, { 'clip-path': 'url(#' + T.id + ')' }),
+																x(l, {
+																	'clip-path': 'url(#' + T.id + ')',
+																}),
 																(i.clip = A);
 														}
 														if (!g) {
@@ -5569,7 +5723,10 @@ Changes:
 														break;
 													case 'r':
 														'rect' == i.type
-															? x(l, { rx: g, ry: g })
+															? x(l, {
+																	rx: g,
+																	ry: g,
+															  })
 															: l.setAttribute(d, g),
 															(i._.dirty = 1);
 														break;
@@ -5604,18 +5761,30 @@ Changes:
 																	height: 1,
 																	width: 1,
 																}),
-																x(L, { 'x': 0, 'y': 0, 'xlink:href': N[1] }),
+																x(L, {
+																	'x': 0,
+																	'y': 0,
+																	'xlink:href': N[1],
+																}),
 																T.appendChild(L),
 																(function (e) {
 																	t._preload(N[1], function () {
 																		var t = this.offsetWidth,
 																			r = this.offsetHeight;
-																		x(e, { width: t, height: r }),
-																			x(L, { width: t, height: r });
+																		x(e, {
+																			width: t,
+																			height: r,
+																		}),
+																			x(L, {
+																				width: t,
+																				height: r,
+																			});
 																	});
 																})(T),
 																i.paper.defs.appendChild(T),
-																x(l, { fill: 'url(#' + T.id + ')' }),
+																x(l, {
+																	fill: 'url(#' + T.id + ')',
+																}),
 																(i.pattern = T),
 																i.pattern && m(i);
 															break;
@@ -5687,7 +5856,9 @@ Changes:
 													case 'opacity':
 														u.gradient &&
 															!u[e]('stroke-opacity') &&
-															x(l, { 'stroke-opacity': g > 1 ? g / 100 : g });
+															x(l, {
+																'stroke-opacity': g > 1 ? g / 100 : g,
+															});
 													case 'fill-opacity':
 														if (u.gradient) {
 															(z = t._g.doc.getElementById(
@@ -5743,7 +5914,11 @@ Changes:
 													p++
 												)
 													(h = x('tspan')),
-														p && x(h, { dy: 1.2 * l, x: s.x }),
+														p &&
+															x(h, {
+																dy: 1.2 * l,
+																x: s.x,
+															}),
 														h.appendChild(t._g.doc.createTextNode(u[p])),
 														o.appendChild(h),
 														(f[p] = h);
@@ -5755,9 +5930,16 @@ Changes:
 													p++
 												)
 													p
-														? x(f[p], { dy: 1.2 * l, x: s.x })
+														? x(f[p], {
+																dy: 1.2 * l,
+																x: s.x,
+														  })
 														: x(f[0], { dy: 0 });
-											x(o, { x: s.x, y: s.y }), (i._.dirty = 1);
+											x(o, {
+												x: s.x,
+												y: s.y,
+											}),
+												(i._.dirty = 1);
 											var g = i._getBBox(),
 												v = s.y - (g.y + g.height / 2);
 											v && t.is(v, 'finite') && x(f[0], { dy: v });
@@ -5805,7 +5987,11 @@ Changes:
 										var i = new S(r, e);
 										return (
 											(i.type = 'path'),
-											k(i, { fill: 'none', stroke: '#000', path: t }),
+											k(i, {
+												fill: 'none',
+												stroke: '#000',
+												path: t,
+											}),
 											i
 										);
 									}),
@@ -5861,7 +6047,9 @@ Changes:
 										if (
 											(t._extractTransform(this, r),
 											this.clip &&
-												x(this.clip, { transform: this.matrix.invert() }),
+												x(this.clip, {
+													transform: this.matrix.invert(),
+												}),
 											this.pattern && m(this),
 											this.node && x(this.node, { transform: this.matrix }),
 											1 != i.sx || 1 != i.sy)
@@ -6032,11 +6220,15 @@ Changes:
 												n = x('feGaussianBlur');
 											(r.attrs.blur = e),
 												(i.id = t.createUUID()),
-												x(n, { stdDeviation: +e || 1.5 }),
+												x(n, {
+													stdDeviation: +e || 1.5,
+												}),
 												i.appendChild(n),
 												r.paper.defs.appendChild(i),
 												(r._blur = i),
-												x(r.node, { filter: 'url(#' + i.id + ')' });
+												x(r.node, {
+													filter: 'url(#' + i.id + ')',
+												});
 										} else
 											r._blur &&
 												(r._blur.parentNode.removeChild(r._blur),
@@ -6113,7 +6305,13 @@ Changes:
 											t.canvas && t.canvas.appendChild(s);
 										var o = new S(s, t);
 										return (
-											(o.attrs = { x: r, y: i, width: n, height: a, src: e }),
+											(o.attrs = {
+												x: r,
+												y: i,
+												width: n,
+												height: a,
+												src: e,
+											}),
 											(o.type = 'image'),
 											o
 										);
@@ -6214,7 +6412,10 @@ Changes:
 												  delete this._vbSize,
 												  (a = '0 0 ' + this.width + f + this.height))
 												: ((this._vbSize = h), (a = t + f + e + f + r + f + i)),
-												x(this.canvas, { viewBox: a, preserveAspectRatio: p });
+												x(this.canvas, {
+													viewBox: a,
+													preserveAspectRatio: p,
+												});
 											h && c;
 
 										)
@@ -6319,12 +6520,23 @@ Changes:
 									v =
 										'position:absolute;left:0;top:0;width:1px;height:1px;behavior:url(#default#VML)',
 									y = 21600,
-									m = { path: 1, rect: 1, image: 1 },
-									b = { circle: 1, ellipse: 1 },
+									m = {
+										path: 1,
+										rect: 1,
+										image: 1,
+									},
+									b = {
+										circle: 1,
+										ellipse: 1,
+									},
 									_ = function (e, r, i) {
 										var n = t.matrix();
 										return (
-											n.rotate(-e, 0.5, 0.5), { dx: n.x(r, i), dy: n.y(r, i) }
+											n.rotate(-e, 0.5, 0.5),
+											{
+												dx: n.x(r, i),
+												dy: n.y(r, i),
+											}
 										);
 									},
 									w = function (t, e, r, i, n, a) {
@@ -6582,7 +6794,11 @@ Changes:
 														(j.src = f),
 														(j.type = 'solid'),
 														t.getRGB(l.fill).error &&
-															(T.type in { circle: 1, ellipse: 1 } ||
+															(T.type in
+																{
+																	circle: 1,
+																	ellipse: 1,
+																} ||
 																'r' != r(l.fill).charAt()) &&
 															S(T, l.fill, j) &&
 															((g.fill = 'none'),
@@ -7103,7 +7319,10 @@ Changes:
 											(r.coordsize = y + c + y),
 											(r.coordorigin = e.coordorigin);
 										var i = new T(r, e),
-											n = { fill: 'none', stroke: '#000' };
+											n = {
+												fill: 'none',
+												stroke: '#000',
+											};
 										t && (n.path = t),
 											(i.type = 'path'),
 											(i.path = []),
@@ -7143,7 +7362,12 @@ Changes:
 											(a.W = 2 * i),
 											(a.H = 2 * n),
 											(a.type = 'ellipse'),
-											C(a, { cx: e, cy: r, rx: i, ry: n }),
+											C(a, {
+												cx: e,
+												cy: r,
+												rx: i,
+												ry: n,
+											}),
 											a
 										);
 									}),
@@ -7155,7 +7379,11 @@ Changes:
 											(n.Y = r - i),
 											(n.W = n.H = 2 * i),
 											(n.type = 'circle'),
-											C(n, { cx: e, cy: r, r: i }),
+											C(n, {
+												cx: e,
+												cy: r,
+												r: i,
+											}),
 											n
 										);
 									}),
@@ -7265,7 +7493,11 @@ Changes:
 												(i * (s = u / n) < h && (e -= (h - i * s) / 2 / s),
 												n * (o = h / i) < u && (r -= (u - n * o) / 2 / o)),
 											(this._viewBox = [e, r, i, n, !!a]),
-											(this._viewBoxShift = { dx: -e, dy: -r, scale: l }),
+											(this._viewBoxShift = {
+												dx: -e,
+												dy: -r,
+												scale: l,
+											}),
 											this.forEach(function (t) {
 												t.transform('...');
 											}),
@@ -7542,7 +7774,11 @@ Changes:
 					if (isKana === isKanaPre) {
 						groupPre.text += c;
 					} else {
-						groupPre = { isKana, text: c, textNormalized: null };
+						groupPre = {
+							isKana,
+							text: c,
+							textNormalized: null,
+						};
 						groups.push(groupPre);
 						isKanaPre = isKana;
 					}
@@ -7734,6 +7970,10 @@ Changes:
 	function wrap_list(list, intro, outro, no_results_span = true) {
 		if (list.length < 1) return no_results_span ? noResultsSpan : '';
 		return intro + list.join(outro + intro) + outro;
+	}
+
+	function is_mobile_device() {
+		return document.querySelector('html').classList.contains('mobile');
 	}
 
 	function search(text) {
@@ -8275,6 +8515,7 @@ Changes:
 	}
 
 	var hasLinkedWords = word_pts.length > 0;
+
 	// Only show contained info messages if there are results returned
 	var _$containedLinkedWordsInfoMsgs = $('#words')
 		.parents('.results-container')
@@ -8283,9 +8524,12 @@ Changes:
 		$(msg).toggle(hasLinkedWords);
 	});
 
+	// Inject linked words into the DOM
 	$('#words').empty();
 	$('#words').html(hasLinkedWords ? word_pts.join('') : noResultsSpan);
+	$('#words_front').html(word_front_pts.join(''));
 
+	// Truncate results with "show more" button (if applicable)
 	var words_max = 10;
 	if (word_pts.length > words_max) {
 		$(`#words .word:nth-child(n+${words_max + 1})`).hide();
@@ -8302,9 +8546,20 @@ Changes:
 		$('#words').append(_$showMoreBtn);
 	}
 
+	// Optionally apply hover-only furigana styles
 	$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
-	$('.word').click(word_click);
-	$('#words_front').html(word_front_pts.join(''));
+
+	// Bind click event: card browser on desktop, jisho.org on mobile
+	if (is_mobile_device()) {
+		// Search jisho.org in a new window/tab
+		$('.word').click(function (e) {
+			const wordKanji = $(this).attr('data-word-kanji');
+			window.open(`https://jisho.org/search/${encodeURI(wordKanji)}`, '_blank');
+		});
+	} else {
+		// Open Anki card browser
+		$('.word').click(word_click);
+	}
 
 	var hasRadicals = data.radicals.length > 0;
 	// Only show contained info messages if there are results returned

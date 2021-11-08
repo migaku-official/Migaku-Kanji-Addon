@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.11
+- @version v0.13.0
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -83,19 +83,19 @@ START - Migaku kanji stylesheet
 }
 
 .font-1 {
-	font-family: kanji_font1, kanji_charfont, sans-serif !important;
+	font-family: kanji_font1;
 }
 
 .font-2 {
-	font-family: kanji_font2, kanji_charfont, sans-serif !important;
+	font-family: kanji_font2;
 }
 
 .font-3 {
-	font-family: kanji_font3, kanji_charfont, sans-serif !important;
+	font-family: kanji_font3;
 }
 
 .font-4 {
-	font-family: kanji_font4, kanji_charfont, sans-serif !important;
+	font-family: kanji_font4;
 }
 
 .kanji-char-font {

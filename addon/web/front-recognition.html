@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.12.11
+- @version v0.13.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -228,7 +228,11 @@ START - Migaku markup
 					if (isKana === isKanaPre) {
 						groupPre.text += c;
 					} else {
-						groupPre = { isKana, text: c, textNormalized: null };
+						groupPre = {
+							isKana,
+							text: c,
+							textNormalized: null,
+						};
 						groups.push(groupPre);
 						isKanaPre = isKana;
 					}
