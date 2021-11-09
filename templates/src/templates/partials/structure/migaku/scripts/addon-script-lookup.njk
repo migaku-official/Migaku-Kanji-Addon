@@ -10,19 +10,17 @@
 
 	var noResultsSpan = '<span class="faded-info-msg -spaced">(no results)</span>';
 
+	const isMobileDevice = document
+		.querySelector('html')
+		.classList
+		.contains('mobile');
+
 	function wrap_list(list, intro, outro, no_results_span = true) {
 		if (list.length < 1)
 			return no_results_span
 				? noResultsSpan
 				: '';
 		return intro + list.join(outro + intro) + outro;
-	}
-
-	function is_mobile_device() {
-		return document
-			.querySelector('html')
-			.classList
-			.contains('mobile');
 	}
 
 	function search(text) {
@@ -348,7 +346,7 @@
 			$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 
 			// Bind click event: card browser on desktop, jisho.org on mobile
-			if (is_mobile_device()) {
+			if (isMobileDevice) {
 				// Search jisho.org in a new window/tab
 				$('.word').click(function () {
 					const wordKanji = $(this).attr('data-word-kanji');
