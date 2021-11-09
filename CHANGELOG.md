@@ -6,6 +6,7 @@
 - [FIX]: Addon compatibility with opening multiple windows (`util.open_browser(query)`).
 - [FIX]: Newly added cards no longer appear in linked vocab.
 - [FEATURE]: Linked words now open `jisho.org` search on mobile.
+- [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 

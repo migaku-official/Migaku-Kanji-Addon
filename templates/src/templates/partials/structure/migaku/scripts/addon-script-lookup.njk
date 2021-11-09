@@ -293,7 +293,21 @@
 					classes.push('word_new');
 				}
 
-				word_pts.push(`<button class="${classes.join(' ')}" data-word-kanji="` + w + '" data-word-idx="' + i + '">' + JapaneseUtil.distributeFuriganaHTML(w, r) + '</button>',);
+				word_pts.push(
+					`
+					<button type="button" class="${classes.join(' ')}" data-word-kanji="${w}" data-word-idx="${i}">
+						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						${isMobileDevice
+					? `<a
+									href="https://jisho.org/search/${encodeURI(w)}"
+									target="_blank"
+									class="jisho-search"
+									aria-hidden="true"
+									rel="noopener noreferrer"
+								></a>`
+					: ''}
+					</button>
+				`);
 			}
 			for (var i = 0; i < data.words_default.length; i++) {
 				const we = data.words_default[i];
@@ -305,7 +319,21 @@
 				}))
 					continue;
 
-				word_pts.push('<button class="word word_default" data-word-kanji="' + w + '">' + JapaneseUtil.distributeFuriganaHTML(w, r) + '</button>',);
+				word_pts.push(
+					`
+					<button type="button" class="word word_default" data-word-kanji="${w}">
+						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						${isMobileDevice
+					? `<a
+									href="https://jisho.org/search/${encodeURI(w)}"
+									target="_blank"
+									class="jisho-search"
+									aria-hidden="true"
+									rel="noopener noreferrer"
+								></a>`
+					: ''}
+					</button>
+				`);
 			}
 
 			var hasLinkedWords = word_pts.length > 0;
@@ -345,15 +373,21 @@
 			// Optionally apply hover-only furigana styles
 			$('#words').toggleClass('hide_readings_hover', settings.hide_readings_hover);
 
-			// Bind click event: card browser on desktop, jisho.org on mobile
 			if (isMobileDevice) {
-				// Search jisho.org in a new window/tab
+				// Simulating a click on a real hyperlink is the only way to reliably open
+				// the native/default web browser on both AnkiDroid and iOS. Doing it this
+				// way, rather than rendering a hyperlink (instead of a button) is necessary
+				// to have consistent styles, and to retain ability to reliably copy/paste link
+				// text without link preview pop-ups interfering on iOS. A bit hacky.
 				$('.word').click(function () {
-					const wordKanji = $(this).attr('data-word-kanji');
-					window.open(`https://jisho.org/search/${encodeURI(wordKanji)}`, '_blank');
-				});
+					// It's necessary to use vanilla JS here, since
+					// jQuery's equivalent `click()` function doesnt work
+					this
+						.querySelector('a.jisho-search')
+						.click();
+				})
 			} else {
-				// Open Anki card browser
+				// Open Anki card browser on desktop
 				$('.word').click(word_click);
 			}
 
