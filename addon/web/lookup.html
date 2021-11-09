@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.13.0
+- @version v0.13.1
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -106,8 +106,8 @@ START - Migaku markup
 						Shift + click for dictionary lookup.
 					</div>
 					<div class="mobile-only-info-msg">
-						Vocab buttons only work on desktop. On mobile, we link to jisho.org
-						as a compromise.
+						Vocab buttons show your linked cards on desktop. On mobile, they
+						search jisho.org as a compromise.
 					</div>
 				</div>
 				<!-- END - Linked words -->
@@ -191,9 +191,8 @@ START - Migaku markup
 							</div>
 						</div>
 						<div class="mobile-only-info-msg">
-							Primitive buttons are only clickable on desktop.
-							<br />
-							Primitive tooltip info can still be viewed by tapping.
+							Primitive buttons open the lookup browser on desktop. On mobile,
+							primitive tooltips can still be viewed by tapping.
 						</div>
 						<div class="primitives-and-radicals__block results-container">
 							<div class="title-tooltip__container">
@@ -498,7 +497,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.13.0
+- @version v0.13.1
 
 Changes:
 - state object and variables
@@ -8007,13 +8006,13 @@ Changes:
 	var noResultsSpan =
 		'<span class="faded-info-msg -spaced">(no results)</span>';
 
+	const isMobileDevice = document
+		.querySelector('html')
+		.classList.contains('mobile');
+
 	function wrap_list(list, intro, outro, no_results_span = true) {
 		if (list.length < 1) return no_results_span ? noResultsSpan : '';
 		return intro + list.join(outro + intro) + outro;
-	}
-
-	function is_mobile_device() {
-		return document.querySelector('html').classList.contains('mobile');
 	}
 
 	function search(text) {
@@ -8555,13 +8554,24 @@ Changes:
 				}
 
 				word_pts.push(
-					`<button class="${classes.join(' ')}" data-word-kanji="` +
-						w +
-						'" data-word-idx="' +
-						i +
-						'">' +
-						JapaneseUtil.distributeFuriganaHTML(w, r) +
-						'</button>',
+					`
+					<button type="button" class="${classes.join(
+						' ',
+					)}" data-word-kanji="${w}" data-word-idx="${i}">
+						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						${
+							isMobileDevice
+								? `<a
+									href="https://jisho.org/search/${encodeURI(w)}"
+									target="_blank"
+									class="jisho-search"
+									aria-hidden="true"
+									rel="noopener noreferrer"
+								></a>`
+								: ''
+						}
+					</button>
+				`,
 				);
 			}
 			for (var i = 0; i < data.words_default.length; i++) {
@@ -8577,11 +8587,22 @@ Changes:
 					continue;
 
 				word_pts.push(
-					'<button class="word word_default" data-word-kanji="' +
-						w +
-						'">' +
-						JapaneseUtil.distributeFuriganaHTML(w, r) +
-						'</button>',
+					`
+					<button type="button" class="word word_default" data-word-kanji="${w}">
+						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						${
+							isMobileDevice
+								? `<a
+									href="https://jisho.org/search/${encodeURI(w)}"
+									target="_blank"
+									class="jisho-search"
+									aria-hidden="true"
+									rel="noopener noreferrer"
+								></a>`
+								: ''
+						}
+					</button>
+				`,
 				);
 			}
 
@@ -8622,18 +8643,19 @@ Changes:
 				settings.hide_readings_hover,
 			);
 
-			// Bind click event: card browser on desktop, jisho.org on mobile
-			if (is_mobile_device()) {
-				// Search jisho.org in a new window/tab
+			if (isMobileDevice) {
+				// Simulating a click on a real hyperlink is the only way to reliably open
+				// the native/default web browser on both AnkiDroid and iOS. Doing it this
+				// way, rather than rendering a hyperlink (instead of a button) is necessary
+				// to have consistent styles, and to retain ability to reliably copy/paste link
+				// text without link preview pop-ups interfering on iOS. A bit hacky.
 				$('.word').click(function () {
-					const wordKanji = $(this).attr('data-word-kanji');
-					window.open(
-						`https://jisho.org/search/${encodeURI(wordKanji)}`,
-						'_blank',
-					);
+					// It's necessary to use vanilla JS here, since
+					// jQuery's equivalent `click()` function doesnt work
+					this.querySelector('a.jisho-search').click();
 				});
 			} else {
-				// Open Anki card browser
+				// Open Anki card browser on desktop
 				$('.word').click(word_click);
 			}
 
