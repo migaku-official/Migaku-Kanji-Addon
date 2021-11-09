@@ -1,10 +1,12 @@
-## 1.0.0-alpha.3 (unreleased)
+## 1.0.0-beta.1 (unreleased)
 
 - [FIX]: "Show more" button styles on backs of cards no longer have Anki's default button styles interfering.
 - [STYLE]: Front of card actions are now more subdued.
 - [CHORE]: Added another info message to front of card actions.
 - [FIX]: Addon compatibility with opening multiple windows (`util.open_browser(query)`).
 - [FIX]: Newly added cards no longer appear in linked vocab.
+- [FEATURE]: Linked words now open `jisho.org` search on mobile.
+- [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 

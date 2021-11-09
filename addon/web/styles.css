@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.12.11
+- @version v0.13.1
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -83,19 +83,19 @@ START - Migaku kanji stylesheet
 }
 
 .font-1 {
-	font-family: kanji_font1, kanji_charfont, sans-serif !important;
+	font-family: kanji_font1;
 }
 
 .font-2 {
-	font-family: kanji_font2, kanji_charfont, sans-serif !important;
+	font-family: kanji_font2;
 }
 
 .font-3 {
-	font-family: kanji_font3, kanji_charfont, sans-serif !important;
+	font-family: kanji_font3;
 }
 
 .font-4 {
-	font-family: kanji_font4, kanji_charfont, sans-serif !important;
+	font-family: kanji_font4;
 }
 
 .kanji-char-font {
@@ -252,6 +252,9 @@ h1 {
 
 ruby rt {
 	height: 20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
 }
 
 button.radical,
@@ -452,7 +455,7 @@ button.show-more__button,
 	-moz-user-select: none;
 	user-select: none;
 	width: 200px;
-	z-index: 1;
+	z-index: 2;
 }
 
 .ankidroid_dark_mode .primitiveDetails,

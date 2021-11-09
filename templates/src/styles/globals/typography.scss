@@ -109,6 +109,9 @@ ruby rt {
 	// Necessary for equal-heights and alignment for
 	// any adjacent kanji that doesn't have furigana
 	height: 20px;
+	// Prevent furigana from being selectable, to
+	// avoid interfering with word copy/paste
+	user-select: none;
 }
 
 /* END - Typography
