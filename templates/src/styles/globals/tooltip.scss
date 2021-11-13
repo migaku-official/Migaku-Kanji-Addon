@@ -120,6 +120,10 @@ button.primitive,
 		display: inline-flex;
 		margin-left: 22px; // Offset tooltip when centered
 
+		&.-left-aligned {
+			margin-left: 0;
+		}
+
 		@include bp.get(s) {
 			margin-bottom: 5px;
 			margin-left: 0;
