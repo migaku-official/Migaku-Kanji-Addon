@@ -26,7 +26,8 @@ START - Tooltip */
 	z-index: 2;
 
 	@include dark-mode {
-		background: $brand-grey-darker;
+		background: $brand-orange-primary;
+		color: $text-on-light;
 	}
 
 	// Position variations (appended to parent container)

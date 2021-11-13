@@ -70,7 +70,7 @@ START - Keyword and meaning */
 		padding: 1px 7px 1px 5px;
 
 		@include dark-mode {
-			background-color: rgba($brand-orange-primary, 0.25);
+			background-color: rgba($brand-grey-dark, 0.25);
 		}
 
 		&::before {
@@ -90,6 +90,7 @@ START - Keyword and meaning */
 
 			@include dark-mode {
 				background-color: $brand-orange-primary;
+				border: 1px solid $brand-grey-dark;
 			}
 		}
 	}
