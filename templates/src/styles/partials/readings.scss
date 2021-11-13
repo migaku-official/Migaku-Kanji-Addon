@@ -51,6 +51,7 @@ START - Readings */
 			}
 
 			@include bp.get(s) {
+				align-items: center;
 				flex-direction: row;
 
 				> *:first-child {
