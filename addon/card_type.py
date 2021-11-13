@@ -53,6 +53,7 @@ class CardTypeData(metaclass=CardTypeDataMeta):
         'stroke_order_show_numbers': False,
         'hide_readings_hover': False,
         'show_header': False,
+        'show_radicals': False,
     }
 
     def __init__(self, model_name, fields):
@@ -119,6 +120,7 @@ class CardTypeData(metaclass=CardTypeDataMeta):
             'stroke_order_show_numbers': self.stroke_order_show_numbers,
             'hide_readings_hover': self.hide_readings_hover,
             'show_header': self.show_header,
+            'show_radicals': self.show_radicals,
         }
         settings_html = F'''
             <script>

@@ -191,7 +191,10 @@ START - Migaku markup
 						Primitive buttons open the lookup browser on desktop. On mobile,
 						primitive tooltips can still be viewed by tapping.
 					</div>
-					<div class="primitives-and-radicals__block results-container">
+					<div
+						id="radicals_container"
+						class="primitives-and-radicals__block results-container"
+					>
 						<div class="title-tooltip__container">
 							<h2 class="title-tooltip__title primitives-and-radicals__title">
 								Radicals
@@ -8091,6 +8094,9 @@ Changes:
 	if (!settings.show_header) {
 		$('.migaku-header').hide();
 	}
+	if (!settings.show_radicals) {
+		$('#radicals_container').hide();
+	}
 
 	var noResultsSpan =
 		'<span class="faded-info-msg -spaced">(no results)</span>';
@@ -8378,14 +8384,14 @@ Changes:
 			$slider.attr('max', total_strokes);
 			$slider.data('prev', total_strokes); // Cache starting value
 
-			// "Autoplay stroke order from start" in Kanji Settings window
+			// "Stroke order play mode" in Kanji Settings window
 			if (settings.stroke_order_mode === 'auto') {
 				// Draw strokes one by one
 				self.render(total_strokes);
 			} else if (settings.stroke_order_mode === 'auto_all') {
 				// Draw all strokes at once
 				self.render(total_strokes, true); // simultaneous = true
-			} else {
+			} else if (settings.stroke_order_mode !== 'noplay') {
 				// Draw all strokes at once for quick rendering
 				self.render(total_strokes, true, true); // simultaneous = true, instant = true
 			}
