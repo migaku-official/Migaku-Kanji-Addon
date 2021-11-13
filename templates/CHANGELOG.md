@@ -4,7 +4,11 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
-## 0.14.0 (unreleased)
+## 0.14.1
+
+- [FIX]: Gracefully handle faulty stroke order SVGs.
+
+## 0.14.0
 
 - [STYLE]: Primitive keywords now have a visually distinct style in primitive button hover tooltip.
 - [STYLE]: Dark mode tooltips now have an orange background, instead of dark grey.
