@@ -97,7 +97,7 @@ class LookupWindow(QDialog):
         body_html = read_web_file('lookup.html')
 
         settings = {
-            'stroke_order_autoplay': config.get('lookup_stroke_order_autoplay', False),
+            'stroke_order_mode': config.get('lookup_stroke_order_mode', 'fully_drawn'),
             'stroke_order_show_numbers': config.get('lookup_stroke_order_show_numbers', False),
             'hide_readings_hover': config.get('lookup_hide_readings_hover', False),
             'show_header': config.get('lookup_show_header', True),

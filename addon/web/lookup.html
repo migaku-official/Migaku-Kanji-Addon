@@ -8479,8 +8479,12 @@ Changes:
 					$slider.data('prev', total_strokes); // Cache starting value
 
 					// "Autoplay stroke order from start" in Kanji Settings window
-					if (settings.stroke_order_autoplay) {
+					if (settings.stroke_order_mode === 'auto') {
+						// Draw strokes one by one
 						self.render(total_strokes);
+					} else if (settings.stroke_order_mode === 'auto_all') {
+						// Draw all strokes at once
+						self.render(total_strokes, true); // simultaneous = true
 					} else {
 						// Draw all strokes at once for quick rendering
 						self.render(total_strokes, true, true); // simultaneous = true, instant = true
