@@ -14,6 +14,14 @@ from .version import VERSION_STRING
 from .kanji_forms_url import KANJI_FORMS_URL
 
 
+def lyt_add_with_label(lyt, widget: QWidget, label: str):
+    sub_lyt = QHBoxLayout()
+    sub_lyt.addWidget(QLabel(label))
+    sub_lyt.addWidget(widget)
+    sub_lyt.addStretch()
+    lyt.addLayout(sub_lyt)
+
+
 class CardTypeSettingsWidget(QWidget):
 
     def __init__(self, card_type):
@@ -80,9 +88,14 @@ class CardTypeSettingsWidget(QWidget):
         self.auto_card_refresh_box.setChecked(self.card_type.auto_card_refresh)
         lyt.addWidget(self.auto_card_refresh_box)
 
-        self.stroke_order_autoplay_box = QCheckBox('Autoplay stroke order from start')
-        self.stroke_order_autoplay_box.setChecked(self.card_type.stroke_order_autoplay)
-        lyt.addWidget(self.stroke_order_autoplay_box)
+        self.stroke_order_mode_box = QComboBox()
+        self.stroke_order_mode_box.addItem('Start fully drawn', 'fully_drawn')
+        self.stroke_order_mode_box.addItem('Draw strokes one by one', 'auto')
+        self.stroke_order_mode_box.addItem('Draw all strokes at once', 'auto_all')
+        self.stroke_order_mode_box.setCurrentIndex(
+            self.stroke_order_mode_box.findData(self.card_type.stroke_order_mode)
+        )
+        lyt_add_with_label(lyt, self.stroke_order_mode_box, 'Stroke order diagram play mode:')
 
         self.stroke_order_show_numbers_box = QCheckBox('Default show stroke order numbers')
         self.stroke_order_show_numbers_box.setChecked(self.card_type.stroke_order_show_numbers)
@@ -119,7 +132,7 @@ class CardTypeSettingsWidget(QWidget):
         self.card_type.auto_card_creation = self.auto_card_creation_box.isChecked()
         self.card_type.auto_card_creation_msg = self.auto_card_creation_msg_box.isChecked()
         self.card_type.auto_card_refresh = self.auto_card_refresh_box.isChecked()
-        self.card_type.stroke_order_autoplay = self.stroke_order_autoplay_box.isChecked()
+        self.card_type.stroke_order_mode = str(self.stroke_order_mode_box.currentData())
         self.card_type.stroke_order_show_numbers = self.stroke_order_show_numbers_box.isChecked()
         self.card_type.hide_readings_hover = self.hide_readings_hover_box.isChecked()
         self.card_type.show_header = self.show_header_box.isChecked()
@@ -260,9 +273,16 @@ class SettingsWindow(QDialog):
         lookup_lyt = QVBoxLayout()
         lookup_tab.setLayout(lookup_lyt)
 
-        self.lookup_stroke_order_autoplay_box = QCheckBox('Autoplay stroke order from start')
-        self.lookup_stroke_order_autoplay_box.setChecked(config.get('lookup_stroke_order_autoplay', False))
-        lookup_lyt.addWidget(self.lookup_stroke_order_autoplay_box)
+        self.lookup_stroke_order_mode_box = QComboBox()
+        self.lookup_stroke_order_mode_box.addItem('Start fully drawn', 'fully_drawn')
+        self.lookup_stroke_order_mode_box.addItem('Draw strokes one by one', 'auto')
+        self.lookup_stroke_order_mode_box.addItem('Draw all srtokes at once', 'auto_all')
+        self.lookup_stroke_order_mode_box.setCurrentIndex(
+            self.lookup_stroke_order_mode_box.findData(
+                config.get('lookup_stroke_order_mode', 'fully_drawn')
+            )
+        )
+        lyt_add_with_label(lookup_lyt, self.lookup_stroke_order_mode_box, 'Stroke order diagram play mode:')
 
         self.lookup_stroke_order_show_numbers_box = QCheckBox('Default show stroke order numbers')
         self.lookup_stroke_order_show_numbers_box.setChecked(config.get('lookup_stroke_order_show_numbers', False))
@@ -335,7 +355,7 @@ class SettingsWindow(QDialog):
         self.words_recognized.save_to_config()
         for ct_widget in self.card_type_widgets:
             ct_widget.save_to_config()
-        config.set('lookup_stroke_order_autoplay', self.lookup_stroke_order_autoplay_box.isChecked())
+        config.set('lookup_stroke_order_mode', str(self.lookup_stroke_order_mode_box.currentData()))
         config.set('lookup_stroke_order_show_numbers', self.lookup_stroke_order_show_numbers_box.isChecked())
         config.set('lookup_hide_readings_hover', self.lookup_hide_readings_hover_box.isChecked())
         config.set('lookup_show_header', self.lookup_show_header_box.isChecked())

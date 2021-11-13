@@ -136,7 +136,7 @@ Changes:
 			/**
 			* Clean all strokes on papers.
 			*/
-			erase: function (end, callbackOverride) {
+			erase: function (end, callbackOverride, instant=false) {
 				var self = this;
 
 				var finishedErasingCallback = self.options.finishedErasing;
@@ -168,7 +168,7 @@ Changes:
 					var stroke = self.strokes[strokeNum];
 					var strokeDuration = stroke.duration;
 
-					eraseStroke(stroke, self.timeouts.erasing, self.options);
+					eraseStroke(stroke, self.timeouts.erasing, self.options, instant);
 
 					if (strokeDuration > longestEraseDuration) {
 						longestEraseDuration = strokeDuration;
@@ -191,13 +191,13 @@ Changes:
 					} else {
 						finishedErasingCallback(self, end);
 					}
-				}, longestEraseDuration);
+				}, instant ? 0 : longestEraseDuration);
 			},
 
 			/**
 			* All the magic happens here.
 			*/
-			render: function (end, simultaneous) {
+			render: function (end, simultaneous, instant=false) {
 				self = this;
 
 				var startedDrawingCallback = self.options.startedDrawing,
@@ -299,7 +299,7 @@ Changes:
 
 						self.state.renderCount += 1;
 
-						drawStroke(self.papers[stroke.char], stroke, self.timeouts.drawing, self.options);
+						drawStroke(self.papers[stroke.char], stroke, self.timeouts.drawing, self.options, instant);
 
 						// Execute custom callback "finishedDrawing" after final stroke duration
 						if (strokeDuration > longestStrokeDuration) {
@@ -333,7 +333,7 @@ Changes:
 						}
 
 						finishedDrawingCallback(self, strokeNum);
-					}, longestStrokeDuration);
+					}, instant ? 0 : longestStrokeDuration);
 
 					// Else draw strokes one at a time
 				} else {
@@ -374,21 +374,21 @@ Changes:
 				var self = this;
 				this.erase(0, function () {
 					self.render(self.strokes.length, false);
-				});
+				}, true);
 			},
 
 			/**
 			* Wrap the erase function to remove the x last strokes.
 			*/
-			eraseLastStrokes: function (nbStrokes) {
-				this.erase(this.pointer - nbStrokes);
+			eraseLastStrokes: function (nbStrokes, instant=false) {
+				this.erase(this.pointer - nbStrokes, undefined, instant);
 			},
 
 			/**
 			* Wrap the render function to render the x next strokes.
 			*/
-			renderNextStrokes: function (nbStrokes) {
-				this.render(this.pointer + nbStrokes);
+			renderNextStrokes: function (nbStrokes, instant=false) {
+				this.render(this.pointer + nbStrokes, false, instant);
 			}
 
 		};
@@ -472,7 +472,7 @@ Changes:
 		/**
 		* Remove a single stroke ; deletion can be animated if set as so.
 		*/
-		function eraseStroke(stroke, timeouts, options) {
+		function eraseStroke(stroke, timeouts, options, instant=false) {
 			// In some cases the text object may be null:
 			//  - Stroke order display disabled
 			//  - Stroke already deleted
@@ -498,7 +498,7 @@ Changes:
 				timeouts.shift();
 			};
 
-			if (options.stroke.animated.erasing) {
+			if (options.stroke.animated.erasing && !instant) {
 				stroke.object.path.node.style.stroke = options.stroke.attr.active;
 				timeouts.push(animateStroke(stroke, -1, options, cb));
 			} else {
@@ -509,7 +509,7 @@ Changes:
 		/**
 		* Draw a single stroke ; drawing can be animated if set as so.
 		*/
-		function drawStroke(paper, stroke, timeouts, options) {
+		function drawStroke(paper, stroke, timeouts, options, instant=false) {
 			var cb = function () {
 
 				// The stroke object may have been already erased when we reach this timeout
@@ -539,7 +539,7 @@ Changes:
 				showStrokeOrder(paper, stroke, options);
 			}
 
-			if (options.stroke.animated.drawing) {
+			if (options.stroke.animated.drawing && !instant) {
 				animateStroke(stroke, 1, options, cb);
 			} else {
 				cb();
