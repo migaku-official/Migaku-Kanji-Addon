@@ -4,6 +4,10 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
+## 0.14.0 (unreleased)
+
+- [STYLE]: Primitive keywords now have a visually distinct style in primitive button hover tooltip.
+
 ## 0.13.1
 
 - [FIX]: Mobile linked words now actually work on devices, and not just in the demo templates.
