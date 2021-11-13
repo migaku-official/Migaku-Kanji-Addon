@@ -387,7 +387,7 @@ class KanjiDB:
                                 self.refresh_note(note, do_flush=True)
 
         # Create new cards
-        if not is_new:
+        if is_new:
             new_kanji_for_msg = OrderedDict()
 
             for ct in CardType:
