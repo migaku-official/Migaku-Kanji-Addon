@@ -8,6 +8,7 @@
 - [FEATURE]: Linked words now open `jisho.org` search on mobile.
 - [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
 - [STYLE]: Primitive keywords now have a visually distinct style in primitive button hover tooltip.
+- [CHORE]: Added title tooltips to all other sections of the card templates.
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 

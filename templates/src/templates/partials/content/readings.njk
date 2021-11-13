@@ -1,3 +1,5 @@
+{% from "partials/structure/title-tooltip-macro.njk" import mcr_titleTooltip with context %}
+
 <!-- START - Readings -->
 <div class="readings__container">
 	<h2 class="vh">{{ txt__readings_title }}</h2>
@@ -15,5 +17,12 @@
 			<span id="nanori" class="kanji-char-font"></span>
 		</li>
 	</ul>
+	{{ mcr_titleTooltip(
+			id='readings__tooltip',
+			title=txt__readings_tooltip_title,
+			tooltip=txt__readings_tooltip_content,
+			h2class='readings__tooltip',
+			containerClass='-subdued'
+	) }}
 </div>
 <!-- END - Readings -->

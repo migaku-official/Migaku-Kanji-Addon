@@ -114,6 +114,22 @@ button.primitive,
 				display: block;
 			}
 		}
+
+		&.-subdued {
+			width: 100%;
+
+			.title-tooltip__title {
+				@include faded-info-msg;
+			}
+
+			button {
+				top: 0;
+			}
+
+			.separator {
+				display: none;
+			}
+		}
 	}
 
 	&__title {
