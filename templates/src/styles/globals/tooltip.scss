@@ -120,6 +120,8 @@ button.primitive,
 
 			.title-tooltip__title {
 				@include faded-info-msg;
+
+				margin-bottom: 10px;
 			}
 
 			button {
