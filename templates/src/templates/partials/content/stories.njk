@@ -1,7 +1,14 @@
+{% from "partials/structure/title-tooltip-macro.njk" import mcr_titleTooltip with context %}
+
 <!-- START - Stories -->
 <div class="stories__container">
 	{% include "partials/structure/full-separator.njk" %}
-	<h2 class="stories__title -has-separator">{{ txt__stories_title }}</h2>
+	{{ mcr_titleTooltip(
+			id='stories__title',
+			title=txt__stories_title,
+			tooltip=txt__stories_tooltip,
+			h2class='stories__title'
+	) }}
 	<div id="stories" class="stories__content"></div>
 </div>
 <!-- END - Stories -->
