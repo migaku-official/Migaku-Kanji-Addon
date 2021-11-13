@@ -1255,6 +1255,32 @@ Changes:
 		 * Simple parser to extract paths and texts data.
 		 */
 		function parseResponse(response, code) {
+			// Prepend XML and SVG headers if required
+			if (!response.startsWith('<?xml')) {
+				const xml_header = '<?xml version="1.0" encoding="UTF-8"?>\n';
+				const svg_header =
+					'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [\n' +
+					'<!ATTLIST g\n' +
+					'xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net"\n' +
+					'kvg:element CDATA #IMPLIED\n' +
+					'kvg:variant CDATA #IMPLIED\n' +
+					'kvg:partial CDATA #IMPLIED\n' +
+					'kvg:original CDATA #IMPLIED\n' +
+					'kvg:part CDATA #IMPLIED\n' +
+					'kvg:number CDATA #IMPLIED\n' +
+					'kvg:tradForm CDATA #IMPLIED\n' +
+					'kvg:radicalForm CDATA #IMPLIED\n' +
+					'kvg:position CDATA #IMPLIED\n' +
+					'kvg:radical CDATA #IMPLIED\n' +
+					'kvg:phon CDATA #IMPLIED >\n' +
+					'<!ATTLIST path\n' +
+					'xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net"\n' +
+					'kvg:type CDATA #IMPLIED >\n' +
+					']>\n';
+
+				response = xml_header + svg_header + response;
+			}
+
 			var data = [],
 				dom = new DOMParser().parseFromString(response, 'application/xml'),
 				texts = dom.querySelectorAll('text'),
