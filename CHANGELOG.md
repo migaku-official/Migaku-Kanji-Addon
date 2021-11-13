@@ -1,18 +1,33 @@
 ## 1.0.0-beta.1 (unreleased)
 
-- [FIX]: "Show more" button styles on backs of cards no longer have Anki's default button styles interfering.
-- [STYLE]: Front of card actions are now more subdued.
-- [CHORE]: Added another info message to front of card actions.
-- [FIX]: Addon compatibility with opening multiple windows (`util.open_browser(query)`).
-- [FIX]: Newly added cards no longer appear in linked vocab.
+This is a closed beta for Patreon "Patrons" and above.
+
+### New features
+
 - [FEATURE]: Linked words now open `jisho.org` search on mobile.
-- [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
-- [STYLE]: Primitive keywords now have a visually distinct style in primitive button hover tooltip.
-- [CHORE]: Added title tooltips to all other sections of the card templates.
-- [FEATURE]: Primitives with alternatives now display an asterisk.
 - [FEATURE]: A character's primitive alternatives are now displayed within the "Primitive in" section, if applicable.
+- [STYLE]: Primitive keywords now have a visually distinct style in the primitive button hover tooltip.
+- [FEATURE]: Primitives with alternatives now display an asterisk when appearing as primitive buttons in other cards.
+- [FEATURE]: Kanji diagram now starts fully drawn, with settings available for card animation preference (play from start, all strokes at once, fully drawn).
+- [FEATURE]: You can now also add kanji cards via manual selection, i.e. via text box content (non-kanji, duplicates, known kanji ignored).
+
+### Notable fixes and improvements
+
+- [FIX]: Automatic card creation when adding new cards is now working again.
+- [FIX]: Look-ahead card creation should now occur more reliably (but more testing required).
+- [CHORE]: Suspended cards that are not new can now display in linked words (e.g. retired cards).
+- [CHORE]: Dictionary radicals are now hidden by default, and can be shown via a new setting.
+- [FIX]: "Show more" button styles on backs of cards no longer have Anki's default button styles interfering.
+- [STYLE]: Front of card actions are now more subdued, and have an additional info message.
+- [FIX]: Compatibility with addons that open multiple windows (`util.open_browser(query)`).
+- [FIX]: Newly added cards no longer appear in linked vocab.
+- [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
+- [CHORE]: Added more tooltips to the main card templates.
+- [FIX]: Adding user data to cards on AnkiDroid no longer breaks the entire card, but just breaks the kanji diagram for that card. User data still shows. Card can be fixed via "Refresh Kanji Cards" on desktop. (Best we can do for now).
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
+
+This is a closed alpha for Patreon "Backers".
 
 First candidate for a public release. Note that the alpha and beta history prior to 1.0.0 are not recorded here, and otherwise exist in Patreon and Discord post history.
 
