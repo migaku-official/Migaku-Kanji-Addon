@@ -10,7 +10,7 @@ The versioning here is independent of the main versioning of the addon, and exis
 - [STYLE]: Dark mode tooltips now have an orange background, instead of dark grey.
 - [CHORE]: Changed linked words furgiana hover text '(tap)' back to '(hover)', now that tapping the buttons opens jisho.org.
 - [CHORE]: Added title tooltip to the "Stories", "Actions (back, and lookup)", and "Readings" sections.
-- [STYLE]: Primitives with alternates now are marked with an asterisk in the primitive buttons/tooltips.
+- [FEATURE]: Primitives with alternatives now display an asterisk.
 
 ## 0.13.1
 
