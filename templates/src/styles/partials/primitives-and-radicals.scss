@@ -107,11 +107,15 @@ button.primitive {
 			@include pseudo;
 
 			content: '*';
-			font-size: 20px;
+			font-size: 16px;
 			line-height: 1;
 			position: absolute;
 			right: 2px;
 			top: 2px;
+
+			@include bp.get(s) {
+				font-size: 20px;
+			}
 		}
 	}
 }
