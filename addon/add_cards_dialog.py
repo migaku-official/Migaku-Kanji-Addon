@@ -65,7 +65,17 @@ class AddCardsDialog(QDialog):
         self.option_box = QComboBox()
         for (label, *_) in self.options:
             self.option_box.addItem(label)
+        self.option_box.addItem('Manual Selection')
+        self.option_box.currentIndexChanged.connect(self.on_option_changed)
         lyt.addWidget(self.option_box, i, 1)
+
+        i += 1
+        self.manual_box = QPlainTextEdit()
+        self.manual_box.setPlaceholderText('Enter kanji that should be added.\n\n'
+                                           'Non kanji characters, duplicates and kanji you already know are ignored.\n\n'
+                                           'You can also paste any text of which you want to learn all kanji.')
+        self.manual_box.setHidden(True)
+        lyt.addWidget(self.manual_box, i, 0, 1, 2)
 
         i += 1
         btn_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
@@ -73,22 +83,60 @@ class AddCardsDialog(QDialog):
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box, i, 0, 1, 2)
 
+        self.update_fixed_size()
+
+
+    def update_fixed_size(self):
+        self.setFixedSize(self.sizeHint())
+
+
+    def is_manual_selected(self):
+        return self.option_box.currentIndex() == len(self.options)
+
+
+    def on_option_changed(self, idx):
+        is_manual = self.is_manual_selected()
+        self.amt_box.setEnabled(not is_manual)
+        self.manual_box.setHidden(not is_manual)
+        self.update_fixed_size()
+
 
     def add_cards(self):
 
         ct = CardType.Production if self.radio_production.isChecked() else CardType.Recognition
-        amt = self.amt_box.value()
-        option = self.options[self.option_box.currentIndex()]
-        column = option[1]
-        order = option[2]
-        condition = option[3]
 
         aqt.mw.migaku_kanji_db.recalc_user_cards(ct)
-        chars = aqt.mw.migaku_kanji_db.find_next_characters(
-            ct, amt, column, order, condition
-        )
 
-        if len(chars) < 1:
+        if self.is_manual_selected():
+            text = self.manual_box.toPlainText().strip()
+
+            if not text:
+                QMessageBox.information(
+                    self,
+                    'Kanji Cards',
+                    'Please enter the kanji you want to learn in the text box.'
+                )
+                return
+
+            chars = aqt.mw.migaku_kanji_db.new_characters(
+                ct,
+                util.unique_characters(text)
+            )
+
+        else:
+            amt = self.amt_box.value()
+            option = self.options[self.option_box.currentIndex()]
+            column = option[1]
+            order = option[2]
+            condition = option[3]
+
+            chars = aqt.mw.migaku_kanji_db.find_next_characters(
+                ct, amt, column, order, condition
+            )
+
+        add_amt = len(chars)
+
+        if add_amt < 1:
             QMessageBox.information(
                 self,
                 'Kanji Cards',
@@ -108,7 +156,7 @@ class AddCardsDialog(QDialog):
             QMessageBox.information(
                 self,
                 'Added Kanji Cards',
-                F'Added {amt} {ct.name} kanji cards:\n\n{" ".join(chars)}'
+                F'Added {add_amt} {ct.name} kanji cards:\n\n{" ".join(chars)}'
             )
             self.accept()
         else:
