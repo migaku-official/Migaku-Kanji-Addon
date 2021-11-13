@@ -7,6 +7,7 @@ The versioning here is independent of the main versioning of the addon, and exis
 ## 0.14.0 (unreleased)
 
 - [STYLE]: Primitive keywords now have a visually distinct style in primitive button hover tooltip.
+- [CHORE]: Changed linked words furgiana hover text '(tap)' back to '(hover)', now that tapping the buttons opens jisho.org.
 
 ## 0.13.1
 

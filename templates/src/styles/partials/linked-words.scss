@@ -94,10 +94,6 @@ START - Linked words */
 			@include dark-mode {
 				color: $text-on-light;
 			}
-
-			@include mobile-device {
-				content: '(tap)';
-			}
 		}
 	}
 }
