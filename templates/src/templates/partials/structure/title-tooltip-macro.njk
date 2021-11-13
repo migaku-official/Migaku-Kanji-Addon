@@ -2,7 +2,7 @@
 {% macro mcr_titleTooltip(id, title, tooltip, h2class = '', containerClass = '') %}
 	<div class="title-tooltip__container{% if containerClass != '' %} {{containerClass}}{% endif %}">
 		<h2 class="title-tooltip__title{% if h2class != '' %} {{h2class}}{% endif %}">
-			{{title}}
+			{{ title }}
 			<button
 				type="button"
 				title="What's this?"
@@ -19,7 +19,7 @@
 			style="display: none"
 			aria-expanded="false"
 		>
-			{{tooltip}}
+			{{ tooltip | safe }}
 		</div>
 
 		<hr class="separator"/>
