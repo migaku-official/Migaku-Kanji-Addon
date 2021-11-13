@@ -9,6 +9,7 @@ from .mark_known_dialog import MarkKnownDialog, MarkKnownFromNotesDialog
 from .convert_notes_dialog import ConvertNotesDialog
 from . import reviewer
 from . import version
+from . import util
 
 
 import anki

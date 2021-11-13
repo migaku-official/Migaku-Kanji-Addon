@@ -274,7 +274,7 @@ class KanjiDB:
                 if check_new:
                     find_filter.append('(is:new AND -is:suspended)')
                 else:
-                    find_filter.append('((is:learn OR is:review) AND -is:suspended)')
+                    find_filter.append('(is:learn OR is:review)')
 
                 entry_note_ids = aqt.mw.col.find_notes(' AND '.join(find_filter))
 
