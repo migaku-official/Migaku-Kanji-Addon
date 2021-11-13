@@ -1242,7 +1242,11 @@ Changes:
 				preload_svg_data = this.preload_svgs[char];
 
 			if (preload_svg_data) {
-				callbacks.done(index, parseResponse(preload_svg_data, code));
+				try {
+					callbacks.done(index, parseResponse(preload_svg_data, code));
+				} catch (e) {
+					callbacks.error(e.toString());
+				}
 				return;
 			}
 
@@ -1261,7 +1265,11 @@ Changes:
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
-						callbacks.done(index, parseResponse(xhr.response, code));
+						try {
+							callbacks.done(index, parseResponse(xhr.response, code));
+						} catch (e) {
+							callbacks.error(e.toString());
+						}
 					} else {
 						callbacks.error(xhr.statusText);
 					}
