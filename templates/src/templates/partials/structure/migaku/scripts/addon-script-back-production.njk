@@ -162,18 +162,18 @@
 				.join(', ')
 			: '-';
 
-		var hasPrimitiveAlternative = p_data.primitive_alternatives.length > 0,
-				primitive_alternatives_txt = p_data.primitive_alternatives.length
-					? p_data
-						.primitive_alternatives
-						.join(', ')
-					: '-';
+		var primitiveHasAlts = p_data.primitive_alternatives.length > 0,
+			primitive_alternatives_txt = primitiveHasAlts
+				? p_data
+					.primitive_alternatives
+					.join(', ')
+				: '-';
 
-			primitives_pts.push(
-				`<button
-					class="primitive${hasPrimitiveAlternative
-				? ' -has-alternative'
-				: ''}"
+		primitives_pts.push(
+			`<button
+					class="primitive${primitiveHasAlts
+			? ' -has-alternative'
+			: ''}"
 					data-character="${p_data.character}"
 				>
 					${p_data.character}
@@ -187,9 +187,9 @@
 							<span>${meanings_txt}</span>
 						</div>
 						<div class="primitiveDetails-alternatives">
-							<h3><h3>${hasPrimitiveAlternative
-					? '*'
-					: ''}Alternatives:</h3></h3>
+							<h3><h3>${primitiveHasAlts
+				? '*'
+				: ''}Alternatives:</h3></h3>
 							<span>${primitive_alternatives_txt}</span > </div>
 			</div>
 		</button>`);
@@ -228,18 +228,18 @@
 				.join(', ')
 			: '-';
 
-		var hasPrimitiveAlternative = p_data.primitive_alternatives.length > 0,
-				primitive_alternatives_txt = hasPrimitiveAlternative
-					? p_data
-						.primitive_alternatives
-						.join(', ')
-					: '-';
+		var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0,
+			primitive_alternatives_txt = primitiveOfHasAlts
+				? p_data
+					.primitive_alternatives
+					.join(', ')
+				: '-';
 
-			primitive_of_pts.push(
-				`<button
-					class="primitive${hasPrimitiveAlternative
-				? ' -has-alternative'
-				: ''}"
+		primitive_of_pts.push(
+			`<button
+					class="primitive${primitiveOfHasAlts
+			? ' -has-alternative'
+			: ''}"
 					data-character="${p_data.character}"
 				>
 					${p_data.character}
@@ -253,9 +253,9 @@
 							<span>${meanings_txt}</span>
 						</div>
 						<div class="primitiveDetails-alternatives">
-							<h3>${hasPrimitiveAlternative
-					? '*'
-					: ''}Alternatives:</h3>
+							<h3>${primitiveOfHasAlts
+				? '*'
+				: ''}Alternatives:</h3>
 							<span>${primitive_alternatives_txt}</span > </div>
 			</div>
 		</button>`);
@@ -267,6 +267,16 @@
 		hasPrimitivesOf
 		? primitive_of_pts.join('')
 		: noResultsSpan);
+
+	const kanjiHasPrimitiveAlts = data.primitive_alternatives.length > 0;
+
+	$('#primitive_of_alts').hide();
+	$('#primitive_of_alts .primitive-alternatives').empty();
+
+	if (kanjiHasPrimitiveAlts) {
+		$('#primitive_of_alts').show();
+		$('#primitive_of_alts .primitive-alternatives').html(data.primitive_alternatives.join(', '));
+	}
 
 	$('.primitive').click(primitive_click);
 

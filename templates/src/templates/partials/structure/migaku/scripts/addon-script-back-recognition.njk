@@ -163,8 +163,8 @@
 				.join(', ')
 			: '-';
 
-		var hasPrimitiveAlternative = p_data.primitive_alternatives.length > 0,
-			primitive_alternatives_txt = p_data.primitive_alternatives.length
+		var primitiveHasAlts = p_data.primitive_alternatives.length > 0,
+			primitive_alternatives_txt = primitiveHasAlts
 				? p_data
 					.primitive_alternatives
 					.join(', ')
@@ -172,7 +172,7 @@
 
 		primitives_pts.push(
 			`<button
-				class="primitive${hasPrimitiveAlternative
+				class="primitive${primitiveHasAlts
 			? ' -has-alternative'
 			: ''}"
 				data-character="${p_data.character}"
@@ -188,7 +188,7 @@
 						<span>${meanings_txt}</span>
 					</div>
 					<div class="primitiveDetails-alternatives">
-						<h3><h3>${hasPrimitiveAlternative
+						<h3><h3>${primitiveHasAlts
 				? '*'
 				: ''}Alternatives:</h3></h3>
 						<span>${primitive_alternatives_txt}</span > </div>
@@ -229,8 +229,8 @@
 				.join(', ')
 			: '-';
 
-		var hasPrimitiveAlternative = p_data.primitive_alternatives.length > 0,
-			primitive_alternatives_txt = hasPrimitiveAlternative
+		var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0,
+			primitive_alternatives_txt = primitiveOfHasAlts
 				? p_data
 					.primitive_alternatives
 					.join(', ')
@@ -238,7 +238,7 @@
 
 		primitive_of_pts.push(
 			`<button
-				class="primitive${hasPrimitiveAlternative
+				class="primitive${primitiveOfHasAlts
 			? ' -has-alternative'
 			: ''}"
 				data-character="${p_data.character}"
@@ -254,7 +254,7 @@
 						<span>${meanings_txt}</span>
 					</div>
 					<div class="primitiveDetails-alternatives">
-						<h3>${hasPrimitiveAlternative
+						<h3>${primitiveOfHasAlts
 				? '*'
 				: ''}Alternatives:</h3>
 						<span>${primitive_alternatives_txt}</span > </div>
@@ -268,6 +268,16 @@
 		hasPrimitivesOf
 		? primitive_of_pts.join('')
 		: noResultsSpan);
+
+	const kanjiHasPrimitiveAlts = data.primitive_alternatives.length > 0;
+
+	$('#primitive_of_alts').hide();
+	$('#primitive_of_alts .primitive-alternatives').empty();
+
+	if (kanjiHasPrimitiveAlts) {
+		$('#primitive_of_alts').show();
+		$('#primitive_of_alts .primitive-alternatives').html(data.primitive_alternatives.join(', '));
+	}
 
 	$('.primitive').click(primitive_click);
 
