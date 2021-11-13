@@ -1,44 +1,46 @@
 name: Build Release
 
-on: 
+on:
   push:
     tags:
-    - '*'
+      - "*"
 
 jobs:
-
   build-ankiaddon:
-    
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Set env
-      shell: bash
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Create dist folder
-      shell: bash
-      run: |
-        mkdir dist
-    - name: Set version
-      shell: bash
-      run: |
-        echo "VERSION_STRING = '${{ env.RELEASE_VERSION }}'" > addon/version.py
-    - name: Download KanjiVG
-      shell: bash
-      run: |
-        git clone https://github.com/KanjiVG/kanjivg
-        cp -R kanjivg/kanji addon/kanjivg
-    - name: Zip
-      shell: bash
-      run: |
-        cd addon
-        zip -r ../dist/MigakuKanji_${{ env.RELEASE_VERSION }}.ankiaddon . -x user_files/\* meta.json
-        cd ..
-    - name: Upload artifacts
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "dist/*"
-        allowUpdates: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set env
+        shell: bash
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Create dist folder
+        shell: bash
+        run: |
+          mkdir dist
+      - name: Set version
+        shell: bash
+        run: |
+          echo "VERSION_STRING = '${{ env.RELEASE_VERSION }}'" > addon/version.py
+      - name: Download KanjiVG
+        shell: bash
+        run: |
+          git clone https://github.com/KanjiVG/kanjivg
+          cp -R kanjivg/kanji addon/kanjivg
+      - name: Modify KanjiVG
+        shell: bash
+        run: |
+          python3 tools/kanjivg_cleanup.py
+      - name: Zip
+        shell: bash
+        run: |
+          cd addon
+          zip -r ../dist/MigakuKanji_${{ env.RELEASE_VERSION }}.ankiaddon . -x user_files/\* meta.json
+          cd ..
+      - name: Upload artifacts
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "dist/*"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}

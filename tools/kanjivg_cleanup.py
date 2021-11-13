@@ -7,12 +7,7 @@ kanjivg_dir = os.path.join(
     'kanjivg'
 )
 
-dir_it = os.listdir(kanjivg_dir)
-count = len(dir_it)
-
-for i, fname in enumerate(dir_it):
-
-    print(F'[{i}/{count}] {fname}')
+for fname in os.listdir(kanjivg_dir):
 
     if fname.endswith('.svg'):
         with open(os.path.join(kanjivg_dir, fname), 'r') as f:
@@ -24,5 +19,3 @@ for i, fname in enumerate(dir_it):
 
         with open(os.path.join(kanjivg_dir, fname), 'w') as f:
             f.write(svg)
-
-print('Done.')
