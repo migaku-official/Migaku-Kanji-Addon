@@ -9,6 +9,7 @@
 - [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
 - [STYLE]: Primitive keywords now have a visually distinct style in primitive button hover tooltip.
 - [CHORE]: Added title tooltips to all other sections of the card templates.
+- [STYLE]: Primitives with alternates now are marked with an asterisk in the primitive buttons/tooltips.
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 
