@@ -1,11 +1,13 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.13.1
+- @version v0.14.0
 ============================================== */
 
 .mobile .actions-lookup__title,
 .mobile .actions-back__title,
+.primitives-and-radicals__alternatives,
 .title-tooltip__text,
+.title-tooltip__container.-subdued .title-tooltip__title,
 .mobile-only-info-msg,
 .faded-info-msg {
 	color: #71757f;
@@ -439,7 +441,7 @@ button.show-more__button,
 	background: #2880ff;
 	border-radius: 5px;
 	bottom: calc(100% + 10px);
-	box-shadow: 0 4px 16px #363c4a;
+	box-shadow: 0 0 16px #24272d;
 	color: #fff;
 	font-family: 'Rubik', sans-serif !important;
 	font-size: 16px;
@@ -464,7 +466,8 @@ button.show-more__button,
 .ankidroid_dark_mode .kanji-addon__hover-tooltip,
 .nightMode .kanji-addon__hover-tooltip,
 .dark .kanji-addon__hover-tooltip {
-	background: #24272d;
+	background: #f2994a;
+	color: #363c4a;
 }
 
 .-tooltip-pos__above-left .primitiveDetails,
@@ -567,9 +570,35 @@ button.primitive:focus .kanji-addon__hover-tooltip,
 	}
 }
 
+.title-tooltip__container.-subdued {
+	width: 100%;
+}
+
+.title-tooltip__container.-subdued .title-tooltip__title {
+	margin-bottom: 10px;
+}
+
+.ankidroid_dark_mode .title-tooltip__container.-subdued .title-tooltip__title,
+.nightMode .title-tooltip__container.-subdued .title-tooltip__title,
+.dark .title-tooltip__container.-subdued .title-tooltip__title {
+	color: #afb5c3;
+}
+
+.title-tooltip__container.-subdued button {
+	top: 0;
+}
+
+.title-tooltip__container.-subdued .separator {
+	display: none;
+}
+
 .title-tooltip__title {
 	display: inline-flex;
 	margin-left: 22px;
+}
+
+.title-tooltip__title.-left-aligned {
+	margin-left: 0;
 }
 
 @media only screen and (min-width: 36.25em) {
@@ -1339,19 +1368,19 @@ body.dark {
 
 @media only screen and (min-width: 36.25em) {
 	.readings__container {
-		padding: 0 10px;
+		padding: 0 20px;
 	}
 }
 
 @media only screen and (min-width: 48em) {
 	.readings__container {
-		padding: 0 20px;
+		padding: 0 30px;
 	}
 }
 
 @media only screen and (min-width: 64em) {
 	.readings__container {
-		padding: 0 40px;
+		padding: 0 50px;
 	}
 }
 
@@ -1393,12 +1422,18 @@ body.dark {
 
 @media only screen and (min-width: 36.25em) {
 	.readings__list li {
+		align-items: center;
 		flex-direction: row;
+		margin-left: 0;
 	}
 
 	.readings__list li > *:first-child {
 		margin: 0 10px 0 0;
 	}
+}
+
+.readings__tooltip {
+	margin-top: 20px;
 }
 
 .font-examples__list {
@@ -1492,21 +1527,22 @@ body.dark {
 	color: #f2994a;
 }
 
-.keyword-and-meaning__keyword .primitive_keyword {
+.primitive_keyword {
 	background-color: rgba(40, 128, 255, 0.2);
 	border-radius: 8px;
 	display: inline-block;
+	margin: 1px 0;
 	padding: 7px 5px 5px;
 	position: relative;
 }
 
-.ankidroid_dark_mode .keyword-and-meaning__keyword .primitive_keyword,
-.nightMode .keyword-and-meaning__keyword .primitive_keyword,
-.dark .keyword-and-meaning__keyword .primitive_keyword {
+.ankidroid_dark_mode .primitive_keyword,
+.nightMode .primitive_keyword,
+.dark .primitive_keyword {
 	background-color: rgba(242, 153, 74, 0.2);
 }
 
-.keyword-and-meaning__keyword .primitive_keyword::before {
+.primitive_keyword::before {
 	background-color: #2880ff;
 	border-radius: 8px;
 	color: #fff;
@@ -1519,11 +1555,46 @@ body.dark {
 	top: -5px;
 }
 
-.ankidroid_dark_mode .keyword-and-meaning__keyword .primitive_keyword::before,
-.nightMode .keyword-and-meaning__keyword .primitive_keyword::before,
-.dark .keyword-and-meaning__keyword .primitive_keyword::before {
+.ankidroid_dark_mode .primitive_keyword::before,
+.nightMode .primitive_keyword::before,
+.dark .primitive_keyword::before {
 	background-color: #f2994a;
 	color: #363c4a;
+}
+
+.primitiveDetails .primitive_keyword {
+	background-color: rgba(255, 255, 255, 0.25);
+	padding: 1px 7px 1px 5px;
+}
+
+.ankidroid_dark_mode .primitiveDetails .primitive_keyword,
+.nightMode .primitiveDetails .primitive_keyword,
+.dark .primitiveDetails .primitive_keyword {
+	background-color: rgba(54, 60, 74, 0.25);
+}
+
+.primitiveDetails .primitive_keyword::before {
+	align-items: center;
+	background-color: #004fc1;
+	border-radius: 50%;
+	content: 'P';
+	display: flex;
+	font-size: 8px;
+	font-weight: bold;
+	height: 13px;
+	justify-content: center;
+	line-height: 1.2;
+	padding: 2px;
+	right: -6px;
+	top: -3px;
+	width: 13px;
+}
+
+.ankidroid_dark_mode .primitiveDetails .primitive_keyword::before,
+.nightMode .primitiveDetails .primitive_keyword::before,
+.dark .primitiveDetails .primitive_keyword::before {
+	background-color: #f2994a;
+	border: 1px solid #363c4a;
 }
 
 .meanings__container {
@@ -1570,6 +1641,20 @@ button.show-more__button:focus {
 
 button.show-more__button:active {
 	background: #989898;
+}
+
+.primitives-and-radicals__container button.show-more__button {
+	font-size: 8px !important;
+	height: 40px;
+	width: 40px;
+}
+
+@media only screen and (min-width: 36.25em) {
+	.primitives-and-radicals__container button.show-more__button {
+		font-size: 12px !important;
+		height: 50px;
+		width: 50px;
+	}
 }
 
 @media only screen and (min-width: 36.25em) {
@@ -1797,14 +1882,6 @@ button.show-more__button:active {
 	color: #363c4a;
 }
 
-.mobile
-	.linked-words__examples
-	.hide_readings_hover
-	button.word:not(.word_default)
-	rt::before {
-	content: '(tap)';
-}
-
 .primitives-and-radicals__container,
 .primitives-and-radicals__components {
 	display: flex;
@@ -1873,6 +1950,35 @@ button.show-more__button:active {
 	margin: 0 10px 10px 0 !important;
 }
 
+.primitives-and-radicals__alternatives {
+	margin-bottom: 5px;
+}
+
+.ankidroid_dark_mode .primitives-and-radicals__alternatives,
+.nightMode .primitives-and-radicals__alternatives,
+.dark .primitives-and-radicals__alternatives {
+	color: #afb5c3;
+}
+
+.primitives-and-radicals__alternatives img {
+	height: 15px;
+	opacity: 0.5;
+	position: relative;
+	top: 2px;
+	width: 15px;
+}
+
+.ankidroid_dark_mode .primitives-and-radicals__alternatives img,
+.nightMode .primitives-and-radicals__alternatives img,
+.dark .primitives-and-radicals__alternatives img {
+	filter: invert(1);
+	opacity: 0.75;
+}
+
+.primitives-and-radicals__alternatives .primitive-alternatives {
+	margin-left: 5px;
+}
+
 .primitiveDetails h3 {
 	margin: 0;
 }
@@ -1886,6 +1992,7 @@ button.primitive {
 	background: #2880ff;
 	font-family: inherit;
 	padding: 20px 10px !important;
+	position: relative;
 }
 
 button.primitive:hover,
@@ -1917,6 +2024,23 @@ button.primitive:active {
 .nightMode button.primitive:active,
 .dark button.primitive:active {
 	background: #c8650e;
+}
+
+button.primitive.-has-alternative::before {
+	content: '';
+	content: '*';
+	font-size: 16px;
+	line-height: 1;
+	position: absolute;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+}
+
+@media only screen and (min-width: 36.25em) {
+	button.primitive.-has-alternative::before {
+		font-size: 20px;
+	}
 }
 
 button.radical {

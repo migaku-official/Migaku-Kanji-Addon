@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.13.1
+- @version v0.14.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,7 +61,7 @@ START - Migaku markup
 			<!-- START - Linked words -->
 			<div class="linked-words__container results-container">
 				<div class="title-tooltip__container">
-					<h2 class="linked-words__title title-tooltip__title">
+					<h2 class="title-tooltip__title linked-words__title">
 						Vocab
 						<button
 							type="button"
@@ -79,9 +79,9 @@ START - Migaku markup
 						style="display: none"
 						aria-expanded="false"
 					>
-						Colored buttons are vocab from cards you&#39;ve learned. Outlined
-						buttons are new cards that you haven&#39;t learned (yet). Grey
-						buttons are clickable dictionary examples.
+						Colored buttons are vocab from cards you've learned. Outlined
+						buttons are new cards that you haven't learned (yet). Grey buttons
+						are clickable dictionary examples.
 					</div>
 
 					<hr class="separator" />
@@ -109,7 +109,7 @@ START - Migaku markup
 					<div class="primitives-and-radicals__components">
 						<div class="primitives-and-radicals__block">
 							<div class="title-tooltip__container">
-								<h2 class="primitives-and-radicals__title title-tooltip__title">
+								<h2 class="title-tooltip__title primitives-and-radicals__title">
 									Primitives
 									<button
 										type="button"
@@ -142,7 +142,7 @@ START - Migaku markup
 						</div>
 						<div class="primitives-and-radicals__block">
 							<div class="title-tooltip__container">
-								<h2 class="primitives-and-radicals__title title-tooltip__title">
+								<h2 class="title-tooltip__title primitives-and-radicals__title">
 									Primitive in
 									<button
 										type="button"
@@ -168,6 +168,16 @@ START - Migaku markup
 							</div>
 
 							<div
+								id="primitive_of_alts"
+								class="primitives-and-radicals__alternatives"
+							>
+								<img src="_kanji_icon_alert_decagram_black.svg" alt="" />
+
+								This kanji has alternative(s):
+
+								<span class="primitive-alternatives"></span>
+							</div>
+							<div
 								id="primitive_of"
 								class="
 									primitives-and-radicals__list
@@ -183,7 +193,7 @@ START - Migaku markup
 					</div>
 					<div class="primitives-and-radicals__block results-container">
 						<div class="title-tooltip__container">
-							<h2 class="primitives-and-radicals__title title-tooltip__title">
+							<h2 class="title-tooltip__title primitives-and-radicals__title">
 								Radicals
 								<button
 									type="button"
@@ -201,7 +211,7 @@ START - Migaku markup
 								style="display: none"
 								aria-expanded="false"
 							>
-								Radicals are used to organize kanji in dictionaries. They&#39;re
+								Radicals are used to organize kanji in dictionaries. They're
 								generally the smallest parts a kanji can be broken down into.
 							</div>
 
@@ -393,6 +403,36 @@ START - Migaku markup
 						<span id="nanori" class="kanji-char-font"></span>
 					</li>
 				</ul>
+
+				<div class="title-tooltip__container -subdued">
+					<h2 class="title-tooltip__title readings__tooltip">
+						What are these?
+						<button
+							type="button"
+							title="What's this?"
+							aria-controls="tooltip-id--readings__tooltip"
+							onclick="toggleShow('tooltip-id--readings__tooltip')"
+						>
+							<img src="_kanji_icon_help_black.svg" alt="" />
+						</button>
+					</h2>
+
+					<div
+						id="tooltip-id--readings__tooltip"
+						class="title-tooltip__text"
+						style="display: none"
+						aria-expanded="false"
+					>
+						<strong>Onyomi</strong> are the Japanese approximation of the
+						original Chinese pronunciation. <br /><br />
+						<strong>Kunyomi</strong> are the native Japanese readings.
+						<br /><br />
+						<strong>Nanori</strong> are readings found almost exclusively in
+						Japanese names.
+					</div>
+
+					<hr class="separator" />
+				</div>
 			</div>
 			<!-- END - Readings -->
 		</aside>
@@ -403,14 +443,66 @@ START - Migaku markup
 		<div class="stories__container">
 			<hr class="separator -full" />
 
-			<h2 class="stories__title -has-separator">Stories</h2>
+			<div class="title-tooltip__container">
+				<h2 class="title-tooltip__title stories__title -left-aligned">
+					Stories
+					<button
+						type="button"
+						title="What's this?"
+						aria-controls="tooltip-id--stories__title"
+						onclick="toggleShow('tooltip-id--stories__title')"
+					>
+						<img src="_kanji_icon_help_black.svg" alt="" />
+					</button>
+				</h2>
+
+				<div
+					id="tooltip-id--stories__title"
+					class="title-tooltip__text"
+					style="display: none"
+					aria-expanded="false"
+				>
+					Memorable stories about the primitives in this kanji can help you
+					remember the keyword. Eventually, you won't need to rely on the story
+					to recall.
+				</div>
+
+				<hr class="separator" />
+			</div>
+
 			<div id="stories" class="stories__content"></div>
 		</div>
 		<!-- END - Stories -->
 
 		<!-- START - Actions -->
 		<div class="actions-back__container">
-			<h2 class="actions-back__title -has-separator">Actions</h2>
+			<div class="title-tooltip__container">
+				<h2 class="title-tooltip__title actions-back__title">
+					Actions
+					<button
+						type="button"
+						title="What's this?"
+						aria-controls="tooltip-id--actions-back__title"
+						onclick="toggleShow('tooltip-id--actions-back__title')"
+					>
+						<img src="_kanji_icon_help_black.svg" alt="" />
+					</button>
+				</h2>
+
+				<div
+					id="tooltip-id--actions-back__title"
+					class="title-tooltip__text"
+					style="display: none"
+					aria-expanded="false"
+				>
+					Perform actions such as keyword customisations or marking this kanji
+					as known. You can also suggest a change if there are any mistakes or
+					missing data.
+				</div>
+
+				<hr class="separator" />
+			</div>
+
 			<div class="actions-back__buttons">
 				<div class="actions-back__primary">
 					<button onclick="set_custom_keyword();" class="button -wide">
@@ -461,7 +553,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.13.1
+- @version v0.14.0
 
 Changes:
 - state object and variables
@@ -8350,26 +8442,31 @@ Changes:
 			? p_data.meanings.join(', ')
 			: '-';
 
-		var primitive_alternatives_txt = p_data.primitive_alternatives.length
-			? p_data.primitive_alternatives.join(', ')
-			: '-';
+		var primitiveHasAlts = p_data.primitive_alternatives.length > 0,
+			primitive_alternatives_txt = primitiveHasAlts
+				? p_data.primitive_alternatives.join(', ')
+				: '-';
 
 		primitives_pts.push(
-			'<button class="primitive" data-character="' +
-				p_data.character +
-				'">' +
-				p_data.character +
-				'<div class="primitiveDetails">' +
-				'<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' +
-				keywords_txt +
-				'</div>' +
-				'<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' +
-				meanings_txt +
-				'</div>' +
-				'<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' +
-				primitive_alternatives_txt +
-				'</div>' +
-				'</div></button>',
+			`<button
+				class="primitive${primitiveHasAlts ? ' -has-alternative' : ''}"
+				data-character="${p_data.character}"
+			>
+				${p_data.character}
+				<div class="primitiveDetails">
+					<div class="primitiveDetails-keywords">
+						<h3>Keywords:</h3>
+						<span>${keywords_txt}</span>
+					</div>
+					<div class="primitiveDetails-meanings">
+						<h3>Meanings:</h3>
+						<span>${meanings_txt}</span>
+					</div>
+					<div class="primitiveDetails-alternatives">
+						<h3><h3>${primitiveHasAlts ? '*' : ''}Alternatives:</h3></h3>
+						<span>${primitive_alternatives_txt}</span > </div>
+		</div>
+	</button>`,
 		);
 	}
 
@@ -8403,26 +8500,31 @@ Changes:
 			? p_data.meanings.join(', ')
 			: '-';
 
-		var primitive_alternatives_txt = p_data.primitive_alternatives.length
-			? p_data.primitive_alternatives.join(', ')
-			: '-';
+		var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0,
+			primitive_alternatives_txt = primitiveOfHasAlts
+				? p_data.primitive_alternatives.join(', ')
+				: '-';
 
 		primitive_of_pts.push(
-			'<button class="primitive" data-character="' +
-				p_data.character +
-				'">' +
-				p_data.character +
-				'<div class="primitiveDetails">' +
-				'<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' +
-				keywords_txt +
-				'</div>' +
-				'<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' +
-				meanings_txt +
-				'</div>' +
-				'<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' +
-				primitive_alternatives_txt +
-				'</div>' +
-				'</div></button>',
+			`<button
+				class="primitive${primitiveOfHasAlts ? ' -has-alternative' : ''}"
+				data-character="${p_data.character}"
+			>
+				${p_data.character}
+				<div class="primitiveDetails">
+					<div class="primitiveDetails-keywords">
+						<h3>Keywords:</h3>
+						<span>${keywords_txt}</span>
+					</div>
+					<div class="primitiveDetails-meanings">
+						<h3>Meanings:</h3>
+						<span>${meanings_txt}</span>
+					</div>
+					<div class="primitiveDetails-alternatives">
+						<h3>${primitiveOfHasAlts ? '*' : ''}Alternatives:</h3>
+						<span>${primitive_alternatives_txt}</span > </div>
+		</div>
+	</button>`,
 		);
 	}
 
@@ -8431,6 +8533,18 @@ Changes:
 	$('#primitive_of').html(
 		hasPrimitivesOf ? primitive_of_pts.join('') : noResultsSpan,
 	);
+
+	const kanjiHasPrimitiveAlts = data.primitive_alternatives.length > 0;
+
+	$('#primitive_of_alts').hide();
+	$('#primitive_of_alts .primitive-alternatives').empty();
+
+	if (kanjiHasPrimitiveAlts) {
+		$('#primitive_of_alts').show();
+		$('#primitive_of_alts .primitive-alternatives').html(
+			data.primitive_alternatives.join(', '),
+		);
+	}
 
 	$('.primitive').click(primitive_click);
 

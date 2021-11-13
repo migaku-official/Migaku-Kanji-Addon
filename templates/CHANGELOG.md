@@ -11,6 +11,7 @@ The versioning here is independent of the main versioning of the addon, and exis
 - [CHORE]: Changed linked words furgiana hover text '(tap)' back to '(hover)', now that tapping the buttons opens jisho.org.
 - [CHORE]: Added title tooltip to the "Stories", "Actions (back, and lookup)", and "Readings" sections.
 - [FEATURE]: Primitives with alternatives now display an asterisk.
+- [FEATURE]: A character's primitive alternatives are now displayed within the "Primitive in" section, if applicable.
 
 ## 0.13.1
 
