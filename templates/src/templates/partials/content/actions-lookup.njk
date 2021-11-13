@@ -1,8 +1,13 @@
+{% from "partials/structure/title-tooltip-macro.njk" import mcr_titleTooltip with context %}
+
 <!-- START - Actions lookup -->
 <div class="actions-lookup__container">
-	<h2 class="actions-lookup__title -has-separator">
-		{{ txt__actions_lookup_title }}
-	</h2>
+	{{ mcr_titleTooltip(
+			id='lookup_actions__title',
+			title=txt__actions_lookup_title,
+			tooltip=txt__actions_lookup_tooltip,
+			h2class='actions-lookup__title'
+	) }}
 	<div class="actions-lookup__buttons">
 		<button
 				onclick="recognition_card_click(event);"
