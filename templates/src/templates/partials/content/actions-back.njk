@@ -1,8 +1,13 @@
+{% from "partials/structure/title-tooltip-macro.njk" import mcr_titleTooltip with context %}
+
 <!-- START - Actions -->
 <div class="actions-back__container">
-	<h2 class="actions-back__title -has-separator">
-		{{ txt__actions_back_title }}
-	</h2>
+	{{ mcr_titleTooltip(
+			id='actions-back__title',
+			title=txt__actions_back_title,
+			tooltip=txt__actions_back_tooltip,
+			h2class='actions-back__title'
+	) }}
 	<div class="actions-back__buttons">
 		<div class="actions-back__primary">
 			<button

@@ -25,35 +25,72 @@ START - Keyword and meaning */
 		@include dark-mode {
 			color: $brand-orange-primary;
 		}
+	}
+}
 
-		.primitive_keyword {
-			background-color: rgba($brand-blue-primary, 0.2);
-			border-radius: 8px;
-			display: inline-block;
-			padding: 7px 5px 5px;
-			position: relative;
+// This style is separate, since it also applies
+// to primitive keywords in the on-hover tooltips
+// of the primitive buttons
+
+.primitive_keyword {
+	background-color: rgba($brand-blue-primary, 0.2);
+	border-radius: 8px;
+	display: inline-block;
+	margin: 1px 0;
+	padding: 7px 5px 5px;
+	position: relative;
+
+	@include dark-mode {
+		background-color: rgba($brand-orange-primary, 0.2);
+	}
+
+	&::before {
+		// "Primitive" badge
+		@include pseudo;
+
+		background-color: $brand-blue-primary;
+		border-radius: 8px;
+		color: $text-on-dark;
+		content: 'Primitive';
+		font-size: 10px;
+		padding: 2px 5px;
+		right: -10px;
+		top: -5px;
+
+		@include dark-mode {
+			background-color: $brand-orange-primary;
+			color: $text-on-light;
+		}
+	}
+
+	// Within the on-hover tooltips
+
+	.primitiveDetails & {
+		background-color: rgba($brand-white, 0.25);
+		padding: 1px 7px 1px 5px;
+
+		@include dark-mode {
+			background-color: rgba($brand-grey-dark, 0.25);
+		}
+
+		&::before {
+			@include circle(13px);
+
+			align-items: center;
+			background-color: darken($brand-blue-primary, 20%);
+			content: 'P';
+			display: flex;
+			font-size: 8px;
+			font-weight: bold;
+			justify-content: center;
+			line-height: 1.2;
+			padding: 2px;
+			right: -6px;
+			top: -3px;
 
 			@include dark-mode {
-				background-color: rgba($brand-orange-primary, 0.2);
-			}
-
-			&::before {
-				// "Primitive" badge
-				@include pseudo;
-
-				background-color: $brand-blue-primary;
-				border-radius: 8px;
-				color: $text-on-dark;
-				content: 'Primitive';
-				font-size: 10px;
-				padding: 2px 5px;
-				right: -10px;
-				top: -5px;
-
-				@include dark-mode {
-					background-color: $brand-orange-primary;
-					color: $text-on-light;
-				}
+				background-color: $brand-orange-primary;
+				border: 1px solid $brand-grey-dark;
 			}
 		}
 	}

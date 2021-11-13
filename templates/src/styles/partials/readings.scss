@@ -9,15 +9,15 @@ START - Readings */
 		width: 100%;
 
 		@include bp.get(s) {
-			padding: 0 10px;
-		}
-
-		@include bp.get(m) {
 			padding: 0 20px;
 		}
 
+		@include bp.get(m) {
+			padding: 0 30px;
+		}
+
 		@include bp.get(l) {
-			padding: 0 40px;
+			padding: 0 50px;
 		}
 	}
 
@@ -51,13 +51,19 @@ START - Readings */
 			}
 
 			@include bp.get(s) {
+				align-items: center;
 				flex-direction: row;
+				margin-left: 0;
 
 				> *:first-child {
 					margin: 0 10px 0 0;
 				}
 			}
 		}
+	}
+
+	&__tooltip {
+		margin-top: 20px;
 	}
 }
 

@@ -7,5 +7,17 @@ button.show-more {
 
 		padding: 5px 10px;
 		text-align: center;
+
+		.primitives-and-radicals__container & {
+			@include square(40px);
+
+			font-size: 8px !important;
+
+			@include bp.get(s) {
+				@include square(50px);
+
+				font-size: 12px !important;
+			}
+		}
 	}
 }

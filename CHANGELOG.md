@@ -7,6 +7,10 @@
 - [FIX]: Newly added cards no longer appear in linked vocab.
 - [FEATURE]: Linked words now open `jisho.org` search on mobile.
 - [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
+- [STYLE]: Primitive keywords now have a visually distinct style in primitive button hover tooltip.
+- [CHORE]: Added title tooltips to all other sections of the card templates.
+- [FEATURE]: Primitives with alternatives now display an asterisk.
+- [FEATURE]: A character's primitive alternatives are now displayed within the "Primitive in" section, if applicable.
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 

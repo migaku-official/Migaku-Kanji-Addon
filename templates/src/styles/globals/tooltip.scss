@@ -9,7 +9,7 @@ START - Tooltip */
 	background: $brand-blue-primary;
 	border-radius: 5px;
 	bottom: calc(100% + 10px);
-	box-shadow: 0 4px 16px $brand-grey-dark;
+	box-shadow: 0 0 16px $brand-grey-darker;
 	color: $text-on-dark;
 	font-family: 'Rubik', sans-serif !important;
 	font-size: 16px;
@@ -26,7 +26,8 @@ START - Tooltip */
 	z-index: 2;
 
 	@include dark-mode {
-		background: $brand-grey-darker;
+		background: $brand-orange-primary;
+		color: $text-on-light;
 	}
 
 	// Position variations (appended to parent container)
@@ -113,11 +114,33 @@ button.primitive,
 				display: block;
 			}
 		}
+
+		&.-subdued {
+			width: 100%;
+
+			.title-tooltip__title {
+				@include faded-info-msg;
+
+				margin-bottom: 10px;
+			}
+
+			button {
+				top: 0;
+			}
+
+			.separator {
+				display: none;
+			}
+		}
 	}
 
 	&__title {
 		display: inline-flex;
 		margin-left: 22px; // Offset tooltip when centered
+
+		&.-left-aligned {
+			margin-left: 0;
+		}
 
 		@include bp.get(s) {
 			margin-bottom: 5px;

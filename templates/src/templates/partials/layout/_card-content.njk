@@ -28,6 +28,14 @@ Sidebar #}
 {% set txt__readings_onyomi = "Onyomi:" %}
 {% set txt__readings_kunyomi = "Kunyomi:" %}
 {% set txt__readings_nanori = "Nanori:" %}
+{% set txt__readings_tooltip_title = "What are these?" %}
+{% set txt__readings_tooltip_content %}
+<strong>Onyomi</strong> are the Japanese approximation of the original Chinese pronunciation.
+	<br/><br/>
+<strong>Kunyomi</strong> are the native Japanese readings.
+	<br/><br/>
+<strong>Nanori</strong> are readings found almost exclusively in Japanese names.
+{% endset %}
 
 {# ------------------------------
 Main #}
@@ -60,6 +68,9 @@ Main #}
 
 {# --- primitives of #}
 {% set txt__primitives_of_title = "Primitive in" %}
+{% set txt__primitives_of_alternatives %}
+	This kanji has alternative(s):
+{% endset %}
 {% set txt__primitives_of_tooltip %}
 	This kanji appears as a primitive within these other, more complex kanji.
 {% endset %}
@@ -82,6 +93,9 @@ Below #}
 
 {# stories.njk #}
 {% set txt__stories_title = "Stories" %}
+{% set txt__stories_tooltip %}
+	Memorable stories about the primitives in this kanji can help you remember the keyword. Eventually, you won't need to rely on the story to recall.
+{% endset %}
 
 {# actions.njk #}
 {% set txt__actions_back_title = "Actions" %}
@@ -94,6 +108,9 @@ Below #}
 	Actions only work on desktop.
 	<br/>
 	You are able to set a custom keyword, custom story, and mark-known/delete existing kanji cards.
+{% endset %}
+{% set txt__actions_back_tooltip %}
+	Perform actions such as keyword customisations or marking this kanji as known. You can also suggest a change if there are any mistakes or missing data.
 {% endset %}
 
 {# actions-front.njk #}
@@ -115,4 +132,7 @@ Below #}
 	Actions only work on desktop.
 	<br/>
 	You are able to mark a kanji as known, and create or show the associated recognition and production cards.
+{% endset %}
+{% set txt__actions_lookup_tooltip %}
+	Manage the two types of potential flashcards associated with this kanji: "Recognition" (reading comprehension), and "Production" (writing practice).
 {% endset %}

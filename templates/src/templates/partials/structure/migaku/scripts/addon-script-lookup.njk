@@ -204,13 +204,37 @@
 						.join(', ')
 					: '-';
 
-				var primitive_alternatives_txt = p_data.primitive_alternatives.length
-					? p_data
-						.primitive_alternatives
-						.join(', ')
-					: '-';
+				var primitiveHasAlts = p_data.primitive_alternatives.length > 0,
+						primitive_alternatives_txt = primitiveHasAlts
+							? p_data
+								.primitive_alternatives
+								.join(', ')
+							: '-';
 
-				primitives_pts.push('<button class="primitive" data-character="' + p_data.character + '">' + p_data.character + '<div class="primitiveDetails">' + '<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' + keywords_txt + '</div>' + '<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' + meanings_txt + '</div>' + '<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' + primitive_alternatives_txt + '</div>' + '</div></button>',);
+							primitives_pts.push(
+								`<button
+									class="primitive${primitiveHasAlts
+								? ' -has-alternative'
+								: ''}"
+									data-character="${p_data.character}"
+								>
+									${p_data.character}
+									<div class="primitiveDetails">
+										<div class="primitiveDetails-keywords">
+											<h3>Keywords:</h3>
+											<span>${keywords_txt}</span>
+										</div>
+										<div class="primitiveDetails-meanings">
+											<h3>Meanings:</h3>
+											<span>${meanings_txt}</span>
+										</div>
+										<div class="primitiveDetails-alternatives">
+											<h3><h3>${primitiveHasAlts
+									? '*'
+									: ''}Alternatives:</h3></h3>
+											<span>${primitive_alternatives_txt}</span > </div>
+							</div>
+						</button>`);
 			}
 
 			var hasPrimitives = primitives_pts.length > 0;
@@ -246,13 +270,37 @@
 						.join(', ')
 					: '-';
 
-				var primitive_alternatives_txt = p_data.primitive_alternatives.length
-					? p_data
-						.primitive_alternatives
-						.join(', ')
-					: '-';
+				var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0,
+						primitive_alternatives_txt = primitiveOfHasAlts
+							? p_data
+								.primitive_alternatives
+								.join(', ')
+							: '-';
 
-				primitive_of_pts.push('<button class="primitive" data-character="' + p_data.character + '">' + p_data.character + '<div class="primitiveDetails">' + '<div class="primitiveDetails-keywords"><h3>Keywords:</h3> ' + keywords_txt + '</div>' + '<div class="primitiveDetails-meanings"><h3>Meanings:</h3> ' + meanings_txt + '</div>' + '<div class="primitiveDetails-alternatives"><h3>Alternatives:</h3> ' + primitive_alternatives_txt + '</div>' + '</div></button>',);
+					primitive_of_pts.push(
+						`<button
+							class="primitive${primitiveOfHasAlts
+						? ' -has-alternative'
+						: ''}"
+							data-character="${p_data.character}"
+						>
+							${p_data.character}
+							<div class="primitiveDetails">
+								<div class="primitiveDetails-keywords">
+									<h3>Keywords:</h3>
+									<span>${keywords_txt}</span>
+								</div>
+								<div class="primitiveDetails-meanings">
+									<h3>Meanings:</h3>
+									<span>${meanings_txt}</span>
+								</div>
+								<div class="primitiveDetails-alternatives">
+									<h3>${primitiveOfHasAlts
+							? '*'
+							: ''}Alternatives:</h3>
+									<span>${primitive_alternatives_txt}</span > </div>
+					</div>
+				</button>`);
 			}
 
 			var hasPrimitivesOf = primitive_of_pts.length > 0;
@@ -261,6 +309,16 @@
 				hasPrimitivesOf
 				? primitive_of_pts.join('')
 				: noResultsSpan);
+
+			const kanjiHasPrimitiveAlts = data.primitive_alternatives.length > 0;
+
+			$('#primitive_of_alts').hide();
+			$('#primitive_of_alts .primitive-alternatives').empty();
+
+			if (kanjiHasPrimitiveAlts) {
+				$('#primitive_of_alts').show();
+				$('#primitive_of_alts .primitive-alternatives').html(data.primitive_alternatives.join(', '));
+			}
 
 			$('.primitive').click(primitive_click);
 
