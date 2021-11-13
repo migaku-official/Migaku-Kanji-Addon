@@ -63,8 +63,9 @@ START - Keyword and meaning */
 		}
 	}
 
+	// Within the on-hover tooltips
+
 	.primitiveDetails & {
-		// Within the on-hover tooltips
 		background-color: rgba($brand-white, 0.25);
 		padding: 1px 7px 1px 5px;
 
@@ -84,7 +85,7 @@ START - Keyword and meaning */
 			justify-content: center;
 			line-height: 1.2;
 			padding: 2px;
-			right: -5px;
+			right: -6px;
 			top: -3px;
 
 			@include dark-mode {
