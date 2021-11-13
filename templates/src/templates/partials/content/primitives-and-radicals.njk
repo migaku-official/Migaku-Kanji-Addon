@@ -1,11 +1,11 @@
-{% from "partials/structure/title-tooltip-macro.njk" import titleTooltip with context %}
+{% from "partials/structure/title-tooltip-macro.njk" import mcr_titleTooltip with context %}
 
 <!-- START - Primitives and radicals -->
 <div class="primitives-and-radicals__wrapper">
 	<div class="primitives-and-radicals__container">
 		<div class="primitives-and-radicals__components">
 			<div class="primitives-and-radicals__block">
-				{{ titleTooltip(
+				{{ mcr_titleTooltip(
 						id='primtives__title',
 						title=txt__primitives_title,
 						tooltip=txt__primitives_tooltip,
@@ -14,7 +14,7 @@
 				<div id="primitives" class="primitives-and-radicals__list kanji-char-font"></div>
 			</div>
 			<div class="primitives-and-radicals__block">
-				{{ titleTooltip(
+				{{ mcr_titleTooltip(
 							id='primitives_of__title',
 							title=txt__primitives_of_title,
 							tooltip=txt__primitives_of_tooltip,
@@ -27,7 +27,7 @@
 			{{ txt__primitives_mobile_info | safe }}
 		</div>
 		<div class="primitives-and-radicals__block results-container">
-			{{ titleTooltip(
+			{{ mcr_titleTooltip(
 					id='radicals__title',
 					title=txt__radicals_title,
 					tooltip=txt__radicals_tooltip,
