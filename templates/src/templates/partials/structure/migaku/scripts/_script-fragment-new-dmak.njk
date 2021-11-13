@@ -102,7 +102,7 @@ dmak = new Dmak(
 				self.render(total_strokes);
 			} else {
 				// Draw all strokes at once for quick rendering
-				self.render(total_strokes, true); // simultaneous = true
+				self.render(total_strokes, true, true);	// simultaneous = true, instant = true
 			}
 
 			// Important for the lookup browser, lest notches accumulate
