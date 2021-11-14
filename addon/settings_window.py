@@ -281,7 +281,7 @@ class SettingsWindow(QDialog):
         self.lookup_stroke_order_mode_box = QComboBox()
         self.lookup_stroke_order_mode_box.addItem('Start fully drawn', 'fully_drawn')
         self.lookup_stroke_order_mode_box.addItem('Draw strokes one by one', 'auto')
-        self.lookup_stroke_order_mode_box.addItem('Draw all srtokes at once', 'auto_all')
+        self.lookup_stroke_order_mode_box.addItem('Draw all strokes at once', 'auto_all')
         self.lookup_stroke_order_mode_box.setCurrentIndex(
             self.lookup_stroke_order_mode_box.findData(
                 config.get('lookup_stroke_order_mode', 'fully_drawn')
