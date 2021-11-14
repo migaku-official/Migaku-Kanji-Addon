@@ -8109,7 +8109,7 @@ Changes:
 	var noResultsSpan =
 		'<span class="faded-info-msg -spaced">(no results)</span>';
 
-	const isMobileDevice = document
+	var isMobileDevice = document
 		.querySelector('html')
 		.classList.contains('mobile');
 
@@ -8589,7 +8589,7 @@ Changes:
 		hasPrimitivesOf ? primitive_of_pts.join('') : noResultsSpan,
 	);
 
-	const kanjiHasPrimitiveAlts = data.primitive_alternatives.length > 0;
+	var kanjiHasPrimitiveAlts = data.primitive_alternatives.length > 0;
 
 	$('#primitive_of_alts').hide();
 	$('#primitive_of_alts .primitive-alternatives').empty();
