@@ -31,7 +31,7 @@ def check_learn_ahead(did):
 
     for ct in CardType:
         ct_max = 0
-        for e in config.get('card_type_learn_ahead').get(ct.label, []):
+        for e in config.get('card_type_learn_ahead', {}).get(ct.label, []):
             if e['deck'] == deck['name']:
                 ct_max = max(ct_max, e['num'])
                 

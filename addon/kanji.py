@@ -410,7 +410,7 @@ class KanjiDB:
 
     def refresh_learn_ahead(self):
         for ct in CardType:
-            for e in config.get('card_type_learn_ahead').get(ct.label, []):
+            for e in config.get('card_type_learn_ahead', {}).get(ct.label, []):
                 deck_name = e['deck']
                 max_num = e['num']
 
