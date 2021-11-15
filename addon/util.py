@@ -67,12 +67,19 @@ def error_msg_on_error(parent, func, *args, **kwargs):
         return False
 
 
+def raise_window(window: QWidget):
+    window.setWindowState( (window.windowState() & ~Qt.WindowMinimized) | Qt.WindowActive)
+    window.raise_()
+    window.activateWindow()
+
+
 def open_browser(text):
     browser = aqt.dialogs.open('Browser', aqt.mw)
     browser.form.searchEdit.lineEdit().setText(text)
     browser.onSearchActivated()
     # For newer Anki versions:
     #   aqt.dialogs.open('Browser', aqt.mw, search=(text,))
+    raise_window(browser)
 
 
 def open_browser_cardids(card_ids):

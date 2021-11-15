@@ -118,7 +118,7 @@ class AddCardsDialog(QDialog):
                 )
                 return
 
-            chars = aqt.mw.migaku_kanji_db.new_characters(
+            new_chars = aqt.mw.migaku_kanji_db.new_characters(
                 ct,
                 util.unique_characters(text)
             )
@@ -130,11 +130,11 @@ class AddCardsDialog(QDialog):
             order = option[2]
             condition = option[3]
 
-            chars = aqt.mw.migaku_kanji_db.find_next_characters(
+            new_chars = aqt.mw.migaku_kanji_db.find_next_characters(
                 ct, amt, column, order, condition
             )
 
-        add_amt = len(chars)
+        add_amt = len(new_chars)
 
         if add_amt < 1:
             QMessageBox.information(
@@ -147,7 +147,7 @@ class AddCardsDialog(QDialog):
         r = util.error_msg_on_error(
             self,
             aqt.mw.migaku_kanji_db.make_cards_from_characters,
-            ct, chars, 'Kanji Cards Addition'
+            ct, new_chars, 'Kanji Cards Addition'
         )
 
         aqt.mw.migaku_kanji_db.recalc_user_cards(ct)
@@ -156,7 +156,7 @@ class AddCardsDialog(QDialog):
             QMessageBox.information(
                 self,
                 'Added Kanji Cards',
-                F'Added {add_amt} {ct.name} kanji cards:\n\n{" ".join(chars)}'
+                F'Added {add_amt} {ct.name} kanji cards:\n\n{" ".join(new_chars)}'
             )
             self.accept()
         else:

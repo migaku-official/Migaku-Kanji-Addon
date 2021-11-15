@@ -397,15 +397,14 @@ class KanjiDB:
                 self.recalc_user_cards(ct)
                 new_chars = self.new_characters(ct, kanji)
 
-                if len(new_chars):
+                if len(new_chars) > 0:
                     if ct.auto_card_creation_msg:
                         new_kanji_for_msg[ct] = new_chars
                     else:
                         self.make_cards_from_characters(ct, new_chars, 'Automatic Kanji Card Cration')
 
-            if len(new_kanji_for_msg):
-                dlg = KanjiConfirmDialog(new_kanji_for_msg, aqt.mw)
-                dlg.exec_()
+            if len(new_kanji_for_msg) > 0:
+                KanjiConfirmDialog.show_new_kanji(new_kanji_for_msg, aqt.mw)
 
 
     def refresh_learn_ahead(self):
