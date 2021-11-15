@@ -3,5 +3,7 @@
     "less.validate": false,
     "scss.validate": false,
     "stylelint.validate": ["scss"],
-    "stylelint.configFile": "templates/.stylelintrc.js"
+    "stylelint.configFile": "templates/.stylelintrc.js",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
