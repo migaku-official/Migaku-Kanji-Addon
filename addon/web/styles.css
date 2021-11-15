@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.14.1
+- @version v0.14.2
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -582,6 +582,11 @@ button.primitive:focus .kanji-addon__hover-tooltip,
 .nightMode .title-tooltip__container.-subdued .title-tooltip__title,
 .dark .title-tooltip__container.-subdued .title-tooltip__title {
 	color: #afb5c3;
+}
+
+.title-tooltip__container.-subdued .title-tooltip__text {
+	margin-top: 0;
+	padding-right: 0;
 }
 
 .title-tooltip__container.-subdued button {

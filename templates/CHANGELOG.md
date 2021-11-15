@@ -54,6 +54,10 @@ The versioning here is independent of the main versioning of the addon, and exis
 
 - [CHORE]: Don't show shift-click info messages on mobile.
 
+## 0.12.6
+
+- [STYLE]: Subdued tooltip alternative style now has consistent lower margin spacing on mobile/desktop (mobile was a little short).
+
 ## 0.12.5
 
 - [STYLE]: Consistent button margins in lookup actions, compared to back of card actions.
