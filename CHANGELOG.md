@@ -1,14 +1,12 @@
 ## 1.0.0-beta.2
 
-### Notable fixes and improvements
-
 - [FIX]: Successive card reviews on several platforms work again
 - [FIX]: Added defaults to several config requests, preventing some errors
 - [FIX]: Typos in settings window removed
 
-## 1.0.0-beta.1 (unreleased)
+## 1.0.0-beta.1
 
-This is a closed beta for Patreon "Patrons" and above.
+This is a "partially open" beta, announced for supporters on Patreon, but with the GitHub repo being made available to the public for the first time.
 
 ### New features
 
