@@ -411,12 +411,26 @@
 		// to have consistent styles, and to retain ability to reliably copy/paste link
 		// text without link preview pop-ups interfering on iOS. A bit hacky.
 		$('.word').click(function () {
-			// It's necessary to use vanilla JS here, since
-			// jQuery's equivalent `click()` function doesnt work
-			this
-				.querySelector('a.jisho-search')
-				.click();
-		})
+			// New/unknown words have additional classes appended
+			var isKnownWord = this.classList.length === 1,
+				revealOnHoverIsSet = settings.hide_readings_hover,
+				hasntAlreadyBeenRevealed = !$(this).data('is-revealed');
+
+			// If the hide "readings on hover" setting has been enabled:
+			// 1. reveal furigana on first tap
+			// 2. search jisho.org on second tap
+			if (isKnownWord && revealOnHoverIsSet && hasntAlreadyBeenRevealed) {
+				$(this).data('is-revealed', true);
+				$(this).addClass('-reveal-reading');
+
+			} else {
+				// It's necessary to use vanilla JS here, since
+				// jQuery's equivalent `click()` function doesnt work
+				this
+					.querySelector('a.jisho-search')
+					.click();
+			}
+		});
 	} else {
 		// Open Anki card browser on desktop
 		$('.word').click(word_click);

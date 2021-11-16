@@ -29,6 +29,12 @@ START - Mixins */
 	}
 }
 
+@mixin not-mobile-device {
+	html:not(.mobile) & {
+		@content;
+	}
+}
+
 @mixin mobile-device {
 	.mobile & {
 		@content;
