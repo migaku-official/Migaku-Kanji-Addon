@@ -208,17 +208,17 @@
 					: '-';
 
 				var primitiveHasAlts = p_data.primitive_alternatives.length > 0,
-						primitive_alternatives_txt = primitiveHasAlts
-							? p_data
-								.primitive_alternatives
-								.join(', ')
-							: '-';
+					primitive_alternatives_txt = primitiveHasAlts
+						? p_data
+							.primitive_alternatives
+							.join(', ')
+						: '-';
 
-							primitives_pts.push(
-								`<button
+				primitives_pts.push(
+					`<button
 									class="primitive${primitiveHasAlts
-								? ' -has-alternative'
-								: ''}"
+					? ' -has-alternative'
+					: ''}"
 									data-character="${p_data.character}"
 								>
 									${p_data.character}
@@ -233,8 +233,8 @@
 										</div>
 										<div class="primitiveDetails-alternatives">
 											<h3><h3>${primitiveHasAlts
-									? '*'
-									: ''}Alternatives:</h3></h3>
+						? '*'
+						: ''}Alternatives:</h3></h3>
 											<span>${primitive_alternatives_txt}</span > </div>
 							</div>
 						</button>`);
@@ -274,17 +274,17 @@
 					: '-';
 
 				var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0,
-						primitive_alternatives_txt = primitiveOfHasAlts
-							? p_data
-								.primitive_alternatives
-								.join(', ')
-							: '-';
+					primitive_alternatives_txt = primitiveOfHasAlts
+						? p_data
+							.primitive_alternatives
+							.join(', ')
+						: '-';
 
-					primitive_of_pts.push(
-						`<button
+				primitive_of_pts.push(
+					`<button
 							class="primitive${primitiveOfHasAlts
-						? ' -has-alternative'
-						: ''}"
+					? ' -has-alternative'
+					: ''}"
 							data-character="${p_data.character}"
 						>
 							${p_data.character}
@@ -299,8 +299,8 @@
 								</div>
 								<div class="primitiveDetails-alternatives">
 									<h3>${primitiveOfHasAlts
-							? '*'
-							: ''}Alternatives:</h3>
+						? '*'
+						: ''}Alternatives:</h3>
 									<span>${primitive_alternatives_txt}</span > </div>
 					</div>
 				</button>`);
@@ -441,12 +441,22 @@
 				// to have consistent styles, and to retain ability to reliably copy/paste link
 				// text without link preview pop-ups interfering on iOS. A bit hacky.
 				$('.word').click(function () {
-					// It's necessary to use vanilla JS here, since
-					// jQuery's equivalent `click()` function doesnt work
-					this
-						.querySelector('a.jisho-search')
-						.click();
-				})
+
+					// If the hide ""readings on hover" setting has been enabled:
+					// 1. reveal furigana on first tap
+					// 2. search jisho.org on second tap
+					if (settings.hide_readings_hover && !$(this).data('is-revealed')) {
+						$(this).data('is-revealed', true);
+						$(this).addClass('-reveal-reading');
+
+					} else {
+						// It's necessary to use vanilla JS here, since
+						// jQuery's equivalent `click()` function doesnt work
+						this
+							.querySelector('a.jisho-search')
+							.click();
+					}
+				});
 			} else {
 				// Open Anki card browser on desktop
 				$('.word').click(word_click);

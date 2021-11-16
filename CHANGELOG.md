@@ -1,3 +1,7 @@
+## 1.0.0-beta.3 (unreleased)
+
+- [FEATURE]: Linked word furigana on mobile is now revealed on first tap, and jisho search on second tap (if setting enabled).
+
 ## 1.0.0-beta.2
 
 - [FIX]: Successive card reviews on several platforms work again
