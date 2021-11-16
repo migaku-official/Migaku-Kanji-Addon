@@ -1,0 +1,2 @@
+/addon/mecab/unidic/*.bin filter=lfs diff=lfs merge=lfs -text
+/addon/mecab/unidic/*.dic filter=lfs diff=lfs merge=lfs -text
