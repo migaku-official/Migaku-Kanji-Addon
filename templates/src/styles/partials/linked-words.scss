@@ -64,16 +64,25 @@ START - Linked words */
 }
 
 // Hide furigana on linked words; show on hover
+// NOTE: This behaviour doesn't work on mobile, instead
+// there is logic in the JS to have the furigana
 
 .linked-words__examples .hide_readings_hover button.word:not(.word_default) {
 	position: relative;
 
-	&:hover rt,
-	&:focus rt {
-		color: inherit;
+	// Reveal on hover purposefully doesnt work on mobile,
+	// as there is click/tap behaviour instead:
+	// 1. reveal furigian on first tap
+	// 2. search jisho.org on second tap
 
-		&::before {
-			opacity: 0;
+	@include not-mobile-device {
+		&:hover rt,
+		&:focus rt {
+			color: inherit;
+
+			&::before {
+				opacity: 0;
+			}
 		}
 	}
 
@@ -93,6 +102,10 @@ START - Linked words */
 
 			@include dark-mode {
 				color: $text-on-light;
+			}
+
+			@include mobile-device {
+				content: '(tap)';
 			}
 		}
 	}
