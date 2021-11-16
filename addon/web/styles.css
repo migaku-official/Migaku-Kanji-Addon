@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.14.2
+- @version v0.15.0
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -1822,30 +1822,44 @@ button.show-more__button:active {
 	background: #989898;
 }
 
-.linked-words__examples .hide_readings_hover button.word:not(.word_default) {
-	position: relative;
-}
-
-.linked-words__examples
+.mobile
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default).-reveal-reading
+	rt,
+html:not(.mobile)
+	.linked-words__examples
 	.hide_readings_hover
 	button.word:not(.word_default):hover
 	rt,
-.linked-words__examples
+html:not(.mobile)
+	.linked-words__examples
 	.hide_readings_hover
 	button.word:not(.word_default):focus
 	rt {
 	color: inherit;
 }
 
-.linked-words__examples
+.mobile
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default).-reveal-reading
+	rt::before,
+html:not(.mobile)
+	.linked-words__examples
 	.hide_readings_hover
 	button.word:not(.word_default):hover
 	rt::before,
-.linked-words__examples
+html:not(.mobile)
+	.linked-words__examples
 	.hide_readings_hover
 	button.word:not(.word_default):focus
 	rt::before {
 	opacity: 0;
+}
+
+.linked-words__examples .hide_readings_hover button.word:not(.word_default) {
+	position: relative;
 }
 
 .linked-words__examples .hide_readings_hover button.word:not(.word_default) rt {
@@ -1885,6 +1899,14 @@ button.show-more__button:active {
 	button.word:not(.word_default)
 	rt::before {
 	color: #363c4a;
+}
+
+.mobile
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default)
+	rt::before {
+	content: '(tap)';
 }
 
 .primitives-and-radicals__container,
