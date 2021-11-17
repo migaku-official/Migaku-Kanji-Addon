@@ -4,6 +4,10 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
+## 0.15.2
+
+- [FIX]: Furigana is no longer hidden when "hide readings of known words until hovered" is unselected.
+
 ## 0.15.1
 
 - [FIX]: Selecting vocab text without also selecting furigana now more consistent, especially for words with okurigana or kanji/hiragana combo words.
