@@ -29,7 +29,7 @@ START - Linked words */
 			margin: 0 10px 10px 0;
 		}
 
-		// Clickable linked word (button)
+		// Known words
 
 		.word {
 			@include button-primary;
@@ -37,28 +37,60 @@ START - Linked words */
 			font-family: inherit;
 			font-size: 24px !important;
 			padding: 5px 10px !important;
+			position: relative;
 
 			@include bp.get(s) {
 				font-size: 26px !important;
 			}
+
+			ruby {
+				// Ruby text is hidden; inner span (without furigana)
+				// is visible instead for more reliable select/copy highlighting
+				// that will definitely exclude furigana (including tricky
+				// cases like okurigana, kanji/hiragana combo words)
+				color: transparent;
+				user-select: none;
+			}
+
+			.selectable-text {
+				@include align-horizontal-center;
+
+				bottom: 5px;
+				user-select: text;
+				width: 100%;
+			}
 		}
+
+		// New words (upcoming)
 
 		.word.word_new {
 			@include button-secondary;
 
 			rt {
-				color: inherit !important;
+				color: $brand-blue-primary !important;
+
+				&::before {
+					content: none !important;
+				}
+
+				@include dark-mode {
+					color: $brand-orange-primary !important;
+				}
+			}
+		}
+
+		// Example words
+
+		.word.word_default {
+			@include button-tertiary;
+
+			rt {
+				color: $text-on-light !important;
 
 				&::before {
 					content: none !important;
 				}
 			}
-		}
-
-		// Example word (button)
-
-		.word.word_default {
-			@include button-tertiary;
 		}
 	}
 }
@@ -69,7 +101,7 @@ START - Linked words */
 
 %reveal-reading {
 	rt {
-		color: inherit;
+		color: $text-on-dark;
 
 		&::before {
 			opacity: 0;
@@ -92,9 +124,24 @@ START - Linked words */
 		}
 	}
 
+	@include not-mobile-device--dark-mode {
+		&:hover,
+		&:focus {
+			rt {
+				color: $text-on-light;
+			}
+		}
+	}
+
 	@include mobile-device {
 		&.-reveal-reading {
 			@extend %reveal-reading;
+		}
+	}
+
+	@include mobile-device--dark-mode {
+		&.-reveal-reading rt {
+			color: $text-on-light;
 		}
 	}
 

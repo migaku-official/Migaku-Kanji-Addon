@@ -35,6 +35,17 @@ START - Mixins */
 	}
 }
 
+// Very specific use-case. Since @mobile-device
+// and @dark-mode mixins cannot be stacked.
+@mixin not-mobile-device--dark-mode {
+	html:not(.mobile) .ankidroid_dark_mode &, // AnkiDroid cards
+	html:not(.mobile) .nightMode &, // Desktop Anki cards
+	// Lookup window
+	html:not(.mobile) .dark & {
+		@content;
+	}
+}
+
 @mixin mobile-device {
 	.mobile & {
 		@content;
@@ -43,7 +54,7 @@ START - Mixins */
 
 // Very specific use-case. Since @mobile-device
 // and @dark-mode mixins cannot be stacked.
-@mixin mobile-dark-mode {
+@mixin mobile-device--dark-mode {
 	.mobile .ankidroid_dark_mode &, // AnkiDroid cards
 	.mobile .nightMode &, // Desktop Anki cards
 	// Lookup window
@@ -87,7 +98,7 @@ START - Mixins */
 		@extend %faded-info-base;
 	}
 
-	@include mobile-dark-mode {
+	@include mobile-device--dark-mode {
 		color: $faded-msg-color-dark;
 	}
 }

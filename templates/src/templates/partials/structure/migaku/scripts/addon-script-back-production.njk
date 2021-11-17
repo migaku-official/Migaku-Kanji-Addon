@@ -320,6 +320,7 @@
 			`
 			<button type="button" class="${classes.join(' ')}" data-word-kanji="${w}" data-word-idx="${i}">
 				${JapaneseUtil.distributeFuriganaHTML(w, r)}
+				<span class="selectable-text" aria-hidden="true">${w}</span>
 				${isMobileDevice
 			? `<a
 							href="https://jisho.org/search/${encodeURI(w)}"
@@ -349,6 +350,7 @@
 			`
 			<button type="button" class="word word_default" data-word-kanji="${w}">
 				${JapaneseUtil.distributeFuriganaHTML(w, r)}
+				<span class="selectable-text" aria-hidden="true">${w}</span>
 				${isMobileDevice
 			? `<a
 							href="https://jisho.org/search/${encodeURI(w)}"
