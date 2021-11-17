@@ -4,6 +4,11 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
+## 0.15.1
+
+- [FIX]: Selecting vocab text without also selecting furigana now more consistent, especially for words with okurigana or kanji/hiragana combo words.
+- [CHORE]: Updated "primitive in" tooltip to include info about alternatives.
+
 ## 0.15.0
 
 - [FEATURE]: Linked word furigana on mobile is now revealed on first tap, and jisho search on second tap (if setting enabled).
