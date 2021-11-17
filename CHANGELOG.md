@@ -1,3 +1,7 @@
+## 1.0.0-beta.4
+
+- [FIX]: Furigana is no longer hidden when "hide readings of known words until hovered" is unselected.
+
 ## 1.0.0-beta.3
 
 - [FEATURE]: Linked word furigana on mobile is now revealed on first tap, and jisho search on second tap (if setting enabled).
