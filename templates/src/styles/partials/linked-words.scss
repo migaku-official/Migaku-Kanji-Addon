@@ -50,6 +50,14 @@ START - Linked words */
 				// cases like okurigana, kanji/hiragana combo words)
 				color: transparent;
 				user-select: none;
+
+				rt {
+					color: $text-on-dark;
+
+					@include dark-mode {
+						color: $text-on-light;
+					}
+				}
 			}
 
 			.selectable-text {
