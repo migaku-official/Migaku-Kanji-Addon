@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.15.0
+- @version v0.15.1
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -174,7 +174,8 @@ START - Migaku markup
 										aria-expanded="false"
 									>
 										This kanji appears as a primitive within these other, more
-										complex kanji.
+										complex kanji. Some kanji have alternative primitive
+										appearances when appearing inside other kanji.
 									</div>
 
 									<hr class="separator" />
@@ -617,7 +618,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.15.0
+- @version v0.15.1
 
 Changes:
 - state object and variables
@@ -8753,6 +8754,7 @@ Changes:
 						' ',
 					)}" data-word-kanji="${w}" data-word-idx="${i}">
 						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						<span class="selectable-text" aria-hidden="true">${w}</span>
 						${
 							isMobileDevice
 								? `<a
@@ -8784,6 +8786,7 @@ Changes:
 					`
 					<button type="button" class="word word_default" data-word-kanji="${w}">
 						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						<span class="selectable-text" aria-hidden="true">${w}</span>
 						${
 							isMobileDevice
 								? `<a

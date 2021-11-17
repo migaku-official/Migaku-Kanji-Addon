@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.15.0
+- @version v0.15.1
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -1537,7 +1537,7 @@ body.dark {
 	border-radius: 8px;
 	display: inline-block;
 	margin: 1px 0;
-	padding: 7px 5px 5px;
+	padding: 9px 5px 5px;
 	position: relative;
 }
 
@@ -1696,6 +1696,7 @@ button.show-more__button:active {
 	font-size: 24px !important;
 	padding: 20px 10px !important;
 	padding: 5px 10px !important;
+	position: relative;
 }
 
 .linked-words__examples .word:hover,
@@ -1733,6 +1734,24 @@ button.show-more__button:active {
 	.linked-words__examples .word {
 		font-size: 26px !important;
 	}
+}
+
+.linked-words__examples .word ruby {
+	color: transparent;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.linked-words__examples .word .selectable-text {
+	bottom: 5px;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	user-select: text;
+	width: 100%;
 }
 
 .linked-words__examples .word.word_new {
@@ -1801,11 +1820,17 @@ button.show-more__button:active {
 }
 
 .linked-words__examples .word.word_new rt {
-	color: inherit !important;
+	color: #2880ff !important;
 }
 
 .linked-words__examples .word.word_new rt::before {
 	content: none !important;
+}
+
+.ankidroid_dark_mode .linked-words__examples .word.word_new rt,
+.nightMode .linked-words__examples .word.word_new rt,
+.dark .linked-words__examples .word.word_new rt {
+	color: #f2994a !important;
 }
 
 .linked-words__examples .word.word_default {
@@ -1820,6 +1845,14 @@ button.show-more__button:active {
 
 .linked-words__examples .word.word_default:active {
 	background: #989898;
+}
+
+.linked-words__examples .word.word_default rt {
+	color: #363c4a !important;
+}
+
+.linked-words__examples .word.word_default rt::before {
+	content: none !important;
 }
 
 .mobile
@@ -1837,7 +1870,7 @@ html:not(.mobile)
 	.hide_readings_hover
 	button.word:not(.word_default):focus
 	rt {
-	color: inherit;
+	color: #fff;
 }
 
 .mobile
@@ -1860,6 +1893,66 @@ html:not(.mobile)
 
 .linked-words__examples .hide_readings_hover button.word:not(.word_default) {
 	position: relative;
+}
+
+html:not(.mobile)
+	.ankidroid_dark_mode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default):hover
+	rt,
+html:not(.mobile)
+	.ankidroid_dark_mode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default):focus
+	rt,
+html:not(.mobile)
+	.nightMode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default):hover
+	rt,
+html:not(.mobile)
+	.nightMode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default):focus
+	rt,
+html:not(.mobile)
+	.dark
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default):hover
+	rt,
+html:not(.mobile)
+	.dark
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default):focus
+	rt {
+	color: #363c4a;
+}
+
+.mobile
+	.ankidroid_dark_mode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default).-reveal-reading
+	rt,
+.mobile
+	.nightMode
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default).-reveal-reading
+	rt,
+.mobile
+	.dark
+	.linked-words__examples
+	.hide_readings_hover
+	button.word:not(.word_default).-reveal-reading
+	rt {
+	color: #363c4a;
 }
 
 .linked-words__examples .hide_readings_hover button.word:not(.word_default) rt {
@@ -2060,8 +2153,8 @@ button.primitive.-has-alternative::before {
 	line-height: 1;
 	position: absolute;
 	position: absolute;
-	right: 2px;
-	top: 2px;
+	right: 3px;
+	top: 3px;
 }
 
 @media only screen and (min-width: 36.25em) {

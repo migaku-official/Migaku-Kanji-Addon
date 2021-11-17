@@ -1,6 +1,7 @@
-## 1.0.0-beta.3 (unreleased)
+## 1.0.0-beta.3
 
 - [FEATURE]: Linked word furigana on mobile is now revealed on first tap, and jisho search on second tap (if setting enabled).
+- [FIX]: Selecting vocab text without also selecting furigana now more consistent, especially for words with okurigana or kanji/hiragana combo words.
 
 ## 1.0.0-beta.2
 
