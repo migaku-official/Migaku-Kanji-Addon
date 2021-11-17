@@ -358,6 +358,7 @@
 					`
 					<button type="button" class="${classes.join(' ')}" data-word-kanji="${w}" data-word-idx="${i}">
 						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						<span class="selectable-text" aria-hidden="true">${w}</span>
 						${isMobileDevice
 					? `<a
 									href="https://jisho.org/search/${encodeURI(w)}"
@@ -384,6 +385,7 @@
 					`
 					<button type="button" class="word word_default" data-word-kanji="${w}">
 						${JapaneseUtil.distributeFuriganaHTML(w, r)}
+						<span class="selectable-text" aria-hidden="true">${w}</span>
 						${isMobileDevice
 					? `<a
 									href="https://jisho.org/search/${encodeURI(w)}"
@@ -443,8 +445,8 @@
 				$('.word').click(function () {
 					// New/unknown words have additional classes appended
 					var isKnownWord = this.classList.length === 1,
-							revealOnHoverIsSet = settings.hide_readings_hover,
-							hasntAlreadyBeenRevealed = !$(this).data('is-revealed');
+						revealOnHoverIsSet = settings.hide_readings_hover,
+						hasntAlreadyBeenRevealed = !$(this).data('is-revealed');
 
 					// If the hide "readings on hover" setting has been enabled:
 					// 1. reveal furigana on first tap
