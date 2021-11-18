@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.15.1
+- @version v0.16.0
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -1741,6 +1741,16 @@ button.show-more__button:active {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	user-select: none;
+}
+
+.linked-words__examples .word ruby rt {
+	color: #fff;
+}
+
+.ankidroid_dark_mode .linked-words__examples .word ruby rt,
+.nightMode .linked-words__examples .word ruby rt,
+.dark .linked-words__examples .word ruby rt {
+	color: #363c4a;
 }
 
 .linked-words__examples .word .selectable-text {

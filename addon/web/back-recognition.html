@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.15.1
+- @version v0.16.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -557,7 +557,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.15.1
+- @version v0.16.0
 
 Changes:
 - state object and variables
@@ -8604,19 +8604,49 @@ Changes:
 
 	$('.primitive').click(primitive_click);
 
+	// Truncate results with "show more" button (if applicable)
 	var primitive_of_max = 10;
 	if (primitive_of_pts.length > primitive_of_max) {
-		$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).hide();
+		const _$showMoreBtn = $(
+			'<button type="button" class="show-more__button"></button>',
+		);
 
-		const _$showMoreBtn = document.createElement('button');
-		_$showMoreBtn.classList.add('show-more__button');
-		_$showMoreBtn.innerHTML = `more<br/>(${
-			primitive_of_pts.length - primitive_of_max
-		})`;
-		_$showMoreBtn.addEventListener('click', function () {
-			_$showMoreBtn.remove();
-			$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).show();
+		// Change button text/data to reflect show more/less behaviour
+		function setShowMoreLessBtn(moreOrLess) {
+			const shouldShowMore = moreOrLess === 'more';
+
+			_$showMoreBtn.html(
+				`${
+					shouldShowMore
+						? `more<br/>(${primitive_of_pts.length - primitive_of_max})`
+						: 'show<br/>less'
+				}`,
+			);
+			_$showMoreBtn.data('show-more-less', shouldShowMore ? 'more' : 'less');
+		}
+
+		// Default hide surplus results
+		$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).hide();
+		setShowMoreLessBtn('more');
+
+		// Click event listener to toggle show more/less
+		_$showMoreBtn.click(function () {
+			const moreOrLess = _$showMoreBtn.data('show-more-less');
+			const shouldShowMore = moreOrLess === 'more';
+
+			if (moreOrLess === 'more') {
+				$(
+					`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`,
+				).show();
+				setShowMoreLessBtn('less');
+			} else if (moreOrLess === 'less') {
+				$(
+					`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`,
+				).hide();
+				setShowMoreLessBtn('more');
+			}
 		});
+
 		$('#primitive_of').append(_$showMoreBtn);
 	}
 
@@ -8727,17 +8757,40 @@ Changes:
 	// Truncate results with "show more" button (if applicable)
 	var words_max = 10;
 	if (word_pts.length > words_max) {
-		$(`#words .word:nth-child(n+${words_max + 1})`).hide();
+		const _$showMoreBtn = $(
+			'<button type="button" class="show-more__button"></button>',
+		);
 
-		const _$showMoreBtn = document.createElement('button');
-		_$showMoreBtn.classList.add('show-more__button');
-		_$showMoreBtn.innerHTML = `Show<br/>more<br/>(${
-			word_pts.length - words_max
-		})`;
-		_$showMoreBtn.addEventListener('click', function () {
-			_$showMoreBtn.remove();
-			$(`#words .word:nth-child(n+${words_max + 1})`).show();
+		// Change button text/data to reflect show more/less behaviour
+		function setShowMoreLessBtn(moreOrLess) {
+			const shouldShowMore = moreOrLess === 'more';
+
+			_$showMoreBtn.html(
+				`Show<br/>${moreOrLess}<br/>${
+					shouldShowMore ? `(${word_pts.length - words_max})` : ''
+				}`,
+			);
+			_$showMoreBtn.data('show-more-less', shouldShowMore ? 'more' : 'less');
+		}
+
+		// Default hide surplus results
+		$(`#words .word:nth-child(n+${words_max + 1})`).hide();
+		setShowMoreLessBtn('more');
+
+		// Click event listener to toggle show more/less
+		_$showMoreBtn.click('click', function () {
+			const moreOrLess = _$showMoreBtn.data('show-more-less');
+			const shouldShowMore = moreOrLess === 'more';
+
+			if (moreOrLess === 'more') {
+				$(`#words .word:nth-child(n+${words_max + 1})`).show();
+				setShowMoreLessBtn('less');
+			} else if (moreOrLess === 'less') {
+				$(`#words .word:nth-child(n+${words_max + 1})`).hide();
+				setShowMoreLessBtn('more');
+			}
 		});
+
 		$('#words').append(_$showMoreBtn);
 	}
 
