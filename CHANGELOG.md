@@ -1,3 +1,7 @@
+## (Unreleased)
+
+- [FEATURE]: "Show more" buttons enhanced in "Vocab" and "Primitive of" sections - can now "show less".
+
 ## 1.0.0-beta.4
 
 - [FIX]: Furigana is no longer hidden when "hide readings of known words until hovered" is unselected.
@@ -39,6 +43,7 @@ This is a "partially open" beta, announced for supporters on Patreon, but with t
 - [STYLE]: Furigana is no longer selectable, to make for cleaner copy/paste of words.
 - [CHORE]: Added more tooltips to the main card templates.
 - [FIX]: Adding user data to cards on AnkiDroid no longer breaks the entire card, but just breaks the kanji diagram for that card. User data still shows. Card can be fixed via "Refresh Kanji Cards" on desktop. (Best we can do for now).
+- [FIX]: "Found new kanji" dialog will no longer open duplicate windows (e.g. during "Export 1T").
 
 ## 1.0.0-alpha.1 / 1.0.0-alpha.2
 
