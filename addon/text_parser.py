@@ -17,12 +17,15 @@ class MecabParser():
         self.mecab_env['LD_LIBRARY_PATH'] = self.mecab_dir
         self.mecab_env['DYLD_LIBRARY_PATH'] = self.mecab_dir
 
+        self.mecab_extra_args = {}
+
         if anki.utils.isLin:
             self.mecab_bin += '-linux'
         elif anki.utils.isMac:
             self.mecab_bin += '-macos'
         elif anki.utils.isWin:
             self.mecab_bin += '-windows.exe'
+            self.mecab_extra_args['creationflags'] = 0x08000000     # CREATE_NO_WINDOW
         else:
             raise NotImplementedError('Unsupported OS')
 
@@ -44,7 +47,8 @@ class MecabParser():
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                env=self.mecab_env
+                env=self.mecab_env,
+                **self.mecab_extra_args
             )
 
     def stop(self):
