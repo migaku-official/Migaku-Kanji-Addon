@@ -49,10 +49,15 @@ class CustomKeywordsDialog(QDialog):
 
 
 
-def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, reviewer: Optional[aqt.reviewer.Reviewer] = None):
+def handle_bridge_action(
+    cmd: str,
+    lookup_window: Optional[LookupWindow] = None,
+    reviewer: Optional[aqt.reviewer.Reviewer] = None,
+    previewer: Optional[aqt.browser.previewer.Previewer] = None
+):
     args = cmd.split('-')
 
-    if not len(args):
+    if not args:
         return False
 
     def arg_from(i):
@@ -61,7 +66,7 @@ def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, revi
             j = cmd.find('-', j) + 1
         return cmd[j:]
 
-    parent = lookup_window or aqt.mw
+    parent = lookup_window or previewer or aqt.mw
 
     if args[0] == 'show_card_id':
         util.open_browser_cardids(int(args[1]))
@@ -99,13 +104,15 @@ def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, revi
 
     elif args[0] == 'custom_keyword':
         character = args[1]
-        if reviewer:
+        if reviewer or previewer:
             aqt.mw.requireReset()
         r = CustomKeywordsDialog(character, parent).exec()
         if r == QDialog.Accepted:
-            if reviewer:
+            if reviewer or previewer:
                 aqt.mw.maybeReset()
-            else:
+            if previewer:
+                previewer.render_card()
+            if lookup_window:
                 lookup_window.refresh()
         return True
 
@@ -119,12 +126,14 @@ def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, revi
             text=old_story
         )
         if r:
-            if not lookup_window:
+            if reviewer or previewer:
                 aqt.mw.requireReset()
             aqt.mw.migaku_kanji_db.set_character_usr_story(character, new_story)
-            if not lookup_window:
+            if reviewer or previewer:
                 aqt.mw.maybeReset()
-            else:
+            if previewer:
+                previewer.render_card()
+            if lookup_window:
                 lookup_window.refresh()
         return True
 
