@@ -36,7 +36,7 @@ class CreateCardsFromNotesDialog(QDialog):
         lyt.addWidget(QLabel('Fields:'))
 
         self.list_box = QListWidget()
-        last_checked = config.get('cards_from_notes_last_checked')
+        last_checked = config.get('cards_from_notes_last_checked', {})
         for field_name in anki.find.fieldNamesForNotes(aqt.mw.col, note_ids):
             itm = QListWidgetItem(field_name)
             itm.setCheckState(
@@ -108,7 +108,7 @@ class CreateCardsFromNotesDialog(QDialog):
                 F'You already have kanji {card_type.label} cards or marked them known for all kanji occuring in the selected notes with the selected fields!'
             )
 
-        config.get('cards_from_notes_last_checked').update(checked_fields_states)
+        config.get('cards_from_notes_last_checked', {}).update(checked_fields_states)
         config.write()
 
         self.accept()
