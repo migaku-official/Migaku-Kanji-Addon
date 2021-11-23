@@ -2,7 +2,7 @@
 
 - [FEATURE]: "Show more" buttons enhanced in "Vocab" and "Primitive of" sections - can now "show less".
 - [FEATURE]: A bundled parser is now included in the addon, so Migaku Japanese is no longer strictly required to be installed as a dependency.
-- [FEATURE]: A pop-up notice is now show to the user when attempting to edit the card templates, warning them that changes would be overwritten. An option is provided to take them to the directory containing the compiled files, if they would still like to make any changes.
+- [FEATURE]: A pop-up notice is now shown to the user when attempting to edit the card templates, warning them that changes would be overwritten. An option is provided to take them to the directory containing the compiled files, if they would still like to make any changes.
 - [FIX]: Fixed an issue that can happen when creating kanji cards by selection.
 
 ## 1.0.0-beta.4
