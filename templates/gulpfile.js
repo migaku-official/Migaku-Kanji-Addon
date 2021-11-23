@@ -76,10 +76,12 @@ gulp.task(TASKS.BUILD.STYLES, () =>
 		.src(SCSS_SRC)
 		.pipe(plumber())
 		.pipe(
-			sass({
-				outputStyle: 'expanded',
-				includePaths: ['node_modules'],
-			}),
+			sass
+				.sync({
+					outputStyle: 'expanded',
+					includePaths: ['node_modules'],
+				})
+				.on('error', sass.logError),
 		)
 		.pipe(autoprefixer())
 		.pipe(
