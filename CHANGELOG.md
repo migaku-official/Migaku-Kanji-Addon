@@ -1,4 +1,4 @@
-## (Unreleased)
+## 1.0.0-beta.5
 
 - [FEATURE]: "Show more" buttons enhanced in "Vocab" and "Primitive of" sections - can now "show less".
 - [FEATURE]: A bundled parser is now included in the addon, so Migaku Japanese is no longer strictly required to be installed as a dependency.
