@@ -77,34 +77,6 @@ START - Actions */
 }
 
 // --------------------------------------
-// Front actions
-
-.actions-front {
-	&__container {
-		@include align-horizontal-center;
-
-		align-items: center;
-		bottom: 20px;
-		display: flex;
-		flex-direction: column;
-		padding: 0 10px;
-		text-align: center;
-		width: 100%;
-	}
-
-	&__mark-known-delete {
-		margin-bottom: 10px;
-	}
-
-	&__buttons {
-		// Action buttons dont work on mobile
-		@include mobile-device {
-			display: none;
-		}
-	}
-}
-
-// --------------------------------------
 // Lookup actions
 
 .actions-lookup {
