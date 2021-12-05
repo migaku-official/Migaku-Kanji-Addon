@@ -249,7 +249,7 @@ class SettingsWindow(QDialog):
         self.setLayout(lyt)
 
         if not text_parser.is_available():
-            info_lbl = QLabel('<b>WARNING: The Migaku Japanese add-on is not installed or enabled. Multiple features will be unavailable.</b>')
+            info_lbl = QLabel('<b>WARNING: MeCab failed to initialize. Multiple features will be unavailable.</b>')
             info_lbl.setWordWrap(True)
             lyt.addWidget(info_lbl)
 
