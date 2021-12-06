@@ -9,7 +9,7 @@ from . import util
 
 def CardLayout_init_hook(self, mw: AnkiQt, note: Note, *args, **kwargs):
     if note:
-        note_type = note.note_type()
+        note_type = note.model()
         if any(card_type.model_name == note_type['name'] for card_type in CardType):
             parent = kwargs.get('parent', mw)
             r = QMessageBox.question(

@@ -1,6 +1,6 @@
 /*! ==============================================
 START - Migaku kanji stylesheet
-- @version v0.16.0
+- @version v0.17.0
 ============================================== */
 
 .mobile .actions-lookup__title,
@@ -2375,27 +2375,6 @@ button.radical {
 
 .actions-back__mark-known-delete .faded-info-msg {
 	text-align: center;
-}
-
-.actions-front__container {
-	align-items: center;
-	bottom: 20px;
-	display: flex;
-	flex-direction: column;
-	left: 50%;
-	padding: 0 10px;
-	position: absolute;
-	text-align: center;
-	transform: translateX(-50%);
-	width: 100%;
-}
-
-.actions-front__mark-known-delete {
-	margin-bottom: 10px;
-}
-
-.mobile .actions-front__buttons {
-	display: none;
 }
 
 .mobile .ankidroid_dark_mode .actions-lookup__title,

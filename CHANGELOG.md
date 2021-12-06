@@ -1,3 +1,7 @@
+## 1.0.0-beta.5 (unreleased)
+
+- [REFACTOR]: Removed front-of-card actions; use-case was not compelling enough to keep it.
+
 ## 1.0.0-beta.5
 
 - [FEATURE]: "Show more" buttons enhanced in "Vocab" and "Primitive of" sections - can now "show less".

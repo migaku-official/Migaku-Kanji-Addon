@@ -7,6 +7,8 @@ import anki
 
 class MecabParser():
 
+    BUFFER_SIZE = 819200
+
     def __init__(self):
         self.mecab_dir = os.path.join(os.path.dirname(__file__), 'mecab')
         self.mecab_bin = os.path.join(self.mecab_dir, 'mecab')
@@ -32,7 +34,8 @@ class MecabParser():
         self.mecab_options = [
             '-d', self.mecab_dic,
             '-r', self.mecab_rc,
-            '-O', 'custom'
+            '-O', 'custom',
+            '-b', str(self.BUFFER_SIZE),
         ]
 
         self.mecab_process = None
@@ -83,6 +86,17 @@ class MecabParser():
 
 parser = MecabParser()
 parser.start()
+
+if not parser.is_running():
+    import aqt
+    from aqt.qt import QMessageBox
+    QMessageBox.critical(
+        aqt.mw,
+        'Migaku Kanji - Error',
+        'MeCab failed to initialize. Please report this error to the developers along with your Anki version and operating system by leaving a comment here:<br><br>'
+        '<a href="https://github.com/migaku-official/Migaku-Kanji-Addon/issues/116">https://github.com/migaku-official/Migaku-Kanji-Addon/issues/116</a><br><br>'
+        'Thank you!'
+    )
 
 
 
