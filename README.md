@@ -1,7 +1,7 @@
 <img src=".github/_migaku-logo-with-text.png" alt="Migaku Logo" width="200px"/>
 
 <p>
-    <!-- <a title="Rate on AnkiWeb" href="https://ankiweb.net/shared/info/278530045"><img src="https://glutanimate.com/logos/ankiweb-rate.svg"></a> -->
+    <a title="Rate on AnkiWeb" href="https://ankiweb.net/shared/review/1872210448"><img src="https://glutanimate.com/logos/ankiweb-rate.svg"></a>
     <a title="Support Migaku on Patreon" href="https://www.patreon.com/Migaku">
         <img src="https://img.shields.io/badge/patreon-support-orange.svg">
     </a>
