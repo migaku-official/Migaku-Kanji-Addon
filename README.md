@@ -25,7 +25,7 @@ Learn kanji within the context of the vocab in your Anki collection. Includes ka
 
 ## Installation
 
-More details, and the installation code can be found [on AnkiWeb](https://ankiweb.net/shared/info/1872210448). IF you want to get straight to the point - you can install the addon via the Anki menu Tools > Add-ons > "Get add-ons" button > type in `1872210448`.
+More details, and the installation code [can be found on AnkiWeb](https://ankiweb.net/shared/info/1872210448). IF you want to get straight to the point - you can install the addon via the Anki menu Tools > Add-ons > "Get add-ons" button > type in `1872210448`.
 
 Main releases and updates are managed via AnkiWeb, and so your addon will automatically prompt you for updates.
 
@@ -37,9 +37,9 @@ Video guides, and a written user guide, are coming soon and will be listed here 
 
 ## Questions, support, issues
 
-If you have questions or are having difficulties setting up the addon, you can talk with us directly on the Migaku Discord server (available to [Patreon supporters](https://www.patreon.com/Migaku/)) in the `#migaku-kanji-god` channel. There is also a long channel histor there you can search through for common questions.
+If you have questions or are having difficulties setting up the addon, you can talk with us directly on the Migaku Discord server (available to [Patreon supporters](https://www.patreon.com/Migaku/)) in the `#migaku-kanji-god` channel. There is also a long channel history there you can search through for common questions.
 
-To report bugs or request features, you can do so here by [opening an Issue on GitHub](https://github.com/migaku-official/Migaku-Kanji-Addon/issues). Please search issues (both open and closed) to see if your bug/feature already has an Issue open for it. Voicing support for features you want to see will help us prioritise what will make it into the next release.
+To report bugs or request features, you can do so here by [opening an Issue on GitHub](https://github.com/migaku-official/Migaku-Kanji-Addon/issues). Please search issues (both open and closed) to see if your bug/feature already has an issue open for it. Voicing support for features you want to see will help us prioritise what will make it into the next release.
 
 ## Contributing
 
