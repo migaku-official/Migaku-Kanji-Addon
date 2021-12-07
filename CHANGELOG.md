@@ -1,4 +1,4 @@
-## 1.0.0-beta.5 (unreleased)
+## 1.0.0-beta.6 (unreleased)
 
 - [REFACTOR]: Removed front-of-card actions; use-case was not compelling enough to keep it.
 
