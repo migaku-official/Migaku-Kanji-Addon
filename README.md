@@ -23,6 +23,24 @@ Learn kanji within the context of the vocab in your Anki collection. Includes ka
 <img src=".github/_recognition-back-light.png" alt="Recognition note type (back, light mode)" width="250px"/>
 </p>
 
+## Installation
+
+More details, and the installation code can be found [on AnkiWeb](https://ankiweb.net/shared/info/1872210448). IF you want to get straight to the point - you can install the addon via the Anki menu Tools > Add-ons > "Get add-ons" button > type in `1872210448`.
+
+Main releases and updates are managed via AnkiWeb, and so your addon will automatically prompt you for updates.
+
+For alpha and beta releases, you can install these directly via [the releases page](https://github.com/migaku-official/Migaku-Kanji-Addon/releases), downloading and opening the `*.ankiaddon` file. No special measures are required for the retention of your user data, you can simply install it over your existing addon.
+
+## User guide
+
+Video guides, and a written user guide, are coming soon and will be listed here among other locations.
+
+## Questions, support, issues
+
+If you have questions or are having difficulties setting up the addon, you can talk with us directly on the Migaku Discord server (available to [Patreon supporters](https://www.patreon.com/Migaku/)) in the `#migaku-kanji-god` channel. There is also a long channel histor there you can search through for common questions.
+
+To report bugs or request features, you can do so here by [opening an Issue on GitHub](https://github.com/migaku-official/Migaku-Kanji-Addon/issues). Please search issues (both open and closed) to see if your bug/feature already has an Issue open for it. Voicing support for features you want to see will help us prioritise what will make it into the next release.
+
 ## Contributing
 
 Contributions of all kinds are welcome - please read the contribution guidelines ([CONTRIBUTING.md](.github/CONTRIBUTING.md)) before submitting any issues or pull requests.
