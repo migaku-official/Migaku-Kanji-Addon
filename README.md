@@ -41,6 +41,12 @@ If you have questions or are having difficulties setting up the addon, you can t
 
 To report bugs or request features, you can do so here by [opening an Issue on GitHub](https://github.com/migaku-official/Migaku-Kanji-Addon/issues). Please search issues (both open and closed) to see if your bug/feature already has an issue open for it. Voicing support for features you want to see will help us prioritise what will make it into the next release.
 
+## Roadmap
+
+You can have a look at the planned features we have for [the next few releases here](https://github.com/migaku-official/Migaku-Kanji-Addon/milestones). Click on the version candidate title to see the GitHub issues assigned to it.
+
+Note that we have a dedicated `someday, maybe` milestone where we archive [long-term or uncertain plans](https://github.com/migaku-official/Migaku-Kanji-Addon/milestone/6?closed=1). We keep these issues closed so long as we have no immediate plans to work on them in the foreseeable roadmap. However, if you feel strongly about a feature we encourage you to comment on the issue or give it a thumbs-up.
+
 ## Contributing
 
 Contributions of all kinds are welcome - please read the contribution guidelines ([CONTRIBUTING.md](.github/CONTRIBUTING.md)) before submitting any issues or pull requests.
