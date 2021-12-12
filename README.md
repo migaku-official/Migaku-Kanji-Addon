@@ -47,6 +47,13 @@ You can have a look at the planned features we have for [the next few releases h
 
 Note that we have a dedicated `someday, maybe` milestone where we archive [long-term or uncertain plans](https://github.com/migaku-official/Migaku-Kanji-Addon/milestone/6?closed=1). We keep these issues closed so long as we have no immediate plans to work on them in the foreseeable roadmap. However, if you feel strongly about a feature we encourage you to comment on the issue or give it a thumbs-up.
 
+### Changelog
+
+If you'd like to see what has changed with each release, you can view our detailed changelogs:
+ - [Main changelog](/CHANGELOG.md)
+ - [Detailed templates changelog](/templates/CHANGELOG.md)
+   - (Greater detail specifically about the UI)
+
 ## Contributing
 
 Contributions of all kinds are welcome - please read the contribution guidelines ([CONTRIBUTING.md](.github/CONTRIBUTING.md)) before submitting any issues or pull requests.
