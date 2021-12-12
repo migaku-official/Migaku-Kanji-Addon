@@ -33,7 +33,7 @@ For alpha and beta releases, you can install these directly via [the releases pa
 
 ## User guide
 
-Video guides, and a written user guide, are coming soon and will be listed here among other locations.
+[A video guide is available on YouTube](https://www.youtube.com/watch?v=y9bmWLvUBQo).
 
 ## Questions, support, issues
 
