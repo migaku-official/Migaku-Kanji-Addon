@@ -42,7 +42,7 @@ class MarkKnownDialog(QDialog):
         lyt.addWidget(self.ct_selector)
 
         self.txt_box = QPlainTextEdit()
-        self.txt_box.setPlaceholderText('Enter Kanji which should be marked knwon')
+        self.txt_box.setPlaceholderText('Enter Kanji which should be marked known')
         lyt.addWidget(self.txt_box)
 
         hlyt = QHBoxLayout()
