@@ -50,9 +50,9 @@ Note that we have a dedicated `someday, maybe` milestone where we archive [long-
 ### Changelog
 
 If you'd like to see what has changed with each release, you can view our detailed changelogs:
- - [Main changelog](/CHANGELOG.md)
+ - [Main changelog](/CHANGELOG.md).
  - [Detailed templates changelog](/templates/CHANGELOG.md)
-   - (Greater detail specifically about the UI)
+   - (development detail about the UI).
 
 ## Contributing
 
