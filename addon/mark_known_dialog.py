@@ -31,7 +31,7 @@ class MarkKnownDialog(QDialog):
 
         info_lbl = QLabel('All kanji in the box below will be marked known for the specified learning type when you press OK.\n\n' \
                           'Kanji that have a kanji card associated with them will not be marked.\n\n' \
-                          'If you want to unmark a kaji later, go to the lookup browser and hit the "Unmark as known" button. ' \
+                          'If you want to unmark a kanji later, go to the lookup browser and hit the "Unmark as known" button. ' \
                           'You can also mark individual kanji known by Shift-clicking on the "Create Recognition/Production Card" buttons in the lookup browser.')
         info_lbl.setWordWrap(True)
         lyt.addWidget(info_lbl)
