@@ -2,35 +2,9 @@
 
 Contributions of all kind are welcome, but will all be held to the same standard. It's important you follow the rules below so that the repository can stay consistent and clean.
 
-## Reporting issues
+## Reporting issues, requesting features
 
-Issues raised should be in the following format:
-
-```text
-**Type:**
-  - [x] bug
-  - [ ] feature
-  - [ ] enhancement
-  - [ ] question
-
-**Environment:**
-  - OS: Windows 10
-  - Version: 0.6.0
-
-**Going to open a PR:**
-  - [x] yes
-  - [ ] no
-
-**Description:**
-The messages aren't showing on the console
-```
-
-## Submitting pull requests
-
-If your pull request addresses and issue, please reference the ID of the pull request (or better yet, link it) so the context of your PR is clear. e.g.
-```text
-Now the messages are showing. Closes #41
-```
+[Please use the issue templates](https://github.com/migaku-official/Migaku-Kanji-Addon/issues/new/choose) when logging new issues or feature requests; if you don't we'll probably just ask you those same questions anyway.
 
 ## Developing new features
 
