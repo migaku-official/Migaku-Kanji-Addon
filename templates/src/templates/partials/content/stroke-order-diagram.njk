@@ -109,17 +109,22 @@
 			</div>
 
 			<div class="stroke-order-diagram__slider">
-				<input
-					id="strokeorder_slider"
-					disabled="disabled"
-					type="range"
-					min="0"
-					step="1"
-					data-disable-while-playing
-					data-disable-while-drawing
-					data-disable-while-erasing
-				/>
-				<div class="stroke-order-diagram__slider-notches"></div>
+				<div class="stroke-order-diagram__slider-container">
+					<input
+						id="strokeorder_slider"
+						disabled="disabled"
+						type="range"
+						min="0"
+						step="1"
+						data-disable-while-playing
+						data-disable-while-drawing
+						data-disable-while-erasing
+					/>
+					<div class="stroke-order-diagram__slider-notches"></div>
+				</div>
+				<div class="stroke-order-diagram__slider-stroke-count">
+					...
+				</div>
 			</div>
 		</div>
 	</div>
