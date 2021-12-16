@@ -27,6 +27,7 @@ dmak = new Dmak(
 			// Keep slider value up to date
 			$slider.val(self.pointer);
 			$slider.data('prev', self.pointer);
+			$sliderStrokeCounter.text(strokeNum);
 
 			disableControls('[data-disable-while-erasing]');
 
@@ -50,6 +51,7 @@ dmak = new Dmak(
 			// Keep slider value up to date
 			$slider.val(strokeNum);
 			$slider.data('prev', strokeNum);
+			$sliderStrokeCounter.text(strokeNum);
 
 			$replayButton.addClass(hidePlayPauseClass);
 
@@ -101,12 +103,15 @@ dmak = new Dmak(
 			if (settings.stroke_order_mode === 'auto') {
 				// Draw strokes one by one
 				self.render(total_strokes);
+				$sliderStrokeCounter.text(0);
 			} else if (settings.stroke_order_mode === 'auto_all') {
 				// Draw all strokes at once
 				self.render(total_strokes, true);	// simultaneous = true
+				$sliderStrokeCounter.text(total_strokes);
 			} else if (settings.stroke_order_mode !== 'noplay') {
 				// Draw all strokes at once for quick rendering
 				self.render(total_strokes, true, true);	// simultaneous = true, instant = true
+				$sliderStrokeCounter.text(total_strokes);
 			}
 
 			// Important for the lookup browser, lest notches accumulate
