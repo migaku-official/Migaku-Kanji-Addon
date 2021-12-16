@@ -4,6 +4,10 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
+## 0.18.0
+
+- [FEATURE]: Added current stroke number display to diagram.
+
 ## 0.17.0
 
 - [REFACTOR]: Removed front-of-card actions; use-case was not compelling enough to keep it.

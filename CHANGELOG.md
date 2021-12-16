@@ -2,6 +2,7 @@
 
 - [REFACTOR]: Removed front-of-card actions; use-case was not compelling enough to keep it.
 - [CHORE]: Fixed some typos.
+- [FEATURE]: Added current stroke number display to diagram.
 
 ## 1.0.0-beta.5
 

@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.17.0
+- @version v0.18.0
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -372,23 +372,25 @@ START - Migaku markup
 						</div>
 
 						<div class="stroke-order-diagram__slider">
-							<input
-								id="strokeorder_slider"
-								disabled="disabled"
-								type="range"
-								min="0"
-								step="1"
-								data-disable-while-playing
-								data-disable-while-drawing
-								data-disable-while-erasing
-							/>
-							<div class="stroke-order-diagram__slider-notches"></div>
+							<div class="stroke-order-diagram__slider-container">
+								<input
+									id="strokeorder_slider"
+									disabled="disabled"
+									type="range"
+									min="0"
+									step="1"
+									data-disable-while-playing
+									data-disable-while-drawing
+									data-disable-while-erasing
+								/>
+								<div class="stroke-order-diagram__slider-notches"></div>
+							</div>
+							<div class="stroke-order-diagram__slider-stroke-count">...</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- END - Stroke order diagram -->
-
 			<!-- START - Tags -->
 			<div class="tags tags__container kanji-char-font">
 				<h2 class="vh">Tags</h2>
@@ -562,7 +564,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.17.0
+- @version v0.18.0
 
 Changes:
 - state object and variables
@@ -8201,6 +8203,7 @@ Changes:
 		$toggleStrokeNumber = $('#toggle_strokeorder_numbers'),
 		$notchContainer = $('.stroke-order-diagram__slider-notches'),
 		$slider = $('#strokeorder_slider'),
+		$sliderStrokeCounter = $('.stroke-order-diagram__slider-stroke-count'),
 		$playButton = $('#strokeorder_play'),
 		$pauseButton = $('#strokeorder_pause'),
 		$replayButton = $('#strokeorder_replay'),
@@ -8328,6 +8331,7 @@ Changes:
 			// Keep slider value up to date
 			$slider.val(self.pointer);
 			$slider.data('prev', self.pointer);
+			$sliderStrokeCounter.text(strokeNum);
 
 			disableControls('[data-disable-while-erasing]');
 
@@ -8351,6 +8355,7 @@ Changes:
 			// Keep slider value up to date
 			$slider.val(strokeNum);
 			$slider.data('prev', strokeNum);
+			$sliderStrokeCounter.text(strokeNum);
 
 			$replayButton.addClass(hidePlayPauseClass);
 
@@ -8402,12 +8407,15 @@ Changes:
 			if (settings.stroke_order_mode === 'auto') {
 				// Draw strokes one by one
 				self.render(total_strokes);
+				$sliderStrokeCounter.text(0);
 			} else if (settings.stroke_order_mode === 'auto_all') {
 				// Draw all strokes at once
 				self.render(total_strokes, true); // simultaneous = true
+				$sliderStrokeCounter.text(total_strokes);
 			} else if (settings.stroke_order_mode !== 'noplay') {
 				// Draw all strokes at once for quick rendering
 				self.render(total_strokes, true, true); // simultaneous = true, instant = true
+				$sliderStrokeCounter.text(total_strokes);
 			}
 
 			// Important for the lookup browser, lest notches accumulate
