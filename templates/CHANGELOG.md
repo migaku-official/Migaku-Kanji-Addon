@@ -4,6 +4,10 @@ This changelog pertains specifically to the front-end templates of the Migaku Ka
 
 The versioning here is independent of the main versioning of the addon, and exists purely for clarity in development and deployment (i.e. making it clear which version of the templates are in place in the addon folder).
 
+## 0.18.1
+
+- [FIX]: Cards with enough words/primitive-ofs for "show more" on mobile now no longer break, and render properly.
+
 ## 0.18.0
 
 - [FEATURE]: Added current stroke number display to diagram.

@@ -1,6 +1,6 @@
 <!-- ======================
 START - Migaku markup
-- @version v0.18.0
+- @version v0.18.1
 ======================= -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -559,7 +559,7 @@ START - Migaku markup
 <script>
 	/* ==================================================================
 CHANGES - START - DMAK extended for Migaku
-- @version v0.18.0
+- @version v0.18.1
 
 Changes:
 - state object and variables
@@ -8620,22 +8620,22 @@ Changes:
 		);
 
 		// Change button text/data to reflect show more/less behaviour
-		function setShowMoreLessBtn(moreOrLess) {
+		function setShowMoreLessBtn(moreOrLess, _$btn) {
 			const shouldShowMore = moreOrLess === 'more';
 
-			_$showMoreBtn.html(
+			_$btn.html(
 				`${
 					shouldShowMore
 						? `more<br/>(${primitive_of_pts.length - primitive_of_max})`
 						: 'show<br/>less'
 				}`,
 			);
-			_$showMoreBtn.data('show-more-less', shouldShowMore ? 'more' : 'less');
+			_$btn.data('show-more-less', shouldShowMore ? 'more' : 'less');
 		}
 
 		// Default hide surplus results
 		$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).hide();
-		setShowMoreLessBtn('more');
+		setShowMoreLessBtn('more', _$showMoreBtn);
 
 		// Click event listener to toggle show more/less
 		_$showMoreBtn.click(function () {
@@ -8646,12 +8646,12 @@ Changes:
 				$(
 					`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`,
 				).show();
-				setShowMoreLessBtn('less');
+				setShowMoreLessBtn('less', _$showMoreBtn);
 			} else if (moreOrLess === 'less') {
 				$(
 					`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`,
 				).hide();
-				setShowMoreLessBtn('more');
+				setShowMoreLessBtn('more', _$showMoreBtn);
 			}
 		});
 
@@ -8770,20 +8770,20 @@ Changes:
 		);
 
 		// Change button text/data to reflect show more/less behaviour
-		function setShowMoreLessBtn(moreOrLess) {
+		function setShowMoreLessBtn(moreOrLess, _$btn) {
 			const shouldShowMore = moreOrLess === 'more';
 
-			_$showMoreBtn.html(
+			_$btn.html(
 				`Show<br/>${moreOrLess}<br/>${
 					shouldShowMore ? `(${word_pts.length - words_max})` : ''
 				}`,
 			);
-			_$showMoreBtn.data('show-more-less', shouldShowMore ? 'more' : 'less');
+			_$btn.data('show-more-less', shouldShowMore ? 'more' : 'less');
 		}
 
 		// Default hide surplus results
 		$(`#words .word:nth-child(n+${words_max + 1})`).hide();
-		setShowMoreLessBtn('more');
+		setShowMoreLessBtn('more', _$showMoreBtn);
 
 		// Click event listener to toggle show more/less
 		_$showMoreBtn.click('click', function () {
@@ -8792,10 +8792,10 @@ Changes:
 
 			if (moreOrLess === 'more') {
 				$(`#words .word:nth-child(n+${words_max + 1})`).show();
-				setShowMoreLessBtn('less');
+				setShowMoreLessBtn('less', _$showMoreBtn);
 			} else if (moreOrLess === 'less') {
 				$(`#words .word:nth-child(n+${words_max + 1})`).hide();
-				setShowMoreLessBtn('more');
+				setShowMoreLessBtn('more', _$showMoreBtn);
 			}
 		});
 

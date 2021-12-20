@@ -289,16 +289,16 @@
 		const _$showMoreBtn = $('<button type="button" class="show-more__button"></button>');
 
 		// Change button text/data to reflect show more/less behaviour
-		function setShowMoreLessBtn(moreOrLess) {
+		function setShowMoreLessBtn(moreOrLess, _$btn) {
 			const shouldShowMore = moreOrLess === 'more';
 
-			_$showMoreBtn.html(`${shouldShowMore ? `more<br/>(${primitive_of_pts.length - primitive_of_max})` : 'show<br/>less'}`);
-			_$showMoreBtn.data('show-more-less', shouldShowMore ? 'more' : 'less');
+			_$btn.html(`${shouldShowMore ? `more<br/>(${primitive_of_pts.length - primitive_of_max})` : 'show<br/>less'}`);
+			_$btn.data('show-more-less', shouldShowMore ? 'more' : 'less');
 		}
 
 		// Default hide surplus results
 		$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).hide();
-		setShowMoreLessBtn('more');
+		setShowMoreLessBtn('more', _$showMoreBtn);
 
 		// Click event listener to toggle show more/less
 		_$showMoreBtn.click(function () {
@@ -307,11 +307,11 @@
 
 			if (moreOrLess === 'more') {
 				$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).show();
-				setShowMoreLessBtn('less');
+				setShowMoreLessBtn('less', _$showMoreBtn);
 
 			} else if (moreOrLess === 'less') {
 				$(`#primitive_of .primitive:nth-child(n+${primitive_of_max + 1})`).hide();
-				setShowMoreLessBtn('more');
+				setShowMoreLessBtn('more', _$showMoreBtn);
 			}
 		});
 
@@ -410,16 +410,16 @@
 		const _$showMoreBtn = $('<button type="button" class="show-more__button"></button>');
 
 		// Change button text/data to reflect show more/less behaviour
-		function setShowMoreLessBtn(moreOrLess) {
+		function setShowMoreLessBtn(moreOrLess, _$btn) {
 			const shouldShowMore = moreOrLess === 'more';
 
-			_$showMoreBtn.html(`Show<br/>${moreOrLess}<br/>${shouldShowMore ? `(${word_pts.length - words_max})` : ''}`);
-			_$showMoreBtn.data('show-more-less', shouldShowMore ? 'more' : 'less');
+			_$btn.html(`Show<br/>${moreOrLess}<br/>${shouldShowMore ? `(${word_pts.length - words_max})` : ''}`);
+			_$btn.data('show-more-less', shouldShowMore ? 'more' : 'less');
 		}
 
 		// Default hide surplus results
 		$(`#words .word:nth-child(n+${words_max + 1})`).hide();
-		setShowMoreLessBtn('more');
+		setShowMoreLessBtn('more', _$showMoreBtn);
 
 		// Click event listener to toggle show more/less
 		_$showMoreBtn.click('click', function () {
@@ -428,11 +428,11 @@
 
 			if (moreOrLess === 'more') {
 				$(`#words .word:nth-child(n+${words_max + 1})`).show();
-				setShowMoreLessBtn('less');
+				setShowMoreLessBtn('less', _$showMoreBtn);
 
 			} else if (moreOrLess === 'less') {
 				$(`#words .word:nth-child(n+${words_max + 1})`).hide();
-				setShowMoreLessBtn('more');
+				setShowMoreLessBtn('more', _$showMoreBtn);
 			}
 		});
 
