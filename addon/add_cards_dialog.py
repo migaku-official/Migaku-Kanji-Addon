@@ -15,6 +15,7 @@ class AddCardsDialog(QDialog):
         ('JLPT',          'jlpt',           'DESC', 'NOT NULL'),
         ('Kanken',        'kanken',         'DESC', 'NOT NULL'),
         ('School Year',   'grade',          'ASC',  'NOT NULL'),
+        ('WaniKani',      'wk',             'ASC',  'NOT NULL'),
     ]
 
     def __init__(self, parent=None):

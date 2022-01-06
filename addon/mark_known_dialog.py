@@ -17,6 +17,7 @@ class MarkKnownDialog(QDialog):
         ('School Year',          'grade',          1, 6,     1,  1),
         ('RTK ID (Edition 1-5)', 'heisig_id5',     1, 99999, 1,  25),
         ('RTK ID (Edition 6+)',  'heisig_id6',     1, 99999, 1,  25),
+        ('WaniKani',             'wk',             1, 60,    1,  1),
     ]
 
 

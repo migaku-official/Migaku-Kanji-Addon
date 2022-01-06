@@ -77,6 +77,7 @@ class StatsWindow(QDialog):
         ('人名用 (Jinmeiyō)',                        'frequency_rank', 'grade >= 9 AND grade <= 10', 'ASC',  None,                   False),
         ('Remembering the Kanji (1st-5th edition)', 'heisig_id5',     None,                         'ASC',  None,                   False),
         ('Remembering the Kanji (6th+ edition)',    'heisig_id6',     None,                         'ASC',  None,                   False),
+        ('WaniKani',                                'wk',             None,                         'ASC',  lambda x: F'Level {x}', False),
         ('All with Card in Collection',             'frequency_rank', None,                         'ASC',  None,                   True ),
     ]
 
