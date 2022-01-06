@@ -1,12 +1,6 @@
 {
     "word_recognized": [
-        { "deck": "All", "note": "Migaku Japanese Sentence", "card": 0, "field": "Sentence" },
-        { "deck": "All", "note": "Migaku Japanese Sentence", "card": 0, "field": "Target Word" },
-        { "deck": "All", "note": "Migaku Japanese Vocabulary", "card": 0, "field": "Sentence" },
-        { "deck": "All", "note": "Migaku Japanese Vocabulary", "card": 0, "field": "Target Word" },
-        { "deck": "All", "note": "Migaku Japanese Audio Sentence", "card": 0, "field": "Sentence" },
-        { "deck": "All", "note": "Migaku Japanese Audio Sentence", "card": 0, "field": "Target Word" },
-        { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Sentence" },
-        { "deck": "All", "note": "Migaku Japanese Audio Vocabulary", "card": 0, "field": "Target Word" }
+        { "deck": "All", "note": "Migaku Japanese", "card": 0, "field": "Sentence" },
+        { "deck": "All", "note": "Migaku Japanese", "card": 0, "field": "Target Word" }
     ]
 }
