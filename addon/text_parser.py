@@ -10,7 +10,7 @@ class MecabParser():
     BUFFER_SIZE = 819200
 
     def __init__(self):
-        self.mecab_dir = os.path.join(os.path.dirname(__file__), 'mecab')
+        self.mecab_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'mecab'))
         self.mecab_bin = os.path.join(self.mecab_dir, 'mecab')
         self.mecab_dic = os.path.join(self.mecab_dir, 'unidic')
         self.mecab_rc = os.path.join(self.mecab_dir, 'unidic', 'mecabrc')
