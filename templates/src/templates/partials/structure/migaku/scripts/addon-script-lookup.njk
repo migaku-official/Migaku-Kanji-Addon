@@ -165,6 +165,8 @@
 				tags.push('RTK (1-5) ' + data.heisig_id5.toString());
 			if (data.heisig_id6 !== null)
 				tags.push('RTK (6+) ' + data.heisig_id6.toString());
+			if (data.wk !== null)
+				tags.push('WK ' + data.wk.toString());
 
 			$('.tags').html(wrap_list(tags, '<div class="tag">', '</div>', false));
 
