@@ -1,5 +1,7 @@
-## 1.0.0-beta.6 (unreleased)
+## 1.0.0-beta.6
 
+- [FEATURE]: Attempt dictionary lookups with browser extension
+- [CHORE]: Moved menu actions to separate global "Kanji" menu
 - [REFACTOR]: Removed front-of-card actions; use-case was not compelling enough to keep it.
 - [CHORE]: Fixed some typos.
 - [FEATURE]: Added current stroke number display to diagram.
