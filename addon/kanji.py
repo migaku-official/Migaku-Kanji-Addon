@@ -715,6 +715,7 @@ class KanjiDB:
             ('radicals', list, None),
             ('words_default', json.loads, None),
             ('koohi_stories', json.loads, None),
+            ('wk', _, None),
             ('usr_keyword', _, 'usr.keywords.usr_keyword'),
             ('usr_primitive_keyword', _, 'usr.keywords.usr_primitive_keyword'),
             ('usr_story', _, 'usr.stories.usr_story'),
