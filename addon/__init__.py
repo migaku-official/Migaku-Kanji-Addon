@@ -25,60 +25,34 @@ aqt.mw.addonManager.setWebExports(__name__, r"(kanjivg/.*\.svg|web/.*|fonts/.*|u
 
 def setup_menu():
 
-    add_menu = False
-    if not hasattr(aqt.mw, 'MigakuMainMenu'):
-        aqt.mw.MigakuMainMenu = QMenu('Migaku', aqt.mw)
-        add_menu = True
-    if not hasattr(aqt.mw, 'MigakuMenuSettings'):
-        aqt.mw.MigakuMenuSettings = []
-    if not hasattr(aqt.mw, 'MigakuMenuActions'):
-        aqt.mw.MigakuMenuActions = []
+    submenu = QMenu('Kanji', aqt.mw)
 
-    # submenu = QMenu('Kanji', aqt.mw)
-    # aqt.mw.MigakuMenuActions.append(submenu)
-
-    lookup_action = QAction('Kanji Lookup', aqt.mw)
+    lookup_action = QAction('Lookup', aqt.mw)
     lookup_action.triggered.connect(on_loopup)
-    # submenu.addAction(add_kanji_action)
-    aqt.mw.MigakuMenuActions.append(lookup_action)
+    submenu.addAction(lookup_action)
 
-    stats_action = QAction('Kanji Stats', aqt.mw)
+    stats_action = QAction('Stats', aqt.mw)
     stats_action.triggered.connect(on_stats)
-    # submenu.addAction(stats_action)
-    aqt.mw.MigakuMenuActions.append(stats_action)
+    submenu.addAction(stats_action)
 
-    add_kanji_action = QAction('Add New Kanji Cards', aqt.mw)
+    add_kanji_action = QAction('Add New Cards', aqt.mw)
     add_kanji_action.triggered.connect(on_add_cards)
-    # submenu.addAction(add_kanji_action)
-    aqt.mw.MigakuMenuActions.append(add_kanji_action)
+    submenu.addAction(add_kanji_action)
 
-    mark_known_action = QAction('Mark Kanji Known', aqt.mw)
+    mark_known_action = QAction('Mark Known', aqt.mw)
     mark_known_action.triggered.connect(on_mark_known)
-    # submenu.addAction(mark_known_action)
-    aqt.mw.MigakuMenuActions.append(mark_known_action)
+    submenu.addAction(mark_known_action)
 
-    recalc_action = QAction('Refresh Kanji Cards', aqt.mw)
+    recalc_action = QAction('Refresh Cards', aqt.mw)
     recalc_action.triggered.connect(on_recalc)
-    # submenu.addAction(recalc_action)
-    aqt.mw.MigakuMenuActions.append(recalc_action)
+    submenu.addAction(recalc_action)
 
-    settings_action = QAction('Kanji Settings', aqt.mw)
+    settings_action = QAction('Settings', aqt.mw)
+    settings_action.setMenuRole(QAction.NoRole)
     settings_action.triggered.connect(on_settings)
-    # submenu.addAction(settings_action)
-    aqt.mw.MigakuMenuSettings.append(settings_action)
+    submenu.addAction(settings_action)
 
-    aqt.mw.MigakuMainMenu.clear()
-    for act in aqt.mw.MigakuMenuSettings:
-        aqt.mw.MigakuMainMenu.addAction(act)
-    aqt.mw.MigakuMainMenu.addSeparator()
-    for act in aqt.mw.MigakuMenuActions:
-        if isinstance(act, QAction):
-            aqt.mw.MigakuMainMenu.addAction(act)
-        elif isinstance(act, QMenu):
-            aqt.mw.MigakuMainMenu.addMenu(act)
-
-    if add_menu:
-        aqt.mw.form.menubar.insertMenu(aqt.mw.form.menuHelp.menuAction(), aqt.mw.MigakuMainMenu)  
+    aqt.mw.form.menubar.insertMenu(aqt.mw.form.menuHelp.menuAction(), submenu)
 
 
 def on_loopup():
