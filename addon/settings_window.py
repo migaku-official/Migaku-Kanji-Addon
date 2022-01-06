@@ -256,6 +256,12 @@ class SettingsWindow(QDialog):
         tabs = QTabWidget()
         lyt.addWidget(tabs)
 
+        def add_tab_scrollable(widget, name):
+            scroll_widget = QScrollArea()
+            scroll_widget.setWidget(widget)
+            scroll_widget.setWidgetResizable(True)
+            tabs.addTab(scroll_widget, name)    
+
         self.card_type_widgets = []
 
         registerd_fields_widget = QWidget()
@@ -265,15 +271,15 @@ class SettingsWindow(QDialog):
         self.words_recognized = WordRecognizedSelectorWidget(no_margin=True)
         registerd_fields_layout.addWidget(self.words_recognized)
 
-        tabs.addTab(registerd_fields_widget, 'Registered Fields')
+        add_tab_scrollable(registerd_fields_widget, 'Registered Fields')
 
-        for ct in CardType:
+        for ct in CardType:            
             ct_widget = CardTypeSettingsWidget(ct)
             self.card_type_widgets.append(ct_widget)
-            tabs.addTab(ct_widget, ct.name)
+            add_tab_scrollable(ct_widget, ct.name)
     
         lookup_tab = QWidget()
-        tabs.addTab(lookup_tab, 'Lookup Window')
+        add_tab_scrollable(lookup_tab, 'Lookup Window')
 
         lookup_lyt = QVBoxLayout()
         lookup_tab.setLayout(lookup_lyt)
@@ -308,7 +314,7 @@ class SettingsWindow(QDialog):
         lookup_lyt.addStretch()
 
         general_tab = QWidget()
-        tabs.addTab(general_tab, 'General')
+        add_tab_scrollable(general_tab, 'General')
 
         general_lyt = QVBoxLayout()
         general_tab.setLayout(general_lyt)
@@ -333,7 +339,7 @@ class SettingsWindow(QDialog):
         general_lyt.addWidget(reset_db_btn)
 
         about_tab = QWidget()
-        tabs.addTab(about_tab, 'About')
+        add_tab_scrollable(about_tab, 'About')
 
         about_lyt = QVBoxLayout()
         about_tab.setLayout(about_lyt)
