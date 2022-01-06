@@ -1,4 +1,5 @@
 import os
+import sys
 from collections import OrderedDict
 
 import anki
@@ -100,7 +101,9 @@ def open_browser_noteids(note_ids):
 
 
 def search_dict(word):
-    if hasattr(aqt.mw, 'dictionaryInit'):
+    if hasattr(aqt.mw, 'migaku_connection'):
+        aqt.mw.migaku_connection.search_dict(word)
+    elif hasattr(aqt.mw, 'dictionaryInit'):
         dict_plugin_main = sys.modules[aqt.mw.dictionaryInit.__module__]
         dict_plugin_main.searchTermList([word])
     else:
