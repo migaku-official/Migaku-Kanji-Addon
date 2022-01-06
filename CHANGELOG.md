@@ -1,3 +1,9 @@
+## 1.0.0-beta.7
+
+- [FIX] Scrollable tabs in settings window
+- [FIX] Updated default recognized fields
+- [FIX] Error when adding notes
+
 ## 1.0.0-beta.6
 
 - [FEATURE]: Attempt dictionary lookups with browser extension
