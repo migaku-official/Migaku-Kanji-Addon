@@ -14,7 +14,7 @@
     <a title="License: GNU AGPLv3" href="https://github.com/migaku-official/Migaku-Japanese-Addon/blob/master/LICENSE"><img  src="https://img.shields.io/badge/license-GNU AGPLv3-green.svg"></a>
 </p>
 
-# Migaku Kanji Anki Addon
+# Migaku Kanji GOD Anki Addon
 
 Learn kanji within the context of the vocab in your Anki collection. Includes kanji metadata (mnemonic stories, component part primitives/radicals), a kanji lookup browser for quick references, and note types for both production (writing) and recognition. And more.
 
@@ -69,8 +69,8 @@ Before diving into the code, make sure you read the development documentation ([
 
 ## License
 
-Migaku Kanji is Copyright © 2021 Migaku Ltd.
+Migaku Kanji GOD is Copyright © 2022 Migaku Ltd.
 
-Migaku Kanji is free and open-source software. The add-on code that runs within Anki is released under the GNU AGPLv3 license, extended by a number of additional terms. For more information please see the LICENSE file that accompanied this program.
+Migaku Kanji GOD is free and open-source software. The add-on code that runs within Anki is released under the GNU AGPLv3 license, extended by a number of additional terms. For more information please see the LICENSE file that accompanied this program.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.

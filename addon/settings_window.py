@@ -345,7 +345,7 @@ class SettingsWindow(QDialog):
         about_tab.setLayout(about_lyt)
 
         about_lbl = QLabel(
-           F'<h2>Migaku Kanji - {VERSION_STRING}</h2>'
+           F'<h2>Migaku Kanji GOD - {VERSION_STRING}</h2>'
            F'<p>You can suggest changes to the Kanji dataset <a href="{KANJI_FORMS_URL}">here</a>.</p>'
 
             '<h3>Third-Party Libraries</h3>'
@@ -358,7 +358,7 @@ class SettingsWindow(QDialog):
             '<p><a href="https://ccd.ninjal.ac.jp/unidic/">UniDic</a> is used as dictionary for MeCab, and is copyright © 2011-2021 The UniDic Consortium and released under the <a href="https://ccd.ninjal.ac.jp/unidic/copying/GPL">GPL</a>, <a href="https://ccd.ninjal.ac.jp/unidic/copying/LGPL">LGPL</a> and <a href="https://ccd.ninjal.ac.jp/unidic/copying/BSD">BSD</a> licenses.</p>'
 
             '<h3>License</h3>'
-            '<p><a href="https://github.com/migaku-official/Migaku-Kanji-Addon">Migaku Kanji</a> is copyright © 2021 Migaku Ltd. and released under the <a href="https://github.com/migaku-official/Migaku-Kanji-Addon/blob/main/LICENCE">GNU General Public License v3.0</a>.</p>'
+            '<p><a href="https://github.com/migaku-official/Migaku-Kanji-Addon">Migaku Kanji GOD</a> is copyright © 2022 Migaku Ltd. and released under the <a href="https://github.com/migaku-official/Migaku-Kanji-Addon/blob/main/LICENCE">GNU General Public License v3.0</a>.</p>'
         )
         about_lbl.setWordWrap(True)
         about_lbl.setTextInteractionFlags(Qt.TextBrowserInteraction)
