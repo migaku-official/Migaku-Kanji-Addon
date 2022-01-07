@@ -158,9 +158,9 @@ aqt.gui_hooks.browser_menus_did_init.append(setup_browser_menu)
 
 
 
-add_note_original = anki.collection.Collection.add_note
+add_note_no_hook = anki.collection.Collection.add_note
 
 def add_note(col, note, deck_id):
-    r = add_note_original(col, note, deck_id)
+    r = add_note_no_hook(col, note, deck_id)
     aqt.mw.migaku_kanji_db.on_note_update(note.id, deck_id, is_new=True)
     return r
