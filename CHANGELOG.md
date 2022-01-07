@@ -1,3 +1,12 @@
+## 1.0.0-beta.10
+
+- [CHORE]: Updated addon name in readme and settings
+- [CHORE]: Updated addon name for manifest and build
+
+## 1.0.0-beta.9
+
+- [CHORE]: Use remote MeCab UniDic for builds
+
 ## 1.0.0-beta.8
 
 - [FEATURE]: WaniKani card creation/marking/stats
