@@ -12,8 +12,8 @@ class MecabParser():
     def __init__(self):
         self.mecab_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'mecab'))
         self.mecab_bin = os.path.join(self.mecab_dir, 'mecab')
-        self.mecab_dic = os.path.join(self.mecab_dir, 'unidic')
-        self.mecab_rc = os.path.join(self.mecab_dir, 'unidic', 'mecabrc')
+        self.mecab_dic = os.path.join(self.mecab_dir, 'dic')
+        self.mecab_rc = os.path.join(self.mecab_dir, 'mecabrc')
 
         self.mecab_env = os.environ.copy()
         self.mecab_env['LD_LIBRARY_PATH'] = self.mecab_dir
@@ -34,7 +34,7 @@ class MecabParser():
         self.mecab_options = [
             '-d', self.mecab_dic,
             '-r', self.mecab_rc,
-            '-O', 'custom',
+            '-O', 'migaku_kanji',
             '-b', str(self.BUFFER_SIZE),
         ]
 
