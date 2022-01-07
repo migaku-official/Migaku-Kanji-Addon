@@ -1,8 +1,13 @@
 import os
 import subprocess
 import re
+import requests
+import zipfile
 
 import anki
+import aqt
+
+from . import util
 
 
 class MecabParser():
@@ -12,7 +17,7 @@ class MecabParser():
     def __init__(self):
         self.mecab_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'mecab'))
         self.mecab_bin = os.path.join(self.mecab_dir, 'mecab')
-        self.mecab_dic = os.path.join(self.mecab_dir, 'dic')
+        self.mecab_dic = util.user_path('dic')
         self.mecab_rc = os.path.join(self.mecab_dir, 'mecabrc')
 
         self.mecab_env = os.environ.copy()
@@ -41,6 +46,8 @@ class MecabParser():
         self.mecab_process = None
 
     def start(self):
+        self.stop()
+
         if anki.utils.isLin or anki.utils.isMac:
             os.chmod(self.mecab_bin, 0o755)
 
@@ -87,16 +94,93 @@ class MecabParser():
 parser = MecabParser()
 parser.start()
 
-if not parser.is_running():
-    import aqt
-    from aqt.qt import QMessageBox
-    QMessageBox.critical(
-        aqt.mw,
-        'Migaku Kanji - Error',
-        'MeCab failed to initialize. Please report this error to the developers along with your Anki version and operating system by leaving a comment here:<br><br>'
-        '<a href="https://github.com/migaku-official/Migaku-Kanji-Addon/issues/116">https://github.com/migaku-official/Migaku-Kanji-Addon/issues/116</a><br><br>'
-        'Thank you!'
-    )
+
+class DicDownloader(aqt.qt.QObject):
+
+    DOWNLOAD_URI = 'http://dicts.migaku.io/files/kanjigod/dic.zip'
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.make_avaialble()
+
+    def is_available(self):
+        return os.path.exists(util.user_path('dic'))
+
+    def make_avaialble(self):
+        if not self.is_available():
+            self.start_download()
+
+    def start_download(self):
+        class DownloadThread(aqt.qt.QThread):
+            def __init__(self, target=None, parent=None):
+                super().__init__(parent)
+                self.target = target
+
+            def run(self):
+                self.target()
+
+        aqt.mw.progress.start(label='Downloading Migaku Kanji Parsing Dictionary', max=100)
+
+        download_thread = DownloadThread(self._download, self.parent())
+        download_thread.finished.connect(self.finished_download)
+        download_thread.start()
+
+    def finished_download(self):
+        aqt.mw.progress.finish()
+
+        if not self.is_available():
+            util.error_msg(
+                aqt.mw,
+                'Downloading Migaku Kanji Parsing Dictionary failed.\n\n'
+                'It is required for for most functionality of the add-on.\n\n'
+                'Please make sure that you are connected to the internet and restart Anki.\n\n'
+                'It only has to be downloaded once.'
+            )
+        else:
+            parser.start()
+
+    def _download(self):
+        def fmt_kb(n):
+            return F'{n//1000}kB'
+
+        util.assure_user_dir()
+        download_path = util.user_path('dic.zip')
+
+        def delete_download():
+            try:
+                os.remove(download_path)
+            except:
+                pass
+
+        try:
+            with open(download_path, 'wb') as f:
+                with requests.get(self.DOWNLOAD_URI, stream=True) as r:
+                    total = int(r.headers['Content-Length'])
+                    for chunk in r.iter_content(chunk_size=8192):
+                        if chunk:
+                            f.write(chunk)
+                            pos = f.tell()
+
+                            label = F'Downloading Migaku Kanji Parsing Dictionary\n({fmt_kb(pos)}/{fmt_kb(total)})'
+
+                            aqt.mw.taskman.run_on_main(
+                                lambda: aqt.mw.progress.update(value=pos, max=total, label=label)
+                            )
+        except requests.HTTPError:
+            delete_download()
+            return
+
+        # extract dic from downloaded zip into user_data
+        aqt.mw.taskman.run_on_main(
+            lambda: aqt.mw.progress.update(value=0, max=0, label='Extracting Migaku Kanji Parsing Dictionary')
+        )
+
+        with zipfile.ZipFile(download_path) as zf:
+            zf.extractall(util.user_path())
+
+        delete_download()
+
+dic_downloader = DicDownloader(aqt.mw)
 
 
 
