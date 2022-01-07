@@ -1,3 +1,8 @@
+## 1.0.0-beta.8
+
+- [FEATURE]: WaniKani card creation/marking/stats
+- [FIX] Error when adding kanji cards
+
 ## 1.0.0-beta.7
 
 - [FIX] Scrollable tabs in settings window
