@@ -32,6 +32,15 @@ jobs:
         shell: bash
         run: |
           python3 tools/kanjivg_cleanup.py
+      - name: Download UniDic
+        shell: bash
+        run: |
+          cd addon/mecab
+          mkdir dic
+          wget -O dic.tar.gz "http://dicts.migaku.io/files/kanjigod/unidic.tar.gz"
+          tar -xvzf dic.tar.gz -C dic
+          rm dic.tar.gz
+          cd ../..
       - name: Zip
         shell: bash
         run: |

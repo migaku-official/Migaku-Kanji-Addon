@@ -8,6 +8,7 @@ TODO.md
 
 tmp/
 kanjivg/
+/addon/mecab/dic
 
 # Anki
 user_files/
