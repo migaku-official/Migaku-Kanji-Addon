@@ -71,6 +71,6 @@ Before diving into the code, make sure you read the development documentation ([
 
 Migaku Kanji GOD is Copyright © 2022 Migaku Ltd.
 
-Migaku Kanji GOD is free and open-source software. The add-on code that runs within Anki is released under the GNU AGPLv3 license, extended by a number of additional terms. For more information please see the LICENSE file that accompanied this program.
+Migaku Kanji GOD is free and open-source software. The add-on code that runs within Anki is released under the GNU GPLv3 license. For more information please see the LICENSE file that accompanied this program.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
