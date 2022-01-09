@@ -203,8 +203,7 @@ class FontSelectWidget(QWidget):
         reset_btn.clicked.connect(self.reset_font)
         tlyt.addWidget(reset_btn)
 
-        self.example_lbl = QLabel('日国会年大閣海本中欧')
-        self.pixel_size = self.example_lbl.font().pixelSize()
+        self.example_lbl = QLabel()
         lyt.addWidget(self.example_lbl)
 
         self.update()
@@ -224,15 +223,22 @@ class FontSelectWidget(QWidget):
 
     def update(self):
         path = fonts.get_path(self.idx)
-        name = os.path.splitext(os.path.basename(path))[0]
-        self.name_lbl.setText(name) # fallback
 
         font_id = QFontDatabase.addApplicationFont(path)
-        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        font = QFont(font_family, 40)
-
-        self.name_lbl.setText(font_family)
-        self.example_lbl.setFont(font)
+        font_families = QFontDatabase.applicationFontFamilies(font_id)
+        if font_families:
+            font_family = font_families[0]
+            font = QFont(font_family, 40)
+            self.example_lbl.setFont(font)
+            self.name_lbl.setText(font_family)
+            self.example_lbl.setText('日国会年大閣海本中欧')
+        else:
+            name = os.path.splitext(os.path.basename(path))[0]
+            self.name_lbl.setText(name)
+            font = QFont()
+            font.setPointSize(40)
+            self.example_lbl.setFont(font)
+            self.example_lbl.setText('(No preview available)')
 
 
 
