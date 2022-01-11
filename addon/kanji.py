@@ -432,7 +432,7 @@ class KanjiDB:
 
     # checks learn ahead for a given deck
     def new_learn_ahead_kanji(self, card_type, deck_id, max_cards):
-        nids = aqt.mw.col.db.all(F'SELECT c.nid FROM cards as c WHERE did={deck_id} AND type=0 ORDER BY c.due LIMIT {max_cards}')
+        nids = aqt.mw.col.db.all(F'SELECT c.nid FROM cards as c WHERE did={deck_id} AND type=0 ORDER BY c.due AND queue>=0 LIMIT {max_cards}')
 
         kanji_seen = set()
         kanji = []              # to preserve order
