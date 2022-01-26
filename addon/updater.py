@@ -16,11 +16,11 @@ def download_and_install_addon(mgr, client, id):
             util.log('DB shutdown')
         except Exception as e:
             util.log('DB shutdown error:', e)
-        try:
-            text_parser.parser.stop()
-            util.log('Parser stopped')
-        except Exception as e:
-            util.log('Parser stop error:', e)
+    try:
+        text_parser.parser.stop()
+        util.log('Parser stopped')
+    except Exception as e:
+        util.log('Parser stop error:', e)
     try:
         r = download_and_install_addon_original(mgr, client, id)
     except Exception as e:
@@ -32,11 +32,11 @@ def download_and_install_addon(mgr, client, id):
             util.log('DB re-initialized')
         except Exception as e:
             util.log('DB re-initialize error:', e)
-        try:
-            text_parser.parser.start()
-            util.log('Parser restarted')
-        except Exception as e:
-            util.log('Parser start error:', e)
+    try:
+        text_parser.parser.start()
+        util.log('Parser restarted')
+    except Exception as e:
+        util.log('Parser start error:', e)
     util.log('Update done')
     return r
 
