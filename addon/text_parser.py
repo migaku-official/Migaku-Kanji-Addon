@@ -12,8 +12,6 @@ from . import util
 
 class MecabParser():
 
-    BUFFER_SIZE = 819200
-
     def __init__(self):
         self.mecab_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'mecab'))
         self.mecab_bin = os.path.join(self.mecab_dir, 'mecab')
@@ -40,7 +38,6 @@ class MecabParser():
             '-d', self.mecab_dic,
             '-r', self.mecab_rc,
             '-O', 'migaku_kanji',
-            '-b', str(self.BUFFER_SIZE),
         ]
 
         self.mecab_process = None
@@ -57,6 +54,7 @@ class MecabParser():
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
+                bufsize=-1,
                 env=self.mecab_env,
                 **self.mecab_extra_args
             )
@@ -72,13 +70,15 @@ class MecabParser():
     def parse(self, text):
         assert self.is_running()
 
+        text = text.replace('\n', ' ')
+
         self.mecab_process.stdin.write(text.encode('utf-8', errors='ignore') + b'\n')
         self.mecab_process.stdin.flush()
 
         results = []
 
         while True:
-            mecab_result = self.mecab_process.stdout.readline().decode('utf-8').strip()
+            mecab_result = self.mecab_process.stdout.readline().decode('utf-8', 'replace').strip()
             if mecab_result == 'EOS':
                 break
             result = mecab_result.split('\t')
