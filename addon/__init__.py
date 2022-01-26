@@ -164,3 +164,5 @@ def add_note(col, note, deck_id):
     r = add_note_no_hook(col, note, deck_id)
     aqt.mw.migaku_kanji_db.on_note_update(note.id, deck_id, is_new=True)
     return r
+
+anki.collection.Collection.add_note = add_note
