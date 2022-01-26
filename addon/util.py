@@ -8,8 +8,8 @@ from aqt.qt import *
 
 from .errors import InvalidDeckError
 
-
 addon_dir = os.path.dirname(__file__)
+addon_id = os.path.basename(addon_dir)
 user_files_dir = os.path.join(addon_dir, 'user_files')
 addon_web_base = F'/_addons/{__name__.split(".")[0]}'    # uhhh
 
@@ -49,6 +49,10 @@ def unique_characters(string):
 
 import aqt
 from aqt.qt import *
+
+
+def log(*args):
+    print('[Migaku Kanji]', *args)
 
 
 def error_msg(parent, msg):

@@ -11,6 +11,7 @@ from . import card_layout
 from . import reviewer
 from . import version
 from . import util
+from . import updater
 
 
 import anki
@@ -118,14 +119,16 @@ def on_profile_open():
     util.assure_user_dir()
     lrv_path = util.user_path('last_run_version')
     try:
-        lrv = open(lrv_path, 'r').read()
+        with open(lrv_path, 'r', encoding='utf-8') as f:
+            lrv = f.read()
     except OSError:
         lrv = ''
 
     if lrv != version.VERSION_STRING:
         on_recalc()
 
-    open(lrv_path, 'w').write(version.VERSION_STRING)
+    with open(lrv_path, 'w', encoding='utf-8') as f:
+        f.write(version.VERSION_STRING)
 
 
 aqt.mw.migaku_kanji_db = kanji.KanjiDB()
