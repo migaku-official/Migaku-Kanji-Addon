@@ -1,3 +1,15 @@
+## 1.0.0-beta.12
+
+- [FIX] Unload DB/MeCab during updates
+- [FIX] Fixed broken add_note hook
+- [FIX] Mecab desync
+- [FIX] Filter out suspended cards when looking ahead
+- [FIX] Handle fonts in previewer that do not load in Qt
+
+## 1.0.0-beta.11
+
+- [CHORE] Download MeCab dic instead of bundlng
+
 ## 1.0.0-beta.10
 
 - [CHORE]: Updated addon name in readme and settings
