@@ -141,11 +141,10 @@ def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, revi
             if r != QMessageBox.Yes:
                 return True
 
-        aqt.mw.requireReset()
         aqt.mw.migaku_kanji_db.set_character_known(card_type, character)
         reviewer.card.col.remNotes([reviewer.card.nid])
         aqt.mw.migaku_kanji_db.recalc_user_cards(card_type)
-        aqt.mw.maybeReset()
+        aqt.mw.reset(False)
         return True
 
     elif args[0] == 'search_dict':
