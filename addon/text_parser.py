@@ -97,7 +97,7 @@ parser.start()
 
 class DicDownloader(aqt.qt.QObject):
 
-    DOWNLOAD_URI = 'https://migaku-public-data.s3.filebase.com/kanji_dict.zip'
+    DOWNLOAD_URI = 'https://pub-fe082030d4544007b9fdfebcf0b3690d.r2.dev/kanji_dict.zip'
 
     def __init__(self, parent=None):
         super().__init__(parent)
