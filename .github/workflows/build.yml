@@ -26,8 +26,7 @@ jobs:
       - name: Download KanjiVG
         shell: bash
         run: |
-          git clone https://github.com/KanjiVG/kanjivg
-          cp -R kanjivg/kanji addon/kanjivg
+          bash tools/kanjivg_download.sh
       - name: Modify KanjiVG
         shell: bash
         run: |

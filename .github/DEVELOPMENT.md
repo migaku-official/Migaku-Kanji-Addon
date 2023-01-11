@@ -21,3 +21,9 @@ The `addon/web` folders contains the files pertaining to the lookup browser, inc
 This folder contains the source files for the HTML and CSS used in the production & recognition note types, as well as the lookup browser.
 
 This folder is essentially its own self contained repository, so if you're interested in how it works or how to generate the templates from the source files, please read the [README.md](../templates/README.md) file in that directory.
+
+## Development setup
+
+1. Clone the repo
+2. Run `bash tools/kanjivg_download.sh` to download the KanjiVG SVGs
+3. Run `python tools/kanjivg_cleanup.py` delete unnecessary info from svg files so we're able to parse them
