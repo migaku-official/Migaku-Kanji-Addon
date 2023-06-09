@@ -61,6 +61,14 @@ class MecabParser():
 
     def stop(self):
         if self.mecab_process is not None:
+            # Properly close the process
+            # https://docs.python.org/3/library/subprocess.html#subprocess.Popen.communicate
+            try:
+                self.mecab_process.communicate(timeout=15)
+            except subprocess.TimeoutExpired:
+                self.mecab_process.kill()
+                self.mecab_process.communicate()
+
             self.mecab_process.kill()
             self.mecab_process = None
 
