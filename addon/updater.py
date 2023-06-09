@@ -5,9 +5,7 @@ from . import util
 from . import text_parser
 
 
-download_and_install_addon_original = aqt.addons.download_and_install_addon
-
-def download_and_install_addon(mgr, client, id):
+def update_migaku_kanji_db(*args, _old, **kwargs):
     has_db = hasattr(aqt.mw, 'migaku_kanji_db')
     util.log('Updating...')
     if has_db:
@@ -22,7 +20,7 @@ def download_and_install_addon(mgr, client, id):
     except Exception as e:
         util.log('Parser stop error:', e)
     try:
-        r = download_and_install_addon_original(mgr, client, id)
+        r = _old(*args, **kwargs)
     except Exception as e:
         util.log('Add-on download/install failure:', e)
         raise e
@@ -40,4 +38,5 @@ def download_and_install_addon(mgr, client, id):
     util.log('Update done')
     return r
 
-aqt.addons.download_and_install_addon = download_and_install_addon
+
+aqt.addons.download_addons = anki.hooks.wrap(aqt.addons.download_addons, update_migaku_kanji_db, pos='around')
