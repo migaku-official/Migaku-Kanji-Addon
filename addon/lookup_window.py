@@ -71,7 +71,9 @@ class LookupWindow(QDialog):
 
 
         def read_web_file(name):
-            return open(util.addon_path('web', name), 'r', encoding='UTF-8').read()
+            with open(util.addon_path('web', name), 'r', encoding='UTF-8') as file:
+                data = file.read()
+            return data
 
         self.web = aqt.webview.AnkiWebView()
 

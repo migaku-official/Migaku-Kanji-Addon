@@ -648,7 +648,9 @@ class KanjiDB:
         svg_path = addon_path('kanjivg', svg_name)
 
         if os.path.exists(svg_path):
-            svg_data = open(svg_path, 'r', encoding='utf-8').read()
+            with open(svg_path, 'r', encoding='utf-8') as file:
+                svg_data = file.read()
+
             note['StrokeOrder'] = svg_data
         else:
             note['StrokeOrder'] = ''

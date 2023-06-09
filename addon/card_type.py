@@ -76,7 +76,9 @@ class CardTypeData(metaclass=CardTypeDataMeta):
     def upsert_model(self):
         def web_file_data(name):
             path = addon_path('web', name)
-            return open(path, 'r', encoding='UTF-8').read()
+            with open(path, 'r', encoding='UTF-8') as file:
+                data = file.read()
+            return data
 
         # Get or create model
         model = aqt.mw.col.models.byName(self.model_name)
