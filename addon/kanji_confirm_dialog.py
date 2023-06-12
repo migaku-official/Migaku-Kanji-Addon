@@ -125,7 +125,7 @@ class KanjiConfirmDialog(QDialog):
         self.setWindowIcon(util.default_icon())
         self.setWindowTitle('Migaku Kanji - Found New Kanji')
 
-        self.setWindowModality(Qt.ApplicationModal)
+        self.setWindowModality(Qt.WindowModality.ApplicationModal)
 
         info_lbl = QLabel(
             'If a Kanji is marked green, a card will be created. Blue ones will be marked known. Red ones will be ignored.\n\n'
@@ -150,7 +150,7 @@ class KanjiConfirmDialog(QDialog):
 
         self.resize(500, 400)
 
-        btn_box = QDialogButtonBox(QDialogButtonBox.Ok)
+        btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok)
         btn_box.accepted.connect(self.accept)
         lyt.addWidget(btn_box)
 

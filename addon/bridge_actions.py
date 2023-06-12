@@ -31,7 +31,7 @@ class CustomKeywordsDialog(QDialog):
         self.primitive_keyword_edit = QLineEdit(old_primitive_keyword)
         lyt.addWidget(self.primitive_keyword_edit)
 
-        btns = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        btns = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         btns.accepted.connect(self.accept)
         btns.rejected.connect(self.reject)
         lyt.addWidget(btns)

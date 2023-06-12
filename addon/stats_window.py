@@ -108,7 +108,7 @@ class StatsWindow(QDialog):
         options_lyt.addStretch()
 
         self.ct_selector = CardTypeRadioButtons()
-        self.ct_selector.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        self.ct_selector.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         options_lyt.addWidget(self.ct_selector)
 
         self.registered_btn = QRadioButton('Registered Fields')

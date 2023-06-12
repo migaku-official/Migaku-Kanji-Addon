@@ -11,7 +11,7 @@ class NoteTypeSelectorWidget(QWidget):
     def __init__(self, info_text=None, note_filter=lambda n: True, parent=None, no_margin=False, field_label='Field'):
         super(QWidget, self).__init__(parent)
 
-        self.setFocusPolicy(Qt.NoFocus)
+        self.setFocusPolicy(Qt.FocusPolicy.NoFocus)
 
         self.deck_list = ['All'] + sorted(
             [x.name for x in aqt.mw.col.decks.all_names_and_ids()]
@@ -59,7 +59,7 @@ class NoteTypeSelectorWidget(QWidget):
         self.table.horizontalHeader().resizeSection(1, 300)
         self.table.horizontalHeader().resizeSection(2, 175)
         self.table.horizontalHeader().resizeSection(3, 175)
-        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
 
 
     def set_data(self, data):

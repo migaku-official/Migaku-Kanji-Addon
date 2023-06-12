@@ -367,7 +367,7 @@ class SettingsWindow(QDialog):
             '<p><a href="https://github.com/migaku-official/Migaku-Kanji-Addon">Migaku Kanji GOD</a> is copyright © 2022 Migaku Ltd. and released under the <a href="https://github.com/migaku-official/Migaku-Kanji-Addon/blob/main/LICENCE">GNU General Public License v3.0</a>.</p>'
         )
         about_lbl.setWordWrap(True)
-        about_lbl.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        about_lbl.setTextInteractionFlags(Qt.TextInteractionFlag.TextBrowserInteraction)
         about_lbl.linkActivated.connect(aqt.utils.openLink)
 
         about_lyt.addWidget(about_lbl)
@@ -433,4 +433,4 @@ class SettingsWindow(QDialog):
     def show_modal(cls, parent=None):
         LookupWindow.close_instance()     # To make sure everything updates
         dlg = cls(parent=parent)
-        return dlg.exec_()
+        return dlg.exec()

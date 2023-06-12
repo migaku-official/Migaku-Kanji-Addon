@@ -50,7 +50,7 @@ class MarkKnownDialog(QDialog):
         lyt.addLayout(hlyt)
 
         preset_btn = QPushButton('Load Preset')
-        preset_btn.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        preset_btn.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         preset_btn.clicked.connect(self.on_load_preset)
         hlyt.addWidget(preset_btn)
 
@@ -64,7 +64,7 @@ class MarkKnownDialog(QDialog):
         hlyt.addWidget(self.min_box)
 
         to_lbl = QLabel('to')
-        to_lbl.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        to_lbl.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         hlyt.addWidget(to_lbl)
 
         self.max_box = QSpinBox()
@@ -78,7 +78,7 @@ class MarkKnownDialog(QDialog):
                 ''.join(text_parser.filter_cjk(initial_kanji))
             )
         
-        btn_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         btn_box.accepted.connect(self.mark_known)
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box)
@@ -122,7 +122,7 @@ class MarkKnownDialog(QDialog):
     @classmethod
     def show_modal(cls, *args, **kwargs):
         dlg = cls(*args, **kwargs)
-        return dlg.exec_()
+        return dlg.exec()
 
 
 
@@ -155,7 +155,7 @@ class MarkKnownFromNotesDialog(QDialog):
             self.list_box.addItem(itm)
         lyt.addWidget(self.list_box)
 
-        btn_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         btn_box.accepted.connect(self.on_ok)
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box)
@@ -198,4 +198,4 @@ class MarkKnownFromNotesDialog(QDialog):
             return
 
         dlg = cls(note_ids, parent)
-        return dlg.exec_()
+        return dlg.exec()

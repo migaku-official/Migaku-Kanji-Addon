@@ -45,7 +45,7 @@ class CreateCardsFromNotesDialog(QDialog):
             self.list_box.addItem(itm)
         lyt.addWidget(self.list_box)
 
-        btn_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         btn_box.accepted.connect(self.create_cards)
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box)
@@ -121,4 +121,4 @@ class CreateCardsFromNotesDialog(QDialog):
             return
 
         dlg = cls(note_ids, parent)
-        return dlg.exec_()
+        return dlg.exec()
