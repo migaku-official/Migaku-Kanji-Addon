@@ -12,7 +12,7 @@ class LearnAheadSelectorWidget(QWidget):
 
         self.card_type = card_type
 
-        self.setFocusPolicy(Qt.NoFocus)
+        self.setFocusPolicy(Qt.FocusPolicy.NoFocus)
 
         self.deck_list = sorted(
             [x.name for x in aqt.mw.col.decks.all_names_and_ids()]
@@ -56,7 +56,7 @@ class LearnAheadSelectorWidget(QWidget):
         self.table.horizontalHeader().setMinimumSectionSize(button_dimension)
         self.table.horizontalHeader().resizeSection(0, 175)
         self.table.horizontalHeader().resizeSection(1, 175)
-        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
 
         self.load_from_config()
 

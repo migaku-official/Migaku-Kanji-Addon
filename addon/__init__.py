@@ -82,7 +82,7 @@ def on_recalc():
             super(QDialog, self).__init__(parent)
             self.setWindowIcon(util.default_icon())
             self.setWindowTitle('Refreshing Kanji')
-            self.setWindowModality(Qt.ApplicationModal)
+            self.setWindowModality(Qt.WindowModality.ApplicationModal)
             self.setMinimumWidth(300)
             lyt = QVBoxLayout()
             self.setLayout(lyt)

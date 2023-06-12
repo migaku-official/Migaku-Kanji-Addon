@@ -46,13 +46,13 @@ class LookupWindow(QDialog):
 
         search_btn = QPushButton('🔍')
         search_btn.setFixedWidth(search_btn.sizeHint().height())
-        search_btn.setFocusPolicy(Qt.NoFocus)
+        search_btn.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         search_btn.clicked.connect(self.on_search_submit)
         search_lyt.addWidget(search_btn)
 
         self.keep_tab_on_search_box = QCheckBox('Keep tabs open')
         self.keep_tab_on_search_box.setChecked(False)
-        self.keep_tab_on_search_box.setFocusPolicy(Qt.NoFocus)
+        self.keep_tab_on_search_box.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         search_lyt.addWidget(self.keep_tab_on_search_box)
 
         results_lyt = QVBoxLayout()
@@ -65,7 +65,7 @@ class LookupWindow(QDialog):
         self.tab_bar.setTabsClosable(True)
         self.tab_bar.currentChanged.connect(self.on_tab_change)
         self.tab_bar.tabCloseRequested.connect(self.close_tab)
-        self.tab_bar.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.tab_bar.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.tab_bar.customContextMenuRequested.connect(self.on_tab_bar_context_menu_request)
         results_lyt.addWidget(self.tab_bar)
 
@@ -220,7 +220,7 @@ class LookupWindow(QDialog):
             action = menu.addAction('Close all Tabs')
             action.triggered.connect(self.close_all_tabs)
 
-            menu.exec_(QCursor.pos())
+            menu.exec(QCursor.pos())
 
     def close_tab(self, tab_idx):
         self.tab_bar.removeTab(tab_idx)

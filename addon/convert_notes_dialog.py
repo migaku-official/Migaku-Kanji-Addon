@@ -76,7 +76,7 @@ class ConvertNotesDialog(QDialog):
         self.move_cards_box.setChecked(True)
         lyt.addWidget(self.move_cards_box)
 
-        btn_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         btn_box.accepted.connect(self.convert)
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box)
@@ -254,4 +254,4 @@ class ConvertNotesDialog(QDialog):
                 return
 
         dlg = cls(model_id, note_ids, parent)
-        return dlg.exec_()
+        return dlg.exec()

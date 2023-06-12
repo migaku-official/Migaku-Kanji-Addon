@@ -79,7 +79,7 @@ class AddCardsDialog(QDialog):
         lyt.addWidget(self.manual_box, i, 0, 1, 2)
 
         i += 1
-        btn_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        btn_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         btn_box.accepted.connect(self.add_cards)
         btn_box.rejected.connect(self.reject)
         lyt.addWidget(btn_box, i, 0, 1, 2)
@@ -167,4 +167,4 @@ class AddCardsDialog(QDialog):
     @classmethod
     def show_modal(cls, parent=None):
         dlg = cls(parent=parent)
-        return dlg.exec_()
+        return dlg.exec()
