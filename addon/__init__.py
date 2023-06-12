@@ -49,7 +49,7 @@ def setup_menu():
     submenu.addAction(recalc_action)
 
     settings_action = QAction('Settings', aqt.mw)
-    settings_action.setMenuRole(QAction.NoRole)
+    settings_action.setMenuRole(QAction.MenuRole.NoRole)
     settings_action.triggered.connect(on_settings)
     submenu.addAction(settings_action)
 

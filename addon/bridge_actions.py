@@ -155,7 +155,7 @@ def handle_bridge_action(cmd, lookup_window: Optional[LookupWindow] = None, revi
     elif args[0] == 'suggest_change':
         character = args[1]
 
-        key_sequence = QKeySequence(Qt.CTRL + Qt.Key_F).toString(QKeySequence.NativeText)
+        key_sequence = QKeySequence(Qt.CTRL + Qt.Key_F).toString(QKeySequence.SequenceFormat.NativeText)
 
         r = QMessageBox.question(parent,
                                  'Migaku Kanji',

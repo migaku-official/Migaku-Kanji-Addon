@@ -12,7 +12,7 @@ from . import config
 
 
 key_sequence = QKeySequence('Ctrl+Shift+K')
-key_sequence_txt = key_sequence.toString(QKeySequence.NativeText)
+key_sequence_txt = key_sequence.toString(QKeySequence.SequenceFormat.NativeText)
 
 
 class LookupWindow(QDialog):
