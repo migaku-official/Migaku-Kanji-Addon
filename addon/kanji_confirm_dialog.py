@@ -35,9 +35,9 @@ class KanjiMarkModel(QAbstractListModel):
         if not idx.isValid():
             return QVariant()
         k = self.kanji[idx.row()]
-        if role == Qt.DisplayRole:
+        if role == Qt.ItemDataRole.DisplayRole:
             return str(k)
-        if role == Qt.BackgroundRole:
+        if role == Qt.ItemDataRole.BackgroundRole:
             s = self.states[k]
             return QColor(self.state_colors[s])
         return QVariant()
@@ -64,7 +64,7 @@ class KanjiMarkModel(QAbstractListModel):
 
     def to_add(self):
         return self.with_state(0)
-    
+
     def to_mark(self):
         return self.with_state(1)
 
@@ -78,21 +78,21 @@ class KanjiMarkWidget(QListView):
         self._model = KanjiMarkModel()
         self.setModel(self._model)
 
-        self.setFlow(QListView.LeftToRight)
-        self.setResizeMode(QListView.Adjust)
+        self.setFlow(QListView.Flow.LeftToRight)
+        self.setResizeMode(QListView.ResizeMode.Adjust)
         font = self.font()
         font.setPixelSize(35)
         self.setFont(font)
         self.setSpacing(5)
-        self.setViewMode(QListView.IconMode)
-        self.setSelectionMode(QAbstractItemView.NoSelection)
+        self.setViewMode(QListView.ViewMode.IconMode)
+        self.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection)
 
     def mousePressEvent(self, event):
         pos = event.pos()
         idx = self.indexAt(pos)
 
         if event.modifiers() == Qt.ShiftModifier:
-            txt = self._model.data(idx, Qt.DisplayRole)
+            txt = self._model.data(idx, Qt.ItemDataRole.DisplayRole)
             if txt:
                 LookupWindow.open(txt)
         else:

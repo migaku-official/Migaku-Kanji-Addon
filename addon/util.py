@@ -73,7 +73,7 @@ def error_msg_on_error(parent, func, *args, **kwargs):
 
 
 def raise_window(window: QWidget):
-    window.setWindowState( (window.windowState() & ~Qt.WindowMinimized) | Qt.WindowActive)
+    window.setWindowState( (window.windowState() & ~Qt.WindowState.WindowMinimized) | Qt.WindowState.WindowActive)
     window.raise_()
     window.activateWindow()
 

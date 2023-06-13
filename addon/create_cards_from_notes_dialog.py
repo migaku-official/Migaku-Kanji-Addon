@@ -61,8 +61,8 @@ class CreateCardsFromNotesDialog(QDialog):
         checked_fields_states = {}
         for i in range(self.list_box.count()):
             itm = self.list_box.item(i)
-            field_name = itm.data(Qt.DisplayRole)
-            field_checked = itm.checkState() == Qt.Checked
+            field_name = itm.data(Qt.ItemDataRole.DisplayRole)
+            field_checked = itm.checkState() == Qt.CheckState.Checked
             if field_checked:
                 checked_fields.add(field_name)
             checked_fields_states[field_name] = field_checked
