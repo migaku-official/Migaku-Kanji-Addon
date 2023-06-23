@@ -13,6 +13,7 @@ from aqt.qt import (
     QModelIndex,
     QVariant,
     QVBoxLayout,
+    QBrush,
 )
 
 from . import util
@@ -53,10 +54,12 @@ class KanjiMarkModel(QAbstractListModel):
         kanji = self.kanji[idx.row()]
 
         if role == Qt.ItemDataRole.DisplayRole:
+            # This should be a QBrush, but we also use the method
             return str(kanji)
         if role == Qt.ItemDataRole.BackgroundRole:
             state = self.states[kanji]
-            return QColor(self.state_colors[state])
+            return QBrush(QColor(self.state_colors[state]))
+
         return QVariant()
 
     def rowCount(self, _parent):
