@@ -30,9 +30,9 @@ class KanjiMarkModel(QAbstractListModel):
     def __init__(self):
         super().__init__()
         self.kanji = []
-        self.states: defaultdict[str, int] = defaultdict(lambda: 0)
+        self.states = defaultdict(lambda: 0)
 
-    def add(self, kanji_list: list[str]):
+    def add(self, kanji_list):
         new_kanji = [kanji for kanji in kanji_list if kanji not in self.kanji]
 
         if len(new_kanji) == 0:
