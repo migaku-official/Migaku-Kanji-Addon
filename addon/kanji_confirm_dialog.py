@@ -91,7 +91,7 @@ class KanjiMarkWidget(QListView):
         pos = event.pos()
         idx = self.indexAt(pos)
 
-        if event.modifiers() == Qt.ShiftModifier:
+        if event.modifiers() == Qt.KeyboardModifier.ShiftModifier:
             txt = self._model.data(idx, Qt.ItemDataRole.DisplayRole)
             if txt:
                 LookupWindow.open(txt)
