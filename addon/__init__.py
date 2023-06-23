@@ -20,35 +20,35 @@ from aqt.qt import *
 
 
 # Allow webviews accessing kanjivg svgs, web data for lookups and fonts
-aqt.mw.addonManager.setWebExports(__name__, r"(kanjivg/.*\.svg|web/.*|fonts/.*|user_files/fonts/.*)")
-
+aqt.mw.addonManager.setWebExports(
+    __name__, r"(kanjivg/.*\.svg|web/.*|fonts/.*|user_files/fonts/.*)"
+)
 
 
 def setup_menu():
+    submenu = QMenu("Kanji", aqt.mw)
 
-    submenu = QMenu('Kanji', aqt.mw)
-
-    lookup_action = QAction('Lookup', aqt.mw)
+    lookup_action = QAction("Lookup", aqt.mw)
     lookup_action.triggered.connect(on_loopup)
     submenu.addAction(lookup_action)
 
-    stats_action = QAction('Stats', aqt.mw)
+    stats_action = QAction("Stats", aqt.mw)
     stats_action.triggered.connect(on_stats)
     submenu.addAction(stats_action)
 
-    add_kanji_action = QAction('Add New Cards', aqt.mw)
+    add_kanji_action = QAction("Add New Cards", aqt.mw)
     add_kanji_action.triggered.connect(on_add_cards)
     submenu.addAction(add_kanji_action)
 
-    mark_known_action = QAction('Mark Known', aqt.mw)
+    mark_known_action = QAction("Mark Known", aqt.mw)
     mark_known_action.triggered.connect(on_mark_known)
     submenu.addAction(mark_known_action)
 
-    recalc_action = QAction('Refresh Cards', aqt.mw)
+    recalc_action = QAction("Refresh Cards", aqt.mw)
     recalc_action.triggered.connect(on_recalc)
     submenu.addAction(recalc_action)
 
-    settings_action = QAction('Settings', aqt.mw)
+    settings_action = QAction("Settings", aqt.mw)
     settings_action.setMenuRole(QAction.MenuRole.NoRole)
     settings_action.triggered.connect(on_settings)
     submenu.addAction(settings_action)
@@ -59,21 +59,26 @@ def setup_menu():
 def on_loopup():
     LookupWindow.open()
 
+
 def on_stats():
     StatsWindow.open()
+
 
 def on_add_cards():
     AddCardsDialog.show_modal(aqt.mw)
 
+
 def on_mark_known():
     MarkKnownDialog.show_modal(parent=aqt.mw)
 
-def on_recalc():
 
+def on_recalc():
     class RecalcThread(QThread):
         progress_update = pyqtSignal(str)
+
         def run(self):
             aqt.mw.migaku_kanji_db.recalc_all(callback=self.on_callback)
+
         def on_callback(self, txt):
             self.progress_update.emit(txt)
 
@@ -81,7 +86,7 @@ def on_recalc():
         def __init__(self, parent):
             super(QDialog, self).__init__(parent)
             self.setWindowIcon(util.default_icon())
-            self.setWindowTitle('Refreshing Kanji')
+            self.setWindowTitle("Refreshing Kanji")
             self.setWindowModality(Qt.WindowModality.ApplicationModal)
             self.setMinimumWidth(300)
             lyt = QVBoxLayout()
@@ -93,8 +98,10 @@ def on_recalc():
             self.bar.setMaximum(0)
             lyt.addWidget(self.lbl)
             lyt.addWidget(self.bar)
+
         def on_progress(self, txt):
             self.lbl.setText(txt)
+
         def reject(self):
             # Hack
             pass
@@ -107,8 +114,10 @@ def on_recalc():
     thread.progress_update.connect(box.on_progress)
     thread.start()
 
+
 def on_settings():
     SettingsWindow.show_modal(aqt.mw)
+
 
 aqt.mw.addonManager.setConfigAction(__name__, on_settings)
 
@@ -117,17 +126,17 @@ def on_profile_open():
     CardType.upsert_all_models()
 
     util.assure_user_dir()
-    lrv_path = util.user_path('last_run_version')
+    lrv_path = util.user_path("last_run_version")
     try:
-        with open(lrv_path, 'r', encoding='utf-8') as f:
+        with open(lrv_path, "r", encoding="utf-8") as f:
             lrv = f.read()
     except OSError:
-        lrv = ''
+        lrv = ""
 
     if lrv != version.VERSION_STRING:
         on_recalc()
 
-    with open(lrv_path, 'w', encoding='utf-8') as f:
+    with open(lrv_path, "w", encoding="utf-8") as f:
         f.write(version.VERSION_STRING)
 
 
@@ -139,33 +148,37 @@ setup_menu()
 def setup_browser_menu(browser):
     browser.form.menuEdit.addSeparator()
 
-    create_cards_action = QAction('Create Kanji Cards From Selection', browser)
+    create_cards_action = QAction("Create Kanji Cards From Selection", browser)
     create_cards_action.triggered.connect(
         lambda: CreateCardsFromNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
     browser.form.menuEdit.addAction(create_cards_action)
 
-    mark_known_action = QAction('Mark Kanji Known From Selection', browser)
+    mark_known_action = QAction("Mark Kanji Known From Selection", browser)
     mark_known_action.triggered.connect(
         lambda: MarkKnownFromNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
     browser.form.menuEdit.addAction(mark_known_action)
 
-    convert_notes_action = QAction('Convert Selected Notes To Migaku Kanji Cards', browser)
+    convert_notes_action = QAction(
+        "Convert Selected Notes To Migaku Kanji Cards", browser
+    )
     convert_notes_action.triggered.connect(
         lambda: ConvertNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
     browser.form.menuEdit.addAction(convert_notes_action)
 
+
 aqt.gui_hooks.browser_menus_did_init.append(setup_browser_menu)
 
 
-
 add_note_no_hook = anki.collection.Collection.add_note
+
 
 def add_note(col, note, deck_id):
     r = add_note_no_hook(col, note, deck_id)
     aqt.mw.migaku_kanji_db.on_note_update(note.id, deck_id, is_new=True)
     return r
+
 
 anki.collection.Collection.add_note = add_note
