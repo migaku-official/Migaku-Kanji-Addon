@@ -1,1 +1,1 @@
-VERSION_STRING = 'git'
+VERSION_STRING = "git"
