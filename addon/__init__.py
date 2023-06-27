@@ -152,13 +152,11 @@ def setup_browser_menu(browser):
     create_cards_action.triggered.connect(
         lambda: CreateCardsFromNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
-    browser.form.menuEdit.addAction(create_cards_action)
 
     mark_known_action = QAction("Mark Kanji Known From Selection", browser)
     mark_known_action.triggered.connect(
         lambda: MarkKnownFromNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
-    browser.form.menuEdit.addAction(mark_known_action)
 
     convert_notes_action = QAction(
         "Convert Selected Notes To Migaku Kanji Cards", browser
@@ -166,7 +164,22 @@ def setup_browser_menu(browser):
     convert_notes_action.triggered.connect(
         lambda: ConvertNotesDialog.show_modal(browser.selectedNotes(), browser)
     )
+
+    browser.form.menuEdit.addSeparator()
+    browser.form.menuEdit.addAction(create_cards_action)
+    browser.form.menuEdit.addAction(mark_known_action)
     browser.form.menuEdit.addAction(convert_notes_action)
+
+    browser.form.menu_Notes.insertAction(
+        browser.form.actionManage_Note_Types, create_cards_action
+    )
+    browser.form.menu_Notes.insertAction(
+        browser.form.actionManage_Note_Types, mark_known_action
+    )
+    browser.form.menu_Notes.insertAction(
+        browser.form.actionManage_Note_Types, convert_notes_action
+    )
+    browser.form.menu_Notes.insertSeparator(browser.form.actionManage_Note_Types)
 
 
 aqt.gui_hooks.browser_menus_did_init.append(setup_browser_menu)
