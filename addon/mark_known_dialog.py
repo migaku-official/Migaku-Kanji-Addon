@@ -147,7 +147,7 @@ class MarkKnownFromNotesDialog(QDialog):
         self.list_box = QListWidget()
         for field_name in anki.find.fieldNamesForNotes(aqt.mw.col, note_ids):
             itm = QListWidgetItem(field_name)
-            itm.setCheckState(Qt.Unchecked)
+            itm.setCheckState(Qt.CheckState.Unchecked)
             self.list_box.addItem(itm)
         lyt.addWidget(self.list_box)
 
@@ -182,7 +182,7 @@ class MarkKnownFromNotesDialog(QDialog):
 
         dlg = MarkKnownDialog(kanji, self)
         r = dlg.exec()
-        if r == QDialog.Accepted:
+        if r == QDialog.DialogCode.Accepted:
             self.accept()
 
     @classmethod
