@@ -107,7 +107,7 @@ def handle_bridge_action(
         if reviewer:
             aqt.mw.requireReset()
         r = CustomKeywordsDialog(character, parent).exec()
-        if r == QDialog.Accepted:
+        if r == QDialog.DialogCode.Accepted:
             if reviewer:
                 aqt.mw.maybeReset()
             else:

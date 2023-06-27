@@ -1,5 +1,13 @@
 import aqt
-from aqt.qt import *
+from aqt.qt import (
+    QDialog,
+    QVBoxLayout,
+    QLabel,
+    QListWidget,
+    QListWidgetItem,
+    QDialogButtonBox,
+    Qt,
+)
 
 import anki.find
 
@@ -41,9 +49,9 @@ class CreateCardsFromNotesDialog(QDialog):
         for field_name in anki.find.fieldNamesForNotes(aqt.mw.col, note_ids):
             itm = QListWidgetItem(field_name)
             itm.setCheckState(
-                Qt.Checked
+                Qt.CheckState.Checked
                 if (field_name in last_checked and last_checked[field_name])
-                else Qt.Unchecked
+                else Qt.CheckState.Unchecked
             )
             self.list_box.addItem(itm)
         lyt.addWidget(self.list_box)
@@ -86,14 +94,14 @@ class CreateCardsFromNotesDialog(QDialog):
         new_kanji = aqt.mw.migaku_kanji_db.new_characters(card_type, kanji)
 
         if len(new_kanji):
-            r = aqt.qt.QMessageBox.question(
+            response = aqt.qt.QMessageBox.question(
                 self,
                 "Migaku Kanji",
                 f"Do you want to create kanji {card_type.label} cards for these kanji?\n\n"
                 + " ".join(new_kanji),
             )
 
-            if r == aqt.qt.QMessageBox.StandardButton.Yes:
+            if response == aqt.qt.QMessageBox.StandardButton.Yes:
                 util.error_msg_on_error(
                     self,
                     aqt.mw.migaku_kanji_db.make_cards_from_characters,
