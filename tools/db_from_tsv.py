@@ -4,8 +4,8 @@ import sys
 import os
 
 
-tsv_path = sys.argv[1] if len(sys.argv) > 1 else 'kanji.tsv'
-db_path = sys.argv[2] if len(sys.argv) > 2 else 'kanji.db'
+tsv_path = sys.argv[1] if len(sys.argv) > 1 else "kanji.tsv"
+db_path = sys.argv[2] if len(sys.argv) > 2 else "kanji.db"
 
 db_path = os.path.abspath(db_path)
 
@@ -18,8 +18,7 @@ except:
 conn = sqlite3.connect(db_path)
 
 
-create_sql = \
-"""CREATE TABLE characters (
+create_sql = """CREATE TABLE characters (
     character TEXT NOT NULL PRIMARY KEY,
     stroke_count INTEGER DEFAULT NULL,
     onyomi TEXT DEFAULT "[]",
@@ -45,20 +44,22 @@ create_sql = \
 )"""
 
 conn.execute(create_sql)
-fields = [l.split()[0] for l in create_sql.split('\n') if l.startswith(' ')]
+fields = [l.split()[0] for l in create_sql.split("\n") if l.startswith(" ")]
 
 
 db_kanji = []
 
-for l in open(tsv_path, 'r', encoding='utf-8'):
-    d = l.replace('\n', '').split('\t')
+for l in open(tsv_path, "r", encoding="utf-8"):
+    d = l.replace("\n", "").split("\t")
     if len(d) != 7:
         continue
     kanji = d[0].strip()
     if len(kanji) != 1:
         continue
 
-insert_sql = F'INSERT into characters ({",".join(fields)}) values ({",".join("?"*len(fields))})'
+insert_sql = (
+    f'INSERT into characters ({",".join(fields)}) values ({",".join("?"*len(fields))})'
+)
 conn.executemany(insert_sql, db_kanji)
 
 
