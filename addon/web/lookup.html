@@ -666,6 +666,7 @@ Changes:
 			if (!this.options.skipLoad) {
 				var loader = new DmakLoader(
 						this.options.uri,
+						this.options.primitives_uri,
 						this.options.preload_svgs,
 					),
 					self = this;
@@ -1257,8 +1258,9 @@ Changes:
 		'use strict';
 
 		// Create a safe reference to the DrawMeAKanji object for use below.
-		var DmakLoader = function (uri, preload_svgs = {}) {
+		var DmakLoader = function (uri, primitives_uri, preload_svgs = {}) {
 			this.uri = uri;
+			this.primitives_uri = primitives_uri;
 			this.preload_svgs = preload_svgs;
 		};
 
@@ -1320,7 +1322,14 @@ Changes:
 				return;
 			}
 
-			xhr.open('GET', this.uri + code + '.svg', true);
+			// Load non-Unicode primitives from special primitives uri
+			if (char[0]=='[') {
+				var tag = char.slice(1,-1);
+				xhr.open('GET', this.primitives_uri + tag + '.svg', true);
+			} else {
+				xhr.open('GET', this.uri + code + '.svg', true);
+			}
+
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
@@ -8556,7 +8565,15 @@ Changes:
 			// CHANGES - END - stroke order diagram
 			// ==================================================================
 
-			$('.fontExample').html(data.character);
+			function characterOrImage(character) {
+				if (character[0] == '[') {
+					var tag = character.slice(1,-1);
+					return '<img src="' + primitives_uri + tag + '.svg' + '">';
+				}
+				return character;
+			}
+
+			$('.fontExample').html(characterOrImage(data.character));
 
 			tags = [];
 			if (data.frequency_rank < 999999)
@@ -8622,7 +8639,7 @@ Changes:
 									class="primitive${primitiveHasAlts ? ' -has-alternative' : ''}"
 									data-character="${p_data.character}"
 								>
-									${p_data.character}
+									${characterOrImage(p_data.character)}
 									<div class="primitiveDetails">
 										<div class="primitiveDetails-keywords">
 											<h3>Keywords:</h3>
@@ -8686,7 +8703,7 @@ Changes:
 							class="primitive${primitiveOfHasAlts ? ' -has-alternative' : ''}"
 							data-character="${p_data.character}"
 						>
-							${p_data.character}
+							${characterOrImage(p_data.character)}
 							<div class="primitiveDetails">
 								<div class="primitiveDetails-keywords">
 									<h3>Keywords:</h3>

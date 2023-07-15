@@ -19,6 +19,7 @@ class LookupWindow(QDialog):
     instance = None
 
     kanjivg_uri = util.addon_web_base + "/kanjivg/"
+    primitives_uri = util.addon_web_base + "/primitives/"
 
     @classmethod
     def web_uri(cls, name):
@@ -93,6 +94,7 @@ class LookupWindow(QDialog):
             f'<link rel="stylesheet" href="{self.web_uri("styles.css")}">'
             f'<script src="{self.web_uri("jquery.js")}"></script>'
             f'<script>let kanjivg_uri="{self.kanjivg_uri}";</script>'
+            f'<script>let primitives_uri="{self.primitives_uri}";</script>'
             "</head>"
         )
 

@@ -8,7 +8,7 @@ from collections import defaultdict, OrderedDict
 import anki
 import aqt
 
-from .util import addon_path, user_path, assure_user_dir, unique_characters
+from .util import addon_path, user_path, assure_user_dir, unique_characters, custom_list
 from .errors import InvalidStateError, InvalidDeckError
 from .card_type import CardType
 from . import config
@@ -26,7 +26,6 @@ def clean_character_field(f):
     if len(f):
         return f[0]
     return ""
-
 
 class KanjiDB:
     def __init__(self):
@@ -149,6 +148,7 @@ class KanjiDB:
             print(f"Lookup of primitive {character} failed.")
             return
         primitives = primitives_result[0]
+        primitives = custom_list(primitives)
 
         # Recusivly add primitives that need to be learned if enabled
         if card_type.add_primitives:
@@ -689,8 +689,8 @@ class KanjiDB:
             ("grade", _, None),
             ("jlpt", _, None),
             ("kanken", _, None),
-            ("primitives", list, None),
-            ("primitive_of", list, None),
+            ("primitives", custom_list, None),
+            ("primitive_of", custom_list, None),
             ("primitive_keywords", json.loads, None),
             ("primitive_alternatives", list, None),
             ("heisig_id5", _, None),
