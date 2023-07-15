@@ -8186,6 +8186,7 @@ Changes:
 	var data = JSON.parse(data_json);
 
 	var kanjivg_uri = 'kanji_';
+    var primitive_uri = '_primitive_';
 
 	// ==================================================================
 	// CHANGES - START - variables and control binds
@@ -8456,8 +8457,19 @@ Changes:
 	// CHANGES - END - stroke order diagram
 	// ==================================================================
 
-	$('.keyword-kanji').html(data.character);
-	$('.fontExample').html(data.character);
+	function characterOrImage(character) {
+		if (character[0] == '[') {
+			var tag = character.slice(1,-1);
+			var res = 'img src="' + primitive_uri + tag + '.svg" />';
+			// There's something messed up with the way this page is evaluated. Cannot insert < in front
+			// of img tag directly.
+			return '<' + res;
+		}
+		return character;
+	}
+	
+	$('.keyword-kanji').html(characterOrImage(data.character));
+	$('.fontExample').html(characterOrImage(data.character));
 
 	tags = [];
 	if (data.frequency_rank < 999999)
@@ -8517,7 +8529,7 @@ Changes:
 				class="primitive${primitiveHasAlts ? ' -has-alternative' : ''}"
 				data-character="${p_data.character}"
 			>
-				${p_data.character}
+				${characterOrImage(p_data.character)}
 				<div class="primitiveDetails">
 					<div class="primitiveDetails-keywords">
 						<h3>Keywords:</h3>
@@ -8575,7 +8587,7 @@ Changes:
 				class="primitive${primitiveOfHasAlts ? ' -has-alternative' : ''}"
 				data-character="${p_data.character}"
 			>
-				${p_data.character}
+				${characterOrImage(p_data.character)}
 				<div class="primitiveDetails">
 					<div class="primitiveDetails-keywords">
 						<h3>Keywords:</h3>

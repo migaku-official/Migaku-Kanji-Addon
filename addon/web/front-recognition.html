@@ -371,12 +371,25 @@ START - Migaku markup
 		);
 	}
 
+    var primitive_uri = '_primitive_';
+
+	function characterOrImage(character) {
+		if (character[0] == '[') {
+			var tag = character.slice(1,-1);
+			var res = 'img src="' + primitive_uri + tag + '.svg" />';
+			// There's something messed up with the way this page is evaluated. Cannot insert < in front
+			// of img tag directly.
+			return '<' + res;
+		}
+		return character;
+	}
+
 	var data_b64 = document.getElementById('migaku_data').innerHTML;
 	data_b64 = data_b64.replace(/(<([^>]+)>)/gi, ''); // Needed because of Migaku Editor :|
 	var data_json = atob(data_b64);
 	var data = JSON.parse(data_json);
 
-	$('.keyword-kanji').html(data.character);
+	$('.keyword-kanji').html(characterOrImage(data.character));
 
 	var max_words = settings.words_max;
 	var word_front_pts = [];

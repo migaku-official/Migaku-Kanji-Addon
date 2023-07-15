@@ -24,6 +24,9 @@ def clean_character_field(f):
     f = f.lstrip()
     f = text_parser.html_regex.sub("", f)
     if len(f):
+        # Leave [primitive_tag] as it is, otherwise return the single unicode character
+        if f[0] == '[':
+            return f
         return f[0]
     return ""
 
@@ -616,7 +619,6 @@ class KanjiDB:
         c = clean_character_field(note["Character"])
         if len(c) < 1:
             return
-        c = c[0]
         note["Character"] = c
 
         r = self.get_kanji_result_data(c, card_ids=False)
@@ -625,8 +627,12 @@ class KanjiDB:
         data_json_b64 = str(data_json_b64_b, "utf-8")
         note["MigakuData"] = data_json_b64
 
-        svg_name = "%05x.svg" % ord(c)
-        svg_path = addon_path("kanjivg", svg_name)
+        if c[0] == '[':
+            svg_name = c[1:-1] + ".svg"
+            svg_path = addon_path("primitives", svg_name)
+        else:
+            svg_name = "%05x.svg" % ord(c)
+            svg_path = addon_path("kanjivg", svg_name)
 
         if os.path.exists(svg_path):
             with open(svg_path, "r", encoding="utf-8") as file:
