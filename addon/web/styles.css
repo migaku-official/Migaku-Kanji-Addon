@@ -906,6 +906,15 @@ body.dark {
 	padding: 0 10px;
 }
 
+.character-and-examples__character img {
+	align-items: center;
+	position: relative;
+	top: 2px;
+	width: auto;
+	height: 100px;
+	padding: 0 10px;
+}
+
 .character-and-examples__example-words {
 	flex-wrap: wrap;
 	margin-bottom: 0;
@@ -1482,6 +1491,15 @@ body.dark {
 	font-size: 60px;
 	justify-content: center;
 	line-height: 80px;
+	padding: 0 10px;
+}
+
+.font-examples__character img {
+	align-items: center;
+	position: relative;
+	top: 2px;
+	width: auto;
+	height: 80px;
 	padding: 0 10px;
 }
 
@@ -2128,6 +2146,15 @@ html:not(.mobile)
 	margin-left: 5px;
 }
 
+.primitives-and-radicals__alternatives .primitive-alternatives img {
+	height: auto;
+	opacity: 1;
+	position: relative;
+	top: 0px;
+	padding: 0px;
+	width: 20px;
+}
+
 .primitiveDetails h3 {
 	margin: 0;
 }
@@ -2135,6 +2162,10 @@ html:not(.mobile)
 .primitiveDetails-keywords,
 .primitiveDetails-meanings {
 	margin-bottom: 10px;
+}
+
+.primitiveDetails-alternatives img {
+	height: 20px;
 }
 
 button.primitive {
@@ -2313,6 +2344,15 @@ button.radical {
 }
 
 .stories__content p:last-child {
+	margin-bottom: 0;
+}
+
+.stories__content img {
+	height: auto;
+	position: relative;
+	top: 0px;
+	padding: 0px;
+	width: 20px;
 	margin-bottom: 0;
 }
 

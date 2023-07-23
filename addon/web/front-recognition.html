@@ -371,17 +371,15 @@ START - Migaku markup
 		);
 	}
 
-    var primitive_uri = '_primitive_';
+    var primitives_uri = '_primitive_';
 
-	function characterOrImage(character) {
-		if (character[0] == '[') {
-			var tag = character.slice(1,-1);
-			var res = 'img src="' + primitive_uri + tag + '.svg" />';
-			// There's something messed up with the way this page is evaluated. Cannot insert < in front
-			// of img tag directly.
-			return '<' + res;
+	function ReplaceTagsWithImages(src) {
+		if (src.includes('[')) {
+			// replace [tag] with image link to tag.svg, but skip strike counts (such as [3])
+			const reg =  /\[([a-zA-Z\-_]+)\]/g
+			return src.replace(reg, '<' + 'img src="' + primitives_uri + '$1.svg">');
 		}
-		return character;
+		return src;
 	}
 
 	var data_b64 = document.getElementById('migaku_data').innerHTML;
@@ -389,7 +387,7 @@ START - Migaku markup
 	var data_json = atob(data_b64);
 	var data = JSON.parse(data_json);
 
-	$('.keyword-kanji').html(characterOrImage(data.character));
+	$('.keyword-kanji').html(ReplaceTagsWithImages(data.character));
 
 	var max_words = settings.words_max;
 	var word_front_pts = [];

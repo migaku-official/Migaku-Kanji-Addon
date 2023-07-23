@@ -51,7 +51,7 @@ def default_icon():
 # Creates a list of single-character Unicode kanjis and [primitive] tags
 # For example '[banner]也' -> ['\[banner\]','也'] 
 def custom_list(l):
-    g = re.findall(r'([^\[]|\[.+\])',l)
+    g = re.findall(r'([^\[]|\[[^\]]+\])',l)
     return g
 
 def unique_characters(string):

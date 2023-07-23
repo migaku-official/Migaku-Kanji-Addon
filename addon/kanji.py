@@ -698,7 +698,7 @@ class KanjiDB:
             ("primitives", custom_list, None),
             ("primitive_of", custom_list, None),
             ("primitive_keywords", json.loads, None),
-            ("primitive_alternatives", list, None),
+            ("primitive_alternatives", custom_list, None),
             ("heisig_id5", _, None),
             ("heisig_id6", _, None),
             ("heisig_keyword5", _, None),

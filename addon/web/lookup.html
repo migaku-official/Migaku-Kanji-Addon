@@ -8565,15 +8565,16 @@ Changes:
 			// CHANGES - END - stroke order diagram
 			// ==================================================================
 
-			function characterOrImage(character) {
-				if (character[0] == '[') {
-					var tag = character.slice(1,-1);
-					return '<img src="' + primitives_uri + tag + '.svg' + '">';
+			function ReplaceTagsWithImages(src) {
+				if (src.includes('[')) {
+					// replace [tag] with image link to tag.svg, but skip strike counts (such as [3])
+					const reg =  /\[([a-zA-Z\-_]+)\]/g
+					return src.replace(reg, '<img src="' + primitives_uri + '$1.svg">');
 				}
-				return character;
+				return src;
 			}
 
-			$('.fontExample').html(characterOrImage(data.character));
+			$('.fontExample').html(ReplaceTagsWithImages(data.character));
 
 			tags = [];
 			if (data.frequency_rank < 999999)
@@ -8602,6 +8603,10 @@ Changes:
 			var primitives_pts = [];
 			for (const p_data of data.primitives_detail) {
 				var keywords = [];
+				if (!p_data.has_result) {
+					primitives_pts.push('MISSING DATA FOR ' + p_data.character);
+					continue
+				}
 				if (p_data.usr_keyword) keywords.push(p_data.usr_keyword);
 				if (
 					p_data.heisig_keyword5 &&
@@ -8629,17 +8634,23 @@ Changes:
 					? p_data.meanings.join(', ')
 					: '-';
 
-				var primitiveHasAlts = p_data.primitive_alternatives.length > 0,
-					primitive_alternatives_txt = primitiveHasAlts
-						? p_data.primitive_alternatives.join(', ')
-						: '-';
+				var primitiveHasAlts = p_data.primitive_alternatives.length > 0
+				var new_primitive_alternatives = []
+				if (primitiveHasAlts) {
+					for (const prim_alt of p_data.primitive_alternatives) {
+						new_primitive_alternatives.push(ReplaceTagsWithImages(prim_alt))
+					}
+				}
+				primitive_alternatives_txt = primitiveHasAlts
+					? new_primitive_alternatives.join(', ')
+					: '-';
 
 				primitives_pts.push(
 					`<button
 									class="primitive${primitiveHasAlts ? ' -has-alternative' : ''}"
 									data-character="${p_data.character}"
 								>
-									${characterOrImage(p_data.character)}
+									${ReplaceTagsWithImages(p_data.character)}
 									<div class="primitiveDetails">
 										<div class="primitiveDetails-keywords">
 											<h3>Keywords:</h3>
@@ -8666,6 +8677,10 @@ Changes:
 			var primitive_of_pts = [];
 			for (const p_data of data.primitive_of_detail) {
 				var keywords = [];
+				if (!p_data.has_result) {
+					primitives_pts.push('MISSING DATA FOR ' + p_data.character);
+					continue
+				}
 				if (p_data.usr_keyword) keywords.push(p_data.usr_keyword);
 				if (
 					p_data.heisig_keyword5 &&
@@ -8693,17 +8708,23 @@ Changes:
 					? p_data.meanings.join(', ')
 					: '-';
 
-				var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0,
-					primitive_alternatives_txt = primitiveOfHasAlts
-						? p_data.primitive_alternatives.join(', ')
-						: '-';
+				var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0
+				var new_primitive_alternatives = []
+				if (primitiveHasAlts) {
+					for (const prim_alt of p_data.primitive_alternatives) {
+						new_primitive_alternatives.push(ReplaceTagsWithImages(prim_alt))
+					}
+				}
+				primitive_alternatives_txt = primitiveHasAlts
+					? new_primitive_alternatives.join(', ')
+					: '-';
 
 				primitive_of_pts.push(
 					`<button
 							class="primitive${primitiveOfHasAlts ? ' -has-alternative' : ''}"
 							data-character="${p_data.character}"
 						>
-							${characterOrImage(p_data.character)}
+							${ReplaceTagsWithImages(p_data.character)}
 							<div class="primitiveDetails">
 								<div class="primitiveDetails-keywords">
 									<h3>Keywords:</h3>
@@ -8733,9 +8754,15 @@ Changes:
 			$('#primitive_of_alts .primitive-alternatives').empty();
 
 			if (kanjiHasPrimitiveAlts) {
+				var new_primitive_alternatives = []
+				if (kanjiHasPrimitiveAlts) {
+					for (const prim_alt of data.primitive_alternatives) {
+						new_primitive_alternatives.push(ReplaceTagsWithImages(prim_alt))
+					}
+				}
 				$('#primitive_of_alts').show();
 				$('#primitive_of_alts .primitive-alternatives').html(
-					data.primitive_alternatives.join(', '),
+					new_primitive_alternatives.join(', '),
 				);
 			}
 
@@ -8994,7 +9021,8 @@ Changes:
 				var heisig_story = data.heisig_story;
 				if (data.heisig_comment)
 					heisig_story += '<br><br>' + data.heisig_comment;
-				stories.push(heisig_story);
+				var detagged_heisig_story = ReplaceTagsWithImages(heisig_story)
+				stories.push(detagged_heisig_story);
 			}
 			for (const ks of data.koohi_stories) stories.push(ks);
 
