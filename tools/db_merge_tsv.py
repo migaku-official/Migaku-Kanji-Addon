@@ -15,15 +15,13 @@ def custom_list(l):
     g = re.findall(r'([^\[]|\[[^\]]+\])',l)
     return g
 
-
 # create multi-line string for better readibility in markdown tables
 def multiLine(src_list,n):    
     chunks = [src_list[i:i+n] for i in range(0, len(src_list), n)]
     lines = [ ''.join(chunk) for chunk in chunks ]            
     return '<br>'.join(lines)
 
-
-ext_tsv_path = sys.argv[1] if len(sys.argv) > 1 else "addon/kanji-ext.tsv"
+ext_tsv_path = sys.argv[1] if len(sys.argv) > 1 else "addon/kanji-ext3.tsv"
 db_path = sys.argv[2] if len(sys.argv) > 2 else "addon/kanji.db"
 log_path = sys.argv[3] if len(sys.argv) > 3 else "db_merge_log.md"
 db_path = os.path.abspath(db_path)
@@ -32,9 +30,7 @@ db_path = os.path.abspath(db_path)
 targets = logging.StreamHandler(sys.stdout), logging.FileHandler(log_path,'w+')
 logging.basicConfig(format='%(message)s', level=logging.INFO, handlers=targets)
 
-
 con = sqlite3.connect(db_path)
-#con.row_factory = sqlite3.Row
 crs = con.cursor()
 
 fields = [
@@ -61,6 +57,9 @@ update_sql = (
 update_prim_of_sql = (
     f'UPDATE characters SET primitive_of=? WHERE character=?'
 )
+delete_sql = (
+    f'DELETE FROM characters WHERE character=?'
+)
 
 def to_json_list_str(csv):
     if csv!= '':
@@ -71,7 +70,6 @@ def to_json_list_str(csv):
 
 def j2c(d):
     return ", ".join(json.loads(d))
-
 
 # (field_name, load_function, column)
 _ = lambda x: x
@@ -101,18 +99,19 @@ field_conversion_reverse = [
     (9,"radicals", _, None),
 ]
 
-
-
 processed_kanji_list = []
 total_changes = 0
+line_number = 0
 
 for l in open(ext_tsv_path, "r", encoding="utf-8"):
     
+    line_number += 1
+
     d = l.replace("\n", "").split("\t")
     if len(d[0]) == 0:
         logging.info("")
         continue
-    if d[0] == 'Kanji':  # omit the header
+    if d[0] == 'Kanji' or d[0] == 'character':  # omit the header
         continue
     if d[0][0]=='#':  # only log the comments
         # modify the comments so they look better in markdown
@@ -128,13 +127,19 @@ for l in open(ext_tsv_path, "r", encoding="utf-8"):
         logging.info(comment)
         continue
 
+    if d[1] == 'DELETE':
+        logging.info("# DELETE %s",d[0])
+        crs.execute(delete_sql, (d[0],) )
+        con.commit()
+        continue
+
     if len(d) != 10:
-        raise Exception("Error! Wrong length in data: %s" % str(d))
+        raise Exception("Error! Line %d - wrong length in data: %s" % (line_number, str(d)))
 
     kanji = d[0].strip()
 
     if kanji in processed_kanji_list:
-        raise Exception("Kanji %s already processed! Remove duplicate" % kanji)
+        raise Exception("Kanji %s already processed! Remove duplicate from line %d" % (kanji,line_number))
     
     processed_kanji_list.append(kanji)
 
@@ -236,7 +241,7 @@ for row in data:
             primitive_of_dict[p] += character
 
 
-# Calculate missing primitive_of references
+# Re-calculate primitive_of references
 
 logging.info("# Changes in primitives-of list")
 logging.info("| Kanji | Meaning/Keyword | Added | Removed |")
