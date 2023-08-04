@@ -266,7 +266,7 @@ class KanjiDB:
             card_ids = aqt.mw.col.find_cards(" AND ".join(find_filter))
 
             for card_id in card_ids:
-                card = aqt.mw.col.getCard(card_id)
+                card = aqt.mw.col.get_card(card_id)
                 note = card.note()
                 character = clean_character_field(note[entry_field])
                 character_card_ids[character] = card_id
@@ -308,7 +308,7 @@ class KanjiDB:
                     if not check_new:
                         note_ids_not_new.add(note_id)
 
-                    note = aqt.mw.col.getNote(note_id)
+                    note = aqt.mw.col.get_note(note_id)
                     field_value = note[entry_field]
                     words = text_parser.get_cjk_words(field_value, reading=True)
 
@@ -330,7 +330,7 @@ class KanjiDB:
 
     def on_note_update(self, note_id, deck_id, is_new=False):
         try:
-            note = aqt.mw.col.getNote(note_id)
+            note = aqt.mw.col.get_note(note_id)
         except Exception:
             # TODO: properly check if this is related to card import/export instead of this mess.
             return
@@ -350,14 +350,14 @@ class KanjiDB:
             wr_deck_name = wr["deck"]
             wr_field = wr["field"]
 
-            wr_model = aqt.mw.col.models.byName(wr_note)
+            wr_model = aqt.mw.col.models.by_name(wr_note)
             if wr_model is None:
                 continue
             if note.mid != wr_model["id"]:
                 continue
 
             if wr_deck_name != "All":
-                wr_deck = aqt.mw.col.decks.byName(wr_deck_name)
+                wr_deck = aqt.mw.col.decks.by_name(wr_deck_name)
                 if wr_deck is None:
                     continue
                 if deck_id != wr_deck["id"]:
@@ -391,7 +391,7 @@ class KanjiDB:
                 if r:
                     cid = r[0]
                     try:
-                        card = aqt.mw.col.getCard(cid)
+                        card = aqt.mw.col.get_card(cid)
                     except Exception:  # anki.errors.NotFoundError for newer versions
                         continue
                     if card:
@@ -428,7 +428,7 @@ class KanjiDB:
                 deck_name = e["deck"]
                 max_num = e["num"]
 
-                deck = aqt.mw.col.decks.byName(deck_name)
+                deck = aqt.mw.col.decks.by_name(deck_name)
                 if deck is None:
                     continue
                 deck_id = deck["id"]
@@ -454,21 +454,21 @@ class KanjiDB:
         kanji = []  # to preserve order
 
         for [nid] in nids:
-            note = aqt.mw.col.getNote(nid)
+            note = aqt.mw.col.get_note(nid)
 
             for wr in config.get("word_recognized", []):
                 wr_note = wr["note"]
                 wr_deck_name = wr["deck"]
                 wr_field = wr["field"]
 
-                wr_model = aqt.mw.col.models.byName(wr_note)
+                wr_model = aqt.mw.col.models.by_name(wr_note)
                 if wr_model is None:
                     continue
                 if note.mid != wr_model["id"]:
                     continue
 
                 if wr_deck_name != "All":
-                    wr_deck = aqt.mw.col.decks.byName(wr_deck_name)
+                    wr_deck = aqt.mw.col.decks.by_name(wr_deck_name)
                     if wr_deck is None:
                         continue
                     if deck_id != wr_deck["id"]:
@@ -571,7 +571,7 @@ class KanjiDB:
         )
 
         for note_id in note_ids:
-            note = aqt.mw.col.getNote(note_id)
+            note = aqt.mw.col.get_note(note_id)
             self.refresh_note(note, do_flush=True)
 
     def make_card_unsafe(self, card_type, character):
@@ -580,12 +580,12 @@ class KanjiDB:
         deck_name = card_type.deck_name
         model_name = card_type.model_name
 
-        deck = aqt.mw.col.decks.byName(deck_name)
+        deck = aqt.mw.col.decks.by_name(deck_name)
         if deck is None:
             raise InvalidDeckError(card_type)
         deck_id = deck["id"]
 
-        model = aqt.mw.col.models.byName(model_name)
+        model = aqt.mw.col.models.by_name(model_name)
 
         note = anki.notes.Note(aqt.mw.col, model)
         note["Character"] = character
@@ -605,7 +605,7 @@ class KanjiDB:
         deck_name = card_type.deck_name
         model_name = card_type.model_name
 
-        deck = aqt.mw.col.decks.byName(deck_name)
+        deck = aqt.mw.col.decks.by_name(deck_name)
         if deck is None:
             raise InvalidDeckError(card_type)
 
@@ -613,7 +613,7 @@ class KanjiDB:
             aqt.mw.checkpoint(checkpoint)
 
         deck_id = deck["id"]
-        model = aqt.mw.col.models.byName(model_name)
+        model = aqt.mw.col.models.by_name(model_name)
 
         for c in characters:
             note = anki.notes.Note(aqt.mw.col, model)
@@ -704,7 +704,7 @@ class KanjiDB:
         num_notes = len(note_ids)
 
         for i, note_id in enumerate(note_ids):
-            note = aqt.mw.col.getNote(note_id)
+            note = aqt.mw.col.get_note(note_id)
             self.refresh_note(note, do_flush=True)
 
             if callback and ((i + 1) % 25) == 0:
@@ -828,7 +828,7 @@ class KanjiDB:
                     ct_user_data = ""
                     if ct_card_id:
                         try:
-                            ct_card = aqt.mw.col.getCard(ct_card_id)
+                            ct_card = aqt.mw.col.get_card(ct_card_id)
                             ct_user_data = ct_card.note()["UserData"]
                         except:
                             pass

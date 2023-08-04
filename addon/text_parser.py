@@ -25,9 +25,9 @@ class MecabParser:
 
         self.mecab_extra_args = {}
 
-        if anki.utils.isLin:
+        if anki.utils.is_lin:
             self.mecab_bin += "-linux"
-        elif anki.utils.isMac:
+        elif anki.utils.is_mac:
             self.mecab_bin += "-macos"
         elif anki.utils.isWin:
             self.mecab_bin += "-windows.exe"
@@ -49,7 +49,7 @@ class MecabParser:
     def start(self):
         self.stop()
 
-        if anki.utils.isLin or anki.utils.isMac:
+        if anki.utils.is_lin or anki.utils.is_mac:
             os.chmod(self.mecab_bin, 0o755)
 
         if self.mecab_process is None:

@@ -78,7 +78,7 @@ class CardTypeData(metaclass=CardTypeDataMeta):
     def upsert_model(self):
 
         # Get or create model
-        model = aqt.mw.col.models.byName(self.model_name)
+        model = aqt.mw.col.models.by_name(self.model_name)
         if model is None:
             model = aqt.mw.col.models.new(self.model_name)
 
