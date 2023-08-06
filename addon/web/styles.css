@@ -117,8 +117,8 @@ body.dark {
 	color: #fff;
 }
 
-body.ankidroid_dark_mode,
-body.nightMode,
+body.ankidroid_dark_mode img,
+body.nightMode img,
 body.dark img {
 	filter: invert(99%) sepia(50%) saturate(2%) hue-rotate(181deg) brightness(114%) contrast(101%);
 }
@@ -2185,8 +2185,8 @@ button.primitive img {
 	filter: invert(99%) sepia(50%) saturate(2%) hue-rotate(181deg) brightness(114%) contrast(101%);
 }
 
-.ankidroid_dark_mode button.primitive,
-.nightMode button.primitive,
+.ankidroid_dark_mode button.primitive img,
+.nightMode button.primitive img,
 .dark button.primitive img {
 	filter: invert(19%) sepia(7%) saturate(2109%) hue-rotate(184deg) brightness(88%) contrast(81%);
 }
