@@ -1,0 +1,1186 @@
+Kanji	Field	OldValue	NewValue	Comment
+# Default values for primitives from shadow version of Migaku kanji db excel sheet
+砦	primitives		此石
+禽	primitives		𠆢离
+檎	primitives		木禽
+燐	primitives		火粦
+麟	primitives		鹿粦
+鱗	primitives		魚粦
+掩	primitives		扌奄
+悛	primitives		心夋
+駿	primitives		馬夋
+峻	primitives		山夋
+竣	primitives		立夋
+犀	primitives	尸牛	尸[i_ching]丨牛
+皐	primitives	白十	白[i_ching]十
+畷	primitives		田叕
+鎧	primitives		金豈
+凱	primitives		豈几
+韮	primitives		艹韭
+芻	primitives	勹屮	勹屮勹屮
+趨	primitives		走芻
+云	primitives		二厶
+而	primitives		一丿冂丨
+倦	primitives	人卷	人巻
+佃	primitives		人田
+仔	primitives		人子
+仇	primitives		人九
+伽	primitives		人加
+僑	primitives		人喬
+倶	primitives		人具
+侃	primitives		人口川
+偲	primitives		人思
+侭	primitives		人尽
+脩	primitives		人丨攵肉
+倅	primitives		人卒
+做	primitives		人故
+冴	primitives		冫牙
+凋	primitives		冫周
+凌	primitives	冫夌	冫圥夂
+鳳	primitives		几一鳥
+剽	primitives		票刀
+劉	primitives	刀金刀	[receipt]刀金刀
+厭	primitives	厂猒	厂日月犬
+雁	primitives		厂人隹
+贋	primitives		雁貝
+厨	primitives		厂豆寸
+仄	primitives		厂人
+咎	primitives		夂人口
+啄	primitives		口豕
+吻	primitives		口勿
+吃	primitives		口乞
+噺	primitives		口新
+噌	primitives	口曾	口曽
+邑	primitives		口巴
+喰	primitives		口食
+埴	primitives		土直
+坤	primitives		土申
+壕	primitives		土豪
+坦	primitives		土旦
+埠	primitives		土阜
+堰	primitives	土匽	土匚日女
+堵	primitives		土者
+姦	primitives	女奻	女女女
+婢	primitives		女卑
+婉	primitives		女宛
+娼	primitives		女昌
+妓	primitives		女支
+娃	primitives		女圭
+姪	primitives		女至
+嬬	primitives		女需
+姥	primitives		女老
+姑	primitives		女古
+姐	primitives		女且
+孕	primitives		乃子
+孜	primitives		子攵
+宥	primitives		宀有
+寓	primitives		宀禺
+宋	primitives		宀木
+屠	primitives		尸者
+屁	primitives		尸比
+屡	primitives	尸娄	尸米女
+屍	primitives		尸死
+嵩	primitives		山高
+崚	primitives	山夌	山圥夂
+嶺	primitives		山領
+嵌	primitives		山甘欠
+帖	primitives		巾占
+庖	primitives		广包
+廓	primitives		广郭
+庇	primitives		广比
+庄	primitives		广土
+廟	primitives		广朝
+彊	primitives	弓畺	弓一田一田一
+弛	primitives		弓也
+粥	primitives	弓米	弓米弓
+挽	primitives	手免	扌免
+撞	primitives	手童	扌童
+扮	primitives	手分	扌分
+捏	primitives		手日土
+捺	primitives		手奈
+掻	primitives	手又虫	扌又虫
+撰	primitives	手巽	扌己己共
+捌	primitives	手別	扌別
+按	primitives	手安	扌安
+揖	primitives	手咠	扌口耳
+托	primitives	手乇	扌乇
+撚	primitives	手然	扌然
+挺	primitives	手廷	扌廷
+擾	primitives	手憂	扌憂
+擢	primitives	手翟	扌羽隹
+摺	primitives	手習	扌習
+捷	primitives	手疌	扌ヨ走
+抉	primitives	手夬	扌夬
+怯	primitives		心去
+惟	primitives		心隹
+怜	primitives		心令
+惇	primitives		心享
+恰	primitives		心合
+恢	primitives		心灰
+悌	primitives		心弟
+澪	primitives		水零
+洸	primitives		水光
+滉	primitives	水晃	水日光
+漱	primitives	水欶	水束欠
+洵	primitives		水旬
+滲	primitives	水參	水厶厶参
+沐	primitives		水木
+泪	primitives		水目
+渾	primitives		水軍
+涜	primitives		水売
+澱	primitives		水殿
+洛	primitives		水各
+汝	primitives		水女
+漉	primitives		水鹿
+瀕	primitives	水頻	水頻
+溌	primitives		水発
+湊	primitives		水奏
+淋	primitives		水林
+浩	primitives		水告
+汀	primitives		水丁
+鴻	primitives		水工鳥
+湛	primitives		水甚
+渥	primitives		水屋
+灘	primitives	水難	水難
+汲	primitives		水及
+瀞	primitives	水靜	水静
+沌	primitives		水屯
+淀	primitives		水定
+涅	primitives		水日土
+斧	primitives		父斤
+猾	primitives		犬骨
+狡	primitives		犬交
+狸	primitives		犬里
+狽	primitives		犬貝
+狗	primitives		犬句
+狐	primitives		犬瓜
+狛	primitives		犬白
+獅	primitives		犬師
+狒	primitives		犬弗
+莨	primitives		艹良
+茉	primitives		艹末
+苺	primitives		艹母
+萩	primitives		艹秋
+藝	primitives	蓺云	艹圥土丸云
+薙	primitives		艹雉
+蓑	primitives		艹衰
+苔	primitives		艹台
+蕩	primitives		艹湯
+蔓	primitives		艹曼
+芙	primitives		艹夫
+蓉	primitives		艹容
+薯	primitives		艹署
+菖	primitives		艹昌
+蕉	primitives		艹焦
+蕎	primitives		艹喬
+蕗	primitives		艹路
+茄	primitives		艹加
+蓬	primitives	艹逢	艹夂丰辶
+芥	primitives		艹介
+葡	primitives	艹匍	艹勹甫
+萄	primitives	艹匋	艹勹缶
+蕃	primitives		艹番
+苓	primitives		艹令
+菰	primitives		艹孤
+茅	primitives		艹矛
+芭	primitives		艹巴
+苅	primitives		艹刈
+葵	primitives	艹癸	艹癶天
+葺	primitives	艹咠	艹口耳
+蕊	primitives	艹惢	艹心心心
+茸	primitives		艹耳
+芹	primitives		艹斤
+苫	primitives		艹占
+蒼	primitives		艹倉
+藁	primitives	艹槀	艹高木
+蕪	primitives		艹無
+藷	primitives	艹諸	艹言者
+薮	primitives		艹数
+蒜	primitives	艹祘	艹示示
+蕨	primitives	艹厥	艹厂屰欠
+蔚	primitives		艹尉
+茜	primitives		艹西
+莞	primitives		艹完
+蒐	primitives		艹鬼
+菅	primitives		艹官
+葦	primitives		艹韋
+迪	primitives		辶由
+辿	primitives		辶山
+迂	primitives		辶于
+遁	primitives		辶盾
+逼	primitives		辶畐
+逗	primitives		辶豆
+隕	primitives		阜員
+憑	primitives	馮心	冫馬心
+惹	primitives		若心
+悉	primitives		釆心
+惣	primitives		物心
+恕	primitives		如心
+昴	primitives	日卯	日[receipt]卩
+晟	primitives		日成
+暈	primitives		日軍
+暉	primitives		日軍
+旱	primitives		日干
+晏	primitives		日安
+晨	primitives		日辰
+晒	primitives		日西
+曝	primitives		日暴
+昂	primitives	日卬	日匚卩
+昏	primitives		氏日
+晦	primitives		日毎
+膿	primitives		肉農
+腑	primitives		肉府
+胱	primitives		肉光
+胚	primitives	肉丕	肉不一
+肛	primitives		肉工
+脆	primitives		肉危
+肋	primitives		肉力
+腔	primitives		肉空
+肱	primitives	肉厷	肉𠂇厶
+楓	primitives		木風
+椋	primitives		木京
+榛	primitives	木秦	木𡗗禾
+櫛	primitives		木節
+樵	primitives		木焦
+梯	primitives		木弟
+柑	primitives		木甘
+杭	primitives		木亢
+柊	primitives		木冬
+柚	primitives		木由
+椀	primitives		木宛
+栂	primitives		木母
+柾	primitives		木正
+榊	primitives	木神	木神
+樫	primitives		木堅
+槙	primitives		木真
+楢	primitives	木酋	木丷酉
+橘	primitives	木矞	木矛冂儿口
+桧	primitives		木会
+棲	primitives		木妻
+栖	primitives		木西
+桔	primitives		木吉
+杜	primitives		木土
+梶	primitives		木尾
+杵	primitives		木午
+櫓	primitives	木魯	木魚日
+橿	primitives	木畺	木一田一田一
+杓	primitives		木勺
+棉	primitives	木帛	木白巾
+楯	primitives		木盾
+榎	primitives		木夏
+樺	primitives		木華
+槍	primitives		木倉
+柘	primitives		木石
+枇	primitives		木比
+橇	primitives	木毳	木毛毛毛
+槃	primitives		般木
+栞	primitives	幵木	干干木
+椰	primitives	木耶	木耳⻏
+檀	primitives	木亶	木亠回旦
+樗	primitives	木雩	木雨一丂
+椙	primitives		木昌
+彬	primitives	林彡	木杉
+桶	primitives	木甬	木マ用
+楕	primitives		木左肉
+樒	primitives		木密
+毬	primitives		毛求
+燿	primitives	火翟	火羽隹
+燎	primitives		火尞
+炬	primitives		火巨
+灸	primitives		久火
+煽	primitives		火扇
+煤	primitives		火某
+煉	primitives	火柬	火東
+燦	primitives	火粲	火卜夕又米
+灼	primitives		火勺
+烙	primitives		火各
+焔	primitives		火勹旧
+烹	primitives	亨火	高了火
+牝	primitives		牛匕
+牡	primitives		牛土
+琳	primitives		王林
+琉	primitives	王㐬	王𠫓川
+瑳	primitives		王差
+珊	primitives		王冊
+玖	primitives		王久
+畦	primitives		田圭
+痒	primitives		疒羊
+痰	primitives		疒炎
+疹	primitives	疒㐱	疒𠆢彡
+痔	primitives		疒寺
+眸	primitives		目牟
+雉	primitives		矢隹
+矩	primitives		矢巨
+碇	primitives		石定
+硯	primitives		石見
+砥	primitives		石氐
+碍	primitives	石㝵	石旦寸
+碩	primitives		石頁
+砺	primitives		石厂万
+碓	primitives		石隹
+禦	primitives		御示
+祷	primitives		示寿
+祇	primitives		示氏
+祢	primitives	示尓	示𠂉小
+禎	primitives		示貞
+秤	primitives		禾平
+禿	primitives		禾儿
+稗	primitives		禾卑
+穣	primitives		禾㐮
+穆	primitives		禾泉彡
+窺	primitives		穴規
+窄	primitives		穴乍
+穿	primitives		穴牙
+竃	primitives		穴土日亀
+竪	primitives	臤立	臣又立
+颯	primitives		立風
+站	primitives		立占
+妾	primitives		立女
+袷	primitives		衤合
+袴	primitives	衤夸	衤大一丂
+襖	primitives	衤奧	衤奥丿
+笙	primitives		竹生
+簾	primitives		竹廉
+箪	primitives		竹単
+箆	primitives	竹冂人比	竹冂𠆢比
+箔	primitives		竹泊
+笥	primitives		竹司
+箭	primitives		竹前
+筑	primitives	竹巩	竹工凡
+纂	primitives		竹目大糸
+竺	primitives		竹二
+箕	primitives		竹其
+笈	primitives		竹及
+簸	primitives		竹其皮
+粕	primitives		米白
+糟	primitives		米曹
+籾	primitives	米刄	米刃
+糠	primitives		米康
+粟	primitives		西米
+綸	primitives	糸侖	糸亼冊
+緋	primitives		糸非
+綜	primitives		糸宗
+絢	primitives		糸旬
+紬	primitives		糸由
+綺	primitives		糸奇
+絃	primitives		糸玄
+綬	primitives		糸受
+聘	primitives	耳甹	耳由丂
+耽	primitives		耳冘
+蚤	primitives		又丶丶虫
+蟄	primitives		執虫
+蝿	primitives	虫日亀	虫亀
+蟻	primitives		虫義
+蝋	primitives	虫鼠	虫⺍几[cornstalk]
+蛸	primitives		虫肖
+螺	primitives		虫累
+蝉	primitives		虫単
+蛙	primitives		虫圭
+蛾	primitives		虫我
+蛤	primitives		虫合
+蛭	primitives		虫至
+蛎	primitives		虫厂万
+罫	primitives	罒卦	罒圭卜
+袈	primitives		加衣
+詢	primitives		言旬
+諄	primitives		言享
+讐	primitives		隹隹言
+諌	primitives		言東
+諒	primitives		言京
+讃	primitives		言賛
+訣	primitives		言夬
+誼	primitives		言宜
+謬	primitives	言翏	言羽𠆢彡
+訝	primitives		言牙
+誹	primitives		言非
+謂	primitives		言胃
+註	primitives		言主
+譬	primitives		辟言
+轟	primitives	車	車車車
+輔	primitives		車甫
+輻	primitives		車畐
+輯	primitives	車咠	車口耳
+豹	primitives		豸勺
+賎	primitives		貝㦮
+贖	primitives		貝賣
+躓	primitives		足質
+蹄	primitives		足帝
+蹟	primitives		足責
+跨	primitives	足夸	足大一丂
+跪	primitives		足危
+醍	primitives		酉是
+醐	primitives	酉胡	酉古月
+醇	primitives		酉享
+麹	primitives	麦匊	麦勹米
+釦	primitives		金口
+銚	primitives		金兆
+鋤	primitives		金助
+鋸	primitives		金居
+錐	primitives		金隹
+鍬	primitives		金秋
+鋲	primitives		金兵
+錫	primitives		金易
+錨	primitives		金苗
+鑓	primitives		金遣
+鋒	primitives	金夆	金夂丰
+鎚	primitives		金追
+鉦	primitives		金正
+鍾	primitives		金重
+鋏	primitives	金夾	金大从
+閃	primitives		門人
+悶	primitives		門心
+閤	primitives		門合
+雫	primitives		雨下
+翰	primitives	𠦝人羽	𠦝𠆢羽
+斡	primitives	𠦝人斗	𠦝𠆢斗
+鞍	primitives		革安
+鞭	primitives		革便
+鞘	primitives		革肖
+靭	primitives		革刃
+鞠	primitives	革匊	革勹米
+顛	primitives		真頁
+穎	primitives		匕禾頁
+頗	primitives		皮頁
+頌	primitives		公頁
+頚	primitives		圣頁
+餐	primitives	歺又食	卜夕又食
+蝕	primitives		食虫
+飴	primitives		食台
+駕	primitives		加馬
+騨	primitives		馬単
+駁	primitives	馬爻	馬乂乂
+駈	primitives		馬丘
+驢	primitives	馬盧	馬虎田皿
+鰻	primitives		魚曼
+鯛	primitives		魚周
+鰯	primitives		魚弱
+鱒	primitives		魚尊
+鮭	primitives		魚圭
+鮪	primitives		魚有
+鮎	primitives		魚占
+鯵	primitives		魚参
+鱈	primitives		魚雪
+鮫	primitives		魚交
+鰹	primitives		魚堅
+鰍	primitives		魚秋
+鰐	primitives	魚咢	魚口口一丂
+鮒	primitives		魚付
+鮨	primitives		魚旨
+鰭	primitives	魚耆	魚老日
+鴎	primitives		区鳥
+鵬	primitives		朋鳥
+鸚	primitives		嬰鳥
+鵡	primitives		武鳥
+鷺	primitives		路鳥
+鳶	primitives		弋鳥
+梟	primitives	木	鳥木
+麒	primitives		鹿其
+舅	primitives		臼男
+鑿	primitives	丵臼殳金	並丨臼殳金
+艘	primitives	舟叟	舟臼丨又
+瞑	primitives		目冥
+暝	primitives		日冥
+朔	primitives	屰肉	屰月
+彗	primitives	丰彐	丰丰ヨ
+慧	primitives		彗心
+爾	primitives	一八冂丨爻爻	丁八冂叕
+兇	primitives		凶儿
+靄	primitives		雨謁
+劫	primitives		去力
+歎	primitives	廿口夫欠	𦰩欠
+翠	primitives		羽卒
+黛	primitives		代黒
+鼎	primitives	目	目片
+鹵	primitives	卜囗乂丶	卜囗乂丶丶丶丶
+鹸	primitives		鹵㑒
+牌	primitives		片卑
+齟	primitives		齒且
+齬	primitives		齒吾
+秦	primitives	三人禾	𡗗禾
+耀	primitives	光翟	光羽隹
+夷	primitives		大弓
+嚢	primitives	一中冖八井	十中冖八[celery]𧘇
+欣	primitives		斤欠
+毅	primitives	豙殳	立豕殳
+斯	primitives		其斤
+匡	primitives		匚王
+肇	primitives		戸攵聿
+麿	primitives		麻呂
+叢	primitives	丵取	並土取
+肴	primitives		乂有
+斐	primitives		非文
+翫	primitives		習元
+套	primitives		大長
+叛	primitives		半反
+叡	primitives	睿又	卜冖一谷目又
+酋	primitives	八酉	丷酉
+鴬	primitives	⺍冖鳥	[schoolhouse]鳥
+赫	primitives	赤	赤赤
+臥	primitives		臣人
+甥	primitives		生男
+瓢	primitives		票瓜
+琵	primitives	玨比	王王比
+琶	primitives	玨巴	王王巴
+叉	primitives		又丶
+乖	primitives		千北
+圃	primitives		囗甫
+疏	primitives	疋㐬	疋𠫓川
+膏	primitives		高肉
+魁	primitives		鬼斗
+馨	primitives	殸香	声殳香
+瞥	primitives		敝目
+睾	primitives	丿睪	丿罒幸
+巫	primitives		工从
+奎	primitives		大圭
+皓	primitives		白告
+黎	primitives	禾勹丿人水	禾勹丿𠆢米
+祟	primitives		出示
+甦	primitives		更生
+剪	primitives		前刀
+躾	primitives		身美
+夥	primitives		果多
+鼾	primitives		鼻干
+陀	primitives	阜它	⻖宀匕
+糎	primitives		米厘
+噸	primitives		口頓
+哩	primitives		口里
+浬	primitives		水里
+吋	primitives		口寸
+呎	primitives		口尺
+梵	primitives		林凡
+薩	primitives		艹⻖産
+唖	primitives		口亜
+牟	primitives		厶牛
+迦	primitives		辶加
+珈	primitives		王加
+琲	primitives		王非
+檜	primitives		木會
+轡	primitives	糸車口	糸車糸口
+伍	primitives		人五
+什	primitives		人十
+萬	primitives		艹禺
+邁	primitives		辶萬
+燭	primitives	火蜀	火罒勹虫
+逞	primitives		辶呈
+燈	primitives		火登
+薗	primitives		艹園
+鋪	primitives		金甫
+嶋	primitives		山鳥
+峯	primitives	山夆	山夂丰
+寵	primitives		宀龍
+聾	primitives		龍耳
+慾	primitives		欲心
+脛	primitives	肉巠	肉一川工
+勁	primitives	巠力	一川工力
+祀	primitives		示巳
+祓	primitives	示友丶	示犬丿
+躇	primitives		足著
+壽	primitives	士工一吋	士一工一口吋
+躊	primitives		足壽
+饅	primitives		食曼
+嘔	primitives		口區
+鼈	primitives		敝黽
+曽	primitive_alternatives		曾
+# primitive alternatives from  RTK 3 chapter 6
+会	primitive_alternatives		會
+## Errata and additions to default values above. Also many separate fixes included
+長	primitive_keywords		hair, mane
+回	primitive_keywords		rotation
+少	primitives	小丶丿	小丶
+夜	heisig_comment		Editor's note: There should be indeed the 'evening' primitive present: The (insert here your favourite protagonist) doesn't often go spend the <b>night</b> out, but when he (she) does, he dresses up and puts on the <i>top hat</i>.  It's a blast, and the <i>evening</i> passes by quickly until it's over (underlined by that one extra diagonal slope across the 'evening')
+単	primitives	小田十	⺍田十
+久	primitive_keywords		mummy
+久	heisig_story	This character uses the diagonal sweep of the second stroke to double up for <i>bound up</i> and a <i>person</i>. Think of a mummy, and the key word will not be far behind.	This character uses the diagonal sweep of the second stroke to double up for <i>bound up</i> and a <i>person</i>. Think of a <b>mummy</b>, and the key word will not be far behind.
+求	primitives	一丶米	弋米
+厳	primitives	小厂敢	⺍厂敢
+叉	heisig_comment		This character, incidentally, is used in the word for “tuning fork.”
+龍	heisig_comment		The older form 龍 (1.536) was actually learned in vol. 1 in connection with the character for attack 襲 (1.2025), and will appear in the following frame as well. This older form is still used widely today. In addition to the new characters in the following two frames, note the following example also already learned: 瀧 (old form) vs 滝 (modern abbreviation)
+那	heisig_story	<i>Sword</i> . . . <i>two</i> . . . <i>city walls</i>. Used classically to indicate an <b>interrogative</b> part of speech, this character is used chiefly now for its sound.	<u>Sword</u> . . . <u>two</u> . . . <i>city walls</i>. Used classically to indicate an <b>interrogative</b> part of speech, this character is used chiefly now for its sound.
+那	heisig_comment		Editor's note: This is a phonetic character. The signal primitive providing the sound is underlined.
+綾	primitives	糸夌	糸圥夂
+添	primitives	水天心	水夭心
+添	heisig_story	Water . . . heavens . . . valentine.	Water . . . witch . . . valentine.
+輸	primitives	車亼刖	車[butchers]
+凛	primitives	冫禀	冫亠回示
+亀	heisig_comment	When this kanji is abbreviated to its bottom half ([eel]), it takes the primitive meaning of an eel. When only the first two strokes are omitted ([bucket_of_eels), it will mean a bucket of eels. Examples of this latter will not appear until Vol. 3.	When this kanji is abbreviated to its bottom half ([eel]), it takes the primitive meaning of an eel. When only the first two strokes are omitted ([bucket_of_eels], it will mean a bucket of eels. Examples of this latter will not appear until Vol. 3.
+冴	heisig_comment		The sense of this key word is broad enough to include “bright,” “clear,” and “on one’s toes.”
+嶋	heisig_story		mountain . . . bird. [14]
+嶋	heisig_comment		The alternate form is used mainly in names. It differs from the stan- dard form 島 only in the positioning of the mountain.
+塞	heisig_comment		Editor's note: Compare to 'cold' (#1526 寒)
+哉	heisig_comment		The sense of the key word is as in sentences such as “I wonder when it will arrive.” The character, however, is used now only in poetry and names.
+鷹	primitives	广鳥	广人隹鳥
+餌	heisig_story	<i>Food</i> . . . <i>ear</i>. The sense of the key word here is that of bait or <b>feed</b> for animals.	<i>Food</i> . . . <i>ear</i>.
+餌	heisig_comment		The sense of the key word here is that of bait or <b>feed</b> for animals.
+卿	primitives	卽	艮卯
+卿	heisig_story		silver in the middle of . . . the sign of the hare. [12]
+瑚	primitives	王胡	王古月
+亮	primitives	亠口冖儿	高冖儿
+儲	heisig_comment		If it helps, you can also read the primitives as believe . . . puppet.
+愉	primitives	心亼刖	心[butchers]
+萬	heisig_story		flower . . . Talking Cricket. [18]
+萬	heisig_comment		This is also used in documents, but is more common as a character in its own right. When it appears as a primitive forming a part of other characters, it is normally abbreviated to the form 万. In addition to the new character in the following frame, note the following examples:  蠣 and 勵 (old forms) vs 蛎 and 励 (modern abbreviations)
+叱	primitives	口匕	口七
+兎	primitives		丶日儿丶
+瑞	primitives	王耑	王山而
+耶	heisig_comment		The key word here was used classically for general exclamation.
+爺	primitives	父耶	父耳⻏
+遥	primitives	爪缶辶	[condor]辶
+巴	heisig_comment		The primitive meaning learned in vol. 1, mosaic, is close to the mean- ing of the original character here, which is the shape of a “comma” used in heraldic designs, the most familiar of which has 3 “commas” swirling around each other. (If it is any help in remembering the character, one of the older meanings is an “elephant-eating snake.”) [4]
+雀	heisig_comment		The last stroke of few doubles up with the first stroke of turkey.
+膝	heisig_comment		Compare the right side of this character with 漆 (1.932).
+惚	primitives	心忽	心勿心
+傭	primitives		人庸
+燈	heisig_story		fire . . . ascend. [16]
+燈	heisig_comment		The primitive at the right of this character is generally, though not always, abbreviated today as 灯 (1.165). The older form of the primitive to the right is still standard in other characters, such as 澄 (1.1704).
+刹	heisig_story	The key word here is the noun meaning "a breif moment." Its elements: <i>sheaf</i> . . . <i>tree</i> . . . <i>saber</i>.	The key word here is the noun meaning "a brief moment." Its elements: <i>sheaf</i> . . . <i>tree</i> . . . <i>saber</i>.
+伍	heisig_comment		This character, originally meaning a group of 5 persons, is now used as an alternate form of the character 五, mainly in official documents.
+僅	primitives	人廿口龶	人[cabbage]
+郁	primitives		有⻏
+脊	primitives	人𠆢二二肉	𠆢[i_ching]月
+脊	heisig_comment	Editors note: It seems the first element here is in fact <i>person 人<i/> instead of <i>umbrella 𠆢<i/> but keeping both references.	Editors note: It seems the first element here is in fact <i>person 人<i/> instead of <i>umbrella 𠆢<i/> so listing the former as an alternative primitive.
+爽	primitives	大乂乂乂乂	大爻爻
+鏑	primitives		金啇
+苺	heisig_story		flowers . . . mother. [8]
+苺	heisig_comment		Note that the element for mother is written in its full form, not the normal abbreviated form it usually takes when used as a primitive. To help remember this, think of the original pictographic image of the “two breasts of the mother.”
+夾	primitives		大从
+燕	heisig_story		twenty . . . two people back to back . . . mouth . . . oven-fire.
+燕	heisig_comment		The swallow referred to here is the bird. [16]
+巾	heisig_comment		If we allow the full range of original meanings for the English word towel, which includes cleaning cloths, covering cloths, and strips of cloth used in clothing, we can keep the primitive meaning for the key word here. [3]
+棘	heisig_comment		This character is no different in meaning from the character already learned for thorn 刺 (1.417). The only difference in writing is the repetition of the element composed of tree and belt. (Incidentally, that element on its own 朿 has the same meaning of thorn, though it is far less commonly seen.) [12]
+胡	heisig_story		old . . . moon. [9]
+胡	heisig_comment		This character referred in China to foreigners, especially those to the north and south of the “civilized” peoples who controlled the meaning of the characters. See frame 2881 (夷 ebisu) for the Japanese equivalent.
+弄	primitives	玉开	王开
+弄	heisig_story	Jewel . . . two hands.	King . . . two hands.
+夷	heisig_story		great . . . bow. [6] (Editor's note: The stroke order actually insinuates one... bow.. person...)
+夷	heisig_comment		<b>Ebisu</b> is a Japanization of the Ainu word <i>enchu</i> which means “person.” In former times, it was used to mean any of the “uncivilized” people living north of the area of present-day Tokyo.
+淵	heisig_story		On the left is the water and on the right a combination of the character for one-sided and its mirror image joined by a single stroke. Think of it as a hanging rope-bridge strung perilously across the abyss. [12] The newer form for this character is 渕, which was learned above in frame 2325.
+玖	heisig_story		jewel . . . mummy. [7]
+玖	heisig_comment		The key word jet refers to the dark black lignite whose susceptibility to high polish makes it popular in ornamentation (and which also gives us the phrase “jet-black”).
+麟	heisig_comment		The camelopard is a motley-colored mythical creature from Chinawith the body of a deer, the tail of a cow, and the crest and claws of abird.
+壕	heisig_comment		Compare 濠 (frame 2306).
+莫	heisig_comment		The key word here is meant to suggest the “Thou shalt” and “Thou shalt not” of the commandments. [10]
+噌	heisig_story		mouth . . . increase. [14]
+噌	heisig_comment		Miso is the fermented soybean paste commonly used in Japanese cooking as a base for soups and stews. Editor's note: The right side looks very different depending on the font and source. Heisig's book uses here the simpler form of 'increase' 曽 primitive but the miso kanji    seems to be using more archaic 曾 which has 'eight' instead of 'animal horns' and the 'rice field' is more complex as well.
+箋	heisig_comment		The standard abbreviation one would have expected here—and which is likely to appear in official lists in the years ahead—appears in the fol- lowing examples of common newer forms you already know: 踐,棧,錣,賤 (old forms) vs 践, 桟, 銭, 賎 (modern abbreviations).
+牽	primitives	玄牛	玄冖牛
+牽	heisig_story		mysterious . . . crown . . . cow. [11]
+牽	heisig_comment		Write the crown after the first stroke of that for mysterious.
+逢	primitives	夂三丨辶	夂丰辶
+諭	primitives	言亼刖	言[butchers]
+煉	heisig_comment		Editor's note: Here the right part is the alternate form 柬 or 'east' (東)
+逞	heisig_story		display . . . road. [11]
+逞	heisig_comment		Note that, as in the previous frame, the element for road has an extra stroke generally omitted in more common characters. When writing this character, it is not incorrect to use the standard form of the primitive element.
+諏	primitives		言取
+祓	heisig_story		altar . . . chihuahua with an extra leg. [10]
+祓	heisig_comment		Think of the “five-legged” dog here as some kind of an evil spirit that has to be driven out, and the odd shape should be easy to remember.
+琲	heisig_story		jewel . . . un-. [12]
+琲	heisig_comment		These two characters (珈 and 琲) , taken together, are the Chinese phonetic transliterations of the English word coffee, which is the principal form in which you are likely to meet them today. The key words, however, are drawn from their classical meanings.
+牟	heisig_story		<u>elbow</u> . . . cow. [6]
+牟	heisig_comment		This is the character classically used for the sound that a cow makes. Editor's note: This is a phonetic character. The signal primitive providing the sound is underlined.
+嚢	heisig_story		needle . . . middle . . . crown . . . eight . . . celery . . . scarf. [19]
+嚢	heisig_comment		Note how the elements for needle and middle share a common, vertical stroke in this particularly complex character. Editor's note: The girl was wearing a <i>grass skirt</i>, but she couldn't fit the <i>top hat</i> on because she had a <i>one</i> giant <b>cyst</b> in the <i>middle</i> of her head, like a <i>crown</i>
+鼠	primitives	臼	臼[plow]丶丶丶丶[plow]乙
+鼠	heisig_story		mortar . . . two plows . . . four drops . . . hook. [13]
+陀	heisig_story		pinnacle . . . <u>house</u> . . . <u>spoon</u>. [7]
+陀	heisig_comment		This character, originally meaning “precipitous” (roughly the same as the character of that key word already learned 険 (1.1672), is now used chiefly for its sound. It forms part of the transliteration of the name of the Buddha; hence the key word. Editor's note: This is a phonetic character. The signal primitive providing the sound is underlined.
+卜	primitives		丨丶
+喩	primitives	口亼刖	口[butchers]
+懺	primitives	人心戈韭	心从戈韭
+膏	heisig_comment		Note how the element tall is compressed in order to fit on top.
+葱	primitives	艹忽丶	艹勿丶心
+霞	primitives	雨又	雨叚
+霞	heisig_comment		weather . . . hobby. [17]
+嘔	heisig_story		mouth . . . ward. [14]
+嘔	heisig_comment		The standard abbreviation of the element to the right can be seen from the following examples: 區, 歐, 毆 (old forms) vs 区, 欧, 殴 (modern abbreviations)
+遡	primitives	屰月辶	朔辶
+馮	primitives		冫馬
+禄	heisig_comment		In the same way that Roman soliders were paid in salt (hence the word salarium), ranking functionaries in Japan’s feudal system collected their “salary” in rice.
+唄	heisig_comment		This character was originally used to indicate songs accompanied by the shamisen but now most commonly refers to pop songs.
+輿	primitives	臼車八	車興
+輿	heisig_comment		Think of this character as entertainment with a car since the only difference between it and the character for entertainment is the substitution of the element for car in place of same. [17]
+劫	heisig_comment		A kalpa is a mythical measure of time (something over 4 billion years) used in ancient India and today mainly in classic Buddhist texts
+梟	heisig_story		bird . . . tree. [11]
+梟	heisig_comment		Note that the “tail feathers” of the bird disappear (or are replaced by) the tree. This is the only occasion in the kanji in which the element for bird is so altered.
+髭	primitives	髟此	長彡此
+璽	primitives	璽	爾玉
+國	heisig_story		pent-up . . . a. [11]
+國	heisig_comment		The element that replaces jewel in the standard form of this character 国 (1.581) is among the new kanji learned in this book (see frame 2091 above).
+亥	primitives	亥	亠厶人
+妓	heisig_comment		Take care not to confuse with harlot in the previous frame.
+躊	heisig_story		wooden leg . . . longevity. [14]
+躇	heisig_story		wooden leg . . . renowned. [19]
+躇	heisig_comment		The old form here is the element puppet which forms part of the primitive for renowned here. The difference is the addition of a final drop. This has generally disappeared today, as in the following examples: 堵, 渚, 曙, 箸 (old forms) vs 堵, 渚, 曙, 箸 (modern abbreviations).  Editor's note: It's not possible to show the old vs new versions due to discrepancies by fonts used.
+鱗	heisig_comment		The scales referred to are those found on fish, dragons, and so forth.
+宍	heisig_comment		This character is used for the meat of wild animals in general, particularly boar and deer—hence the choice of the key word.
+晋	primitives	日並业一	日並
+叡	heisig_story		wand . . . crown . . . ceiling . . . valley with eye (instead of mouth) . . . crotch. [16]
+叡	heisig_comment		In order to remember the change in the element for valley, think of the clear-seeing eye that distinguishes homo sapiens.
+昴	heisig_story		sun . . . receipt . . . stamp. [9]
+昴	heisig_comment		Although this character is not essentially different in connotation from 昂 (frame 2449), it is used chiefly now in names.
+纏	primitives	糸廛	糸广里儿土
+挺	heisig_comment		This character is for counting scissors, guns, inksticks, oars, etc.
+睾	heisig_story		blood . . . happiness. [14].  Editor's note: Should be in fact 'drop'.. 'net/eye'... 'happiness'...
+粕	heisig_comment		The key word here refers to the sediment left in making rice saké. Its meaning is substantially the same as the character in the following frame.
+薩	heisig_story		flowers . . . pinnacle . . . <u>products</u>. [16]
+薩	heisig_comment		Although this character can be used as an abbreviation of bodhisattva, the full writing combines it with that in the following frame. Both of them are transliterations of Sanskrit terms. Editor's note: This is a phonetic character. The signal primitive providing the sound is underlined.
+燭	heisig_story		fire . . . net . . . bound up . . . insect. [17]
+燭	heisig_comment		fire . . . net . . . bound up . . . insect. [17]
+隈	primitives	⻖畏	⻖田[hairpin]
+綴	primitives	糸又又又又	糸叕
+檜	heisig_story		tree . . . umbrella . . . one . . . pent-in . . . small . . . sun. [11]
+檜	heisig_comment		The right side of this character looks rather more formidable than it is. The tricky part lies in the elements that have been described as “pent-in . . . small.” (The latter element you will remember from the element for outhouse 脾 or candle 肖.) The combination, when it appears in other characters, is generally abbreviated to the shape of the element for sun. In any case, drawing the shape will show it to be quite natural.
+薮	heisig_story		flowers . . . number. [16]
+薮	heisig_comment		The key word here refers to a medic of questionable reputation. It does not, however, carry the original meaning of the German term: a doctor who used water to cure.
+慧	heisig_comment		Note that the second stroke on the element for broom does not pass through as it does in the character for comet. A similar change takes place in the character 急. It would be nice if it were possible to make a rule for this kind of transformation, but the evolution of the kanji has not been consistent on this point.
+筈	heisig_comment		The sense of the key word here is not one of moral obligation (as we saw in 莫, frame 2105) but rather of something that is “expected” of one.
+錆	heisig_comment		Since Chinese and Japanese distinguish blue and green differently from European languages, it is not surprising that the verdigris that occurs on copper is here indicated by the element for blue.
+碗	heisig_comment		This is a teacup made out of stone. When it is made out of wood, it is written 椀 (see frame 2487).
+菩	heisig_story		flowers . . . <u>vase</u> . . . <u>mouth</u>. [11]
+菩	heisig_comment		Editor's note: This is a phonetic character. The signal primitive providing the sound is underlined.
+坤	heisig_comment		In Chinese astrology and divining, this character refers to “the earthly” and stands counter to 乾 as the “moist” against the “dry.”
+絃	heisig_comment		The sense of the key word is that of “strings” used for stringed instru- ments, which are not necessarily the intestines of cats.
+袴	heisig_comment		This kanji describes the formal divided skirt or hakama that you might see university students wearing at graduation. For the right side, com- pare 誇 (1.1244).
+狛	heisig_story		pack of wild dogs . . . white. [8]
+狛	heisig_comment		The a-un are lion-like dogs that often grace the front of temples or public buildings in Japan. Their name comes from the first and last letters of the Sanskrit alphabet (transliterated in Japanese as 阿呍) and symbolize a wholeness as in the English phrase “alpha and omega.”
+檀	heisig_story		tree . . . top hat . . . rotation . . . night break. [17]
+檀	heisig_comment		Compare the right side to 壇 (1.587).
+迦	heisig_story		<u>add</u> . . . road. [8]
+迦	heisig_comment		This kanji is used to represent the sound “ka” when transcribing words from Sanskrit. Editor's note: This is a phonetic character. The signal primitive providing the sound is underlined.
+禎	heisig_comment		This kanji refers to a sign or token of congratulations.
+胤	heisig_comment		human legs surrounding a cocoon and flesh. [9]
+瀞	heisig_comment		Editor's note: Notice how the 'bound up' in top right corner changes to something that resembles 'vulture'.
+聯	primitives	耳幺	耳幺幺
+聯	heisig_story		ear . . . two cocoons . . . cactus. [17]
+聯	heisig_comment		The last primitive, cactus, does not appear elsewhere in this book, but is useful to learn, especially for writing old forms. It is pictographic.
+甫	heisig_comment		This character, none other than the element we learned as dog tag, is a nickname for a male child. It is used chiefly in personal names. [7]
+峯	heisig_story		mountain . . . walking legs . . . bushes. [10]
+峯	heisig_comment		The alternate form is used mainly in names. As in the character in the previous frame, the only difference from the standard form 峰 (1.1562) is in the positioning of the mountain.
+魯	primitives		魚日
+脛	heisig_story		flesh . . . ceiling . . . flood . . . craft. [11]
+脛	heisig_comment		The element on the right, which will appear once more in the following frame, is actually the old form of the element for spool, 圣, and replaces it in the old form of all the kanji we learned with that element. In addi- tion to the following frame, here are two more examples: 輕 and 經 (old form) vs 軽 and 経 (modern abbreviations)
+擢	heisig_story		fingers . . . feathers . . . turkey. [17]
+擢	heisig_comment		The concept here is “conspicuously surpass,” or “stick out of the crowd.” Editor's note: Here the 'feathers' are given a bit unusual form.
+什	heisig_comment		As in the previous frame, this character is an alternative form for 十.
+蝦	heisig_comment		Compare the right side with 暇 (1.1882).
+篇	heisig_story	bamboo . . . door . . . scrapbooks. [15] The French word captures better than any English word can the range of uses this character has in designating chapter, volume, part, or fascicle of a classical text.	bamboo . . . door . . . scrapbooks. [15]
+篇	heisig_comment		The French word captures better than any English word can the range of uses this character has in designating chapter, volume, part, or fascicle of a classical text.
+阜	heisig_comment		This is the original character that was abbreviated to form the element we learned as pinnacle 阝.
+兜	primitives	白儿	匚白匚儿
+糊	primitives	米胡	米古月
+斯	heisig_comment		This character is not substantially different from the character we identified as this here 此 (frame 2043).
+梧	primitives		木吾
+厭	heisig_story		This character, which carries the sense of being weighted down by the meaninglessness of life, calls to mind a vivid image of despair in Nietzsche’s Thus Spoke Zarathustra that makes it simple to remember. Walking the dark cliffs at midnight, Zarathustra hears a dog howling. He approaches, and under the light of the moon sees a shepherd lad lying on the ground with a thick, black snake hanging out of his mouth (like a long, wagging tongue, we might add). The snake had crawled in while he was asleep and grabbed on to the lad’s throat. Zarathustra tells him to bite off the head of the snake and become free of the despair that holds him in tortured captivity.
+昂	heisig_story		sun . . . box . . . seal. [8]
+昂	heisig_comment		Although this character is not essentially different in connotation from 昴 (frame 2435), be sure to keep the writing distinct.
+卦	primitives		圭卜
+巽	heisig_comment		One of the directions in classical Chinese geomancy, this character is used in Japanese today chiefly in names.
+饅	heisig_story		food . . . mandala. [20]
+饅	heisig_comment		It is only a matter of time before this character takes the standard abbreviation for food on the left. Meantime, it will alert you to the older style of writing, which still shows up in rather complicated characters that use the food primitive.
+曳	primitives	日乙丶	日[arm]
+曳	heisig_comment		Take particular care not to confuse this key word with the familiar primitive element for drag ⺁
+或	heisig_comment		This character is roughly equivalent to the indefinite article <b>a</b> in English or to the phrase a certain.... It appears as a primitive in the characters 域 and 惑 (1.356, 614).
+欽	primitives		金欠
+巌	primitives		山厳
+巌	heisig_story		mountain . . . stern. [20]
+巌	heisig_comment		The simplified character was learned as 岩 (1.770).
+邑	heisig_comment		This is the parent character from which the primitive 巴 is derived.
+祀	heisig_story		altar . . . snake. [8]
+祀	heisig_comment		The standard abbreviation for altar has generally taken over, but the character in this and the following frame are exceptions.
+匙	heisig_comment		The character for spoon already learned 匕 (1.444) is actually an abbreviation of this fuller character. The meanings are essentially the same.
+彙	primitives	ヨ冖果	彑冖果
+撹	primitives		扌覚
+叢	heisig_story		upside down in a row . . . soil . . . take. [18]
+叢	heisig_comment		This character is often used for collections of books or essays; the only reason for the choice of the key word is that the number of synonyms for “collection” has been fairly exhausted already!
+舘	primitives		𠆢舌官
+舘	heisig_story		umbrella . . . tongue . . . bureaucrat. [16]
+舘	heisig_comment		The standard form of this character 館 (1.1478) uses the element for food on the left. Because the older form is somewhat simpler to write, it remains in use today
+袈	heisig_comment		This key word is used for the stole of a Buddhist monk, generally in combination with 裟 (monk's sash)
+筑	heisig_comment		This ancient harp, a predecessor of the present Japanese koto, had 5, 13, or 21 strings.
+帖	heisig_comment		The key word here is a counter for 25 sheets of paper.
+奧	primitives		丶冂釆大
+舜	primitives		[birdhouse]舛
+鎚	heisig_comment		Compare the wooden hammer 槌 in frame 2477.
+珈	heisig_story		jewel . . . add. [9]
+珈	heisig_comment		These two characters (珈 and 琲) , taken together, are the Chinese phonetic transliterations of the English word coffee, which is the principal form in which you are likely to meet them today. The key words, however, are drawn from their classical meanings.
+藝	heisig_story		flowers . . . rice-seedlings . . . ground . . . fat man . . . rising cloud. [18]
+藝	heisig_comment		The abbreviation in common use is 芸 (1.421).
+孟	primitives		子皿
+暉	heisig_story		sun alongside a chariot. [13]
+暉	heisig_comment		Be careful to keep this character distinct from 'halo' (暈), which differs only by the disposition of the elements.
+鋪	heisig_story		metal . . . dog tag. [15]
+鋪	heisig_comment		The only difference from the more common form 舗 (1.1839) is that the left side here uses the element for metal. There is also a third alternative which is sometimes seen, but has been omitted here: 舖.
+埜	heisig_story		grove . . . soil. [11]
+埜	heisig_comment		The standard form 野 (1.1596) differs rather radically from this older form, which appears now in old texts and occasionally in proper names.
+僻	primitives		人辟
+掩	heisig_comment		The sense of the key word does not refer to an actually funeral “shroud,” but only to the sense of being covered over or concealed.
+楕	heisig_story		tree . . . left . . . flesh. [13]
+楕	heisig_comment		We have met the element to the right here before, as in 惰 (1.629). The standard form for this character is actually 橢, but the abbreviation has passed into general use.
+諺	primitives	言乂厂彡	言彦
+蜀	primitives		罒勹虫
+喬	primitives	口冂	夭口高
+喬	primitive_keywords	angels	angel
+桧	heisig_story		tree . . . meeting. [10]
+桧	heisig_comment		See also frame 2964 for old form
+筏	primitives	人竹戈	竹伐
+邁	heisig_story		ten thousand . . . road. [16]
+邁	heisig_comment		The “old” element in this character is that for road, which has an extra initial stroke. See also 逞
+肇	heisig_comment		You will recognize the combination at the top here from the character 啓 (1.1085).
+嶽	heisig_story		mountain . . . prison. [17]
+嶽	heisig_comment		The abbreviated form of this character 岳 (1.1330), used in place names, shifts the mountain to the bottom, a rather odd change as the kanji go
+梵	heisig_story		This is the sound character for the Sanskrit word brahman, and is also used to indicate the Sanskrit language as such. Its elements are grove ... <u>mediocre</u>.[11]
+梵	heisig_comment		This is a phonetic character. The signal primitive providing the sound is underlined.
+壷	primitives	土冖	土冖亜
+壷	heisig_comment		Note how the second stroke in crown doubles up with the first stroke of Asia.
+煕	primitives		臣巳火
+涅	heisig_comment		The key word here is meant to suggest not merely something made, but something made with an intention to deceive.
+爾	heisig_comment		Note that the writing of the element for spike is interrupted by the element for eight. This character—among whose older usages was as a polite form of addressing someone—is now used chiefly in names, except for the famous Buddhist expression that will be introduced when its reading comes up in Part Two.
+云	heisig_comment		The primitive we learned as rising cloud is actually a kanji used to indi- cate someone’s spoken words. [4]
+盧	primitives		虎田皿
+滉	heisig_comment		The sense of the key word is of a vast and deep body of water.
+唖	heisig_story		mouth . . . <u>Asia</u>. [10]
+唖	heisig_comment		The sense of the key word is that of a baby oohing and aahing. Editor's note: This is a phonetic character. The signal primitive providing the sound is underlined.
+蛹	primitives		虫マ用
+薗	heisig_story		flowers . . . park. [16]
+薗	heisig_comment		This character is used principally in proper names. The only change you will notice from the standard form 園 (1.585) is the addition of the element for flowers.
+珪	primitives		王圭
+頚	heisig_comment		The key word here is meant to specify the anatomical neck, to distinguish it from the broader uses of the character 首 (1.70).
+捺	heisig_comment		The impression referred to here is like that made by a seal on wax.
+捷	heisig_story		fingers . . . broom run. [11]
+捷	heisig_comment		Take special care when writing the right side of this character. The first stroke belongs to the element <i>run</i> and is followed by that for <i>broom</i>.
+嵌	heisig_comment		This character is used to express fitting one thing into another.
+孕	heisig_comment		The key word here means “pregnant.”
+鋏	heisig_comment		This is the character on which the element for scissors 夾 was based.
+倖	primitives		人幸
+鋤	heisig_comment		This is the plow whose metal blades were used to grill meat and which gives us the word sukiyaki (plow-fried).
+裡	heisig_story		cloak . . . computer. [12]
+裡	heisig_comment		The transposition of the standard form 裏 (1.399) involves moving the computer from the middle of the element for cloak to the right.
+且	primitives		目一
+躯	primitives		身区
+躯	heisig_comment		The standard form 身 (1.1248) has by and large replaced this older character today.
+尤	heisig_comment		The sense of the key word is that something “stands to reason.”
+鼎	heisig_comment		This character is not hard to remember if you think of it as back-to- back characters for one-sided with a sun in the middle (and necessitat- ing a shorter vertical stroke for one-sided). [12]
+峨	primitives		山我
+熔	primitives		火容
+熔	heisig_comment		This is the character for melt 溶 (1.791), with the water replaced by fire.
+笥	heisig_comment		The term here refers to what contains one’s robes, not the robes themselves.
+輻	heisig_comment		The key word refers to the spoke of a wheel.
+它	primitives		宀匕
+曼	heisig_comment		Since this character is most familiarly used in transcribing the Sanskrit word <b>mandala</b>, we shall allow its primitive meaning to stand as the key word for the kanji also. [11]
+潅	primitives	水潅	水[pegasus]
+麿	heisig_comment		This kanji was used during the Heian period to refer to oneself. It is a home-grown Japanese character whose reading まろ comes from com- bining the Chinese readings of its two elements. It is used today only for names, the most famous of which is the name of the celebrated painter of ukiyo-e paintings, Utamaro 歌麿.
+鄭	primitives	酋大⻏	丷酉大⻏
+掠	primitives		扌京
+壽	heisig_story		samurai. . . broken crown . . . craft . . . floor . . . mouth . . . glue. [14]
+壽	heisig_comment		The newer form 寿 (1.1565) tends to dominate today when it is used as a primitive. Note the following example: 鑄 (old form) vs 鋳 (modern abbreviation)
+趨	heisig_comment		The sense of this key word is the way someone in kimono runs, taking short steps quickly.
+會	primitives		𠆢一囗小日
+會	primitive_keywords		meeting (old)
+會	heisig_comment		This is an old form of 会
+奄	heisig_story		St. Bernard . . . eel. [8]
+奄	heisig_comment		The sense of the key word is of something that is expansive and covers over everything. When used as a primitive, it will mean a dachshund. Think here of a particularly large and l-o-n-g one to combine the qualities of the eel and the St. Bernard.
+摺	heisig_comment		The sense here is of rubbing out an image, as in “brass-rubbing.”
+參	primitives		厶厶参
+嵯	primitives		山差
+芻	heisig_comment		Think of this element as showing two ricks of dried hay lying on top of each other. The element for bound up is familiar. The 3-stroked piece being bound up appeared in the primitive for mountain goat 髦. Think of the goat burying his “missing” horns in the hay to pick them up and toss them. [10]
+襖	heisig_story		cloak . . . core. [17]
+襖	heisig_comment		This actually is the kanji for fusuma, an opaque sliding paper door found in Japanese houses.   Editor's note: Note that the right side has a 'animal tracks' instead of 'grains of rice' so it's not actually a simple 'core'. Add an extra  down-left sloping stroke.
+涌	primitives		水マ用
+聚	primitives		耳又丶丶[rags]
+聚	heisig_story		ear . . . crotch . . . two drops . . . person . . . rag. [14]
+聚	heisig_comment		This character should not be confused with 衆 (1.1857). Despite the similarity, it is neither an abbreviated nor an alternate form of it. If anything, in modern usage it is most likely to be replaced with 集 (1.559).  Editor's note: Despite what Heisig says, the lower part here does in fact resemble the same lower part with 衆 so much that it's listed as secondary primitive (currently unnamed)
+於	primitives	方冫	方𠆢丶丶
+嘗	primitives	尚旨	[outhouse]旨
+匍	primitives		勹甫
+愈	primitives	亼刖心	[butchers]心
+耆	primitives		老日
+畢	primitives		田[silage]十
+癸	primitives		癶天
+做	heisig_comment		The key word combines the meanings of the character for make 作 (1.1142) and 為 do (1.1918).
+彊	heisig_comment		See frame 2509 橿 for a similar right-side combination.
+碍	heisig_comment		Compare the right side with 得 (1.876).
+俑	primitives		人マ用
+睿	primitives		卜冖一谷目
+碇	heisig_comment		Compare this stone anchor with the metal anchor 錨 in frame 2765
+揖	heisig_comment		The sense of the key word is to compile or bring together.
+暈	heisig_story		sun atop a chariot. [13]
+暈	heisig_comment		Be careful to keep this character distinct from 'glitter' (暉), which differs only by the disposition of the elements.
+翟	primitives		羽隹
+鼈	heisig_story		shredder . . . eels [old form]. [25]
+鼈	heisig_comment		The change in the first three strokes of the element for shredder is a familiar one found often in older forms. I leave it to you to combine the pieces for the old form of eels. The older form of the primitive we learned as eels is rather more difficult. You will find it in older forms of several familiar characters such as the following: 繩, 蠅 (old forms) vs 縄, 蝿 (modern abbreviations)
+欝	primitives		林爻罒艮寸
+欝	heisig_story		two sheaves in a woods . . . net . . . silver . . . glue. [22]
+欝	heisig_comment		The key word here refers to the psychological state of depression. Editor's note: See the bottom part of 爵 which is identical to this one. By removing the top part (vulture) we can assemble a story: "A <i>baron</i> lost his favourite <i>vulture</i> while gathering <i>sheaves</i> in his <i>grove</i> and got <b>depressed</b>
+轡	heisig_story		thread . . . cart . . . thread . . . mouth. [22]
+轡	heisig_comment		The primitive at the top of this character is abbreviated in more common words as 亦, a primitive element that was learned in vol. 1 (page 359). Note the following examples:  變 and 戀 (old form) vs 変 and 恋 (modern abbreviation)
+彪	primitives	虎儿彡	虎彡
+幟	primitives	巾音戈	巾戠
+畷	heisig_story		field . . . stitching. [13] 
+畷	heisig_comment		The character learned for paddy-ridge in vol. 1 畔 (1.1204) and that for paddy-field ridge 畦, which we will meet in frame 2571, both mean the “ridges” that run between rice paddies. The character introduced here refers directly to the ridge that is used as a walking path. 
+渫	primitives		水枼
+鰈	primitives		魚枼
+丕	primitives		不一
+爻	primitives		乂乂
+幺	primitives		厶
+楪	primitives		木枼
+黽	primitive_keywords		eels (old)
+黽	heisig_story		This is a old form of [bucket_of_eels] (bucket of eels)
+鑿	heisig_story		standing in a row upside down . . . mortar and walking stick . . .missile . . . metal. [28]
+鑿	heisig_comment		The sense of the key word is boring a hole into something.
+亙	primitives		瓦一
+亙	heisig_story		tile . . . floor. [6]
+亙	heisig_comment		The standard form of this character 亘 (1.32) is also standard when it is used as a primitive in other characters. Note the following example in a character already learned: 恆 (old form),  恒 (1.620 modern abbreviation)
+玨	primitives		王王
+堞	primitives		土枼
+𨫤	primitives		金通
+慳	primitives		心堅
+夋	primitives		允夂
+夋	primitive_keywords		streetwalker
+夋	heisig_story		We learned this combination earlier in the character 俊 (1.1014) with the elements person . . . license . . . walking legs. The primitive meaning covers the sense of one “walking around licentiously.” [7]
+粁	heisig_comment		The character 米 is used for meter (from the sound). Thus, a kilometer is made by adding the element for thousand.
+揲	primitives		扌枼
+糎	heisig_comment		The reason that the rin (1.178) or 1/1000th of a yen is added to the meter to give us centimeter is that 厘 originally meant 1/100th, and 毛 1/1000th, as we see in the kanji 粍 (millimeter)
+碟	primitives		石枼
+緤	primitives		糸枼
+巠	primitives		一川工
+巠	primitive_keywords		spool (old)
+巠	heisig_story		This is an old form of 圣 (spool)
+豎	primitives		臤豆
+歺	primitives		卜夕
+埇	primitives		土甬
+叚	primitive_keywords		hobby
+叚	heisig_comment		Editor's note: This isn't listed as a separate primitive by Heisig, but still mentioned as a 'hobby' in 'haze' and 'spare time'.
+橿	heisig_story		tree . . . 2 fields . . . floors and ceilings. [17]
+橿	heisig_comment		The type of oak tree this character refers to is classically reputed to be good for making boats, carts, and the like. See frame 2240 for a similar right-side combination.
+㝵	primitives		旦寸
+媟	primitives		女枼
+鞢	primitives		革枼
+雩	primitives		雨一丂
+惢	primitives		心心心
+耑	primitives		山而
+牃	primitives		丬枼
+咢	primitives		口口一丂
+區	primitives		囗品
+區	primitive_keywords		ward (old)
+區	heisig_story		This is a older form of 区
+孯	primitives		臤子
+惵	primitives		心枼
+樒	heisig_comment		The star-anise, as you will guess from the primitive on the left, is a kind of tree—to be precise, a kind of Chinese evergreen that belongs to the magnolia family. It is known for its aromatic oil.
+龸	primitive_keywords	classroom, schoolhouse	
+礥	primitives		石賢
+幵	primitives		干干
+肀	primitives	ヨ一	ヨ丨
+亶	primitives		亠回旦
+彑	primitives		彑
+鉦	heisig_comment		This character indicates a Western bell, which is struck from the inside by a gong, unlike the oriental bell 鐘, which is struck from the outside.
+夸	primitives		大一丂
+鏗	primitives		金堅
+尓	primitives		𠂉小
+詑	primitives		言宀匕
+卬	primitives		匚卩
+瑶	primitives		王[condor]
+甬	primitives		マ用
+甬	primitive_keywords		pogo stick
+甬	heisig_story		Chop-seal.. Utilize..
+甬	heisig_comment		This is a non-Heisig primitive, crowdsourced from Koohi stories:  chop-seal + utilize/philips screw driver = pogo stick. Because a chop-seal is long and thin with a rubbery bit at the end. If it were big enough, you could utilize it as a pogo stick. A long screw driver with a chop-seal on the end makes an interesting pogo stick
+籤	primitives	竹戈韭人	竹从戈韭
+哩	heisig_story		mouth . . . one ri.  [10]
+哩	heisig_comment		Although the mile is longer than the ri, the two are close enough that the addition of the mouth can indicate a foreign unit of measurement.
+兑	primitives		丷兄
+夌	primitives		圥夂
+娃	heisig_comment		The sense here is of someone lovely to behold.
+噸	heisig_comment		The character 頓, again from the sound, gives us a start to that for a ton. The addition of the element of mouth to the left indicates that it is used for its sound and to convey a meaning other than the normal meaning of the character. This is a device commonly used in written Chinese.
+巩	primitives		工凡
+叕	primitives		又又又又
+叕	primitive_keywords		stitching
+叕	heisig_story		This element is actually a character in its own right, a pictograph of something that has been <b>stitched.</b> [8] 
+箆	heisig_story		bamboo . . . hood . . . umbrella . . . compare. [14]
+箆	heisig_comment		Editor's note: Or is it bamboo . . . hood . . . person . . . compare... ?
+畺	primitives		一田一田一
+殸	primitives		声殳
+鼡	primitives		⺍几[cornstalk]
+矞	primitives		矛冂儿口
+夭	primitive_keywords	witch	witch, sapling
+夭	heisig_story	Pay special attention to the fact that here the first stroke is written right to left, rather like the first stroke of thousand (FRAME 40), rather than left to right (天 heavens)	Pay special attention to the fact that here the first stroke is written right to left, rather like the first stroke of thousand (FRAME 40), rather than left to right (天 heavens)  Editor's note: In RTK3 Heisig introduces this very same kanji with different primitive keyword: 'sapling': "This element is easily confused with the shape of the character 天 in such kanji as 添 (1.634) and in the element 喬 (1, page 158). Its meaning comes from the rather rare kanji on which it is based."
+臤	primitives		臣又
+祘	primitives		示示
+帛	primitives		白巾
+鋻	primitives		臤金
+离	primitives		亠凶冂厶
+离	primitive_keywords		sheik
+离	heisig_story		top hat . . . villain . . . belt . . . elbow. [10]
+离	heisig_comment		This element is already familiar from the character 離 (1.1492). The reason the element for elbow requires 3 strokes instead of the usual 2 is that the combination of elements 髏 is actually a radical classically defined as having 5 strokes.
+咠	primitives		口耳
+粦	primitives		米舛
+粦	primitive_keywords		shoeshine
+粦	heisig_story		rice . . . sunglasses. [12]
+粦	heisig_comment		This combination of elements has already been learned from the character 隣 (1.1311). The assignation of the primitive meaning is almost entirely arbitrary.
+匋	primitives		勹缶
+佼	primitives		人交
+甹	primitives		由丂
+豙	primitives		立豕
+豈	primitives		山豆
+豈	primitive_keywords		hill of beans
+豈	heisig_story		This element (actually a rather rare character in its own right) is made up of exactly what it says: <b>a hill of beans</b>. [10]
+掔	primitives		臤手
+浬	heisig_story		water . . . one ri. [10]
+浬	heisig_comment		Since the Japanese did not have a separate unit for measuring nautical ri, this character was used for the Western measurement of the nautical mile. The same holds true of the characters in the next two frames.
+慾	heisig_story		longing . . . heart. [15]
+慾	heisig_comment		The only difference from the standard form of this character 欲 (1.92) is that the element for heart is included at the bottom
+粲	primitives		卜夕又米
+㐬	primitives		𠫓川
+槀	primitives		高木
+毳	primitives		毛毛毛
+慂	primitives		水マ用心
+翏	primitives		羽㐱
+罒	primitive_keywords	eye	net, eye
+罒	heisig_comment	Editor's note: This net radical 罒 (referred by Heisig as eye turned on its side) has a different meaning from the normal eye kanji (目). We'll keep these as separate primitives, but for each kanji you can use either Heisig's mnemonics (which doesn't differentiate the two) or substitute a different keyword to your own story using this 罒 primitive. Suggestions: Spider's net, internet or fishing net.	Editor's note: This net radical 罒 (referred by Heisig as eye turned on its side) has a different meaning from the normal eye kanji (目). We'll keep these as separate primitives, but for each kanji you can use either Heisig's mnemonics (which doesn't differentiate the two, at least in his first book) or substitute a different keyword to your own story using this 罒 primitive. Suggestions: Spider's net, internet or fishing net.
+厥	primitives		厂屰欠
+粍	heisig_comment		Incidentally, you should note that the same conventions are used to create litres, centilitres, and millilitres, based on another kanji chosen for its sound: 立, 竏, and 竓.
+匊	primitives		勹米
+[condor]	heisig_comment		Editor's comment: If looking at the stroke order, the elements should be: vulture... dry... mountain..
+## Add new non-Unicode primitives
+[i_ching]	primitives		二二
+[i_ching]	heisig_story		The appearance of this element looks enough like one of the combinations used in the Chinese Book of Changes, the I Ching, to give us a meaning for this element. Note that there is always something that comes between the two halves to keep them apart. [4] 
+[futon]	primitives		羽隹
+[futon]	heisig_story		A <b>futon</b> made of <i>turkey feathers</i>
+[futon]	heisig_comment		This is a non-Heisig primitive crowdsourced from Koohi stories.
+[butchers]	primitives		亼刖
+[butchers]	heisig_story		Meeting.. Butcher..
+[butchers]	heisig_comment		Editor's note: This isn't specifically declared as a primitive by Heisig in his books, though it is hinted in his comments. It is however shared by many kanjis so it warrants its own separate entry here.
+## Misc fixes
+亀	primitive_alternatives	[eel][bucket_of_eels]	[eel][bucket_of_eels]电
+会	primitives	𠆢云亼[wall]	亼[wall]
+愛	primitives	爪冖[birdhouse]心夂	[birdhouse]心夂
+受	primitives	爪冖[birdhouse]又	[birdhouse]又
+原	primitives	厂白小泉	厂泉
+座	primitives	广坐从土	广从土
+京	primitives	亠口高小	高小
+互	primitives	[wall]	[wall][wall]
+載	primitives	土戈𢦏車	𢦏車
+拐	primitives	扌啇	扌口刀
+豪	primitives	亠口高冖豕	高冖豕
+亀	primitives	勹日日	勹日日乙
+熟	primitives	享火	享丸火
+掲	primitives	扌日匂[siesta]	扌[siesta]
+渇	primitives	水日匂[siesta]	水[siesta]
+亭	primitives	亠口冖丁高	高冖丁
+葛	primitives	艹日匂[siesta]	艹[siesta]
+喝	primitives	口日匂[siesta]	口[siesta]
+傲	primitives	人土方攵倣	人土方攵
+謁	primitives	言日匂[siesta]	言[siesta]
+享	primitives	亠口高子	高子
+褐	primitives	衤日匂[siesta]	衤[siesta]
+疋	primitives		[mending]
+黒	primitive_alternatives		黑
+㐱	primitives		𠆢彡
+彔	primitive_alternatives	录	
+录	primitive_keywords		videotape
+僕	primitives	人䒑业夫並	人並夫
+僕	heisig_story	This key word is yet another synonym for "I," so<b>me</b>what more familiar in tone. As a rule, it is a word that boys and <b>me</b>n use to refer to themselves. Its ele<b>me</b>nts: <i>person</i> . . . <i>husbands</i> . . . <i>in a row upside down</i>.	This key word is yet another synonym for "I," somewhat more familiar in tone. As a rule, it is a word that boys and men use to refer to themselves. Its elements: <i>person</i> . . . <i>husbands</i> . . . <i>in a row upside down</i>.
+親	primitives	立木辛見	辛見
+新	primitives	立木辛斤	辛斤
+命	primitives	合亼口卩	合卩
+業	primitives	䒑业並未	並未
+風	primitives	几丶虫䖝	几丶虫
+派	primitives	水[rags]⺁𠂢	水⺁[rags]
+迎	primitives	卬辶匚卩	辶匚卩
+髪	primitives	髟長彡友	長彡友
+霊	primitives	雨二业並	雨二並
+惑	primitives	戈口一或心	戈口一心
+襲	primitives	龍立月[slingshot]己三衣	立月[slingshot]己三衣
+象	primitives	象	免豕
+寅	primitives	能	宀一由ハ
+域	primitives	土戈口一或	土戈口一
+暇	primitives	日[staples]口又	日[staples]口又匚
+七	primitive_keywords		diced
+卵	primitives	卯丶丶[receipt]卩	[receipt]丶卩丶
+免	primitives	免	勹日儿
+脈	primitives	肉⺁[rags]𠂢	肉⺁[rags]
+虎	primitives	卜厂儿	卜厂七儿
+虎	heisig_story	The kanji in this frame recalls the famous Bengali fable about the group of magicians (the <i>magic wand</i>) who decided to make a <b>tiger</b>. It seems that each of them knew how to make one part of the beast, so they pooled their talents and brought all the pieces (<i>diced</i> into pieces) together, at which point the fabricated <i>tiger</b> promptly ate its makers up (the bodiless <i>human legs</i>). Whatever the parable's significance for modern civilization and its arsenals, it should help with this kanji. Oh yes, we should not forget that cliff-like element. Think of it as an abbreviation of the primitive for <i>zoo</i> (the first and fourth strokes, actually), in order to fit the <b>tiger</b> somewhere into the picture. In fact, the abbreviation is perfectly logical, since the bottom elements usurp the room for the rest of the primitive for <i>zoo</i>.	The kanji in this frame recalls the famous Bengali fable about the group of magicians (the <i>magic wand</i>) who decided to make a <b>tiger</b>. It seems that each of them knew how to make one part of the beast, so they pooled their talents and brought all the pieces (<i>diced</i> into pieces) together, at which point the fabricated <b>tiger</b> promptly ate its makers up (the bodiless <i>human legs</i>). Whatever the parable's significance for modern civilization and its arsenals, it should help with this kanji. Oh yes, we should not forget that cliff-like element. Think of it as an abbreviation of the primitive for <i>zoo</i> (the first and fourth strokes, actually), in order to fit the <b>tiger</b> somewhere into the picture. In fact, the abbreviation is perfectly logical, since the bottom elements usurp the room for the rest of the primitive for <i>zoo</i>.
+抑	primitives	扌卬匚卩	扌匚卩
+益	primitives	丷䒑ハ皿	丷ハ皿
+催	primitives	人山隹仙	人山隹
+仰	primitives	人卬匚卩	人匚卩
+卑	primitives	丿丶田丩	丶田丩
+虚	primitives	虎业並	虎並
+蒸	primitives	艹丞了水火	艹了水火
+兼	primitives	丷一ヨ丨丨ハ	丷肀丨ハ
+乏	primitives	丿丶之	丶之
+撲	primitives	扌夫並	扌並夫
+湿	primitives	水日业並	水日並
+猟	primitives	犬鼠⺍几[cornstalk]	犬⺍几[cornstalk]
+衰	primitives	衣口一哀	衣口一
+舗	primitives	人吉甫	舎甫
+丞	primitives		了水一
+丞	heisig_story		complete . . . water . . . floor. [6]
+丞	heisig_comment		The shape of this character is already familiar from the character 蒸(1.1900). As we learned then, the second stroke of complete doubles up with the first stroke for water.
+顕	primitives	日业並頁	日並頁
+苑	primitives	艹夕卩夗	艹夗
+怨	primitives	夕卩心夗	夗心
+吏	primitives	一史口[arm]	一口[arm]
+菫	primitives		[cabbage]一
+菫	heisig_story		The element we learned as meaning cabbage comes from the kanji meaning for a violet. The addition of the fourth stroke appears in older forms of kanji that use this element also. Here you may think of it as a“purple cabbage” hanging on an overhead trestle of violets to recall the difference. [11]
+逓	primitives	⺁[cornstalk]冂二巾辶	⺁[cornstalk]冂辶
+叚	primitives		[staples]口又匚
+𠂢	primitives	[rags]⺁	⺁[rags]
+帚	primitive_keywords		house maid
+㐱	primitive_keywords		parasol
+就	primitives	京犬儿	京尤
+稽	primitives	禾犬儿旨	禾尤旨
+蝦	primitives	虫又口	虫[staples]口又匚
+尤	primitive_keywords		chihuahua with one human leg
+夆	primitives		夂丰
+夆	heisig_story		Walking legs.. Bushes... 
+夆	heisig_comment		This is a non-Heisig primitive. For inspiration how to name it, see the related Koohi stories for those kanjis that are using this.
+厖	primitives		厂尤彡
+枼	primitive_keywords		tarzan
+枼	heisig_story		Generation... Tree...
+枼	heisig_comment		This is a non-Heisig primitive crowdsourced from Koohi stories. <b>Tarzan</b> lives with several <i>generations</i> of his family at the top of a <i>tree.</i>
+录	primitives		ヨ米
+录	heisig_comment		This is a non-Heisig primitive crowdsource from Koohi stories. It derives its meaning from chinese verb (to record, to write down)
+長	primitive_alternatives		[mane]镸
+長	heisig_comment		The primitive of this kanji has two more shapes in addition to that of the kanji itself. Above its relative primitive, it is abbreviated form will mean <i>hair 镸</i>. Further abbreviated,  it will mean the <b>long</b>, mangy <i>mane [mane]</i> of an animal.
+邑	primitive_keywords		
+邑	heisig_keyword6		city walls
+⻏	heisig_keyword5	city walls	
+⻏	heisig_keyword6	city walls	
+⻏	primitive_keywords		city walls
+[i_ching]	primitive_keywords		I Ching
+[futon]	primitive_keywords		futon
+[futon]	primitive_alternatives		翟
+[butchers]	primitive_keywords		butchers meeting
+東	primitive_alternatives		柬
+### Add missing radicals
+扌	radicals		扌
+⺍	radicals		⺌
+龶	radicals		亠土二
+𧘇	radicals		衣
+マ	radicals		マ
+丷	radicals		丷
+ハ	radicals		ハ
+ヿ	radicals		亅
+ヰ	radicals		ヰ
+ユ	radicals		ユ
+𠂇	radicals		一ノ
+业	radicals		业
+ヨ	radicals		ヨ
+[arm]	radicals		丶ノ
+[mending]	radicals		疋
+[tail_feathers]	radicals		乙灬
+[staples]	radicals		ノ｜一
+[hairpin]	radicals		一衣
+[cornstalk]	radicals		一二
+[sparkler]	radicals		冫丶
+[plow]	radicals		｜丶
+[slingshot]	radicals		一勹
+[silage]	radicals		一｜
+[quarter]	radicals		二并大
+㔾	radicals		卩一
+[spear]	radicals		｜ノ
+[fenceposts]	radicals		｜ノ
+[receipt]	radicals		丶厶
+⻏	radicals		⻏
+⻖	radicals		⻖
+[tool]	radicals		一ハ
+[rags]	radicals		斤
