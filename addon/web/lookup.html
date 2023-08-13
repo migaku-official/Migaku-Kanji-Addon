@@ -9016,13 +9016,18 @@ Changes:
 			);
 
 			var stories = [];
-			if (data.usr_story) stories.push(data.usr_story.split('\n').join('<br>'));
+			if (data.usr_story) stories.push(data.usr_story.split('\n').join('<br>'));			
 			if (data.heisig_story) {
 				var heisig_story = data.heisig_story;
-				if (data.heisig_comment)
-					heisig_story += '<br><br>' + data.heisig_comment;
 				var detagged_heisig_story = ReplaceTagsWithImages(heisig_story)
 				stories.push(detagged_heisig_story);
+			}
+			if (data.heisig_comment) {
+				var detagged_heisig_comment = ReplaceTagsWithImages(data.heisig_comment)
+				if (data.heisig_story) {
+				detagged_heisig_comment = '<br><br>' + detagged_heisig_comment
+				}			
+				stories.push(detagged_heisig_comment)
 			}
 			for (const ks of data.koohi_stories) stories.push(ks);
 
