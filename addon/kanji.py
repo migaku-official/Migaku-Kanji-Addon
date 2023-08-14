@@ -664,7 +664,8 @@ class KanjiDB:
                 all_characters_in_the_deck.append(c)
 
             new_characters = self.new_characters(ct, all_characters_in_the_deck, -1)
-            new_kanji_for_msg[ct] = new_characters
+            if len(new_characters) > 0:
+                new_kanji_for_msg[ct] = new_characters
 
         if len(new_kanji_for_msg) > 0:
             KanjiConfirmDialog.show_new_kanji(new_kanji_for_msg, aqt.mw)
