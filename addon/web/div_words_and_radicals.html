@@ -1,0 +1,175 @@
+<!-- START - Linked words -->
+<div class="linked-words__container results-container">
+	<div class="title-tooltip__container">
+		<h2 class="title-tooltip__title linked-words__title">
+			Vocab
+			<button
+				type="button"
+				title="What's this?"
+				aria-controls="tooltip-id--linked_words__title"
+				onclick="toggleShow('tooltip-id--linked_words__title')"
+			>
+				<img src="_kanji_icon_help_black.svg" alt="" />
+			</button>
+		</h2>
+
+		<div
+			id="tooltip-id--linked_words__title"
+			class="title-tooltip__text"
+			style="display: none"
+			aria-expanded="false"
+		>
+			Colored buttons are vocab from cards you've learned. Outlined
+			buttons are new cards that you haven't learned (yet). Grey buttons
+			are clickable dictionary examples.
+		</div>
+
+		<hr class="separator" />
+	</div>
+
+	<div class="linked-words__examples">
+		<div
+			id="words"
+			class="linked-words__list kanji-char-font hide_readings_hover"
+		></div>
+	</div>
+	<div class="faded-info-msg -hide-on-mobile">
+		Shift + click for dictionary lookup.
+	</div>
+	<div class="mobile-only-info-msg">
+		Vocab buttons show your linked cards on desktop. On mobile, they
+		search jisho.org as a compromise.
+	</div>
+</div>
+<!-- END - Linked words -->
+
+<!-- START - Primitives and radicals -->
+<div class="primitives-and-radicals__wrapper">
+	<div class="primitives-and-radicals__container">
+		<div class="primitives-and-radicals__components">
+			<div class="primitives-and-radicals__block">
+				<div class="title-tooltip__container">
+					<h2 class="title-tooltip__title primitives-and-radicals__title">
+						Primitives
+						<button
+							type="button"
+							title="What's this?"
+							aria-controls="tooltip-id--primtives__title"
+							onclick="toggleShow('tooltip-id--primtives__title')"
+						>
+							<img src="_kanji_icon_help_black.svg" alt="" />
+						</button>
+					</h2>
+
+					<div
+						id="tooltip-id--primtives__title"
+						class="title-tooltip__text"
+						style="display: none"
+						aria-expanded="false"
+					>
+						The largest parts we can break this kanji down into.
+						Primitives are usually kanji in their own right, but some only
+						exist to help with mnemonic stories.
+					</div>
+
+					<hr class="separator" />
+				</div>
+
+				<div
+					id="primitives"
+					class="primitives-and-radicals__list kanji-char-font"
+				></div>
+			</div>
+			<div class="primitives-and-radicals__block">
+				<div class="title-tooltip__container">
+					<h2 class="title-tooltip__title primitives-and-radicals__title">
+						Primitive in
+						<button
+							type="button"
+							title="What's this?"
+							aria-controls="tooltip-id--primitives_of__title"
+							onclick="toggleShow('tooltip-id--primitives_of__title')"
+						>
+							<img src="_kanji_icon_help_black.svg" alt="" />
+						</button>
+					</h2>
+
+					<div
+						id="tooltip-id--primitives_of__title"
+						class="title-tooltip__text"
+						style="display: none"
+						aria-expanded="false"
+					>
+						This kanji appears as a primitive within these other, more
+						complex kanji. Some kanji have alternative primitive
+						appearances when appearing inside other kanji.
+					</div>
+
+					<hr class="separator" />
+				</div>
+
+				<div
+					id="primitive_of_alts"
+					class="primitives-and-radicals__alternatives"
+				>
+					<img src="_kanji_icon_alert_decagram_black.svg" alt="" />
+
+					This kanji has alternative(s):
+
+					<span class="primitive-alternatives"></span>
+				</div>
+				<div
+					id="primitive_of"
+					class="
+						primitives-and-radicals__list
+						kanji-char-font
+						-tooltip-pos__above-left
+					"
+				></div>
+			</div>
+		</div>
+		<div class="mobile-only-info-msg">
+			Primitive buttons open the lookup browser on desktop. On mobile,
+			primitive tooltips can still be viewed by tapping.
+		</div>
+		<div
+			id="radicals_container"
+			class="primitives-and-radicals__block results-container"
+		>
+			<div class="title-tooltip__container">
+				<h2 class="title-tooltip__title primitives-and-radicals__title">
+					Radicals
+					<button
+						type="button"
+						title="What's this?"
+						aria-controls="tooltip-id--radicals__title"
+						onclick="toggleShow('tooltip-id--radicals__title')"
+					>
+						<img src="_kanji_icon_help_black.svg" alt="" />
+					</button>
+				</h2>
+
+				<div
+					id="tooltip-id--radicals__title"
+					class="title-tooltip__text"
+					style="display: none"
+					aria-expanded="false"
+				>
+					Radicals are used to organize kanji in dictionaries. They're
+					generally the smallest parts a kanji can be broken down into.
+				</div>
+
+				<hr class="separator" />
+			</div>
+
+			<div
+				id="radicals"
+				class="primitives-and-radicals__list kanji-char-font"
+			></div>
+			<div class="faded-info-msg">
+				Radicals aren&#39;t clickable (yet).
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END - Primitives and radicals -->
