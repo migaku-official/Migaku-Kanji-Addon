@@ -172,7 +172,7 @@ class KanjiDB:
             return
 
         # Get primitives
-        primitives_result = self.crs.execute_and_fetch_one(
+        primitives_result = self.crs_execute_and_fetch_one(
             "SELECT primitives FROM characters " "WHERE character == (?)", (character,)
         )
 
