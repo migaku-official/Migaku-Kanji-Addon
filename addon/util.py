@@ -68,10 +68,14 @@ def unique_characters(string):
     l = custom_list(string)
     return list(OrderedDict((c, True) for c in l).keys())
 
-
 import aqt
 from aqt.qt import *
 
+def get_pixmap_from_tag(kanji, size):
+    img = kanji[1:-1]
+    path = addon_path('primitives','%s.svg' % img)
+    pixmap = QIcon(path).pixmap(QSize(size,size))
+    return pixmap
 
 def log(*args):
     print("[Migaku Kanji]", *args)
