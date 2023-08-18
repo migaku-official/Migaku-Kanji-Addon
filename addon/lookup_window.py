@@ -10,6 +10,7 @@ from . import util
 from . import fonts
 from . import config
 
+from .power_search_bar import PowerSearchBar
 
 key_sequence = QKeySequence("Ctrl+Shift+K")
 key_sequence_txt = key_sequence.toString(QKeySequence.SequenceFormat.NativeText)
@@ -50,6 +51,8 @@ class LookupWindow(QDialog):
         search_btn.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         search_btn.clicked.connect(self.on_search_submit)
         search_lyt.addWidget(search_btn)
+
+        self.power_search_bar = PowerSearchBar(search_lyt, lyt, 20, search_btn.sizeHint().height()*1.5, self.search)
 
         self.keep_tab_on_search_box = QCheckBox("Keep tabs open")
         self.keep_tab_on_search_box.setChecked(False)
@@ -167,6 +170,7 @@ class LookupWindow(QDialog):
 
         if not handle_bridge_action(cmd, lookup_window=self):
             print("Unhandled bridge command:", cmd)
+
 
     def on_search_submit(self):
         text = self.search_bar.text()
