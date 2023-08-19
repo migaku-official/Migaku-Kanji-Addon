@@ -1,0 +1,148 @@
+<div class="stroke-order-diagram__container">
+    <hr class="separator -full" />
+
+    <h2 class="vh">Character</h2>
+    <div class="stroke-order-diagram__player">
+        <button
+            id="toggle_strokeorder_numbers"
+            type="button"
+            class="
+                stroke-order-diagram__settings-button
+                stroke-order-diagram__toggle-strokeorder-numbers
+            "
+            title="Toggle stroke order numbers"
+        >
+            <img
+                src="_kanji_icon_numbers_on_black.svg"
+                class="-numbers-on"
+                alt=""
+            />
+            <img
+                src="_kanji_icon_numbers_off_black.svg"
+                class="-numbers-off"
+                alt=""
+            />
+        </button>
+        <button
+            role="tooltip"
+            type="button"
+            class="
+                stroke-order-diagram__settings-button
+                stroke-order-diagram__settings-tooltip
+                kanji-addon__hover-tooltip-btn
+                -tooltip-pos__below-left
+            "
+        >
+            <img src="_kanji_icon_cog_black.svg" alt="Settings" />
+            <div class="kanji-addon__hover-tooltip">
+                Options for autoplay and stroke number default on/off are in the
+                Kanji Settings menu window.
+                <br /><br />
+                Tip: use arrow keys to navigate stroke order, plus ctrl for
+                start/end.
+            </div>
+        </button>
+
+        <span aria-hidden="true" class="stroke-order-diagram__inner-title">
+            Stroke order
+        </span>
+
+        <div class="stroke-order-diagram__character">
+            <div class="stroke-order-diagram__canvas">
+                <!-- Stroke order diagram is injected into the below div -->
+
+                <div id="strokeorder"></div>
+
+                <div class="stroke-order-diagram__axes"></div>
+            </div>
+
+            <span class="stroke-order-diagram__no-data" aria-hidden="true">
+                (no data)
+            </span>
+        </div>
+
+        <div class="stroke-order-diagram__controls">
+            <div class="stroke-order-diagram__buttons">
+                <button
+                    id="strokeorder_start"
+                    disabled="disabled"
+                    data-disable-while-playing
+                    data-disable-while-drawing
+                >
+                    <img src="_kanji_icon_skip_start_black.svg" alt="Start skip" />
+                </button>
+                <button
+                    id="strokeorder_prev"
+                    disabled="disabled"
+                    data-disable-while-playing
+                    data-disable-while-drawing
+                >
+                    <img src="_kanji_icon_previous_black.svg" alt="Previous" />
+                </button>
+                <div class="stroke-order-diagram__play-pause-container">
+                    <button
+                        id="strokeorder_pause"
+                        disabled="disabled"
+                        class="-hide"
+                        data-disable-while-erasing
+                        data-disable-while-drawing
+                    >
+                        <img src="_kanji_icon_pause_black.svg" alt="Pause" />
+                    </button>
+                    <button
+                        id="strokeorder_play"
+                        disabled="disabled"
+                        data-disable-while-playing
+                        data-disable-while-drawing
+                        data-disable-while-erasing
+                    >
+                        <img src="_kanji_icon_play_black.svg" alt="Play" />
+                    </button>
+                    <button
+                        id="strokeorder_replay"
+                        disabled="disabled"
+                        class="-hide"
+                        data-disable-while-playing
+                        data-disable-while-drawing
+                        data-disable-while-erasing
+                    >
+                        <img src="_kanji_icon_replay_black.svg" alt="Replay" />
+                    </button>
+                </div>
+                <button
+                    id="strokeorder_next"
+                    disabled="disabled"
+                    data-disable-while-playing
+                    data-disable-while-erasing
+                >
+                    <img src="_kanji_icon_next_black.svg" alt="Next" />
+                </button>
+                <button
+                    id="strokeorder_end"
+                    disabled="disabled"
+                    data-disable-while-playing
+                    data-disable-while-erasing
+                >
+                    <img src="_kanji_icon_skip_end_black.svg" alt="End skip" />
+                </button>
+            </div>
+
+            <div class="stroke-order-diagram__slider">
+                <div class="stroke-order-diagram__slider-container">
+                    <input
+                        id="strokeorder_slider"
+                        disabled="disabled"
+                        type="range"
+                        min="0"
+                        step="1"
+                        data-disable-while-playing
+                        data-disable-while-drawing
+                        data-disable-while-erasing
+                    />
+                    <div class="stroke-order-diagram__slider-notches"></div>
+                </div>
+                <div class="stroke-order-diagram__slider-stroke-count">...</div>
+            </div>
+        </div>
+    </div>
+</div>

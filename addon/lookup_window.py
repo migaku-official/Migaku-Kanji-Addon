@@ -69,11 +69,6 @@ class LookupWindow(QDialog):
         )
         results_lyt.addWidget(self.tab_bar)
 
-        def read_web_file(name):
-            with open(util.addon_path("web", name), "r", encoding="UTF-8") as file:
-                data = file.read()
-            return data
-
         self.web = aqt.webview.AnkiWebView()
 
         # this mess isn't needed with updated styles fix eventually~~~ can also use bundled jquery then lol
@@ -93,10 +88,16 @@ class LookupWindow(QDialog):
             f'<link rel="stylesheet" href="{self.web_uri("styles.css")}">'
             f'<script src="{self.web_uri("jquery.js")}"></script>'
             f'<script>let kanjivg_uri="{self.kanjivg_uri}";</script>'
+            f'<script src="{self.web_uri("dmak.js")}"></script>'
+            f'<script src="{self.web_uri("raphael.js")}"></script>'
+            f'<script src="{self.web_uri("japanese-util.js")}"></script>'
             "</head>"
         )
+        common_back = (
+            f'<script src="{self.web_uri("common_back.js")}"></script>'
+        )
 
-        body_html = read_web_file("lookup.html")
+        body_html = util.read_web_file_with_includes("lookup.html")
 
         settings = {
             "stroke_order_mode": config.get("lookup_stroke_order_mode", "fully_drawn"),
@@ -136,6 +137,7 @@ class LookupWindow(QDialog):
             + style_class
             + '">'
             + settings_html
+            + common_back
             + body_html
             + set_keys_html
             + "</body></html>"

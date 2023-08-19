@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 from collections import OrderedDict
 
 import anki
@@ -13,36 +14,45 @@ addon_id = os.path.basename(addon_dir)
 user_files_dir = os.path.join(addon_dir, "user_files")
 addon_web_base = f'/_addons/{__name__.split(".")[0]}'  # uhhh
 
-
 def assure_user_dir():
     os.makedirs(user_files_dir, exist_ok=True)
-
 
 def addon_path(*path_parts):
     return os.path.join(addon_dir, *path_parts)
 
-
 def user_path(*path_parts):
     return os.path.join(user_files_dir, *path_parts)
-
 
 def col_media_path(*path_parts):
     return os.path.join(aqt.mw.col.media.dir(), *path_parts)
 
-
 def addon_web_uri(*path_parts):
     return addon_web_base + "/" + "/".join(path_parts)
 
+def read_web_file(name):
+    path = addon_path("web", name)
+    if not os.path.exists(path):
+        return "%s NOT FOUND!" % path
+    with open(addon_path("web", name), "r", encoding="UTF-8") as file:
+        data = file.read()
+    return data
+
+def read_web_file_with_includes(name):
+    data = read_web_file(name)
+    
+    include_list = re.findall(r'(<!--[ ]*#include file="([^"]+)"[ ]*-->)',data)
+    for include_tag, include_file in include_list:
+        inc_data = read_web_file(include_file)
+        data = data.replace(include_tag,inc_data)
+    return data
 
 def make_pixmap(*file_parts):
     path = addon_path("img", *file_parts)
     return QPixmap(path)
 
-
 def make_icon(*file_parts):
     path = addon_path("img", *file_parts)
     return QIcon(path)
-
 
 def default_icon():
     return make_icon("migaku.png")

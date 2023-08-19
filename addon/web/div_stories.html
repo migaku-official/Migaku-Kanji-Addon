@@ -1,0 +1,31 @@
+<div id="stories_container" class="stories__container">
+    <hr class="separator -full" />
+
+    <div class="title-tooltip__container">
+        <h2 class="title-tooltip__title stories__title -left-aligned">
+            Stories
+            <button
+                type="button"
+                title="What's this?"
+                aria-controls="tooltip-id--stories__title"
+                onclick="toggleShow('tooltip-id--stories__title')"
+            >
+                <img src="_kanji_icon_help_black.svg" alt="" />
+            </button>
+        </h2>
+        <div
+            id="tooltip-id--stories__title"
+            class="title-tooltip__text"
+            style="display: none"
+            aria-expanded="false"
+        >
+            Memorable stories about the primitives in this kanji can help you
+            remember the keyword. Eventually, you won't need to rely on the
+            story to recall.
+        </div>
+
+        <hr class="separator" />
+    </div>
+
+    <div id="stories" class="stories__content"></div>
+</div>

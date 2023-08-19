@@ -1,0 +1,47 @@
+<div class="readings__container">
+    <h2 class="vh">Readings</h2>
+    <ul class="readings__list">
+        <li>
+            <strong>Onyomi:</strong>
+            <span id="onyomi" class="kanji-char-font"></span>
+        </li>
+        <li>
+            <strong>Kunyomi:</strong>
+            <span id="kunyomi" class="kanji-char-font"></span>
+        </li>
+        <li>
+            <strong>Nanori:</strong>
+            <span id="nanori" class="kanji-char-font"></span>
+        </li>
+    </ul>
+
+    <div class="title-tooltip__container -subdued">
+        <h2 class="title-tooltip__title readings__tooltip">
+            What are these?
+            <button
+                type="button"
+                title="What's this?"
+                aria-controls="tooltip-id--readings__tooltip"
+                onclick="toggleShow('tooltip-id--readings__tooltip')"
+            >
+                <img src="_kanji_icon_help_black.svg" alt="" />
+            </button>
+        </h2>
+
+        <div
+            id="tooltip-id--readings__tooltip"
+            class="title-tooltip__text"
+            style="display: none"
+            aria-expanded="false"
+        >
+            <strong>Onyomi</strong> are the Japanese approximation of the
+            original Chinese pronunciation. <br /><br />
+            <strong>Kunyomi</strong> are the native Japanese readings.
+            <br /><br />
+            <strong>Nanori</strong> are readings found almost exclusively in
+            Japanese names.
+        </div>
+
+        <hr class="separator" />
+    </div>
+</div>
