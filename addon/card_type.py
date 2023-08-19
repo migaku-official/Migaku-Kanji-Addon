@@ -131,6 +131,7 @@ class CardTypeData(metaclass=CardTypeDataMeta):
         dmak_js = "<script>" + read_web_file("dmak.js") + "</script>\n\n"
         raphael_js = "<script>" + read_web_file("raphael.js") + "</script>\n\n"
         japanese_util_js = "<script>" + read_web_file("japanese-util.js") + "</script>\n\n"
+        launch_back_js = f"<script>render_page('{self.label}');</script>"
 
         # Set template html
         template["qfmt"] = (
@@ -143,8 +144,9 @@ class CardTypeData(metaclass=CardTypeDataMeta):
             dmak_js +
             raphael_js +
             japanese_util_js +
+            read_web_file_with_includes(f"back-{self.label}.html") +
             common_back_js +
-            read_web_file_with_includes(f"back-{self.label}.html")
+            launch_back_js
         )
 
         aqt.mw.col.models.save(model)

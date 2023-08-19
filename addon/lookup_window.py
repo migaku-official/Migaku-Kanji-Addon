@@ -137,8 +137,8 @@ class LookupWindow(QDialog):
             + style_class
             + '">'
             + settings_html
-            + common_back
             + body_html
+            + common_back
             + set_keys_html
             + "</body></html>"
         )
