@@ -104,34 +104,29 @@ class KanjiDB:
         self.con.close()
 
     def crs_execute(self, __sql: str, __parameters=()):
-        self.lock.acquire(True)
-        self.crs.execute(__sql, __parameters)
-        self.lock.release()
+        with self.lock:
+            self.crs.execute(__sql, __parameters)
 
     def crs_execute_and_commit(self, __sql: str, __parameters=()):
-        self.lock.acquire(True)
-        self.crs.execute(__sql, __parameters)
-        self.con.commit()
-        self.lock.release()
+        with self.lock:
+            self.crs.execute(__sql, __parameters)
+            self.con.commit()
 
     def crs_executemany_and_commit(self, __sql: str, __seq_of_parameters):
-        self.lock.acquire(True)
-        self.crs.executemany(__sql, __seq_of_parameters)
-        self.con.commit()
-        self.lock.release()
+        with self.lock:
+            self.crs.executemany(__sql, __seq_of_parameters)
+            self.con.commit()
 
     def crs_execute_and_fetch_one(self, __sql: str, __parameters=()):
-        self.lock.acquire(True)
-        self.crs.execute(__sql, __parameters)
-        r = self.crs.fetchone()
-        self.lock.release()
+        with self.lock:
+            self.crs.execute(__sql, __parameters)
+            r = self.crs.fetchone()
         return r
 
     def crs_execute_and_fetch_all(self, __sql: str, __parameters=()):
-        self.lock.acquire(True)
-        self.crs.execute(__sql, __parameters)
-        r = self.crs.fetchall()
-        self.lock.release()
+        with self.lock:
+            self.crs.execute(__sql, __parameters)
+            r = self.crs.fetchall()
         return r
 
     def reset(self):
@@ -234,7 +229,6 @@ class KanjiDB:
 
     # Recalc all kanji cards created
     def recalc_user_cards(self, card_type):
-        self.lock.acquire(True)
         table = f"usr.{card_type.label}_card_ids"
 
         self.crs_execute(
@@ -278,7 +272,6 @@ class KanjiDB:
             f"INSERT OR REPLACE INTO {table} (character, card_id) values (?,?)",
             character_card_ids.items(),
         )
-        self.lock.release()
 
     # Recalc user all works associated with kanji from notes
     def recalc_user_words(self):
