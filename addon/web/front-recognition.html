@@ -53,26 +53,14 @@ START - Migaku markup
 		$('.migaku-header').hide();
 	}
 
-	function wrap_list(list, intro, outro) {
-		if (list.length < 1) return '-';
-		return intro + list.join(outro + intro) + outro;
-	}
-
-	function delete_mark(evt) {
-		pycmd(
-			'delete_mark-' +
-				data.character +
-				'-recognition-' +
-				(evt.shiftKey ? 'false' : 'true'),
-		);
-	}
+    var primitives_uri = '_primitive_';
 
 	var data_b64 = document.getElementById('migaku_data').innerHTML;
 	data_b64 = data_b64.replace(/(<([^>]+)>)/gi, ''); // Needed because of Migaku Editor :|
 	var data_json = atob(data_b64);
 	var data = JSON.parse(data_json);
 
-	$('.keyword-kanji').html(data.character);
+	$('.keyword-kanji').html(ReplaceTagsWithImages(data.character));
 
 	var max_words = settings.words_max;
 	var word_front_pts = [];

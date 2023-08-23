@@ -2,6 +2,7 @@ import os
 import sys
 import re
 from collections import OrderedDict
+import re
 
 import anki
 import aqt
@@ -57,9 +58,15 @@ def make_icon(*file_parts):
 def default_icon():
     return make_icon("migaku.png")
 
+# Creates a list of single-character Unicode kanjis and [primitive] tags
+# For example '[banner]也' -> ['\[banner\]','也'] 
+def custom_list(l):
+    g = re.findall(r'([^\[]|\[[^\]]+\])',l)
+    return g
 
 def unique_characters(string):
-    return list(OrderedDict((c, True) for c in string).keys())
+    l = custom_list(string)
+    return list(OrderedDict((c, True) for c in l).keys())
 
 
 import aqt

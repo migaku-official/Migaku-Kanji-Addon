@@ -8,7 +8,7 @@ from threading import RLock
 import anki
 import aqt
 
-from .util import addon_path, user_path, assure_user_dir, unique_characters
+from .util import addon_path, user_path, assure_user_dir, unique_characters, custom_list
 from .errors import InvalidStateError, InvalidDeckError
 from .card_type import CardType
 from . import config
@@ -24,9 +24,11 @@ def clean_character_field(f):
     f = f.lstrip()
     f = text_parser.html_regex.sub("", f)
     if len(f):
+        # Leave [primitive_tag] as it is, otherwise return the single unicode character
+        if f[0] == '[':
+            return f
         return f[0]
     return ""
-
 
 class KanjiDB:
     def __init__(self):
@@ -175,6 +177,7 @@ class KanjiDB:
             print(f"Lookup of primitive {character} failed.")
             return
         primitives = primitives_result[0]
+        primitives = custom_list(primitives)
 
         # Recusivly add primitives that need to be learned if enabled
         if card_type.add_primitives:
@@ -628,7 +631,6 @@ class KanjiDB:
         c = clean_character_field(note["Character"])
         if len(c) < 1:
             return
-        c = c[0]
         note["Character"] = c
 
         r = self.get_kanji_result_data(c, card_ids=False)
@@ -637,7 +639,10 @@ class KanjiDB:
         data_json_b64 = str(data_json_b64_b, "utf-8")
         note["MigakuData"] = data_json_b64
 
-        svg_name = "%05x.svg" % ord(c)
+        if c[0] == '[':
+            svg_name = c[1:-1] + ".svg"
+        else:
+            svg_name = "%05x.svg" % ord(c)
         svg_path = addon_path("kanjivg", svg_name)
 
         if os.path.exists(svg_path):
@@ -701,10 +706,10 @@ class KanjiDB:
             ("grade", _, None),
             ("jlpt", _, None),
             ("kanken", _, None),
-            ("primitives", list, None),
-            ("primitive_of", list, None),
+            ("primitives", custom_list, None),
+            ("primitive_of", custom_list, None),
             ("primitive_keywords", json.loads, None),
-            ("primitive_alternatives", list, None),
+            ("primitive_alternatives", custom_list, None),
             ("heisig_id5", _, None),
             ("heisig_id6", _, None),
             ("heisig_keyword5", _, None),

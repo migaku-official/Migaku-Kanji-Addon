@@ -21,7 +21,7 @@ from aqt.qt import *
 
 # Allow webviews accessing kanjivg svgs, web data for lookups and fonts
 aqt.mw.addonManager.setWebExports(
-    __name__, r"(kanjivg/.*\.svg|web/.*|fonts/.*|user_files/fonts/.*)"
+    __name__, r"(kanjivg/.*\.svg|primitives/.*\.svg|web/.*|fonts/.*|user_files/fonts/.*)"
 )
 
 
