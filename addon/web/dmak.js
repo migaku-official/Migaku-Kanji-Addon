@@ -46,6 +46,7 @@ Changes:
 		if (!this.options.skipLoad) {
 			var loader = new DmakLoader(
 					this.options.uri,
+					this.options.secondary_uri,
 					this.options.preload_svgs,
 				),
 				self = this;
@@ -78,6 +79,7 @@ Changes:
 
 	Dmak.default = {
 		uri: '',
+		secondary_uri: '',
 		skipLoad: false,
 		autoplay: true,
 		height: 109,
@@ -647,8 +649,9 @@ Changes:
 	'use strict';
 
 	// Create a safe reference to the DrawMeAKanji object for use below.
-	var DmakLoader = function (uri, preload_svgs = {}) {
+	var DmakLoader = function (uri, secondary_uri = '', preload_svgs = {}) {
 		this.uri = uri;
+		this.secondary_uri = secondary_uri;
 		this.preload_svgs = preload_svgs;
 	};
 
@@ -727,6 +730,7 @@ Changes:
 		}
 
 		xhr.open('GET', this.uri + code + '.svg', true);
+		xhr.secondary_uri = this.secondary_uri
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
@@ -736,7 +740,13 @@ Changes:
 						callbacks.error(e.toString());
 					}
 				} else {
-					callbacks.error(xhr.statusText);
+					if ( (xhr.status === 404) && (xhr.secondary_uri != '') ) {
+						xhr.open('GET', xhr.secondary_uri + code + '.svg', true);
+						xhr.secondary_uri = '';
+						xhr.send();
+					} else {
+						callbacks.error(xhr.statusText);
+					}
 				}
 			}
 		};
@@ -810,7 +820,7 @@ Changes:
 			};
 		}
 
-		return data
+		return data;
 	}
 
 	window.DmakLoader = DmakLoader;

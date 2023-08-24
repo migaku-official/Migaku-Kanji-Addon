@@ -643,9 +643,16 @@ class KanjiDB:
             svg_name = c[1:-1] + ".svg"
         else:
             svg_name = "%05x.svg" % ord(c)
-        svg_path = addon_path("kanjivg", svg_name)
 
-        if os.path.exists(svg_path):
+        # Try to find the KanjiVG file first in supplementary directory and
+        # only then from the main repository
+        svg_path = addon_path("kanjivg-supplementary", svg_name)
+        if not os.path.exists(svg_path):
+            svg_path = addon_path("kanjivg", svg_name)
+            if not os.path.exists(svg_path):
+                svg_path = ''
+
+        if svg_path != '':
             with open(svg_path, "r", encoding="utf-8") as file:
                 svg_data = file.read()
 

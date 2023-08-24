@@ -265,7 +265,8 @@ function render_page(page_type) {
 
     dmak_parameters = {
         element: strokeElementId,
-        uri: kanjivg_uri,
+        uri: page_type == 'lookup' ? kanjivg_supplementary_uri : '',
+        secondary_uri: page_type == 'lookup' ? kanjivg_uri : '',
         height: 220,
         width: 220,
         step: 0.015,
