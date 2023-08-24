@@ -1,0 +1,32 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_quarter" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:quarter" kvg:element="quarter">
+			<g id="kvg:quarter-g1" kvg:element="𠔉" kvg:phon="𠔉V" kvg:position="top" kvg:variant="true">
+				<path d="M27.9,28.9c3.58,2.38,9.25,9.76,10.1,13.5" id="kvg:quarter-s1" kvg:type="㇔"></path>
+				<path d="M76.4,25.1c0.0981,1.3-0.229,2.55-0.839,3.72c-3.27,6.2-6.41,11-13,17.6" id="kvg:quarter-s2" kvg:type="㇒"></path>
+				<g id="kvg:quarter-g2" kvg:element="二">
+					<g id="kvg:quarter-g3" kvg:position="top">
+						<path d="M26.2,51.8c2.73,0.534,4.83,0.316,7.09,0.0872c9.1-0.937,30-2.82,38.8-3.39c2.09-0.131,4.36-0.0545,6.41,0.447" id="kvg:quarter-s3" kvg:type="㇐"></path>
+					</g>
+					<g id="kvg:quarter-g4" kvg:element="大" kvg:position="bottom" part="1">
+						<path d="M12.6,68.8c3.11,1.11,7.11,0.741,10.4,0.48c12.5-0.992,43.3-2.67,60.8-3.46c3.7-0.164,7.26-0.164,10.9,0.621" id="kvg:quarter-s4" kvg:type="㇐"></path>
+					</g>
+				</g>
+				<g id="kvg:quarter-g5" kvg:element="大" part="2">
+					<g id="kvg:quarter-g6" kvg:element="人">
+						<path d="M54.6,22.8c0.545,1.36,0.992,2.77,0.578,4.6C50.5,47.8,41.5,77.9,11.8,94.7" id="kvg:quarter-s5" kvg:type="㇒"></path>
+						<path d="M50.5,47.8c6.7,6.86,27,25.7,36.8,34.2c3.19,2.77,6.35,5.54,10,7.66" id="kvg:quarter-s6" kvg:type="㇏"></path>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_quarter" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 20.5 29.6)">1</text>
+		<text transform="matrix(1 0 0 1 66.3 23.7)">2</text>
+		<text transform="matrix(1 0 0 1 17.8 52.5)">3</text>
+		<text transform="matrix(1 0 0 1 5.27 69.5)">4</text>
+		<text transform="matrix(1 0 0 1 44.5 23)">5</text>
+		<text transform="matrix(1 0 0 1 67.4 59.7)">6</text>
+	</g>
+</svg>

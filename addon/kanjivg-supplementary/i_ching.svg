@@ -1,0 +1,30 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_i_ching" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:i_ching" kvg:element="i_ching">
+			<g id="kvg:i_ching-g1" kvg:position="top">
+				<g id="kvg:i_ching-g2" kvg:element="二">
+					<g id="kvg:i_ching-g3" kvg:position="top">
+						<path d="M12.1,48.8c1.56,0.5,3.18,0.91,4.81,0.744c5.6-0.551,12.8-1.31,17.1-1.55c1.45-0.128,2.9-0.0898,4.33,0.103" id="kvg:i_ching-s1" kvg:type="㇐"></path>
+					</g>
+					<g id="kvg:i_ching-g4" kvg:position="bottom">
+						<path d="M9.22,65.4c1.41,0.449,2.85,0.718,4.33,0.808c5.5-0.218,15.4-1.67,20.3-1.91c1.4-0.103,2.8-0.0385,4.18,0.18" id="kvg:i_ching-s2" kvg:type="㇐"></path>
+					</g>
+				</g>
+				<g id="kvg:i_ching-g5" kvg:element="二">
+					<g id="kvg:i_ching-g6" kvg:position="top">
+						<path d="M72.1,46.6c1.41,0.436,2.85,0.821,4.32,0.757c5.13-0.244,12.8-1.04,17.5-1.49c1.62-0.154,3.22-0.18,4.83,0.0385" id="kvg:i_ching-s3" kvg:type="㇐"></path>
+					</g>
+					<g id="kvg:i_ching-g7" kvg:position="bottom">
+						<path d="M72.4,62.6c1.77,0.628,3.55,0.5,5.45,0.385c5.77-0.359,13.9-0.834,18.9-1.46c1.6-0.205,3.22-0.167,4.82,0.0513" id="kvg:i_ching-s4" kvg:type="㇐"></path>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_i_ching" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 10.5 45.5)">1</text>
+		<text transform="matrix(1 0 0 1 6.66 62.1)">2</text>
+		<text transform="matrix(1 0 0 1 69.5 42.9)">3</text>
+		<text transform="matrix(1 0 0 1 69.5 59.6)">4</text>
+	</g>
+</svg>

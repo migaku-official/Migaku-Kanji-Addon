@@ -1,0 +1,36 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_0590b" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:0590b" kvg:element="夋">
+			<g id="kvg:0590b-g1" kvg:element="夋" kvg:position="right">
+				<g id="kvg:0590b-g2" kvg:element="允" kvg:position="top">
+					<g id="kvg:0590b-g3" kvg:element="厶" kvg:position="top">
+						<path d="M50.9,13c0.251,0.914,0,2.17-0.399,2.68c-5.06,6.28-8.62,10.8-15.1,17.5c-1.85,1.89-1.57,3.43,1.57,2.88c9.78-1.72,24.8-5.48,35.5-7.43" id="kvg:0590b-s1" kvg:type="㇜"></path>
+						<path d="M65.8,20c4.94,2.91,12.8,12,14,16.5" id="kvg:0590b-s2" kvg:type="㇔"></path>
+					</g>
+					<g id="kvg:0590b-g4" kvg:element="儿" kvg:position="bottom">
+						<g id="kvg:0590b-g5" kvg:element="丿" kvg:position="left">
+							<path d="M44.8,39.6c0.125,1.24-0.114,2.07-0.8,3.2c-2.4,3.98-7.9,9.77-14.7,14.3" id="kvg:0590b-s3" kvg:type="㇒"></path>
+						</g>
+						<g id="kvg:0590b-g6" kvg:position="right">
+							<path d="M58.7,35.6c0.902,0.82,0.982,1.89,0.982,3.43c0,3.93-0.0913,4.9-0.0913,7.57c0,6.24,6.38,5.53,12.7,5.53c6.62,0,10.7-0.758,11.9-2.31" id="kvg:0590b-s4" kvg:type="㇟"></path>
+						</g>
+					</g>
+				</g>
+				<g id="kvg:0590b-g7" kvg:element="夂" kvg:position="bottom">
+					<path d="M49.4,54c0.0685,0.664-0.172,2.42-0.708,3.26C43.8,64.9,38.2,73.8,27.3,82.4" id="kvg:0590b-s5" kvg:type="㇒"></path>
+					<path d="M48.8,62.6c1.1,0.882,4.77,0.602,6.16,0.405c4.1-0.581,10.2-2.08,13.4-2.83c3.12-0.747,5.13,1.19,3.87,3.48c-6.52,11.8-24.5,30-44.9,36.8" id="kvg:0590b-s6" kvg:type="㇇"></path>
+					<path d="M44.8,69c4.03,0.82,21.5,17.6,31.5,26c2.74,2.31,5.88,4.65,9.96,6.61" id="kvg:0590b-s7" kvg:type="㇏"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_0590b" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 41.9 11.7)">1</text>
+		<text transform="matrix(1 0 0 1 62.4 16.9)">2</text>
+		<text transform="matrix(1 0 0 1 33.9 47)">3</text>
+		<text transform="matrix(1 0 0 1 52.2 41.8)">4</text>
+		<text transform="matrix(1 0 0 1 40.8 56.3)">5</text>
+		<text transform="matrix(1 0 0 1 54.4 60.5)">6</text>
+		<text transform="matrix(1 0 0 1 52.2 71.9)">7</text>
+	</g>
+</svg>

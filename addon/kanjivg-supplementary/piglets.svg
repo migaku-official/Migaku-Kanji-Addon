@@ -1,0 +1,26 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_piglets" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:piglets" kvg:element="piglets">
+			<g id="kvg:piglets-g1" kvg:element="旦" kvg:position="top">
+				<g id="kvg:piglets-g2" kvg:element="一">
+					<path d="M14.4,29.6c1.66,0.392,4.69,0.458,6.34,0.392c17.2-0.654,46.1-3.65,62.2-3.8c2.76-0.0218,4.41,0.185,5.79,0.382" id="kvg:piglets-s1" kvg:type="㇐"></path>
+				</g>
+			</g>
+			<g id="kvg:piglets-g3" kvg:element="勿" kvg:position="bottom">
+				<g id="kvg:piglets-g4" kvg:element="勹">
+					<path d="M36.7,32.4c0.0545,0.61,0.12,1.57-0.109,2.45C35.2,40,25.1,52.5,14.3,59.4" id="kvg:piglets-s2" kvg:type="㇒"></path>
+					<path d="M34.1,44.5c1.18,0.534,2.82,0.719,4.7,0.36c1.89-0.36,39.2-3.42,43.9-3.6c4.7-0.174,5.64,1.8,4.94,5.58c-0.709,3.78-4.19,25.2-14.5,35.5c-3.11,3.08-4.86-0.512-7.64-2.76" id="kvg:piglets-s3" kvg:type="㇆"></path>
+				</g>
+				<path d="M46.6,46.6c0.0654,0.545,0.185,1.41-0.131,2.16c-3.05,7.47-11.4,17.9-23.5,24" id="kvg:piglets-s4" kvg:type="㇒"></path>
+				<path d="M65.2,45.2c0.12,1,0.24,2.59-0.229,4.04c-2.82,8.53-13.1,24-30.4,33.3" id="kvg:piglets-s5" kvg:type="㇒"></path>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_piglets" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 5.29 31)">1</text>
+		<text transform="matrix(1 0 0 1 24.9 41.5)">2</text>
+		<text transform="matrix(1 0 0 1 42.3 40.9)">3</text>
+		<text transform="matrix(1 0 0 1 34.7 55)">4</text>
+		<text transform="matrix(1 0 0 1 54.3 55)">5</text>
+	</g>
+</svg>

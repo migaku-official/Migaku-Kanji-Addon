@@ -1,0 +1,18 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_cornstalk" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:cornstalk" kvg:element="cornstalk">
+			<g id="kvg:cornstalk-g1" kvg:position="bottom">
+				<path d="M32.8,40.4c2.22,0.901,6.21,0.712,8.53,0.523c9.29-0.741,25.6-2.94,34.2-3.68c2.5-0.218,4.98-0.451,7.46,0.145" id="kvg:cornstalk-s1" kvg:type="㇐"></path>
+				<path d="M17.1,63.5c3.3,1.34,8.17,1.09,11.6,0.698c13.9-1.58,43.9-4.98,57.9-5.64c3.74-0.174,7.78,0.0291,11.5,0.916" id="kvg:cornstalk-s2" kvg:type="㇐"></path>
+				<g id="kvg:cornstalk-g2" kvg:element="丨">
+					<path d="M55.7,24.2c1.42,1.34,1.83,3.52,1.83,6.57c0,15.7,0.0727,35.3,0.0727,47.8c0,4.81-0.102,8.55-0.102,10.5" id="kvg:cornstalk-s3" kvg:type="㇑"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_cornstalk" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 32.8 37.2)">1</text>
+		<text transform="matrix(1 0 0 1 15.3 59.8)">2</text>
+		<text transform="matrix(1 0 0 1 42.9 28.5)">3</text>
+	</g>
+</svg>

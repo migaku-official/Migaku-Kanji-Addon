@@ -1,0 +1,24 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_06c10" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:06c10" kvg:element="氐">
+			<g id="kvg:06c10-g1" kvg:phon="氐" kvg:position="right">
+				<g id="kvg:06c10-g2" kvg:element="氏" kvg:position="top">
+					<path d="M60.7,13.4c0.0784,0.418,0.168,1.07-0.157,1.67C58.6,18.5,49.7,25.5,35.1,31.4" id="kvg:06c10-s1" kvg:type="㇒"></path>
+					<path d="M32.6,30.3c1.26,1.15,1.76,2.6,1.76,4.12c0,2.01-0.19,39.4-0.19,42.5c0,3.13,0.875,3.61,3.53,1.53c3.41-2.67,12-8.78,15.3-10.7" id="kvg:06c10-s2" kvg:type="㇙"></path>
+					<path d="M35.8,51.8c0.717,0.214,2.05-0.173,2.77-0.295c10.1-1.81,28.1-5.63,37-8.03c2.06-0.55,4.18-0.795,6.31-0.418" id="kvg:06c10-s3" kvg:type="㇐"></path>
+					<path d="M51.6,26.8c1.36,0.947,2.13,2.35,2.34,4C56.9,53.5,65.6,75.3,85.2,88.7c6.77,4.64,4.88-3.13,4.88-5.81" id="kvg:06c10-s4" kvg:type="㇂"></path>
+				</g>
+				<g id="kvg:06c10-g3" kvg:element="一" kvg:position="bottom">
+					<path d="M31.6,95.9c1.96,0.367,4.36,0.428,6.44,0.153c8.83-1.18,22.6-2.36,29.5-2.92c2.15-0.173,4.62-0.173,6.45,0.0917" id="kvg:06c10-s5" kvg:type="㇐"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_06c10" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 65.8 12.4)">1</text>
+		<text transform="matrix(1 0 0 1 25.4 39.9)">2</text>
+		<text transform="matrix(1 0 0 1 42.2 47.5)">3</text>
+		<text transform="matrix(1 0 0 1 60.7 29.2)">4</text>
+		<text transform="matrix(1 0 0 1 30.5 93.3)">5</text>
+	</g>
+</svg>

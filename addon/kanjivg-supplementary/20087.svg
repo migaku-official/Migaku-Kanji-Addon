@@ -1,0 +1,12 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_20087" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:20087" kvg:element="𠂇">
+			<path d="M18.6,38.6c2.21,0.561,6,0.602,8.19,0.301c18.1-2.48,37.4-4.56,56.7-5.69c3.67-0.218,5.9,0.0104,7.74,0.291" id="kvg:20087-s1" kvg:type="㇐"></path>
+			<path d="M50.1,14.7c0.55,2.19,0.55,4.46,0.322,6.99C48.8,39.4,34.3,75.3,16.1,88.5" id="kvg:20087-s2" kvg:type="㇒"></path>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_20087" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 10.9 40)">1</text>
+		<text transform="matrix(1 0 0 1 40 15.1)">2</text>
+	</g>
+</svg>

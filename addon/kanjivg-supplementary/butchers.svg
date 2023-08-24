@@ -1,0 +1,38 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_butchers" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:butchers" kvg:element="butchers">
+			<g id="kvg:butchers-g1" kvg:element="兪" kvg:phon="兪V" kvg:position="right" kvg:variant="true">
+				<g id="kvg:butchers-g2" kvg:element="入" kvg:original="人" kvg:position="top">
+					<path d="M49.7,14.2c0.0839,0.872-0.168,2.08-0.768,3.22C43.8,27.3,35.9,39.8,20.1,51.6" id="kvg:butchers-s1" kvg:type="㇒"></path>
+					<path d="M50.3,17.6c6.48,5.73,19.5,16,28.6,23.3c2.92,2.32,7.1,4.55,10.5,6.22" id="kvg:butchers-s2" kvg:type="㇏"></path>
+				</g>
+				<g id="kvg:butchers-g3" kvg:position="bottom">
+					<g id="kvg:butchers-g4" kvg:element="一">
+						<path d="M38,44.5c1.3,0.534,4.27,0.61,5.61,0.436c6.15-0.785,14.7-2.47,19.6-2.96c1.38-0.142,2.65-0.207,3.99,0.131" id="kvg:butchers-s3" kvg:type="㇐"></path>
+					</g>
+					<g id="kvg:butchers-g5" kvg:element="月">
+						<path d="M27.4,57.5c1.02,0.926,1.32,2.06,1.32,3.6c0,0.774-0.048,23.3-0.048,35.1c0,4.15,0.024,6.35,0,6.95" id="kvg:butchers-s4" kvg:type="㇑"></path>
+						<path d="M29.5,59.3c1.19-0.12,9.81-2.02,13.6-2.71c3.37-0.621,4.22,0.61,4.15,3.55c-0.132,5.19,0,26.1,0,36.5c0,10.4-5.18,2.68-6.4,1.37" id="kvg:butchers-s5" kvg:type="㇆a"></path>
+						<path d="M30,70.5c4.22-0.534,11.6-1.53,15.8-2.02" id="kvg:butchers-s6" kvg:type="㇐a"></path>
+						<path d="M29.8,82.1c4.69-0.305,10.1-1.12,15.7-1.44" id="kvg:butchers-s7" kvg:type="㇐a"></path>
+					</g>
+					<g id="kvg:butchers-g6" kvg:element="刂" kvg:original="刀" kvg:variant="true">
+						<path d="M63,57.7c0.935,0.85,1.5,1.92,1.5,4.01c0,2.08-0.012,13.4-0.012,20.4c0,3.02,0,4.41,0,4.74" id="kvg:butchers-s8" kvg:type="㇑"></path>
+						<path d="M78.9,52.5c1.14,1.04,1.5,2.31,1.5,4.56c0,10-0.12,37.5-0.12,41c0,8.45-6.15,1.04-7.44,0.174" id="kvg:butchers-s9" kvg:type="㇚"></path>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_butchers" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 39.9 15.5)">1</text>
+		<text transform="matrix(1 0 0 1 59.1 22.1)">2</text>
+		<text transform="matrix(1 0 0 1 41.5 41.7)">3</text>
+		<text transform="matrix(1 0 0 1 19.8 65.7)">4</text>
+		<text transform="matrix(1 0 0 1 30.6 55.5)">5</text>
+		<text transform="matrix(1 0 0 1 32.8 67.9)">6</text>
+		<text transform="matrix(1 0 0 1 32.8 78.8)">7</text>
+		<text transform="matrix(1 0 0 1 52.3 54.8)">8</text>
+		<text transform="matrix(1 0 0 1 65.1 53.7)">9</text>
+	</g>
+</svg>

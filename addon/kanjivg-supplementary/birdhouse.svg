@@ -1,0 +1,26 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_birdhouse" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:birdhouse" kvg:element="birdhouse">
+			<g id="kvg:birdhouse-g1" kvg:position="top">
+				<g id="kvg:birdhouse-g2" kvg:element="⺤" kvg:original="爪" kvg:radical="nelson" kvg:variant="true">
+					<path d="M65.6,12.6c-0.104,1.15-0.945,1.96-1.82,2.46c-5.16,2.97-17.7,7.51-32.1,10.1" id="kvg:birdhouse-s1" kvg:type="㇒"></path>
+					<path d="M27.9,31c2.54,1.81,6.3,7.41,6.93,10.2" id="kvg:birdhouse-s2" kvg:type="㇔"></path>
+					<path d="M49.8,27.3c2.3,1.67,5.96,6.88,6.53,9.48" id="kvg:birdhouse-s3" kvg:type="㇔"></path>
+					<path d="M79.8,21.3c0.104,1.08-0.0415,1.69-0.561,2.67c-2,3.75-6.87,9.08-13.8,14.7" id="kvg:birdhouse-s4" kvg:type="㇒"></path>
+				</g>
+				<g id="kvg:birdhouse-g3" kvg:element="冖" kvg:phon="舟T">
+					<path d="M20.5,48.1c-0.135,4.45-2.2,13.4-3.87,17.3" id="kvg:birdhouse-s5" kvg:type="㇔"></path>
+					<path d="M22.1,48.3c21.5-3.3,48.4-6.55,68.2-7.8c8.05-0.498,2.85,5.85-1.72,10.3" id="kvg:birdhouse-s6" kvg:type="㇖b"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_birdhouse" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 66.2 9.48)">1</text>
+		<text transform="matrix(1 0 0 1 20.8 35.8)">2</text>
+		<text transform="matrix(1 0 0 1 43.1 34.8)">3</text>
+		<text transform="matrix(1 0 0 1 83.3 18.8)">4</text>
+		<text transform="matrix(1 0 0 1 11.7 54.6)">5</text>
+		<text transform="matrix(1 0 0 1 25.7 56.2)">6</text>
+	</g>
+</svg>

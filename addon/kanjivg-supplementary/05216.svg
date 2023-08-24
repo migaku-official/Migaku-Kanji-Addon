@@ -1,0 +1,26 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_05216" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:05216" kvg:element="刖">
+			<g id="kvg:05216-g1" kvg:position="bottom">
+				<g id="kvg:05216-g2" kvg:element="月" kvg:phon="歬2V" kvg:variant="true">
+					<path d="M17.4,26.1c1.33,1.56,1.97,3.54,1.97,5.05c0,3.69,0.121,34.7,0.0969,49.2c0,3.91-0.0363,6.61-0.121,7.27" id="kvg:05216-s1" kvg:type="㇑"></path>
+					<path d="M20.2,27.7c2.79-0.497,16.2-2.79,20.8-3.51c2.66-0.412,4.25,1.33,4.25,3.92c0,1.24-0.194,37.3-0.194,54.1c0,6.64-4.59,3.61-7.18,0.642" id="kvg:05216-s2" kvg:type="㇆a"></path>
+					<path d="M21,43.7c6.93-0.92,16.5-2.19,22.5-2.81" id="kvg:05216-s3" kvg:type="㇐a"></path>
+					<path d="M20.9,60c5.34-0.618,16.1-1.87,22.3-2.29" id="kvg:05216-s4" kvg:type="㇐a"></path>
+				</g>
+				<g id="kvg:05216-g3" kvg:element="刂" kvg:original="刀" kvg:radical="tradit" kvg:variant="true">
+					<path d="M62.9,28.6c1.45,1.45,2.13,3.23,2.13,5.55c0,10.8-0.0121,18.3-0.109,22.5c-0.0484,1.8-0.109,3.34-0.194,4.9" id="kvg:05216-s5" kvg:type="㇑"></path>
+					<path d="M83,18.5c1.53,1.53,2.43,3.49,2.43,6.08c0,17.6-0.0121,52-0.0121,58c0,10.4-7.22,1.21-9.03-0.303" id="kvg:05216-s6" kvg:type="㇚"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_05216" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 9.91 34.7)">1</text>
+		<text transform="matrix(1 0 0 1 20.8 24.9)">2</text>
+		<text transform="matrix(1 0 0 1 23.2 40.2)">3</text>
+		<text transform="matrix(1 0 0 1 23.2 58.8)">4</text>
+		<text transform="matrix(1 0 0 1 55.6 26.1)">5</text>
+		<text transform="matrix(1 0 0 1 72.9 22.5)">6</text>
+	</g>
+</svg>

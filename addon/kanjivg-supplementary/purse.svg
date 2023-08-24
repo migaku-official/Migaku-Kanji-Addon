@@ -1,0 +1,26 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_purse" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:purse" kvg:element="purse">
+			<g id="kvg:purse-g1" kvg:position="top">
+				<g id="kvg:purse-g2" kvg:element="中">
+					<g id="kvg:purse-g3" kvg:element="口">
+						<path d="M30.6,42.1c0.927,1.13,1.43,2.83,1.58,3.43c0.861,3.54,1.33,6.69,2.48,12.9c0.294,1.58,0.599,3.23,0.909,4.96" id="kvg:purse-s1" kvg:type="㇑"></path>
+						<path d="M32.8,44.6c14.8-2.32,38.5-6.17,47.3-6.51c3.45-0.133,4.94,1.95,4.2,5.28C83.6,46.6,82.3,51.6,81.2,54.6" id="kvg:purse-s2" kvg:type="㇕b"></path>
+						<path d="M36.2,59.8c8.84-0.8,28.9-2.84,42.8-3.78c1.53-0.107,2.99-0.2,4.36-0.279" id="kvg:purse-s3" kvg:type="㇐b"></path>
+					</g>
+					<g id="kvg:purse-g4" kvg:element="丨">
+						<path d="M55,29.3c1.03,1.25,1.64,3.34,1.64,4.74c0,13.1,0,27.6,0,36.5" id="kvg:purse-s4" kvg:type="㇑a"></path>
+					</g>
+				</g>
+				<path d="M13,75.5c3.19,1.4,7.35,0.906,10.6,0.466c15.5-2.08,47.9-6.12,67.1-7.18c3.46-0.187,6.81-0.386,10.3,0.506" id="kvg:purse-s5" kvg:type="㇐"></path>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_purse" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 25.6 52.6)">1</text>
+		<text transform="matrix(1 0 0 1 33.5 39.3)">2</text>
+		<text transform="matrix(1 0 0 1 38.9 55.2)">3</text>
+		<text transform="matrix(1 0 0 1 45.5 26)">4</text>
+		<text transform="matrix(1 0 0 1 5.94 76.6)">5</text>
+	</g>
+</svg>

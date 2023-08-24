@@ -1,0 +1,32 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_caverns" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:caverns" kvg:element="caverns">
+			<g id="kvg:caverns-g1" kvg:element="广" kvg:phon="庶1T" kvg:position="tare" kvg:radical="general">
+				<path d="M54.8,11.6c0.97,0.97,1.51,1.99,1.51,3.15c0,1.71-0.07,5.46-0.07,8.71" id="kvg:caverns-s1" kvg:type="㇑a"></path>
+				<g id="kvg:caverns-g2" kvg:element="厂">
+					<path d="M21.6,26.7c2.75,0.4,5.81,0.21,7.86,0.04c15.4-1.27,37.9-3.64,52.5-4.73c3.4-0.25,5.47,0.01,7.17,0.28" id="kvg:caverns-s2" kvg:type="㇐"></path>
+					<path d="M26.2,27.8c0.88,0.88,1.19,2,1.16,3.63c-0.53,29.7-5.53,50.1-16.6,65.1" id="kvg:caverns-s3" kvg:type="㇒"></path>
+				</g>
+			</g>
+			<g id="kvg:caverns-g3" kvg:position="tarec">
+				<g id="kvg:caverns-g4" kvg:element="廿" kvg:phon="庶2T">
+					<g id="kvg:caverns-g5" kvg:element="十">
+						<path d="M33,41.5c2.62,0.54,5.58,0.22,8.25-0.01c9.59-0.84,33-3.49,42-4.09c2.38-0.16,4.66-0.1,7,0.33" id="kvg:caverns-s4" kvg:type="㇐"></path>
+						<path d="M46.4,31.4c1.03,0.86,1.59,2.29,1.65,3.13c0.21,2.95,0.7,11.1,1.07,17.9c0.07,1.19,0.13,2.33,0.19,3.38" id="kvg:caverns-s5" kvg:type="㇑"></path>
+					</g>
+					<path d="M69.7,29.2c0.77,0.77,1.31,2.05,1.15,2.88c-0.73,3.87-1.61,10.6-2.63,18.3" id="kvg:caverns-s6" kvg:type="㇑a"></path>
+					<path d="M50.3,53.3c6.43-0.67,9.92-1.04,16.6-1.65c1.11-0.1,2.3-0.21,3.61-0.33" id="kvg:caverns-s7" kvg:type="㇐b"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_caverns" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 47.5 13.5)">1</text>
+		<text transform="matrix(1 0 0 1 24.5 24.5)">2</text>
+		<text transform="matrix(1 0 0 1 20.2 37.5)">3</text>
+		<text transform="matrix(1 0 0 1 33.5 38.5)">4</text>
+		<text transform="matrix(1 0 0 1 39.5 34.6)">5</text>
+		<text transform="matrix(1 0 0 1 60.5 33.1)">6</text>
+		<text transform="matrix(1 0 0 1 53.5 50.5)">7</text>
+	</g>
+</svg>
