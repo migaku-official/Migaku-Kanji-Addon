@@ -50,16 +50,26 @@ Changes:
 				),
 				self = this;
 
-			loader.load(text, function (data) {
-				self.prepare(data);
+			var callbacks = {
+				done: function (index, result) {
+					// prepare expects array of arrays
+					let data = [result]
+					self.prepare(data);
 
-				// Execute custom callback "loaded" here
-				self.options.loaded(self, self.strokes);
-
-				if (self.options.autoplay) {
-					self.render();
-				}
-			});
+					// Execute custom callback "loaded" here
+					self.options.loaded(self, self.strokes);
+	
+					if (self.options.autoplay) {
+						self.render();
+					}
+				},
+				error: function (msg) {
+					console.log('Error', msg);
+				},
+			};
+	
+			loader.loadSvg(0, text, callbacks);
+			
 		}
 	};
 
@@ -676,9 +686,26 @@ Changes:
 	 * @see: http://kanjivg.tagaini.net
 	 */
 	DmakLoader.prototype.loadSvg = function (index, char, callbacks) {
-		var charCode = char.charCodeAt(0).toString(16),
-			code = ('00000' + charCode).slice(-5),
-			preload_svg_data = this.preload_svgs[char];
+		if (char[0] == '[') {
+			var code = char.slice(1,-1)
+		} else {
+			if (char.length == 1) {
+				// 16-bit unicode (Basic Multilingual Plane)
+				var charCode = char.charCodeAt(0).toString(16),
+					code = ('00000' + charCode).slice(-5)
+			} else {
+				// Assume it's a Astral Plane
+				function getAstralCodePoint(highSurrogate, lowSurrogate) {
+					return (highSurrogate - 0xD800) * 0x400 
+				      + lowSurrogate - 0xDC00 + 0x10000;
+				}
+				let code_point = getAstralCodePoint(char.charCodeAt(0),char.charCodeAt(1));
+				var charCode = code_point.toString(16),
+					code = ('00000' + charCode).slice(-5)
+			}
+		}
+
+		var	preload_svg_data = this.preload_svgs[char];
 
 		if (preload_svg_data) {
 			try {
@@ -691,7 +718,6 @@ Changes:
 
 		var xhr = new XMLHttpRequest();
 
-		// Skip space character
 		if (code === '00020' || code === '03000') {
 			callbacks.done(index, {
 				paths: [],
@@ -784,7 +810,7 @@ Changes:
 			};
 		}
 
-		return data;
+		return data
 	}
 
 	window.DmakLoader = DmakLoader;
