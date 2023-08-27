@@ -424,10 +424,7 @@ function render_page(page_type) {
     // CHANGES - END - stroke order diagram
     // ==================================================================
 
-    if (page_type == "recognition") {
-        $('.keyword-kanji').html(ReplaceTagsWithImages(data.character));
-    }
-    $('.fontExample').html(ReplaceTagsWithImages(data.character));
+    display_characters(page_type)
 
     tags = [];
     if (data.frequency_rank < 999999)

@@ -124,6 +124,8 @@ class CardTypeData(metaclass=CardTypeDataMeta):
         settings_html = f"""
             <script>
                 var settings = JSON.parse('{json.dumps(settings)}');
+                var primitives_uri = '_primitive_';
+                var cursive_primitives_uri = '_primitive_cursive_';
             </script>
         """
 
