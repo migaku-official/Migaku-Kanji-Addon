@@ -615,15 +615,11 @@ class KanjiDB:
         deck_id = deck["id"]
         model = aqt.mw.col.models.byName(model_name)
 
-        aqt.mw.requireReset()
-
         for c in characters:
             note = anki.notes.Note(aqt.mw.col, model)
             note["Character"] = c
             self.refresh_note(note)
             add_note_no_hook(aqt.mw.col, note, deck_id)
-
-        aqt.mw.maybeReset()
 
         self.recalc_user_cards(card_type)
 
