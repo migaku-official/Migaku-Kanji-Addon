@@ -21,10 +21,10 @@ requested_fields = [
     ("kunyomi", j2c, None),
     ("nanori", j2c, None),
     ("meanings", j2c, None),
-    #("frequency_rank", _, None),
+    ("frequency_rank", _, None),
     #("grade", _, None),
     #("jlpt", _, None),
-    #("kanken", _, None),
+    ("kanken", _, None),
     ("primitives", _, None),
     ("primitive_of", _, None),
     ("primitive_keywords", j2c, None),
@@ -92,6 +92,7 @@ class SearchEngine:
         self.meaning_cache = dict()
         self.stories_cache = dict()
         self.primitive_alternative_cache = dict()
+        self.frequency_points = dict()
 
         self.init_cache()
 
@@ -240,6 +241,17 @@ class SearchEngine:
 
                 self.stories_cache[c] = st
 
+                points = 0
+                if d['frequency_rank'] is not None and d['frequency_rank'] != '':
+                    fr_points = (4000 - d['frequency_rank'])/400
+                    if fr_points <= 0:
+                        fr_points = 0
+                    points += fr_points
+                if d['kanken'] is not None and d['kanken'] != '':
+                    points += 11 - float(d['kanken'])
+                if points > 0:
+                    self.frequency_points[c] = points
+
                 # create a reverse lookup table for primitive alternatives
                 if len(d['primitive_alternatives']) > 0:
                     prim_alt_list = custom_list(d['primitive_alternatives'])
@@ -304,6 +316,8 @@ class SearchEngine:
                     else:
                         kanji_scores[character] = pool_priority
                         kanji_matches[character] = {search_term}
+                    if character in self.frequency_points:
+                        kanji_scores[character] += self.frequency_points[character]
 
 
     def get_matching_characters_from_list_of_pools(self, search_terms, pool_list, max_results):
