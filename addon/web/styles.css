@@ -117,9 +117,13 @@ body.dark {
 	color: #fff;
 }
 
-body.ankidroid_dark_mode img,
-body.nightMode img,
-body.dark img {
+
+body.ankidroid_dark_mode .character-and-examples__character img,
+body.nightMode .character-and-examples__character img,
+body.dark .character-and-examples__character img,
+body.ankidroid_dark_mode .font-examples__character img,
+body.nightMode .font-examples__character img,
+body.dark .font-examples__character img {
 	filter: invert(99%) sepia(50%) saturate(2%) hue-rotate(181deg) brightness(114%) contrast(101%);
 }
 
