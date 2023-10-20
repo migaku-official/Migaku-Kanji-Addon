@@ -1,0 +1,24 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_oaken_tub" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:oaken_tub" kvg:element="oaken_tub">
+			<g id="kvg:oaken_tub-g1" kvg:phon="丿+2+一+3+3+3+3+2" kvg:position="top">
+				<g id="kvg:oaken_tub-g2" kvg:element="一">
+					<path d="M7.95,47.8c2.78,0.62,7.57,0.631,10.3,0.333c18.5-2,52.6-4.73,76.1-5.71c4.61-0.195,7.4,0.298,9.72,0.608" id="kvg:oaken_tub-s1" kvg:type="㇐"></path>
+				</g>
+				<path d="M29.6,34.7c1.01,1.01,1.55,2.56,1.68,3.73c0.482,4.59,1.34,15.8,2.2,28.7" id="kvg:oaken_tub-s2" kvg:type="㇑a"></path>
+				<path d="M46,28.9c1.01,1.01,1.66,2.85,1.68,4.02c0.0574,9.18,0.195,14.8,0.769,33" id="kvg:oaken_tub-s3" kvg:type="㇑a"></path>
+				<path d="M63.7,26.9c1.01,1.01,1.45,2.85,1.39,4.02c-0.516,10.3-0.665,16.1-1.53,34.1" id="kvg:oaken_tub-s4" kvg:type="㇑a"></path>
+				<path d="M82.1,27.8c0.723,1.43,1.04,3.3,0.815,5.16c-0.952,7.74-2.67,20.5-4.39,31.3" id="kvg:oaken_tub-s5" kvg:type="㇑a"></path>
+				<path d="M14.6,68.8c3.35,0.62,6.91,0.562,9.57,0.333c15.3-1.31,33.8-2.86,62.7-4.15c4.44-0.195,7.13,0.115,9.35,0.597" id="kvg:oaken_tub-s6" kvg:type="㇐"></path>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_oaken_tub" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 -0.939 49.6)">1</text>
+		<text transform="matrix(1 0 0 1 20.9 40.4)">2</text>
+		<text transform="matrix(1 0 0 1 36.9 31.2)">3</text>
+		<text transform="matrix(1 0 0 1 53.8 28.9)">4</text>
+		<text transform="matrix(1 0 0 1 71.1 28.9)">5</text>
+		<text transform="matrix(1 0 0 1 5.94 71.4)">6</text>
+	</g>
+</svg>

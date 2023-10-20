@@ -23,6 +23,22 @@ def get_col_name(idx):
 def get_col_path(idx):
     return util.col_media_path(get_col_name(idx))
 
+def assure_primitive_col_media(sub_dir=''):
+    primitive_dir = util.addon_path("primitives",sub_dir)
+    primitive_files = os.listdir(primitive_dir)
+    if sub_dir != '':
+        sub_dir_tag = sub_dir + '_'
+    else:
+        sub_dir_tag = ''
+    for f in primitive_files:
+        src_path = util.addon_path("primitives", sub_dir, f)
+        if not os.path.isdir(src_path):
+            dest_path =  util.col_media_path('_primitive_' + sub_dir_tag + f)
+            shutil.copy(src_path, dest_path)
+        else:
+            # subdirectory 
+            assure_primitive_col_media(f)
+
 
 def get_addon_uri(idx):
     user_name = config.get("fonts", config_default)[idx]
@@ -109,3 +125,4 @@ def ui_css():
 def assure_col_media():
     for idx in range(font_num):
         shutil.copy(get_path(idx), get_col_path(idx))
+    assure_primitive_col_media()

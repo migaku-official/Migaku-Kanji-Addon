@@ -1,0 +1,36 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_outhouse" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:outhouse" kvg:element="outhouse">
+			<g id="kvg:outhouse-g1" kvg:element="尚" kvg:phon="尚" kvg:position="top" kvg:variant="true">
+				<g id="kvg:outhouse-g2" kvg:element="⺌" kvg:original="小" kvg:position="top" kvg:radical="nelson" kvg:variant="true">
+					<path d="M52.9,22.6c1.19,1.01,1.73,2.7,1.73,4.58c0,8.48-0.0115,16.1-0.0115,19.2" id="kvg:outhouse-s1" kvg:type="㇑a"></path>
+					<path d="M26,29.9c3.76,2.28,9.72,9.37,10.7,12.9" id="kvg:outhouse-s2" kvg:type="㇔"></path>
+					<path d="M81.1,25.9c0.0803,0.964-0.0229,1.9-0.425,2.78c-1.88,4.11-4.15,8.26-8.98,15.3" id="kvg:outhouse-s3" kvg:type="㇒"></path>
+				</g>
+				<g id="kvg:outhouse-g3" kvg:position="bottom">
+					<g id="kvg:outhouse-g4" kvg:element="冂" kvg:variant="true">
+						<path d="M15.4,48.7c-0.161,5.34-2.94,17.8-4.3,21" id="kvg:outhouse-s4" kvg:type="㇔"></path>
+						<path d="M16.5,52.2c14.6-2.07,51.9-6.08,76.4-7.31c14.8-0.746,1.03,9.11-0.746,10.6" id="kvg:outhouse-s5" kvg:type="㇖b"></path>
+					</g>
+					<g id="kvg:outhouse-g5" kvg:element="兄" part="1">
+						<g id="kvg:outhouse-g6" kvg:element="口">
+							<path d="M32.5,61.2c0.792,0.792,1.56,1.74,1.78,2.88c0.7,3.72,1.81,8.93,2.8,14c0.367,1.93,0.7,3.8,0.941,5.48" id="kvg:outhouse-s6" kvg:type="㇑"></path>
+							<path d="M34.7,62.5c5.55-0.861,25.4-3.03,34.7-4.02c4.03-0.436,6.32,1.57,5.74,4.66c-0.941,4.93-1.56,7.1-2.78,13.9" id="kvg:outhouse-s7" kvg:type="㇕b"></path>
+							<path d="M38.2,80.3c11.2-1.12,19.9-1.8,29.8-2.42c2.12-0.138,4.57-0.241,6.54-0.149" id="kvg:outhouse-s8" kvg:type="㇐b"></path>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_outhouse" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 43.8 23.9)">1</text>
+		<text transform="matrix(1 0 0 1 17.4 30.8)">2</text>
+		<text transform="matrix(1 0 0 1 71.1 25)">3</text>
+		<text transform="matrix(1 0 0 1 8.24 52.1)">4</text>
+		<text transform="matrix(1 0 0 1 21.1 48)">5</text>
+		<text transform="matrix(1 0 0 1 25.5 71)">6</text>
+		<text transform="matrix(1 0 0 1 36.6 59.5)">7</text>
+		<text transform="matrix(1 0 0 1 42.7 76.7)">8</text>
+	</g>
+</svg>

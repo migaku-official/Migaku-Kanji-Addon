@@ -1,0 +1,20 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_rags" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:rags" kvg:element="rags">
+			<g id="kvg:rags-g1" kvg:position="right">
+				<g id="kvg:rags-g2" kvg:element="亻" kvg:original="人" kvg:variant="true">
+					<path d="M54.3,17.1c0.202,1.22,0.378,2.94-0.162,4.39c-3.84,10.2-13.1,27.2-28.7,38.7" id="kvg:rags-s1" kvg:type="㇒"></path>
+					<path d="M45.8,42.9c1.09,0.99,1.7,2.61,1.7,4.63c0,13.1,0,29.7,0,40.1c0,4.05,0,7.15,0,8.73" id="kvg:rags-s2" kvg:type="㇑"></path>
+				</g>
+				<path d="M78.9,27.3c0.0945,1.04-0.122,2.14-0.674,3.12c-2.9,5.13-6.74,9.81-14.1,15.8" id="kvg:rags-s3" kvg:type="㇒"></path>
+				<path d="M55.4,45.9c4.05,0.466,21.9,22.9,28.7,30.1c1.87,1.99,3.83,3.93,6,4.84" id="kvg:rags-s4" kvg:type="㇏"></path>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_rags" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 41.8 27.8)">1</text>
+		<text transform="matrix(1 0 0 1 36.7 63.3)">2</text>
+		<text transform="matrix(1 0 0 1 66.4 30.2)">3</text>
+		<text transform="matrix(1 0 0 1 53 62.6)">4</text>
+	</g>
+</svg>

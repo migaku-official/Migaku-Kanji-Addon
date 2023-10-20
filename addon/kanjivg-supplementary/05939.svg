@@ -1,0 +1,32 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_05939" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:05939" kvg:element="夹">
+			<g id="kvg:05939-g1" kvg:element="夾" kvg:position="right">
+				<g id="kvg:05939-g2" kvg:element="二" part="1">
+					<g id="kvg:05939-g3" kvg:element="大" part="1">
+						<path d="M27.2,36.7c3.67,0.301,7.36,0.239,11-0.228c12.4-1.56,27.2-3.35,36.5-4.31c3.1-0.239,6.2-0.384,9.27,0.083" id="kvg:05939-s1" kvg:type="㇐"></path>
+					</g>
+				</g>
+				<g id="kvg:05939-g4">
+					<path d="M31.5,45.9c2.81,2.26,7.26,9.3,7.98,12.8" id="kvg:05939-s2" kvg:type="㇔"></path>
+					<path d="M75.1,40.1c0.0913,1.02,0.0457,2.05-0.365,2.99c-2.09,4.78-4.66,9.19-9.8,15.6" id="kvg:05939-s3" kvg:type="㇒"></path>
+					<g id="kvg:05939-g5" kvg:element="二" part="2">
+						<path d="M22.8,65.5c4.14,0.436,7.46,0.322,11-0.145C49.2,63.3,63.1,61.5,80.9,60.5c3.48-0.197,6.88-0.332,10.3,0.228" id="kvg:05939-s4" kvg:type="㇐"></path>
+					</g>
+				</g>
+				<g id="kvg:05939-g6" kvg:element="大" part="2">
+					<path d="M52.5,13.2c1.12,1.43,1.25,2.72,1.25,4.35C53.7,65.2,48,82.5,22.9,99.9" id="kvg:05939-s5" kvg:type="㇒"></path>
+					<path d="M54.9,63.6c6.85,9.47,14.5,18.1,23.9,25.8c3.83,3.58,8.25,6.31,13.3,8.17" id="kvg:05939-s6" kvg:type="㇏"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_05939" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 25.7 33.7)">1</text>
+		<text transform="matrix(1 0 0 1 22.3 46.6)">2</text>
+		<text transform="matrix(1 0 0 1 63.7 44.5)">3</text>
+		<text transform="matrix(1 0 0 1 21.1 61.8)">4</text>
+		<text transform="matrix(1 0 0 1 42.9 14)">5</text>
+		<text transform="matrix(1 0 0 1 65.7 71.7)">6</text>
+	</g>
+</svg>

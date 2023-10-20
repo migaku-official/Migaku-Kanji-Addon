@@ -8,7 +8,7 @@ from threading import RLock
 import anki
 import aqt
 
-from .util import addon_path, user_path, assure_user_dir, unique_characters
+from .util import addon_path, user_path, assure_user_dir, unique_characters, custom_list
 from .errors import InvalidStateError, InvalidDeckError
 from .card_type import CardType
 from . import config
@@ -24,9 +24,11 @@ def clean_character_field(f):
     f = f.lstrip()
     f = text_parser.html_regex.sub("", f)
     if len(f):
+        # Leave [primitive_tag] as it is, otherwise return the single unicode character
+        if f[0] == '[':
+            return f
         return f[0]
     return ""
-
 
 class KanjiDB:
     def __init__(self):
@@ -155,17 +157,6 @@ class KanjiDB:
         if character in out:
             return
 
-        # Check if card already exists for character
-        table = f"usr.{card_type.label}_card_ids"
-        r = self.crs_execute_and_fetch_one(
-            f"SELECT COUNT(*) FROM {table} "
-            "WHERE character == (?) AND card_id NOT NULL",
-            (character,),
-        )
-
-        if r[0] != 0:
-            return
-
         # Get primitives
         primitives_result = self.crs_execute_and_fetch_one(
             "SELECT primitives FROM characters " "WHERE character == (?)", (character,)
@@ -175,6 +166,7 @@ class KanjiDB:
             print(f"Lookup of primitive {character} failed.")
             return
         primitives = primitives_result[0]
+        primitives = custom_list(primitives)
 
         # Recusivly add primitives that need to be learned if enabled
         if card_type.add_primitives:
@@ -185,6 +177,17 @@ class KanjiDB:
 
         # Check if max characters already reached
         if max_characters >= 0 and len(out) >= max_characters:
+            return
+
+        # Check if card already exists for character
+        table = f"usr.{card_type.label}_card_ids"
+        r = self.crs_execute_and_fetch_one(
+            f"SELECT COUNT(*) FROM {table} "
+            "WHERE character == (?) AND card_id NOT NULL",
+            (character,),
+        )
+
+        if r[0] != 0:
             return
 
         out.append(character)
@@ -612,15 +615,11 @@ class KanjiDB:
         deck_id = deck["id"]
         model = aqt.mw.col.models.byName(model_name)
 
-        aqt.mw.requireReset()
-
         for c in characters:
             note = anki.notes.Note(aqt.mw.col, model)
             note["Character"] = c
             self.refresh_note(note)
             add_note_no_hook(aqt.mw.col, note, deck_id)
-
-        aqt.mw.maybeReset()
 
         self.recalc_user_cards(card_type)
 
@@ -628,7 +627,6 @@ class KanjiDB:
         c = clean_character_field(note["Character"])
         if len(c) < 1:
             return
-        c = c[0]
         note["Character"] = c
 
         r = self.get_kanji_result_data(c, card_ids=False)
@@ -637,10 +635,20 @@ class KanjiDB:
         data_json_b64 = str(data_json_b64_b, "utf-8")
         note["MigakuData"] = data_json_b64
 
-        svg_name = "%05x.svg" % ord(c)
-        svg_path = addon_path("kanjivg", svg_name)
+        if c[0] == '[':
+            svg_name = c[1:-1] + ".svg"
+        else:
+            svg_name = "%05x.svg" % ord(c)
 
-        if os.path.exists(svg_path):
+        # Try to find the KanjiVG file first in supplementary directory and
+        # only then from the main repository
+        svg_path = addon_path("kanjivg-supplementary", svg_name)
+        if not os.path.exists(svg_path):
+            svg_path = addon_path("kanjivg", svg_name)
+            if not os.path.exists(svg_path):
+                svg_path = ''
+
+        if svg_path != '':
             with open(svg_path, "r", encoding="utf-8") as file:
                 svg_data = file.read()
 
@@ -650,6 +658,31 @@ class KanjiDB:
 
         if do_flush:
             note.flush()
+
+    # If the deck has cards that have now references for new primitives 
+    # which are not yet included in the stack, add them.
+    def add_missing_characters(self):
+        new_kanji_for_msg = OrderedDict()
+
+        for ct in CardType:
+            if not ct.add_primitives:
+                continue
+
+            find_filter = f'"note:{ct.model_name}"'
+            note_ids = aqt.mw.col.find_notes(find_filter)
+
+            all_characters_in_the_deck = []
+            for i, note_id in enumerate(note_ids):
+                note = aqt.mw.col.getNote(note_id)
+                c = clean_character_field(note["Character"])
+                all_characters_in_the_deck.append(c)
+
+            new_characters = self.new_characters(ct, all_characters_in_the_deck, -1)
+            if len(new_characters) > 0:
+                new_kanji_for_msg[ct] = new_characters
+
+        if len(new_kanji_for_msg) > 0:
+            KanjiConfirmDialog.show_new_kanji(new_kanji_for_msg, aqt.mw)
 
     # Recalc everything
     def recalc_all(self, callback=None):
@@ -663,6 +696,8 @@ class KanjiDB:
             callback("Refreshing collection words...")
 
         self.recalc_user_words()
+
+        self.add_missing_characters()
 
         find_filter = [f'"note:{ct.model_name}"' for ct in CardType]
         note_ids = aqt.mw.col.find_notes(" OR ".join(find_filter))
@@ -701,10 +736,10 @@ class KanjiDB:
             ("grade", _, None),
             ("jlpt", _, None),
             ("kanken", _, None),
-            ("primitives", list, None),
-            ("primitive_of", list, None),
+            ("primitives", custom_list, None),
+            ("primitive_of", custom_list, None),
             ("primitive_keywords", json.loads, None),
-            ("primitive_alternatives", list, None),
+            ("primitive_alternatives", custom_list, None),
             ("heisig_id5", _, None),
             ("heisig_id6", _, None),
             ("heisig_keyword5", _, None),

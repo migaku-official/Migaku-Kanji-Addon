@@ -1,0 +1,26 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_lidded_crock" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:lidded_crock" kvg:element="lidded_crock">
+			<g id="kvg:lidded_crock-g1" kvg:element="吉">
+				<g id="kvg:lidded_crock-g2" kvg:element="士">
+					<path d="M31.6,31.1c1.93,0.613,5.48,0.518,7.41,0.368c6.27-0.477,25.7-3.45,33.4-3.75c3.22-0.123,5.15,0.109,6.76,0.382" id="kvg:lidded_crock-s1" kvg:type="㇐"></path>
+					<path d="M53.4,14.7c1.1,1.1,1.7,3,1.7,4.76c0,5.91,0.0954,22.9,0.0954,30.8" id="kvg:lidded_crock-s2" kvg:type="㇑a"></path>
+					<path d="M28.4,52.9c2.81,0.518,6.31,0.341,9.13,0.0954c10.9-0.94,21.6-2.45,36.6-3.38c3.16-0.191,6.46-0.3,9.61,0.177" id="kvg:lidded_crock-s3" kvg:type="㇐"></path>
+				</g>
+				<g id="kvg:lidded_crock-g3" kvg:element="口" kvg:radical="tradit">
+					<path d="M34.6,70.1c1.1,1.01,1.95,2.96,2.21,4.44c1.14,6.79,2.04,12.8,3.19,19.9c0.232,1.46,0.477,2.96,0.736,4.52" id="kvg:lidded_crock-s4" kvg:type="㇑"></path>
+					<path d="M38,73c8.12-1.25,21.2-3.09,28.5-3.84c4.47-0.463,6.65,1.64,5.98,5.26c-0.981,5.31-2.23,11-3.95,17.2" id="kvg:lidded_crock-s5" kvg:type="㇕b"></path>
+					<path d="M41.8,95.4c4.71-0.627,16-1.55,24.3-2.07c1.84-0.109,3.5-0.191,4.88-0.218" id="kvg:lidded_crock-s6" kvg:type="㇐b"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_lidded_crock" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 28.3 26.6)">1</text>
+		<text transform="matrix(1 0 0 1 61.3 20.4)">2</text>
+		<text transform="matrix(1 0 0 1 25.9 49)">3</text>
+		<text transform="matrix(1 0 0 1 27.3 82.9)">4</text>
+		<text transform="matrix(1 0 0 1 39.5 69.5)">5</text>
+		<text transform="matrix(1 0 0 1 45 91.1)">6</text>
+	</g>
+</svg>

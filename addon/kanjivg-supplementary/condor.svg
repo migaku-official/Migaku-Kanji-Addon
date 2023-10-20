@@ -1,0 +1,34 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_condor" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:condor" kvg:element="condor">
+			<g id="kvg:condor-g1" kvg:position="nyoc">
+				<g id="kvg:condor-g2" kvg:element="⺤" kvg:original="爪" kvg:position="top" kvg:variant="true">
+					<path d="M67.2,8.66c-0.4,1.66-1.78,2.71-3.12,3.56c-5.33,3.37-18.1,8.48-34.5,11.8" id="kvg:condor-s1" kvg:type="㇒"></path>
+					<path d="M28.5,32.7c2.52,2.07,6.49,8.5,7.12,11.7" id="kvg:condor-s2" kvg:type="㇔"></path>
+					<path d="M45.7,27.2c2.45,1.91,6.33,7.88,6.94,10.9" id="kvg:condor-s3" kvg:type="㇔"></path>
+					<path d="M75.7,22.8c0.0969,0.933-0.0363,1.83-0.412,2.68c-1.95,3.79-5.96,9.11-12.1,14.8" id="kvg:condor-s4" kvg:type="㇒"></path>
+				</g>
+				<g id="kvg:condor-g3" kvg:element="缶" kvg:position="bottom" kvg:variant="true">
+					<path d="M25.7,52.8c2.45,0.908,6.38,0.848,8.87,0.497c11-1.53,23.9-3.14,33.1-4.29c2.29-0.279,4.95-0.666,7.24-0.157" id="kvg:condor-s5" kvg:type="㇐"></path>
+					<path d="M19.5,68.2c3.04,0.933,6.84,0.388,9.93,0.0242c13.7-1.59,28.9-2.69,46.2-4.19c3.28-0.291,6.81-0.351,10.1,0.254" id="kvg:condor-s6" kvg:type="㇐"></path>
+					<g id="kvg:condor-g4" kvg:element="山">
+						<path d="M50.1,54c1.05,1.05,1.31,2.14,1.31,4.3c0,4.81,0.218,25.9,0.0969,30" id="kvg:condor-s7" kvg:type="㇑a"></path>
+						<path d="M30,77.3c0.811,0.811,1.11,1.85,0.908,2.97c-0.678,3.54-1.53,5.63-2.54,9.86c-0.569,2.39,0.327,2.88,2.47,2.46c9.46-1.84,26-4.05,42.2-4.86" id="kvg:condor-s8" kvg:type="㇄a"></path>
+						<path d="M73.9,72.4c0.908,0.908,0.933,1.94,0.908,3.39c-0.0606,4.42-0.763,14.5-0.763,16.4" id="kvg:condor-s9" kvg:type="㇑"></path>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_condor" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 56.1 8.35)">1</text>
+		<text transform="matrix(1 0 0 1 19.7 37.9)">2</text>
+		<text transform="matrix(1 0 0 1 36.7 33)">3</text>
+		<text transform="matrix(1 0 0 1 67 23.8)">4</text>
+		<text transform="matrix(1 0 0 1 17.3 54.8)">5</text>
+		<text transform="matrix(1 0 0 1 16.1 64.5)">6</text>
+		<text transform="matrix(1 0 0 1 42.8 63.5)">7</text>
+		<text transform="matrix(1 0 0 1 21 80.3)">8</text>
+		<text transform="matrix(1 0 0 1 64.6 75.4)">9</text>
+	</g>
+</svg>

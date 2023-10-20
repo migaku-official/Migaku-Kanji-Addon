@@ -46,20 +46,31 @@ Changes:
 		if (!this.options.skipLoad) {
 			var loader = new DmakLoader(
 					this.options.uri,
+					this.options.secondary_uri,
 					this.options.preload_svgs,
 				),
 				self = this;
 
-			loader.load(text, function (data) {
-				self.prepare(data);
+			var callbacks = {
+				done: function (index, result) {
+					// prepare expects array of arrays
+					let data = [result]
+					self.prepare(data);
 
-				// Execute custom callback "loaded" here
-				self.options.loaded(self, self.strokes);
-
-				if (self.options.autoplay) {
-					self.render();
-				}
-			});
+					// Execute custom callback "loaded" here
+					self.options.loaded(self, self.strokes);
+	
+					if (self.options.autoplay) {
+						self.render();
+					}
+				},
+				error: function (msg) {
+					console.log('Error', msg);
+				},
+			};
+	
+			loader.loadSvg(0, text, callbacks);
+			
 		}
 	};
 
@@ -68,6 +79,7 @@ Changes:
 
 	Dmak.default = {
 		uri: '',
+		secondary_uri: '',
 		skipLoad: false,
 		autoplay: true,
 		height: 109,
@@ -637,8 +649,9 @@ Changes:
 	'use strict';
 
 	// Create a safe reference to the DrawMeAKanji object for use below.
-	var DmakLoader = function (uri, preload_svgs = {}) {
+	var DmakLoader = function (uri, secondary_uri = '', preload_svgs = {}) {
 		this.uri = uri;
+		this.secondary_uri = secondary_uri;
 		this.preload_svgs = preload_svgs;
 	};
 
@@ -676,9 +689,26 @@ Changes:
 	 * @see: http://kanjivg.tagaini.net
 	 */
 	DmakLoader.prototype.loadSvg = function (index, char, callbacks) {
-		var charCode = char.charCodeAt(0).toString(16),
-			code = ('00000' + charCode).slice(-5),
-			preload_svg_data = this.preload_svgs[char];
+		if (char[0] == '[') {
+			var code = char.slice(1,-1)
+		} else {
+			if (char.length == 1) {
+				// 16-bit unicode (Basic Multilingual Plane)
+				var charCode = char.charCodeAt(0).toString(16),
+					code = ('00000' + charCode).slice(-5)
+			} else {
+				// Assume it's a Astral Plane
+				function getAstralCodePoint(highSurrogate, lowSurrogate) {
+					return (highSurrogate - 0xD800) * 0x400 
+				      + lowSurrogate - 0xDC00 + 0x10000;
+				}
+				let code_point = getAstralCodePoint(char.charCodeAt(0),char.charCodeAt(1));
+				var charCode = code_point.toString(16),
+					code = ('00000' + charCode).slice(-5)
+			}
+		}
+
+		var	preload_svg_data = this.preload_svgs[char];
 
 		if (preload_svg_data) {
 			try {
@@ -691,7 +721,6 @@ Changes:
 
 		var xhr = new XMLHttpRequest();
 
-		// Skip space character
 		if (code === '00020' || code === '03000') {
 			callbacks.done(index, {
 				paths: [],
@@ -701,6 +730,7 @@ Changes:
 		}
 
 		xhr.open('GET', this.uri + code + '.svg', true);
+		xhr.secondary_uri = this.secondary_uri
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
@@ -710,7 +740,13 @@ Changes:
 						callbacks.error(e.toString());
 					}
 				} else {
-					callbacks.error(xhr.statusText);
+					if ( (xhr.status === 404) && (xhr.secondary_uri != '') ) {
+						xhr.open('GET', xhr.secondary_uri + code + '.svg', true);
+						xhr.secondary_uri = '';
+						xhr.send();
+					} else {
+						callbacks.error(xhr.statusText);
+					}
 				}
 			}
 		};

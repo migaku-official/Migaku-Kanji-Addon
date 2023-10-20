@@ -1,0 +1,26 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_05f00" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:05f00" kvg:element="开">
+			<g id="kvg:05f00-g1" kvg:element="开" kvg:original="幵" partial="true">
+				<g id="kvg:05f00-g2" kvg:element="干">
+					<path d="M30.8,29.7c3.5,0.716,7.02,0.14,10.5-0.218c8.35-0.825,25.5-2.76,35.8-3.83c2.99-0.311,5.95-0.623,8.94-0.0623" id="kvg:05f00-s1" kvg:type="㇐"></path>
+					<g id="kvg:05f00-g3" kvg:element="十">
+						<path d="M21.9,53.8c3.77,1.07,7.85,0.623,11.7,0.296c14.7-1.29,35.4-3.38,52.4-4.39c3.71-0.218,7.24-0.234,10.9,0.389" id="kvg:05f00-s2" kvg:type="㇐"></path>
+						<path d="M44.7,34.5c1.43,1.43,2.21,3.58,2.23,5.39c0.265,25-4.98,40.2-19.9,47.8" id="kvg:05f00-s3" kvg:type="㇒/㇑"></path>
+					</g>
+				</g>
+				<g id="kvg:05f00-g4" kvg:element="干" partial="true">
+					<g id="kvg:05f00-g5" kvg:element="十" partial="true">
+						<path d="M69.4,30.2c1.37,1.37,2.27,3.71,2.27,5.84c0,4.67,0.0934,29.9-0.156,45.7c-0.0623,3.44-0.125,6.24-0.171,7.97" id="kvg:05f00-s4" kvg:type="㇑"></path>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_05f00" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 20.9 31.2)">1</text>
+		<text transform="matrix(1 0 0 1 16.6 49.9)">2</text>
+		<text transform="matrix(1 0 0 1 32.2 43.5)">3</text>
+		<text transform="matrix(1 0 0 1 55.5 40.3)">4</text>
+	</g>
+</svg>

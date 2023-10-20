@@ -1,0 +1,16 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_09fb6" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:09fb6" kvg:element="龶">
+			<path d="M31.1,40.7c2.37,0.33,4.03,0.07,5.64-0.12c9.5-1.1,25.1-4.12,35.4-5.83c2.51-0.42,4.86-0.73,7.38-0.33" id="kvg:09fb6-s1" kvg:type="㇐"></path>
+			<path d="M52.3,12.6c1.28,1.28,2.01,3.12,2.01,5.23c0,4.01,0,65.1,0,69.8" id="kvg:09fb6-s2" kvg:type="㇑a"></path>
+			<path d="M29.4,64c2.64,0.67,5.38,0.31,8.04-0.02C49.5,62.5,62.2,61,72.5,59.9c2.38-0.26,4.99-0.76,7.38-0.23" id="kvg:09fb6-s3" kvg:type="㇐"></path>
+			<path d="M15.8,90.2c3.04,0.75,6.21,0.94,8.4,0.8C40.6,90,68.1,86.5,83.3,85.8c3.63-0.18,7.68,0,10.1,0.73" id="kvg:09fb6-s4" kvg:type="㇐"></path>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_09fb6" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 36 37.3)">1</text>
+		<text transform="matrix(1 0 0 1 42.5 10.5)">2</text>
+		<text transform="matrix(1 0 0 1 21.5 66.1)">3</text>
+		<text transform="matrix(1 0 0 1 8.5 89.5)">4</text>
+	</g>
+</svg>

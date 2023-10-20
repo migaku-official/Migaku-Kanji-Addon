@@ -1,0 +1,38 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_pegasus" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:pegasus" kvg:element="pegasus">
+			<g id="kvg:pegasus-g1" kvg:position="right">
+				<g id="kvg:pegasus-g2" kvg:element="𠂉">
+					<path d="M42.6,15c0,1.5-0.588,2.59-1.11,3.56c-3.36,6.15-7.6,11.3-15.3,18.8" id="kvg:pegasus-s1" kvg:type="㇒"></path>
+					<path d="M42,24.7c1.68,0.174,4.08,0.0109,6.82-0.327c6.22-0.785,13.7-2.41,19.9-3.35c2.32-0.349,4.5-0.425,6.8,0" id="kvg:pegasus-s2" kvg:type="㇐"></path>
+				</g>
+				<path d="M24.3,44c2.96,0.6,5.92,0.556,8.88-0.131c10.6-1.37,32-4.63,43.4-5.72c3.18-0.349,6.38-0.251,9.54,0.273" id="kvg:pegasus-s3" kvg:type="㇐"></path>
+				<g id="kvg:pegasus-g3" kvg:element="隹">
+					<g id="kvg:pegasus-g4" kvg:element="亻" kvg:original="人" kvg:variant="true">
+						<path d="M47.8,28.5c0,1.71-0.348,2.94-1.01,4.62C41.2,47.5,35,62.4,19.7,76.4" id="kvg:pegasus-s4" kvg:type="㇒"></path>
+						<path d="M37.6,59c0.872,0.872,1.09,1.8,1.09,3.27c0,8.12-0.0109,24.7-0.0218,35.4c0,4.16,0,7.42,0,8.94" id="kvg:pegasus-s5" kvg:type="㇑"></path>
+					</g>
+					<path d="M63.2,43.5c0.0654,0.872-0.0764,1.69-0.404,2.47c-1.05,2.91-2.82,5.78-5,8.67" id="kvg:pegasus-s6" kvg:type="㇒"></path>
+					<path d="M38.4,58.7c6.32-0.698,24.8-2.25,35.6-3.2c3.62-0.327,6.28-0.578,7.2-0.709" id="kvg:pegasus-s7" kvg:type="㇐b"></path>
+					<path d="M59.4,59.7c0.786,0.785,1,1.78,1,3.14c0,6.46,0.0218,25.6,0.0218,35.9" id="kvg:pegasus-s8" kvg:type="㇑a"></path>
+					<path d="M39.8,71.8c5.8-0.567,21.6-1.91,31.2-2.77c3.62-0.327,6.32-0.578,7.28-0.698" id="kvg:pegasus-s9" kvg:type="㇐b"></path>
+					<path d="M39.6,85.7c6.08-0.469,22-1.58,32-2.29c3.84-0.273,6.76-0.491,7.76-0.6" id="kvg:pegasus-s10" kvg:type="㇐b"></path>
+					<path d="M39.8,101c7.22-0.512,27.2-1.77,38.6-2.59c3.94-0.283,6.82-0.523,7.76-0.654" id="kvg:pegasus-s11" kvg:type="㇐b"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_pegasus" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 30.4 18.1)">1</text>
+		<text transform="matrix(1 0 0 1 48.4 20.8)">2</text>
+		<text transform="matrix(1 0 0 1 14.2 45.2)">3</text>
+		<text transform="matrix(1 0 0 1 39.2 34.3)">4</text>
+		<text transform="matrix(1 0 0 1 30.6 74.7)">5</text>
+		<text transform="matrix(1 0 0 1 53.6 49.6)">6</text>
+		<text transform="matrix(1 0 0 1 42.6 55)">7</text>
+		<text transform="matrix(1 0 0 1 63.2 64.9)">8</text>
+		<text transform="matrix(1 0 0 1 42.6 68.1)">9</text>
+		<text transform="matrix(1 0 0 1 42.6 82.3)">10</text>
+		<text transform="matrix(1 0 0 1 42.6 96.5)">11</text>
+	</g>
+</svg>

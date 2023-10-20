@@ -1,0 +1,12 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_slingshot" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:slingshot" kvg:element="slingshot">
+			<path d="M44.5,28.5c1.21-0.11,3.06-0.34,5.23-0.64C57.4,26.8,69,25,71,25c2.5,0,4-0.5,5.25-0.25" id="kvg:slingshot-s1" kvg:type="㇐"></path>
+			<path d="M45.8,10.5c0.94,0.94,1.41,2.47,1,4.82c-1,5.68-4.03,19.2-6,26.4c-1.25,4.54-0.75,5.04,3,4.17c1.98-0.46,20-3.52,25-4.06c3-0.32,4.89,1.94,4.5,5.1c-1.75,14.2-5.75,34.1-12,44.3c-4.6,7.52-8.32,3.94-14-0.68" id="kvg:slingshot-s2" kvg:type="㇉"></path>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_slingshot" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 50.5 24.2)">1</text>
+		<text transform="matrix(1 0 0 1 35.2 10.2)">2</text>
+	</g>
+</svg>

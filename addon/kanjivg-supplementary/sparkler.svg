@@ -1,0 +1,26 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_sparkler" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:sparkler" kvg:element="sparkler">
+			<g id="kvg:sparkler-g1" kvg:phon="聶" kvg:position="right">
+				<g id="kvg:sparkler-g2" kvg:position="bottom">
+					<g id="kvg:sparkler-g3" kvg:element="冫">
+						<g id="kvg:sparkler-g4" kvg:position="top">
+							<path d="M28.7,37.5c6.04,2.48,15.6,10.2,17.1,14" id="kvg:sparkler-s1" kvg:type="㇔"></path>
+						</g>
+						<g id="kvg:sparkler-g5" kvg:position="bottom">
+							<path d="M19.3,80c1.98,1.26,4.16,1.01,6.23-0.732C27,78.1,38,70.2,46.6,62.8" id="kvg:sparkler-s2" kvg:type="㇀"></path>
+						</g>
+					</g>
+					<path d="M87.9,33.8c0.156,1.12-0.156,2.1-0.872,2.97c-3.63,4.39-12.2,11.2-19.7,15" id="kvg:sparkler-s3" kvg:type="㇒"></path>
+					<path d="M69.2,63.2c9.12,3.72,25.3,17.3,27.2,22.2" id="kvg:sparkler-s4" kvg:type="㇔"></path>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_sparkler" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 11.1 41.4)">1</text>
+		<text transform="matrix(1 0 0 1 12.3 72.6)">2</text>
+		<text transform="matrix(1 0 0 1 68.4 39.9)">3</text>
+		<text transform="matrix(1 0 0 1 55.9 74.1)">4</text>
+	</g>
+</svg>

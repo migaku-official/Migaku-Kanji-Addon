@@ -403,6 +403,10 @@ class StatsWindow(QDialog):
                     class_ = "known"
                     category_good += 1
 
+                if kanji[0] == "[":
+                    img = kanji[1:-1]
+                    path = util.addon_web_uri('primitives','%s.svg' % img)
+                    kanji = f'<img src="{path}">'
                 entry_pts.append(f'<span class="kanji {class_}">' + kanji + "</span>")
 
             category_count = len(entries)

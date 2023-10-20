@@ -1,0 +1,30 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_celery" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:celery" kvg:element="celery">
+			<g id="kvg:celery-g1" kvg:element="三" kvg:position="top" part="1">
+				<g id="kvg:celery-g2" kvg:element="一">
+					<path d="M25.2,37c1.18,0.343,3.37,0.498,4.54,0.343c4.8-0.664,43-4.44,54.6-4.95c1.97-0.083,3.16,0.166,4.14,0.332" id="kvg:celery-s1" kvg:type="㇐"></path>
+				</g>
+				<path d="M38.7,27.9c0.789,0.426,2.45,3.2,2.61,4.05C41.5,32.8,42.6,48.5,43.6,59.4" id="kvg:celery-s2" kvg:type="㇑"></path>
+				<path d="M67.8,24.2c1.49,0.644,2.7,3.48,2.61,4.41C70.1,32.1,69,49.5,68.3,57.3" id="kvg:celery-s3" kvg:type="㇑"></path>
+				<g id="kvg:celery-g3" kvg:element="三" part="2">
+					<g id="kvg:celery-g4" kvg:element="一">
+						<path d="M27.3,49c1.18,0.343,3.37,0.498,4.54,0.343c4.8-0.664,38.8-4.44,50.5-4.95c1.97-0.083,3.16,0.166,4.14,0.332" id="kvg:celery-s4" kvg:type="㇐"></path>
+					</g>
+					<g id="kvg:celery-g5" kvg:element="再" part="1">
+						<g id="kvg:celery-g6" kvg:element="一">
+							<path d="M16.9,61.9c1.58,0.561,4.47,0.727,6.04,0.561c10-1.03,52.4-5.44,70.2-5.95c2.63-0.0727,4.2,0.27,5.51,0.55" id="kvg:celery-s5" kvg:type="㇐"></path>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_celery" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 18.2 36.8)">1</text>
+		<text transform="matrix(1 0 0 1 29.6 28.5)">2</text>
+		<text transform="matrix(1 0 0 1 58.7 24.4)">3</text>
+		<text transform="matrix(1 0 0 1 19.2 49.3)">4</text>
+		<text transform="matrix(1 0 0 1 9.86 63.8)">5</text>
+	</g>
+</svg>

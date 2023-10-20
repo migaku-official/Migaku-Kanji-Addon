@@ -55,7 +55,11 @@ class KanjiMarkModel(QAbstractListModel):
 
         if role == Qt.ItemDataRole.DisplayRole:
             # This should be a QBrush, but we also use the method
-            return str(kanji)
+            if kanji[0] != '[':
+                return str(kanji)
+        if role == Qt.ItemDataRole.DecorationRole:
+            if kanji[0] == '[':
+                return util.get_pixmap_from_tag(kanji, 35)
         if role == Qt.ItemDataRole.BackgroundRole:
             state = self.states[kanji]
             return QBrush(QColor(self.state_colors[state]))
@@ -163,9 +167,10 @@ class KanjiConfirmDialog(QDialog):
 
         self.resize(500, 400)
 
-        button_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok)
+        button_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
         button_box.accepted.connect(self.accept)
-        lyt.addWidget(button_box)
+        button_box.rejected.connect(self.reject)
+        lyt.addWidget(button_box, Qt.AlignmentFlag.AlignRight)
 
         self.add_kanji(ct_kanji)
 

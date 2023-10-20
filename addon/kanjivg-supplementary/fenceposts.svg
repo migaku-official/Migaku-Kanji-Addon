@@ -1,0 +1,14 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_fenceposts" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:fenceposts" kvg:element="fenceposts">
+			<g id="kvg:fenceposts-g1" kvg:position="bottom">
+				<path d="M29.3,35.5c0.981,0.981,1.45,2.58,1.51,4.24c1.07,27.7-2.88,39.5-13.6,49.4" id="kvg:fenceposts-s1" kvg:type="㇒"></path>
+				<path d="M77.7,34.3c1.28,1.28,1.47,2.72,1.47,4.4c0,2.96-0.0121,27.4-0.0484,41.9c-0.0121,5.24-0.0363,9.03-0.0484,9.8" id="kvg:fenceposts-s2" kvg:type="㇑"></path>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_fenceposts" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 21.7 45.6)">1</text>
+		<text transform="matrix(1 0 0 1 66.5 37)">2</text>
+	</g>
+</svg>

@@ -1,0 +1,17 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_04e37" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:04e37" kvg:element="丷">
+			<g id="kvg:04e37-g1" kvg:phon="歬1V" kvg:position="top">
+				<g id="kvg:04e37-g2" kvg:element="八" kvg:radical="nelson" kvg:variant="true">
+					<path d="M33.5,19.5c3.34,2.07,8.64,8.5,9.48,11.7" id="kvg:04e37-s1" kvg:type="㇔"></path>
+					<path d="M72.7,17c0.26,1.14,0.07,2.23-0.52,3.19c-2.12,3.41-6.02,8.65-8.6,11.3" id="kvg:04e37-s2" kvg:type="㇒"></path>
+				</g>
+				<path d="M13.4,38.2c2.63,0.72,7.46,0.94,10.1,0.72c21.7-1.83,39.8-3.58,62.7-4.61c4.37-0.2,7.01,0.34,9.2,0.7" id="kvg:04e37-s3" kvg:type="㇐"></path>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_04e37" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 26.2 18.5)">1</text>
+		<text transform="matrix(1 0 0 1 63.5 15.5)">2</text>
+	</g>
+</svg>

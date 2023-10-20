@@ -1,0 +1,44 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_07ca6" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:07ca6" kvg:element="粦">
+			<g id="kvg:07ca6-g1" kvg:element="粦" kvg:phon="粦" kvg:position="right">
+				<g id="kvg:07ca6-g2" kvg:element="米" kvg:position="top">
+					<path d="M36.3,16.5c2.51,1.77,6.3,6.77,6.92,9.52" id="kvg:07ca6-s1" kvg:type="㇔"></path>
+					<path d="M74.6,13.2c0.088,0.78-0.066,1.51-0.473,2.2c-1.23,2.43-4.59,5.92-9.01,9.92" id="kvg:07ca6-s2" kvg:type="㇒"></path>
+					<path d="M30.8,32.3c2.7,0.75,5.53,0.38,8.26,0.09c8.44-0.87,25.1-3.08,34-3.79c2.35-0.19,5.31-0.35,7.67,0.04" id="kvg:07ca6-s3" kvg:type="㇐"></path>
+					<path d="M54.9,10.5c1.02,0.93,1.35,1.88,1.35,2.96c0,0.39,0.077,22.7,0.099,33.5c0.011,3.34,0.011,5.58,0,5.75" id="kvg:07ca6-s4" kvg:type="㇑"></path>
+					<path d="M50.7,31.6c0,1.31-0.737,2.24-1.55,3.42c-4.57,6.68-12.4,14.5-19.8,18" id="kvg:07ca6-s5" kvg:type="㇒"></path>
+					<path d="M57.8,32c3.33,2.1,15.8,10.8,22.8,15.3c2.13,1.36,4.5,2.34,6.72,3.56" id="kvg:07ca6-s6" kvg:type="㇏"></path>
+				</g>
+				<g id="kvg:07ca6-g3" kvg:element="舛" kvg:position="bottom">
+					<g id="kvg:07ca6-g4" kvg:element="夕" kvg:position="left">
+						<path d="M36.5,55.1c0.011,0.94-0.11,1.66-0.462,2.38C33.7,62.4,29.5,69,21,75.7" id="kvg:07ca6-s7" kvg:type="㇒"></path>
+						<path d="M37.6,60.9c0.231,0.03,1.22,0.2,1.89,0.17c3.34-0.15,5.49-0.52,8.4-1.53c2.09-0.73,3.75,0.13,3.03,2.42C48.3,70.4,35.1,88.1,19.2,95.3" id="kvg:07ca6-s8" kvg:type="㇇"></path>
+						<path d="M30.4,71.1c2.45,1.18,6.34,4.84,6.95,6.68" id="kvg:07ca6-s9" kvg:type="㇔"></path>
+					</g>
+					<g id="kvg:07ca6-g5" kvg:position="right">
+						<path d="M57.6,64.5c1.57,0.4,3.33,0.2,4.92,0.04c5.05-0.51,13.2-1.74,18.7-2.26c1.46-0.14,2.79-0.15,4.25,0.07" id="kvg:07ca6-s10" kvg:type="㇐"></path>
+						<path d="M60.4,65.7c0.858,0.78,0.891,1.68,0.891,3.05c0,3.93-0.055,7.57-0.055,10" id="kvg:07ca6-s11" kvg:type="㇑a"></path>
+						<path d="M50.1,80.1c1.76,0.49,4.36,0.34,6.46,0.15c11.8-1.07,26.3-2.66,31.4-3.04c2.06-0.15,3.99,0,5.9,0.27" id="kvg:07ca6-s12" kvg:type="㇐"></path>
+						<path d="M73.6,52.8c0.935,0.85,1.1,1.75,1.1,2.73c0,0.44,0.044,32.4,0.044,37.3c0,3.23-0.077,5.55-0.11,6.25" id="kvg:07ca6-s13" kvg:type="㇑"></path>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_07ca6" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 31.7 13.2)">1</text>
+		<text transform="matrix(1 0 0 1 65.8 12.2)">2</text>
+		<text transform="matrix(1 0 0 1 28.4 29.2)">3</text>
+		<text transform="matrix(1 0 0 1 46 11.2)">4</text>
+		<text transform="matrix(1 0 0 1 37.4 41.2)">5</text>
+		<text transform="matrix(1 0 0 1 71.3 38.2)">6</text>
+		<text transform="matrix(1 0 0 1 25.1 60.2)">7</text>
+		<text transform="matrix(1 0 0 1 40.5 58.2)">8</text>
+		<text transform="matrix(1 0 0 1 33.9 72.2)">9</text>
+		<text transform="matrix(1 0 0 1 57 62.2)">10</text>
+		<text transform="matrix(1 0 0 1 51.5 71.2)">11</text>
+		<text transform="matrix(1 0 0 1 47.1 78.2)">12</text>
+		<text transform="matrix(1 0 0 1 62.5 50.2)">13</text>
+	</g>
+</svg>

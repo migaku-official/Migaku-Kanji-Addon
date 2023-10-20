@@ -265,7 +265,8 @@ function render_page(page_type) {
 
     dmak_parameters = {
         element: strokeElementId,
-        uri: kanjivg_uri,
+        uri: page_type == 'lookup' ? kanjivg_supplementary_uri : '',
+        secondary_uri: page_type == 'lookup' ? kanjivg_uri : '',
         height: 220,
         width: 220,
         step: 0.015,
@@ -423,10 +424,7 @@ function render_page(page_type) {
     // CHANGES - END - stroke order diagram
     // ==================================================================
 
-    if (page_type == "recognition") {
-        $('.keyword-kanji').html(data.character);
-    }
-    $('.fontExample').html(data.character);
+    display_characters(page_type)
 
     tags = [];
     if (data.frequency_rank < 999999)
@@ -455,11 +453,21 @@ function render_page(page_type) {
 	var primitives_pts = [];
 	for (const p_data of data.primitives_detail) {
 		var keywords = [];
-		if (p_data.usr_keyword) keywords.push(p_data.usr_keyword);
-		if (p_data.heisig_keyword5 && !keywords.includes(p_data.heisig_keyword5))
-			keywords.push(p_data.heisig_keyword5);
-		if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
-			keywords.push(p_data.heisig_keyword6);
+        if (!p_data.has_result) {
+            primitives_pts.push('MISSING DATA FOR ' + p_data.character);
+            continue
+        }
+        if (p_data.usr_keyword) keywords.push(p_data.usr_keyword);
+        if (
+            p_data.heisig_keyword5 &&
+            !keywords.includes(p_data.heisig_keyword5)
+        )
+            keywords.push(p_data.heisig_keyword5);
+        if (
+            p_data.heisig_keyword6 &&
+            !keywords.includes(p_data.heisig_keyword6)
+        )
+        keywords.push(p_data.heisig_keyword6);
 		if (p_data.usr_primitive_keyword)
 			keywords.push(
 				'<span class="primitive_keyword">' +
@@ -476,18 +484,24 @@ function render_page(page_type) {
 			? p_data.meanings.join(', ')
 			: '-';
 
-		var primitiveHasAlts = p_data.primitive_alternatives.length > 0,
-			primitive_alternatives_txt = primitiveHasAlts
-				? p_data.primitive_alternatives.join(', ')
-				: '-';
+            var primitiveHasAlts = p_data.primitive_alternatives.length > 0
+            var new_primitive_alternatives = []
+            if (primitiveHasAlts) {
+                for (const prim_alt of p_data.primitive_alternatives) {
+                    new_primitive_alternatives.push(ReplaceTagsWithImages(prim_alt))
+                }
+            }
+            primitive_alternatives_txt = primitiveHasAlts
+                ? new_primitive_alternatives.join(', ')
+                : '-';
 
 		primitives_pts.push(
 			`<button
 					class="primitive${primitiveHasAlts ? ' -has-alternative' : ''}"
 					data-character="${p_data.character}"
 				>
-					${p_data.character}
-					<div class="primitiveDetails">
+                    ${ReplaceTagsWithImages(p_data.character)}
+                    <div class="primitiveDetails">
 						<div class="primitiveDetails-keywords">
 							<h3>Keywords:</h3>
 							<span>${keywords_txt}</span>
@@ -513,12 +527,22 @@ function render_page(page_type) {
 	var primitive_of_pts = [];
 	for (const p_data of data.primitive_of_detail) {
 		var keywords = [];
-		if (p_data.usr_keyword) keywords.push(p_data.usr_keyword);
-		if (p_data.heisig_keyword5 && !keywords.includes(p_data.heisig_keyword5))
-			keywords.push(p_data.heisig_keyword5);
-		if (p_data.heisig_keyword6 && !keywords.includes(p_data.heisig_keyword6))
-			keywords.push(p_data.heisig_keyword6);
-		if (p_data.usr_primitive_keyword)
+        if (!p_data.has_result) {
+            primitives_pts.push('MISSING DATA FOR ' + p_data.character);
+            continue
+        }
+        if (p_data.usr_keyword) keywords.push(p_data.usr_keyword);
+        if (
+            p_data.heisig_keyword5 &&
+            !keywords.includes(p_data.heisig_keyword5)
+        )
+            keywords.push(p_data.heisig_keyword5);
+        if (
+            p_data.heisig_keyword6 &&
+            !keywords.includes(p_data.heisig_keyword6)
+        )
+            keywords.push(p_data.heisig_keyword6);
+        if (p_data.usr_primitive_keyword)
 			keywords.push(
 				'<span class="primitive_keyword">' +
 					p_data.usr_primitive_keyword +
@@ -534,18 +558,24 @@ function render_page(page_type) {
 			? p_data.meanings.join(', ')
 			: '-';
 
-		var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0,
-			primitive_alternatives_txt = primitiveOfHasAlts
-				? p_data.primitive_alternatives.join(', ')
-				: '-';
+        var primitiveOfHasAlts = p_data.primitive_alternatives.length > 0
+        var new_primitive_alternatives = []
+        if (primitiveOfHasAlts) {
+            for (const prim_alt of p_data.primitive_alternatives) {
+                new_primitive_alternatives.push(ReplaceTagsWithImages(prim_alt))
+            }
+        }
+        primitive_alternatives_txt = primitiveHasAlts
+            ? new_primitive_alternatives.join(', ')
+            : '-';
 
 		primitive_of_pts.push(
 			`<button
 					class="primitive${primitiveOfHasAlts ? ' -has-alternative' : ''}"
 					data-character="${p_data.character}"
 				>
-					${p_data.character}
-					<div class="primitiveDetails">
+                    ${ReplaceTagsWithImages(p_data.character)}
+                    <div class="primitiveDetails">
 						<div class="primitiveDetails-keywords">
 							<h3>Keywords:</h3>
 							<span>${keywords_txt}</span>
@@ -573,9 +603,15 @@ function render_page(page_type) {
     $('#primitive_of_alts .primitive-alternatives').empty();
 
     if (kanjiHasPrimitiveAlts) {
+        var new_primitive_alternatives = []
+        if (kanjiHasPrimitiveAlts) {
+            for (const prim_alt of data.primitive_alternatives) {
+                new_primitive_alternatives.push(ReplaceTagsWithImages(prim_alt))
+            }
+        }
         $('#primitive_of_alts').show();
         $('#primitive_of_alts .primitive-alternatives').html(
-			data.primitive_alternatives.join(', '),
+            new_primitive_alternatives.join(', '),
         );
     }
 
@@ -860,12 +896,18 @@ function render_page(page_type) {
 
 	var stories = [];
 	if (data.usr_story) stories.push(data.usr_story.split('\n').join('<br>'));
-	if (!settings.only_custom_stories || stories.length < 1) {
-		if (data.heisig_story) {
-			var heisig_story = data.heisig_story;
-			if (data.heisig_comment) heisig_story += '<br><br>' + data.heisig_comment;
-			stories.push(heisig_story);
-		}
+	if (!settings.only_custom_stories || stories.length < 1 || page_type == 'lookup') {
+        if (data.heisig_story) {
+            var heisig_story = data.heisig_story;
+            stories.push(ReplaceTagsWithImages(heisig_story));
+        }
+        if (data.heisig_comment) {
+            var detagged_heisig_comment = ReplaceTagsWithImages(data.heisig_comment)
+            if (data.heisig_story) {
+                detagged_heisig_comment = '<br><br>' + detagged_heisig_comment
+            }			
+            stories.push(detagged_heisig_comment)
+        }
 		for (const ks of data.koohi_stories) stories.push(ks);
 	}
 

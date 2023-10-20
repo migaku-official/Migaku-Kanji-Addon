@@ -1,0 +1,20 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_tail_feathers" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:tail_feathers" kvg:element="tail_feathers">
+			<path d="M30.7,63.5C44,62,78,57.9,85.9,57c5.12-0.57,7.34,2.58,6.82,6.53c-1.48,11.2-4.23,19.7-7.48,27.2c-4.45,10.3-6.5,5.5-11.7,0.2" id="kvg:tail_feathers-s1" kvg:type="㇆a"></path>
+			<g id="kvg:tail_feathers-g1" kvg:element="灬" kvg:original="火" kvg:variant="true">
+				<path d="M17.3,76.2c0.44,6-0.31,13.2-1.6,17" id="kvg:tail_feathers-s2" kvg:type="㇔"></path>
+				<path d="M33.8,74.2c2.55,2.65,4.98,9.93,5.62,14.1" id="kvg:tail_feathers-s3" kvg:type="㇔"></path>
+				<path d="M51,71c2.03,2.22,5.25,9.12,5.76,12.6" id="kvg:tail_feathers-s4" kvg:type="㇔"></path>
+				<path d="M68.2,67.8c2.74,2.14,7.07,8.78,7.75,12.1" id="kvg:tail_feathers-s5" kvg:type="㇔"></path>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_tail_feathers" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 33.5 59.5)">1</text>
+		<text transform="matrix(1 0 0 1 11.2 76.5)">2</text>
+		<text transform="matrix(1 0 0 1 27.8 76.5)">3</text>
+		<text transform="matrix(1 0 0 1 44.2 74.5)">4</text>
+		<text transform="matrix(1 0 0 1 59.5 71.5)">5</text>
+	</g>
+</svg>

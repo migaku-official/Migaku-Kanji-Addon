@@ -1,0 +1,32 @@
+<svg height="109" viewbox="0 0 109 109" width="109" xmlns="http://www.w3.org/2000/svg">
+	<g id="kvg:StrokePaths_04e30" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;" xmlns:kvg="http://kanjivg.tagaini.net">
+		<g id="kvg:04e30" kvg:element="丰">
+			<g id="kvg:04e30-g1" kvg:element="夆" kvg:position="right">
+				<g id="kvg:04e30-g2" kvg:element="丰" kvg:phon="丰" kvg:position="bottom">
+					<g id="kvg:04e30-g3" kvg:element="三">
+						<g id="kvg:04e30-g4" kvg:element="一" kvg:position="top">
+							<path d="M33.4,33.7c2.1,0.967,5.53,0.709,7.75,0.45c10.4-1.2,19.7-2.86,28.6-4.07c1.85-0.245,4.41-1.02,6.28-0.504" id="kvg:04e30-s1" kvg:type="㇐"></path>
+						</g>
+						<g id="kvg:04e30-g5" kvg:position="bottom">
+							<g id="kvg:04e30-g6" kvg:element="一">
+								<path d="M32.1,50.4c1.99,0.913,5.29,0.736,7.43,0.49c11.1-1.23,23.7-2.92,33.2-4.14c2.02-0.259,4.13-0.695,6.13-0.136" id="kvg:04e30-s2" kvg:type="㇐"></path>
+							</g>
+							<g id="kvg:04e30-g7" kvg:element="一">
+								<path d="M16.7,69.6c4.36,1.02,7.92,1.01,11.5,0.504c18-2.52,36.6-4.59,54.8-5.42c3.47-0.164,7.04-0.0545,10.4,0.858" id="kvg:04e30-s3" kvg:type="㇐"></path>
+							</g>
+						</g>
+					</g>
+					<g id="kvg:04e30-g8" kvg:element="丨">
+						<path d="M52.9,19.2c1.23,1.23,1.65,3.07,1.65,5.1c0,9.5-0.0681,42.3,0.0136,61c0.0136,3.45,0.0272,6.4,0.0272,8.65" id="kvg:04e30-s4" kvg:type="㇑"></path>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:StrokeNumbers_04e30" style="font-size:8;fill:#808080" xmlns:kvg="http://kanjivg.tagaini.net">
+		<text transform="matrix(1 0 0 1 35.8 30.8)">1</text>
+		<text transform="matrix(1 0 0 1 30.3 47.1)">2</text>
+		<text transform="matrix(1 0 0 1 15.3 66.2)">3</text>
+		<text transform="matrix(1 0 0 1 41.2 25.3)">4</text>
+	</g>
+</svg>
