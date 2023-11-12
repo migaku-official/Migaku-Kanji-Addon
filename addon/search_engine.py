@@ -52,15 +52,10 @@ joins = [
 ]
 sql_joins_txt = "".join(joins)
 
-
-# we ignore these radicals for now because they don't have a keyword containing 
-# kanji counterpart in our database
-ignore_radicals = ['亅','屮','禸','爻','尢','无','彑','黽','鬲','鬥','齊','龠','黹','黹','鬯']
-
-# this table links radicals to their Heisig primitive counterpart to allow for
-# even better search capability
-# (some of them have identical visual look but differ only in Unicode)
-unicode_conversion_table = {
+# This conversion table links radicals to their Heisig primitive counterpart to allow 
+# for better search capability. Few of them have identical visual look but differ 
+# only in Unicode.
+radical_conversion_table = {
     'ノ' : '丿',
     '｜' : '丨',
     '⺅' : '亻',
@@ -70,7 +65,7 @@ unicode_conversion_table = {
 }
 
 # When two characters reference each other as alternatives (for example 艹 -> 艸 and 艸 -> 艹 )
-# then we want to link to the character which is the primary primitive
+# then we want to link to the character which is the primary primitive.
 primary_primitives = ['艹','扌','⻖','⻏','川','罒','冫','月']
 
 class SearchEngine:
@@ -99,8 +94,8 @@ class SearchEngine:
     def radical_to_primitive(self,r):
         # First do unicode conversion because some radicals in the list might use slightly
         # # different (albeit visually indistinguishable) unicode character.
-        if r in unicode_conversion_table:
-            r = unicode_conversion_table[r]
+        if r in radical_conversion_table:
+            r = radical_conversion_table[r]
         # .. then reference the main primitive instead if this is an alternative primitive
         if r not in primary_primitives and r in self.primitive_alternative_cache:
             r = self.primitive_alternative_cache[r]
@@ -131,7 +126,6 @@ class SearchEngine:
                 if p in self.keyword_set_cache:
                     kw_set = self.keyword_set_cache[p]
                     for kw in kw_set:
-                        #if kw not in rec_primitive_names_list:
                         rec_primitive_names_list.append(kw)
                 else:
                     print("Note! Kanji %s references primitive %s without a keyword" % (character,p))
@@ -154,9 +148,6 @@ class SearchEngine:
                     r = self.radical_to_primitive(r)
                     if r in self.keyword_set_cache:
                         radical_names_set.update(self.keyword_set_cache[r])
-                    else:
-                        if r not in ignore_radicals:
-                            print("Note! Kanji %s has unknown radical %s" % (c,r))
                 radical_names = ','.join(radical_names_set)
                 self.radical_name_set_cache[c] = radical_names_set
                 self.radical_name_cache[c] = radical_names
@@ -209,7 +200,7 @@ class SearchEngine:
                 if len(d['primitives'])>0:
                     self.primitive_list_cache[c] = custom_list(d['primitives'])
 
-                # Radicals..                
+                # Radicals..
                 if len(d['radicals'])>0:
                     self.radical_set_cache[c] = set(custom_list(d['radicals']))
 
@@ -238,9 +229,9 @@ class SearchEngine:
                 st = d['usr_story'].lower() + d['koohi_stories'].lower()             
                 st += d['heisig_story'].lower()
                 st += d['heisig_comment'].lower()
-
                 self.stories_cache[c] = st
 
+                # Frequency ranking points: Prioritize high frequency (and higher Kanken grade) kanjis.
                 points = 0
                 if d['frequency_rank'] is not None and d['frequency_rank'] != '':
                     fr_points = (4000 - d['frequency_rank'])/400
@@ -269,10 +260,9 @@ class SearchEngine:
                 self.update_recursive_primitive_cache(c)
 
 
-
-    def get_matching_characters(self, search_terms, pool, is_set, results, max_results):
+    def get_matching_characters(self, search_terms, pool, is_a_set, results, max_results):
         for search_term,required_count in search_terms.items():
-            if is_set and required_count>1:
+            if is_a_set and required_count>1:
                 # we want more than 1 occurence but this is a set -> not found
                 return results
 
@@ -293,9 +283,9 @@ class SearchEngine:
         return results
 
 
-    def get_matching_characters_with_scoring(self, search_terms, pool, is_set, pool_priority, kanji_scores, kanji_matches):
+    def get_matching_characters_with_scoring(self, search_terms, pool, is_a_set, pool_priority, kanji_scores, kanji_matches):
         for search_term,required_count in search_terms.items():
-            if is_set and required_count>1:
+            if is_a_set and required_count>1:
                 # we want more than 1 occurence but this is a set -> not found
                 return
 
@@ -323,12 +313,13 @@ class SearchEngine:
     def get_matching_characters_from_list_of_pools(self, search_terms, pool_list, max_results):
 
         if len(search_terms) == 1:
-            # In the case of only one search term its a simple exhaustive search until enough matches are found. 
-            # Search goes through all search pools (keywords, primitive names, free text search) starting
+            # In the case of only one search term its a matter of simple exhaustive search
+            # until enough matches are found. Search crams through all search pools 
+            # (keywords, primitive names, free text search) starting
             # from the most prioritized one
             results = []
-            for pool_priority, pool, is_set in pool_list:
-                self.get_matching_characters(search_terms, pool, is_set, results, max_results)
+            for pool_priority, pool, is_a_set in pool_list:
+                self.get_matching_characters(search_terms, pool, is_a_set, results, max_results)
                 if len(results)>=max_results:
                     return results
             return results
@@ -339,8 +330,8 @@ class SearchEngine:
             kanji_scores = dict()   # score for each kanji
             kanji_matches = dict() # how many search terms were matched
 
-            for pool_priority, pool, is_set in pool_list:
-                self.get_matching_characters_with_scoring(search_terms, pool, is_set, pool_priority, kanji_scores, kanji_matches)
+            for pool_priority, pool, is_a_set in pool_list:
+                self.get_matching_characters_with_scoring(search_terms, pool, is_a_set, pool_priority, kanji_scores, kanji_matches)
 
             # remove those kanjis that didn't match all the search terms
             for kanji, matched_search_terms in kanji_matches.items():
@@ -389,7 +380,8 @@ class SearchEngine:
                     search_terms_dict[term] = 1
                 
         # A list of search pools, each having a distinct priority
-        priority_list = [ 
+        priority_list = [
+            # [ priority, pool, the_pool_is_a_set ]
             [30,self.keyword_set_cache,True],
             [26,self.keyword_cache,False],
             [20,self.rec_primitive_list_cache,False], 
