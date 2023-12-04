@@ -29,6 +29,7 @@ def setup_menu():
     submenu = QMenu("Kanji", aqt.mw)
 
     lookup_action = QAction("Lookup", aqt.mw)
+    lookup_action.setShortcut(_("Ctrl+L"))
     lookup_action.triggered.connect(on_loopup)
     submenu.addAction(lookup_action)
 
