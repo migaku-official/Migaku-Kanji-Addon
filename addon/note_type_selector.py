@@ -137,11 +137,11 @@ class NoteTypeSelectorWidget(QWidget):
 
         note_name = note_box.currentText()
 
-        cards = [f["name"] for f in aqt.mw.col.models.by_name(note_name)["tmpls"]]
+        cards = [f["name"] for f in aqt.mw.col.models.byName(note_name)["tmpls"]]
         card_box.clear()
         card_box.addItems(cards)
 
-        fields = [f["name"] for f in aqt.mw.col.models.by_name(note_name)["flds"]]
+        fields = [f["name"] for f in aqt.mw.col.models.byName(note_name)["flds"]]
         field_box.clear()
         field_box.addItems(fields)
 

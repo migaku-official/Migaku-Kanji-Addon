@@ -370,7 +370,7 @@ class StatsWindow(QDialog):
                         marked_known = True
                     else:
                         try:
-                            card = aqt.mw.col.get_card(card_id)
+                            card = aqt.mw.col.getCard(card_id)
                             ivl_days = card_ival(card)
                         except (
                             Exception

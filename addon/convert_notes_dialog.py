@@ -158,7 +158,7 @@ class ConvertNotesDialog(QDialog):
             if box.currentIndex() < 1:
                 continue
             deck_name = ct.deck_name
-            deck = aqt.mw.col.decks.by_name(deck_name)
+            deck = aqt.mw.col.decks.byName(deck_name)
             if deck is None:
                 util.error_msg(
                     self,
@@ -275,7 +275,7 @@ class ConvertNotesDialog(QDialog):
 
         for ct in CardType:
             ct_model_name = ct.model_name
-            ct_model = aqt.mw.col.models.by_name(ct_model_name)
+            ct_model = aqt.mw.col.models.byName(ct_model_name)
             if ct_model["id"] == model_id:
                 util.error_msg(
                     parent,
