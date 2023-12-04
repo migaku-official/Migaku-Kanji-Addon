@@ -70,11 +70,21 @@ def unique_characters(string):
 
 import aqt
 from aqt.qt import *
+from PyQt6 import QtSvg
 
-def get_pixmap_from_tag(kanji, size):
+def get_pixmap_from_tag(kanji, size, color):
     img = kanji[1:-1]
     path = addon_path('primitives','%s.svg' % img)
-    pixmap = QIcon(path).pixmap(QSize(size,size))
+    renderer =  QtSvg.QSvgRenderer(path)
+    pixmap = QPixmap(size, size)
+    pixmap.fill(Qt.GlobalColor.transparent)
+    painter = QPainter(pixmap)
+    renderer.render(painter)
+    painter.setRenderHint(QPainter.RenderHint.Antialiasing, False)
+    painter.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform, False)
+    painter.setCompositionMode( QPainter.CompositionMode.CompositionMode_SourceIn )
+    painter.fillRect( pixmap.rect(), color )
+    painter.end()
     return pixmap
 
 def log(*args):

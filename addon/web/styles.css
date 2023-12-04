@@ -566,8 +566,11 @@ button.primitive:focus .kanji-addon__hover-tooltip,
 
 .ankidroid_dark_mode .title-tooltip__container img,
 .nightMode .title-tooltip__container img,
-.dark .title-tooltip__container img {
-	filter: invert(1);
+.dark .title-tooltip__container img,
+.ankidroid_dark_mode .stories__container img,
+.nightMode .stories__container img,
+.dark .stories__container img {
+		filter: invert(1);
 }
 
 .title-tooltip__container .separator {
