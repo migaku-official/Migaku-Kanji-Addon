@@ -113,10 +113,17 @@ class PowerSearchBar():
         self.results_bar.set_contents(result)
 
     def on_power_search_submit(self):
-        # do not do any additional searches but just select the first match
         btn = self.results_bar.buttons[0]
         if btn.character is not None:
+            # There is a match from search engine --> Do not do any additional searches 
+            # but just select the first match
             self.on_select_result_function(btn.character)
+        else:
+            text = self.input_bar.text()
+            if len(text) > 0:
+                # retain the old functionality of the search bar: Open many tabs (one for each character)
+                self.on_select_result_function(text)
+
 
     def clear(self):
         self.input_bar.setText("")
