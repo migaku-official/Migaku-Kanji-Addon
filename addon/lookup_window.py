@@ -52,7 +52,7 @@ class LookupWindow(QDialog):
         search_btn.clicked.connect(self.on_search_submit)
         search_lyt.addWidget(search_btn)
 
-        self.power_search_bar = PowerSearchBar(search_lyt, lyt, 20, search_btn.sizeHint().height()*1.5, self.search)
+        self.power_search_bar = PowerSearchBar(search_lyt, lyt, 20, int(search_btn.sizeHint().height()*1.5), self.search)
 
         self.keep_tab_on_search_box = QCheckBox("Keep tabs open")
         self.keep_tab_on_search_box.setChecked(False)
