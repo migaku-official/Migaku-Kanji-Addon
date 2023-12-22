@@ -32,6 +32,11 @@ class KanjiMarkModel(QAbstractListModel):
         super().__init__()
         self.kanji = []
         self.states = defaultdict(lambda: 0)
+        # These are used only by non-Unicode primitive .svg files
+        if aqt.theme.theme_manager.night_mode:
+            self.color = QColor( 0xff, 0xff, 0xff )
+        else:
+            self.color = QColor( 0x20, 0x20, 0x20 )
 
     def add(self, kanji_list):
         new_kanji = [kanji for kanji in kanji_list if kanji not in self.kanji]
@@ -59,7 +64,7 @@ class KanjiMarkModel(QAbstractListModel):
                 return str(kanji)
         if role == Qt.ItemDataRole.DecorationRole:
             if kanji[0] == '[':
-                return util.get_pixmap_from_tag(kanji, 35)
+                return util.get_pixmap_from_tag(kanji, 37, self.color)
         if role == Qt.ItemDataRole.BackgroundRole:
             state = self.states[kanji]
             return QBrush(QColor(self.state_colors[state]))

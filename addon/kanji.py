@@ -14,7 +14,7 @@ from .card_type import CardType
 from . import config
 from . import text_parser
 from .kanji_confirm_dialog import KanjiConfirmDialog
-
+from .search_engine import SearchEngine
 
 kanji_db_path = addon_path("kanji.db")
 user_db_path = user_path("user.db")
@@ -99,6 +99,8 @@ class KanjiDB:
             self.con.commit()
         except sqlite3.OperationalError:
             pass
+
+        self.search_engine = SearchEngine(self.crs)
 
     # Close db
     def shutdown(self):
