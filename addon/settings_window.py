@@ -203,8 +203,8 @@ class CardTypeSettingsWidget(QWidget):
             "Migaku Kanji",
             f"Do you really want to reset kanji marked known for {self.card_type.label}?<br><br>"
             "<b>They will not be recoverable.</b>",
-            QMessageBox.StandardButton.Yes | QMessageBox.No,
-            QMessageBox.No,
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
         )
         if r != QMessageBox.StandardButton.Yes:
             return
@@ -456,8 +456,8 @@ class SettingsWindow(QDialog):
             "Do you really want to reset the Migaku Kanji Database?<br><br>"
             "<b>All kanji manually marked known, custom stories and keywords will be lost!</b><br><br>"
             "Kanji cards and their progress will remain.",
-            QMessageBox.StandardButton.Yes | QMessageBox.No,
-            QMessageBox.No,
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
         )
         if r != QMessageBox.StandardButton.Yes:
             return
@@ -472,8 +472,8 @@ class SettingsWindow(QDialog):
             "Migaku Kanji",
             "Do you really want to reset all custom keywords?<br><br>"
             "<b>They will not be recoverable.</b>",
-            QMessageBox.StandardButton.Yes | QMessageBox.No,
-            QMessageBox.No,
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
         )
         if r != QMessageBox.StandardButton.Yes:
             return
@@ -486,8 +486,8 @@ class SettingsWindow(QDialog):
             "Migaku Kanji",
             "Do you really want to reset all custom stories?<br><br>"
             "<b>They will not be recoverable.</b>",
-            QMessageBox.StandardButton.Yes | QMessageBox.No,
-            QMessageBox.No,
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
         )
         if r != QMessageBox.StandardButton.Yes:
             return
