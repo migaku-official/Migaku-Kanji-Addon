@@ -20,8 +20,8 @@ def CardLayout_init_hook(self, mw: AnkiQt, note: Note, *args, **kwargs):
                 "You are able to edit the template for the note type by editing the corresponding HTML and CSS files inside the add-on directory.\n\n"
                 "Do you want to open that directory now?\n\n"
                 "Note: If you edit the templates be aware that updates to the add-on will overwrite those files.",
-                QMessageBox.StandardButton.Yes | QMessageBox.No,
-                QMessageBox.No,
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No,
             )
             if r == QMessageBox.StandardButton.Yes:
                 aqt.utils.openFolder(util.addon_path("web"))
