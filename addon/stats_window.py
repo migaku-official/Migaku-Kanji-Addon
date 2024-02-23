@@ -248,7 +248,7 @@ class StatsWindow(QDialog):
         return QDialog.closeEvent(self, evt)
 
     def keyPressEvent(self, evt):
-        if evt.key() == Qt.Key_F11:
+        if evt.key() == Qt.Key.Key_F11:
             self.toggle_fullscreen()
             return
         return QDialog.keyPressEvent(self, evt)

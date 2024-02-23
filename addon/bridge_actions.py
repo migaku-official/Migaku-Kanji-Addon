@@ -162,7 +162,7 @@ def handle_bridge_action(
     elif args[0] == "suggest_change":
         character = args[1]
 
-        key_sequence = QKeySequence(Qt.CTRL + Qt.Key_F).toString(
+        key_sequence = QKeySequence(Qt.Modifier.CTRL | Qt.Key.Key_F).toString(
             QKeySequence.SequenceFormat.NativeText
         )
 
