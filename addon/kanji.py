@@ -149,6 +149,18 @@ class KanjiDB:
     def reset_custom_stories(self):
         self.crs_execute("DELETE FROM usr.stories")
 
+    def get_related_characters(self, character: str):
+        raw_data = self.crs_execute_and_fetch_one(
+            f"SELECT primitives, primitive_of FROM characters "
+            "WHERE characters.character = (?)",
+            (character,),
+        )
+
+        if raw_data is None:
+            return None
+        
+        return custom_list(raw_data[0]) + custom_list(raw_data[1])
+
     # Recursivly finds new characters given a specific character
     def _new_characters_find(self, card_type, character, out, max_characters=-1):
         # Check if max characters already reached
@@ -568,9 +580,14 @@ class KanjiDB:
 
     def refresh_notes_for_character(self, character):
         ct_find_filter = [f'"note:{ct.model_name}"' for ct in CardType]
-        note_ids = aqt.mw.col.find_notes(
-            " OR ".join(ct_find_filter) + f' AND "Character:{character}"'
-        )
+        ct_filter = " OR ".join(ct_find_filter)
+        ct_filter = f"({ct_filter})" if ct_filter != "" else ""
+        related_characters = (self.get_related_characters(character) or []) + [character]
+        related_chars_filter = [f'"Character:{character}"' for character in related_characters]
+        related_chars_filter = " OR ".join(related_chars_filter)
+
+        # mind the parens
+        note_ids = aqt.mw.col.find_notes(f"({ct_filter}) AND ({related_chars_filter})")
 
         for note_id in note_ids:
             note = aqt.mw.col.getNote(note_id)
