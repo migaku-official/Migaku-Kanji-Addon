@@ -69,6 +69,7 @@ class LookupWindow(QDialog):
             self.on_tab_bar_context_menu_request
         )
         results_lyt.addWidget(self.tab_bar)
+        self.install_hotkey_filter()
 
         self.web = aqt.webview.AnkiWebView()
 
@@ -151,6 +152,117 @@ class LookupWindow(QDialog):
         results_lyt.addWidget(self.web)
 
         self.resize(1075, 775)
+
+    def install_hotkey_filter(self):
+        self._handled_lookup_hotkey = None
+        QApplication.instance().installEventFilter(self)
+
+    def eventFilter(self, obj, evt):
+        evt_type = evt.type()
+        if evt_type not in (QEvent.Type.KeyPress, QEvent.Type.ShortcutOverride):
+            return QDialog.eventFilter(self, obj, evt)
+
+        if not self.isVisible():
+            return QDialog.eventFilter(self, obj, evt)
+
+        if not isinstance(obj, QWidget):
+            return QDialog.eventFilter(self, obj, evt)
+
+        if obj != self and not self.isAncestorOf(obj):
+            return QDialog.eventFilter(self, obj, evt)
+
+        if evt_type == QEvent.Type.ShortcutOverride:
+            if self.handle_shortcut_override(evt):
+                return True
+
+        if evt_type == QEvent.Type.KeyPress:
+            if self.consume_handled_keypress(evt):
+                return True
+            if self.handle_hotkey_event(evt):
+                return True
+
+        return QDialog.eventFilter(self, obj, evt)
+
+    def shortcut_signature(self, evt):
+        modifiers = evt.modifiers() & (
+            Qt.KeyboardModifier.ControlModifier
+            | Qt.KeyboardModifier.ShiftModifier
+            | Qt.KeyboardModifier.MetaModifier
+            | Qt.KeyboardModifier.AltModifier
+        )
+        return (evt.key(), modifiers.value)
+
+    def handle_shortcut_override(self, evt):
+        key = evt.key()
+        modifiers = evt.modifiers()
+        ctrl = Qt.KeyboardModifier.ControlModifier
+
+        if bool(modifiers & ctrl) and key == Qt.Key.Key_PageDown:
+            self._handled_lookup_hotkey = self.shortcut_signature(evt)
+            self.cycle_tabs_forward()
+            evt.accept()
+            return True
+
+        if bool(modifiers & ctrl) and key == Qt.Key.Key_PageUp:
+            self._handled_lookup_hotkey = self.shortcut_signature(evt)
+            self.cycle_tabs_backward()
+            evt.accept()
+            return True
+
+        if self.is_lookup_hotkey_event(evt):
+            evt.accept()
+            return True
+
+        return False
+
+    def consume_handled_keypress(self, evt):
+        signature = self.shortcut_signature(evt)
+        if self._handled_lookup_hotkey == signature:
+            self._handled_lookup_hotkey = None
+            evt.accept()
+            return True
+        return False
+
+    def is_lookup_hotkey_event(self, evt):
+        key = evt.key()
+        modifiers = evt.modifiers()
+        ctrl = Qt.KeyboardModifier.ControlModifier
+        meta = Qt.KeyboardModifier.MetaModifier
+
+        is_ctrl = bool(modifiers & ctrl)
+        is_meta = bool(modifiers & meta)
+
+        return (is_ctrl and key in (Qt.Key.Key_PageDown, Qt.Key.Key_PageUp)) or (
+            key == Qt.Key.Key_Escape
+        ) or (key == Qt.Key.Key_W and (is_ctrl or is_meta))
+
+    def handle_hotkey_event(self, evt):
+        key = evt.key()
+        modifiers = evt.modifiers()
+        ctrl = Qt.KeyboardModifier.ControlModifier
+        meta = Qt.KeyboardModifier.MetaModifier
+
+        is_ctrl = bool(modifiers & ctrl)
+        is_meta = bool(modifiers & meta)
+
+        if is_ctrl and key == Qt.Key.Key_PageDown:
+            self.cycle_tabs_forward()
+            evt.accept()
+            return True
+
+        if is_ctrl and key == Qt.Key.Key_PageUp:
+            self.cycle_tabs_backward()
+            evt.accept()
+            return True
+
+        if key == Qt.Key.Key_Escape or (
+            key == Qt.Key.Key_W and (is_ctrl or is_meta)
+        ):
+            self.close()
+            evt.accept()
+            return True
+
+        return False
 
     def set_result_data(self, data):
         # Really cannot be bothered to escape the json
@@ -239,6 +351,25 @@ class LookupWindow(QDialog):
             action.triggered.connect(self.close_all_tabs)
 
             menu.exec(QCursor.pos())
+
+    def cycle_tabs(self, offset):
+        tab_count = self.tab_bar.count()
+
+        if tab_count < 2:
+            return
+
+        current_index = self.tab_bar.currentIndex()
+        if current_index < 0:
+            current_index = 0
+
+        next_index = (current_index + offset) % tab_count
+        self.tab_bar.setCurrentIndex(next_index)
+
+    def cycle_tabs_forward(self):
+        self.cycle_tabs(1)
+
+    def cycle_tabs_backward(self):
+        self.cycle_tabs(-1)
 
     def close_tab(self, tab_idx):
         self.tab_bar.removeTab(tab_idx)
